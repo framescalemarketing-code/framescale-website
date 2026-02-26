@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { ButtonLink } from "@/components/Button";
 
@@ -42,6 +43,18 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="md:col-span-5">
+              <div className="mb-6 overflow-hidden rounded-3xl bg-white ring-1 ring-brand-ink/10">
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src="/assets/photos/optimized/diggy_008-hero.webp"
+                    alt="Gold rimless frame in a bright editorial setup"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 768px) 42vw, 100vw"
+                    priority
+                  />
+                </div>
+              </div>
               <div className="rounded-3xl bg-white p-7 ring-1 ring-brand-ink/10">
                 <p className="text-sm font-semibold text-brand-ink">
                   What you get in the first 30 days
@@ -84,7 +97,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section>
+      <section className="bg-brand-aqua/8">
         <Container>
           <div className="py-16 md:py-20">
             <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">
@@ -132,7 +145,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-brand-sand">
+      <section className="bg-linear-to-b from-brand-sand to-brand-aqua/8">
         <Container>
           <div className="py-16 md:py-20">
             <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">

@@ -7,6 +7,8 @@ type PageHeroProps = {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  imageSide?: "left" | "right";
+  tone?: "sand" | "aqua" | "slate";
 };
 
 export function PageHero({
@@ -15,12 +17,25 @@ export function PageHero({
   description,
   imageSrc,
   imageAlt,
+  imageSide = "right",
+  tone = "sand",
 }: PageHeroProps) {
+  const sectionToneClass = {
+    sand: "bg-linear-to-b from-brand-sand to-white",
+    aqua: "bg-linear-to-b from-brand-aqua/20 to-white",
+    slate: "bg-linear-to-b from-brand-slate/12 to-white",
+  }[tone];
+
+  const textColumnClass =
+    imageSide === "left" ? "md:col-span-6 md:order-2" : "md:col-span-6";
+  const imageColumnClass =
+    imageSide === "left" ? "md:col-span-6 md:order-1" : "md:col-span-6";
+
   return (
-    <section className="bg-gradient-to-b from-brand-sand to-white">
+    <section className={sectionToneClass}>
       <Container>
         <div className="grid items-center gap-12 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-6">
+          <div className={textColumnClass}>
             {eyebrow && (
               <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-teal ring-1 ring-brand-ink/10">
                 {eyebrow}
@@ -36,7 +51,7 @@ export function PageHero({
             </p>
           </div>
 
-          <div className="md:col-span-6">
+          <div className={imageColumnClass}>
             <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-brand-ink/10">
               <div className="relative aspect-[4/3] w-full">
                 <Image

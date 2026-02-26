@@ -1,7 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/Container";
-import { ButtonLink } from "@/components/Button";
 import {
   BarChart3,
   Megaphone,
@@ -87,8 +86,10 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Structured marketing systems for optical businesses"
         description="Focused engagements that combine strategy, analytics, execution, and technical capability."
-        imageSrc="/assets/hero/services.jpg"
+        imageSrc="/assets/photos/optimized/diggy_014-hero.webp"
         imageAlt="Marketing planning session"
+        imageSide="right"
+        tone="aqua"
       />
 
       <section>

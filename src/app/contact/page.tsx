@@ -9,8 +9,10 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Start with clarity"
         description="Share your goals and constraints. You will receive a structured starting point."
-        imageSrc="/assets/hero/contact.jpg"
+        imageSrc="/assets/photos/optimized/diggy_013-hero.webp"
         imageAlt="Consultation discussion"
+        imageSide="right"
+        tone="aqua"
       />
 
       <section>

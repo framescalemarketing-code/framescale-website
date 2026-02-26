@@ -13,8 +13,10 @@ export default function PrivacyPage() {
         eyebrow="Privacy"
         title="Privacy policy"
         description="How information is handled and protected."
-        imageSrc="/assets/hero/privacy.jpg"
+        imageSrc="/assets/photos/optimized/diggy_016-hero.webp"
         imageAlt="Confidential documents"
+        imageSide="right"
+        tone="slate"
       />
 
       <section>

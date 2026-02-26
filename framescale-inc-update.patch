@@ -1,0 +1,280 @@
+diff --git a/README.md b/README.md
+index 1dee654..b3afa1f 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+-# FrameScale Marketing Website
++# FrameScale Inc
+ 
+-Multi page marketing website built with Next.js App Router and Tailwind CSS.
++Official website for FrameScale Inc.
+ 
+ ## Pages
+ 
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 883db20..b8dd4c7 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -7,10 +7,11 @@ import { site } from "@/lib/site";
+ export const metadata: Metadata = {
+   metadataBase: new URL(site.url),
+   title: {
+-    default: `${site.name} | ${site.tagline}`,
+-    template: `%s | ${site.name}`,
++    default: "FrameScale Inc",
++    template: "%s | FrameScale Inc",
+   },
+-  description: site.description,
++  description:
++    "Operational growth systems for small to mid size businesses ready to scale with structure and clarity.",
+   openGraph: {
+     title: site.name,
+     description: site.description,
+diff --git a/src/app/page.tsx b/src/app/page.tsx
+index 42b643a..88fab8c 100644
+--- a/src/app/page.tsx
++++ b/src/app/page.tsx
+@@ -1,198 +1,57 @@
+-import { Container } from "@/components/Container";
+-import { ButtonLink } from "@/components/Button";
++import Image from "next/image";
++import Link from "next/link";
+ 
+-export default function HomePage() {
++export default function Home() {
+   return (
+     <main>
+-      <section className="bg-linear-to-b from-brand-sand to-white">
+-        <Container>
+-          <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:py-20">
+-            <div className="md:col-span-7">
+-              <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-teal ring-1 ring-brand-ink/10">
+-                Marketing and growth consulting for independent optical
+-              </p>
+-              <h1 className="mt-5 font-display text-4xl leading-tight tracking-tight text-brand-ink md:text-6xl">
+-                Turn marketing into a system that consistently brings in
+-                appointments and sales.
+-              </h1>
+-              <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-ink/75">
+-                FrameScale helps practices and optical brands build repeatable
+-                strategies across local visibility, paid media, and retention.
+-                Clear priorities, measurable goals, and execution support.
+-              </p>
+-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+-                <ButtonLink href="/contact">Book a consult</ButtonLink>
+-                <ButtonLink href="/services" variant="secondary">
+-                  Explore services
+-                </ButtonLink>
+-              </div>
+-              <ul className="mt-8 grid gap-3 text-sm text-brand-ink/75 sm:grid-cols-2">
+-                <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
+-                  Strategy that fits your resources
+-                </li>
+-                <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
+-                  Practical tracking and reporting
+-                </li>
+-                <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
+-                  Launch support for campaigns
+-                </li>
+-                <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
+-                  Retention and referral programs
+-                </li>
+-              </ul>
+-            </div>
+-            <div className="md:col-span-5">
+-              <div className="rounded-3xl bg-white p-7 ring-1 ring-brand-ink/10">
+-                <p className="text-sm font-semibold text-brand-ink">
+-                  What you get in the first 30 days
+-                </p>
+-                <ol className="mt-4 space-y-3 text-sm text-brand-ink/75">
+-                  <li className="flex gap-3">
+-                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+-                      1
+-                    </span>
+-                    <span>
+-                      Baseline audit of your local presence, funnel, and
+-                      tracking
+-                    </span>
+-                  </li>
+-                  <li className="flex gap-3">
+-                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+-                      2
+-                    </span>
+-                    <span>Prioritized plan with clear owners and timelines</span>
+-                  </li>
+-                  <li className="flex gap-3">
+-                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+-                      3
+-                    </span>
+-                    <span>
+-                      One campaign shipped, plus reporting you can reuse
+-                    </span>
+-                  </li>
+-                </ol>
+-                <div className="mt-7 rounded-2xl bg-brand-tealDark p-5 text-white">
+-                  <p className="text-sm font-semibold">Typical outcomes</p>
+-                  <p className="mt-2 text-sm text-white/85">
+-                    More qualified inbound leads, improved conversion on booking
+-                    pages, and better repeat purchase behavior.
+-                  </p>
+-                </div>
+-              </div>
+-            </div>
+-          </div>
+-        </Container>
++      <section className="hero">
++        <h1>Structured Growth for Small to Mid Size Businesses</h1>
++        <p>
++          FrameScale Inc helps founder led and lean team organizations build the
++          operational systems required to scale revenue, delivery, and internal
++          execution without increasing chaos.
++        </p>
++        <p>
++          We focus on clarity across operations, marketing infrastructure,
++          performance tracking, and scalable process design so growth becomes
++          repeatable instead of reactive.
++        </p>
++        <Link href="/contact">Start a Conversation</Link>
+       </section>
+ 
+-      <section>
+-        <Container>
+-          <div className="py-16 md:py-20">
+-            <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">
+-              Services built for the way optical businesses actually operate
+-            </h2>
+-            <p className="mt-4 max-w-3xl text-base leading-7 text-brand-ink/75">
+-              Whether you are focused on exam growth, eyewear sales, or
+-              strengthening managed care performance, the work stays grounded in
+-              measurable actions.
+-            </p>
+-            <div className="mt-10 grid gap-6 md:grid-cols-3">
+-              {[
+-                {
+-                  title: "Local visibility and demand",
+-                  body: "Google Business Profile, reviews, local search content, and offer pages that convert.",
+-                },
+-                {
+-                  title: "Paid media and campaign launches",
+-                  body: "Meta and Google Ads with a clear testing plan, creative direction, and weekly decisioning.",
+-                },
+-                {
+-                  title: "Retention and referrals",
+-                  body: "Recall programs, email and SMS journeys, and referral systems that your team can maintain.",
+-                },
+-              ].map((card) => (
+-                <div
+-                  key={card.title}
+-                  className="rounded-3xl bg-white p-7 ring-1 ring-brand-ink/10"
+-                >
+-                  <p className="text-sm font-semibold text-brand-teal">
+-                    {card.title}
+-                  </p>
+-                  <p className="mt-3 text-sm leading-6 text-brand-ink/75">
+-                    {card.body}
+-                  </p>
+-                </div>
+-              ))}
+-            </div>
+-            <div className="mt-10">
+-              <ButtonLink href="/services" variant="secondary">
+-                See all services
+-              </ButtonLink>
+-            </div>
+-          </div>
+-        </Container>
++      <section className="imageSection">
++        <Image
++          src="/images/operations-dashboard.jpg"
++          alt="Operational dashboard used by small business leadership teams"
++          width={1200}
++          height={700}
++          priority
++        />
+       </section>
+ 
+-      <section className="bg-brand-sand">
+-        <Container>
+-          <div className="py-16 md:py-20">
+-            <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">
+-              A simple engagement model
+-            </h2>
+-            <div className="mt-10 grid gap-6 md:grid-cols-3">
+-              {[
+-                {
+-                  title: "Diagnose",
+-                  body: "Audit your marketing, demand channels, and measurement so you know what is driving results.",
+-                },
+-                {
+-                  title: "Prioritize",
+-                  body: "Choose a focused set of changes that fit your staff time, budget, and patient mix.",
+-                },
+-                {
+-                  title: "Execute",
+-                  body: "Ship campaigns and operational changes with weekly reviews and clear next actions.",
+-                },
+-              ].map((step, idx) => (
+-                <div
+-                  key={step.title}
+-                  className="rounded-3xl bg-white p-7 ring-1 ring-brand-ink/10"
+-                >
+-                  <p className="text-xs font-semibold text-brand-ink/60">
+-                    Step {idx + 1}
+-                  </p>
+-                  <p className="mt-2 font-display text-2xl tracking-tight text-brand-ink">
+-                    {step.title}
+-                  </p>
+-                  <p className="mt-3 text-sm leading-6 text-brand-ink/75">
+-                    {step.body}
+-                  </p>
+-                </div>
+-              ))}
+-            </div>
+-          </div>
+-        </Container>
++      <section>
++        <h2>What We Do</h2>
++        <p>
++          FrameScale Inc works with small to mid size companies that are past
++          startup stage but not yet enterprise structured. These organizations
++          typically experience growth plateaus caused by unclear ownership,
++          inconsistent reporting, manual processes, and reactive decision
++          making.
++        </p>
++        <p>
++          We design scalable operating systems that align revenue strategy,
++          workflow structure, accountability models, and performance metrics.
++          The result is controlled growth supported by measurable execution.
++        </p>
+       </section>
+ 
+-      <section>
+-        <Container>
+-          <div className="py-16 md:py-20">
+-            <div className="rounded-3xl bg-brand-tealDark p-10 text-white md:p-14">
+-              <h2 className="font-display text-3xl tracking-tight md:text-4xl">
+-                Ready for a plan you can actually execute?
+-              </h2>
+-              <p className="mt-4 max-w-2xl text-base leading-7 text-white/85">
+-                Share a few details about your practice or brand. You will get a
+-                recommended starting point and a clear next step.
+-              </p>
+-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+-                <ButtonLink href="/contact">Start here</ButtonLink>
+-                <ButtonLink href="/pricing" variant="secondary">
+-                  View pricing
+-                </ButtonLink>
+-              </div>
+-            </div>
+-          </div>
+-        </Container>
++      <section className="imageSection">
++        <Image
++          src="/images/team-planning.jpg"
++          alt="Small business leadership team planning growth strategy"
++          width={1200}
++          height={700}
++        />
+       </section>
+     </main>
+   );

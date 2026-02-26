@@ -1,7 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/Container";
-import { ButtonLink } from "@/components/Button";
 
 export const metadata: Metadata = {
   title: "About",
@@ -16,8 +15,10 @@ export default function AboutPage() {
         eyebrow="About"
         title="About FrameScale"
         description="FrameScale supports small optical companies and private practices that want steady growth through structured marketing systems and practical execution."
-        imageSrc="/assets/hero/about.jpg"
+        imageSrc="/assets/photos/optimized/diggy_012-hero.webp"
         imageAlt="Optical strategy discussion"
+        imageSide="left"
+        tone="sand"
       />
 
       <section>

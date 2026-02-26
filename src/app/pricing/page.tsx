@@ -13,8 +13,10 @@ export default function PricingPage() {
         eyebrow="Pricing"
         title="Clear engagement structures"
         description="Defined scopes with measurable deliverables and structured execution cadence."
-        imageSrc="/assets/hero/pricing.jpg"
+        imageSrc="/assets/photos/optimized/diggy_018-hero.webp"
         imageAlt="Planning documents on desk"
+        imageSide="left"
+        tone="sand"
       />
 
       <section>

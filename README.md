@@ -1,6 +1,6 @@
-# FrameScale Marketing Website
+# FrameScale Inc
 
-Multi page marketing website built with Next.js App Router and Tailwind CSS.
+Official website for FrameScale Inc.
 
 ## Pages
 

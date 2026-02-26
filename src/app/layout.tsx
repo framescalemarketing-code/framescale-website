@@ -7,10 +7,11 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | ${site.tagline}`,
-    template: `%s | ${site.name}`,
+    default: "FrameScale Inc",
+    template: "%s | FrameScale Inc",
   },
-  description: site.description,
+  description:
+    "Operational growth systems for small to mid size businesses ready to scale with structure and clarity.",
   openGraph: {
     title: site.name,
     description: site.description,

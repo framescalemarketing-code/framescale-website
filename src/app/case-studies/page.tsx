@@ -13,8 +13,10 @@ export default function CaseStudiesPage() {
         eyebrow="Case Studies"
         title="Applied marketing systems in practice"
         description="Examples of structured improvements across local growth, paid media, and retention."
-        imageSrc="/assets/hero/case-studies.jpg"
+        imageSrc="/assets/photos/optimized/diggy_015-hero.webp"
         imageAlt="Analytics dashboard review"
+        imageSide="left"
+        tone="slate"
       />
 
       <section>
