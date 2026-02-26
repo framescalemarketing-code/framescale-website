@@ -1,5 +1,4 @@
-﻿import Image from "next/image";
-import { Container } from "@/components/Container";
+﻿import { Container } from "@/components/Container";
 import { ButtonLink } from "@/components/Button";
 
 export default function HomePage() {
@@ -42,56 +41,42 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
-
             <div className="md:col-span-5">
-              <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-brand-ink/10">
-                <div className="relative aspect-[4/3] w-full">
-                  <Image
-                    src="/assets/photos/Diggy/diggy_001.jpg"
-                    alt="Optical practice work environment"
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 40vw, 100vw"
-                    priority
-                  />
-                </div>
-
-                <div className="p-7">
-                  <p className="text-sm font-semibold text-brand-ink">
-                    What you get in the first 30 days
+              <div className="rounded-3xl bg-white p-7 ring-1 ring-brand-ink/10">
+                <p className="text-sm font-semibold text-brand-ink">
+                  What you get in the first 30 days
+                </p>
+                <ol className="mt-4 space-y-3 text-sm text-brand-ink/75">
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+                      1
+                    </span>
+                    <span>
+                      Baseline audit of your local presence, funnel, and
+                      tracking
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+                      2
+                    </span>
+                    <span>Prioritized plan with clear owners and timelines</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
+                      3
+                    </span>
+                    <span>
+                      One campaign shipped, plus reporting you can reuse
+                    </span>
+                  </li>
+                </ol>
+                <div className="mt-7 rounded-2xl bg-brand-tealDark p-5 text-white">
+                  <p className="text-sm font-semibold">Typical outcomes</p>
+                  <p className="mt-2 text-sm text-white/85">
+                    More qualified inbound leads, improved conversion on booking
+                    pages, and better repeat purchase behavior.
                   </p>
-                  <ol className="mt-4 space-y-3 text-sm text-brand-ink/75">
-                    <li className="flex gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
-                        1
-                      </span>
-                      <span>
-                        Baseline audit of your local presence, funnel, and
-                        tracking
-                      </span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
-                        2
-                      </span>
-                      <span>Prioritized plan with clear owners and timelines</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-aqua/30 text-brand-ink">
-                        3
-                      </span>
-                      <span>
-                        One campaign shipped, plus reporting you can reuse
-                      </span>
-                    </li>
-                  </ol>
-                  <div className="mt-7 rounded-2xl bg-brand-tealDark p-5 text-white">
-                    <p className="text-sm font-semibold">Typical outcomes</p>
-                    <p className="mt-2 text-sm text-white/85">
-                      More qualified inbound leads, improved conversion on booking
-                      pages, and better repeat purchase behavior.
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
