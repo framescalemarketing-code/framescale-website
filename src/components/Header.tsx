@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -38,13 +38,13 @@ export function Header() {
           </nav>
           <Link
             href="/contact"
-            className="hidden rounded-full bg-brand-ink px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-ink/90 md:inline-flex"
+            className="hidden rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-tealDark md:inline-flex"
           >
             Book a consult
           </Link>
           <Link
             href="/contact"
-            className="inline-flex rounded-full bg-brand-ink px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-ink/90 md:hidden"
+            className="inline-flex rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-tealDark md:hidden"
           >
             Contact
           </Link>
@@ -53,3 +53,4 @@ export function Header() {
     </header>
   );
 }
+
