@@ -1,6 +1,15 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/Container";
 import { ButtonLink } from "@/components/Button";
+import {
+  BarChart3,
+  Megaphone,
+  Search,
+  Users,
+  Workflow,
+  Code2,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -11,6 +20,7 @@ export const metadata: Metadata = {
 const offerings = [
   {
     title: "Local growth system",
+    icon: Search,
     bullets: [
       "Google Business Profile optimization",
       "Review and reputation program",
@@ -20,6 +30,7 @@ const offerings = [
   },
   {
     title: "Paid media and acquisition",
+    icon: Megaphone,
     bullets: [
       "Google Ads and Meta Ads setup",
       "Creative direction and landing page feedback",
@@ -29,6 +40,7 @@ const offerings = [
   },
   {
     title: "Retention and lifetime value",
+    icon: Users,
     bullets: [
       "Recall and reactivation journeys",
       "Email and SMS nurture for eyewear",
@@ -37,30 +49,33 @@ const offerings = [
     ],
   },
   {
-    title: "Brand and positioning",
-    bullets: [
-      "Messaging and offer clarity",
-      "Service line and product emphasis",
-      "Website and conversion copy review",
-      "Competitive scan for your market",
-    ],
-  },
-  {
     title: "Analytics and reporting",
+    icon: BarChart3,
     bullets: [
-      "Tracking plan and dashboards",
-      "Channel attribution basics",
-      "Monthly KPI review cadence",
-      "Experiment backlog and learning log",
+      "GA4 implementation",
+      "Looker Studio dashboards",
+      "BigQuery modeling",
+      "Tracking plans and KPI review cadence",
     ],
   },
   {
-    title: "Launch support",
+    title: "Workflow and automation",
+    icon: Workflow,
     bullets: [
-      "Seasonal campaigns and promotions",
-      "New location or new doctor launch",
-      "Frame line and product launch support",
-      "Press, partnerships, and local collaborations",
+      "ClickUp system design",
+      "Zapier automation",
+      "Jotform logic flows",
+      "Operational handoff documentation",
+    ],
+  },
+  {
+    title: "Web and app builds",
+    icon: Code2,
+    bullets: [
+      "Next.js builds",
+      "TypeScript architecture",
+      "Conversion focused UI structure",
+      "Performance and deployment setup",
     ],
   },
 ] as const;
@@ -68,66 +83,39 @@ const offerings = [
 export default function ServicesPage() {
   return (
     <main>
-      <section className="bg-gradient-to-b from-brand-sand to-white">
-        <Container>
-          <div className="py-14 md:py-18">
-            <h1 className="font-display text-4xl tracking-tight text-brand-ink md:text-5xl">
-              Services
-            </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-brand-ink/75">
-              Choose a focused engagement that matches your business stage. The
-              work stays practical and measurable, with clear deliverables and a
-              weekly cadence.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/pricing">See packages</ButtonLink>
-              <ButtonLink href="/contact" variant="secondary">
-                Talk through fit
-              </ButtonLink>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Services"
+        title="Structured marketing systems for optical businesses"
+        description="Focused engagements that combine strategy, analytics, execution, and technical capability."
+        imageSrc="/assets/hero/services.jpg"
+        imageAlt="Marketing planning session"
+      />
 
       <section>
         <Container>
-          <div className="py-14 md:py-18">
-            <div className="grid gap-6 md:grid-cols-2">
-              {offerings.map((o) => (
+          <div className="grid gap-6 py-14 md:grid-cols-2 md:py-18">
+            {offerings.map((o) => {
+              const Icon = o.icon;
+              return (
                 <div
                   key={o.title}
                   className="rounded-3xl bg-white p-8 ring-1 ring-brand-ink/10"
                 >
-                  <h2 className="font-display text-2xl tracking-tight text-brand-ink">
-                    {o.title}
-                  </h2>
+                  <div className="flex items-center gap-3">
+                    <Icon className="h-6 w-6 text-brand-teal" />
+                    <h2 className="font-display text-2xl tracking-tight text-brand-ink">
+                      {o.title}
+                    </h2>
+                  </div>
+
                   <ul className="mt-4 space-y-2 text-sm text-brand-ink/75">
                     {o.bullets.map((b) => (
-                      <li key={b} className="flex gap-2">
-                        <span aria-hidden="true" className="mt-1 text-brand-teal">
-                          ●
-                        </span>
-                        <span>{b}</span>
-                      </li>
+                      <li key={b}>{b}</li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-10 rounded-3xl bg-brand-tealDark p-10 text-white">
-              <h3 className="font-display text-2xl tracking-tight">
-                How engagements work
-              </h3>
-              <p className="mt-4 max-w-3xl text-sm leading-6 text-white/85">
-                Most clients start with an audit and priorities sprint, then
-                move into a monthly execution cadence. You will always know what
-                we are doing, why it matters, and what to do next.
-              </p>
-              <div className="mt-7">
-                <ButtonLink href="/contact">Request availability</ButtonLink>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </Container>
       </section>
