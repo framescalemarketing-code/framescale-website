@@ -20,7 +20,7 @@ export default function PricingPage() {
       <section>
         <Container>
           <div className="py-14 md:py-18 text-sm text-brand-ink/75">
-            Existing pricing content remains below.
+            Pricing content will be structured here.
           </div>
         </Container>
       </section>
