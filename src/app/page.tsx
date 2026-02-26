@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/Button";
 export default function HomePage() {
   return (
     <main>
-      <section className="bg-gradient-to-b from-brand-sand to-white">
+      <section className="bg-linear-to-b from-brand-sand to-white">
         <Container>
           <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:py-20">
             <div className="md:col-span-7">
