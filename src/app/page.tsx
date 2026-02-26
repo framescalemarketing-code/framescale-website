@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { ButtonLink } from "@/components/Button";
 
 export default function HomePage() {
