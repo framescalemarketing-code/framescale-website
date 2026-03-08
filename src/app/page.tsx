@@ -10,16 +10,17 @@ export default function HomePage() {
           <div className="grid items-center gap-10 py-16 md:grid-cols-12 md:py-20">
             <div className="md:col-span-7">
               <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-teal ring-1 ring-brand-ink/10">
-                Marketing and growth consulting for independent optical
+                Marketing strategy consulting for small and mid-size businesses
               </p>
               <h1 className="mt-5 font-display text-4xl leading-tight tracking-tight text-brand-ink md:text-6xl">
-                Turn marketing into a system that consistently brings in
-                appointments and sales.
+                Turn marketing into a system that consistently drives qualified
+                leads and sales.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-brand-ink/75">
-                FrameScale helps practices and optical brands build repeatable
-                strategies across local visibility, paid media, and retention.
-                Clear priorities, measurable goals, and execution support.
+                FrameScale gives small and mid-size businesses the structured
+                framework they need to grow \u2014 through market research, focused
+                strategy, and hands-on execution. One expert. Clear priorities.
+                Systems you own.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/contact">Book a consult</ButtonLink>
@@ -29,22 +30,22 @@ export default function HomePage() {
               </div>
               <ul className="mt-8 grid gap-3 text-sm text-brand-ink/75 sm:grid-cols-2">
                 <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
-                  Strategy that fits your resources
+                  Strategy grounded in your actual numbers
                 </li>
                 <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
-                  Practical tracking and reporting
+                  Dashboards and reporting you own
                 </li>
                 <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
-                  Launch support for campaigns
+                  Campaign planning and launch support
                 </li>
                 <li className="rounded-2xl bg-white p-4 ring-1 ring-brand-ink/10">
-                  Retention and referral programs
+                  Retention and lifecycle programs
                 </li>
               </ul>
             </div>
             <div className="md:col-span-5">
               <div className="mb-6 overflow-hidden rounded-3xl bg-white ring-1 ring-brand-ink/10">
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-4/3 w-full">
                   <Image
                     src="/assets/photos/optimized/diggy_008-hero.webp"
                     alt="Gold rimless frame in a bright editorial setup"
@@ -101,26 +102,26 @@ export default function HomePage() {
         <Container>
           <div className="py-16 md:py-20">
             <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">
-              Services built for the way optical businesses actually operate
+              Three service pillars. One focused plan.
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-brand-ink/75">
-              Whether you are focused on exam growth, eyewear sales, or
-              strengthening managed care performance, the work stays grounded in
-              measurable actions.
+              Every engagement draws from the pillars you need — built around
+              your data, your market position, and what your team can
+              realistically sustain.
             </p>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Local visibility and demand",
-                  body: "Google Business Profile, reviews, local search content, and offer pages that convert.",
+                  title: "Strategy \u0026 Market Intelligence",
+                  body: "Market research, data analytics, and a concrete plan. Know where you stand, what to prioritize, and how to track every move.",
                 },
                 {
-                  title: "Paid media and campaign launches",
-                  body: "Meta and Google Ads with a clear testing plan, creative direction, and weekly decisioning.",
+                  title: "Visibility \u0026 Paid Acquisition",
+                  body: "Google Business Profile, local SEO, Google Ads, and LinkedIn Ads. Get found by the right customers and convert them.",
                 },
                 {
-                  title: "Retention and referrals",
-                  body: "Recall programs, email and SMS journeys, and referral systems that your team can maintain.",
+                  title: "Systems, Retention \u0026 Builds",
+                  body: "Email automation, CRM workflows, lifecycle programs, and website builds. The engine that keeps customers coming back.",
                 },
               ].map((card) => (
                 <div
@@ -145,6 +146,53 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <section className="bg-white">
+        <Container>
+          <div className="py-16 md:py-20">
+            <h2 className="font-display text-3xl tracking-tight text-brand-ink md:text-4xl">
+              One expert. No bloat. Full ownership.
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-brand-ink/75">
+              Growing businesses don\u2019t need a ten-person agency. They need
+              one person who reads the data, builds the plan, and helps execute
+              it \u2014 without the overhead or the hand-offs.
+            </p>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  label: "You talk directly to the strategist",
+                  body: "No account managers in between. The person who built your plan is on every call and knows your numbers.",
+                },
+                {
+                  label: "Strategy built from your data",
+                  body: "No generic playbooks. Every recommendation starts with your analytics, your market, and your real constraints.",
+                },
+                {
+                  label: "You own everything we build",
+                  body: "Dashboards, automations, and campaign structures live in your accounts — not ours. You keep all of it.",
+                },
+                {
+                  label: "Built for independent budgets",
+                  body: "Structured for practices that can’t spend like a chain, with focus on the highest-leverage moves first.",
+                },
+              ].map((point) => (
+                <div
+                  key={point.label}
+                  className="rounded-3xl bg-brand-aqua/8 p-7 ring-1 ring-brand-ink/10"
+                >
+                  <p className="text-sm font-semibold text-brand-ink">
+                    {point.label}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-brand-ink/75">
+                    {point.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
       <section className="bg-linear-to-b from-brand-sand to-brand-aqua/8">
         <Container>
           <div className="py-16 md:py-20">
@@ -155,15 +203,15 @@ export default function HomePage() {
               {[
                 {
                   title: "Diagnose",
-                  body: "Audit your marketing, demand channels, and measurement so you know what is driving results.",
+                  body: "Audit your channels, analytics, and demand data to build a real baseline — not assumptions.",
                 },
                 {
                   title: "Prioritize",
-                  body: "Choose a focused set of changes that fit your staff time, budget, and patient mix.",
+                  body: "Select the focused moves that match your timeline, budget, and team capacity. Skip the rest.",
                 },
                 {
                   title: "Execute",
-                  body: "Ship campaigns and operational changes with weekly reviews and clear next actions.",
+                  body: "Build and launch campaigns and systems with weekly checkpoints and clear decisions at every step.",
                 },
               ].map((step, idx) => (
                 <div
@@ -194,8 +242,8 @@ export default function HomePage() {
                 Ready for a plan you can actually execute?
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/85">
-                Share a few details about your practice or brand. You will get a
-                recommended starting point and a clear next step.
+                Tell me about your practice. You will get a clear picture of
+                where to start, what to prioritize first, and what to skip.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/contact">Start here</ButtonLink>

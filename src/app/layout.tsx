@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | FrameScale Inc",
   },
   description:
-    "Operational growth systems for small to mid size businesses ready to scale with structure and clarity.",
+    "FrameScale gives small and mid-size businesses the structured marketing framework they need to scale \u2014 strategy, analytics, and execution by one dedicated expert.",
   openGraph: {
     title: site.name,
     description: site.description,

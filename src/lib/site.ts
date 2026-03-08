@@ -1,8 +1,8 @@
 export const site = {
   name: "FrameScale",
-  tagline: "Marketing and growth consulting for independent optical businesses",
+  tagline: "Marketing strategy and systems consulting for small and mid-size businesses",
   description:
-    "FrameScale helps independent optical practices and small optical brands build repeatable marketing systems that drive appointments, retail sales, and referrals.",
+    "FrameScale gives small and mid-size businesses the structured marketing framework they need to scale \u2014 through education, the right tools, and real execution support.",
   url: "https://framescalemarketing.com",
   email: "hello@framescalemarketing.com",
   phone: "(916) 520-4553",
