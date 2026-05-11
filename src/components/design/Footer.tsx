@@ -1,31 +1,12 @@
 import Link from "next/link";
-import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { BrandLockup } from "./Brand";
+import { footerLinks, site } from "@/lib/site";
 
 export const Footer = () => {
-  const footerLinks = {
-    Industries: [
-      { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Retail & E-commerce", href: "/industries/retail" },
-      { label: "Professional Services", href: "/industries/professional-services" },
-    ],
-    Company: [
-      { label: "About", href: "/about" },
-      { label: "Process", href: "/process" },
-      { label: "Contact", href: "/contact" },
-    ],
-    Legal: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Cookie Policy", href: "/privacy" },
-    ],
-  };
-
   const socialLinks = [
-    { icon: Linkedin, href: "https://www.linkedin.com/company/framescale", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Mail, href: "mailto:hello@framescalemarketing.com", label: "Email" },
+    { icon: Linkedin, href: site.social.linkedin, label: "LinkedIn" },
+    { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
   ];
 
   return (
@@ -76,7 +57,7 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-sm text-white/60">
-            © 2026 FrameScale Inc. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <p className="font-body text-sm text-white/60">
             Built with optical expertise, strategy, and code.

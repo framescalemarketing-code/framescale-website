@@ -1,18 +1,47 @@
 export const site = {
-  name: "FrameScale",
+  name: "FrameScale Inc",
+  shortName: "FrameScale",
   tagline:
-    "Marketing systems for independent optometrists and optical shop owners",
+    "Full-stack growth marketing strategy and execution for small to mid-size businesses.",
   description:
-    "FrameScale helps independent eye care practices fill exam lanes, improve optical follow-through, and build steadier revenue with clear, practical systems.",
+    "FrameScale combines research-driven marketing strategy with full-stack execution for growing businesses across healthcare, retail, and professional services.",
   url: "https://framescalemarketing.com",
   email: "hello@framescalemarketing.com",
   phone: "(916) 520-4553",
-};
+  locale: "en_US",
+  ogImage: "/opengraph-image",
+  twitterImage: "/twitter-image",
+  social: {
+    linkedin: "https://www.linkedin.com/company/framescale",
+  },
+} as const;
 
-export const nav = [
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case studies" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+export const industries = [
+  { label: "Healthcare", href: "/industries/healthcare", description: "Optical, medical, dental, specialty" },
+  { label: "Retail & E-commerce", href: "/industries/retail", description: "Stores, brands, online commerce" },
+  { label: "Professional Services", href: "/industries/professional-services", description: "Legal, accounting, consulting" },
 ] as const;
+
+export const mainNav = [
+  { label: "Industries", href: "/industries/healthcare", children: industries },
+  { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
+] as const;
+
+export const footerLinks = {
+  Industries: [
+    { label: "Healthcare", href: "/industries/healthcare" },
+    { label: "Retail & E-commerce", href: "/industries/retail" },
+    { label: "Professional Services", href: "/industries/professional-services" },
+  ],
+  Company: [
+    { label: "About", href: "/about" },
+    { label: "Process", href: "/process" },
+    { label: "Contact", href: "/contact" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/privacy" },
+  ],
+} as const;

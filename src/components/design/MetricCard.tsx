@@ -27,7 +27,7 @@ export const MetricCard = ({ value, label, suffix = "", index }: MetricCardProps
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      className="bg-white rounded-2xl p-7 border border-border hover:border-(--brand-primary)/60 transition-all duration-300 text-center group hover:shadow-[0_24px_48px_-24px_rgba(38,70,83,0.18)]"
+      className="bg-white rounded-2xl p-7 border border-border hover:border-(--brand-primary)/60 transition-all duration-300 text-center group depth-card-soft"
     >
       <motion.div
         className={`font-headline ${valueSize} mb-3 leading-[1.05] bg-linear-to-r from-(--brand-primary) to-(--brand-secondary) bg-clip-text text-transparent wrap-break-word tracking-tight`}

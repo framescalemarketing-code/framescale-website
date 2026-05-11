@@ -1,6 +1,7 @@
 ﻿"use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import Link from "next/link";
 import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
@@ -19,6 +20,15 @@ import {
 } from "lucide-react";
 
 export const HomePage = () => {
+  const heroRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const shapeY1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const shapeY2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const shapeOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
+
   const industries = [
     {
       name: "Healthcare",
@@ -56,11 +66,17 @@ export const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-20">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-linear-to-br from-(--brand-secondary)/10 to-(--brand-primary)/10 rounded-full blur-3xl" />
-        </div>
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-20">
+        <motion.div style={{ opacity: shapeOpacity }} className="absolute inset-0 pointer-events-none">
+          <motion.div
+            style={{ y: shapeY1 }}
+            className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl"
+          />
+          <motion.div
+            style={{ y: shapeY2 }}
+            className="absolute bottom-20 left-10 w-96 h-96 bg-linear-to-br from-(--brand-secondary)/10 to-(--brand-primary)/10 rounded-full blur-3xl"
+          />
+        </motion.div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -160,9 +176,20 @@ export const HomePage = () => {
           />
 
           <div className="grid md:grid-cols-3 gap-8">
-            {industries.map((industry, index) => (
-              <IndustryCard key={index} {...industry} index={index} />
-            ))}
+            <motion.div
+              className="contents"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+              }}
+            >
+              {industries.map((industry, index) => (
+                <IndustryCard key={index} {...industry} index={index} />
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

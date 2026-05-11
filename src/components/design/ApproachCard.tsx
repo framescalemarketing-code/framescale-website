@@ -26,7 +26,7 @@ export const ApproachCard = ({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="bg-linear-to-br from-(--brand-deep) to-[#1A3A44] rounded-2xl p-8 lg:p-10 text-white border border-white/10 hover:border-(--brand-secondary)/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+      className="bg-linear-to-br from-(--brand-deep) to-[#1A3A44] rounded-2xl p-8 lg:p-10 text-white border border-white/10 hover:border-(--brand-secondary)/50 depth-card-dark transition-all duration-300 group cursor-pointer"
     >
       <div className="flex items-start justify-between mb-6">
         <div className="flex items-center gap-3">

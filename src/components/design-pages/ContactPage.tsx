@@ -1,30 +1,113 @@
 ﻿"use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../design/Button";
 import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
+import { site } from "@/lib/site";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type FormState = {
+  name: string;
+  email: string;
+  company: string;
+  industry: string;
+  message: string;
+};
+type FieldErrors = Partial<Record<keyof FormState, string>>;
 
 export const ContactPage = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormState>({
     name: "",
     email: "",
     company: "",
     industry: "",
     message: "",
   });
+  const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [submitNote, setSubmitNote] = useState<string>("");
+
+  // Prefill from URL params (e.g. /contact?company=Acme&industry=retail&name=Jane)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const next: Partial<FormState> = {};
+    (["name", "email", "company", "industry", "message"] as const).forEach((key) => {
+      const v = params.get(key);
+      if (v) next[key] = v;
+    });
+    if (Object.keys(next).length) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration-safe client prefill
+      setFormData((prev) => ({ ...prev, ...next }));
+    }
+  }, []);
+
+  const validateField = (name: keyof FormState, value: string): string | undefined => {
+    if (name === "name" && !value.trim()) return "Please enter your name.";
+    if (name === "email") {
+      if (!value.trim()) return "Email is required.";
+      if (!EMAIL_RE.test(value.trim())) return "Enter a valid email address.";
+    }
+    if (name === "message") {
+      if (!value.trim()) return "A short message helps us prepare.";
+      if (value.trim().length < 10) return "Please add a little more detail (10+ characters).";
+    }
+    return undefined;
+  };
+
+  const validateAll = (data: FormState): FieldErrors => {
+    const next: FieldErrors = {};
+    (Object.keys(data) as (keyof FormState)[]).forEach((k) => {
+      const err = validateField(k, data[k]);
+      if (err) next[k] = err;
+    });
+    return next;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log("Form submitted:", formData);
+    const allErrors = validateAll(formData);
+    setErrors(allErrors);
+    setTouched({ name: true, email: true, company: true, industry: true, message: true });
+    if (Object.keys(allErrors).length > 0) {
+      setSubmitNote("Please correct the highlighted fields and try again.");
+      return;
+    }
+
+    const subject = encodeURIComponent(
+      `New inquiry from ${formData.name || "Website visitor"}`
+    );
+    const body = encodeURIComponent(
+      [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Company: ${formData.company || "N/A"}`,
+        `Industry: ${formData.industry || "N/A"}`,
+        "",
+        "Message:",
+        formData.message,
+      ].join("\n")
+    );
+
+    setSubmitNote("Opening your email client now so you can send this inquiry.");
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const name = e.target.name as keyof FormState;
+    const value = e.target.value;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const name = e.target.name as keyof FormState;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, e.target.value) }));
   };
 
   const contactMethods = [
@@ -57,7 +140,7 @@ export const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
             >
               <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
-                Get In Touch
+                Get in Touch
               </span>
               <h1
                 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
@@ -149,9 +232,15 @@ export const ContactPage = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body"
+                      onBlur={handleBlur}
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.name && touched.name ? "border-(--destructive)" : "border-border"}`}
                       placeholder="John Smith"
                     />
+                    {errors.name && touched.name && (
+                      <p id="name-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -169,9 +258,15 @@ export const ContactPage = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body"
+                      onBlur={handleBlur}
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.email && touched.email ? "border-(--destructive)" : "border-border"}`}
                       placeholder="john@company.com"
                     />
+                    {errors.email && touched.email && (
+                      <p id="email-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.email}</p>
+                    )}
                   </div>
                 </div>
 
@@ -234,10 +329,16 @@ export const ContactPage = () => {
                     required
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all resize-none font-body"
+                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all resize-none font-body ${errors.message && touched.message ? "border-(--destructive)" : "border-border"}`}
                     placeholder="What challenges are you facing? What are your growth goals?"
                   />
+                  {errors.message && touched.message && (
+                    <p id="message-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.message}</p>
+                  )}
                 </div>
 
                 <Button type="submit" size="lg" className="w-full">
@@ -245,8 +346,13 @@ export const ContactPage = () => {
                 </Button>
 
                 <p className="text-center font-body text-sm text-(--brand-neutral)">
-                  We'll get back to you within 24 hours.
+                  We&apos;ll get back to you within 24 hours. No spam, ever.
                 </p>
+                {submitNote && (
+                  <p className="text-center font-body text-sm text-(--brand-primary)">
+                    {submitNote}
+                  </p>
+                )}
               </form>
             </div>
           </motion.div>

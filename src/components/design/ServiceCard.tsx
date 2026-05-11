@@ -25,7 +25,7 @@ export const ServiceCard = ({
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
       whileHover={{ y: -8 }}
-      className="bg-white rounded-2xl p-8 border border-border hover:border-(--brand-primary) transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer group h-full flex flex-col"
+      className="bg-white rounded-2xl p-8 border border-border hover:border-(--brand-primary) transition-all duration-300 depth-card cursor-pointer group h-full flex flex-col"
     >
       <div className="flex-1">
         <div className="w-14 h-14 rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">

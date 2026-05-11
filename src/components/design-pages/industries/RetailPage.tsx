@@ -264,8 +264,9 @@ export const RetailPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative py-20 lg:py-32 bg-linear-to-br from-(--brand-secondary) to-(--brand-primary) text-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <section className="relative py-20 lg:py-32 bg-linear-to-br from-[#2E8A8C] via-(--brand-primary) to-(--brand-deep) text-white overflow-hidden">
+        <div className="grain-overlay" aria-hidden />
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
