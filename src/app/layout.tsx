@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Navigation } from "@/components/design/Navigation";
+import { Footer } from "@/components/design/Footer";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | FrameScale Inc",
   },
   description:
-    "FrameScale gives small and mid-size businesses the structured marketing framework they need to scale \u2014 strategy, analytics, and execution by one dedicated expert.",
+    "FrameScale combines research-driven marketing strategy with full-stack execution for growing businesses that need practical strategy, modern web systems, and measurable outcomes.",
   openGraph: {
     title: site.name,
     description: site.description,
@@ -33,8 +33,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-dvh bg-white font-sans text-brand-ink antialiased">
-        <Header />
+      <body className="min-h-dvh bg-white antialiased">
+        <Navigation />
         {children}
         <Footer />
       </body>

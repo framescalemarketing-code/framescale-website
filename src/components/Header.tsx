@@ -40,7 +40,7 @@ export function Header() {
             href="/contact"
             className="hidden rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-tealDark md:inline-flex"
           >
-            Book a consult
+            Book intro call
           </Link>
           <Link
             href="/contact"

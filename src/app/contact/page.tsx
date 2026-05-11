@@ -1,27 +1,5 @@
-﻿"use client";
-import { PageHero } from "@/components/PageHero";
-import { Container } from "@/components/Container";
+import { ContactPage } from "@/components/design-pages/ContactPage";
 
-export default function ContactPage() {
-  return (
-    <main>
-      <PageHero
-        eyebrow="Contact"
-        title="Start with clarity"
-        description="Share your goals and constraints. You will receive a structured starting point."
-        imageSrc="/assets/photos/optimized/diggy_013-hero.webp"
-        imageAlt="Consultation discussion"
-        imageSide="right"
-        tone="aqua"
-      />
-
-      <section>
-        <Container>
-          <div className="py-14 md:py-18 text-sm text-brand-ink/75">
-            Existing contact form remains below.
-          </div>
-        </Container>
-      </section>
-    </main>
-  );
+export default function Contact() {
+  return <ContactPage />;
 }

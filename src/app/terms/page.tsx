@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms",
@@ -38,8 +39,8 @@ export default function TermsPage() {
 
             <p>
               For questions, email{" "}
-              <a className="text-brand-teal hover:underline" href="mailto:hello@framescalemarketing.com">
-                hello@framescalemarketing.com
+              <a className="text-brand-teal hover:underline" href={`mailto:${site.email}`}>
+                {site.email}
               </a>
               .
             </p>
