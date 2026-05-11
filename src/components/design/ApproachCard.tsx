@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { LucideIcon, ArrowRight } from "lucide-react";
+import { slideByIndex } from "@/lib/motion";
 
 interface ApproachCardProps {
   title: string;
@@ -22,8 +23,9 @@ export const ApproachCard = ({
 }: ApproachCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      variants={slideByIndex(index)}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       className="bg-linear-to-br from-(--brand-deep) to-[#1A3A44] rounded-2xl p-8 lg:p-10 text-white border border-white/10 hover:border-(--brand-secondary)/50 depth-card-dark transition-all duration-300 group cursor-pointer"

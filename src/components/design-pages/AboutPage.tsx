@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
+import { slideByIndex, slideInFromLeft, slideUp } from "@/lib/motion";
 import {
   Target,
   Code,
@@ -66,8 +67,9 @@ export const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={slideUp}
+              initial="hidden"
+              animate="show"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
                 About FrameScale Inc
@@ -93,8 +95,9 @@ export const AboutPage = () => {
       <section className="relative py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideInFromLeft}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
           >
             <h2
@@ -134,8 +137,9 @@ export const AboutPage = () => {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-border"
@@ -174,8 +178,9 @@ export const AboutPage = () => {
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-border hover:border-(--brand-primary) transition-all duration-300"
@@ -205,8 +210,9 @@ export const AboutPage = () => {
       <section className="relative py-20 bg-muted">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
             className="text-center"
           >
@@ -230,8 +236,9 @@ export const AboutPage = () => {
       <section className="relative py-20 lg:py-32 bg-linear-to-br from-(--brand-primary) to-(--brand-deep) text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">

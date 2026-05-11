@@ -112,7 +112,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         {/* eslint-enable @next/next/google-font-preconnect */}
       </head>
-      <body className="min-h-dvh bg-(--background) text-(--foreground) antialiased">
+      <body className="min-h-dvh bg-background text-foreground antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

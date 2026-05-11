@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { slideUp } from "@/lib/motion";
 
 interface SectionHeaderProps {
   badge?: string;
@@ -17,8 +18,9 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={slideUp}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true }}
       className={`mb-16 ${align === "center" ? "text-center max-w-3xl mx-auto" : "text-left"}`}
     >

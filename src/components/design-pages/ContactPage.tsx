@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../design/Button";
 import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
+import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -136,8 +137,9 @@ export const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={slideUp}
+              initial="hidden"
+              animate="show"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
                 Get in Touch
@@ -166,8 +168,9 @@ export const ContactPage = () => {
             {contactMethods.map((method, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-8 border border-(--brand-primary)/20"
@@ -199,8 +202,9 @@ export const ContactPage = () => {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideInFromRight}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
@@ -235,11 +239,11 @@ export const ContactPage = () => {
                       onBlur={handleBlur}
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? "name-error" : undefined}
-                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.name && touched.name ? "border-(--destructive)" : "border-border"}`}
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.name && touched.name ? "border-destructive" : "border-border"}`}
                       placeholder="John Smith"
                     />
                     {errors.name && touched.name && (
-                      <p id="name-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.name}</p>
+                      <p id="name-error" className="mt-1 font-body text-xs text-destructive">{errors.name}</p>
                     )}
                   </div>
 
@@ -261,11 +265,11 @@ export const ContactPage = () => {
                       onBlur={handleBlur}
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "email-error" : undefined}
-                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.email && touched.email ? "border-(--destructive)" : "border-border"}`}
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.email && touched.email ? "border-destructive" : "border-border"}`}
                       placeholder="john@company.com"
                     />
                     {errors.email && touched.email && (
-                      <p id="email-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.email}</p>
+                      <p id="email-error" className="mt-1 font-body text-xs text-destructive">{errors.email}</p>
                     )}
                   </div>
                 </div>
@@ -333,11 +337,11 @@ export const ContactPage = () => {
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? "message-error" : undefined}
                     rows={6}
-                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all resize-none font-body ${errors.message && touched.message ? "border-(--destructive)" : "border-border"}`}
+                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all resize-none font-body ${errors.message && touched.message ? "border-destructive" : "border-border"}`}
                     placeholder="What challenges are you facing? What are your growth goals?"
                   />
                   {errors.message && touched.message && (
-                    <p id="message-error" className="mt-1 font-body text-xs text-(--destructive)">{errors.message}</p>
+                    <p id="message-error" className="mt-1 font-body text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
 
@@ -363,8 +367,9 @@ export const ContactPage = () => {
       <section className="relative py-20 bg-muted">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
           >
             <h2

@@ -125,7 +125,7 @@ export const Navigation = () => {
           </div>
 
           <button
-            className="lg:hidden p-2 -mr-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center"
+            className="lg:hidden p-2 -mr-2 min-w-11 min-h-11 inline-flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle navigation"
             aria-expanded={isMobileMenuOpen}
@@ -160,7 +160,7 @@ export const Navigation = () => {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block py-3 px-1 font-ui hover:text-(--brand-primary) transition-colors min-h-[44px]"
+                          className="block py-3 px-1 font-ui hover:text-(--brand-primary) transition-colors min-h-11"
                           style={{ color: "var(--brand-deep)" }}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -171,7 +171,7 @@ export const Navigation = () => {
                   ) : (
                     <Link
                       href={link.href}
-                      className="block py-3 px-1 font-ui hover:text-(--brand-primary) transition-colors min-h-[44px]"
+                      className="block py-3 px-1 font-ui hover:text-(--brand-primary) transition-colors min-h-11"
                       style={{ color: "var(--brand-deep)" }}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >

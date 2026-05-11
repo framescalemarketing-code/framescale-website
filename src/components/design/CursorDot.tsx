@@ -70,7 +70,7 @@ export const CursorDot = () => {
     <div
       ref={dotRef}
       aria-hidden
-      className="pointer-events-none fixed top-0 left-0 z-[70] h-3 w-3 rounded-full mix-blend-multiply transition-[background,opacity] duration-200"
+      className="pointer-events-none fixed top-0 left-0 z-70 h-3 w-3 rounded-full mix-blend-multiply transition-[background,opacity] duration-200"
       style={{ opacity: 1 }}
     />
   );

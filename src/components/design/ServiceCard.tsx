@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { LucideIcon, ArrowRight } from "lucide-react";
+import { slideByIndex } from "@/lib/motion";
 
 interface ServiceCardProps {
   title: string;
@@ -20,8 +21,9 @@ export const ServiceCard = ({
 }: ServiceCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={slideByIndex(index)}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
       whileHover={{ y: -8 }}

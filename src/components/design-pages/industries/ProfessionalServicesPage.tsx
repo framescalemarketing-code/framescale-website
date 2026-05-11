@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "../../design/Button";
 import { SectionHeader } from "../../design/SectionHeader";
+import { slideByIndex, slideUp } from "@/lib/motion";
 import {
   Scale,
   TrendingUp,
@@ -84,8 +85,9 @@ export const ProfessionalServicesPage = () => {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            variants={slideUp}
+            initial="hidden"
+            animate="show"
             className="max-w-4xl"
           >
             <Link href="/"
@@ -143,8 +145,9 @@ export const ProfessionalServicesPage = () => {
             {verticals.map((vertical, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-border hover:border-(--brand-primary) transition-all duration-300 hover:shadow-lg"
@@ -183,8 +186,9 @@ export const ProfessionalServicesPage = () => {
             {challenges.map((challenge, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-border"
@@ -225,8 +229,9 @@ export const ProfessionalServicesPage = () => {
             {solutions.map((solution, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={slideByIndex(index)}
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 border border-border hover:border-(--brand-primary) transition-all duration-300 hover:shadow-lg"
@@ -267,8 +272,9 @@ export const ProfessionalServicesPage = () => {
         <div className="grain-overlay" aria-hidden />
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={slideUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">

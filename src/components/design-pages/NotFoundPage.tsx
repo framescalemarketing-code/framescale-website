@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "../design/Button";
 import { Home, ArrowLeft, Search } from "lucide-react";
+import { slideUp } from "@/lib/motion";
 
 export const NotFoundPage = () => {
   return (
@@ -15,8 +16,9 @@ export const NotFoundPage = () => {
 
       <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={slideUp}
+          initial="hidden"
+          animate="show"
           transition={{ duration: 0.6 }}
         >
           <div className="mb-8">

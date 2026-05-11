@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { slideUp } from "@/lib/motion";
 
 interface MetricCardProps {
   value: string;
@@ -23,8 +24,9 @@ export const MetricCard = ({ value, label, suffix = "", index }: MetricCardProps
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      variants={slideUp}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
       className="bg-white rounded-2xl p-7 border border-border hover:border-(--brand-primary)/60 transition-all duration-300 text-center group depth-card-soft"
