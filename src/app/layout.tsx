@@ -8,6 +8,8 @@ import { StickyCallCTA } from "@/components/design/StickyCallCTA";
 import { PageTransition } from "@/components/design/PageTransition";
 import { CursorDot } from "@/components/design/CursorDot";
 import { site } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -125,6 +127,8 @@ export default function RootLayout({
           <Footer />
           <StickyCallCTA />
         </MotionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
