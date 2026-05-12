@@ -67,7 +67,7 @@ export const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-20">
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-12 lg:pt-14">
         <motion.div style={{ opacity: shapeOpacity }} className="absolute inset-0 pointer-events-none">
           <motion.div
             style={{ y: shapeY1 }}
@@ -79,7 +79,7 @@ export const HomePage = () => {
           />
         </motion.div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-14 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               variants={slideUp}
@@ -98,7 +98,7 @@ export const HomePage = () => {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.24 }}
-              className="font-headline text-5xl lg:text-7xl mb-6 leading-tight"
+              className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
               Marketing that
@@ -113,7 +113,7 @@ export const HomePage = () => {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.34 }}
-              className="font-body text-xl lg:text-2xl mb-12 leading-relaxed text-(--brand-neutral) max-w-2xl mx-auto"
+              className="font-body text-xl lg:text-2xl mb-10 leading-relaxed text-(--brand-neutral) max-w-3xl mx-auto"
             >
               Research before spend. Custom sites, not WordPress or Wix rentals. SEO, Google Business Profile, analytics, and paid media you can read and act on. One principal from first call through launch, on a roster kept small on purpose.
             </motion.p>
@@ -123,7 +123,7 @@ export const HomePage = () => {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.44 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-10"
             >
               <Button size="lg" href="#industries">
                 Choose Your Industry

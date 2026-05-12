@@ -101,10 +101,10 @@ export const ProfessionalServicesPage = () => {
             </div>
 
             <h1
-              className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
+              className="font-headline text-4xl lg:text-5xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
-              Pipeline you can defend, for consultants and partner-led firms
+              Defensible pipeline for partner-led firms
             </h1>
 
             <p

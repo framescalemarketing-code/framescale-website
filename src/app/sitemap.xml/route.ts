@@ -1,10 +1,16 @@
-import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
 type Route = {
   path: string;
+  changeFrequency:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
   priority: number;
-  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
 };
 
 const routes: Route[] = [
@@ -22,12 +28,26 @@ const routes: Route[] = [
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${site.url}${path}`,
-    lastModified: now,
-    changeFrequency,
-    priority,
-  }));
+export async function GET() {
+  const now = new Date().toISOString();
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes
+  .map(
+    ({ path, changeFrequency, priority }) => `  <url>
+    <loc>${site.url}${path}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>${changeFrequency}</changefreq>
+    <priority>${priority.toFixed(1)}</priority>
+  </url>`,
+  )
+  .join("\n")}
+</urlset>`;
+
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+    },
+  });
 }

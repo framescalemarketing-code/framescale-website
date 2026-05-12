@@ -102,10 +102,10 @@ export const RetailPage = () => {
             </div>
 
             <h1
-              className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
+              className="font-headline text-4xl lg:text-5xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
-              Retail growth when margin and demand have to move together
+              Retail growth built for margin
             </h1>
 
             <p
