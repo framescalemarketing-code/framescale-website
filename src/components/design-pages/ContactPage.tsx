@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Button } from "../design/Button";
 import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
-import { site } from "@/lib/site";
 import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,6 +28,7 @@ export const ContactPage = () => {
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitNote, setSubmitNote] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Prefill from URL params (e.g. /contact?company=Acme&industry=retail&name=Jane)
   useEffect(() => {
@@ -40,7 +40,6 @@ export const ContactPage = () => {
       if (v) next[key] = v;
     });
     if (Object.keys(next).length) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration-safe client prefill
       setFormData((prev) => ({ ...prev, ...next }));
     }
   }, []);
@@ -67,8 +66,10 @@ export const ContactPage = () => {
     return next;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     const allErrors = validateAll(formData);
     setErrors(allErrors);
     setTouched({ name: true, email: true, company: true, industry: true, message: true });
@@ -77,23 +78,34 @@ export const ContactPage = () => {
       return;
     }
 
-    const subject = encodeURIComponent(
-      `New inquiry from ${formData.name || "Website visitor"}`
-    );
-    const body = encodeURIComponent(
-      [
-        `Name: ${formData.name}`,
-        `Email: ${formData.email}`,
-        `Company: ${formData.company || "N/A"}`,
-        `Industry: ${formData.industry || "N/A"}`,
-        "",
-        "Message:",
-        formData.message,
-      ].join("\n")
-    );
+    setIsSubmitting(true);
+    setSubmitNote("Sending your message...");
 
-    setSubmitNote("Opening your email client now so you can send this inquiry.");
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
+        }),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        throw new Error(data.error || "Unable to submit form.");
+      }
+
+      setSubmitNote("Thanks. Your message was received and we will get back to you within 24 hours.");
+      setFormData({ name: "", email: "", company: "", industry: "", message: "" });
+      setTouched({});
+      setErrors({});
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unable to submit right now.";
+      setSubmitNote(`${message} Please try again in a moment.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -219,7 +231,7 @@ export const ContactPage = () => {
                 </h2>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -345,8 +357,8 @@ export const ContactPage = () => {
                   )}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full">
-                  Send Message
+                <Button type="submit" size="lg" className="w-full" icon="none">
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
 
                 <p className="text-center font-body text-sm text-(--brand-neutral)">
