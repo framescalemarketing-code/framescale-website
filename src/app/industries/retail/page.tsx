@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { RetailPage } from "@/components/design-pages/industries/RetailPage";
 
-const title = "Retail & E-commerce Growth Marketing";
+const title = "Retail and e-commerce growth tied to margin";
 const description =
-  "Customer-acquisition and retention systems for physical retail, e-commerce, and consumer brands. Storefront engineering, paid media, SEO, and lifecycle automation.";
+  "Research-led acquisition for stores, DTC brands, and hybrids under margin pressure. Storefront, paid, SEO, and lifecycle work measured back to revenue you can verify.";
 
 export const metadata: Metadata = {
   title,

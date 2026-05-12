@@ -27,7 +27,7 @@ export default function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div style={{ fontSize: 30, opacity: 0.9 }}>FrameScale Inc</div>
           <div style={{ fontSize: 72, lineHeight: 1.05, fontWeight: 600, maxWidth: "900px" }}>
-            Marketing that drives growth
+            Marketing that teaches you to scale
           </div>
           <div style={{ fontSize: 30, opacity: 0.9, maxWidth: "980px" }}>{site.tagline}</div>
         </div>

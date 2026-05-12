@@ -19,7 +19,7 @@ export const Footer = () => {
               <BrandLockup size="md" tone="color" />
             </div>
             <p className="font-body text-sm text-white/70 mb-5 leading-relaxed max-w-sm">
-              Full-stack growth marketing strategy and execution for small to mid-size businesses across healthcare, retail, and professional services.
+              Research-led growth marketing and custom web for small to mid-size businesses. Direct, teaching-focused, and built to help you scale without the agency merry-go-round.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (

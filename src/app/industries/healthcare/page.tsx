@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { HealthcarePage } from "@/components/design-pages/industries/HealthcarePage";
 
-const title = "Healthcare Marketing for Optical, Dental, and Medical Practices";
+const title = "Healthcare growth for optical-led practices and care teams";
 const description =
-  "Patient acquisition systems for optical retail, dental clinics, and specialty medical practices. Modern websites, local SEO, paid campaigns, and HIPAA-aware analytics.";
+  "Booking-first growth for independent optical, dental, and specialty practices. Local research, fast sites, HIPAA-aware measurement, and channels tuned to fill the schedule.";
 
 export const metadata: Metadata = {
   title,

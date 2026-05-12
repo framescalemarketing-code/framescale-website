@@ -105,14 +105,14 @@ export const RetailPage = () => {
               className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
-              Growth marketing for retail and consumer brands
+              Retail growth when margin and demand have to move together
             </h1>
 
             <p
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              Customer-acquisition systems for physical retail, e-commerce, and consumer product brands. One team owns the strategy, storefront, paid media, and lifecycle workflows that grow revenue.
+              For physical retail, DTC, and hybrid brands under real margin pressure. One principal connects the research, the storefront, paid media, and lifecycle work so you can see what actually moves revenue.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -132,8 +132,8 @@ export const RetailPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Retail Verticals"
-            title="Experience Across Retail Formats"
-            description="Brick-and-mortar, online, and hybrid retailers operate on different unit economics. We tune positioning, channels, and tech stack to each model."
+            title="Formats Built on Different Unit Economics"
+            description="Brick-and-mortar, online-first, and hybrid models each need a different mix of positioning, tech, and spend. The plan follows how you actually capture margin."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -173,8 +173,8 @@ export const RetailPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Common Challenges"
-            title="Retail Marketing Problems We Solve"
-            description="Growing a retail brand means defending margin while scaling demand. These are the levers that move the business."
+            title="Retail Growth Problems We Untangle"
+            description="These are the levers that separate brands that scale from brands that only look busy."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -216,8 +216,8 @@ export const RetailPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Our Approach"
-            title="Full-Stack Retail Marketing"
-            description="Brand, storefront, and growth channels operated by one integrated team. Senior strategists own the plan, engineers ship the stack, and every campaign is measured against revenue."
+            title="Brand, Storefront, and Acquisition in One Thread"
+            description="Positioning, engineering, and campaigns stay tied to revenue you can verify instead of channel silos that argue in spreadsheets."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -273,10 +273,10 @@ export const RetailPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              Ready to scale your retail business?
+              Ready to Scale Your Retail Business?
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let's discuss your customer acquisition goals and build a marketing system that drives sustainable growth.
+              {`Margin and demand have to grow together. If you want a partner who studies your category before spending, builds storefronts around your unit economics, and ties campaigns back to revenue you can verify, let's find out if the fit is right.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" href="/contact">
@@ -288,7 +288,7 @@ export const RetailPage = () => {
                 href="/process"
                 className="text-white bg-white/10 hover:bg-white/20 border-white/20"
               >
-                See Our 4-Step Process
+                See our 5-step process
               </Button>
             </div>
           </motion.div>

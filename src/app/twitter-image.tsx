@@ -25,9 +25,9 @@ export default function TwitterImage() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div style={{ fontSize: 28, letterSpacing: 1.2, opacity: 0.95 }}>FULL-STACK GROWTH MARKETING</div>
+          <div style={{ fontSize: 28, letterSpacing: 1.2, opacity: 0.95 }}>GUIDED GROWTH MARKETING</div>
           <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 700, maxWidth: "920px" }}>
-            Strategy + execution for measurable growth
+            Research first. One principal. Custom build.
           </div>
           <div style={{ fontSize: 28, opacity: 0.9, maxWidth: "980px" }}>{site.description}</div>
         </div>

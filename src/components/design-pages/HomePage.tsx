@@ -11,7 +11,6 @@ import {
   Heart,
   ShoppingBag,
   Scale,
-  Building2,
   ArrowRight,
   Target,
   Code,
@@ -34,34 +33,35 @@ export const HomePage = () => {
     {
       name: "Healthcare",
       icon: Heart,
-      description: "Medical practices, optical retail, dental, specialty clinics",
-      examples: "Optical practices, medical offices, dental clinics",
+      description:
+        "Independent optical and multi-location eye care get the deepest work. Dental and specialty practices join when bookings and local reputation are the scoreboard.",
+      examples: "Optical retail, OD-led practices, specialty clinics",
       path: "/industries/healthcare",
       color: "from-(--brand-primary) to-(--brand-secondary)",
     },
     {
       name: "Retail & E-commerce",
       icon: ShoppingBag,
-      description: "Product retail, stores, online commerce, consumer brands",
-      examples: "Retail stores, e-commerce brands, consumer products",
+      description: "Physical retail, DTC, and hybrid brands where margin, demand, and attribution have to move together.",
+      examples: "Stores, online brands, omnichannel operators",
       path: "/industries/retail",
       color: "from-(--brand-secondary) to-(--brand-primary)",
     },
     {
       name: "Professional Services",
       icon: Scale,
-      description: "Legal, accounting, consulting, B2B services",
-      examples: "Law firms, accounting practices, consultancies",
+      description: "Consultants and advisory firms lead. Law, CPA, and finance practices fit when pipeline quality matters more than lead volume.",
+      examples: "Strategy consultants, fractional leaders, partner-led firms",
       path: "/industries/professional-services",
       color: "from-(--brand-deep) to-(--brand-primary)",
     },
   ];
 
   const capabilities = [
-    { value: "Multi-Industry", label: "Experience" },
-    { value: "Full-Stack", label: "Execution" },
-    { value: "Small-Mid", label: "Business Focus" },
-    { value: "Scalable", label: "Growth Systems" },
+    { value: "Research First", label: "Homework before ad spend" },
+    { value: "Custom Build", label: "Your business, not a template rental" },
+    { value: "Direct Access", label: "Same principal from spark to launch" },
+    { value: "Selective Roster", label: "Few seats so the work stays deep" },
   ];
 
   return (
@@ -89,7 +89,7 @@ export const HomePage = () => {
               className="mb-6"
             >
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
-                Full-Stack Growth Marketing
+                Guided Growth Marketing
               </span>
             </motion.div>
 
@@ -104,7 +104,7 @@ export const HomePage = () => {
               Marketing that
               <br />
               <span className="bg-linear-to-r from-(--brand-primary) to-(--brand-secondary) bg-clip-text text-transparent">
-                drives growth
+                teaches you to scale
               </span>
             </motion.h1>
 
@@ -113,10 +113,9 @@ export const HomePage = () => {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.34 }}
-              className="font-body text-xl lg:text-2xl mb-12 leading-relaxed text-(--brand-neutral)"
-              style={{ maxWidth: "none" }}
+              className="font-body text-xl lg:text-2xl mb-12 leading-relaxed text-(--brand-neutral) max-w-2xl mx-auto"
             >
-              Strategy and execution for small to mid-size businesses across healthcare, retail, and professional services. One integrated team, shipped systems, measurable growth.
+              Research before spend. Custom sites, not WordPress or Wix rentals. SEO, Google Business Profile, analytics, and paid media you can read and act on. One principal from first call through launch, on a roster kept small on purpose.
             </motion.p>
 
             <motion.div
@@ -143,10 +142,10 @@ export const HomePage = () => {
             >
               <div>
                 <div className="font-headline text-3xl text-(--brand-primary)">
-                  4-Step
+                  Five phases
                 </div>
                 <div className="font-ui text-sm text-(--brand-neutral)">
-                  Clear Framework
+                  End-to-end process
                 </div>
               </div>
               <div className="w-px h-12 bg-border"></div>
@@ -155,16 +154,16 @@ export const HomePage = () => {
                   3 Industries
                 </div>
                 <div className="font-ui text-sm text-(--brand-neutral)">
-                  Proven Experience
+                  Core sectors
                 </div>
               </div>
               <div className="w-px h-12 bg-border"></div>
               <div>
                 <div className="font-headline text-3xl text-(--brand-primary)">
-                  Full-Stack
+                  Custom build
                 </div>
                 <div className="font-ui text-sm text-(--brand-neutral)">
-                  Strategy to Code
+                  Strategy to launch
                 </div>
               </div>
             </motion.div>
@@ -177,8 +176,8 @@ export const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Choose Your Industry"
-            title="Tailored Solutions for Your Business"
-            description="We understand that every industry has unique challenges. Select your industry to see how we can help you grow."
+            title="Start Where You Already Compete"
+            description="Optical-led healthcare, margin-aware retail, and consultant-first professional services each get a different playbook. Choose the lane that matches how you win customers today."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -214,19 +213,19 @@ export const HomePage = () => {
                 className="font-headline text-4xl lg:text-5xl mb-6"
                 style={{ color: "var(--brand-deep)" }}
               >
-                Most businesses struggle because strategy and execution live in different worlds
+                Less Noise. More Clarity.
               </h2>
               <p
                 className="font-body text-lg leading-relaxed mb-6"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Marketing consultants give you strategy decks. Agencies execute tactics. But who connects the research to the positioning to the systems to the results?
+                Most owners have seen smart strategy that never ships, or busy tactics that never tie back to how the business actually makes money. That pattern burns budget and trust.
               </p>
               <p
                 className="font-body text-lg leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                You end up with brilliant strategy that never ships, or execution that ignores the fundamentals. Neither drives growth.
+                FrameScale stays intentionally small. Strategy, custom web, and campaigns stay on one thread with one lead, so growth is something you can see, question, and carry forward.
               </p>
             </motion.div>
 
@@ -243,18 +242,18 @@ export const HomePage = () => {
                 </div>
                 <div>
                   <h3 className="font-headline text-2xl mb-3">
-                    The FrameScale Inc Difference
+                    What Makes This Different
                   </h3>
                   <p className="font-body text-white/90 leading-relaxed" style={{ maxWidth: "none" }}>
-                    We combine strategic marketing thinking with full-stack technical execution. One team, one process, zero handoff friction.
+                    {`You work with someone who holds a bachelor's and a master's in business, keeps concurrent clients low so you get depth, and will not ship campaigns until the homework says they are worth doing. Sites are built for you, not dragged out of a template library.`}
                   </p>
                 </div>
               </div>
               <div className="space-y-4">
-                <ValuePoint text="Industry-specific experience" icon={Building2} />
-                <ValuePoint text="Research-driven strategy" icon={Target} />
-                <ValuePoint text="Full-stack technical execution" icon={Code} />
-                <ValuePoint text="Continuous measurement & optimization" icon={BarChart3} />
+                <ValuePoint text="Direct access to the principal, not a rotating account bench" icon={Users} />
+                <ValuePoint text="Research before spend. No guessing inside the ad platform" icon={Target} />
+                <ValuePoint text="Custom marketing sites instead of WordPress or Wix shortcuts" icon={Code} />
+                <ValuePoint text="SEO, Google Business Profile, analytics, and paid media with partner-level care" icon={BarChart3} />
               </div>
             </motion.div>
           </div>
@@ -266,8 +265,8 @@ export const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="What We Deliver"
-            title="Full-Stack Growth Marketing"
-            description="From strategy to implementation, we handle everything needed to scale your business."
+            title="Strategy, Custom Web, and Channels That Earn Their Keep"
+            description="Websites, SEO, Google Business Profile, analytics, and paid media held to the same bar as the strategy. This is not a social posting shop. It is growth work you can see, read, and learn from."
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -281,33 +280,30 @@ export const HomePage = () => {
               icon={Target}
               title="Strategic Foundation"
               items={[
-                "Market & competitive research",
-                "Customer development & personas",
-                "Positioning & messaging strategy",
-                "Growth roadmap planning",
-                "Success metrics definition",
+                "Market, competitor, and customer research",
+                "Customer and journey clarity you can act on",
+                "Positioning and messaging you can defend",
+                "Growth roadmap with metrics you own",
               ]}
             />
             <CapabilityBlock
               icon={Code}
-              title="Technical Execution"
+              title="Custom Technical Execution"
               items={[
-                "Modern website development",
-                "Marketing automation systems",
-                "CRM & email integration",
-                "Analytics implementation",
-                "Conversion optimization",
+                "Custom marketing websites instead of WordPress or Wix templates",
+                "Funnels, forms, and integrations that match your ops",
+                "Analytics and conversion tracking you can read",
+                "CRO grounded in data instead of guesswork",
               ]}
             />
             <CapabilityBlock
               icon={Users}
-              title="Customer Acquisition"
+              title="Demand & Visibility"
               items={[
-                "SEO & content marketing",
-                "Paid advertising (Google, social)",
-                "Email marketing campaigns",
-                "Social media strategy",
-                "Review & reputation management",
+                "SEO and content aligned to how buyers search",
+                "Google Business Profile and local presence",
+                "Paid search and paid social when the math works",
+                "Email and nurture only when they fit the business",
               ]}
             />
           </div>
@@ -324,10 +320,10 @@ export const HomePage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-6xl mb-6">
-              Ready to scale your business?
+              Growth Without the Black Box
             </h2>
             <p className="font-body text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let&apos;s discuss your growth goals and how our full-stack approach can help.
+              {`If you want a marketing partner who does the homework first, gives you direct access, and teaches as you go, let's talk about fit.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" href="/contact">
@@ -343,7 +339,7 @@ export const HomePage = () => {
               </Button>
             </div>
             <p className="font-body text-sm text-white/60 mt-8">
-              Free 30-minute consultation. Bring your goals, leave with a plan.
+              Free 30-minute discovery call. I listen, ask direct questions, and leave you with an honest next step. If we are not the right fit, I will say so.
             </p>
           </motion.div>
         </div>

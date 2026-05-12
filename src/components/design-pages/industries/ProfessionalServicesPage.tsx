@@ -38,12 +38,12 @@ export const ProfessionalServicesPage = () => {
   const solutions = [
     {
       icon: Target,
-      title: "Practice Positioning",
+      title: "Positioning & Authority",
       items: [
-        "Service-line and ideal-client analysis",
+        "Ideal-client and engagement-model clarity",
         "Competitive and referral landscape research",
         "Authority-led messaging framework",
-        "Engagement model and pricing alignment",
+        "Proof, case structure, and content for sophisticated buyers",
       ],
     },
     {
@@ -69,9 +69,9 @@ export const ProfessionalServicesPage = () => {
   ];
 
   const verticals = [
+    { icon: Briefcase, label: "Consulting & Advisory", description: "Strategy, operations, and management consulting" },
     { icon: Scale, label: "Legal Services", description: "Law firms, legal consultancies, specialty practices" },
     { icon: FileText, label: "Accounting & Finance", description: "CPA firms, financial advisors, tax services" },
-    { icon: Briefcase, label: "Business Consulting", description: "Strategy, operations, management consulting" },
   ];
 
   return (
@@ -104,14 +104,14 @@ export const ProfessionalServicesPage = () => {
               className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
-              Client acquisition marketing for professional firms
+              Pipeline you can defend, for consultants and partner-led firms
             </h1>
 
             <p
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              Pipeline generation for law firms, accounting practices, and consultancies. We pair authority-led positioning with the web systems and campaigns that book partner-grade consultations.
+              Consultants and advisory firms sit at the center of how I work, alongside law, CPA, and finance practices that need authority before the first call. Positioning, firm-grade web, and attribution that respects long sales cycles.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -131,8 +131,8 @@ export const ProfessionalServicesPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Markets We Help Grow"
-            title="Experience Across Professional Services"
-            description="We understand the trust-building and credibility requirements unique to professional service marketing."
+            title="Where Trust Is the Product"
+            description="Consultants, legal, and finance buyers all run on credibility before they ever see a proposal. The work still maps cleanly to pipeline, just on different clocks."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -172,8 +172,8 @@ export const ProfessionalServicesPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Common Challenges"
-            title="Professional Services Marketing Problems We Solve"
-            description="Trust and authority are the deciding factors in professional services. We engineer marketing systems that demonstrate both before the first call."
+            title="Professional Services Growth Frictions"
+            description="Trust and authority decide who gets the meeting. These are the gaps that quietly cap pipeline."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -215,8 +215,8 @@ export const ProfessionalServicesPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Our Approach"
-            title="Full-Stack Professional Services Marketing"
-            description="Senior strategists and engineers on one team build the positioning, web systems, and demand programs that fill partner calendars with qualified consultations."
+            title="Positioning, Web Systems, and Demand in One Arc"
+            description="Authority-led positioning, partner-caliber sites, and demand programs that respect how long your buyers actually take to say yes."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -272,10 +272,10 @@ export const ProfessionalServicesPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              Ready to grow your professional practice?
+              Ready to Grow Your Professional Practice?
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let's discuss your client acquisition goals and build a marketing system that positions your firm as the trusted choice.
+              {`Qualified consultations come from credibility, not volume. If you want a partner who sharpens the expertise you already have, builds web systems that earn trust before the first call, and tracks pipeline back to the channels that produced it, let's have the conversation.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" href="/contact">
@@ -287,7 +287,7 @@ export const ProfessionalServicesPage = () => {
                 href="/process"
                 className="text-white bg-white/10 hover:bg-white/20 border-white/20"
               >
-                See Our 4-Step Process
+                See our 5-step process
               </Button>
             </div>
           </motion.div>

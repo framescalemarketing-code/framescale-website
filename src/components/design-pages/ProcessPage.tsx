@@ -7,6 +7,7 @@ import { PageBackLink } from "../design/PageBackLink";
 import { slideByIndex, slideUp } from "@/lib/motion";
 import {
   Search,
+  Users,
   Target,
   Rocket,
   BarChart3,
@@ -19,93 +20,115 @@ export const ProcessPage = () => {
     {
       number: "01",
       icon: Search,
-      title: "Understand Your Business",
-      description: "We start by deeply understanding your business, customers, and competitive landscape.",
+      title: "Understand Industry & Market",
+      description:
+        "Research comes first. I study your industry, the market you compete in, and competitors so every later decision sits on real context, not assumptions.",
       activities: [
-        "Discovery call and business assessment",
-        "Market and competitive research",
-        "Customer persona development",
-        "Current marketing audit",
-        "Success metrics definition",
+        "Industry structure, demand drivers, and seasonality or regulation where it matters",
+        "Market segments and where margin and growth actually concentrate",
+        "Competitor offers, pricing, messaging, channels, and visible gaps",
+        "Trends and benchmarks that shape how buyers choose in your space",
       ],
       deliverables: [
-        "Research findings report",
-        "Customer persona documentation",
-        "Competitive landscape analysis",
+        "Industry & market snapshot",
+        "Competitive landscape summary",
+        "Implications brief for positioning and spend",
       ],
     },
     {
       number: "02",
-      icon: Target,
-      title: "Build Your Strategy",
-      description: "We develop a comprehensive marketing strategy tailored to your business goals and market position.",
+      icon: Users,
+      title: "Understand Your Business & Customer",
+      description:
+        "Next I go deep on your business: differentiators, points of parity and points of difference, who you serve best, and how your operations back the promise.",
       activities: [
-        "Positioning and messaging strategy",
-        "Channel strategy and prioritization",
-        "Growth roadmap planning",
-        "Technical architecture design",
-        "Content and campaign planning",
+        "Discovery conversations and business model review",
+        "POPs & PODs: points of parity and points of difference you can own",
+        "Ideal customer profiles: needs, triggers, objections, and journey",
+        "Fit check on how you deliver today for those best-fit buyers",
       ],
       deliverables: [
-        "Marketing strategy document",
-        "Messaging framework",
-        "90-day execution roadmap",
+        "Customer profile documentation",
+        "Differentiation summary with POP & POD clarity",
+        "Notes on offer, delivery, and message risk before strategy work",
       ],
     },
     {
       number: "03",
-      icon: Rocket,
-      title: "Execute & Launch",
-      description: "We build and launch the technical systems and campaigns needed to drive growth.",
+      icon: Target,
+      title: "Build & Tailor Your Strategy",
+      description:
+        "I translate insight into a tailored strategy: what to say, why it is credible, where each message belongs, and an integrated marketing communications plan that matches your brand.",
       activities: [
-        "Website development and optimization",
-        "Marketing automation setup",
-        "CRM and analytics implementation",
-        "Campaign creation and launch",
-        "Content production and distribution",
+        "Positioning, promise, and proof so messaging stands up to scrutiny",
+        "Message hierarchy and channel fit: where each message belongs for your buyers",
+        "Integrated marketing communications plan aligned to brand standards",
+        "Goals, budgets, and milestones by channel and initiative",
       ],
       deliverables: [
-        "Live website and systems",
-        "Active marketing campaigns",
-        "Performance tracking dashboard",
+        "Brand-aligned messaging & IMC plan",
+        "Channel & campaign blueprint",
+        "Execution roadmap with owners and timing",
       ],
     },
     {
       number: "04",
-      icon: BarChart3,
-      title: "Track & Optimize",
-      description: "We continuously measure performance, learn from data, and optimize for better results.",
+      icon: Rocket,
+      title: "Execute & Launch",
+      description:
+        "I ship against the plan: sites, creative, tracking, and campaigns go live with QA, sequencing, and clear internal handoffs so nothing gets lost.",
       activities: [
-        "Performance monitoring and reporting",
-        "A/B testing and experimentation",
-        "Campaign optimization",
-        "Conversion rate improvement",
-        "Strategy refinement",
+        "Website and landing experiences built to the strategy",
+        "CRM, analytics, and conversion tracking configured for decisions you will use",
+        "Campaign build, review, and launch across agreed channels",
+        "Launch sequencing, checklists, and stakeholder alignment",
       ],
       deliverables: [
-        "Monthly performance reports",
-        "Optimization recommendations",
-        "Updated growth roadmap",
+        "Live site, assets, and campaigns",
+        "Tracking & reporting views you can read week to week",
+        "Launch completion record and first-read performance baseline",
+      ],
+    },
+    {
+      number: "05",
+      icon: BarChart3,
+      title: "Track & Optimize",
+      description:
+        "Growth is a loop. I monitor performance, test improvements, move budget toward what earns out, and refresh strategy when the market or offer shifts.",
+      activities: [
+        "Reporting cadence tied to the metrics we defined up front",
+        "Structured tests and conversion improvements grounded in data",
+        "Channel and budget adjustments based on results, not habit",
+        "Strategy and message refinements when conditions change",
+      ],
+      deliverables: [
+        "Performance reports with clear takeaways you can use",
+        "Prioritized optimization backlog",
+        "Updated growth roadmap as we learn",
       ],
     },
   ];
 
   const principles = [
     {
-      title: "One Team, One Plan",
-      description: "Strategy, design, and engineering sit on the same team. Shared context keeps every deliverable aligned to the same goal.",
+      title: "Industry & Market Before Tactics",
+      description:
+        "I start outside your four walls so channel picks, spend levels, and creative direction match how the category really behaves.",
     },
     {
-      title: "Research-Driven",
-      description: "Every decision starts with understanding your customers and competitive landscape.",
+      title: "Business Fit & Customer Truth",
+      description:
+        "Parity, difference, and customer profiles stay tied to who you can serve profitably and how you already deliver when the lights are on.",
     },
     {
-      title: "Technical Excellence",
-      description: "We build modern, scalable systems engineered to perform under load and adapt as your business grows.",
+      title: "Tailored IMC, One Thread",
+      description:
+        "Strategy, creative, web, and media follow one integrated communications plan so the brand sounds like one voice wherever buyers meet you.",
     },
     {
-      title: "Continuous Improvement",
-      description: "Launch starts the work. We measure, learn, and optimize on a steady cadence so performance compounds month over month.",
+      title: "Measure, Learn, Re-Aim",
+      description:
+        "Launch is the beginning of learning. Tracking and optimization stay on a steady cadence so results compound instead of drifting.",
     },
   ];
 
@@ -133,13 +156,13 @@ export const ProcessPage = () => {
                 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
                 style={{ color: "var(--brand-deep)" }}
               >
-                A clear framework for sustainable growth
+                Market First, Then Strategy You Can Execute
               </h1>
               <p
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Four phases that take you from strategy to shipped results. Every step is transparent, research-driven, and grounded in measurable outcomes.
+                Engagements open with industry and competitor research, not ad spend. Five phases move from market context through your business, tailored strategy, launch, and optimization so nothing ships without homework behind it.
               </p>
             </motion.div>
           </div>
@@ -152,8 +175,8 @@ export const ProcessPage = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-20 max-w-5xl mx-auto"
           >
-            <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-3">
-              <div className="hidden md:block absolute left-[12.5%] right-[12.5%] top-7 h-0.5 bg-linear-to-r from-(--brand-secondary) via-(--brand-primary) to-(--brand-deep) opacity-40" />
+            <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-2">
+              <div className="hidden md:block absolute left-[6%] right-[6%] top-7 h-0.5 bg-linear-to-r from-(--brand-secondary) via-(--brand-primary) to-(--brand-deep) opacity-40" />
               {steps.map((step, i) => (
                 <div key={i} className="relative flex flex-col items-center text-center">
                   <div className="w-14 h-14 rounded-full bg-white border border-(--brand-primary)/30 shadow-[0_8px_24px_-12px_rgba(23,120,142,0.35)] flex items-center justify-center mb-4 relative z-10">
@@ -270,8 +293,8 @@ export const ProcessPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="How We Work"
-            title="Principles That Guide Our Process"
-            description="These foundational beliefs shape how we approach every project and client relationship."
+            title="Principles Behind the Five Phases"
+            description="Research-led growth, brand-aligned plans, and measurement you can act on. One principal keeps the thread from scan through optimization."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -313,10 +336,10 @@ export const ProcessPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              Ready to start your growth journey?
+              Curious How This Maps to You?
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let's talk about your business goals and how our process can help you achieve them.
+              Share your industry, goals, and where growth feels stuck. I will walk you through how the five phases would look on your timeline.
             </p>
             <Button variant="secondary" size="lg" href="/contact">
               Schedule Discovery Call

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { HomePage } from "@/components/design-pages/HomePage";
 
-const title = "Full-Stack Growth Marketing";
+const title = "Growth marketing that teaches you to scale";
 const description =
-  "Strategy and execution under one roof. FrameScale builds research-driven growth systems for healthcare, retail, and professional services businesses.";
+  "Research-led strategy, custom sites, and channels that earn their keep for healthcare, retail, and professional services owners who want direct access to the principal.";
 
 export const metadata: Metadata = {
   title,

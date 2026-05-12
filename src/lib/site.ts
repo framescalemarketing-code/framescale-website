@@ -1,10 +1,9 @@
 export const site = {
   name: "FrameScale Inc",
   shortName: "FrameScale",
-  tagline:
-    "Full-stack growth marketing strategy and execution for small to mid-size businesses.",
+  tagline: "Hands-on growth marketing that teaches you to scale.",
   description:
-    "FrameScale combines research-driven marketing strategy with full-stack execution for growing businesses across healthcare, retail, and professional services.",
+    "Research-led strategy and custom marketing sites for owners who want clarity, not noise. SEO, Google Business Profile, analytics, and paid media led directly by the principal so you can own the systems behind the results.",
   url: "https://framescalemarketing.com",
   email: "hello@framescalemarketing.com",
   phone: "(916) 520-4553",
@@ -18,9 +17,17 @@ export const site = {
 } as const;
 
 export const industries = [
-  { label: "Healthcare", href: "/industries/healthcare", description: "Optical, medical, dental, specialty" },
-  { label: "Retail & E-commerce", href: "/industries/retail", description: "Stores, brands, online commerce" },
-  { label: "Professional Services", href: "/industries/professional-services", description: "Legal, accounting, consulting" },
+  {
+    label: "Healthcare",
+    href: "/industries/healthcare",
+    description: "Optical leads. Dental, medical, and specialty practices too.",
+  },
+  { label: "Retail & E-commerce", href: "/industries/retail", description: "Stores, brands, and online commerce" },
+  {
+    label: "Professional Services",
+    href: "/industries/professional-services",
+    description: "Consultants lead. Legal, accounting, and advisory firms too.",
+  },
 ] as const;
 
 export const mainNav = [

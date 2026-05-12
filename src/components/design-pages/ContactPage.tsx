@@ -54,7 +54,7 @@ export const ContactPage = () => {
       if (!EMAIL_RE.test(value.trim())) return "Enter a valid email address.";
     }
     if (name === "message") {
-      if (!value.trim()) return "A short message helps us prepare.";
+      if (!value.trim()) return "A short message helps me prepare.";
       if (value.trim().length < 10) return "Please add a little more detail (10+ characters).";
     }
     return undefined;
@@ -99,7 +99,7 @@ export const ContactPage = () => {
         throw new Error(data.error || "Unable to submit form.");
       }
 
-      setSubmitNote("Thanks. Your message was received and we will get back to you within 24 hours.");
+      setSubmitNote("Thanks. Your message was received and I will get back to you within 24 hours.");
       setFormData({ name: "", email: "", company: "", industry: "", message: "" });
       setTouched({});
       setErrors({});
@@ -137,7 +137,7 @@ export const ContactPage = () => {
     {
       icon: Mail,
       title: "Send a Message",
-      description: "Fill out the form below and we'll get back to you within 24 hours.",
+      description: "Fill out the form below and I will get back to you within 24 hours.",
       action: "Fill Form Below",
       href: "#contact-form",
     },
@@ -166,13 +166,13 @@ export const ContactPage = () => {
                 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
                 style={{ color: "var(--brand-deep)" }}
               >
-                Let's talk about your growth goals
+                {`Let's Talk About Fit`}
               </h1>
               <p
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Book a free 30-minute consultation. Share your goals, leave with a clear next step toward growth.
+                Book a free 30-minute discovery call. Bring your goals and constraints, and leave with an honest next step.
               </p>
             </motion.div>
           </div>
@@ -234,7 +234,7 @@ export const ContactPage = () => {
                   className="font-headline text-2xl"
                   style={{ color: "var(--brand-deep)" }}
                 >
-                  Send us a message
+                  Send Us a Message
                 </h2>
               </div>
 
@@ -344,7 +344,7 @@ export const ContactPage = () => {
                     className="block font-ui text-sm font-medium mb-2"
                     style={{ color: "var(--brand-deep)" }}
                   >
-                    Tell us about your business and goals *
+                    Describe your business and goals *
                   </label>
                   <textarea
                     id="message"
@@ -369,7 +369,7 @@ export const ContactPage = () => {
                 </Button>
 
                 <p className="text-center font-body text-sm text-(--brand-neutral)">
-                  We&apos;ll get back to you within 24 hours. No spam, ever.
+                  I will get back to you within 24 hours. No spam, ever.
                 </p>
                 {submitNote && (
                   <p className="text-center font-body text-sm text-(--brand-primary)">
@@ -395,9 +395,9 @@ export const ContactPage = () => {
               className="font-headline text-3xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              What happens next?
+              What Happens Next?
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
               <div>
                 <div
                   className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
@@ -408,13 +408,13 @@ export const ContactPage = () => {
                   className="font-headline text-lg mb-2"
                   style={{ color: "var(--brand-deep)" }}
                 >
-                  We Review
+                  I Review
                 </h3>
                 <p
                   className="font-body text-sm leading-relaxed"
                   style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
                 >
-                  We'll review your message and prepare thoughtful questions about your business.
+                  I read your note and return with sharp questions about your market, offer, and constraints.
                 </p>
               </div>
               <div>
@@ -427,13 +427,13 @@ export const ContactPage = () => {
                   className="font-headline text-lg mb-2"
                   style={{ color: "var(--brand-deep)" }}
                 >
-                  We Connect
+                  Discovery Call
                 </h3>
                 <p
                   className="font-body text-sm leading-relaxed"
                   style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
                 >
-                  We'll schedule a 30-minute discovery call to discuss your goals and challenges.
+                  Thirty minutes on the phone for goals, pressure points, and candor about what is realistic.
                 </p>
               </div>
               <div>
@@ -446,13 +446,32 @@ export const ContactPage = () => {
                   className="font-headline text-lg mb-2"
                   style={{ color: "var(--brand-deep)" }}
                 >
-                  We Plan
+                  I Assess Fit
                 </h3>
                 <p
                   className="font-body text-sm leading-relaxed"
                   style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
                 >
-                  If we're a good fit, we'll outline a custom approach for your business.
+                  If FrameScale is not the match, I will say so and point you in a sensible direction.
+                </p>
+              </div>
+              <div>
+                <div
+                  className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
+                >
+                  4
+                </div>
+                <h3
+                  className="font-headline text-lg mb-2"
+                  style={{ color: "var(--brand-deep)" }}
+                >
+                  I Outline
+                </h3>
+                <p
+                  className="font-body text-sm leading-relaxed"
+                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
+                >
+                  When it is a fit, you get scope, timing, and a clear next step so you can decide with confidence.
                 </p>
               </div>
             </div>

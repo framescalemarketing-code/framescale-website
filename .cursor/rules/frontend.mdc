@@ -1,0 +1,38 @@
+---
+description: Next.js App Router, RSC, and TSX editing discipline for this repo
+globs:
+  - src/app/**/*.tsx
+  - src/app/**/*.ts
+  - src/components/**/*.tsx
+---
+
+# Frontend (Next.js App Router)
+
+## Confirm routing model
+
+- This repository uses the **App Router** under `src/app/` only. There is **no** `pages/` router tree—do not add `src/pages` or Pages Router APIs (`getServerSideProps`, `getStaticProps`, `pages/api`).
+- New routes belong as `src/app/<segment>/page.tsx` (and related `layout.tsx`, `loading.tsx`, `error.tsx` only when consistent with neighboring routes).
+
+## Ground truth before edits
+
+- Open the files you will change and **one level of callers/layouts** so imports, metadata, and `'use client'` boundaries match existing patterns.
+- Do **not** invent components, hooks, or imports—reuse `@/components/design/*`, `@/lib/site`, `@/lib/motion`, etc., or add only what the user explicitly requested.
+
+## Server vs client
+
+- Default to **Server Components**. Add `'use client'` only where the file already uses interactivity or the change requires hooks/browser APIs; keep client boundaries **small** (see root `.cursorrules`).
+
+## Dynamic routes and runtime APIs
+
+- If you add or edit dynamic segments, follow **current Next.js** async conventions for `params` / `searchParams` and for `cookies()` / `headers()` as used elsewhere in the repo.
+- Do not assume experimental flags or config keys that are not present in `next.config.ts`.
+
+## Editing style
+
+- **Incremental** diffs; preserve formatting, naming, and file structure.
+- **Do not delete** unrelated code or comments.
+- Maintain **strict TypeScript**—verify types after edits; never widen to `any` to silence errors.
+
+## Overlap with root rules
+
+- Stack, SEO, analytics, and Motion specifics live in **`.cursorrules`**—follow that file; this rule file adds **routing verification** and **no-invention** discipline for frontend paths.

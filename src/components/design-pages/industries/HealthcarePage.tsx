@@ -105,14 +105,14 @@ export const HealthcarePage = () => {
               className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
               style={{ color: "var(--brand-deep)" }}
             >
-              Patient growth marketing for healthcare practices
+              Bookings-first growth for optical-led practices
             </h1>
 
             <p
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              Patient growth marketing for optical retail, dental clinics, and specialty medical practices. We build the websites, booking workflows, and local-search systems that fill your schedule.
+              Independent optical and multi-location eye care are where my experience runs deepest. The same research-led positioning, booking-ready sites, and local visibility work extends to dental and specialty practices competing on reputation and schedule density.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -132,8 +132,8 @@ export const HealthcarePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Healthcare Specialties"
-            title="Tailored Experience Across Healthcare Sectors"
-            description="Optical, dental, and medical practices share fundamentals but live in different markets. We adapt positioning, channels, and intake flows to each one."
+            title="Where Clinical Models Diverge"
+            description="Optical, dental, and specialty practices share fundamentals but live in different markets. Positioning, intake, and channel mix follow the reality of each specialty."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -173,8 +173,8 @@ export const HealthcarePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Common Challenges"
-            title="Healthcare Marketing Problems We Solve"
-            description="Every practice operates in a unique payer mix and local market. These are the growth blockers we see most often."
+            title="Growth Blockers We See in Care Delivery"
+            description="Every practice has its own payer mix and competitive set. These are the patterns that keep schedules softer than they should be."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -216,8 +216,8 @@ export const HealthcarePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Our Approach"
-            title="Full-Stack Healthcare Marketing"
-            description="Strategy, modern web systems, and patient-acquisition campaigns built and operated by one team. Privacy-aware, measurable, and tuned for booked appointments."
+            title="From Positioning to Booked Appointments"
+            description="Strategy, modern web, and patient-acquisition programs stay on one thread. Privacy-aware measurement stays tied to booked appointments, not vanity traffic."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -273,10 +273,10 @@ export const HealthcarePage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              Ready to grow your healthcare practice?
+              Ready to Grow Your Healthcare Practice?
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let's discuss your patient acquisition goals and how we can help you build a sustainable growth system.
+              {`Your practice runs on trust, booked appointments, and a reputation patients talk about. If you want a partner who researches your local market first, builds a site that reflects the care you deliver, and measures what actually fills the schedule, let's start with a conversation.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" href="/contact">
@@ -288,7 +288,7 @@ export const HealthcarePage = () => {
                 href="/process"
                 className="text-white bg-white/10 hover:bg-white/20 border-white/20"
               >
-                See Our 4-Step Process
+                See our 5-step process
               </Button>
             </div>
           </motion.div>

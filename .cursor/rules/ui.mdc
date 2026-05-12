@@ -1,0 +1,43 @@
+---
+description: Design system, Tailwind, motion, and brand constraints for UI work
+globs:
+  - src/components/**/*.tsx
+  - src/app/**/*.css
+  - src/styles/**/*.css
+---
+
+# UI (design system & styling)
+
+## Component locations
+
+- **Shared UI / chrome:** `src/components/design/` (navigation, footer, buttons, motion wrappers, etc.).
+- **Full marketing pages:** `src/components/design-pages/` (including `industries/`).
+- Prefer **extending** these components over introducing parallel primitives or a second UI kit.
+
+## Visual system
+
+- **Tailwind CSS v4** with tokens and imports in `src/app/globals.css` and `src/styles/fonts.css`.
+- Do **not** introduce another CSS framework, component library, or icon set unless the user explicitly requests it. Icons are **`lucide-react`** in line with the rest of the repo.
+
+## Motion
+
+- Use **`motion/react`** and shared **`Variants`** from `@/lib/motion`—keep easing, blur, and offset patterns aligned with existing variants.
+
+## Brand and fonts
+
+- **Brand guard** (`npm run brand:check`, `scripts/brand-guard.mjs`) enforces fonts, `globals.css` imports, and logo constants. After touching fonts, CSS variables, `Brand.tsx`, or font loading in `layout.tsx`, run the brand check.
+- Root **`.cursorrules`** lists additional brand constraints (e.g. baseline font loading approach).
+
+## Content and layout
+
+- Marketing copy, URLs, phone, email, and nav structure should flow from **`src/lib/site.ts`** where possible—avoid hardcoding duplicate brand strings.
+
+## Editing discipline
+
+- **Inspect** sibling sections and reused components before changing spacing, typography, or color.
+- **Incremental** styling changes; preserve accessibility patterns already present (landmarks, labels, widget behavior).
+- **Do not delete** compliance- or accessibility-related markup unless explicitly instructed.
+
+## No duplication of stack docs
+
+- Detailed analytics, legal pages, and metadata rules live in **`.cursorrules`**—this file focuses on **UI structure, Tailwind, motion, and brand** without re-stating every SEO/legal bullet.

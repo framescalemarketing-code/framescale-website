@@ -19,23 +19,27 @@ export const AboutPage = () => {
   const values = [
     {
       icon: Target,
-      title: "Strategy First",
-      description: "We believe great execution starts with understanding the why before the how. Every tactic is connected to a strategic goal.",
+      title: "Research Before Spend",
+      description:
+        "I do not touch campaigns until the market, offer, and customer story are clear. That discipline protects your budget and your reputation.",
     },
     {
       icon: Code,
-      title: "Technical Excellence",
-      description: "Marketing is a system. We pair strategic thinking with engineering discipline so every campaign ships, measures, and improves.",
+      title: "Custom Sites, Not Rentals",
+      description:
+        "Your marketing site should feel like your business, not a WordPress or Wix skin. I build custom web so performance, trust, and conversion stay in one system.",
     },
     {
       icon: Users,
-      title: "One Integrated Team",
-      description: "Strategy, design, and engineering share one team. We own the full stack from research to launch so context never gets lost.",
+      title: "Personal Depth, Selective Roster",
+      description:
+        "You work with me directly on a selective roster so you get teaching, access, and follow-through instead of a junior relay race.",
     },
     {
       icon: TrendingUp,
-      title: "Sustainable Growth",
-      description: "We optimize for the metrics that compound: customer lifetime value, retention, channel efficiency, and pipeline quality.",
+      title: "Teach You to Scale",
+      description:
+        "The goal is growth you understand through systems, metrics, and decisions you can carry forward. Over time you should need me less, not more.",
     },
   ];
 
@@ -43,17 +47,17 @@ export const AboutPage = () => {
     {
       icon: Heart,
       name: "Healthcare",
-      description: "Optical practices, dental clinics, medical offices",
+      description: "Optical leads. Dental and medical where local trust and bookings matter.",
     },
     {
       icon: ShoppingBag,
       name: "Retail & E-commerce",
-      description: "Product brands, stores, online commerce",
+      description: "Stores, brands, and online commerce balancing margin and demand.",
     },
     {
       icon: Scale,
       name: "Professional Services",
-      description: "Legal, accounting, consulting firms",
+      description: "Consultants and advisory firms lead. Legal and accounting where pipeline is everything.",
     },
   ];
 
@@ -81,13 +85,13 @@ export const AboutPage = () => {
                 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
                 style={{ color: "var(--brand-deep)" }}
               >
-                Marketing strategy and execution without the handoff
+                A marketer with business degrees and the patience to teach what matters
               </h1>
               <p
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                We're a full-stack growth marketing firm that helps small to mid-size businesses build scalable customer acquisition systems.
+                FrameScale is how I work with a limited number of owners at a time. You get research-led growth, custom-built web, and fundamentals that stick through SEO, Google Business Profile, analytics, and paid media you can actually use. I am a marketing specialist and business-minded partner, not a social posting service.
               </p>
             </motion.div>
           </div>
@@ -107,20 +111,20 @@ export const AboutPage = () => {
               className="font-headline text-3xl lg:text-4xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              Why FrameScale Inc exists
+              Why I built FrameScale this way
             </h2>
             <div className="space-y-6 font-body text-lg leading-relaxed" style={{ color: "var(--brand-neutral)" }}>
               <p>
-                Most businesses face the same frustrating cycle: marketing consultants deliver brilliant strategy decks that never get executed. Agencies execute tactics without understanding the strategic context. Freelancers handle one piece of the puzzle, leaving you to connect everything.
+                {`I have walked the same maze many owners describe: smart strategy that never ships, or busy tactics that never tie back to margin. With both a bachelor's and a master's in business, I care as much about how growth shows up on a P&L as how it looks in an ad account.`}
               </p>
               <p>
-                The result? Strategy that sits in slide decks. Execution that ignores positioning. Systems that break. Growth that stalls.
+                I also believe respect is shown through bandwidth. I only take work I want to carry personally, and I keep concurrent clients intentionally low, usually no more than three, so you get depth, teaching, and follow-through instead of a handoff queue.
               </p>
               <p>
-                We built FrameScale Inc to solve that problem. Research, positioning, systems, campaigns, and measurement all live under one roof, owned by the same team.
+                Before I spend a dollar of your media budget, I want the research, positioning, and offer clarity to be defensible. Then I build custom marketing sites and systems that match how you actually win customers. That is not a WordPress or Wix template dressed up as strategy.
               </p>
               <p>
-                The engineer building your website understands your customer personas. The strategist defining your positioning sees the analytics. That shared context is what turns plans into shipped growth.
+                If we work together, you should leave smarter: clearer on what to measure, why the plan looks the way it does, and how to keep scaling even when our project phases wind down. That is the point.
               </p>
             </div>
           </motion.div>
@@ -132,8 +136,8 @@ export const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Our Values"
-            title="What Drives Our Work"
-            description="These principles shape how we approach every project and client relationship."
+            title="How I Work With Clients"
+            description="Principles you should feel on every call. Clarity first, ego last."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -172,9 +176,9 @@ export const AboutPage = () => {
       <section className="relative py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
-            badge="Industries We Serve"
-            title="Multi-Industry Experience"
-            description="We've worked across different sectors and understand the unique dynamics of each market."
+            badge="Industries I Serve"
+            title="Where This Approach Fits Best"
+            description="Optical-led healthcare, margin-aware retail, and consultant-led professional services are where this model tends to fit best."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -223,13 +227,13 @@ export const AboutPage = () => {
               className="font-headline text-3xl lg:text-4xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              Structured for Growth
+              Built to Stay Personal as You Grow
             </h2>
             <p
               className="font-body text-lg leading-relaxed mb-8"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              FrameScale Inc is an S-corporation built to deliver high-quality marketing services to growing businesses. We're structured to move fast, stay focused, and scale sustainably as we help our clients do the same.
+              FrameScale Inc is the S-corp vehicle behind the work. It is structured for serious engagements, clear contracts, and the accountability you expect when growth is on the line.
             </p>
           </motion.div>
         </div>
@@ -245,10 +249,10 @@ export const AboutPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              Let's work together
+              If the fit is right, we will both know it
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Ready to build a marketing system that connects strategy to execution? Let's talk.
+              Bring your goals, your constraints, and your questions. I will be direct about whether I am the right partner and what honest next steps look like either way.
             </p>
             <Button variant="secondary" size="lg" href="/contact">
               Schedule Discovery Call
