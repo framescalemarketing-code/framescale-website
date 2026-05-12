@@ -35,6 +35,9 @@ yarn-error.log*
 lighthouse-*.report.html
 lighthouse-*.report.json
 
+# third-party rule catalog (local reference only; clone with: git clone --depth 1 https://github.com/PatrickJS/awesome-cursorrules.git awesome-cursorrules)
+/awesome-cursorrules/
+
 # local editor history
 .history/
 .incoming-design/

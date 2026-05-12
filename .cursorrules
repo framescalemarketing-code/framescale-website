@@ -1,0 +1,56 @@
+# FrameScale Website — Cursor project rules
+
+You are working on **framescale-website**: a marketing site for FrameScale Inc (Next.js App Router, React 19, TypeScript strict, Tailwind CSS v4, Motion, Vercel). Be precise, match existing patterns, and avoid scope creep.
+
+## Stack and sources of truth
+
+- **Framework:** Next.js 16+ (App Router), `src/app/` for routes and layouts.
+- **UI:** React 19; shared chrome in `src/components/design/`; full page content in `src/components/design-pages/` (and `design-pages/industries/`).
+- **Imports:** use the `@/*` alias → `src/*` (see `tsconfig.json`).
+- **Site copy & URLs:** `src/lib/site.ts` (`site`, nav, footer links, industries). Prefer extending `site` over hardcoding brand strings in components.
+- **Motion:** use the `motion` package (`motion/react`, `Variants` from `@/lib/motion`). Keep animation tokens consistent with existing variants.
+- **Icons:** `lucide-react` only unless the file already uses something else.
+- **Analytics:** `@vercel/analytics`, `@vercel/speed-insights`, and `src/lib/analytics.ts` / `GAEventTracker` — do not strip or bypass without an explicit request.
+
+## Server vs client
+
+- **Default to Server Components.** Add `'use client'` only for hooks, browser APIs, or event handlers — push the boundary to the **smallest** leaf component.
+- **Async runtime APIs:** in current Next versions, use `await` for `cookies()`, `headers()`, and for **dynamic** route segments use `await params` / `await searchParams` when you introduce them (typed as `Promise<...>` where required).
+
+## Supabase and secrets (this repo’s model)
+
+- Server DB access is **`getSupabaseServerClient()`** in `src/lib/supabase/server.ts`: service role + **no** persisted session (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_SECRET_SUPABASE_API_KEY`). It is for **trusted server code only** (e.g. API routes).
+- **Never** put service keys, Resend keys, or other secrets in `NEXT_PUBLIC_*`.
+- If you ever add **user-facing Supabase Auth**, do **not** use `getSession()` on the server for security decisions; use verified patterns (`getUser()` with `@supabase/ssr`). This project today is mostly server-side inserts, not end-user auth — do not invent cookie-based user sessions without an explicit product decision.
+
+## API routes (`src/app/api/**/route.ts`)
+
+- Validate and bound input (length, format); return `NextResponse.json` with appropriate status codes (400, 413, 500).
+- Escape or sanitize when building HTML for email (follow `escapeHtml` / patterns in `api/contact`).
+- Prefer clear error messages for clients without leaking stack traces or env details.
+
+## SEO, metadata, legal
+
+- Respect existing **metadata**, **Open Graph**, **robots**, **sitemap**, and **manifest** patterns in `src/app/`.
+- Legal/accessibility pages and widgets (`AccessibilityWidget`, iubenda helpers) are sensitive: preserve compliance-related structure unless asked to change copy with care.
+
+## Styling and brand guard
+
+- **Tailwind v4** + `src/app/globals.css` theme tokens; fonts are loaded via `src/styles/fonts.css` (not `next/font/google` for the baseline layout — **brand guard enforces this**).
+- After changes to fonts, `globals.css`, `layout.tsx` font loading, or `Brand.tsx` logo constants, ensure **`npm run brand:check`** still passes.
+
+## Code quality
+
+- **TypeScript `strict`:** no `any`; use `unknown` + narrowing or explicit types.
+- Match **existing** naming, file layout, and component style (named exports, design folder conventions).
+- Run **`npm run lint`** when you touch TS/TSX meaningfully; run **`npm run brand:check`** when touching brand-tied assets.
+- Do not add unrelated dependencies or frameworks (e.g. do not add shadcn/ui or a second CSS system unless requested).
+
+## Optional local reference
+
+The **[PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** clone may live at `./awesome-cursorrules/` for browsing rule ideas; project behavior is defined by **this file** and the codebase, not by vendored snippets.
+
+## Efficiency
+
+- Read neighboring files before editing; prefer extending existing helpers (`site`, motion variants, design components) over duplicating logic.
+- Keep diffs minimal and purposeful; do not remove comments or guardrails unrelated to the task.
