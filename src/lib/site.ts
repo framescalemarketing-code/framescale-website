@@ -42,7 +42,10 @@ export const footerLinks = {
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
+    { label: "California Privacy Notice", href: "/california-privacy" },
+    { label: "Your Privacy Choices", href: "/california-privacy#privacy-choices" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
+    { label: "Accessibility Statement", href: "/accessibility" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/privacy" },
   ],
 } as const;
