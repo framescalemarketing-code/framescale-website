@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
+import { PageBackLink } from "../design/PageBackLink";
 import { slideByIndex, slideUp } from "@/lib/motion";
 import {
   Search,
@@ -123,6 +124,7 @@ export const ProcessPage = () => {
               initial="hidden"
               animate="show"
             >
+              <PageBackLink className="mb-6" />
               <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
                 Our Process
               </span>

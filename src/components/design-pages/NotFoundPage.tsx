@@ -57,7 +57,17 @@ export const NotFoundPage = () => {
               <Home className="w-5 h-5 mr-2" />
               Back to Home
             </Button>
-            <Button size="lg" variant="ghost" onClick={() => window.history.back()}>
+            <Button
+              size="lg"
+              variant="ghost"
+              onClick={() => {
+                if (window.history.length > 1) {
+                  window.history.back();
+                  return;
+                }
+                window.location.href = "/";
+              }}
+            >
               <ArrowLeft className="w-5 h-5 mr-2" />
               Go Back
             </Button>

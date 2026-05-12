@@ -2,8 +2,11 @@
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Button } from "../design/Button";
+import { PageBackLink } from "../design/PageBackLink";
 import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
+import { site } from "@/lib/site";
 import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -129,12 +132,14 @@ export const ContactPage = () => {
       title: "Schedule a Call",
       description: "Book a 30-minute discovery call to discuss your growth goals.",
       action: "Schedule Now",
+      href: `mailto:${site.email}?subject=${encodeURIComponent("Discovery Call Request")}`,
     },
     {
       icon: Mail,
       title: "Send a Message",
       description: "Fill out the form below and we'll get back to you within 24 hours.",
       action: "Fill Form Below",
+      href: "#contact-form",
     },
   ];
 
@@ -153,6 +158,7 @@ export const ContactPage = () => {
               initial="hidden"
               animate="show"
             >
+              <PageBackLink className="mb-6" />
               <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
                 Get in Touch
               </span>
@@ -202,12 +208,13 @@ export const ContactPage = () => {
                 >
                   {method.description}
                 </p>
-                <div className="flex items-center gap-2 text-(--brand-primary)">
-                  <span className="font-ui text-sm font-semibold">
-                    {method.action}
-                  </span>
+                <Link
+                  href={method.href}
+                  className="inline-flex items-center gap-2 text-(--brand-primary) hover:gap-3 transition-all"
+                >
+                  <span className="font-ui text-sm font-semibold">{method.action}</span>
                   <ArrowRight className="w-4 h-4" />
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

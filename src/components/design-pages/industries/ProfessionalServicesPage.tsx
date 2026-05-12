@@ -1,8 +1,8 @@
 ﻿"use client";
 
 import { motion } from "motion/react";
-import Link from "next/link";
 import { Button } from "../../design/Button";
+import { PageBackLink } from "../../design/PageBackLink";
 import { SectionHeader } from "../../design/SectionHeader";
 import { slideByIndex, slideUp } from "@/lib/motion";
 import {
@@ -10,7 +10,6 @@ import {
   TrendingUp,
   Target,
   Code,
-  ArrowRight,
   CheckCircle2,
   Briefcase,
   FileText,
@@ -90,12 +89,7 @@ export const ProfessionalServicesPage = () => {
             animate="show"
             className="max-w-4xl"
           >
-            <Link href="/"
-              className="inline-flex items-center gap-2 text-(--brand-primary) font-ui text-sm mb-6 hover:gap-3 transition-all"
-            >
-              <ArrowRight className="w-4 h-4 rotate-180" />
-              Back to Industries
-            </Link>
+            <PageBackLink href="/#industries" label="Back to Industries" className="mb-6" />
 
             <div className="flex items-center gap-3 mb-6">
               <div className="w-14 h-14 rounded-xl bg-linear-to-br from-(--brand-deep) to-(--brand-primary) flex items-center justify-center">
