@@ -15,7 +15,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 
 const IUBENDA_POLICY_ID = process.env.NEXT_PUBLIC_IUBENDA_POLICY_ID?.trim() || "26891202";
-const IUBENDA_SITE_ID = process.env.NEXT_PUBLIC_IUBENDA_SITE_ID?.trim();
+const IUBENDA_WIDGET_ID = "2d54165d-88d8-4b24-a956-b743f39cdc9f";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -138,75 +138,12 @@ export default function RootLayout({
         {/* eslint-enable @next/next/google-font-preconnect */}
 
         <Script src="https://cdn.iubenda.com/iubenda.js" strategy="afterInteractive" />
-        <Script
-          src="https://embeds.iubenda.com/widgets/2d54165d-88d8-4b24-a956-b743f39cdc9f.js"
-          strategy="afterInteractive"
-        />
-
-        {IUBENDA_SITE_ID ? (
-          <>
-            <Script id="iubenda-cs-config" strategy="afterInteractive">
-              {`
-                window._iub = window._iub || [];
-                var consentEventId = function () {
-                  try {
-                    var key = "framescale_consent_id";
-                    var existing = localStorage.getItem(key);
-                    if (existing) return existing;
-                    var created = "consent-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
-                    localStorage.setItem(key, created);
-                    return created;
-                  } catch (e) {
-                    return "consent-" + Date.now();
-                  }
-                };
-
-                var postConsent = function (consent) {
-                  try {
-                    fetch("/api/consent", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        consentId: consentEventId(),
-                        source: "iubenda",
-                        policyVersion: "v1",
-                        region: (window.navigator && window.navigator.language) || "unknown",
-                        consent: consent || {},
-                        metadata: { provider: "iubenda-cookie-solution" }
-                      })
-                    });
-                  } catch (e) {}
-                };
-
-                window._iub.csConfiguration = {
-                  siteId: ${Number(IUBENDA_SITE_ID)},
-                  cookiePolicyId: ${Number(IUBENDA_POLICY_ID)},
-                  lang: "en",
-                  storage: { useSiteId: true },
-                  perPurposeConsent: true,
-                  enableUspr: true,
-                  askConsentAtCookiePolicyUpdate: true,
-                  callback: {
-                    onConsentFirstGiven: function () {
-                      postConsent({ necessary: true, analytics: true, marketing: true, preferences: true });
-                    },
-                    onConsentGiven: function () {
-                      postConsent({ necessary: true, analytics: true, marketing: true, preferences: true });
-                    },
-                    onPreferenceExpressed: function (preferences) {
-                      postConsent(preferences);
-                    }
-                  }
-                };
-              `}
-            </Script>
-            <Script
-              src={`https://cs.iubenda.com/autoblocking/${IUBENDA_SITE_ID}.js`}
-              strategy="afterInteractive"
-            />
-            <Script src="https://cdn.iubenda.com/cs/iubenda_cs.js" strategy="afterInteractive" />
-          </>
-        ) : null}
+        <Script src={`https://embeds.iubenda.com/widgets/${IUBENDA_WIDGET_ID}.js`} strategy="afterInteractive" />
+        <Script id="iubenda-widget-init" strategy="afterInteractive">
+          {`
+            window._iub = window._iub || [];
+          `}
+        </Script>
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <script
