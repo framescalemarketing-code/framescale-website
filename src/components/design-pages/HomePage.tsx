@@ -88,7 +88,7 @@ export const HomePage = () => {
               transition={{ delay: 0.15 }}
               className="mb-6"
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary)">
+              <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
                 Full-Stack Growth Marketing
               </span>
             </motion.div>
@@ -116,7 +116,7 @@ export const HomePage = () => {
               className="font-body text-xl lg:text-2xl mb-12 leading-relaxed text-(--brand-neutral)"
               style={{ maxWidth: "none" }}
             >
-              Strategy and execution for small to mid-size businesses across healthcare, retail, and professional services. No handoffs, just results.
+              Strategy and execution for small to mid-size businesses across healthcare, retail, and professional services. One integrated team, shipped systems, measurable growth.
             </motion.p>
 
             <motion.div
@@ -343,7 +343,7 @@ export const HomePage = () => {
               </Button>
             </div>
             <p className="font-body text-sm text-white/60 mt-8">
-              Free 30-minute consultation. No pressure, just honest conversation.
+              Free 30-minute consultation. Bring your goals, leave with a plan.
             </p>
           </motion.div>
         </div>

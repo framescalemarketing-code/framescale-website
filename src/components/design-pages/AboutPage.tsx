@@ -25,17 +25,17 @@ export const AboutPage = () => {
     {
       icon: Code,
       title: "Technical Excellence",
-      description: "Marketing requires more than creativity—it requires building systems that work. We combine strategy with engineering discipline.",
+      description: "Marketing is a system. We pair strategic thinking with engineering discipline so every campaign ships, measures, and improves.",
     },
     {
       icon: Users,
-      title: "No Handoff Friction",
-      description: "Strategy and execution shouldn't live in separate silos. We own the full stack, from research to launch.",
+      title: "One Integrated Team",
+      description: "Strategy, design, and engineering share one team. We own the full stack from research to launch so context never gets lost.",
     },
     {
       icon: TrendingUp,
       title: "Sustainable Growth",
-      description: "We're not chasing vanity metrics or quick wins. We build systems that compound over time.",
+      description: "We optimize for the metrics that compound: customer lifetime value, retention, channel efficiency, and pipeline quality.",
     },
   ];
 
@@ -65,6 +65,8 @@ export const AboutPage = () => {
           <div className="absolute top-20 left-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
         </div>
 
+        <PageBackLink className="absolute top-24 left-6 z-20 lg:top-28 lg:left-8" />
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -72,8 +74,7 @@ export const AboutPage = () => {
               initial="hidden"
               animate="show"
             >
-              <PageBackLink className="mb-6" />
-              <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
+              <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 About FrameScale Inc
               </span>
               <h1
@@ -116,10 +117,10 @@ export const AboutPage = () => {
                 The result? Strategy that sits in slide decks. Execution that ignores positioning. Systems that break. Growth that stalls.
               </p>
               <p>
-                We built FrameScale Inc to solve this problem. We combine strategic marketing thinking with full-stack technical execution—research, positioning, systems, campaigns, measurement—all under one roof.
+                We built FrameScale Inc to solve that problem. Research, positioning, systems, campaigns, and measurement all live under one roof, owned by the same team.
               </p>
               <p>
-                No handoffs between strategy and execution. No lost context. No wondering if the person building your website understands your customer personas. Just integrated growth marketing that actually ships.
+                The engineer building your website understands your customer personas. The strategist defining your positioning sees the analytics. That shared context is what turns plans into shipped growth.
               </p>
             </div>
           </motion.div>

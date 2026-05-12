@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -17,8 +18,8 @@ export default function AccessibilityPage() {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl">
-            <PageBackLink className="mb-6" />
-            <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
+            <PageBackLink className="mb-8 lg:mb-10" />
+            <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
               Accessibility
             </span>
             <h1 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight text-(--brand-deep)">
@@ -51,8 +52,8 @@ export default function AccessibilityPage() {
               <p className="font-body text-(--brand-neutral) leading-relaxed">
                 If you encounter an accessibility issue, contact
                 {" "}
-                <Link className="text-(--brand-primary) hover:underline" href="mailto:framescalemarketing@framescalemarketing.com">
-                  framescalemarketing@framescalemarketing.com
+                <Link className="text-(--brand-primary) hover:underline" href={`mailto:${site.email}`}>
+                  {site.email}
                 </Link>
                 {" "}
                 and include the page URL and issue details.

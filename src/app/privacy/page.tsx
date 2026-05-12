@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
+import { iubenda } from "@/lib/iubenda";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,8 +19,8 @@ export default function PrivacyPage() {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl">
-            <PageBackLink className="mb-6" />
-            <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
+            <PageBackLink className="mb-8 lg:mb-10" />
+            <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
               Privacy
             </span>
             <h1 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight text-(--brand-deep)">
@@ -41,14 +42,14 @@ export default function PrivacyPage() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://www.iubenda.com/privacy-policy/26891202"
+                href={iubenda.privacyPolicyUrl}
                 className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-[#145F71] transition-colors"
                 title="Privacy Policy"
               >
                 Privacy Policy
               </a>
               <a
-                href="https://www.iubenda.com/privacy-policy/26891202/cookie-policy"
+                href={iubenda.cookiePolicyUrl}
                 className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-(--brand-primary) border border-(--brand-primary)/40 hover:bg-(--brand-primary)/8 transition-colors"
                 title="Cookie Policy"
               >

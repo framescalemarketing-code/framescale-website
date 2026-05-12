@@ -19,52 +19,52 @@ import {
 export const RetailPage = () => {
   const challenges = [
     {
-      title: "Customer Acquisition",
-      description: "Standing out in crowded markets and attracting customers beyond price competition",
+      title: "Customer Acquisition Cost",
+      description: "Lowering blended CAC across paid, organic, and marketplace channels while protecting margin on every order.",
     },
     {
-      title: "E-commerce Systems",
-      description: "Building modern online stores that convert browsers into buyers",
+      title: "Storefronts That Convert",
+      description: "Building fast, mobile-first e-commerce and in-store digital experiences that turn product interest into checkout.",
     },
     {
-      title: "Multi-Channel Growth",
-      description: "Coordinating in-store, online, and marketplace strategies effectively",
+      title: "Repeat Purchase & LTV",
+      description: "Designing lifecycle email, SMS, and loyalty programs that lift AOV and bring customers back without paid spend.",
     },
     {
-      title: "Brand Differentiation",
-      description: "Creating clear positioning that resonates with your target customers",
+      title: "Omnichannel Attribution",
+      description: "Connecting in-store, online, and marketplace data so you can see which campaigns actually drive revenue.",
     },
   ];
 
   const solutions = [
     {
       icon: Target,
-      title: "Strategic Positioning",
+      title: "Brand & Positioning",
       items: [
-        "Market research and competitive analysis",
-        "Customer persona development",
-        "Brand positioning and messaging",
-        "Product-market fit validation",
+        "Category and competitor research",
+        "Customer persona and segmentation",
+        "Brand messaging and product storytelling",
+        "Pricing and merchandising strategy",
       ],
     },
     {
       icon: Code,
-      title: "E-commerce Execution",
+      title: "Commerce Engineering",
       items: [
-        "Modern e-commerce website development",
-        "Shopping cart and payment integration",
-        "Inventory and order management",
-        "Analytics and conversion tracking",
+        "Shopify, headless, and custom storefronts",
+        "Checkout, payments, and subscription flows",
+        "CRO, A/B testing, and Core Web Vitals tuning",
+        "Server-side tracking and unified analytics",
       ],
     },
     {
       icon: TrendingUp,
-      title: "Customer Growth",
+      title: "Acquisition & Retention",
       items: [
-        "SEO and content marketing",
-        "Paid advertising (Google, social, marketplaces)",
-        "Email marketing and automation",
-        "Social media strategy",
+        "Paid social, search, and marketplace ads",
+        "SEO and product content at scale",
+        "Klaviyo and SMS lifecycle automation",
+        "Loyalty, reviews, and post-purchase flows",
       ],
     },
   ];
@@ -112,7 +112,7 @@ export const RetailPage = () => {
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              From physical stores to e-commerce brands to product companies—we help retail businesses build customer acquisition systems that scale.
+              Customer-acquisition systems for physical retail, e-commerce, and consumer product brands. One team owns the strategy, storefront, paid media, and lifecycle workflows that grow revenue.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -133,7 +133,7 @@ export const RetailPage = () => {
           <SectionHeader
             badge="Retail Verticals"
             title="Experience Across Retail Formats"
-            description="Whether you're brick-and-mortar, online, or both—we understand the unique dynamics of each retail model."
+            description="Brick-and-mortar, online, and hybrid retailers operate on different unit economics. We tune positioning, channels, and tech stack to each model."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -174,7 +174,7 @@ export const RetailPage = () => {
           <SectionHeader
             badge="Common Challenges"
             title="Retail Marketing Problems We Solve"
-            description="Growing a retail business requires more than just good products—it requires strategic marketing and execution."
+            description="Growing a retail brand means defending margin while scaling demand. These are the levers that move the business."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -217,7 +217,7 @@ export const RetailPage = () => {
           <SectionHeader
             badge="Our Approach"
             title="Full-Stack Retail Marketing"
-            description="We combine strategic positioning with technical execution to build customer acquisition systems that drive sustainable growth."
+            description="Brand, storefront, and growth channels operated by one integrated team. Senior strategists own the plan, engineers ship the stack, and every campaign is measured against revenue."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">

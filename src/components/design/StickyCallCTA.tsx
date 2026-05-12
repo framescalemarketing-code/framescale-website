@@ -34,11 +34,11 @@ export const StickyCallCTA = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-5 right-5 z-40 sm:bottom-6 sm:right-6"
+          className="fixed bottom-4 right-19 z-40 max-[420px]:right-18"
         >
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-5 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-[#145F71] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold"
+            className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-4 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-[#145F71] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold sm:px-5"
             aria-label="Book an Intro Call"
           >
             <Calendar className="w-4 h-4" aria-hidden />

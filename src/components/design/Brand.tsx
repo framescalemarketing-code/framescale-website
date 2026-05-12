@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-
 type Tone = "color" | "light" | "dark";
 
 // Official logo spec: viewBox="0 -10 200 90"
@@ -107,47 +105,5 @@ export const BrandLockup = ({
         )}
       </div>
     </div>
-  );
-};
-
-export const AnimatedBrandMark = ({ width = 200, height = 80 }: { width?: number; height?: number }) => {
-  return (
-    <motion.svg
-      width={width}
-      height={height}
-      viewBox={LOGO_VIEWBOX}
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="FrameScale Inc logo mark"
-    >
-      {logoShapes.map((shape, i) => {
-        const fill = palettes.color[i];
-        if (shape.type === "rect") {
-          return (
-            <motion.rect
-              key={i}
-              x={shape.x} y={shape.y}
-              width={shape.w} height={shape.h}
-              rx={shape.rx}
-              fill={fill}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: i * 0.09, duration: 0.45, ease: "easeOut" }}
-              style={{ transformOrigin: `${shape.x + shape.w / 2}px ${shape.y + shape.h / 2}px` }}
-            />
-          );
-        }
-        return (
-          <motion.circle
-            key={i}
-            cx={shape.cx} cy={shape.cy} r={shape.r}
-            fill={fill}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: i * 0.09, duration: 0.45, ease: "easeOut" }}
-            style={{ transformOrigin: `${shape.cx}px ${shape.cy}px` }}
-          />
-        );
-      })}
-    </motion.svg>
   );
 };

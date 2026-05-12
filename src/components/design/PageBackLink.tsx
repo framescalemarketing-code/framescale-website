@@ -15,7 +15,7 @@ export const PageBackLink = ({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-2 font-ui text-sm text-(--brand-primary) hover:gap-3 transition-all ${className}`}
+      className={`flex w-fit items-center gap-2 font-ui text-sm text-(--brand-primary) hover:gap-3 transition-all ${className}`}
     >
       <ArrowLeft className="w-4 h-4" />
       {label}

@@ -92,8 +92,8 @@ export const ProcessPage = () => {
 
   const principles = [
     {
-      title: "No Handoff Friction",
-      description: "Strategy and execution live in the same team. No lost context, no misalignment.",
+      title: "One Team, One Plan",
+      description: "Strategy, design, and engineering sit on the same team. Shared context keeps every deliverable aligned to the same goal.",
     },
     {
       title: "Research-Driven",
@@ -101,11 +101,11 @@ export const ProcessPage = () => {
     },
     {
       title: "Technical Excellence",
-      description: "We build modern, scalable systems—not cobbled-together tools that break under pressure.",
+      description: "We build modern, scalable systems engineered to perform under load and adapt as your business grows.",
     },
     {
       title: "Continuous Improvement",
-      description: "Launch is the beginning, not the end. We measure, learn, and optimize relentlessly.",
+      description: "Launch starts the work. We measure, learn, and optimize on a steady cadence so performance compounds month over month.",
     },
   ];
 
@@ -117,6 +117,8 @@ export const ProcessPage = () => {
           <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
         </div>
 
+        <PageBackLink className="absolute top-24 left-6 z-20 lg:top-28 lg:left-8" />
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -124,8 +126,7 @@ export const ProcessPage = () => {
               initial="hidden"
               animate="show"
             >
-              <PageBackLink className="mb-6" />
-              <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
+              <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 Our Process
               </span>
               <h1
@@ -138,7 +139,7 @@ export const ProcessPage = () => {
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Four phases that take you from strategy to results. No black boxes, no mysterious "magic"—just research-driven marketing and technical execution.
+                Four phases that take you from strategy to shipped results. Every step is transparent, research-driven, and grounded in measurable outcomes.
               </p>
             </motion.div>
           </div>

@@ -18,52 +18,52 @@ import {
 export const ProfessionalServicesPage = () => {
   const challenges = [
     {
-      title: "Client Acquisition",
-      description: "Attracting qualified leads and converting them into high-value client relationships",
+      title: "Qualified Pipeline",
+      description: "Generating consultations that fit your engagement size, not low-intent leads that waste partner time.",
     },
     {
-      title: "Trust & Credibility",
-      description: "Establishing expertise and building confidence before the first conversation",
+      title: "Authority & Trust",
+      description: "Producing the case studies, thought leadership, and on-page proof that prospects review before they ever call.",
     },
     {
-      title: "Digital Presence",
-      description: "Creating professional websites and systems that reflect your firm's caliber",
+      title: "Firm-Grade Presence",
+      description: "Building a website and digital footprint that reflects partner-level expertise and reassures sophisticated buyers.",
     },
     {
-      title: "Marketing ROI",
-      description: "Measuring what actually generates qualified leads versus wasted ad spend",
+      title: "Pipeline Attribution",
+      description: "Tying first-touch and assisted channels to closed engagement value so marketing spend ties back to revenue.",
     },
   ];
 
   const solutions = [
     {
       icon: Target,
-      title: "Strategic Positioning",
+      title: "Practice Positioning",
       items: [
-        "Market and competitive analysis",
-        "Client persona development",
-        "Value proposition and messaging",
-        "Service offering optimization",
+        "Service-line and ideal-client analysis",
+        "Competitive and referral landscape research",
+        "Authority-led messaging framework",
+        "Engagement model and pricing alignment",
       ],
     },
     {
       icon: Code,
-      title: "Technical Execution",
+      title: "Firm-Grade Web Systems",
       items: [
-        "Professional website development",
-        "Client portal and automation",
-        "CRM and email integration",
-        "Analytics and lead tracking",
+        "Modern, accessible, partner-caliber websites",
+        "Intake forms, CRM, and consultation routing",
+        "Secure document and client-portal patterns",
+        "Server-side analytics and lead attribution",
       ],
     },
     {
       icon: TrendingUp,
-      title: "Lead Generation",
+      title: "Pipeline Generation",
       items: [
-        "SEO and content marketing",
-        "Targeted advertising campaigns",
-        "Email nurture sequences",
-        "Thought leadership strategy",
+        "SEO and thought-leadership content",
+        "LinkedIn and Google paid campaigns",
+        "Email nurture for long sales cycles",
+        "Referral and review programs",
       ],
     },
   ];
@@ -111,7 +111,7 @@ export const ProfessionalServicesPage = () => {
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              From law firms to accounting practices to consultancies—we help professional service providers build lead generation systems that attract high-value clients.
+              Pipeline generation for law firms, accounting practices, and consultancies. We pair authority-led positioning with the web systems and campaigns that book partner-grade consultations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -130,7 +130,7 @@ export const ProfessionalServicesPage = () => {
       <section className="relative py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
-            badge="Service Verticals"
+            badge="Markets We Help Grow"
             title="Experience Across Professional Services"
             description="We understand the trust-building and credibility requirements unique to professional service marketing."
           />
@@ -173,7 +173,7 @@ export const ProfessionalServicesPage = () => {
           <SectionHeader
             badge="Common Challenges"
             title="Professional Services Marketing Problems We Solve"
-            description="Growing a professional firm requires more than expertise—it requires strategic marketing that builds trust and generates qualified leads."
+            description="Trust and authority are the deciding factors in professional services. We engineer marketing systems that demonstrate both before the first call."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -216,7 +216,7 @@ export const ProfessionalServicesPage = () => {
           <SectionHeader
             badge="Our Approach"
             title="Full-Stack Professional Services Marketing"
-            description="We combine strategic positioning with technical execution to build client acquisition systems that establish credibility and generate leads."
+            description="Senior strategists and engineers on one team build the positioning, web systems, and demand programs that fill partner calendars with qualified consultations."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">

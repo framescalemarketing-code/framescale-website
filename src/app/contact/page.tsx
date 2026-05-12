@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { ContactPage } from "@/components/design-pages/ContactPage";
 
+const title = "Contact FrameScale";
+const description =
+  "Book a free 30-minute consultation. Share your goals and leave with a clear next step toward growth.";
+
 export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact FrameScale for a free 30-minute consultation about your growth goals.",
+  title,
+  description,
+  alternates: { canonical: "/contact" },
+  openGraph: { title, description, url: "/contact", type: "website" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function Contact() {

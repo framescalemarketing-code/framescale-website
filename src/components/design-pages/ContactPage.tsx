@@ -159,7 +159,7 @@ export const ContactPage = () => {
               animate="show"
             >
               <PageBackLink className="mb-6" />
-              <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary) mb-6">
+              <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 Get in Touch
               </span>
               <h1
@@ -172,7 +172,7 @@ export const ContactPage = () => {
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Free 30-minute consultation. No pressure, just honest conversation about how we can help you scale.
+                Book a free 30-minute consultation. Share your goals, leave with a clear next step toward growth.
               </p>
             </motion.div>
           </div>

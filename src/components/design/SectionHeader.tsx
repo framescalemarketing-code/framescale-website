@@ -26,7 +26,7 @@ export const SectionHeader = ({
     >
       {badge && (
         <div className={`mb-4 ${align === "center" ? "flex justify-center" : ""}`}>
-          <span className="inline-block px-4 py-2 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-sm font-semibold uppercase tracking-wider text-(--brand-primary)">
+          <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
             {badge}
           </span>
         </div>

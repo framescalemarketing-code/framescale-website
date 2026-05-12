@@ -12,27 +12,27 @@ export const Footer = () => {
 
   return (
     <footer className="bg-(--brand-deep) text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-10 pb-[calc(6rem+env(safe-area-inset-bottom))] md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 mb-8">
           <div className="lg:col-span-2">
-            <div className="mb-6">
+            <div className="mb-4">
               <BrandLockup size="md" tone="color" />
             </div>
-            <p className="font-body text-white/70 mb-6 leading-relaxed max-w-sm">
+            <p className="font-body text-sm text-white/70 mb-5 leading-relaxed max-w-sm">
               Full-stack growth marketing strategy and execution for small to mid-size businesses across healthcare, retail, and professional services.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                  className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                   aria-label={social.label}
                   target={social.href.startsWith("http") ? "_blank" : undefined}
                   rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
                   {social.icon ? (
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-4 h-4" />
                   ) : (
                     <span className="font-ui text-xs font-semibold uppercase tracking-wide">
                       {social.badge}
@@ -45,8 +45,8 @@ export const Footer = () => {
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-ui font-semibold mb-4 text-white">{title}</h4>
-              <ul className="space-y-3">
+              <h4 className="font-ui text-sm font-semibold mb-3 text-white">{title}</h4>
+              <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -62,12 +62,9 @@ export const Footer = () => {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-sm text-white/60">
+        <div className="pt-6 border-t border-white/10 flex items-start justify-start pr-28 sm:pr-44 md:pr-0">
+          <p className="font-body text-sm leading-relaxed text-white/60">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
-          </p>
-          <p className="font-body text-sm text-white/60">
-            Built with optical expertise, strategy, and code.
           </p>
         </div>
       </div>

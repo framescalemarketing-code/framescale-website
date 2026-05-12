@@ -6,16 +6,14 @@ import { MotionProvider } from "@/components/design/MotionProvider";
 import { ScrollProgress } from "@/components/design/ScrollProgress";
 import { StickyCallCTA } from "@/components/design/StickyCallCTA";
 import { PageTransition } from "@/components/design/PageTransition";
-import { CursorDot } from "@/components/design/CursorDot";
+import { AccessibilityWidget } from "@/components/design/AccessibilityWidget";
 import { GAEventTracker } from "@/components/design/GAEventTracker";
 import { site } from "@/lib/site";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
+import { iubenda } from "@/lib/iubenda";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
-
-const IUBENDA_POLICY_ID = process.env.NEXT_PUBLIC_IUBENDA_POLICY_ID?.trim() || "26891202";
-const IUBENDA_WIDGET_ID = "2d54165d-88d8-4b24-a956-b743f39cdc9f";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -136,53 +134,108 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         {/* eslint-enable @next/next/google-font-preconnect */}
-
-        <Script src="https://cdn.iubenda.com/iubenda.js" strategy="afterInteractive" />
-        <Script src={`https://embeds.iubenda.com/widgets/${IUBENDA_WIDGET_ID}.js`} strategy="afterInteractive" />
-        <Script id="iubenda-cs-config" strategy="afterInteractive">
-          {`
-            window._iub = window._iub || [];
-            window._iub.csConfiguration = {
-              cookiePolicyId: ${Number(IUBENDA_POLICY_ID)},
-              lang: "en",
-              gdprApplies: true,
-              floatingPreferencesButtonDisplay: "bottom-left",
-              perPurposeConsent: true,
-              askConsentAtCookiePolicyUpdate: true,
-              banner: {
-                position: "top",
-                slideDown: true,
-                acceptButtonDisplay: true,
-                customizeButtonDisplay: true,
-                rejectButtonDisplay: true,
-                backgroundColor: "#ffffff",
-                textColor: "#264653",
-                fontSize: "14px",
-                acceptButtonColor: "#17788e",
-                acceptButtonCaptionColor: "#ffffff",
-                customizeButtonColor: "#f7f9fa",
-                customizeButtonCaptionColor: "#264653",
-                rejectButtonColor: "#6c7a7c",
-                rejectButtonCaptionColor: "#ffffff"
-              }
-            };
-          `}
-        </Script>
-        <Script src="https://cdn.iubenda.com/cs/iubenda_cs.js" strategy="afterInteractive" />
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
+        <a
+          href="#main-content"
+          className="skip-to-content sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-(--brand-primary) focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        
+        {/* IUBENDA CONFIG - BEFORE INTERACTIVE (runs before hydration) */}
+        <Script id="iubenda-cs-config" strategy="beforeInteractive">
+          {`
+            window._iub = window._iub || [];
+            window._iub.csConfiguration = {
+              siteId: ${iubenda.siteId},
+              cookiePolicyId: ${iubenda.policyIdNumber},
+              lang: "en",
+              enableGdpr: true,
+              gdprAppliesGlobally: true,
+              enableUspr: true,
+              usPreferencesWidgetDisplay: false,
+              googleConsentMode: true,
+              perPurposeConsent: false,
+              floatingPreferencesButtonDisplay: "bottom-right",
+              startOnDomReady: true,
+              askConsentAtCookiePolicyUpdate: true,
+              cookiePolicyInOtherWindow: true,
+              storage: { useSiteId: true },
+              callback: {
+                onPreferenceExpressed: function(preference) {
+                  if (!preference || preference.consent !== false || window.__framescaleIubendaUsprSyncing) {
+                    return;
+                  }
+
+                  window.__framescaleIubendaUsprSyncing = true;
+                  window.setTimeout(function() {
+                    window._iub.cs.api.setPreferences({
+                      consent: false,
+                      uspr: { s: false, sh: false, adv: false },
+                      ccpa: "1YY-"
+                    }, true, false);
+                    window.__framescaleIubendaUsprSyncing = false;
+                  }, 0);
+                },
+                onConsentRejected: function() {
+                  var preferences = window._iub.cs.api.getPreferences();
+                  if (preferences && preferences.consent === false && !window.__framescaleIubendaUsprSyncing) {
+                    window.__framescaleIubendaUsprSyncing = true;
+                    window._iub.cs.api.setPreferences({
+                      consent: false,
+                      uspr: { s: false, sh: false, adv: false },
+                      ccpa: "1YY-"
+                    }, true, false);
+                    window.__framescaleIubendaUsprSyncing = false;
+                  }
+                }
+              },
+              banner: {
+                position: "float-top-center",
+                acceptButtonDisplay: true,
+                rejectButtonDisplay: true,
+                customizeButtonDisplay: true,
+                closeButtonDisplay: false,
+                showTitle: false,
+                listPurposes: false,
+                showPurposesToggles: false,
+                explicitWithdrawal: true,
+                applyStyles: true,
+                acceptButtonCaption: "Accept all",
+                backgroundColor: "#ffffff",
+                textColor: "#264653",
+                acceptButtonColor: "#17788e",
+                acceptButtonCaptionColor: "#ffffff",
+                rejectButtonCaption: "Reject all",
+                rejectButtonColor: "#f7f9fa",
+                rejectButtonCaptionColor: "#264653",
+                customizeButtonCaption: "Learn more and customize",
+                customizeButtonColor: "#f7f9fa",
+                customizeButtonCaptionColor: "#264653"
+              }
+            };
+          `}
+        </Script>
+        
+        {/* IUBENDA WIDGET LOADER - AFTER INTERACTIVE */}
+        <Script
+          src={`https://embeds.iubenda.com/widgets/${iubenda.widgetId}.js`}
+          strategy="afterInteractive"
+        />
+        
         <GAEventTracker />
         <MotionProvider>
           <ScrollProgress />
-          <CursorDot />
           <Navigation />
           <PageTransition>{children}</PageTransition>
           <Footer />
           <StickyCallCTA />
+          <AccessibilityWidget />
         </MotionProvider>
         <Analytics />
         <SpeedInsights />

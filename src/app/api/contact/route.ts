@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { site } from "@/lib/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
 const CONTACT_NOTIFICATION_EMAIL =
-  process.env.CONTACT_NOTIFICATION_EMAIL?.trim() || "framescalemarketing@framescalemarketing.com";
+  process.env.CONTACT_NOTIFICATION_EMAIL?.trim() || site.email;
 const CONTACT_FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL?.trim() || "framescalemarketing@framescalemarketing.com";
+  process.env.CONTACT_FROM_EMAIL?.trim() || site.email;
 
 type ContactPayload = {
   name?: string;
@@ -93,6 +94,11 @@ async function sendNotificationEmail(input: {
 }
 
 export async function POST(req: NextRequest) {
+  const contentLength = Number(req.headers.get("content-length") ?? 0);
+  if (contentLength > 16_000) {
+    return NextResponse.json({ error: "Payload too large." }, { status: 413 });
+  }
+
   let payload: ContactPayload;
 
   try {

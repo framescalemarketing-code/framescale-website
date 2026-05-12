@@ -20,41 +20,41 @@ export const HealthcarePage = () => {
   const challenges = [
     {
       title: "Patient Acquisition",
-      description: "Attracting new patients in competitive markets while maintaining a premium brand position",
+      description: "Attracting new patients in competitive local markets while staying compliant with healthcare advertising standards.",
     },
     {
-      title: "Digital Presence",
-      description: "Building modern websites and systems that convert visitors into booked appointments",
+      title: "Booking & Intake",
+      description: "Turning website visitors into booked appointments with modern scheduling, online intake, and reminder workflows.",
     },
     {
-      title: "Marketing ROI",
-      description: "Measuring what actually drives patient growth versus vanity metrics",
+      title: "Reviews & Reputation",
+      description: "Building a steady flow of authentic reviews on Google and specialty directories so prospective patients trust you first.",
     },
     {
-      title: "Operational Efficiency",
-      description: "Automating patient communication and reducing manual marketing tasks",
+      title: "Privacy-Aware Analytics",
+      description: "Measuring what drives bookings without exposing PHI, using HIPAA-aware tracking and server-side conversions.",
     },
   ];
 
   const solutions = [
     {
       icon: Target,
-      title: "Strategic Positioning",
+      title: "Practice Positioning",
       items: [
-        "Competitive research and market analysis",
-        "Patient persona development",
-        "Messaging and brand positioning",
-        "Service line optimization",
+        "Service-line and payer mix analysis",
+        "Patient persona and journey mapping",
+        "Local market and competitor research",
+        "Messaging tuned to each specialty",
       ],
     },
     {
       icon: Code,
-      title: "Technical Execution",
+      title: "Booking-Ready Websites",
       items: [
-        "Modern, conversion-optimized websites",
-        "Online booking integration",
-        "Patient CRM and automation",
-        "Analytics and tracking setup",
+        "Modern, fast, accessible practice sites",
+        "Online booking and scheduler integration",
+        "HIPAA-aware analytics and consent",
+        "Insurance and service-line landing pages",
       ],
     },
     {
@@ -62,9 +62,9 @@ export const HealthcarePage = () => {
       title: "Patient Growth",
       items: [
         "Local SEO and Google Business optimization",
-        "Targeted advertising (Google, social)",
-        "Email marketing campaigns",
-        "Review and reputation management",
+        "Targeted Google and Meta ad campaigns",
+        "Recall, reactivation, and referral workflows",
+        "Review generation and reputation management",
       ],
     },
   ];
@@ -112,7 +112,7 @@ export const HealthcarePage = () => {
               className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              From optical retail to dental clinics to specialty medical practices—we help healthcare businesses attract patients, build systems, and scale sustainably.
+              Patient growth marketing for optical retail, dental clinics, and specialty medical practices. We build the websites, booking workflows, and local-search systems that fill your schedule.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -133,7 +133,7 @@ export const HealthcarePage = () => {
           <SectionHeader
             badge="Healthcare Specialties"
             title="Tailored Experience Across Healthcare Sectors"
-            description="We understand the unique challenges of different healthcare verticals and build marketing systems accordingly."
+            description="Optical, dental, and medical practices share fundamentals but live in different markets. We adapt positioning, channels, and intake flows to each one."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -174,7 +174,7 @@ export const HealthcarePage = () => {
           <SectionHeader
             badge="Common Challenges"
             title="Healthcare Marketing Problems We Solve"
-            description="Every healthcare practice faces unique growth challenges. Here's what we help you overcome."
+            description="Every practice operates in a unique payer mix and local market. These are the growth blockers we see most often."
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -217,7 +217,7 @@ export const HealthcarePage = () => {
           <SectionHeader
             badge="Our Approach"
             title="Full-Stack Healthcare Marketing"
-            description="We combine strategic thinking with technical execution to build patient acquisition systems that actually work."
+            description="Strategy, modern web systems, and patient-acquisition campaigns built and operated by one team. Privacy-aware, measurable, and tuned for booked appointments."
           />
 
           <div className="grid lg:grid-cols-3 gap-8">
