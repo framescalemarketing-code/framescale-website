@@ -7,9 +7,12 @@ import { ScrollProgress } from "@/components/design/ScrollProgress";
 import { StickyCallCTA } from "@/components/design/StickyCallCTA";
 import { PageTransition } from "@/components/design/PageTransition";
 import { CursorDot } from "@/components/design/CursorDot";
+import { GAEventTracker } from "@/components/design/GAEventTracker";
 import { site } from "@/lib/site";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -26,7 +29,7 @@ const organizationJsonLd = {
   url: site.url,
   email: site.email,
   telephone: site.phone,
-  sameAs: [site.social.linkedin],
+  sameAs: [site.social.linkedin, site.social.fiverr],
 };
 
 export const metadata: Metadata = {
@@ -108,6 +111,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+              `}
+            </Script>
+          </>
+        ) : null}
         {/* eslint-disable @next/next/google-font-preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -119,6 +139,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <GAEventTracker />
         <MotionProvider>
           <ScrollProgress />
           <CursorDot />

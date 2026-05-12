@@ -6,6 +6,7 @@ import { footerLinks, site } from "@/lib/site";
 export const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: site.social.linkedin, label: "LinkedIn" },
+    { icon: null, href: site.social.fiverr, label: "Fiverr", badge: "fi" },
     { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
   ];
 
@@ -30,7 +31,13 @@ export const Footer = () => {
                   target={social.href.startsWith("http") ? "_blank" : undefined}
                   rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
-                  <social.icon className="w-5 h-5" />
+                  {social.icon ? (
+                    <social.icon className="w-5 h-5" />
+                  ) : (
+                    <span className="font-ui text-xs font-semibold uppercase tracking-wide">
+                      {social.badge}
+                    </span>
+                  )}
                 </a>
               ))}
             </div>

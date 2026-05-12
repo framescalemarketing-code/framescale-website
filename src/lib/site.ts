@@ -13,6 +13,7 @@ export const site = {
   twitterImage: "/twitter-image",
   social: {
     linkedin: "https://www.linkedin.com/company/framescale",
+    fiverr: "https://www.fiverr.com/s/xX8GAv4",
   },
 } as const;
 
