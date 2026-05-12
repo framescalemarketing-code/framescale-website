@@ -139,11 +139,24 @@ export default function RootLayout({
 
         <Script src="https://cdn.iubenda.com/iubenda.js" strategy="afterInteractive" />
         <Script src={`https://embeds.iubenda.com/widgets/${IUBENDA_WIDGET_ID}.js`} strategy="afterInteractive" />
-        <Script id="iubenda-widget-init" strategy="afterInteractive">
+        <Script id="iubenda-cs-config" strategy="afterInteractive">
           {`
             window._iub = window._iub || [];
+            window._iub.csConfiguration = {
+              cookiePolicyId: ${Number(IUBENDA_POLICY_ID)},
+              lang: "en",
+              floatingPreferencesButtonDisplay: "bottom-left",
+              banner: {
+                position: "top",
+                slideDown: true,
+                acceptButtonDisplay: true,
+                customizeButtonDisplay: true,
+                rejectButtonDisplay: true
+              }
+            };
           `}
         </Script>
+        <Script src="https://cdn.iubenda.com/cs/iubenda_cs.js" strategy="afterInteractive" />
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <script
