@@ -145,13 +145,25 @@ export default function RootLayout({
             window._iub.csConfiguration = {
               cookiePolicyId: ${Number(IUBENDA_POLICY_ID)},
               lang: "en",
+              gdprApplies: true,
               floatingPreferencesButtonDisplay: "bottom-left",
+              perPurposeConsent: true,
+              askConsentAtCookiePolicyUpdate: true,
               banner: {
                 position: "top",
                 slideDown: true,
                 acceptButtonDisplay: true,
                 customizeButtonDisplay: true,
-                rejectButtonDisplay: true
+                rejectButtonDisplay: true,
+                backgroundColor: "#ffffff",
+                textColor: "#264653",
+                fontSize: "14px",
+                acceptButtonColor: "#17788e",
+                acceptButtonCaptionColor: "#ffffff",
+                customizeButtonColor: "#f7f9fa",
+                customizeButtonCaptionColor: "#264653",
+                rejectButtonColor: "#6c7a7c",
+                rejectButtonCaptionColor: "#ffffff"
               }
             };
           `}
