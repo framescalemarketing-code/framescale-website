@@ -35,25 +35,25 @@ export default function PrivacyPage() {
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="space-y-8 bg-white rounded-2xl border border-border depth-card p-8 lg:p-10">
-            <div>
-              <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">What We Collect</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
-                Contact details and message contents submitted through our site, along with basic analytics data used to improve usability and site performance.
-              </p>
-            </div>
+            <p className="font-body text-(--brand-neutral) leading-relaxed">
+              This page uses your Iubenda-hosted full policy. If the widget does not load, use the direct link below.
+            </p>
 
-            <div>
-              <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">How We Use It</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
-                We use your information to respond to inquiries, deliver services, and maintain communication related to active projects.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Data Protection</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
-                We use secure platforms and reasonable safeguards to protect information from unauthorized access or misuse.
-              </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://www.iubenda.com/privacy-policy/26891202"
+                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-[#145F71] transition-colors"
+                title="Privacy Policy"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="https://www.iubenda.com/privacy-policy/26891202/cookie-policy"
+                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-(--brand-primary) border border-(--brand-primary)/40 hover:bg-(--brand-primary)/8 transition-colors"
+                title="Cookie Policy"
+              >
+                Cookie Policy
+              </a>
             </div>
 
             <div>
