@@ -9,6 +9,13 @@ import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
 import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
 import { validateEmailConfirm, validateEmailInput } from "@/lib/email-validation";
+import {
+  PAGE_CONTACT_FORM_MAX,
+  PAGE_HERO_INNER,
+  PAGE_SHELL_CONTACT_INFO,
+  PAGE_SHELL_FLUID,
+  PAGE_SHELL_FLUID_RELATIVE_FULL,
+} from "@/lib/page-layout";
 
 type FormState = {
   name: string;
@@ -187,13 +194,13 @@ export const ContactPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-20">
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className={PAGE_SHELL_FLUID_RELATIVE_FULL}>
+          <div className={PAGE_HERO_INNER}>
             <motion.div
               variants={slideUp}
               initial="hidden"
@@ -204,14 +211,14 @@ export const ContactPage = () => {
                 Get in Touch
               </span>
               <h1
-                className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
+                className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[3.5rem] mb-4 sm:mb-6 leading-tight px-1"
                 style={{ color: "var(--brand-deep)" }}
               >
                 {`Let's Talk About Fit`}
               </h1>
               <p
-                className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
-                style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
+                className="font-body text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
+                style={{ color: "var(--brand-neutral)" }}
               >
                 Book a free 30-minute intro call. Bring your goals and constraints, and leave with an honest next step.
               </p>
@@ -221,9 +228,9 @@ export const ContactPage = () => {
       </section>
 
       {/* Contact Methods */}
-      <section className="relative py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 mb-20">
+      <section className="relative py-16 sm:py-20 bg-white">
+        <div className={PAGE_SHELL_FLUID}>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 xl:gap-10 mb-16 sm:mb-20">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={index}
@@ -232,7 +239,7 @@ export const ContactPage = () => {
                 whileInView="show"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-8 border border-(--brand-primary)/20"
+                className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-6 sm:p-8 xl:p-10 border border-(--brand-primary)/20 h-full flex flex-col"
               >
                 <div className="w-12 h-12 rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center mb-6">
                   <method.icon className="w-6 h-6 text-white" />
@@ -244,14 +251,14 @@ export const ContactPage = () => {
                   {method.title}
                 </h3>
                 <p
-                  className="font-body mb-6 leading-relaxed"
-                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
+                  className="font-body mb-6 leading-relaxed flex-1 max-w-none"
+                  style={{ color: "var(--brand-neutral)" }}
                 >
                   {method.description}
                 </p>
                 <Link
                   href={method.href}
-                  className="inline-flex items-center gap-2 text-(--brand-primary) hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-(--brand-primary) hover:gap-3 transition-all mt-auto pt-2"
                 >
                   <span className="font-ui text-sm font-semibold">{method.action}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -266,9 +273,9 @@ export const ContactPage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className={PAGE_CONTACT_FORM_MAX}
           >
-            <div className="bg-white rounded-2xl p-8 lg:p-12 border border-border shadow-lg">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 xl:p-12 border border-border shadow-lg">
               <div className="flex items-center gap-3 mb-8">
                 <MessageSquare className="w-6 h-6 text-(--brand-primary)" />
                 <h2
@@ -453,8 +460,8 @@ export const ContactPage = () => {
       </section>
 
       {/* Info Section */}
-      <section className="relative py-20 bg-muted">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <section className="relative py-16 sm:py-20 bg-muted">
+        <div className={PAGE_SHELL_CONTACT_INFO}>
           <motion.div
             variants={slideUp}
             initial="hidden"
@@ -467,7 +474,7 @@ export const ContactPage = () => {
             >
               What Happens Next?
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 xl:gap-10 text-left max-w-5xl xl:max-w-none mx-auto">
               <div>
                 <div
                   className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"

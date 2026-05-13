@@ -1,37 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
-
-const sections = [
-  {
-    title: "Main",
-    links: [
-      { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Process", href: "/process" },
-      { label: "Book a call", href: "/book" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Industries",
-    links: [
-      { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Retail & E-commerce", href: "/industries/retail" },
-      { label: "Professional Services", href: "/industries/professional-services" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "California Privacy Notice", href: "/california-privacy" },
-      { label: "Cookie Policy", href: "/cookie-policy" },
-      { label: "Accessibility Statement", href: "/accessibility" },
-      { label: "Terms of Service", href: "/terms" },
-    ],
-  },
-] as const;
+import { getSitemapPageSections } from "@/lib/sitemap-routes";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -40,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function SitemapPage() {
+  const sections = getSitemapPageSections();
+
   return (
     <main className="min-h-screen bg-white">
       <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-14">

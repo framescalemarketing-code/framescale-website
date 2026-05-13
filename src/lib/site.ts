@@ -1,15 +1,23 @@
+/** Public site hostname (no scheme, no path). Drives `url`, inbox, and noreply defaults. */
+const SITE_PUBLIC_HOSTNAME = "framescalemarketing.com";
+/** Inbox local part for the public contact address (must match DNS / Resend setup). */
+const SITE_CONTACT_MAILBOX_LOCAL = "framescalemarketing";
+
 export const site = {
   name: "FrameScale Inc",
   shortName: "FrameScale",
   tagline: "Hands-on growth marketing that teaches you to scale.",
   description:
     "Research-led strategy and custom marketing sites for owners who want clarity, not noise. SEO, Google Business Profile, analytics, and paid media led directly by the principal so you can own the systems behind the results.",
-  url: "https://framescalemarketing.com",
+  /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
+  url: `https://${SITE_PUBLIC_HOSTNAME}`,
+  /** Hostname only (no scheme), for `robots.txt` Host and similar. */
+  hostname: SITE_PUBLIC_HOSTNAME,
   /** Canonical path for the live scheduling embed (`/book`). */
   bookingPath: "/book",
-  email: "framescalemarketing@framescalemarketing.com",
+  email: `${SITE_CONTACT_MAILBOX_LOCAL}@${SITE_PUBLIC_HOSTNAME}`,
   /** Default transactional `from` when `RESEND_NOREPLY_FROM` is unset (must match a verified domain in Resend). */
-  noreplyFrom: "noreply@framescalemarketing.com",
+  noreplyFrom: `noreply@${SITE_PUBLIC_HOSTNAME}`,
   phone: "(916) 520-4553",
   locale: "en_US",
   ogImage: "/opengraph-image",

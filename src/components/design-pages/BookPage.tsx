@@ -11,6 +11,14 @@ import { site } from "@/lib/site";
 import { slideUp } from "@/lib/motion";
 import { validateEmailConfirm } from "@/lib/email-validation";
 import { BOOKING_ZONE } from "@/lib/booking-schedule";
+import {
+  PAGE_BOOK_FOOTER,
+  PAGE_BOOKING_CAL_GRID,
+  PAGE_HERO_INNER,
+  PAGE_SHELL_BOOK_MAIN,
+  PAGE_SHELL_FLUID_RELATIVE_FULL,
+  PAGE_SUCCESS_INNER,
+} from "@/lib/page-layout";
 
 type BookingSlotStatus = "available" | "booked" | "unavailable";
 
@@ -194,20 +202,23 @@ export const BookPage = () => {
   if (success) {
     return (
       <div className="min-h-screen">
-        <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-20">
+        <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-16 sm:pt-32 sm:pb-20">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
           </div>
-          <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center relative z-10">
+          <div className={PAGE_SUCCESS_INNER}>
             <motion.div variants={slideUp} initial="hidden" animate="show" aria-live="polite">
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary)">
                 <Calendar className="h-8 w-8 text-white" aria-hidden />
               </div>
-              <h1 className="font-headline text-4xl lg:text-5xl mb-4" style={{ color: "var(--brand-deep)" }}>
+              <h1
+                className="font-headline text-3xl sm:text-4xl md:text-5xl xl:text-6xl mb-4"
+                style={{ color: "var(--brand-deep)" }}
+              >
                 You are on the calendar
               </h1>
               {bookedWhenLabel && (
-                <p className="font-headline text-xl lg:text-2xl text-(--brand-primary) mb-6 leading-snug">
+                <p className="font-headline text-lg sm:text-xl md:text-2xl text-(--brand-primary) mb-6 leading-snug px-1">
                   {bookedWhenLabel}
                 </p>
               )}
@@ -247,26 +258,26 @@ export const BookPage = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-[32vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-10">
+      <section className="relative min-h-[28vh] sm:min-h-[32vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-8 sm:pt-32 sm:pb-10">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className={PAGE_SHELL_FLUID_RELATIVE_FULL}>
+          <div className={PAGE_HERO_INNER}>
             <motion.div variants={slideUp} initial="hidden" animate="show">
               <PageBackLink className="mb-6" />
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 Intro Call
               </span>
               <h1
-                className="font-headline text-5xl lg:text-6xl mb-5 leading-tight"
+                className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[3.5rem] 2xl:text-7xl mb-4 sm:mb-5 leading-tight px-1"
                 style={{ color: "var(--brand-deep)" }}
               >
                 Book your intro call
               </h1>
               <p
-                className="font-body text-xl lg:text-2xl leading-relaxed max-w-2xl mx-auto"
+                className="font-body text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
                 Choose an open slot below. Hours are Monday through Friday, 9:00 AM to 5:00 PM Pacific, in
@@ -277,27 +288,30 @@ export const BookPage = () => {
         </div>
       </section>
 
-      <section className="relative pb-20 lg:pb-28 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="relative pb-16 sm:pb-20 lg:pb-28 bg-white">
+        <div className={PAGE_SHELL_BOOK_MAIN}>
           <motion.div
             variants={slideUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 sm:p-6 lg:p-8 shadow-[var(--shadow-depth-2)]"
+            className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 sm:p-6 lg:p-8 xl:p-10 shadow-[var(--shadow-depth-2)]"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <div className="flex items-center gap-2 justify-center sm:justify-start">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-6">
+              <div className="flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto min-w-0">
                 <button
                   type="button"
                   aria-label="Previous month"
                   disabled={prevDisabled}
                   onClick={() => setYearMonth((ym) => shiftYearMonth(ym, -1))}
-                  className="p-2 rounded-lg border border-border bg-white text-(--brand-deep) hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                  className="shrink-0 p-2 rounded-lg border border-border bg-white text-(--brand-deep) hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <h2 className="font-headline text-2xl min-w-[12rem] text-center" style={{ color: "var(--brand-deep)" }}>
+                <h2
+                  className="font-headline text-xl sm:text-2xl min-w-0 flex-1 sm:flex-initial sm:min-w-[10rem] text-center px-2"
+                  style={{ color: "var(--brand-deep)" }}
+                >
                   {monthTitle}
                 </h2>
                 <button
@@ -305,13 +319,13 @@ export const BookPage = () => {
                   aria-label="Next month"
                   disabled={nextDisabled}
                   onClick={() => setYearMonth((ym) => shiftYearMonth(ym, 1))}
-                  className="p-2 rounded-lg border border-border bg-white text-(--brand-deep) hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                  className="shrink-0 p-2 rounded-lg border border-border bg-white text-(--brand-deep) hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
               {loading && (
-                <div className="flex items-center justify-center gap-2 text-(--brand-neutral) font-body text-sm">
+                <div className="flex items-center justify-center gap-2 text-(--brand-neutral) font-body text-sm w-full sm:w-auto">
                   <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
                   Loading open times…
                 </div>
@@ -324,8 +338,8 @@ export const BookPage = () => {
               </p>
             )}
 
-            <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
-              <div className="rounded-xl border border-border bg-white p-4 sm:p-5 shadow-[var(--shadow-depth-1)]">
+            <div className={PAGE_BOOKING_CAL_GRID}>
+              <div className="rounded-xl border border-border bg-white p-3 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-1)] min-w-0">
                 {loading && !payload ? (
                   <div className="flex flex-col items-center justify-center min-h-[280px] gap-3 text-(--brand-neutral) font-body text-sm">
                     <Loader2 className="w-8 h-8 animate-spin text-(--brand-primary)" aria-hidden />
@@ -337,17 +351,17 @@ export const BookPage = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="grid grid-cols-7 gap-1 text-center font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-neutral) mb-2">
+                    <div className="grid grid-cols-7 gap-0.5 sm:gap-1 text-center font-ui text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-(--brand-neutral) mb-1.5 sm:mb-2">
                       {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                        <div key={d} className="py-2">
+                        <div key={d} className="py-1.5 sm:py-2 truncate px-0.5">
                           {d}
                         </div>
                       ))}
                     </div>
-                    <div className="grid grid-cols-7 gap-1">
+                    <div className="grid grid-cols-7 gap-0.5 sm:gap-1">
                       {gridCells.map((cell, idx) => {
                         if (cell.kind === "empty") {
-                          return <div key={`e-${idx}`} className="aspect-square min-h-10" />;
+                          return <div key={`e-${idx}`} className="aspect-square min-h-9 sm:min-h-10" />;
                         }
                         const daySlots = slotsByDay.get(cell.key) ?? [];
                         const has = daySlots.length > 0;
@@ -365,7 +379,7 @@ export const BookPage = () => {
                               setFormError(null);
                             }}
                             aria-label={`${cell.key}${has ? `, ${openCount} bookable slots` : ", closed"}`}
-                            className={`relative aspect-square min-h-10 rounded-lg font-ui text-sm font-medium transition-colors
+                            className={`relative aspect-square min-h-9 sm:min-h-10 md:min-h-11 rounded-md sm:rounded-lg font-ui text-xs sm:text-sm font-medium transition-colors
                           ${!has ? "text-(--brand-neutral)/35 cursor-not-allowed bg-muted/40" : "text-(--brand-deep) hover:bg-(--brand-primary)/10 cursor-pointer"}
                           ${isSelected && has ? "ring-2 ring-(--brand-primary) bg-(--brand-primary)/10" : ""}
                           ${isToday && has ? "border border-(--brand-secondary)" : ""}
@@ -383,9 +397,9 @@ export const BookPage = () => {
                 )}
               </div>
 
-              <div className="rounded-xl border border-border bg-white p-5 shadow-[var(--shadow-depth-1)] min-h-[280px]">
+              <div className="rounded-xl border border-border bg-white p-4 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-1)] min-h-[260px] sm:min-h-[280px] flex flex-col min-w-0 lg:min-h-[min(32rem,70vh)] xl:min-h-[min(36rem,72vh)]">
                 {!selectedDay && (
-                  <p className="font-body text-(--brand-neutral) text-sm leading-relaxed">
+                  <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
                     Choose a weekday on the calendar. Times that are already taken stay visible with a Booked
                     label. Gray rows marked Closed are outside the booking window or too soon to book.
                   </p>
@@ -394,11 +408,11 @@ export const BookPage = () => {
                   <p className="font-body text-(--brand-neutral) text-sm">Weekends are closed. Pick a weekday.</p>
                 )}
                 {selectedDaySlots.length > 0 && (
-                  <div className="space-y-3">
-                    <p className="font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
+                  <div className="space-y-3 flex flex-col flex-1 min-h-0">
+                    <p className="font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) shrink-0">
                       Times (Pacific)
                     </p>
-                    <ul className="flex flex-col gap-2 max-h-56 overflow-y-auto pr-1">
+                    <ul className="flex flex-col gap-2 flex-1 min-h-0 max-h-44 sm:max-h-52 md:max-h-60 lg:max-h-none overflow-y-auto overscroll-contain pr-1 -mr-1">
                       {selectedDaySlots.map((slot) => {
                         const isSel = selectedSlot?.start === slot.start && slot.status === "available";
                         if (slot.status === "available") {
@@ -443,7 +457,10 @@ export const BookPage = () => {
                 )}
 
                 {selectedSlot?.status === "available" && (
-                  <form onSubmit={handleBook} className="mt-6 space-y-4 border-t border-border pt-6">
+                  <form
+                    onSubmit={handleBook}
+                    className="mt-4 sm:mt-6 space-y-4 border-t border-border pt-4 sm:pt-6 shrink-0"
+                  >
                     <p className="font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
                       Your details
                     </p>
@@ -535,7 +552,7 @@ export const BookPage = () => {
               </div>
             </div>
 
-            <p className="mt-6 text-center font-body text-sm text-(--brand-neutral)">
+            <p className="mt-6 sm:mt-8 text-center font-body text-sm sm:text-base text-(--brand-neutral) max-w-2xl xl:max-w-3xl mx-auto px-1">
               Prefer email first?{" "}
               <Link href="/contact" className="text-(--brand-primary) font-semibold hover:underline">
                 Use the contact form
@@ -546,8 +563,8 @@ export const BookPage = () => {
         </div>
       </section>
 
-      <section className="relative py-16 bg-muted border-t border-border">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <section className="relative py-12 sm:py-16 bg-muted border-t border-border pb-[max(3rem,env(safe-area-inset-bottom,0px))]">
+        <div className={PAGE_BOOK_FOOTER}>
           <Mail className="w-8 h-8 text-(--brand-primary) mx-auto mb-4" aria-hidden />
           <p className="font-body text-(--brand-neutral) leading-relaxed">
             Bookings use the same systems as the contact form on this site. We do not plug in a separate paid
