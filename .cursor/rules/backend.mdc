@@ -9,9 +9,10 @@ globs:
 
 ## Existing surface (do not hallucinate more)
 
-- **Route handlers** in this repo today live only at:
+- **Route handlers** in this repo today live at:
   - `src/app/api/contact/route.ts`
   - `src/app/api/consent/route.ts`
+  - `src/app/api/booking/route.ts`
 - Do **not** add new `route.ts` files, path segments, or HTTP clients unless the user explicitly asks for a new endpoint or integration.
 
 ## Environment variables

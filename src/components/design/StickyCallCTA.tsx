@@ -5,13 +5,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import { site } from "@/lib/site";
 
 export const StickyCallCTA = () => {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const hideOnRoutes = ["/contact"];
+    const hideOnRoutes = ["/contact", site.bookingPath];
     if (hideOnRoutes.includes(pathname)) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- pathname-driven visibility
       setVisible(false);
@@ -37,7 +38,7 @@ export const StickyCallCTA = () => {
           className="fixed bottom-4 right-19 z-40 max-[420px]:right-18"
         >
           <Link
-            href="/contact"
+            href={site.bookingPath}
             className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-4 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-[#145F71] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold sm:px-5"
             aria-label="Book an Intro Call"
           >

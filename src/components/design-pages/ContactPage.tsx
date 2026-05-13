@@ -8,12 +8,12 @@ import { PageBackLink } from "../design/PageBackLink";
 import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
 import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { validateEmailConfirm, validateEmailInput } from "@/lib/email-validation";
 
 type FormState = {
   name: string;
   email: string;
+  confirmEmail: string;
   company: string;
   industry: string;
   message: string;
@@ -24,6 +24,7 @@ export const ContactPage = () => {
   const [formData, setFormData] = useState<FormState>({
     name: "",
     email: "",
+    confirmEmail: "",
     company: "",
     industry: "",
     message: "",
@@ -38,7 +39,7 @@ export const ContactPage = () => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
     const next: Partial<FormState> = {};
-    (["name", "email", "company", "industry", "message"] as const).forEach((key) => {
+    (["name", "email", "confirmEmail", "company", "industry", "message"] as const).forEach((key) => {
       const v = params.get(key);
       if (v) next[key] = v;
     });
@@ -50,8 +51,10 @@ export const ContactPage = () => {
   const validateField = (name: keyof FormState, value: string): string | undefined => {
     if (name === "name" && !value.trim()) return "Please enter your name.";
     if (name === "email") {
-      if (!value.trim()) return "Email is required.";
-      if (!EMAIL_RE.test(value.trim())) return "Enter a valid email address.";
+      return validateEmailInput(value);
+    }
+    if (name === "confirmEmail") {
+      return undefined;
     }
     if (name === "message") {
       if (!value.trim()) return "A short message helps me prepare.";
@@ -63,9 +66,18 @@ export const ContactPage = () => {
   const validateAll = (data: FormState): FieldErrors => {
     const next: FieldErrors = {};
     (Object.keys(data) as (keyof FormState)[]).forEach((k) => {
+      if (k === "confirmEmail") return;
       const err = validateField(k, data[k]);
       if (err) next[k] = err;
     });
+    const primaryEmailErr = validateEmailInput(data.email);
+    if (primaryEmailErr) {
+      next.email = primaryEmailErr;
+    } else if (!data.confirmEmail.trim()) {
+      next.confirmEmail = "Please confirm your email.";
+    } else if (data.email.trim().toLowerCase() !== data.confirmEmail.trim().toLowerCase()) {
+      next.confirmEmail = "Email addresses do not match.";
+    }
     return next;
   };
 
@@ -75,7 +87,14 @@ export const ContactPage = () => {
 
     const allErrors = validateAll(formData);
     setErrors(allErrors);
-    setTouched({ name: true, email: true, company: true, industry: true, message: true });
+    setTouched({
+      name: true,
+      email: true,
+      confirmEmail: true,
+      company: true,
+      industry: true,
+      message: true,
+    });
     if (Object.keys(allErrors).length > 0) {
       setSubmitNote("Please correct the highlighted fields and try again.");
       return;
@@ -100,7 +119,7 @@ export const ContactPage = () => {
       }
 
       setSubmitNote("Thanks. Your message was received and I will get back to you within 24 hours.");
-      setFormData({ name: "", email: "", company: "", industry: "", message: "" });
+      setFormData({ name: "", email: "", confirmEmail: "", company: "", industry: "", message: "" });
       setTouched({});
       setErrors({});
     } catch (err) {
@@ -115,24 +134,46 @@ export const ContactPage = () => {
     const name = e.target.name as keyof FormState;
     const value = e.target.value;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (touched[name]) {
-      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
-    }
+    if (!touched[name]) return;
+    setErrors((prevErr) => {
+      const nextErr: FieldErrors = { ...prevErr, [name]: validateField(name, value) };
+      if (name === "confirmEmail") {
+        nextErr.confirmEmail = validateEmailConfirm(formData.email, value);
+      }
+      if (name === "email" && touched.confirmEmail) {
+        nextErr.confirmEmail = validateEmailConfirm(value, formData.confirmEmail);
+      }
+      return nextErr;
+    });
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const name = e.target.name as keyof FormState;
+    const value = e.target.value;
     setTouched((prev) => ({ ...prev, [name]: true }));
-    setErrors((prev) => ({ ...prev, [name]: validateField(name, e.target.value) }));
+    if (name === "confirmEmail") {
+      setErrors((prev) => ({
+        ...prev,
+        confirmEmail: validateEmailConfirm(formData.email, value),
+      }));
+      return;
+    }
+    setErrors((prev) => {
+      const next: FieldErrors = { ...prev, [name]: validateField(name, value) };
+      if (name === "email" && touched.confirmEmail) {
+        next.confirmEmail = validateEmailConfirm(value, formData.confirmEmail);
+      }
+      return next;
+    });
   };
 
   const contactMethods = [
     {
       icon: Calendar,
       title: "Schedule a Call",
-      description: "Book a 30-minute discovery call to discuss your growth goals.",
-      action: "Schedule Now",
-      href: `mailto:${site.email}?subject=${encodeURIComponent("Discovery Call Request")}`,
+      description: "Book a 30-minute intro call to discuss your growth goals.",
+      action: "Open calendar",
+      href: site.bookingPath,
     },
     {
       icon: Mail,
@@ -172,7 +213,7 @@ export const ContactPage = () => {
                 className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
                 style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
               >
-                Book a free 30-minute discovery call. Bring your goals and constraints, and leave with an honest next step.
+                Book a free 30-minute intro call. Bring your goals and constraints, and leave with an honest next step.
               </p>
             </motion.div>
           </div>
@@ -291,6 +332,35 @@ export const ContactPage = () => {
                       <p id="email-error" className="mt-1 font-body text-xs text-destructive">{errors.email}</p>
                     )}
                   </div>
+                </div>
+
+                <div className="mb-6">
+                  <label
+                    htmlFor="confirmEmail"
+                    className="block font-ui text-sm font-medium mb-2"
+                    style={{ color: "var(--brand-deep)" }}
+                  >
+                    Confirm email *
+                  </label>
+                  <input
+                    type="email"
+                    id="confirmEmail"
+                    name="confirmEmail"
+                    required
+                    autoComplete="off"
+                    value={formData.confirmEmail}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-invalid={!!errors.confirmEmail}
+                    aria-describedby={errors.confirmEmail ? "confirm-email-error" : undefined}
+                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.confirmEmail && touched.confirmEmail ? "border-destructive" : "border-border"}`}
+                    placeholder="Re-enter your email"
+                  />
+                  {errors.confirmEmail && touched.confirmEmail && (
+                    <p id="confirm-email-error" className="mt-1 font-body text-xs text-destructive">
+                      {errors.confirmEmail}
+                    </p>
+                  )}
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -427,7 +497,7 @@ export const ContactPage = () => {
                   className="font-headline text-lg mb-2"
                   style={{ color: "var(--brand-deep)" }}
                 >
-                  Discovery Call
+                  Intro call
                 </h3>
                 <p
                   className="font-body text-sm leading-relaxed"

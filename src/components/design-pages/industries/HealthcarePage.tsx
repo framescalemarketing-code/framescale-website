@@ -5,6 +5,7 @@ import { Button } from "../../design/Button";
 import { PageBackLink } from "../../design/PageBackLink";
 import { SectionHeader } from "../../design/SectionHeader";
 import { slideByIndex, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   Heart,
   TrendingUp,
@@ -116,8 +117,8 @@ export const HealthcarePage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button size="lg" variant="ghost" href="/process">
                 Our Process
@@ -279,8 +280,8 @@ export const HealthcarePage = () => {
               {`Your practice runs on trust, booked appointments, and a reputation patients talk about. If you want a partner who researches your local market first, builds a site that reflects the care you deliver, and measures what actually fills the schedule, let's start with a conversation.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button variant="secondary" size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button
                 variant="ghost"

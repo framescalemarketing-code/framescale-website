@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./Button";
 import { BrandLockup } from "./Brand";
-import { mainNav } from "@/lib/site";
+import { mainNav, site } from "@/lib/site";
 
 type NavChild = { label: string; href: string; description?: string };
 type NavItem = { label: string; href: string; children?: readonly NavChild[] };
@@ -119,7 +119,7 @@ export const Navigation = () => {
                 </Link>
               )
             )}
-            <Button size="sm" href="/contact">
+            <Button size="sm" href={site.bookingPath}>
               Get Started
             </Button>
           </div>
@@ -180,7 +180,7 @@ export const Navigation = () => {
                   )}
                 </div>
               ))}
-              <Button size="md" href="/contact" className="w-full justify-center mt-4">
+              <Button size="md" href={site.bookingPath} className="w-full justify-center mt-4">
                 Get Started
               </Button>
             </div>

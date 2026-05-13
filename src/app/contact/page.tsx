@@ -3,7 +3,7 @@ import { ContactPage } from "@/components/design-pages/ContactPage";
 
 const title = "Contact FrameScale";
 const description =
-  "Book a free 30-minute discovery call. Share goals and constraints, get candid feedback, and leave with an honest next step.";
+  "Book a free 30-minute intro call. Share goals and constraints, get candid feedback, and leave with an honest next step.";
 
 export const metadata: Metadata = {
   title,

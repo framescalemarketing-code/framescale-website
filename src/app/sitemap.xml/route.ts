@@ -18,6 +18,7 @@ const routes: Route[] = [
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
   { path: "/process", priority: 0.8, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/book", priority: 0.95, changeFrequency: "monthly" },
   { path: "/industries/healthcare", priority: 0.9, changeFrequency: "monthly" },
   { path: "/industries/retail", priority: 0.9, changeFrequency: "monthly" },
   { path: "/industries/professional-services", priority: 0.9, changeFrequency: "monthly" },

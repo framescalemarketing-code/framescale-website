@@ -13,6 +13,7 @@ interface ButtonProps {
   className?: string;
   href?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -24,6 +25,7 @@ export const Button = ({
   className = "",
   href,
   type = "button",
+  disabled = false,
 }: ButtonProps) => {
   const baseStyles =
     "inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 font-ui font-medium tracking-wide relative overflow-hidden group whitespace-nowrap";
@@ -70,7 +72,9 @@ export const Button = ({
     </>
   );
 
-  const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}${
+    disabled ? " opacity-50 pointer-events-none cursor-not-allowed" : ""
+  }`;
 
   if (href) {
     const isExternal = href.startsWith("http") || href.startsWith("#");
@@ -89,7 +93,7 @@ export const Button = ({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {content}
     </button>
   );

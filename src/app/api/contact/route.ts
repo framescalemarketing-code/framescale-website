@@ -1,41 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { site } from "@/lib/site";
+import { validateEmailConfirm } from "@/lib/email-validation";
+import { contactInquiryOwnerHtml, getNoreplyFrom } from "@/lib/transactional-email-brand";
+import { cleanString, getClientIp } from "@/lib/api-route-helpers";
+import { postResendEmail } from "@/lib/resend-client";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
 const CONTACT_NOTIFICATION_EMAIL =
   process.env.CONTACT_NOTIFICATION_EMAIL?.trim() || site.email;
-const CONTACT_FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL?.trim() || site.email;
 
 type ContactPayload = {
   name?: string;
   email?: string;
+  confirmEmail?: string;
   company?: string;
   industry?: string;
   message?: string;
   sourcePage?: string;
 };
-
-function clean(value: string | undefined, maxLen: number) {
-  return (value ?? "").trim().slice(0, maxLen);
-}
-
-function clientIp(req: NextRequest) {
-  const xff = req.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0]?.trim() || null;
-  return req.headers.get("x-real-ip") || null;
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
 
 async function sendNotificationEmail(input: {
   name: string;
@@ -60,33 +43,23 @@ async function sendNotificationEmail(input: {
     input.message,
   ].join("\n");
 
-  const html = `
-    <h2>New contact form submission</h2>
-    <p><strong>Name:</strong> ${escapeHtml(input.name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(input.email)}</p>
-    <p><strong>Company:</strong> ${escapeHtml(input.company || "N/A")}</p>
-    <p><strong>Industry:</strong> ${escapeHtml(input.industry || "N/A")}</p>
-    <p><strong>Source Page:</strong> ${escapeHtml(input.sourcePage)}</p>
-    <hr />
-    <p><strong>Message</strong></p>
-    <p>${escapeHtml(input.message).replace(/\n/g, "<br />")}</p>
-  `;
+  const html = contactInquiryOwnerHtml({
+    name: input.name,
+    email: input.email,
+    company: input.company,
+    industry: input.industry,
+    message: input.message,
+    sourcePage: input.sourcePage,
+  });
 
   try {
-    await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: CONTACT_FROM_EMAIL,
-        to: [CONTACT_NOTIFICATION_EMAIL],
-        reply_to: input.email,
-        subject: `New website inquiry from ${input.name}`,
-        text,
-        html,
-      }),
+    await postResendEmail(RESEND_API_KEY, {
+      from: getNoreplyFrom(),
+      to: [CONTACT_NOTIFICATION_EMAIL],
+      reply_to: input.email,
+      subject: `New website inquiry from ${input.name}`,
+      text,
+      html,
     });
   } catch {
     // Keep form submission successful even if email provider is temporarily unavailable.
@@ -107,18 +80,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
   }
 
-  const name = clean(payload.name, 120);
-  const email = clean(payload.email, 320).toLowerCase();
-  const company = clean(payload.company, 160);
-  const industry = clean(payload.industry, 80);
-  const message = clean(payload.message, 5000);
-  const sourcePage = clean(payload.sourcePage, 500) || "/contact";
+  const name = cleanString(payload.name, 120);
+  const email = cleanString(payload.email, 320).toLowerCase();
+  const confirmEmail = cleanString(payload.confirmEmail, 320).toLowerCase();
+  const company = cleanString(payload.company, 160);
+  const industry = cleanString(payload.industry, 80);
+  const message = cleanString(payload.message, 5000);
+  const sourcePage = cleanString(payload.sourcePage, 500) || "/contact";
 
   if (!name) {
     return NextResponse.json({ error: "Name is required." }, { status: 400 });
   }
-  if (!email || !EMAIL_RE.test(email)) {
-    return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
+  const emailErr = validateEmailConfirm(email, confirmEmail);
+  if (emailErr) {
+    return NextResponse.json({ error: emailErr }, { status: 400 });
   }
   if (!message || message.length < 10) {
     return NextResponse.json({ error: "Please include at least 10 characters in your message." }, { status: 400 });
@@ -134,7 +109,7 @@ export async function POST(req: NextRequest) {
       message,
       source_page: sourcePage,
       user_agent: req.headers.get("user-agent"),
-      ip_address: clientIp(req),
+      ip_address: getClientIp(req),
       metadata: {},
       status: "new",
     });

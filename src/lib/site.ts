@@ -5,7 +5,11 @@ export const site = {
   description:
     "Research-led strategy and custom marketing sites for owners who want clarity, not noise. SEO, Google Business Profile, analytics, and paid media led directly by the principal so you can own the systems behind the results.",
   url: "https://framescalemarketing.com",
-  email: "hello@framescalemarketing.com",
+  /** Canonical path for the live scheduling embed (`/book`). */
+  bookingPath: "/book",
+  email: "framescalemarketing@framescalemarketing.com",
+  /** Default transactional `from` when `RESEND_NOREPLY_FROM` is unset (must match a verified domain in Resend). */
+  noreplyFrom: "noreply@framescalemarketing.com",
   phone: "(916) 520-4553",
   locale: "en_US",
   ogImage: "/opengraph-image",
@@ -45,6 +49,7 @@ export const footerLinks = {
   Company: [
     { label: "About", href: "/about" },
     { label: "Process", href: "/process" },
+    { label: "Book a call", href: site.bookingPath },
     { label: "Contact", href: "/contact" },
     { label: "Sitemap", href: "/sitemap" },
   ],

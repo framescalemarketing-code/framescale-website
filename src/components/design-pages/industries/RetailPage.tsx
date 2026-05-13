@@ -5,6 +5,7 @@ import { Button } from "../../design/Button";
 import { PageBackLink } from "../../design/PageBackLink";
 import { SectionHeader } from "../../design/SectionHeader";
 import { slideByIndex, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   ShoppingBag,
   TrendingUp,
@@ -116,8 +117,8 @@ export const RetailPage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button size="lg" variant="ghost" href="/process">
                 Our Process
@@ -279,8 +280,8 @@ export const RetailPage = () => {
               {`Margin and demand have to grow together. If you want a partner who studies your category before spending, builds storefronts around your unit economics, and ties campaigns back to revenue you can verify, let's find out if the fit is right.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button variant="secondary" size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button
                 variant="ghost"

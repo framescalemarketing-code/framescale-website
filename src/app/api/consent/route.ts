@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { cleanString, getClientIp } from "@/lib/api-route-helpers";
 
 type ConsentPayload = {
   consentId?: string;
@@ -15,16 +16,6 @@ type ConsentPayload = {
   metadata?: Record<string, unknown>;
 };
 
-function clean(value: string | undefined, maxLen: number) {
-  return (value ?? "").trim().slice(0, maxLen);
-}
-
-function clientIp(req: NextRequest) {
-  const xff = req.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0]?.trim() || null;
-  return req.headers.get("x-real-ip") || null;
-}
-
 export async function POST(req: NextRequest) {
   const contentLength = Number(req.headers.get("content-length") ?? 0);
   if (contentLength > 8_000) {
@@ -39,10 +30,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
   }
 
-  const consentId = clean(payload.consentId, 120);
-  const source = clean(payload.source, 80) || "website";
-  const policyVersion = clean(payload.policyVersion, 40) || "v1";
-  const region = clean(payload.region, 32) || null;
+  const consentId = cleanString(payload.consentId, 120);
+  const source = cleanString(payload.source, 80) || "website";
+  const policyVersion = cleanString(payload.policyVersion, 40) || "v1";
+  const region = cleanString(payload.region, 32) || null;
 
   if (!consentId) {
     return NextResponse.json({ error: "consentId is required." }, { status: 400 });
@@ -65,7 +56,7 @@ export async function POST(req: NextRequest) {
       consent,
       metadata: payload.metadata ?? {},
       user_agent: req.headers.get("user-agent"),
-      ip_address: clientIp(req),
+      ip_address: getClientIp(req),
     });
 
     if (error) {

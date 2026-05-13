@@ -5,6 +5,7 @@ import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
 import { PageBackLink } from "../design/PageBackLink";
 import { slideByIndex, slideInFromLeft, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   Target,
   Code,
@@ -254,8 +255,8 @@ export const AboutPage = () => {
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
               Bring your goals, your constraints, and your questions. I will be direct about whether I am the right partner and what honest next steps look like either way.
             </p>
-            <Button variant="secondary" size="lg" href="/contact">
-              Schedule Discovery Call
+            <Button variant="secondary" size="lg" href={site.bookingPath}>
+              Schedule intro call
             </Button>
           </motion.div>
         </div>

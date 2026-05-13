@@ -5,6 +5,7 @@ import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
 import { PageBackLink } from "../design/PageBackLink";
 import { slideByIndex, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   Search,
   Users,
@@ -341,8 +342,8 @@ export const ProcessPage = () => {
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
               Share your industry, goals, and where growth feels stuck. I will walk you through how the five phases would look on your timeline.
             </p>
-            <Button variant="secondary" size="lg" href="/contact">
-              Schedule Discovery Call
+            <Button variant="secondary" size="lg" href={site.bookingPath}>
+              Schedule intro call
             </Button>
           </motion.div>
         </div>

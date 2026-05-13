@@ -7,6 +7,7 @@ import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
 import { MetricCard } from "../design/MetricCard";
 import { slideByIndex, slideInFromLeft, slideInFromRight, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   Heart,
   ShoppingBag,
@@ -326,8 +327,8 @@ export const HomePage = () => {
               {`If you want a marketing partner who does the homework first, gives you direct access, and teaches as you go, let's talk about fit.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button variant="secondary" size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button
                 variant="ghost"
@@ -339,7 +340,7 @@ export const HomePage = () => {
               </Button>
             </div>
             <p className="font-body text-sm text-white/60 mt-8">
-              Free 30-minute discovery call. I listen, ask direct questions, and leave you with an honest next step. If we are not the right fit, I will say so.
+              Free 30-minute intro call. I listen, ask direct questions, and leave you with an honest next step. If we are not the right fit, I will say so.
             </p>
           </motion.div>
         </div>

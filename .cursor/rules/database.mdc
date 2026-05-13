@@ -17,6 +17,7 @@ globs:
 - The codebase currently uses **only** these table names in `.from(...)` calls (grep before assuming more):
   - `contact_submissions` — `src/app/api/contact/route.ts`
   - `consent_events` — `src/app/api/consent/route.ts`
+  - `discovery_call_bookings` — `src/app/api/booking/route.ts`
 - There is **no** SQL migrations folder in this repo—**do not assume** extra tables, RLS policies, or columns. If the task needs a new table or column, require an explicit spec (or schema link) from the user; do not invent schema.
 
 ## Inserts and types

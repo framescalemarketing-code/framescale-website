@@ -5,6 +5,7 @@ import { Button } from "../../design/Button";
 import { PageBackLink } from "../../design/PageBackLink";
 import { SectionHeader } from "../../design/SectionHeader";
 import { slideByIndex, slideUp } from "@/lib/motion";
+import { site } from "@/lib/site";
 import {
   Scale,
   TrendingUp,
@@ -115,8 +116,8 @@ export const ProfessionalServicesPage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button size="lg" variant="ghost" href="/process">
                 Our Process
@@ -278,8 +279,8 @@ export const ProfessionalServicesPage = () => {
               {`Qualified consultations come from credibility, not volume. If you want a partner who sharpens the expertise you already have, builds web systems that earn trust before the first call, and tracks pipeline back to the channels that produced it, let's have the conversation.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" href="/contact">
-                Schedule Discovery Call
+              <Button variant="secondary" size="lg" href={site.bookingPath}>
+                Schedule intro call
               </Button>
               <Button
                 variant="ghost"
