@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Button } from "@/components/design/Button";
 import { PageBackLink } from "@/components/design/PageBackLink";
@@ -85,12 +86,25 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
           >
             <div>{textBlock}</div>
             <div className="lg:pl-4">
-              <ImagePlaceholder
-                aspect="4/3"
-                label={content.media.label}
-                description={content.media.description}
-                variant={placeholderVariantFor(content.iconMarkGradient)}
-              />
+              {content.media.src ? (
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={content.media.src}
+                    alt={content.media.alt ?? content.media.label}
+                    fill
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ) : (
+                <ImagePlaceholder
+                  aspect="4/3"
+                  label={content.media.label}
+                  description={content.media.description}
+                  variant={placeholderVariantFor(content.iconMarkGradient)}
+                />
+              )}
             </div>
           </motion.div>
         ) : (

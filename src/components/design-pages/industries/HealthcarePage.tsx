@@ -18,9 +18,11 @@ export const HealthcarePage = () => (
     />
     <ChallengeGrid header={healthcareContent.challenges.header} items={healthcareContent.challenges.items} />
     <IndustryFeatureImage
-      label="Frame board, three-quarter angle"
-      description="Top-down or angled shot of real frames on display in daylight, no people in frame."
+      label="Detail of a classic black optical frame"
+      description="Wide editorial close-up of a black optical frame in soft light."
       variant="primary"
+      src="/photos/healthcare/mg-2743.jpg"
+      alt="Close-up of a black plastic Ray-Ban optical frame at a low angle, soft fabric texture in the background."
     />
     <SolutionGrid
       header={healthcareContent.solutions.header}

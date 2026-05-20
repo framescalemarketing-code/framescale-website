@@ -30,14 +30,20 @@ export type IndustryHighlight = {
 /**
  * Optional photo slot in the industry hero. When present, the hero renders a
  * two-column layout on `lg` with the text on the left and a visual on the right.
- * Until a real asset is available, the layout shows a designed placeholder card
- * built from `label` and `description`.
+ *
+ * - If `src` is set, that image is rendered with `next/image`.
+ * - If `src` is not set, a designed placeholder card is rendered using `label`
+ *   and `description` as art direction for whoever supplies the photo later.
  */
 export type IndustryHeroMedia = {
   /** Short label rendered on the placeholder, e.g. "Frame board, top-down". */
   label: string;
   /** Longer art-direction note for the photographer or for the alt text later. */
   description: string;
+  /** Public path to the real photo (e.g. `/photos/healthcare/mg-2639.jpg`). */
+  src?: string;
+  /** Alt text used when `src` is supplied. Falls back to `label` when omitted. */
+  alt?: string;
 };
 
 export type IndustryHeroContent = {

@@ -18,9 +18,11 @@ export const healthcareContent: IndustryPageContent = {
     description:
       "Most independent optical practices already get steady patients from word of mouth. The website should match: clean, easy to book on a phone, honest about who you are. I worked the retail floor and the lab for six years, so we can talk shop.",
     media: {
-      label: "Inside an independent optical practice",
+      label: "Editorial close-up of a designer optical frame",
       description:
         "Frames on display in soft daylight, a piece of the exam room visible. No staged people, no stock smiles.",
+      src: "/photos/healthcare/mg-2639.jpg",
+      alt: "Gold rimless eyeglass frame on a soft white surface, side view with shallow depth of field.",
     },
     heroGradient: "secondary",
     heroBlob: "top-right-primary",

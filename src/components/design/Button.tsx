@@ -28,11 +28,11 @@ export const Button = ({
   disabled = false,
 }: ButtonProps) => {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 font-ui font-medium tracking-wide relative overflow-hidden group whitespace-nowrap";
+    "inline-flex items-center justify-center gap-2 rounded-xl transition-[color,background-color,box-shadow,border-color] duration-300 font-ui font-medium tracking-wide relative overflow-hidden group whitespace-nowrap";
 
   const variantStyles = {
     primary:
-      "bg-(--brand-primary) text-white hover:bg-(--brand-primary-hover) shadow-[0_8px_24px_-12px_rgba(23,120,142,0.55)] hover:shadow-[0_12px_32px_-12px_rgba(23,120,142,0.7)]",
+      "bg-[#17788e] text-white hover:bg-[#145f71] hover:text-white shadow-[0_8px_24px_-12px_rgba(23,120,142,0.55)] hover:shadow-[0_12px_32px_-12px_rgba(23,120,142,0.7)]",
     secondary:
       "bg-(--brand-secondary) text-white hover:bg-[#56A1A3] shadow-[0_8px_24px_-14px_rgba(104,179,181,0.7)]",
     ghost:
@@ -63,12 +63,14 @@ export const Button = ({
       {IconComponent && (
         <IconComponent className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
       )}
-      <motion.span
-        className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent pointer-events-none"
-        initial={{ x: "-100%" }}
-        whileHover={{ x: "100%" }}
-        transition={{ duration: 0.6 }}
-      />
+      {variant === "primary" ? null : (
+        <motion.span
+          className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent pointer-events-none"
+          initial={{ x: "-100%" }}
+          whileHover={{ x: "100%" }}
+          transition={{ duration: 0.6 }}
+        />
+      )}
     </>
   );
 
