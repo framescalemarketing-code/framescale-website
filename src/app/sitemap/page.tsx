@@ -65,7 +65,7 @@ export default function SitemapPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/sitemap.xml"
-                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-[#145F71] transition-colors"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-(--brand-primary-hover) transition-colors"
               >
                 Open XML sitemap
               </Link>

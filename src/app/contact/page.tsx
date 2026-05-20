@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactPage } from "@/components/design-pages/ContactPage";
 
 const title = "Contact FrameScale";
@@ -14,5 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default function Contact() {
-  return <ContactPage />;
+  return (
+    <Suspense>
+      <ContactPage />
+    </Suspense>
+  );
 }

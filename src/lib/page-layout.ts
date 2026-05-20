@@ -6,6 +6,9 @@
 /** Outer centered column: wide max + responsive horizontal padding */
 export const PAGE_SHELL_FLUID = "max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16";
 
+/** Industry and long-form marketing sections (legacy `max-w-7xl mx-auto px-6 lg:px-8`). */
+export const PAGE_SHELL_INDUSTRY = "max-w-7xl mx-auto px-6 lg:px-8";
+
 /** Fluid shell with stacking context + full width (hero bands) */
 export const PAGE_SHELL_FLUID_RELATIVE_FULL = `${PAGE_SHELL_FLUID} relative z-10 w-full`;
 

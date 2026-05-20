@@ -26,7 +26,7 @@ You are working on **framescale-website**: a marketing site for FrameScale Inc (
 ## API routes (`src/app/api/**/route.ts`)
 
 - Validate and bound input (length, format); return `NextResponse.json` with appropriate status codes (400, 413, 500).
-- Escape or sanitize when building HTML for email (follow `escapeHtml` / patterns in `api/contact`).
+- Escape or sanitize when building HTML for email (follow `escapeHtml` in `@/lib/email/escape-html` and patterns in `api/contact`).
 - Prefer clear error messages for clients without leaking stack traces or env details.
 
 ## Marketing copy (site text)

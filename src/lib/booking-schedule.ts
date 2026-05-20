@@ -32,6 +32,44 @@ export type BookingSlotsPayload = {
   slots: BookingSlotDto[];
 };
 
+/** Today's calendar date in Pacific as `YYYY-MM-DD`. */
+export function pacificDateKeyNow(): string {
+  return DateTime.now().setZone(BOOKING_ZONE).toFormat("yyyy-MM-dd");
+}
+
+/** Current Pacific calendar month as `YYYY-MM`. */
+export function currentYearMonthPacific(): string {
+  return DateTime.now().setZone(BOOKING_ZONE).toFormat("yyyy-MM");
+}
+
+export function shiftYearMonthPacific(ym: string, deltaMonths: number): string {
+  const [y, m] = ym.split("-").map(Number);
+  return DateTime.fromObject({ year: y, month: m, day: 1 }, { zone: BOOKING_ZONE })
+    .plus({ months: deltaMonths })
+    .toFormat("yyyy-MM");
+}
+
+export function yearMonthStartPacific(ym: string): DateTime {
+  const [y, m] = ym.split("-").map(Number);
+  return DateTime.fromObject({ year: y, month: m, day: 1 }, { zone: BOOKING_ZONE });
+}
+
+/** Bookable month picker bounds (current month through three months ahead). */
+export function bookingMonthBoundsPacific(): { minYm: string; maxYm: string } {
+  const now = DateTime.now().setZone(BOOKING_ZONE);
+  return {
+    minYm: now.startOf("month").toFormat("yyyy-MM"),
+    maxYm: now.plus({ months: 3 }).startOf("month").toFormat("yyyy-MM"),
+  };
+}
+
+/** Human-readable slot label for emails (Pacific). */
+export function formatBookingSlotPacificLabel(startsAtIso: string): string {
+  const dt = DateTime.fromISO(startsAtIso, { zone: "utc" }).setZone(BOOKING_ZONE);
+  if (!dt.isValid) return startsAtIso;
+  return `${dt.toFormat("cccc, MMM d, yyyy")} at ${dt.toFormat("h:mm a")} Pacific`;
+}
+
 export function parseMonthParam(param: string | null): { year: number; month: number } | null {
   if (!param || !/^\d{4}-\d{2}$/.test(param)) return null;
   const [ys, ms] = param.split("-");

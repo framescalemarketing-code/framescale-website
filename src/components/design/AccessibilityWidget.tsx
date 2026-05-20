@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   Accessibility,
@@ -38,41 +38,83 @@ function applySettings(s: Settings) {
   root.classList.toggle("a11y-underline-links", s.underlineLinks);
 }
 
-function loadSettings(): Settings {
-  if (typeof window === "undefined") return defaultSettings;
+const a11yListeners = new Set<() => void>();
+
+/** Stable snapshot for useSyncExternalStore (must not allocate on every getSnapshot call). */
+let cachedSnapshot: Settings = defaultSettings;
+
+function settingsEqual(a: Settings, b: Settings): boolean {
+  return (
+    a.textScale === b.textScale &&
+    a.highContrast === b.highContrast &&
+    a.reduceMotion === b.reduceMotion &&
+    a.underlineLinks === b.underlineLinks
+  );
+}
+
+function loadSettingsFromStorage(): Settings {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultSettings;
     const parsed = JSON.parse(raw) as Partial<Settings>;
-    return { ...defaultSettings, ...parsed };
+    return {
+      textScale: parsed.textScale ?? defaultSettings.textScale,
+      highContrast: parsed.highContrast ?? defaultSettings.highContrast,
+      reduceMotion: parsed.reduceMotion ?? defaultSettings.reduceMotion,
+      underlineLinks: parsed.underlineLinks ?? defaultSettings.underlineLinks,
+    };
   } catch {
     return defaultSettings;
   }
 }
 
+function getA11ySettingsSnapshot(): Settings {
+  const loaded = loadSettingsFromStorage();
+  if (settingsEqual(cachedSnapshot, loaded)) {
+    return cachedSnapshot;
+  }
+  cachedSnapshot = loaded;
+  applySettings(cachedSnapshot);
+  return cachedSnapshot;
+}
+
+function subscribeA11ySettings(listener: () => void) {
+  a11yListeners.add(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === STORAGE_KEY) listener();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    a11yListeners.delete(listener);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function notifyA11ySettings() {
+  a11yListeners.forEach((listener) => listener());
+}
+
+function writeSettings(next: Settings) {
+  if (settingsEqual(cachedSnapshot, next)) return;
+  cachedSnapshot = next;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  } catch {
+    // Ignore storage errors (private mode, quota, etc.)
+  }
+  applySettings(cachedSnapshot);
+  notifyA11ySettings();
+}
+
 export const AccessibilityWidget = () => {
   const [open, setOpen] = useState(false);
-  const [settings, setSettings] = useState<Settings>(defaultSettings);
+  const settings = useSyncExternalStore(
+    subscribeA11ySettings,
+    getA11ySettingsSnapshot,
+    () => defaultSettings,
+  );
   const panelRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-
-  // Load on mount
-  useEffect(() => {
-    const initial = loadSettings();
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate persisted prefs after mount
-    setSettings(initial);
-    applySettings(initial);
-  }, []);
-
-  // Persist + apply on change
-  useEffect(() => {
-    applySettings(settings);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
-    } catch {
-      // Ignore storage errors (private mode, quota, etc.)
-    }
-  }, [settings]);
 
   // Close on Escape / outside click
   useEffect(() => {
@@ -103,10 +145,10 @@ export const AccessibilityWidget = () => {
   }, [open]);
 
   const update = <K extends keyof Settings>(key: K, value: Settings[K]) => {
-    setSettings((prev) => ({ ...prev, [key]: value }));
+    writeSettings({ ...settings, [key]: value });
   };
 
-  const reset = () => setSettings(defaultSettings);
+  const reset = () => writeSettings(defaultSettings);
 
   return (
     <div className="fixed bottom-4 left-4 z-40">
@@ -117,7 +159,7 @@ export const AccessibilityWidget = () => {
         aria-expanded={open}
         aria-controls="a11y-panel"
         aria-label="Accessibility options"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-(--brand-primary) text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-[#145F71] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-colors"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-(--brand-primary) text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-(--brand-primary-hover) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-colors"
       >
         <Accessibility className="h-5 w-5" aria-hidden />
       </button>

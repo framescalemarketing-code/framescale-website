@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Button } from "../design/Button";
 import { SectionHeader } from "../design/SectionHeader";
 import { PageBackLink } from "../design/PageBackLink";
+import { ImagePlaceholder } from "./industries/_shared/ImagePlaceholder";
 import { slideByIndex, slideInFromLeft, slideUp } from "@/lib/motion";
 import { site } from "@/lib/site";
 import {
@@ -28,19 +29,19 @@ export const AboutPage = () => {
       icon: Code,
       title: "Custom Sites, Not Rentals",
       description:
-        "Your marketing site should feel like your business, not a WordPress or Wix skin. I build custom web so performance, trust, and conversion stay in one system.",
+        "Your marketing site should feel like your business. I build custom web so performance, trust, and conversion stay in one system you own.",
     },
     {
       icon: Users,
       title: "Personal Depth, Selective Roster",
       description:
-        "You work with me directly on a selective roster so you get teaching, access, and follow-through instead of a junior relay race.",
+        "You work with me directly on a small roster. You get teaching, access, and follow-through from the same person across the engagement.",
     },
     {
       icon: TrendingUp,
       title: "Teach You to Scale",
       description:
-        "The goal is growth you understand through systems, metrics, and decisions you can carry forward. Over time you should need me less, not more.",
+        "The goal is growth you understand through systems, metrics, and decisions you can carry forward. Over time you should need me less.",
     },
   ];
 
@@ -48,17 +49,17 @@ export const AboutPage = () => {
     {
       icon: Heart,
       name: "Healthcare",
-      description: "Optical leads. Dental and medical where local trust and bookings matter.",
+      description: "Independent optical where referrals are strong but the website lags behind the practice.",
     },
     {
       icon: ShoppingBag,
       name: "Retail & E-commerce",
-      description: "Stores, brands, and online commerce balancing margin and demand.",
+      description: "Hybrid, online-first brands fixing message, audience, and channel fit before scaling spend.",
     },
     {
       icon: Scale,
       name: "Professional Services",
-      description: "Consultants and advisory firms lead. Legal and accounting where pipeline is everything.",
+      description: "Selective firms that need firm-grade sites and cases, not salesy lead volume.",
     },
   ];
 
@@ -72,13 +73,14 @@ export const AboutPage = () => {
 
         <PageBackLink className="absolute top-24 left-6 z-20 lg:top-28 lg:left-8" />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              variants={slideUp}
-              initial="hidden"
-              animate="show"
-            >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+          <motion.div
+            variants={slideUp}
+            initial="hidden"
+            animate="show"
+            className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center"
+          >
+            <div className="text-left">
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 About FrameScale Inc
               </span>
@@ -89,13 +91,22 @@ export const AboutPage = () => {
                 A marketer with business degrees and the patience to teach what matters
               </h1>
               <p
-                className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
-                style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
+                className="font-body text-lg lg:text-xl leading-relaxed max-w-xl"
+                style={{ color: "var(--brand-neutral)" }}
               >
-                FrameScale is how I work with a limited number of owners at a time. You get research-led growth, custom-built web, and fundamentals that stick through SEO, Google Business Profile, analytics, and paid media you can actually use. I am a marketing specialist and business-minded partner, not a social posting service.
+                FrameScale is how I work with a small number of owners at a time. You get research-led growth, custom-built web, and fundamentals that stick through SEO, Google Business Profile, analytics, and paid media you can actually use.
               </p>
-            </motion.div>
-          </div>
+            </div>
+
+            <div className="lg:pl-4">
+              <ImagePlaceholder
+                aspect="3/4"
+                label="Founder portrait"
+                description="Natural daylight, three-quarter angle, looking at camera, in what you actually wear on calls."
+                variant="primary"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -117,6 +128,9 @@ export const AboutPage = () => {
             <div className="space-y-6 font-body text-lg leading-relaxed" style={{ color: "var(--brand-neutral)" }}>
               <p>
                 {`I have walked the same maze many owners describe: smart strategy that never ships, or busy tactics that never tie back to margin. With both a bachelor's and a master's in business, I care as much about how growth shows up on a P&L as how it looks in an ad account.`}
+              </p>
+              <p>
+                Six years in optical retail and the lab taught me what actually moves a practice's margin: frames on display, supplier quirks, and the day-to-day scheduling that shapes revenue. I learned to teach as we go, so the work outlasts our engagement.
               </p>
               <p>
                 I also believe respect is shown through bandwidth. I only take work I want to carry personally, and I keep concurrent clients intentionally low, usually no more than three, so you get depth, teaching, and follow-through instead of a handoff queue.

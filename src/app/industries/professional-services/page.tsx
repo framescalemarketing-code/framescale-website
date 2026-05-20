@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ProfessionalServicesPage } from "@/components/design-pages/industries/ProfessionalServicesPage";
 
-const title = "Professional services growth for consultants and partner-led firms";
+const title = "Firm-grade websites and cases for referral-strong firms";
 const description =
-  "Consultants and advisory firms lead the work, with law and accounting alongside. Authority-led positioning, firm-grade web, and pipeline attribution that respects long sales cycles.";
+  "Consultants and partner-led firms: real sites and structured cases that support referrals without salesy lead-gen noise. Selective growth, credible inbound.";
 
 export const metadata: Metadata = {
   title,

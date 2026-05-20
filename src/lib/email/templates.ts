@@ -1,18 +1,5 @@
 import { site } from "@/lib/site";
-
-/** Verified sending domain in Resend should match this address (or override via env). */
-export function getNoreplyFrom(): string {
-  return process.env.RESEND_NOREPLY_FROM?.trim() ?? site.noreplyFrom;
-}
-
-export function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
+import { escapeHtml } from "@/lib/email/escape-html";
 
 const BRAND_PRIMARY = "#17788e";
 const BRAND_DEEP = "#264653";

@@ -32,7 +32,7 @@ export const Button = ({
 
   const variantStyles = {
     primary:
-      "bg-(--brand-primary) text-white hover:bg-[#145F71] shadow-[0_8px_24px_-12px_rgba(23,120,142,0.55)] hover:shadow-[0_12px_32px_-12px_rgba(23,120,142,0.7)]",
+      "bg-(--brand-primary) text-white hover:bg-(--brand-primary-hover) shadow-[0_8px_24px_-12px_rgba(23,120,142,0.55)] hover:shadow-[0_12px_32px_-12px_rgba(23,120,142,0.7)]",
     secondary:
       "bg-(--brand-secondary) text-white hover:bg-[#56A1A3] shadow-[0_8px_24px_-14px_rgba(104,179,181,0.7)]",
     ghost:

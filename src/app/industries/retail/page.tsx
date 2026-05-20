@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { RetailPage } from "@/components/design-pages/industries/RetailPage";
 
-const title = "Retail and e-commerce growth tied to margin";
+const title = "Retail and e-commerce growth when CAC outruns margin";
 const description =
-  "Research-led acquisition for stores, DTC brands, and hybrids under margin pressure. Storefront, paid, SEO, and lifecycle work measured back to revenue you can verify.";
+  "Hybrid online-first brands: align message, audience, and channel before scaling spend. Collaborative strategy, storefront CRO, and attribution tied to margin.";
 
 export const metadata: Metadata = {
   title,

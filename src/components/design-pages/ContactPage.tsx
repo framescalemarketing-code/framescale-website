@@ -1,14 +1,14 @@
 ﻿"use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Button } from "../design/Button";
+import { useSearchParams } from "next/navigation";
 import { PageBackLink } from "../design/PageBackLink";
-import { Mail, Calendar, MessageSquare, ArrowRight } from "lucide-react";
+import { Mail, Calendar, ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
 import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
-import { validateEmailConfirm, validateEmailInput } from "@/lib/email-validation";
+import { createContactFormState, useContactForm } from "@/lib/contact/use-contact-form";
+import { ContactForm } from "./contact/ContactForm";
 import {
   PAGE_CONTACT_FORM_MAX,
   PAGE_HERO_INNER,
@@ -17,162 +17,9 @@ import {
   PAGE_SHELL_FLUID_RELATIVE_FULL,
 } from "@/lib/page-layout";
 
-type FormState = {
-  name: string;
-  email: string;
-  confirmEmail: string;
-  company: string;
-  industry: string;
-  message: string;
-};
-type FieldErrors = Partial<Record<keyof FormState, string>>;
-
 export const ContactPage = () => {
-  const [formData, setFormData] = useState<FormState>({
-    name: "",
-    email: "",
-    confirmEmail: "",
-    company: "",
-    industry: "",
-    message: "",
-  });
-  const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
-  const [errors, setErrors] = useState<FieldErrors>({});
-  const [submitNote, setSubmitNote] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Prefill from URL params (e.g. /contact?company=Acme&industry=retail&name=Jane)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const next: Partial<FormState> = {};
-    (["name", "email", "confirmEmail", "company", "industry", "message"] as const).forEach((key) => {
-      const v = params.get(key);
-      if (v) next[key] = v;
-    });
-    if (Object.keys(next).length) {
-      setFormData((prev) => ({ ...prev, ...next }));
-    }
-  }, []);
-
-  const validateField = (name: keyof FormState, value: string): string | undefined => {
-    if (name === "name" && !value.trim()) return "Please enter your name.";
-    if (name === "email") {
-      return validateEmailInput(value);
-    }
-    if (name === "confirmEmail") {
-      return undefined;
-    }
-    if (name === "message") {
-      if (!value.trim()) return "A short message helps me prepare.";
-      if (value.trim().length < 10) return "Please add a little more detail (10+ characters).";
-    }
-    return undefined;
-  };
-
-  const validateAll = (data: FormState): FieldErrors => {
-    const next: FieldErrors = {};
-    (Object.keys(data) as (keyof FormState)[]).forEach((k) => {
-      if (k === "confirmEmail") return;
-      const err = validateField(k, data[k]);
-      if (err) next[k] = err;
-    });
-    const primaryEmailErr = validateEmailInput(data.email);
-    if (primaryEmailErr) {
-      next.email = primaryEmailErr;
-    } else if (!data.confirmEmail.trim()) {
-      next.confirmEmail = "Please confirm your email.";
-    } else if (data.email.trim().toLowerCase() !== data.confirmEmail.trim().toLowerCase()) {
-      next.confirmEmail = "Email addresses do not match.";
-    }
-    return next;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    const allErrors = validateAll(formData);
-    setErrors(allErrors);
-    setTouched({
-      name: true,
-      email: true,
-      confirmEmail: true,
-      company: true,
-      industry: true,
-      message: true,
-    });
-    if (Object.keys(allErrors).length > 0) {
-      setSubmitNote("Please correct the highlighted fields and try again.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitNote("Sending your message...");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
-        }),
-      });
-
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
-      if (!res.ok) {
-        throw new Error(data.error || "Unable to submit form.");
-      }
-
-      setSubmitNote("Thanks. Your message was received and I will get back to you within 24 hours.");
-      setFormData({ name: "", email: "", confirmEmail: "", company: "", industry: "", message: "" });
-      setTouched({});
-      setErrors({});
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Unable to submit right now.";
-      setSubmitNote(`${message} Please try again in a moment.`);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const name = e.target.name as keyof FormState;
-    const value = e.target.value;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (!touched[name]) return;
-    setErrors((prevErr) => {
-      const nextErr: FieldErrors = { ...prevErr, [name]: validateField(name, value) };
-      if (name === "confirmEmail") {
-        nextErr.confirmEmail = validateEmailConfirm(formData.email, value);
-      }
-      if (name === "email" && touched.confirmEmail) {
-        nextErr.confirmEmail = validateEmailConfirm(value, formData.confirmEmail);
-      }
-      return nextErr;
-    });
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const name = e.target.name as keyof FormState;
-    const value = e.target.value;
-    setTouched((prev) => ({ ...prev, [name]: true }));
-    if (name === "confirmEmail") {
-      setErrors((prev) => ({
-        ...prev,
-        confirmEmail: validateEmailConfirm(formData.email, value),
-      }));
-      return;
-    }
-    setErrors((prev) => {
-      const next: FieldErrors = { ...prev, [name]: validateField(name, value) };
-      if (name === "email" && touched.confirmEmail) {
-        next.confirmEmail = validateEmailConfirm(value, formData.confirmEmail);
-      }
-      return next;
-    });
-  };
+  const searchParams = useSearchParams();
+  const form = useContactForm(createContactFormState(searchParams));
 
   const contactMethods = [
     {
@@ -193,7 +40,6 @@ export const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
@@ -201,11 +47,7 @@ export const ContactPage = () => {
 
         <div className={PAGE_SHELL_FLUID_RELATIVE_FULL}>
           <div className={PAGE_HERO_INNER}>
-            <motion.div
-              variants={slideUp}
-              initial="hidden"
-              animate="show"
-            >
+            <motion.div variants={slideUp} initial="hidden" animate="show">
               <PageBackLink className="mb-6" />
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
                 Get in Touch
@@ -227,7 +69,6 @@ export const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Methods */}
       <section className="relative py-16 sm:py-20 bg-white">
         <div className={PAGE_SHELL_FLUID}>
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 xl:gap-10 mb-16 sm:mb-20">
@@ -244,10 +85,7 @@ export const ContactPage = () => {
                 <div className="w-12 h-12 rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center mb-6">
                   <method.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3
-                  className="font-headline text-2xl mb-3"
-                  style={{ color: "var(--brand-deep)" }}
-                >
+                <h3 className="font-headline text-2xl mb-3" style={{ color: "var(--brand-deep)" }}>
                   {method.title}
                 </h3>
                 <p
@@ -267,7 +105,6 @@ export const ContactPage = () => {
             ))}
           </div>
 
-          {/* Contact Form */}
           <motion.div
             variants={slideInFromRight}
             initial="hidden"
@@ -275,282 +112,55 @@ export const ContactPage = () => {
             viewport={{ once: true }}
             className={PAGE_CONTACT_FORM_MAX}
           >
-            <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 xl:p-12 border border-border shadow-lg">
-              <div className="flex items-center gap-3 mb-8">
-                <MessageSquare className="w-6 h-6 text-(--brand-primary)" />
-                <h2
-                  className="font-headline text-2xl"
-                  style={{ color: "var(--brand-deep)" }}
-                >
-                  Send Us a Message
-                </h2>
-              </div>
-
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block font-ui text-sm font-medium mb-2"
-                      style={{ color: "var(--brand-deep)" }}
-                    >
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? "name-error" : undefined}
-                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.name && touched.name ? "border-destructive" : "border-border"}`}
-                      placeholder="John Smith"
-                    />
-                    {errors.name && touched.name && (
-                      <p id="name-error" className="mt-1 font-body text-xs text-destructive">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block font-ui text-sm font-medium mb-2"
-                      style={{ color: "var(--brand-deep)" }}
-                    >
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      aria-invalid={!!errors.email}
-                      aria-describedby={errors.email ? "email-error" : undefined}
-                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.email && touched.email ? "border-destructive" : "border-border"}`}
-                      placeholder="john@company.com"
-                    />
-                    {errors.email && touched.email && (
-                      <p id="email-error" className="mt-1 font-body text-xs text-destructive">{errors.email}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label
-                    htmlFor="confirmEmail"
-                    className="block font-ui text-sm font-medium mb-2"
-                    style={{ color: "var(--brand-deep)" }}
-                  >
-                    Confirm email *
-                  </label>
-                  <input
-                    type="email"
-                    id="confirmEmail"
-                    name="confirmEmail"
-                    required
-                    autoComplete="off"
-                    value={formData.confirmEmail}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    aria-invalid={!!errors.confirmEmail}
-                    aria-describedby={errors.confirmEmail ? "confirm-email-error" : undefined}
-                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.confirmEmail && touched.confirmEmail ? "border-destructive" : "border-border"}`}
-                    placeholder="Re-enter your email"
-                  />
-                  {errors.confirmEmail && touched.confirmEmail && (
-                    <p id="confirm-email-error" className="mt-1 font-body text-xs text-destructive">
-                      {errors.confirmEmail}
-                    </p>
-                  )}
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block font-ui text-sm font-medium mb-2"
-                      style={{ color: "var(--brand-deep)" }}
-                    >
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body"
-                      placeholder="Your Company"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="industry"
-                      className="block font-ui text-sm font-medium mb-2"
-                      style={{ color: "var(--brand-deep)" }}
-                    >
-                      Industry
-                    </label>
-                    <select
-                      id="industry"
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body"
-                      style={{ color: "var(--brand-neutral)" }}
-                    >
-                      <option value="">Select an industry</option>
-                      <option value="healthcare">Healthcare</option>
-                      <option value="retail">Retail & E-commerce</option>
-                      <option value="professional-services">Professional Services</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block font-ui text-sm font-medium mb-2"
-                    style={{ color: "var(--brand-deep)" }}
-                  >
-                    Describe your business and goals *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error" : undefined}
-                    rows={6}
-                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all resize-none font-body ${errors.message && touched.message ? "border-destructive" : "border-border"}`}
-                    placeholder="What challenges are you facing? What are your growth goals?"
-                  />
-                  {errors.message && touched.message && (
-                    <p id="message-error" className="mt-1 font-body text-xs text-destructive">{errors.message}</p>
-                  )}
-                </div>
-
-                <Button type="submit" size="lg" className="w-full" icon="none">
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
-
-                <p className="text-center font-body text-sm text-(--brand-neutral)">
-                  I will get back to you within 24 hours. No spam, ever.
-                </p>
-                {submitNote && (
-                  <p className="text-center font-body text-sm text-(--brand-primary)">
-                    {submitNote}
-                  </p>
-                )}
-              </form>
-            </div>
+            <ContactForm form={form} />
           </motion.div>
         </div>
       </section>
 
-      {/* Info Section */}
       <section className="relative py-16 sm:py-20 bg-muted">
         <div className={PAGE_SHELL_CONTACT_INFO}>
-          <motion.div
-            variants={slideUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            <h2
-              className="font-headline text-3xl mb-6"
-              style={{ color: "var(--brand-deep)" }}
-            >
+          <motion.div variants={slideUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <h2 className="font-headline text-3xl mb-6" style={{ color: "var(--brand-deep)" }}>
               What Happens Next?
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 xl:gap-10 text-left max-w-5xl xl:max-w-none mx-auto">
-              <div>
-                <div
-                  className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
-                >
-                  1
+              {[
+                {
+                  step: "1",
+                  title: "I Review",
+                  body: "I read your note and return with sharp questions about your market, offer, and constraints.",
+                },
+                {
+                  step: "2",
+                  title: "Intro call",
+                  body: "Thirty minutes on the phone for goals, pressure points, and candor about what is realistic.",
+                },
+                {
+                  step: "3",
+                  title: "I Assess Fit",
+                  body: "If FrameScale is not the match, I will say so and point you in a sensible direction.",
+                },
+                {
+                  step: "4",
+                  title: "I Outline",
+                  body: "When it is a fit, you get scope, timing, and a clear next step so you can decide with confidence.",
+                },
+              ].map((item) => (
+                <div key={item.step}>
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4">
+                    {item.step}
+                  </div>
+                  <h3 className="font-headline text-lg mb-2" style={{ color: "var(--brand-deep)" }}>
+                    {item.title}
+                  </h3>
+                  <p
+                    className="font-body text-sm leading-relaxed"
+                    style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
+                  >
+                    {item.body}
+                  </p>
                 </div>
-                <h3
-                  className="font-headline text-lg mb-2"
-                  style={{ color: "var(--brand-deep)" }}
-                >
-                  I Review
-                </h3>
-                <p
-                  className="font-body text-sm leading-relaxed"
-                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
-                >
-                  I read your note and return with sharp questions about your market, offer, and constraints.
-                </p>
-              </div>
-              <div>
-                <div
-                  className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
-                >
-                  2
-                </div>
-                <h3
-                  className="font-headline text-lg mb-2"
-                  style={{ color: "var(--brand-deep)" }}
-                >
-                  Intro call
-                </h3>
-                <p
-                  className="font-body text-sm leading-relaxed"
-                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
-                >
-                  Thirty minutes on the phone for goals, pressure points, and candor about what is realistic.
-                </p>
-              </div>
-              <div>
-                <div
-                  className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
-                >
-                  3
-                </div>
-                <h3
-                  className="font-headline text-lg mb-2"
-                  style={{ color: "var(--brand-deep)" }}
-                >
-                  I Assess Fit
-                </h3>
-                <p
-                  className="font-body text-sm leading-relaxed"
-                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
-                >
-                  If FrameScale is not the match, I will say so and point you in a sensible direction.
-                </p>
-              </div>
-              <div>
-                <div
-                  className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4"
-                >
-                  4
-                </div>
-                <h3
-                  className="font-headline text-lg mb-2"
-                  style={{ color: "var(--brand-deep)" }}
-                >
-                  I Outline
-                </h3>
-                <p
-                  className="font-body text-sm leading-relaxed"
-                  style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
-                >
-                  When it is a fit, you get scope, timing, and a clear next step so you can decide with confidence.
-                </p>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>

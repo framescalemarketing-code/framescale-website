@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { HealthcarePage } from "@/components/design-pages/industries/HealthcarePage";
 
-const title = "Healthcare growth for optical-led practices and care teams";
+const title = "Optical practice marketing when your site lags behind";
 const description =
-  "Booking-first growth for independent optical, dental, and specialty practices. Local research, fast sites, HIPAA-aware measurement, and channels tuned to fill the schedule.";
+  "Independent optical and eye care: trust-forward sites and easier booking for referral lookups. Six years of optical retail and lab. California and beyond.";
 
 export const metadata: Metadata = {
   title,

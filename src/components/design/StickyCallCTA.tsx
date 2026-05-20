@@ -7,25 +7,24 @@ import { Calendar } from "lucide-react";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
+const HIDE_STICKY_CTA_ON: string[] = ["/contact", site.bookingPath];
+
 export const StickyCallCTA = () => {
   const pathname = usePathname();
-  const [visible, setVisible] = useState(false);
+  const hiddenOnRoute = HIDE_STICKY_CTA_ON.includes(pathname);
+  const [scrollPastHero, setScrollPastHero] = useState(false);
 
   useEffect(() => {
-    const hideOnRoutes = ["/contact", site.bookingPath];
-    if (hideOnRoutes.includes(pathname)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- pathname-driven visibility
-      setVisible(false);
-      return;
-    }
+    if (hiddenOnRoute) return;
     const onScroll = () => {
-      // Show after a viewport of scroll (past hero)
-      setVisible(window.scrollY > window.innerHeight * 0.85);
+      setScrollPastHero(window.scrollY > window.innerHeight * 0.85);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [hiddenOnRoute]);
+
+  const visible = !hiddenOnRoute && scrollPastHero;
 
   return (
     <AnimatePresence>
@@ -39,7 +38,7 @@ export const StickyCallCTA = () => {
         >
           <Link
             href={site.bookingPath}
-            className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-4 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-[#145F71] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold sm:px-5"
+            className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-4 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-(--brand-primary-hover) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold sm:px-5"
             aria-label="Book an Intro Call"
           >
             <Calendar className="w-4 h-4" aria-hidden />

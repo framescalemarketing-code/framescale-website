@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
-import { site } from "@/lib/site";
 import { validateEmailConfirm } from "@/lib/email-validation";
-import { contactInquiryOwnerHtml, getNoreplyFrom } from "@/lib/transactional-email-brand";
+import { contactInquiryOwnerHtml } from "@/lib/email/templates";
+import { getNoreplyFrom } from "@/lib/email/from";
 import { cleanString, getClientIp } from "@/lib/api-route-helpers";
-import { postResendEmail } from "@/lib/resend-client";
-
-const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
-const CONTACT_NOTIFICATION_EMAIL =
-  process.env.CONTACT_NOTIFICATION_EMAIL?.trim() || site.email;
+import {
+  getContactNotificationEmail,
+  getResendApiKey,
+  postResendEmail,
+} from "@/lib/resend-client";
 
 type ContactPayload = {
   name?: string;
@@ -28,7 +28,8 @@ async function sendNotificationEmail(input: {
   message: string;
   sourcePage: string;
 }) {
-  if (!RESEND_API_KEY) return;
+  const apiKey = getResendApiKey();
+  if (!apiKey) return;
 
   const text = [
     "New contact form submission",
@@ -53,9 +54,9 @@ async function sendNotificationEmail(input: {
   });
 
   try {
-    await postResendEmail(RESEND_API_KEY, {
+    await postResendEmail(apiKey, {
       from: getNoreplyFrom(),
-      to: [CONTACT_NOTIFICATION_EMAIL],
+      to: [getContactNotificationEmail()],
       reply_to: input.email,
       subject: `New website inquiry from ${input.name}`,
       text,

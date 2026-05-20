@@ -19,7 +19,7 @@ globs:
 
 - Only reference variables **already used** in code or named by the user. Examples that appear in the codebase include (non-exhaustive—**read the files**):
   - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_SECRET_SUPABASE_API_KEY` (Supabase server client)
-  - `RESEND_API_KEY`, `CONTACT_NOTIFICATION_EMAIL`, `CONTACT_FROM_EMAIL` (contact flow)
+  - `RESEND_API_KEY`, `RESEND_NOREPLY_FROM`, `CONTACT_NOTIFICATION_EMAIL` (contact and booking email)
 - Never invent `NEXT_PUBLIC_*` secrets. Never add placeholder env names.
 
 ## Patterns to preserve

@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href={iubenda.privacyPolicyUrl}
-                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-[#145F71] transition-colors"
+                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-(--brand-primary-hover) transition-colors"
                 title="Privacy Policy"
               >
                 Privacy Policy

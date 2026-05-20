@@ -1,27 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
-import { site } from "@/lib/site";
 import {
   BOOKING_ZONE,
   buildSlotsPayload,
+  formatBookingSlotPacificLabel,
   isAlgebraicallyValidSlot,
   normalizeStoredStartsAt,
   parseMonthParam,
 } from "@/lib/booking-schedule";
 import { DateTime } from "luxon";
 import { validateEmailConfirm } from "@/lib/email-validation";
-import {
-  getNoreplyFrom,
-  introCallGuestConfirmationHtml,
-  introCallGuestConfirmationText,
-  introCallOwnerAlertHtml,
-} from "@/lib/transactional-email-brand";
 import { cleanString, getClientIp } from "@/lib/api-route-helpers";
-import { postResendEmail } from "@/lib/resend-client";
-
-const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
-const CONTACT_NOTIFICATION_EMAIL =
-  process.env.CONTACT_NOTIFICATION_EMAIL?.trim() || site.email;
+import { sendBookingNotifications } from "@/lib/booking/send-booking-notifications";
 
 function supabaseBookingsSetupHint(err: { message?: string } | null): string | null {
   const msg = err?.message ?? "";
@@ -39,92 +29,6 @@ type BookingPostBody = {
   company?: string;
   notes?: string;
 };
-
-function formatSlotForEmail(startsAtIso: string): string {
-  const dt = DateTime.fromISO(startsAtIso, { zone: "utc" }).setZone(BOOKING_ZONE);
-  if (!dt.isValid) return startsAtIso;
-  return `${dt.toFormat("cccc, MMM d, yyyy")} at ${dt.toFormat("h:mm a")} Pacific`;
-}
-
-function ownerAlertPlainText(input: {
-  when: string;
-  name: string;
-  email: string;
-  company: string;
-  notes: string;
-}): string {
-  return [
-    "New intro call booking",
-    "",
-    `When: ${input.when}`,
-    `Name: ${input.name}`,
-    `Email: ${input.email}`,
-    `Company: ${input.company || "N/A"}`,
-    "",
-    "Notes:",
-    input.notes || "None",
-  ].join("\n");
-}
-
-async function sendBookingEmails(input: {
-  startsAt: string;
-  name: string;
-  email: string;
-  company: string;
-  notes: string;
-}) {
-  if (!RESEND_API_KEY) return;
-
-  const when = formatSlotForEmail(input.startsAt);
-  const from = getNoreplyFrom();
-  const ownerHtml = introCallOwnerAlertHtml({
-    name: input.name,
-    email: input.email,
-    whenLine: when,
-    company: input.company,
-    notes: input.notes,
-  });
-  const guestHtml = introCallGuestConfirmationHtml({
-    name: input.name,
-    whenLine: when,
-    company: input.company,
-    notes: input.notes,
-  });
-  const guestText = introCallGuestConfirmationText({
-    name: input.name,
-    whenLine: when,
-    company: input.company,
-    notes: input.notes,
-  });
-
-  try {
-    await postResendEmail(RESEND_API_KEY, {
-      from,
-      to: [CONTACT_NOTIFICATION_EMAIL],
-      reply_to: input.email,
-      subject: `Intro call booked: ${input.name}`,
-      text: ownerAlertPlainText({
-        when,
-        name: input.name,
-        email: input.email,
-        company: input.company,
-        notes: input.notes,
-      }),
-      html: ownerHtml,
-    });
-
-    await postResendEmail(RESEND_API_KEY, {
-      from,
-      to: [input.email],
-      reply_to: site.email,
-      subject: `Your FrameScale intro call: ${when}`,
-      text: guestText,
-      html: guestHtml,
-    });
-  } catch {
-    // Keep booking successful even if email provider is temporarily unavailable.
-  }
-}
 
 export async function GET(req: NextRequest) {
   const month = req.nextUrl.searchParams.get("month");
@@ -274,8 +178,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const whenLabel = formatSlotForEmail(startsNorm);
-    await sendBookingEmails({ startsAt: startsNorm, name, email, company, notes });
+    const whenLabel = formatBookingSlotPacificLabel(startsNorm);
+    await sendBookingNotifications({ startsAt: startsNorm, name, email, company, notes });
 
     return NextResponse.json({ ok: true, startsAt: startsNorm, whenLabel });
   } catch {
