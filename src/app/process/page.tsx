@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ProcessPage } from "@/components/design-pages/ProcessPage";
 
-const title = "Our Five-Phase Growth Process";
+const title = "How We Work";
 const description =
-  "Five phases from industry and market research through strategy, launch, and optimization. Homework before spend, one thread from first call to live campaigns.";
+  "See how FrameScale researches first, builds around your business, and keeps you informed from the first call through launch and follow-up.";
 
 export const metadata: Metadata = {
   title,

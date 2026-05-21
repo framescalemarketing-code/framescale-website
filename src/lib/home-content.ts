@@ -25,7 +25,7 @@ export const homeIndustries: HomeIndustryCard[] = [
     name: "Healthcare",
     icon: Heart,
     description:
-      "Most of these practices already run on referrals. The website should look like the place patients walk into.",
+      "Your patients already trust you before they book. Your website should reflect that same level of care and professionalism the moment they land on it.",
     examples: "Independent optical and small eye-care practices",
     path: "/industries/healthcare",
     color: "from-(--brand-primary) to-(--brand-secondary)",
@@ -34,7 +34,7 @@ export const homeIndustries: HomeIndustryCard[] = [
     name: "Retail & E-commerce",
     icon: ShoppingBag,
     description:
-      "Online stores with small teams where ad costs keep climbing because of the story or where the ads run.",
+      "Every dollar you spend on ads needs a strategy behind it. We make sure your store, your story, and your spend are all working together.",
     examples: "Stores online and in person, small teams",
     path: "/industries/retail",
     color: "from-(--brand-secondary) to-(--brand-primary)",
@@ -43,7 +43,7 @@ export const homeIndustries: HomeIndustryCard[] = [
     name: "Professional Services",
     icon: Scale,
     description:
-      "Selective firms with steady referrals that want a real website and a few proper cases.",
+      "Your reputation brings clients in. Your website should close them. We build around the work you do and the clients you want more of.",
     examples: "Consultants and partner-led firms",
     path: "/industries/professional-services",
     color: "from-(--brand-deep) to-(--brand-primary)",
@@ -51,41 +51,41 @@ export const homeIndustries: HomeIndustryCard[] = [
 ];
 
 export const homeMetrics: HomeMetric[] = [
-  { value: "Research First", label: "Homework before ad spend" },
-  { value: "Custom Build", label: "Your business, not a template rental" },
-  { value: "Direct Access", label: "Same principal from spark to launch" },
-  { value: "Selective Roster", label: "Few seats so the work stays deep" },
+  { value: "Research First", label: "Know before you spend" },
+  { value: "Custom Build", label: "Built around your business" },
+  { value: "Always Informed", label: "No surprises, ever" },
+  { value: "One On One", label: "Your project never gets lost in the shuffle" },
 ];
 
 export const homeCapabilityBlocks: HomeCapabilityBlock[] = [
   {
     icon: Target,
-    title: "Strategic Foundation",
+    title: "We Start With Research",
     items: [
-      "Market, competitor, and customer research",
-      "Customer and journey clarity you can act on",
-      "Positioning and messaging you can defend",
-      "Growth roadmap with metrics you own",
+      "Market and competitor research specific to your industry",
+      "A clear picture of who your customer is and how they make buying decisions",
+      "Messaging built around the right audience for your business",
+      "A growth roadmap with goals you can follow and own",
     ],
   },
   {
     icon: Code,
-    title: "Custom Technical Execution",
+    title: "We Build Around Your Business",
     items: [
-      "Custom marketing websites instead of WordPress or Wix templates",
-      "Funnels, forms, and integrations that match your ops",
-      "Analytics and conversion tracking you can read",
-      "CRO grounded in data instead of guesswork",
+      "A custom website designed around how you operate",
+      "Forms and integrations that match your day to day workflow",
+      "Analytics and tracking set up in plain language you can actually read",
+      "Ongoing improvements driven by real data",
     ],
   },
   {
     icon: Users,
-    title: "Demand & Visibility",
+    title: "We Get You Found",
     items: [
-      "SEO and content aligned to how buyers search",
-      "Google Business Profile and local presence",
-      "Paid search and paid social when the math works",
-      "Email and nurture only when they fit the business",
+      "SEO and content built around how your customers actually search",
+      "Your Google Business Profile fully managed and optimized",
+      "Paid search and social only when the numbers make sense for your business",
+      "Email and follow up built around your sales process",
     ],
   },
 ];

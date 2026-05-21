@@ -23,25 +23,25 @@ export const AboutPage = () => {
       icon: Target,
       title: "Research Before Spend",
       description:
-        "I do not touch campaigns until the market, offer, and customer story are clear. That discipline protects your budget and your reputation.",
+        "We learn your market, your customers, and your numbers before we ask you to spend more.",
     },
     {
       icon: Code,
-      title: "Custom Sites, Not Rentals",
+      title: "Built Around You",
       description:
-        "Your marketing site should feel like your business. I build custom web so performance, trust, and conversion stay in one system you own.",
+        "Your website and marketing should fit the way you sell, book, and follow up.",
     },
     {
       icon: Users,
-      title: "Personal Depth, Selective Roster",
+      title: "Always Informed",
       description:
-        "You work with me directly on a small roster. You get teaching, access, and follow-through from the same person across the engagement.",
+        "You see what changed, what it cost, and what the results mean in plain language.",
     },
     {
       icon: TrendingUp,
-      title: "Teach You to Scale",
+      title: "One Point Person",
       description:
-        "The goal is growth you understand through systems, metrics, and decisions you can carry forward. Over time you should need me less.",
+        "You work with Jonathan from the first call through the day to day work.",
     },
   ];
 
@@ -49,17 +49,17 @@ export const AboutPage = () => {
     {
       icon: Heart,
       name: "Healthcare",
-      description: "Independent optical where referrals are strong but the website lags behind the practice.",
+      description: "Practices that already earn trust in person and need the website to keep up.",
     },
     {
       icon: ShoppingBag,
       name: "Retail & E-commerce",
-      description: "Hybrid, online-first brands fixing message, audience, and channel fit before scaling spend.",
+      description: "Stores and product brands that need clearer numbers before they spend more.",
     },
     {
       icon: Scale,
       name: "Professional Services",
-      description: "Selective firms that need firm-grade sites and cases, not salesy lead volume.",
+      description: "Firms that need a website and proof that match the quality of the work.",
     },
   ];
 
@@ -82,19 +82,19 @@ export const AboutPage = () => {
           >
             <div className="text-left">
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
-                About FrameScale Inc
+                About FrameScale
               </span>
               <h1
                 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
                 style={{ color: "var(--brand-deep)" }}
               >
-                A marketer with business degrees and the patience to teach what matters
+                Meet Jonathan
               </h1>
               <p
                 className="font-body text-lg lg:text-xl leading-relaxed max-w-xl"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                FrameScale is how I work with a small number of owners at a time. You get research-led growth, custom-built web, and fundamentals that stick through SEO, Google Business Profile, analytics, and paid media you can actually use.
+                FrameScale is how I work with a small number of business owners at a time. You get research before spend, a website built around your business, clear reporting, and one person who stays with the work.
               </p>
             </div>
 
@@ -123,23 +123,23 @@ export const AboutPage = () => {
               className="font-headline text-3xl lg:text-4xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              Why I built FrameScale this way
+              Why I Work This Way
             </h2>
             <div className="space-y-6 font-body text-lg leading-relaxed" style={{ color: "var(--brand-neutral)" }}>
               <p>
-                {`I have walked the same maze many owners describe: smart strategy that never ships, or busy tactics that never tie back to margin. With both a bachelor's and a master's in business, I care as much about how growth shows up on a P&L as how it looks in an ad account.`}
+                I built FrameScale for owners who are tired of paying for activity they cannot explain. You should know where the money goes, what is working, and who is making the calls.
               </p>
               <p>
-                Six years in optical retail and the lab taught me what actually moves a practice's margin: frames on display, supplier quirks, and the day-to-day scheduling that shapes revenue. I learned to teach as we go, so the work outlasts our engagement.
+                I spent six years in optical retail and the lab. That experience taught me how the day to day work inside a business shapes trust, revenue, and repeat business.
               </p>
               <p>
-                I also believe respect is shown through bandwidth. I only take work I want to carry personally, and I keep concurrent clients intentionally low, usually no more than three, so you get depth, teaching, and follow-through instead of a handoff queue.
+                I keep my client list small on purpose. Your work does not get handed to a junior account manager. It stays with me.
               </p>
               <p>
-                Before I spend a dollar of your media budget, I want the research, positioning, and offer clarity to be defensible. Then I build custom marketing sites and systems that match how you actually win customers. That is not a WordPress or Wix template dressed up as strategy.
+                I do the research before I ask you to spend more. Then I build around how your business actually sells, books, and follows up.
               </p>
               <p>
-                If we work together, you should leave smarter: clearer on what to measure, why the plan looks the way it does, and how to keep scaling even when our project phases wind down. That is the point.
+                If we work together, you should end up clearer on your market, your numbers, and your next move.
               </p>
             </div>
           </motion.div>
@@ -150,9 +150,9 @@ export const AboutPage = () => {
       <section className="relative py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
-            badge="Our Values"
-            title="How I Work With Clients"
-            description="Principles you should feel on every call. Clarity first, ego last."
+            badge="What Matters"
+            title="How I Work"
+            description="The rules stay simple: learn first, build around your business, explain the numbers, and keep one person on the work."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -191,9 +191,9 @@ export const AboutPage = () => {
       <section className="relative py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
-            badge="Industries I Serve"
-            title="Where This Approach Fits Best"
-            description="Optical-led healthcare, margin-aware retail, and consultant-led professional services are where this model tends to fit best."
+            badge="Who I Help"
+            title="Best Fit"
+            description="FrameScale is built for owners who need clear thinking, clear reporting, and work that fits the way they actually operate."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -242,13 +242,13 @@ export const AboutPage = () => {
               className="font-headline text-3xl lg:text-4xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              Built to Stay Personal as You Grow
+              Built For Accountability
             </h2>
             <p
               className="font-body text-lg leading-relaxed mb-8"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              FrameScale Inc is the S-corp vehicle behind the work. It is structured for serious engagements, clear contracts, and the accountability you expect when growth is on the line.
+              FrameScale Inc is the company behind the work. Contracts, billing, and delivery stay straightforward so you always know who you hired and who is responsible.
             </p>
           </motion.div>
         </div>
@@ -264,10 +264,10 @@ export const AboutPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-headline text-4xl lg:text-5xl mb-6">
-              If the fit is right, we will both know it
+              Talk It Through
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Bring your goals, your constraints, and your questions. I will be direct about whether I am the right partner and what honest next steps look like either way.
+              Bring the questions you already have. I will tell you plainly whether I am the right fit and what the next step should be.
             </p>
             <Button variant="secondary" size="lg" href={site.bookingPath}>
               Schedule intro call

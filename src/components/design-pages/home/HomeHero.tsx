@@ -62,7 +62,7 @@ export const HomeHero = () => {
             transition={{ delay: 0.34 }}
             className="font-body text-xl lg:text-2xl mb-10 leading-relaxed text-(--brand-neutral) max-w-3xl mx-auto"
           >
-            Research before spend. Custom websites built for your business. SEO, Google Business Profile, analytics, and ads you can read and act on. One principal from first call through launch, on a roster kept small on purpose.
+            We build custom websites and manage your SEO, Google Business Profile, and analytics so you always know what is working and why.
           </motion.p>
 
           <motion.div

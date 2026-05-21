@@ -32,17 +32,17 @@ export const industries = [
   {
     label: "Healthcare",
     href: "/industries/healthcare",
-    description: "Independent optical and eye care. Sites that prove trust when referrals look you up.",
+    description: "For practices that need the website to match the trust they already earn.",
   },
   {
     label: "Retail & E-commerce",
     href: "/industries/retail",
-    description: "Hybrid and online-first brands. Message, audience, and channel aligned to margin.",
+    description: "For stores and product brands that need clearer numbers before they spend more.",
   },
   {
     label: "Professional Services",
     href: "/industries/professional-services",
-    description: "Consultants and partner-led firms. Firm-grade sites and cases, not salesy lead gen.",
+    description: "For firms that need a site and proof that help the right clients say yes.",
   },
 ] as const;
 

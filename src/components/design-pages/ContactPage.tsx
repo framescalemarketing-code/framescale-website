@@ -25,15 +25,15 @@ export const ContactPage = () => {
     {
       icon: Calendar,
       title: "Schedule a Call",
-      description: "Book a 30-minute intro call to discuss your growth goals.",
-      action: "Open calendar",
+      description: "Pick a time and tell me where things feel unclear.",
+      action: "Book a time",
       href: site.bookingPath,
     },
     {
       icon: Mail,
       title: "Send a Message",
-      description: "Fill out the form below and I will get back to you within 24 hours.",
-      action: "Fill Form Below",
+      description: "Send the details here if you would rather start in writing.",
+      action: "Start with email",
       href: "#contact-form",
     },
   ];
@@ -56,13 +56,13 @@ export const ContactPage = () => {
                 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[3.5rem] mb-4 sm:mb-6 leading-tight px-1"
                 style={{ color: "var(--brand-deep)" }}
               >
-                {`Let's Talk About Fit`}
+                Talk It Through
               </h1>
               <p
                 className="font-body text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                Book a free 30-minute intro call. Bring your goals and constraints, and leave with an honest next step.
+                Book a free 30 minute intro call or send a note. I will ask direct questions and give you an honest next step.
               </p>
             </motion.div>
           </div>
@@ -127,23 +127,23 @@ export const ContactPage = () => {
               {[
                 {
                   step: "1",
-                  title: "I Review",
-                  body: "I read your note and return with sharp questions about your market, offer, and constraints.",
+                  title: "I Read It",
+                  body: "I look at what you shared and note the questions that matter most.",
                 },
                 {
                   step: "2",
-                  title: "Intro call",
-                  body: "Thirty minutes on the phone for goals, pressure points, and candor about what is realistic.",
+                  title: "We Talk",
+                  body: "The intro call is 30 minutes. We cover the business, the pressure points, and what you want clearer.",
                 },
                 {
                   step: "3",
-                  title: "I Assess Fit",
-                  body: "If FrameScale is not the match, I will say so and point you in a sensible direction.",
+                  title: "I Tell You",
+                  body: "If I am not the right fit, I will say so.",
                 },
                 {
                   step: "4",
-                  title: "I Outline",
-                  body: "When it is a fit, you get scope, timing, and a clear next step so you can decide with confidence.",
+                  title: "You Decide",
+                  body: "If it is a fit, you get a clear next step, timing, and scope.",
                 },
               ].map((item) => (
                 <div key={item.step}>

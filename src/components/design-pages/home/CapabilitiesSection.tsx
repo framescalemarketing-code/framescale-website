@@ -13,8 +13,8 @@ export const CapabilitiesSection = () => (
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
         badge="What We Deliver"
-        title="Strategy, Custom Web, and Channels That Earn Their Keep"
-        description="Websites, SEO, Google Business Profile, analytics, and paid media held to the same bar as the strategy. This is not a social posting shop. It is growth work you can see, read, and learn from."
+        title="Everything Your Business Needs to Grow Online"
+        description="From your website to your ad spend, every service we offer is connected to a clear strategy and a result you can actually see."
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

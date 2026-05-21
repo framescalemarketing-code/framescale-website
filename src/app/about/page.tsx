@@ -3,7 +3,7 @@ import { AboutPage } from "@/components/design-pages/AboutPage";
 
 const title = "About FrameScale";
 const description =
-  "Principal-led growth marketing with business-school depth. Research before spend, custom web, and teaching built in for healthcare, retail, and professional services.";
+  "Meet Jonathan and see how FrameScale works: research before spend, clear reporting, custom websites, and one point person from start to finish.";
 
 export const metadata: Metadata = {
   title,

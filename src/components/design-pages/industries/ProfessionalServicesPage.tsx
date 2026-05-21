@@ -24,6 +24,8 @@ export const ProfessionalServicesPage = () => (
       label="Open notebook, top-down workspace"
       description="Handwritten notes on paper, a pen, a coffee, daylight on a wooden desk. No people, no stock conference rooms."
       variant="deep"
+      src="/photos/professional-services/workspace-feature-v2.jpg"
+      alt="Workspace with a laptop, coffee, notebook, and pens in soft window light."
     />
     <SolutionGrid
       header={professionalServicesContent.solutions.header}

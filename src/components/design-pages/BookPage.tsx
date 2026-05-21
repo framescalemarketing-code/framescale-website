@@ -37,7 +37,7 @@ export const BookPage = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-[28vh] sm:min-h-[32vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-8 sm:pt-32 sm:pb-10">
+      <section className="relative flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-8 sm:pt-32 sm:pb-9">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-96 h-96 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
         </div>
@@ -50,17 +50,16 @@ export const BookPage = () => {
                 Intro Call
               </span>
               <h1
-                className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[3.5rem] 2xl:text-7xl mb-4 sm:mb-5 leading-tight px-1"
+                className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight px-1"
                 style={{ color: "var(--brand-deep)" }}
               >
-                Book your intro call
+                Book The Call
               </h1>
               <p
-                className="font-body text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
+                className="font-body text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                Choose an open slot below. Hours are Monday through Friday, 9:00 AM to 5:00 PM Pacific, in
-                thirty-minute blocks. The last start is 4:30 PM so the call ends by 5:00 PM.
+                Pick a time that works for you. The call is 30 minutes. We will talk about where things feel unclear, what you have already tried, and whether I am the right fit.
               </p>
             </motion.div>
           </div>
@@ -73,8 +72,7 @@ export const BookPage = () => {
         <div className={PAGE_BOOK_FOOTER}>
           <Mail className="w-8 h-8 text-(--brand-primary) mx-auto mb-4" aria-hidden />
           <p className="font-body text-(--brand-neutral) leading-relaxed">
-            Bookings use the same systems as the contact form on this site. We do not plug in a separate paid
-            scheduling vendor. After you submit, you get a confirmation email and this screen. Questions?{" "}
+            This booking tool runs inside this site. After you book, you will get a confirmation email and a confirmation screen here. Questions?{" "}
             <a href={`mailto:${site.email}`} className="text-(--brand-primary) font-semibold hover:underline">
               {site.email}
             </a>

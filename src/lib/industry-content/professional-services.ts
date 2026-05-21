@@ -13,13 +13,15 @@ export const professionalServicesContent: IndustryPageContent = {
   hero: {
     icon: Scale,
     badge: "Professional Services",
-    title: "Credibility before the first call.",
+    title: "Earn The Lookup",
     description:
-      "Most of the firms I work with are consultants, with some law and accounting alongside. Referrals carry the work today. The website is either missing or doesn't sound like a partner. The aim is a real firm site and a few proper cases.",
+      "Most firms I help already get referrals. Then a prospect looks you up. The website needs to sound credible, show real work, and make the right client comfortable reaching out.",
     media: {
       label: "Workspace detail or bookshelf",
       description:
         "Open notebook with handwritten notes, a pen, a coffee, daylight. Or a shallow-focus bookshelf with relevant titles. No models, no glass-conference-room stock.",
+      src: "/photos/professional-services/workspace-hero-v2.jpg",
+      alt: "Top-down workspace with a laptop, blank phone, open notebook, and pen on a wooden desk.",
     },
     heroGradient: "deep",
     heroBlob: "bottom-right-deep",
@@ -31,25 +33,25 @@ export const professionalServicesContent: IndustryPageContent = {
   highlights: {
     header: {
       badge: "Where We Help",
-      title: "Where Trust Is the Product",
+      title: "Who This Helps",
       description:
-        "By the time someone reaches out, they've already read everything they can find. The site has to hold up to that quiet research.",
+        "This fits firms where trust, clarity, and good-fit clients matter more than raw lead volume.",
     },
     items: [
       {
         icon: Briefcase,
         label: "Consulting & Advisory",
-        description: "Strategy, operations, and management consulting.",
+        description: "Consultants and advisors who need a site that matches the quality of the work.",
       },
       {
         icon: Scale,
         label: "Legal Services",
-        description: "Law firms and specialty practices.",
+        description: "Firms that need clearer credibility online.",
       },
       {
         icon: FileText,
         label: "Accounting & Finance",
-        description: "CPA firms and financial advisors.",
+        description: "Practices that want better-fit inquiries and stronger trust before the first call.",
       },
     ],
   },
@@ -57,75 +59,75 @@ export const professionalServicesContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "Where Selective Firms Lose Pipeline",
+      title: "What Prospects Find",
       description:
-        "Selective firms want better-fit clients, not a louder pipeline. These gaps usually show up well before paid ads make any sense.",
+        "These are the gaps that show up after someone hears your name and starts reading.",
     },
     items: [
       {
-        title: "No site, or a placeholder",
+        title: "The site feels thin",
         description:
-          "Referrals carry you today. The next one looks you up and finds a placeholder, or a years-old page that gets little attention.",
+          "The work may be strong, but the website does not give a serious prospect enough confidence.",
       },
       {
-        title: "Your proof lives off the page",
+        title: "Proof stays in your head",
         description:
-          "Your stories are still living inside calls and intros. Without a few real cases on the website, new prospects can't picture themselves in the work.",
+          "You have stories worth telling, but they are not doing their job online.",
       },
       {
-        title: "Pipeline that wastes partner time",
+        title: "Wrong inquiries come in",
         description:
-          "Your inbound forms send people who aren't really ready to talk. That eats partner hours every week.",
+          "You spend time sorting through people who are not a fit.",
       },
       {
-        title: "Referrals only get you so far",
+        title: "Referrals need backup",
         description:
-          "Sometimes a quarter slows down and word of mouth isn't enough. When inbound has to step in, it should still sound like your firm.",
+          "A referral still looks you up. The site should make that introduction stronger.",
       },
     ],
   },
 
   solutions: {
     header: {
-      badge: "Our Approach",
-      title: "Firm Site, Cases, and Fit",
+      badge: "What You Get",
+      title: "What We Fix",
       description:
-        "A firm-grade site, structured cases, and inbound that fits long sales cycles.",
+        "We sharpen what you say, show the work clearly, and make the website easier for the right client to trust.",
     },
     items: [
       {
         icon: Target,
-        title: "Your Voice & Cases",
+        title: "Your Message",
         items: [
-          "Who you serve, in plain terms",
-          "How buyers actually research you",
-          "Cases that hold up to scrutiny",
+          "Who you want more of",
+          "What makes your firm easier to trust",
+          "Case studies that sound clear and real",
         ],
       },
       {
         icon: Code,
-        title: "Your Firm's Website",
+        title: "Your Website",
         items: [
-          "Modern, accessible website that loads fast",
-          "Intake that asks the right questions",
-          "Tracking that works for long deals",
+          "Fast, modern pages that feel credible",
+          "Intake forms that ask better questions",
+          "Tracking that shows what brings the right inquiries",
         ],
       },
       {
         icon: TrendingUp,
-        title: "Inbound That Sounds Like You",
+        title: "Better Inbound",
         items: [
-          "SEO when buyers are actually searching",
-          "Cases and anonymized outcomes",
-          "Pages your referrers can comfortably forward",
+          "SEO built around what prospects search",
+          "Pages your referrers can send with confidence",
+          "Follow-up that fits a longer sales cycle",
         ],
       },
     ],
   },
 
   cta: {
-    title: "Ready to put real work on the site?",
-    body: "Book a call. We'll talk through who you actually want to serve, which cases belong on the site, and what's worth measuring before any ads run.",
+    title: "Talk It Through",
+    body: "We can look at what prospects see now, which proof belongs on the site, and whether I am the right person to help.",
     secondaryButtonLabel: "See our 5-step process",
   },
 };

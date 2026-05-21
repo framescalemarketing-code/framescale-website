@@ -14,13 +14,15 @@ export const retailContent: IndustryPageContent = {
   hero: {
     icon: ShoppingBag,
     badge: "Retail & E-commerce",
-    title: "When cost per customer climbs, the product is rarely the real problem.",
+    title: "Find The Leak",
     description:
-      "For online stores with a small team, maybe with a store attached. By the time you call me in, you don't need a hype account. You need someone to figure out if the leak is in the story, the customer, or where you're putting ads.",
+      "When revenue feels busy but margin stays tight, the answer is usually in the message, the website, or the spend. We look at all three so you can see where the money is going.",
     media: {
       label: "Real packing station or storefront",
       description:
         "Brown paper, tape, partial box at a workbench, or a warm storefront window at dusk. No models, no shopping-bag-with-tablet clichés.",
+      src: "/photos/retail/storefront-hero.jpg",
+      alt: "Blue storefront with large glass windows and reflections from the street outside.",
     },
     heroGradient: "secondary",
     heroBlob: "top-left-secondary",
@@ -31,26 +33,26 @@ export const retailContent: IndustryPageContent = {
 
   highlights: {
     header: {
-      badge: "Retail Verticals",
-      title: "Different setups, different leaks",
+      badge: "Where It Fits",
+      title: "Who This Helps",
       description:
-        "A store with a website, an online brand with a showroom, or marketplaces. Each one leaks margin in a different place.",
+        "This works for stores with a website, online brands, and product businesses selling in more than one place.",
     },
     items: [
       {
         icon: Store,
         label: "Physical Retail",
-        description: "Showrooms and stores that are growing online.",
+        description: "Stores that need the website to support in-person sales.",
       },
       {
         icon: ShoppingCart,
         label: "E-commerce Brands",
-        description: "Mostly online, sometimes with retail.",
+        description: "Online brands that need cleaner numbers and a stronger site.",
       },
       {
         icon: Package,
         label: "Product Brands",
-        description: "Specialty products sold across several places.",
+        description: "Product businesses selling across more than one channel.",
       },
     ],
   },
@@ -58,75 +60,75 @@ export const retailContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "Retail Growth Problems We Untangle",
+      title: "Where Money Slips",
       description:
-        "Strong sales teams hide a lot. These patterns tend to surface once ad spend climbs and profit doesn't follow.",
+        "These are the patterns that show up when spend climbs and the numbers still do not feel right.",
     },
     items: [
       {
-        title: "Wrong message, buyer, or place",
+        title: "Message misses the buyer",
         description:
-          "You might be aiming at the wrong buyer. Or you're showing it on the wrong channel for that buyer. Ad spend climbs and revenue doesn't follow.",
+          "You are getting traffic, but the offer or story is not landing with the right person.",
       },
       {
-        title: "Customer cost eats margin",
+        title: "Costs keep climbing",
         description:
-          "Between ads, SEO, and marketplace fees, you can't quite see how each order's margin lines up with what you spent to get it.",
+          "Ad costs, marketplace fees, and discounts chip away at margin faster than you can track.",
       },
       {
-        title: "The site lags your floor",
+        title: "The site slows sales",
         description:
-          "Your team sells in person. The website doesn't keep up: mobile checkout is slow, the product story is thin, and the numbers don't match what your register shows.",
+          "Your in-person team can sell it. The website is not doing the same job.",
       },
       {
-        title: "Numbers live in scattered tabs",
+        title: "Reporting stays scattered",
         description:
-          "Store sales, web analytics, and marketplace reports all live in different dashboards. Three people on your team will give you three different answers about what's working.",
+          "Store sales, website data, and ad numbers live in different places, so no one has one clear answer.",
       },
     ],
   },
 
   solutions: {
     header: {
-      badge: "Our Approach",
-      title: "Clarity First, Then Scale",
+      badge: "What You Get",
+      title: "What We Fix",
       description:
-        "You'll see why we change the message, the channel, or the numbers before any budget jumps.",
+        "We find what is dragging profit down, then fix the message, the site, and the tracking in the right order.",
     },
     items: [
       {
         icon: Target,
-        title: "Your Brand & Buyer",
+        title: "Your Buyer",
         items: [
-          "Category and competitor research",
-          "Where your customers actually buy",
-          "Picking channels that fit your buyer",
+          "What your customer is really comparing",
+          "Which channels deserve your budget",
+          "What to change before you spend more",
         ],
       },
       {
         icon: Code,
-        title: "Storefront & Checkout",
+        title: "Your Store",
         items: [
-          "Shopify or fully custom storefronts",
-          "Checkout, payments, and subscriptions",
-          "Faster pages and a higher buy rate",
+          "A website built around how people actually buy",
+          "Checkout, forms, and tracking that work cleanly",
+          "Faster pages and clearer product stories",
         ],
       },
       {
         icon: TrendingUp,
-        title: "Ads & Follow-Up",
+        title: "Your Follow-Up",
         items: [
-          "Ads that stay inside your margin",
-          "SEO aligned to how people actually search",
-          "Follow-up email and SMS for repeat buyers",
+          "SEO built around real search behavior",
+          "Paid search and paid social only when the numbers work",
+          "Email and follow-up that bring people back",
         ],
       },
     ],
   },
 
   cta: {
-    title: "Fix the leak before you spend more?",
-    body: "Book a call. I'll look at where the money's going, ask a lot of questions about how you sell, and tell you honestly if I'm the right person to help.",
+    title: "Talk It Through",
+    body: "We can look at where the money is going, what the website is doing to sales, and whether I am the right person to help.",
     secondaryButtonLabel: "See our 5-step process",
   },
 };

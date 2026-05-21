@@ -12,14 +12,14 @@ export const Footer = () => {
 
   return (
     <footer className="bg-(--brand-deep) text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-10 pb-[calc(6rem+env(safe-area-inset-bottom))] md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 mb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-9 pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-7 lg:gap-9 mb-6">
           <div className="lg:col-span-2">
-            <div className="mb-4">
+            <div className="mb-3">
               <BrandLockup size="md" tone="color" />
             </div>
-            <p className="font-body text-sm text-white/70 mb-5 leading-relaxed max-w-sm">
-              Research-led growth marketing and custom web for small to mid-size businesses. Direct, teaching-focused, and built to help you scale without the agency merry-go-round.
+            <p className="font-body text-sm text-white/70 mb-4 leading-relaxed max-w-sm">
+              Research before spend, custom websites, clear reporting, and one dedicated person from first call to launch.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -62,9 +62,9 @@ export const Footer = () => {
           ))}
         </div>
 
-        <div className="pt-6 border-t border-white/10 flex items-start justify-start pr-28 sm:pr-44 md:pr-0">
+        <div className="pt-4 border-t border-white/10 flex items-start justify-start pr-28 sm:pr-44 md:pr-0">
           <p className="font-body text-sm leading-relaxed text-white/60">
-            © {new Date().getFullYear()} {site.name}. All rights reserved.
+            {"\u00a9"} {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
         </div>
       </div>

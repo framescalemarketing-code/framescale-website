@@ -18,7 +18,7 @@ export const MetricCard = ({ value, label, suffix = "", index }: MetricCardProps
   // If value is non-numeric (contains letters / dashes), use a tighter sizing
   const isTextual = /[A-Za-z]/.test(value);
   const valueSize = isTextual
-    ? "text-[clamp(1.5rem,2.4vw,2.25rem)]"
+    ? "text-[clamp(1.35rem,1.9vw,2rem)]"
     : "text-5xl lg:text-6xl";
 
   return (
@@ -29,10 +29,10 @@ export const MetricCard = ({ value, label, suffix = "", index }: MetricCardProps
       whileInView="show"
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      className="bg-white rounded-2xl p-7 border border-border hover:border-(--brand-primary)/60 transition-all duration-300 text-center group depth-card-soft"
+      className="bg-white rounded-2xl border border-border hover:border-(--brand-primary)/60 transition-all duration-300 text-center group depth-card-soft h-full min-h-[11rem] px-6 py-5 flex flex-col justify-center"
     >
       <motion.div
-        className={`font-headline ${valueSize} mb-3 leading-[1.05] bg-linear-to-r from-(--brand-primary) to-(--brand-secondary) bg-clip-text text-transparent wrap-break-word tracking-tight`}
+        className={`font-headline ${valueSize} min-h-[2.6rem] mb-4 leading-none bg-linear-to-r from-(--brand-primary) to-(--brand-secondary) bg-clip-text text-transparent tracking-tight flex items-center justify-center whitespace-nowrap px-1`}
         initial={{ opacity: 0, y: 16 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: index * 0.08 + 0.15, duration: 0.55 }}
@@ -41,7 +41,7 @@ export const MetricCard = ({ value, label, suffix = "", index }: MetricCardProps
         {suffix && <span className="text-3xl">{suffix}</span>}
       </motion.div>
       <div
-        className="font-ui text-[11px] font-semibold uppercase tracking-[0.18em]"
+        className="font-ui text-[11px] font-semibold uppercase tracking-[0.18em] min-h-[2.2rem] max-w-[16rem] mx-auto flex items-start justify-center"
         style={{ color: "var(--brand-neutral)" }}
       >
         {label}

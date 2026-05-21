@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { RetailPage } from "@/components/design-pages/industries/RetailPage";
 
-const title = "Retail and e-commerce growth when CAC outruns margin";
+const title = "Retail Marketing You Can Read";
 const description =
-  "Hybrid online-first brands: align message, audience, and channel before scaling spend. Collaborative strategy, storefront CRO, and attribution tied to margin.";
+  "For stores and product brands that need clearer numbers, a stronger website, and spend that makes sense before the budget grows.";
 
 export const metadata: Metadata = {
   title,
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Shopify development",
     "DTC growth",
     "performance marketing",
-    "CRO",
+    "website conversion",
     "lifecycle email",
   ],
   alternates: { canonical: "/industries/retail" },

@@ -18,114 +18,114 @@ export const processSteps: ProcessStep[] = [
   {
     number: "01",
     icon: Search,
-    title: "Understand Industry & Market",
+    title: "Learn The Market",
     description:
-      "Research comes first. I study your industry, the market you compete in, and competitors so every later decision sits on real context, not assumptions.",
+      "Before we change anything, we look at your market, your competitors, and how buyers compare options.",
     activities: [
-      "Industry structure, demand drivers, and seasonality or regulation where it matters",
-      "Market segments and where margin and growth actually concentrate",
-      "Competitor offers, pricing, messaging, channels, and visible gaps",
-      "Trends and benchmarks that shape how buyers choose in your space",
+      "Who else is competing for the same customer",
+      "How people choose in your market",
+      "What competitors say, offer, and charge",
+      "What outside factors shape demand right now",
     ],
     deliverables: [
-      "Industry & market snapshot",
-      "Competitive landscape summary",
-      "Implications brief for positioning and spend",
+      "What we found",
+      "Where the real opportunity is",
+      "What this means before you spend more",
     ],
   },
   {
     number: "02",
     icon: Users,
-    title: "Understand Your Business & Customer",
+    title: "Learn Your Business",
     description:
-      "Next I go deep on your business: differentiators, points of parity and points of difference, who you serve best, and how your operations back the promise.",
+      "Next we learn how your business works, who you want more of, and what makes people choose you.",
     activities: [
-      "Discovery conversations and business model review",
-      "POPs & PODs: points of parity and points of difference you can own",
-      "Ideal customer profiles: needs, triggers, objections, and journey",
-      "Fit check on how you deliver today for those best-fit buyers",
+      "Calls or meetings to learn the business",
+      "Review of your offer, sales process, and current site",
+      "Who your best customers are and what they care about",
+      "Where the current experience breaks down",
     ],
     deliverables: [
-      "Customer profile documentation",
-      "Differentiation summary with POP & POD clarity",
-      "Notes on offer, delivery, and message risk before strategy work",
+      "Clear picture of your best-fit customer",
+      "What makes you easier to choose",
+      "What needs to change first",
     ],
   },
   {
     number: "03",
     icon: Target,
-    title: "Build & Tailor Your Strategy",
+    title: "Make The Plan",
     description:
-      "I translate insight into a tailored strategy: what to say, why it is credible, where each message belongs, and an integrated marketing communications plan that matches your brand.",
+      "Once the facts are clear, we map out what to say, what to fix, and where to focus first.",
     activities: [
-      "Positioning, promise, and proof so messaging stands up to scrutiny",
-      "Message hierarchy and channel fit: where each message belongs for your buyers",
-      "Integrated marketing communications plan aligned to brand standards",
-      "Goals, budgets, and milestones by channel and initiative",
+      "Clear message for the right buyer",
+      "Which pages, channels, and follow-up matter most",
+      "Budget and timing tied to your goals",
+      "Priority order for the work",
     ],
     deliverables: [
-      "Brand-aligned messaging & IMC plan",
-      "Channel & campaign blueprint",
-      "Execution roadmap with owners and timing",
+      "Clear message and offer direction",
+      "Priority list for website, content, and ads",
+      "Timeline with next steps",
     ],
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Execute & Launch",
+    title: "Build It",
     description:
-      "I ship against the plan: sites, creative, tracking, and campaigns go live with QA, sequencing, and clear internal handoffs so nothing gets lost.",
+      "Then we build the pieces we agreed on and put them live carefully. That can include the website, tracking, profiles, and campaigns.",
     activities: [
-      "Website and landing experiences built to the strategy",
-      "CRM, analytics, and conversion tracking configured for decisions you will use",
-      "Campaign build, review, and launch across agreed channels",
-      "Launch sequencing, checklists, and stakeholder alignment",
+      "Build or update the website",
+      "Set up forms, tracking, and reporting",
+      "Prepare and launch the agreed channels",
+      "Check every part before it goes live",
     ],
     deliverables: [
-      "Live site, assets, and campaigns",
-      "Tracking & reporting views you can read week to week",
-      "Launch completion record and first-read performance baseline",
+      "Live website and launch assets",
+      "Reporting you can actually read",
+      "Clear record of what launched",
     ],
   },
   {
     number: "05",
     icon: BarChart3,
-    title: "Track & Optimize",
+    title: "Watch And Improve",
     description:
-      "Growth is a loop. I monitor performance, test improvements, move budget toward what earns out, and refresh strategy when the market or offer shifts.",
+      "After launch, we keep what is working and fix what is not. You always know what changed and why.",
     activities: [
-      "Reporting cadence tied to the metrics we defined up front",
-      "Structured tests and conversion improvements grounded in data",
-      "Channel and budget adjustments based on results, not habit",
-      "Strategy and message refinements when conditions change",
+      "Review the numbers on a steady schedule",
+      "Test improvements based on real behavior",
+      "Move budget toward what is working",
+      "Adjust the message when the response changes",
     ],
     deliverables: [
-      "Performance reports with clear takeaways you can use",
-      "Prioritized optimization backlog",
-      "Updated growth roadmap as we learn",
+      "Regular performance updates",
+      "Next fixes in priority order",
+      "Updated plan based on what we learn",
     ],
   },
 ];
 
 export const processPrinciples: ProcessPrinciple[] = [
   {
-    title: "Industry & Market Before Tactics",
+    title: "Know Before Spend",
     description:
-      "I start outside your four walls so channel picks, spend levels, and creative direction match how the category really behaves.",
+      "Research comes first so the work starts from what is true, not what sounds good in a meeting.",
   },
   {
-    title: "Business Fit & Customer Truth",
+    title: "Built Around You",
     description:
-      "Parity, difference, and customer profiles stay tied to who you can serve profitably and how you already deliver when the lights are on.",
+      "The website, reporting, and follow-up should fit the way your business actually runs.",
   },
   {
-    title: "Tailored IMC, One Thread",
+    title: "Always Informed",
     description:
-      "Strategy, creative, web, and media follow one integrated communications plan so the brand sounds like one voice wherever buyers meet you.",
+      "You should be able to see what changed, what it cost, and what happened next.",
   },
   {
-    title: "Measure, Learn, Re-Aim",
+    title: "One Point Person",
     description:
-      "Launch is the beginning of learning. Tracking and optimization stay on a steady cadence so results compound instead of drifting.",
+      "Jonathan stays with the work from the first call through the day to day changes.",
   },
 ];

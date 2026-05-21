@@ -62,7 +62,7 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
           Schedule intro call
         </Button>
         <Button size="lg" variant="ghost" href="/process">
-          Our Process
+          See Our Process
         </Button>
       </div>
     </>

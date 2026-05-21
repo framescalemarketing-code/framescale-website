@@ -44,7 +44,7 @@ export const ProcessStepsSection = () => (
                 <div className="space-y-8">
                   <div className="bg-white rounded-2xl p-8 border border-border">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      Key Activities
+                      What Happens
                     </h3>
                     <ul className="space-y-3">
                       {step.activities.map((activity) => (
@@ -60,7 +60,7 @@ export const ProcessStepsSection = () => (
 
                   <div className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-8 border border-(--brand-primary)/20">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      Deliverables
+                      What You Get
                     </h3>
                     <ul className="space-y-2">
                       {step.deliverables.map((deliverable) => (

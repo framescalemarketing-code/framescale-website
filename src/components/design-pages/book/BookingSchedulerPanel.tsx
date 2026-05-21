@@ -50,16 +50,16 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
   } = scheduler;
 
   return (
-    <section className="relative pb-16 sm:pb-20 lg:pb-28 bg-white">
+    <section className="relative pb-14 sm:pb-16 lg:pb-20 bg-white">
       <div className={PAGE_SHELL_BOOK_MAIN}>
         <motion.div
           variants={slideUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 sm:p-6 lg:p-8 xl:p-10 shadow-[var(--shadow-depth-2)]"
+          className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-2)]"
         >
-          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5">
             <div className="flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto min-w-0">
               <button
                 type="button"
@@ -101,7 +101,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
           )}
 
           <div className={PAGE_BOOKING_CAL_GRID}>
-            <div className="rounded-xl border border-border bg-white p-3 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-1)] min-w-0">
+            <div className="rounded-xl border border-border bg-white p-3 sm:p-4 lg:p-5 shadow-[var(--shadow-depth-1)] min-w-0">
               {loading && !payload ? (
                 <div className="flex flex-col items-center justify-center min-h-[280px] gap-3 text-(--brand-neutral) font-body text-sm">
                   <Loader2 className="w-8 h-8 animate-spin text-(--brand-primary)" aria-hidden />
@@ -158,7 +158,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
               )}
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-4 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-1)] min-h-[260px] sm:min-h-[280px] flex flex-col min-w-0 lg:min-h-[min(32rem,70vh)] xl:min-h-[min(36rem,72vh)]">
+            <div className="rounded-xl border border-border bg-white p-4 sm:p-5 shadow-[var(--shadow-depth-1)] min-h-[240px] sm:min-h-[260px] flex flex-col min-w-0 lg:min-h-[25rem] xl:min-h-[27rem]">
               {!selectedDay && (
                 <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
                   Choose a weekday on the calendar. Times that are already taken stay visible with a Booked
@@ -173,7 +173,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
                   <p className="font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) shrink-0">
                     Times (Pacific)
                   </p>
-                  <ul className="flex flex-col gap-2 flex-1 min-h-0 max-h-44 sm:max-h-52 md:max-h-60 lg:max-h-none overflow-y-auto overscroll-contain pr-1 -mr-1">
+                  <ul className="flex flex-col gap-2 flex-1 min-h-0 max-h-44 sm:max-h-52 md:max-h-60 lg:max-h-56 xl:max-h-64 overflow-y-auto overscroll-auto pr-1 -mr-1">
                     {selectedDaySlots.map((slot) => (
                       <SlotRow
                         key={slot.start}

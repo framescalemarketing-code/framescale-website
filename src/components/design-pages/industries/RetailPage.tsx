@@ -21,6 +21,8 @@ export const RetailPage = () => (
       label="Packing station or storefront window"
       description="Real packing station mid-task, or warm storefront at dusk. No models, no smiling staff facing the camera."
       variant="secondary"
+      src="/photos/retail/packing-feature-v2.jpg"
+      alt="Stacks of shipping boxes inside a warehouse with a blue metal ceiling overhead."
     />
     <SolutionGrid
       header={retailContent.solutions.header}

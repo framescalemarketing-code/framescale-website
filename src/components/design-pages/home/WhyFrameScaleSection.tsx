@@ -11,19 +11,19 @@ export const WhyFrameScaleSection = () => (
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <motion.div variants={slideInFromLeft} initial="hidden" whileInView="show" viewport={{ once: true }}>
           <h2 className="font-headline text-4xl lg:text-5xl mb-6" style={{ color: "var(--brand-deep)" }}>
-            Less Noise. More Clarity.
+            Complex Problems. Clear Solutions.
           </h2>
           <p
             className="font-body text-lg leading-relaxed mb-6"
             style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
           >
-            Most owners have seen smart strategy that never ships, or busy tactics that never tie back to how the business actually makes money. That pattern burns budget and trust.
+            Most business owners have worked with an agency and walked away still not knowing where their money went or what actually moved the needle.
           </p>
           <p
             className="font-body text-lg leading-relaxed"
             style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
           >
-            FrameScale stays intentionally small. Strategy, custom web, and campaigns stay on one thread with one lead, so growth is something you can see, question, and carry forward.
+            At FrameScale we make sure that never happens. You have full visibility into every decision, every dollar, and every result from the day we start working together.
           </p>
         </motion.div>
 
@@ -41,15 +41,15 @@ export const WhyFrameScaleSection = () => (
             <div>
               <h3 className="font-headline text-2xl mb-3">What Makes This Different</h3>
               <p className="font-body text-white/90 leading-relaxed" style={{ maxWidth: "none" }}>
-                {`You work with someone who holds a bachelor's and a master's in business, keeps concurrent clients low so you get depth, and will not ship campaigns until the homework says they are worth doing. Sites are built for you, not dragged out of a template library.`}
+                You should always know what is happening with your marketing. We keep you informed at every stage so nothing ever feels like a black box.
               </p>
             </div>
           </div>
           <div className="space-y-4">
-            <ValuePoint text="Direct access to the principal, not a rotating account bench" icon={Users} />
-            <ValuePoint text="Research before spend. No guessing inside the ad platform" icon={Target} />
-            <ValuePoint text="Custom marketing sites instead of WordPress or Wix shortcuts" icon={Code} />
-            <ValuePoint text="SEO, Google Business Profile, analytics, and paid media with partner-level care" icon={BarChart3} />
+            <ValuePoint text="You always know where your budget is going" icon={Users} />
+            <ValuePoint text="You see the research before we spend anything" icon={Target} />
+            <ValuePoint text="Your website is built around your business not pulled from a template" icon={Code} />
+            <ValuePoint text="Your SEO, Google Business Profile, and analytics are tracked and explained in plain language" icon={BarChart3} />
           </div>
         </motion.div>
       </div>

@@ -24,13 +24,13 @@ export const ProcessHero = () => (
             className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
             style={{ color: "var(--brand-deep)" }}
           >
-            Market First, Then Strategy You Can Execute
+            How We Work
           </h1>
           <p
             className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
             style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
           >
-            Engagements open with industry and competitor research, not ad spend. Five phases move from market context through your business, tailored strategy, launch, and optimization so nothing ships without homework behind it.
+            We start with research, build around your business, and keep you informed as the work moves. You always know what we are doing and why.
           </p>
         </motion.div>
       </div>

@@ -13,10 +13,10 @@ import type { IndustryPageContent } from "./types";
 export const healthcareContent: IndustryPageContent = {
   hero: {
     icon: Heart,
-    badge: "Optical-Led Healthcare",
-    title: "Your practice is stronger than your website.",
+    badge: "Healthcare",
+    title: "Trust On Sight",
     description:
-      "Most independent optical practices already get steady patients from word of mouth. The website should match: clean, easy to book on a phone, honest about who you are. I worked the retail floor and the lab for six years, so we can talk shop.",
+      "Most practices I help already get referrals. Then a patient looks you up. The website should make that next step easy. We build around trust, clear answers, and booking that works on a phone.",
     media: {
       label: "Editorial close-up of a designer optical frame",
       description:
@@ -33,26 +33,26 @@ export const healthcareContent: IndustryPageContent = {
 
   highlights: {
     header: {
-      badge: "Healthcare Specialties",
-      title: "Optical first. Other care welcome.",
+      badge: "Where It Fits",
+      title: "Who This Helps",
       description:
-        "Optical is where I have hands-on experience. Dental and other practices come in for the same fundamentals: trust, easy booking, and being found locally.",
+        "Optical is where Jonathan has direct experience. The same approach also fits practices that need local visibility, clear trust signals, and easy booking.",
     },
     items: [
       {
         icon: Eye,
         label: "Optical & Optometry",
-        description: "Independent optical practices that fit and sell their own frames.",
+        description: "Independent practices that fit, sell, and care for patients in house.",
       },
       {
         icon: Smile,
         label: "Dental Practices",
-        description: "General dentistry and specialty clinics.",
+        description: "Practices that need stronger local trust and easier booking.",
       },
       {
         icon: Stethoscope,
         label: "Medical Offices",
-        description: "Specialty practices and small multi-provider groups.",
+        description: "Specialty clinics and small provider groups.",
       },
     ],
   },
@@ -60,66 +60,66 @@ export const healthcareContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "Where Practice Websites Fall Short",
+      title: "What Patients See",
       description:
-        "Your patient flow probably feels steady. These are the gaps that usually show up after someone Googles you.",
+        "These are the gaps that show up when someone hears your name and looks you up.",
     },
     items: [
       {
-        title: "The website feels stuck",
+        title: "The site looks dated",
         description:
-          "Old design, slow on phones, or a tone that just doesn't sound like you. When someone Googles you after a visit, the site should not be a surprise.",
+          "The practice feels warm and professional in person. The website does not.",
       },
       {
-        title: "Marketing stuck on trends",
+        title: "Local visibility is weak",
         description:
-          "Whoever runs your social leans on memes and trends. Reviews, scheduling, and showing up on Google get ignored.",
+          "Patients search Google, maps, and reviews before they call. You need to show up clearly in all three.",
       },
       {
-        title: "Burned by the last agency",
+        title: "Nobody explains the numbers",
         description:
-          "The previous shop never really got to know your patients. AI tools can spit out copy. Neither of them will sit with you and explain what's actually working.",
+          "Money goes out every month and no one can tell you what is working.",
       },
       {
-        title: "The referral lookup falls flat",
+        title: "Booking takes work",
         description:
-          "Someone hears your name, Googles you on their phone, and the site doesn't answer what they want to know: are you in-network, can I book, is this place for me?",
+          "A patient should be able to find answers and take the next step without digging.",
       },
     ],
   },
 
   solutions: {
     header: {
-      badge: "Our Approach",
-      title: "Research, Trust, and Booking on One Thread",
+      badge: "What You Get",
+      title: "What We Fix",
       description:
-        "You work with me directly. We get the message clear before any ads run. We measure by booked appointments.",
+        "We look at how patients find you, what they see, and what helps them book with confidence.",
     },
     items: [
       {
         icon: Target,
-        title: "Your Story & Patients",
+        title: "Patient Research",
         items: [
-          "Who your patients are and how they find you",
-          "What makes the practice yours, in your words",
-          "Your local market and the practices nearby",
+          "How patients hear about you and what they search next",
+          "What matters most when they compare practices",
+          "How nearby practices present themselves",
         ],
       },
       {
         icon: Code,
-        title: "A Website Patients Trust",
+        title: "A Better Website",
         items: [
-          "Modern design that works on a phone",
-          "Online booking your front desk will use",
-          "Pages that answer what new patients ask",
+          "Pages that answer the questions patients ask first",
+          "Mobile booking and contact paths that are easy to use",
+          "A website that reflects the care people get in person",
         ],
       },
       {
         icon: TrendingUp,
-        title: "Steady Patient Growth",
+        title: "Local Visibility",
         items: [
-          "Showing up on Google when patients search",
-          "Reviews and replies that sound like you",
+          "SEO built around how patients actually search",
+          "Google Business Profile management and updates",
           "Ads only when the numbers make sense",
         ],
       },
@@ -127,8 +127,8 @@ export const healthcareContent: IndustryPageContent = {
   },
 
   cta: {
-    title: "Want a site that matches your practice?",
-    body: "Easiest first step is a short call. We can talk through what your patients are seeing, where the site falls short, and whether I'm the right person to help.",
+    title: "Talk It Through",
+    body: "We can look at what patients see now, where the site falls short, and whether I am the right person to help.",
     secondaryButtonLabel: "See our 5-step process",
   },
 };

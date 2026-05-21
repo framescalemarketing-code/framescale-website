@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { HealthcarePage } from "@/components/design-pages/industries/HealthcarePage";
 
-const title = "Optical practice marketing when your site lags behind";
+const title = "Healthcare Websites That Build Trust";
 const description =
-  "Independent optical and eye care: trust-forward sites and easier booking for referral lookups. Six years of optical retail and lab. California and beyond.";
+  "For practices that rely on referrals and need the website to make booking easier, build trust faster, and show up clearly in local search.";
 
 export const metadata: Metadata = {
   title,
