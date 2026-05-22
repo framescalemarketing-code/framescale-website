@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { BrandLockup } from "./Brand";
 import { footerLinks, site } from "@/lib/site";
 
 export const Footer = () => {
   const socialLinks = [
-    { icon: Linkedin, href: site.social.linkedin, label: "LinkedIn" },
+    { icon: null, href: site.social.linkedin, label: "LinkedIn", badge: "in" },
     { icon: null, href: site.social.fiverr, label: "Fiverr", badge: "fi" },
     { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
   ];
