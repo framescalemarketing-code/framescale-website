@@ -59,7 +59,7 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
 
       <div className="flex flex-col sm:flex-row gap-4">
         <Button size="lg" href={site.bookingPath}>
-          Schedule intro call
+          Schedule Intro Call
         </Button>
         <Button size="lg" variant="ghost" href="/process">
           See Our Process

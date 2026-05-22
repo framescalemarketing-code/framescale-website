@@ -61,7 +61,7 @@ export const footerLinks = {
   Company: [
     { label: "About", href: "/about" },
     { label: "Process", href: "/process" },
-    { label: "Book a call", href: site.bookingPath },
+    { label: "Book A Call", href: site.bookingPath },
     { label: "Contact", href: "/contact" },
     { label: "Sitemap", href: "/sitemap" },
   ],

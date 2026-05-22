@@ -12,6 +12,7 @@ import { DateTime } from "luxon";
 import { validateEmailConfirm } from "@/lib/email-validation";
 import { cleanString, getClientIp } from "@/lib/api-route-helpers";
 import { sendBookingNotifications } from "@/lib/booking/send-booking-notifications";
+import { loadExternalBusySlotStarts } from "@/lib/booking/external-calendar-busy";
 
 function supabaseBookingsSetupHint(err: { message?: string } | null): string | null {
   const msg = err?.message ?? "";
@@ -79,6 +80,10 @@ export async function GET(req: NextRequest) {
       const n = normalizeStoredStartsAt(raw);
       if (n) booked.add(n);
     }
+    const externallyBlocked = await loadExternalBusySlotStarts(monthStartUtc, nextMonthUtc);
+    for (const startsAt of externallyBlocked) {
+      booked.add(startsAt);
+    }
 
     const payload = buildSlotsPayload(year, monthNum, booked);
     if (!payload) {
@@ -132,6 +137,22 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const slotUtc = DateTime.fromISO(startsNorm, { zone: "utc" });
+    const slotMonthStartUtc = slotUtc.setZone(BOOKING_ZONE).startOf("month").toUTC().toISO();
+    const slotNextMonthUtc = slotUtc
+      .setZone(BOOKING_ZONE)
+      .startOf("month")
+      .plus({ months: 1 })
+      .toUTC()
+      .toISO();
+
+    if (slotMonthStartUtc && slotNextMonthUtc) {
+      const externallyBlocked = await loadExternalBusySlotStarts(slotMonthStartUtc, slotNextMonthUtc);
+      if (externallyBlocked.has(startsNorm)) {
+        return NextResponse.json({ error: "That slot is already booked. Pick another time." }, { status: 409 });
+      }
+    }
+
     const supabase = getSupabaseServerClient();
 
     const { data: existing, error: existingError } = await supabase

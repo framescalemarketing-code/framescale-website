@@ -40,6 +40,9 @@ When writing or editing user-facing marketing copy in this repo (including `src/
 2. **No single-sentence positive or negative flip.** Do not combine praise and criticism of alternatives (or bad news and silver lining) in **one** sentence. Example of what to avoid: “We are research-led, unlike agencies that skip homework” in a single clause chain. Write two sentences, or one neutral sentence, then a second that stands on its own.
 
 3. **Clear and direct.** Avoid decorative stacks of parentheses and filler phrases. Marketing copy should sound like something you would say out loud to a serious owner.
+4. **CTA capitalization is required.** All user-facing CTA labels (buttons, nav CTAs, and CTA-style links) must use Title Case. Example: "Schedule Intro Call", not "Schedule intro call".
+
+5. **Card and section headings use Title Case.** User-facing card titles, section titles, and short UI headings should use Title Case so industry pages feel polished and consistent.
 
 These rules apply to new copy and to edits you make to existing pages unless the user explicitly asks for an exception.
 

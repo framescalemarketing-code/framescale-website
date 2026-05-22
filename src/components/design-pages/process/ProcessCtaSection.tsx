@@ -14,7 +14,7 @@ export const ProcessCtaSection = () => (
           Tell me where things feel unclear, where the money is going, and what you want the website or marketing to do better. I will walk you through how I would approach it.
         </p>
         <Button variant="secondary" size="lg" href={site.bookingPath}>
-          Schedule intro call
+          Schedule Intro Call
         </Button>
       </motion.div>
     </div>

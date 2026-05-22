@@ -270,7 +270,7 @@ export const AboutPage = () => {
               Bring the questions you already have. I will tell you plainly whether I am the right fit and what the next step should be.
             </p>
             <Button variant="secondary" size="lg" href={site.bookingPath}>
-              Schedule intro call
+              Schedule Intro Call
             </Button>
           </motion.div>
         </div>

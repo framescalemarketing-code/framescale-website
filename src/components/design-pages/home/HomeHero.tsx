@@ -62,7 +62,7 @@ export const HomeHero = () => {
             transition={{ delay: 0.34 }}
             className="font-body text-xl lg:text-2xl mb-10 leading-relaxed text-(--brand-neutral) max-w-3xl mx-auto"
           >
-            We build custom websites and manage your SEO, Google Business Profile, and analytics so you always know what is working and why.
+            We build custom websites around how your business actually wins in your market, so you can scale with a plan that fits your industry.
           </motion.p>
 
           <motion.div
@@ -93,8 +93,8 @@ export const HomeHero = () => {
             </div>
             <div className="w-px h-12 bg-border" />
             <div>
-              <div className="font-headline text-3xl text-(--brand-primary)">3 Industries</div>
-              <div className="font-ui text-sm text-(--brand-neutral)">Core sectors</div>
+              <div className="font-headline text-3xl text-(--brand-primary)">Research based solutions</div>
+              <div className="font-ui text-sm text-(--brand-neutral)">Built around your business</div>
             </div>
             <div className="w-px h-12 bg-border" />
             <div>

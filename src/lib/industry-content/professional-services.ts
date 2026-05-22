@@ -13,7 +13,7 @@ export const professionalServicesContent: IndustryPageContent = {
   hero: {
     icon: Scale,
     badge: "Professional Services",
-    title: "Earn The Lookup",
+    title: "Help The Right Clients Trust You Faster",
     description:
       "Most firms I help already get referrals. Then a prospect looks you up. The website needs to sound credible, show real work, and make the right client comfortable reaching out.",
     media: {
@@ -33,7 +33,7 @@ export const professionalServicesContent: IndustryPageContent = {
   highlights: {
     header: {
       badge: "Where We Help",
-      title: "Who This Helps",
+      title: "Built For Trust-Led Firms",
       description:
         "This fits firms where trust, clarity, and good-fit clients matter more than raw lead volume.",
     },
@@ -41,17 +41,17 @@ export const professionalServicesContent: IndustryPageContent = {
       {
         icon: Briefcase,
         label: "Consulting & Advisory",
-        description: "Consultants and advisors who need a site that matches the quality of the work.",
+        description: "Consultants and advisors who do strong work and need the site to make that obvious faster.",
       },
       {
         icon: Scale,
         label: "Legal Services",
-        description: "Firms that need clearer credibility online.",
+        description: "Firms that need people to understand the practice, the proof, and the reason to reach out.",
       },
       {
         icon: FileText,
         label: "Accounting & Finance",
-        description: "Practices that want better-fit inquiries and stronger trust before the first call.",
+        description: "Practices that want better questions, better-fit inquiries, and less explaining on the first call.",
       },
     ],
   },
@@ -59,30 +59,30 @@ export const professionalServicesContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "What Prospects Find",
+      title: "Why Good Prospects Pause",
       description:
         "These are the gaps that show up after someone hears your name and starts reading.",
     },
     items: [
       {
-        title: "The site feels thin",
+        title: "The Site Feels Thin",
         description:
-          "The work may be strong, but the website does not give a serious prospect enough confidence.",
+          "A serious prospect needs more than a logo, a list of services, and a contact form before they trust the next step.",
       },
       {
-        title: "Proof stays in your head",
+        title: "Proof Stays In Your Head",
         description:
-          "You have stories worth telling, but they are not doing their job online.",
+          "You know the wins, the hard cases, and the reasons clients stay. The site should bring those details forward.",
       },
       {
-        title: "Wrong inquiries come in",
+        title: "Wrong Inquiries Come In",
         description:
-          "You spend time sorting through people who are not a fit.",
+          "The wrong people keep reaching out because the site is not clear enough about who you help and how you work.",
       },
       {
-        title: "Referrals need backup",
+        title: "Referrals Need Backup",
         description:
-          "A referral still looks you up. The site should make that introduction stronger.",
+          "Even a warm referral wants to feel reassured. Your site should make the handoff feel easy and credible.",
       },
     ],
   },
@@ -90,7 +90,7 @@ export const professionalServicesContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "What We Fix",
+      title: "What We Make Clearer",
       description:
         "We sharpen what you say, show the work clearly, and make the website easier for the right client to trust.",
     },
@@ -99,35 +99,35 @@ export const professionalServicesContent: IndustryPageContent = {
         icon: Target,
         title: "Your Message",
         items: [
-          "Who you want more of",
-          "What makes your firm easier to trust",
-          "Case studies that sound clear and real",
+          "The clients you want more of and what they need to hear first",
+          "The proof that makes your firm easier to trust",
+          "Case studies that sound specific, useful, and real",
         ],
       },
       {
         icon: Code,
         title: "Your Website",
         items: [
-          "Fast, modern pages that feel credible",
-          "Intake forms that ask better questions",
-          "Tracking that shows what brings the right inquiries",
+          "Pages that explain the work without sounding stiff",
+          "Intake forms that help you spot fit before the first conversation",
+          "Tracking that shows which pages and channels bring better inquiries",
         ],
       },
       {
         icon: TrendingUp,
         title: "Better Inbound",
         items: [
-          "SEO built around what prospects search",
-          "Pages your referrers can send with confidence",
-          "Follow-up that fits a longer sales cycle",
+          "SEO built around what a serious prospect actually searches",
+          "Pages your referrers can send without needing to explain everything",
+          "Follow-up that respects how long trust can take to build",
         ],
       },
     ],
   },
 
   cta: {
-    title: "Talk It Through",
-    body: "We can look at what prospects see now, which proof belongs on the site, and whether I am the right person to help.",
-    secondaryButtonLabel: "See our 5-step process",
+    title: "Review The Client Path",
+    body: "We can look at what a prospect sees now, where confidence drops, and what proof should be doing more work for you.",
+    secondaryButtonLabel: "See Our 5-Step Process",
   },
 };

@@ -13,7 +13,7 @@ export const CapabilitiesSection = () => (
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
         badge="What We Deliver"
-        title="Everything Your Business Needs to Grow Online"
+        title="Everything Your Business Needs to Grow"
         description="From your website to your ad spend, every service we offer is connected to a clear strategy and a result you can actually see."
       />
 

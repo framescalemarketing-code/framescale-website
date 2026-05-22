@@ -36,7 +36,7 @@ export const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: "", label: "Home", section: "main", priority: 1.0, changeFrequency: "weekly" },
   { path: "/about", label: "About", section: "main", priority: 0.8, changeFrequency: "monthly" },
   { path: "/process", label: "Process", section: "main", priority: 0.8, changeFrequency: "monthly" },
-  { path: site.bookingPath, label: "Book intro call", section: "main", priority: 0.95, changeFrequency: "weekly" },
+  { path: site.bookingPath, label: "Book Intro Call", section: "main", priority: 0.95, changeFrequency: "weekly" },
   { path: "/contact", label: "Contact", section: "main", priority: 0.9, changeFrequency: "monthly" },
   { path: "/sitemap", label: "Sitemap", section: "main", priority: 0.5, changeFrequency: "monthly" },
   ...industries.map((ind) => ({
