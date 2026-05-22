@@ -10,9 +10,9 @@ export const ProcessPrinciplesSection = () => (
   <section className="relative py-20 bg-muted">
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
-        badge="What Matters"
-        title="How We Keep It Clear"
-        description="The rules are simple: do the homework, build around your business, explain the numbers, and keep one person on the account."
+        badge="Working Standards"
+        title="How We Protect The Work"
+        description="Every decision needs a reason. The process stays focused on the customer, the business goal, and the evidence behind each move."
       />
 
       <div className="grid md:grid-cols-2 gap-8">

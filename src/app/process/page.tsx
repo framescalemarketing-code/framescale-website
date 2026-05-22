@@ -3,7 +3,7 @@ import { ProcessPage } from "@/components/design-pages/ProcessPage";
 
 const title = "How We Work";
 const description =
-  "See how FrameScale researches first, builds around your business, and keeps you informed from the first call through launch and follow-up.";
+  "See how FrameScale researches your market, builds around your business, and improves the website, tracking, and marketing pieces that help growth stay clear.";
 
 export const metadata: Metadata = {
   title,

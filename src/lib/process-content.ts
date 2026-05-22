@@ -18,90 +18,90 @@ export const processSteps: ProcessStep[] = [
   {
     number: "01",
     icon: Search,
-    title: "Learn The Market",
+    title: "Understand The Market",
     description:
-      "Before we change anything, we look at your market, your competitors, and how buyers compare options.",
+      "We look at the people you want to reach, the choices they already have, and the reasons they move forward or hesitate.",
     activities: [
-      "Who else is competing for the same customer",
-      "How people choose in your market",
-      "What competitors say, offer, and charge",
-      "What outside factors shape demand right now",
+      "Review direct and local competitors",
+      "Study buyer expectations, objections, and decision points",
+      "Compare positioning, offers, pricing cues, and proof",
+      "Identify market conditions that could affect demand",
     ],
     deliverables: [
-      "What we found",
-      "Where the real opportunity is",
-      "What this means before you spend more",
+      "Market research summary",
+      "Opportunity gaps worth acting on",
+      "Recommendations before more budget is spent",
     ],
   },
   {
     number: "02",
     icon: Users,
-    title: "Learn Your Business",
+    title: "Clarify Your Business",
     description:
-      "Next we learn how your business works, who you want more of, and what makes people choose you.",
+      "We learn how your business makes money, what your best customers value, and where the current experience is slowing growth.",
     activities: [
-      "Calls or meetings to learn the business",
-      "Review of your offer, sales process, and current site",
-      "Who your best customers are and what they care about",
-      "Where the current experience breaks down",
+      "Talk through your goals, offer, sales process, and service model",
+      "Review the current website, forms, follow-up, and reporting",
+      "Define the customers you want more of and what they care about",
+      "Find the moments where trust, clarity, or momentum drops",
     ],
     deliverables: [
-      "Clear picture of your best-fit customer",
-      "What makes you easier to choose",
-      "What needs to change first",
+      "Best-fit customer profile",
+      "Clearer value and proof points",
+      "Priority issues holding growth back",
     ],
   },
   {
     number: "03",
     icon: Target,
-    title: "Make The Plan",
+    title: "Shape The Strategy",
     description:
-      "Once the facts are clear, we map out what to say, what to fix, and where to focus first.",
+      "Once the facts are clear, we turn them into a practical plan for the message, site, tracking, and next growth moves.",
     activities: [
-      "Clear message for the right buyer",
-      "Which pages, channels, and follow-up matter most",
-      "Budget and timing tied to your goals",
-      "Priority order for the work",
+      "Create the message direction for the right buyer",
+      "Decide which pages, channels, and follow-up need attention",
+      "Connect budget, timing, and scope to the business goal",
+      "Put the work in the order that creates the most leverage",
     ],
     deliverables: [
-      "Clear message and offer direction",
-      "Priority list for website, content, and ads",
-      "Timeline with next steps",
+      "Strategy direction for the website and marketing",
+      "Prioritized roadmap for the work",
+      "Timeline with clear next steps",
     ],
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Build It",
+    title: "Build The System",
     description:
-      "Then we build the pieces we agreed on and put them live carefully. That can include the website, tracking, profiles, and campaigns.",
+      "Then we build the agreed pieces carefully so the website, tracking, profiles, and campaigns work together instead of feeling disconnected.",
     activities: [
-      "Build or update the website",
-      "Set up forms, tracking, and reporting",
-      "Prepare and launch the agreed channels",
-      "Check every part before it goes live",
+      "Build or improve the website pages that matter most",
+      "Set up forms, tracking, reporting, and conversion paths",
+      "Prepare the agreed profiles, content, and campaigns",
+      "Review the experience before anything goes live",
     ],
     deliverables: [
-      "Live website and launch assets",
-      "Reporting you can actually read",
-      "Clear record of what launched",
+      "Live website improvements and launch assets",
+      "Readable reporting tied to business outcomes",
+      "Launch record with what changed and why",
     ],
   },
   {
     number: "05",
     icon: BarChart3,
-    title: "Watch And Improve",
+    title: "Measure And Improve",
     description:
-      "After launch, we keep what is working and fix what is not. You always know what changed and why.",
+      "After launch, we watch what people do, keep what is working, and improve the parts that need a stronger response.",
     activities: [
-      "Review the numbers on a steady schedule",
-      "Test improvements based on real behavior",
-      "Move budget toward what is working",
-      "Adjust the message when the response changes",
+      "Review performance on a steady schedule",
+      "Test improvements based on real visitor behavior",
+      "Move attention and budget toward what is working",
+      "Adjust the message when the market response changes",
     ],
     deliverables: [
       "Regular performance updates",
-      "Next fixes in priority order",
+      "Next improvements in priority order",
       "Updated plan based on what we learn",
     ],
   },
@@ -109,23 +109,23 @@ export const processSteps: ProcessStep[] = [
 
 export const processPrinciples: ProcessPrinciple[] = [
   {
-    title: "Know Before Spend",
+    title: "Research Before Recommendations",
     description:
-      "Research comes first so the work starts from what is true, not what sounds good in a meeting.",
+      "The work starts with what buyers, competitors, and the business model show us. That keeps the plan grounded before money gets spent.",
   },
   {
-    title: "Built Around You",
+    title: "Built Around How You Operate",
     description:
-      "The website, reporting, and follow-up should fit the way your business actually runs.",
+      "Your website, reporting, and follow-up should fit the way the business actually runs. The process should make growth easier to manage.",
   },
   {
-    title: "Always Informed",
+    title: "Clear Numbers, Clear Decisions",
     description:
-      "You should be able to see what changed, what it cost, and what happened next.",
+      "You should be able to see what changed, what it cost, and what happened next. Reporting is useful only when it helps you decide.",
   },
   {
-    title: "One Point Person",
+    title: "One Owner For The Work",
     description:
-      "Jonathan stays with the work from the first call through the day to day changes.",
+      "Jonathan stays close to the work from the first conversation through the day-to-day changes. Nothing gets lost between handoffs.",
   },
 ];

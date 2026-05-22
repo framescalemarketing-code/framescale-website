@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { SectionHeader } from "@/components/design/SectionHeader";
 import { processSteps } from "@/lib/process-content";
 import { PAGE_SHELL_INDUSTRY } from "@/lib/page-layout";
 import { slideByIndex } from "@/lib/motion";
@@ -9,6 +10,12 @@ import { slideByIndex } from "@/lib/motion";
 export const ProcessStepsSection = () => (
   <section className="relative py-20 bg-white">
     <div className={PAGE_SHELL_INDUSTRY}>
+      <SectionHeader
+        badge="Five Phase Process"
+        title="From Research To Measurable Growth"
+        description="Each phase turns uncertainty into a clear decision. You see what we are learning, what we are building, and what should happen next."
+      />
+
       <div className="space-y-24">
         {processSteps.map((step, index) => {
           const Icon = step.icon;
@@ -44,7 +51,7 @@ export const ProcessStepsSection = () => (
                 <div className="space-y-8">
                   <div className="bg-white rounded-2xl p-8 border border-border">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      What Happens
+                      What We Do
                     </h3>
                     <ul className="space-y-3">
                       {step.activities.map((activity) => (
@@ -60,7 +67,7 @@ export const ProcessStepsSection = () => (
 
                   <div className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-8 border border-(--brand-primary)/20">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      What You Get
+                      What You Leave With
                     </h3>
                     <ul className="space-y-2">
                       {step.deliverables.map((deliverable) => (

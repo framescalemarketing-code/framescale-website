@@ -18,19 +18,19 @@ export const ProcessHero = () => (
       <div className="max-w-3xl mx-auto text-center">
         <motion.div variants={slideUp} initial="hidden" animate="show">
           <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
-            Our Process
+            FrameScale Process
           </span>
           <h1
             className="font-headline text-5xl lg:text-6xl mb-6 leading-tight"
             style={{ color: "var(--brand-deep)" }}
           >
-            How We Work
+            A Smarter Way To Build Growth
           </h1>
           <p
             className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
             style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
           >
-            We start with research, build around your business, and keep you informed as the work moves. You always know what we are doing and why.
+            Your website and marketing should be built from what your buyers need, how your business works, and where growth is getting stuck. We research first, make the plan clear, then build the pieces that help you scale with confidence.
           </p>
         </motion.div>
       </div>
