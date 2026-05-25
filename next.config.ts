@@ -4,6 +4,37 @@ import { fileURLToPath } from "node:url";
 
 /** Directory that contains this config file (repo root), not `process.cwd()` (which may be `src/app`). */
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+const supabaseOrigin = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  "'unsafe-eval'",
+  "https://embeds.iubenda.com",
+  "https://cdn.iubenda.com",
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+  "https://va.vercel-scripts.com",
+  "https://challenges.cloudflare.com",
+].join(" ");
+
+const connectSrc = [
+  "'self'",
+  "https://embeds.iubenda.com",
+  "https://cdn.iubenda.com",
+  "https://www.iubenda.com",
+  "https://hits-i.iubenda.com",
+  "https://cpl.iubenda.com",
+  "https://idb.iubenda.com",
+  "https://www.google-analytics.com",
+  "https://region1.google-analytics.com",
+  "https://vitals.vercel-insights.com",
+  "https://vitals.vercel-analytics.com",
+  "https://challenges.cloudflare.com",
+  supabaseOrigin,
+]
+  .filter(Boolean)
+  .join(" ");
 
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -32,12 +63,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embeds.iubenda.com https://cdn.iubenda.com https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
+      `script-src ${scriptSrc}`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.iubenda.com",
       "font-src 'self' https://fonts.gstatic.com https://cdn.iubenda.com",
       "img-src 'self' data: blob: https://www.iubenda.com",
-      "connect-src 'self' https://embeds.iubenda.com https://cdn.iubenda.com https://www.iubenda.com https://hits-i.iubenda.com https://cpl.iubenda.com https://idb.iubenda.com https://www.google-analytics.com https://region1.google-analytics.com https://vitals.vercel-insights.com https://vitals.vercel-analytics.com",
-      "frame-src https://www.iubenda.com",
+      `connect-src ${connectSrc}`,
+      "frame-src https://www.iubenda.com https://challenges.cloudflare.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
