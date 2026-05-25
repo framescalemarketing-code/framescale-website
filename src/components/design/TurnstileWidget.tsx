@@ -55,7 +55,7 @@ export function TurnstileWidget({
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        theme: "auto",
+        theme: "light",
         callback(token) {
           onTokenChange(token);
         },

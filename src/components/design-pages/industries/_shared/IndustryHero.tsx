@@ -87,7 +87,7 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
             <div>{textBlock}</div>
             <div className="lg:pl-4">
               {content.media.src ? (
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
                   <Image
                     src={content.media.src}
                     alt={content.media.alt}

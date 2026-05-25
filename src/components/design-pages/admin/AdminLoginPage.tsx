@@ -147,7 +147,7 @@ export function AdminLoginPage() {
             <motion.div variants={slideUp} initial="hidden" animate="show">
               <PageBackLink className="mb-6 text-left" />
 
-              <div className="rounded-2xl border border-border bg-white p-6 sm:p-8 lg:p-10 shadow-[var(--shadow-depth-2)] text-left">
+              <div className="rounded-2xl border border-border bg-white p-6 text-left shadow-(--shadow-depth-2) sm:p-8 lg:p-10">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary)">
                     <LockKeyhole className="h-6 w-6 text-white" />

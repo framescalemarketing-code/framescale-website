@@ -65,7 +65,7 @@ export const BookingSchedulerPanel = ({
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 sm:p-5 lg:p-6 shadow-[var(--shadow-depth-2)]"
+          className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 shadow-(--shadow-depth-2) sm:p-5 lg:p-6"
         >
           <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5">
             <div className="flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto min-w-0">
@@ -79,7 +79,7 @@ export const BookingSchedulerPanel = ({
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <h2
-                className="font-headline text-xl sm:text-2xl min-w-0 flex-1 sm:flex-initial sm:min-w-[10rem] text-center px-2"
+                className="min-w-0 flex-1 px-2 text-center font-headline text-xl sm:min-w-40 sm:flex-initial sm:text-2xl"
                 style={{ color: "var(--brand-deep)" }}
               >
                 {monthTitle}
@@ -109,14 +109,14 @@ export const BookingSchedulerPanel = ({
           )}
 
           <div className={PAGE_BOOKING_CAL_GRID}>
-            <div className="rounded-xl border border-border bg-white p-3 sm:p-4 lg:p-5 shadow-[var(--shadow-depth-1)] min-w-0">
+            <div className="min-w-0 rounded-xl border border-border bg-white p-3 shadow-(--shadow-depth-1) sm:p-4 lg:p-5">
               {loading && !payload ? (
-                <div className="flex flex-col items-center justify-center min-h-[280px] gap-3 text-(--brand-neutral) font-body text-sm">
+                <div className="flex min-h-70 flex-col items-center justify-center gap-3 font-body text-sm text-(--brand-neutral)">
                   <Loader2 className="w-8 h-8 animate-spin text-(--brand-primary)" aria-hidden />
                   Loading calendar...
                 </div>
               ) : !payload ? (
-                <div className="min-h-[200px] flex items-center justify-center font-body text-sm text-(--brand-neutral)">
+                <div className="flex min-h-50 items-center justify-center font-body text-sm text-(--brand-neutral)">
                   No calendar data.
                 </div>
               ) : (
@@ -167,7 +167,7 @@ export const BookingSchedulerPanel = ({
               )}
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-4 sm:p-5 shadow-[var(--shadow-depth-1)] min-h-[240px] sm:min-h-[260px] flex flex-col min-w-0 lg:min-h-[25rem] xl:min-h-[27rem]">
+            <div className="min-w-0 min-h-60 rounded-xl border border-border bg-white p-4 shadow-(--shadow-depth-1) sm:min-h-65 sm:p-5 lg:min-h-100 xl:min-h-108 flex flex-col">
               {!selectedDay && (
                 <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
                   Choose a weekday to see available times. Booked means the time is taken, and Unavailable means it is not open to book.

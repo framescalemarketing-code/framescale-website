@@ -6,11 +6,7 @@ type TurnstileVerifyResult = {
 };
 
 function getTurnstileSiteKey(): string {
-  return (
-    process.env.NEXT_PUBLIC_CLOUDFLARE_SITE_KEY?.trim() ||
-    process.env.CLOUDFLARE_SITE_KEY?.trim() ||
-    ""
-  );
+  return process.env.CLOUDFLARE_SITE_KEY?.trim() || "";
 }
 
 function getTurnstileSecretKey(): string {

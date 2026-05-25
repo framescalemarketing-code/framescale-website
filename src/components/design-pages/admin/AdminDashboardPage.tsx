@@ -97,7 +97,7 @@ export function AdminDashboardPage() {
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-(--brand-secondary)/5 to-white py-12 sm:py-16">
       <div className={PAGE_SHELL_FLUID}>
-        <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-(--brand-primary)/20 bg-white p-6 shadow-[var(--shadow-depth-1)] sm:p-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-(--brand-primary)/20 bg-white p-6 shadow-(--shadow-depth-1) sm:p-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="mb-2 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
               Private Admin
@@ -130,13 +130,13 @@ export function AdminDashboardPage() {
         </div>
 
         {error ? (
-          <div className="mb-6 rounded-2xl border border-destructive/20 bg-white p-5 font-body text-sm text-destructive shadow-[var(--shadow-depth-1)]">
+          <div className="mb-6 rounded-2xl border border-destructive/20 bg-white p-5 font-body text-sm text-destructive shadow-(--shadow-depth-1)">
             {error}
           </div>
         ) : null}
 
         <div className="mb-6 grid gap-5 md:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-depth-1)]">
+          <div className="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-depth-1)">
             <div className="mb-4 flex items-center gap-3">
               <Mailbox className="h-5 w-5 text-(--brand-primary)" />
               <h2 className="font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
@@ -148,7 +148,7 @@ export function AdminDashboardPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-depth-1)]">
+          <div className="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-depth-1)">
             <div className="mb-4 flex items-center gap-3">
               <CalendarDays className="h-5 w-5 text-(--brand-primary)" />
               <h2 className="font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
@@ -162,7 +162,7 @@ export function AdminDashboardPage() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-2">
-          <section className="rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-depth-1)]">
+          <section className="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-depth-1)">
             <h3 className="mb-5 font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
               Contact Submissions
             </h3>
@@ -197,7 +197,7 @@ export function AdminDashboardPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-depth-1)]">
+          <section className="rounded-2xl border border-border bg-white p-6 shadow-(--shadow-depth-1)">
             <h3 className="mb-5 font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
               Call Bookings
             </h3>
