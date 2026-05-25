@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CalendarDays, LogOut, Mailbox, RefreshCw } from "lucide-react";
 import { Button } from "@/components/design/Button";
-import { ADMIN_EMAIL } from "@/lib/admin-config";
 import type { AdminDashboardPayload } from "@/lib/admin-types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { PAGE_SHELL_FLUID } from "@/lib/page-layout";
@@ -25,14 +24,6 @@ export function AdminDashboardPage() {
   const [error, setError] = useState<string | null>(null);
 
   const loadDashboard = async () => {
-    const { data, error: userError } = await supabase.auth.getUser();
-
-    if (userError || data.user?.email?.toLowerCase() !== ADMIN_EMAIL) {
-      await supabase.auth.signOut();
-      router.replace("/admin/login");
-      return;
-    }
-
     const { data: sessionData } = await supabase.auth.getSession();
     const accessToken = sessionData.session?.access_token;
 
@@ -50,6 +41,12 @@ export function AdminDashboardPage() {
     });
 
     const responseData = (await response.json().catch(() => ({}))) as AdminDashboardPayload & { error?: string };
+
+    if (response.status === 401) {
+      await supabase.auth.signOut();
+      router.replace("/admin/login");
+      return;
+    }
 
     if (!response.ok) {
       throw new Error(responseData.error || "Unable to load the admin dashboard.");

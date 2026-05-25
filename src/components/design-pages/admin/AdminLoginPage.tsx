@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { LockKeyhole } from "lucide-react";
 import { Button } from "@/components/design/Button";
 import { PageBackLink } from "@/components/design/PageBackLink";
-import { ADMIN_EMAIL } from "@/lib/admin-config";
 import { slideUp } from "@/lib/motion";
 import { PAGE_HERO_INNER, PAGE_SHELL_FLUID_RELATIVE_FULL } from "@/lib/page-layout";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
@@ -18,6 +17,7 @@ async function wait(ms: number) {
 export function AdminLoginPage() {
   const router = useRouter();
   const supabase = useMemo(() => getSupabaseBrowserClient(), []);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -27,15 +27,38 @@ export function AdminLoginPage() {
     let active = true;
 
     void (async () => {
-      const { data } = await supabase.auth.getUser();
-      if (!active) return;
+      try {
+        const { data } = await supabase.auth.getSession();
+        const accessToken = data.session?.access_token;
 
-      if (data.user?.email?.toLowerCase() === ADMIN_EMAIL) {
-        router.replace("/admin");
-        return;
+        if (!accessToken) {
+          if (active) {
+            setLoading(false);
+          }
+          return;
+        }
+
+        const response = await fetch("/api/admin/dashboard", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          cache: "no-store",
+        });
+
+        if (!active) return;
+
+        if (response.ok) {
+          router.replace("/admin");
+          return;
+        }
+
+        await supabase.auth.signOut();
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
       }
-
-      setLoading(false);
     })();
 
     return () => {
@@ -51,21 +74,19 @@ export function AdminLoginPage() {
     setError(null);
 
     try {
-      const bootstrapResponse = await fetch("/api/admin/bootstrap", {
-        method: "POST",
-      });
+      const submittedEmail = email.trim().toLowerCase();
 
-      if (!bootstrapResponse.ok) {
-        throw new Error("Unable to prepare the admin login.");
+      if (!submittedEmail) {
+        throw new Error("Enter your admin email.");
       }
 
       let signInError: Error | null = null;
-      const normalizedPassword = password.trim();
+      const submittedPassword = password;
 
       for (let attempt = 0; attempt < 3; attempt += 1) {
         const { error } = await supabase.auth.signInWithPassword({
-          email: ADMIN_EMAIL,
-          password: normalizedPassword,
+          email: submittedEmail,
+          password: submittedPassword,
         });
 
         if (!error) {
@@ -80,7 +101,29 @@ export function AdminLoginPage() {
       }
 
       if (signInError) {
-        throw new Error("The password was not accepted.");
+        throw new Error(signInError.message || "The password was not accepted.");
+      }
+
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Signed in, but no session was created.");
+      }
+
+      const authorizationResponse = await fetch("/api/admin/dashboard", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
+      });
+
+      if (!authorizationResponse.ok) {
+        await supabase.auth.signOut();
+
+        const authorizationPayload = (await authorizationResponse.json().catch(() => ({}))) as { error?: string };
+        throw new Error(authorizationPayload.error || "This account is not authorized for admin access.");
       }
 
       router.replace("/admin");
@@ -128,14 +171,18 @@ export function AdminLoginPage() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label className="mb-2 block font-ui text-sm font-medium text-(--brand-deep)">
+                      <label htmlFor="admin-email" className="mb-2 block font-ui text-sm font-medium text-(--brand-deep)">
                         Admin Email
                       </label>
                       <input
+                        id="admin-email"
                         type="email"
-                        value={ADMIN_EMAIL}
-                        readOnly
-                        className="w-full rounded-lg border border-border bg-muted/40 px-4 py-3 font-body text-sm text-(--brand-neutral)"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        autoComplete="username"
+                        required
+                        className="w-full rounded-lg border border-border px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-(--brand-primary)"
+                        placeholder="you@example.com"
                       />
                     </div>
 
@@ -148,6 +195,7 @@ export function AdminLoginPage() {
                         type="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        autoComplete="current-password"
                         required
                         className="w-full rounded-lg border border-border px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-(--brand-primary)"
                         placeholder="Enter the admin password"
