@@ -2,17 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
 import { iubenda } from "@/lib/iubenda";
+import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "California Privacy Notice",
-  description:
-    "California Consumer Privacy Act (CCPA/CPRA) notice for FrameScale website visitors.",
-};
+const title = "California Privacy Notice";
+const description = "California Consumer Privacy Act and CPRA notice for FrameScale website visitors, including privacy rights and preference controls.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title,
+  description,
+  path: "/california-privacy",
+});
 
 export default function CaliforniaPrivacyPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-16">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-16 right-10 w-80 h-80 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
@@ -125,6 +129,6 @@ export default function CaliforniaPrivacyPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

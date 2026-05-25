@@ -91,9 +91,9 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
                 <div className="w-12 h-12 rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center mb-6">
                   <method.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-headline text-2xl mb-3" style={{ color: "var(--brand-deep)" }}>
+                <h2 className="font-headline text-2xl mb-3" style={{ color: "var(--brand-deep)" }}>
                   {method.title}
-                </h3>
+                </h2>
                 <p
                   className="font-body mb-6 leading-relaxed flex-1 max-w-none"
                   style={{ color: "var(--brand-neutral)" }}

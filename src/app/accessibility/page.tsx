@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
+import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Accessibility Statement",
-  description:
-    "FrameScale accessibility statement, including our current standard, contact process, and known limitations.",
-};
+const title = "Accessibility Statement";
+const description = "FrameScale accessibility statement, including our target standard, supported use, contact process, and known limits.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title,
+  description,
+  path: "/accessibility",
+});
 
 const lastUpdated = "May 20, 2026";
 
@@ -36,7 +40,7 @@ const knownLimitations = [
 
 export default function AccessibilityPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <section className="relative flex min-h-[36vh] items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-14 sm:pt-32 sm:pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl">
@@ -127,7 +131,7 @@ export default function AccessibilityPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

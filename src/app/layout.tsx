@@ -52,9 +52,6 @@ export const metadata: Metadata = {
     "marketing systems",
     "small business marketing",
   ],
-  alternates: {
-    canonical: site.url,
-  },
   category: "business",
   creator: site.name,
   publisher: site.name,
@@ -84,7 +81,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: [site.twitterImage],
+    images: [
+      {
+        url: site.twitterImage,
+        alt: `${site.name} - ${site.tagline}`,
+      },
+    ],
   },
   robots: {
     index: true,

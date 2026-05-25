@@ -25,12 +25,16 @@ type TurnstileWidgetProps = {
   siteKey: string;
   onTokenChange: (token: string) => void;
   resetSignal?: number;
+  label?: string;
+  descriptionId?: string;
 };
 
 export function TurnstileWidget({
   siteKey,
   onTokenChange,
   resetSignal = 0,
+  label = "Security verification",
+  descriptionId,
 }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
@@ -86,5 +90,9 @@ export function TurnstileWidget({
 
   if (!siteKey) return null;
 
-  return <div ref={containerRef} />;
+  return (
+    <div role="group" aria-label={label} aria-describedby={descriptionId}>
+      <div ref={containerRef} />
+    </div>
+  );
 }

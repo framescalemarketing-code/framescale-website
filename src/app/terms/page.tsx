@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
+import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "Terms for using the FrameScale website and working with FrameScale on marketing, website, SEO, analytics, and related services.",
-};
+const title = "Terms of Service";
+const description = "Terms for using the FrameScale website and working with FrameScale on marketing, website, SEO, analytics, and related services.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title,
+  description,
+  path: "/terms",
+});
 
 const lastUpdated = "May 20, 2026";
 
@@ -21,7 +25,7 @@ const serviceExamples = [
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <section className="relative flex min-h-[36vh] items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-14 sm:pt-32 sm:pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl">
@@ -225,7 +229,7 @@ export default function TermsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

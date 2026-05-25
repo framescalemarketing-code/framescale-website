@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/design/Button";
@@ -20,6 +21,7 @@ export const BookingSchedulerPanel = ({
   scheduler,
   turnstileSiteKey,
 }: BookingSchedulerPanelProps) => {
+  const turnstileDescriptionId = useId();
   const {
     payload,
     loading,
@@ -143,6 +145,7 @@ export const BookingSchedulerPanel = ({
                           disabled={!has}
                           onClick={() => selectDay(cell.key)}
                           aria-label={`${cell.key}${has ? `, ${openCount} bookable slots` : ", closed"}`}
+                          aria-pressed={isSelected && has}
                           className={`relative aspect-square min-h-9 sm:min-h-10 md:min-h-11 rounded-md sm:rounded-lg font-ui text-xs sm:text-sm font-medium transition-colors
                           ${!has ? "text-(--brand-neutral)/35 cursor-not-allowed bg-muted/40" : "text-(--brand-deep) hover:bg-(--brand-primary)/10 cursor-pointer"}
                           ${isSelected && has ? "ring-2 ring-(--brand-primary) bg-(--brand-primary)/10" : ""}
@@ -258,6 +261,7 @@ export const BookingSchedulerPanel = ({
                       id="book-company"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
+                      autoComplete="organization"
                       className="w-full px-3 py-2 rounded-lg border border-border text-sm font-body focus:outline-none focus:ring-2 focus:ring-(--brand-primary)"
                     />
                   </div>
@@ -280,8 +284,10 @@ export const BookingSchedulerPanel = ({
                         siteKey={turnstileSiteKey}
                         onTokenChange={setTurnstileToken}
                         resetSignal={turnstileResetCount}
+                        label="Booking form security verification"
+                        descriptionId={turnstileDescriptionId}
                       />
-                      <p className="font-body text-xs text-(--brand-neutral)">
+                      <p id={turnstileDescriptionId} className="font-body text-xs text-(--brand-neutral)">
                         This security check helps block spam and fake bookings.
                       </p>
                     </div>
@@ -319,6 +325,7 @@ function SlotRow({
         <button
           type="button"
           onClick={onSelect}
+          aria-pressed={selected}
           className={`w-full text-left px-3 py-2.5 rounded-lg font-body text-sm border transition-colors flex justify-between items-center gap-2
             ${
               selected

@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/design/Button";
 import { TurnstileWidget } from "@/components/design/TurnstileWidget";
@@ -11,6 +12,7 @@ type ContactFormProps = {
 };
 
 export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
+  const turnstileDescriptionId = useId();
   const {
     formData,
     touched,
@@ -23,6 +25,9 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
     handleChange,
     handleBlur,
   } = form;
+
+  const submitNoteRole = isSubmitting || submitNote.startsWith("Thanks.") ? "status" : "alert";
+  const submitNoteLive = isSubmitting || submitNote.startsWith("Thanks.") ? "polite" : "assertive";
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 xl:p-12 border border-border shadow-lg">
@@ -51,6 +56,7 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
               aria-describedby={errors.name ? "name-error" : undefined}
               className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.name && touched.name ? "border-destructive" : "border-border"}`}
               placeholder="John Smith"
+              autoComplete="name"
             />
             {errors.name && touched.name && (
               <p id="name-error" className="mt-1 font-body text-xs text-destructive">
@@ -75,6 +81,7 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
               aria-describedby={errors.email ? "email-error" : undefined}
               className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body ${errors.email && touched.email ? "border-destructive" : "border-border"}`}
               placeholder="john@company.com"
+              autoComplete="email"
             />
             {errors.email && touched.email && (
               <p id="email-error" className="mt-1 font-body text-xs text-destructive">
@@ -124,6 +131,7 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
               name="company"
               value={formData.company}
               onChange={handleChange}
+              autoComplete="organization"
               className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-(--brand-primary) focus:border-transparent transition-all font-body"
               placeholder="Your Company"
             />
@@ -180,8 +188,10 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
               siteKey={turnstileSiteKey}
               onTokenChange={setTurnstileToken}
               resetSignal={turnstileResetCount}
+              label="Contact form security verification"
+              descriptionId={turnstileDescriptionId}
             />
-            <p className="font-body text-xs text-(--brand-neutral)">
+            <p id={turnstileDescriptionId} className="font-body text-xs text-(--brand-neutral)">
               This security check helps block spam and automated submissions.
             </p>
           </div>
@@ -194,7 +204,15 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
         <p className="text-center font-body text-sm text-(--brand-neutral)">
           I will get back to you within 24 hours. No spam, ever.
         </p>
-        {submitNote && <p className="text-center font-body text-sm text-(--brand-primary)">{submitNote}</p>}
+        {submitNote ? (
+          <p
+            className="text-center font-body text-sm text-(--brand-primary)"
+            role={submitNoteRole}
+            aria-live={submitNoteLive}
+          >
+            {submitNote}
+          </p>
+        ) : null}
       </form>
     </div>
   );

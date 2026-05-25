@@ -35,16 +35,26 @@ export type IndustryHighlight = {
  * - If `src` is not set, a designed placeholder card is rendered using `label`
  *   and `description` as art direction for whoever supplies the photo later.
  */
-export type IndustryHeroMedia = {
+type IndustryHeroMediaBase = {
   /** Short label rendered on the placeholder, e.g. "Frame board, top-down". */
   label: string;
   /** Longer art-direction note for the photographer or for the alt text later. */
   description: string;
-  /** Public path to the real photo (e.g. `/photos/healthcare/mg-2639.jpg`). */
-  src?: string;
-  /** Alt text used when `src` is supplied. Falls back to `label` when omitted. */
-  alt?: string;
 };
+
+type IndustryHeroMediaWithSource = IndustryHeroMediaBase & {
+  /** Public path to the real photo (e.g. `/photos/healthcare/mg-2639.jpg`). */
+  src: string;
+  /** Alt text required when `src` is supplied. */
+  alt: string;
+};
+
+type IndustryHeroMediaPlaceholder = IndustryHeroMediaBase & {
+  src?: undefined;
+  alt?: never;
+};
+
+export type IndustryHeroMedia = IndustryHeroMediaWithSource | IndustryHeroMediaPlaceholder;
 
 export type IndustryHeroContent = {
   icon: LucideIcon;

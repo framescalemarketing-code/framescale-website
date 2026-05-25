@@ -222,6 +222,18 @@ html.a11y-reduce-motion *::after {
   scroll-behavior: auto !important;
 }
 
+html.a11y-reduce-motion [style*="transform:"] {
+  transform: none !important;
+}
+
+html.a11y-reduce-motion [style*="filter:"] {
+  filter: none !important;
+}
+
+html.a11y-reduce-motion [style*="opacity:"] {
+  opacity: 1 !important;
+}
+
 html.a11y-underline-links a:not(.no-underline) {
   text-decoration: underline;
   text-underline-offset: 3px;

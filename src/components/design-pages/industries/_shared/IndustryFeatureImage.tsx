@@ -6,17 +6,27 @@ import { PAGE_SHELL_INDUSTRY } from "@/lib/page-layout";
 import { slideUp } from "@/lib/motion";
 import { ImagePlaceholder, type ImagePlaceholderVariant } from "./ImagePlaceholder";
 
-type IndustryFeatureImageProps = {
+type IndustryFeatureImageBaseProps = {
   /** Short label shown on the placeholder card (also fallback alt text). */
   label: string;
   /** Art-direction note describing the photo that belongs here. */
   description?: string;
   variant?: ImagePlaceholderVariant;
-  /** Public path to the real photo. When set, renders `next/image` instead of the placeholder. */
-  src?: string;
-  /** Alt text for the real photo. Falls back to `label` if omitted. */
-  alt?: string;
 };
+
+type IndustryFeatureImageWithSource = IndustryFeatureImageBaseProps & {
+  /** Public path to the real photo. When set, renders `next/image` instead of the placeholder. */
+  src: string;
+  /** Alt text for the real photo. */
+  alt: string;
+};
+
+type IndustryFeatureImagePlaceholder = IndustryFeatureImageBaseProps & {
+  src?: undefined;
+  alt?: never;
+};
+
+type IndustryFeatureImageProps = IndustryFeatureImageWithSource | IndustryFeatureImagePlaceholder;
 
 /**
  * Editorial section break between Challenges and Solutions. Gives the eye a
@@ -42,7 +52,7 @@ export const IndustryFeatureImage = ({
           <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-md">
             <Image
               src={src}
-              alt={alt ?? label}
+              alt={alt}
               fill
               sizes="(min-width: 1280px) 1200px, 100vw"
               className="object-cover"

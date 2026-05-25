@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { PageBackLink } from "@/components/design/PageBackLink";
 import { iubenda } from "@/lib/iubenda";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy",
-  description: "Cookie and tracking technology notice for FrameScale website.",
-};
+const title = "Cookie Policy";
+const description = "Cookie and tracking technology notice for the FrameScale website, including consent and preferences controls.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title,
+  description,
+  path: "/cookie-policy",
+});
 
 export default function CookiePolicyPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-16">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-16 right-10 w-80 h-80 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
@@ -57,6 +62,6 @@ export default function CookiePolicyPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

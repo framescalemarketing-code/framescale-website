@@ -11,107 +11,20 @@ import {
   Link2,
   RotateCcw,
 } from "lucide-react";
-
-type Settings = {
-  textScale: 0 | 1 | 2; // 100% / 115% / 130%
-  highContrast: boolean;
-  reduceMotion: boolean;
-  underlineLinks: boolean;
-};
-
-const STORAGE_KEY = "framescale-a11y";
-
-const defaultSettings: Settings = {
-  textScale: 0,
-  highContrast: false,
-  reduceMotion: false,
-  underlineLinks: false,
-};
-
-function applySettings(s: Settings) {
-  if (typeof document === "undefined") return;
-  const root = document.documentElement;
-  root.classList.toggle("a11y-text-lg", s.textScale === 1);
-  root.classList.toggle("a11y-text-xl", s.textScale === 2);
-  root.classList.toggle("a11y-high-contrast", s.highContrast);
-  root.classList.toggle("a11y-reduce-motion", s.reduceMotion);
-  root.classList.toggle("a11y-underline-links", s.underlineLinks);
-}
-
-const a11yListeners = new Set<() => void>();
-
-/** Stable snapshot for useSyncExternalStore (must not allocate on every getSnapshot call). */
-let cachedSnapshot: Settings = defaultSettings;
-
-function settingsEqual(a: Settings, b: Settings): boolean {
-  return (
-    a.textScale === b.textScale &&
-    a.highContrast === b.highContrast &&
-    a.reduceMotion === b.reduceMotion &&
-    a.underlineLinks === b.underlineLinks
-  );
-}
-
-function loadSettingsFromStorage(): Settings {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultSettings;
-    const parsed = JSON.parse(raw) as Partial<Settings>;
-    return {
-      textScale: parsed.textScale ?? defaultSettings.textScale,
-      highContrast: parsed.highContrast ?? defaultSettings.highContrast,
-      reduceMotion: parsed.reduceMotion ?? defaultSettings.reduceMotion,
-      underlineLinks: parsed.underlineLinks ?? defaultSettings.underlineLinks,
-    };
-  } catch {
-    return defaultSettings;
-  }
-}
-
-function getA11ySettingsSnapshot(): Settings {
-  const loaded = loadSettingsFromStorage();
-  if (settingsEqual(cachedSnapshot, loaded)) {
-    return cachedSnapshot;
-  }
-  cachedSnapshot = loaded;
-  applySettings(cachedSnapshot);
-  return cachedSnapshot;
-}
-
-function subscribeA11ySettings(listener: () => void) {
-  a11yListeners.add(listener);
-  const onStorage = (event: StorageEvent) => {
-    if (event.key === STORAGE_KEY) listener();
-  };
-  window.addEventListener("storage", onStorage);
-  return () => {
-    a11yListeners.delete(listener);
-    window.removeEventListener("storage", onStorage);
-  };
-}
-
-function notifyA11ySettings() {
-  a11yListeners.forEach((listener) => listener());
-}
-
-function writeSettings(next: Settings) {
-  if (settingsEqual(cachedSnapshot, next)) return;
-  cachedSnapshot = next;
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  } catch {
-    // Ignore storage errors (private mode, quota, etc.)
-  }
-  applySettings(cachedSnapshot);
-  notifyA11ySettings();
-}
+import {
+  defaultAccessibilitySettings,
+  getAccessibilitySettingsSnapshot,
+  subscribeAccessibilitySettings,
+  type AccessibilitySettings,
+  writeAccessibilitySettings,
+} from "@/lib/accessibility-settings";
 
 export const AccessibilityWidget = () => {
   const [open, setOpen] = useState(false);
   const settings = useSyncExternalStore(
-    subscribeA11ySettings,
-    getA11ySettingsSnapshot,
-    () => defaultSettings,
+    subscribeAccessibilitySettings,
+    getAccessibilitySettingsSnapshot,
+    () => defaultAccessibilitySettings,
   );
   const panelRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -144,11 +57,11 @@ export const AccessibilityWidget = () => {
     };
   }, [open]);
 
-  const update = <K extends keyof Settings>(key: K, value: Settings[K]) => {
-    writeSettings({ ...settings, [key]: value });
+  const update = <K extends keyof AccessibilitySettings>(key: K, value: AccessibilitySettings[K]) => {
+    writeAccessibilitySettings({ ...settings, [key]: value });
   };
 
-  const reset = () => writeSettings(defaultSettings);
+  const reset = () => writeAccessibilitySettings(defaultAccessibilitySettings);
 
   return (
     <div className="fixed bottom-4 left-4 z-40">

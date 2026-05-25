@@ -90,7 +90,7 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
                   <Image
                     src={content.media.src}
-                    alt={content.media.alt ?? content.media.label}
+                    alt={content.media.alt}
                     fill
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     className="object-cover"
