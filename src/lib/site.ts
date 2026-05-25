@@ -50,6 +50,7 @@ export const mainNav = [
   { label: "Industries", href: "/industries/healthcare", children: industries },
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const footerLinks = {

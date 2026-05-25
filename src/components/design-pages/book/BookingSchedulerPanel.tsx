@@ -22,6 +22,23 @@ export const BookingSchedulerPanel = ({
   turnstileSiteKey,
 }: BookingSchedulerPanelProps) => {
   const turnstileDescriptionId = useId();
+  const plannerSteps = [
+    {
+      label: "Step 1",
+      title: "Choose A Day",
+      body: "Pick any weekday with open availability shown in the calendar.",
+    },
+    {
+      label: "Step 2",
+      title: "Pick A Time",
+      body: "Review the live slots for that day and choose the one that fits best.",
+    },
+    {
+      label: "Step 3",
+      title: "Confirm Details",
+      body: "Add your details once and I will send the confirmation from there.",
+    },
+  ];
   const {
     payload,
     loading,
@@ -67,6 +84,43 @@ export const BookingSchedulerPanel = ({
           viewport={{ once: true }}
           className="rounded-2xl border border-(--brand-primary)/20 bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 p-4 shadow-(--shadow-depth-2) sm:p-5 lg:p-6"
         >
+          <div className="mb-6 grid gap-3 md:grid-cols-3">
+            {plannerSteps.map((step) => (
+              <div key={step.title} className="rounded-2xl border border-white/70 bg-white/75 p-4 backdrop-blur-sm">
+                <p className="mb-2 font-ui text-[11px] font-semibold uppercase tracking-[0.22em] text-(--brand-primary)">
+                  {step.label}
+                </p>
+                <h2 className="mb-2 font-headline text-xl" style={{ color: "var(--brand-deep)" }}>
+                  {step.title}
+                </h2>
+                <p className="font-body text-sm leading-relaxed text-(--brand-neutral)">{step.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="mb-2 font-ui text-xs font-semibold uppercase tracking-[0.22em] text-(--brand-primary)">
+                Live Scheduling
+              </p>
+              <h2 className="mb-2 font-headline text-2xl sm:text-3xl" style={{ color: "var(--brand-deep)" }}>
+                Pick a time that fits your week
+              </h2>
+              <p className="font-body text-sm sm:text-base leading-relaxed text-(--brand-neutral)">
+                Start with the calendar, choose an open slot, then confirm your details in the panel beside it.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-(--brand-primary)/20 bg-white px-4 py-3 shadow-[0_16px_40px_-30px_rgba(38,70,83,0.3)]">
+              <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.22em] text-(--brand-primary)">
+                {selectedSlot?.status === "available" ? "Selected Time" : "Next Step"}
+              </p>
+              <p className="mt-1 font-headline text-lg" style={{ color: "var(--brand-deep)" }}>
+                {selectedSlot?.status === "available" ? selectedSlot.label : "Choose a day to view open slots"}
+              </p>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5">
             <div className="flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto min-w-0">
               <button
@@ -78,12 +132,13 @@ export const BookingSchedulerPanel = ({
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <h2
+              <p
                 className="min-w-0 flex-1 px-2 text-center font-headline text-xl sm:min-w-40 sm:flex-initial sm:text-2xl"
                 style={{ color: "var(--brand-deep)" }}
+                aria-live="polite"
               >
                 {monthTitle}
-              </h2>
+              </p>
               <button
                 type="button"
                 aria-label="Next month"
@@ -169,9 +224,14 @@ export const BookingSchedulerPanel = ({
 
             <div className="min-w-0 min-h-60 rounded-xl border border-border bg-white p-4 shadow-(--shadow-depth-1) sm:min-h-65 sm:p-5 lg:min-h-100 xl:min-h-108 flex flex-col">
               {!selectedDay && (
-                <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
-                  Choose a weekday to see available times. Booked means the time is taken, and Unavailable means it is not open to book.
-                </p>
+                <div className="rounded-xl border border-dashed border-(--brand-primary)/25 bg-muted/45 p-4 sm:p-5">
+                  <p className="mb-2 font-ui text-xs font-semibold uppercase tracking-[0.2em] text-(--brand-primary)">
+                    Start Here
+                  </p>
+                  <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
+                    Choose a weekday to see available times. Booked means the time is taken, and Unavailable means it is not open to book.
+                  </p>
+                </div>
               )}
               {selectedDay && selectedDaySlots.length === 0 && (
                 <p className="font-body text-(--brand-neutral) text-sm">Weekends are closed. Pick a weekday.</p>
@@ -199,6 +259,14 @@ export const BookingSchedulerPanel = ({
                   onSubmit={handleBook}
                   className="mt-4 sm:mt-6 space-y-4 border-t border-border pt-4 sm:pt-6 shrink-0"
                 >
+                  <div className="rounded-xl border border-(--brand-primary)/20 bg-(--brand-primary)/6 p-3 sm:p-4">
+                    <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.2em] text-(--brand-primary)">
+                      Selected Time
+                    </p>
+                    <p className="mt-1 font-headline text-lg" style={{ color: "var(--brand-deep)" }}>
+                      {selectedSlot.label}
+                    </p>
+                  </div>
                   <p className="font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary)">
                     Your details
                   </p>

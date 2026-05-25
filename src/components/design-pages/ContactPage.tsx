@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Mail, Calendar, ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar, Clock3, Mail, PhoneCall } from "lucide-react";
 import { PageBackLink } from "../design/PageBackLink";
 import { ContactForm } from "./contact/ContactForm";
 import { createContactFormState, useContactForm } from "@/lib/contact/use-contact-form";
@@ -32,16 +32,40 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
       icon: Calendar,
       title: "Schedule a Call",
       description: "Pick a time and tell me where things feel unclear.",
-      action: "Book a time",
+      action: "Book A Time",
       href: site.bookingPath,
     },
     {
       icon: Mail,
       title: "Send a Message",
       description: "Send the details here if you would rather start in writing.",
-      action: "Start with email",
+      action: "Start With Email",
       href: "#contact-form",
     },
+  ];
+
+  const contactSignals = [
+    {
+      icon: PhoneCall,
+      title: "Talk It Through Live",
+      body: "Best when the situation is easier to explain out loud and you want direct back-and-forth.",
+    },
+    {
+      icon: Mail,
+      title: "Write It First",
+      body: "Best when you want to gather notes, links, or examples before we speak.",
+    },
+    {
+      icon: Clock3,
+      title: "Quick Response",
+      body: "Most messages get a reply within one business day so you are not left waiting.",
+    },
+  ];
+
+  const formPrep = [
+    "A short summary of what feels unclear or blocked right now.",
+    "Any service, location, or audience details that matter most.",
+    "Links to your current site, booking flow, or examples you want reviewed.",
   ];
 
   return (
@@ -70,6 +94,22 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
               >
                 Book a free 30 minute call or send a note. I will ask direct questions and give you an honest next step.
               </p>
+              <div className="grid gap-3 sm:grid-cols-3 max-w-5xl mx-auto text-left">
+                {contactSignals.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-(--brand-primary)/15 bg-white/80 p-4 shadow-[0_18px_40px_-28px_rgba(23,120,142,0.35)] backdrop-blur-sm"
+                  >
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) text-white">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h2 className="mb-2 font-headline text-lg" style={{ color: "var(--brand-deep)" }}>
+                      {item.title}
+                    </h2>
+                    <p className="font-body text-sm leading-relaxed text-(--brand-neutral)">{item.body}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -77,49 +117,81 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
 
       <section className="relative py-16 sm:py-20 bg-white">
         <div className={PAGE_SHELL_FLUID}>
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 xl:gap-10 mb-16 sm:mb-20">
-            {contactMethods.map((method, index) => (
-              <motion.div
-                key={index}
-                variants={slideByIndex(index)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-6 sm:p-8 xl:p-10 border border-(--brand-primary)/20 h-full flex flex-col"
-              >
-                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center mb-6">
-                  <method.icon className="w-6 h-6 text-white" />
-                </div>
-                <h2 className="font-headline text-2xl mb-3" style={{ color: "var(--brand-deep)" }}>
-                  {method.title}
-                </h2>
-                <p
-                  className="font-body mb-6 leading-relaxed flex-1 max-w-none"
-                  style={{ color: "var(--brand-neutral)" }}
-                >
-                  {method.description}
+          <div className="grid gap-10 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
+            <div className="space-y-6 xl:sticky xl:top-28">
+              <div className="rounded-3xl border border-(--brand-primary)/15 bg-linear-to-br from-(--brand-primary)/6 to-(--brand-secondary)/8 p-6 sm:p-8">
+                <p className="mb-3 font-ui text-xs font-semibold uppercase tracking-[0.24em] text-(--brand-primary)">
+                  Choose The Easiest Start
                 </p>
-                <Link
-                  href={method.href}
-                  className="inline-flex items-center gap-2 text-(--brand-primary) hover:gap-3 transition-all mt-auto pt-2"
-                >
-                  <span className="font-ui text-sm font-semibold">{method.action}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                <h2 className="mb-4 font-headline text-3xl sm:text-4xl" style={{ color: "var(--brand-deep)" }}>
+                  Pick the path that matches how you think best
+                </h2>
+                <p className="font-body text-base sm:text-lg leading-relaxed text-(--brand-neutral)">
+                  If the story is easier to explain out loud, book the call. If you want to send context first, use the form and I will respond with the clearest next step.
+                </p>
+              </div>
 
-          <motion.div
-            variants={slideInFromRight}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className={PAGE_CONTACT_FORM_MAX}
-          >
-            <ContactForm form={form} turnstileSiteKey={turnstileSiteKey} />
-          </motion.div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+                {contactMethods.map((method, index) => (
+                  <motion.div
+                    key={method.title}
+                    variants={slideByIndex(index)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08 }}
+                    className="flex h-full flex-col rounded-2xl border border-(--brand-primary)/20 bg-white p-6 shadow-[0_20px_50px_-32px_rgba(38,70,83,0.28)]"
+                  >
+                    <div className="mb-5 flex items-start justify-between gap-4">
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) text-white">
+                        <method.icon className="h-6 w-6" />
+                      </div>
+                      <span className="rounded-full bg-(--brand-primary)/10 px-3 py-1 font-ui text-[11px] font-semibold uppercase tracking-wide text-(--brand-primary)">
+                        Recommended
+                      </span>
+                    </div>
+                    <h3 className="mb-3 font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
+                      {method.title}
+                    </h3>
+                    <p className="mb-6 flex-1 max-w-none font-body leading-relaxed text-(--brand-neutral)">
+                      {method.description}
+                    </p>
+                    <Link
+                      href={method.href}
+                      className="mt-auto inline-flex items-center gap-2 pt-2 text-(--brand-primary) transition-all hover:gap-3"
+                    >
+                      <span className="font-ui text-sm font-semibold">{method.action}</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="rounded-2xl border border-border bg-muted/35 p-6 sm:p-7">
+                <h3 className="mb-4 font-headline text-2xl" style={{ color: "var(--brand-deep)" }}>
+                  Helpful To Include
+                </h3>
+                <ul className="space-y-3">
+                  {formPrep.map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-body text-sm leading-relaxed text-(--brand-neutral)">
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-(--brand-primary)" aria-hidden />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <motion.div
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className={`${PAGE_CONTACT_FORM_MAX} max-w-none`}
+            >
+              <ContactForm form={form} turnstileSiteKey={turnstileSiteKey} />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -152,7 +224,7 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
                   body: "If it is a fit, you get a clear next step, timing, and scope.",
                 },
               ].map((item) => (
-                <div key={item.step}>
+                <div key={item.step} className="rounded-2xl border border-border bg-white p-6 shadow-[0_18px_45px_-32px_rgba(38,70,83,0.24)]">
                   <div className="w-10 h-10 rounded-full bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) flex items-center justify-center text-white font-headline text-lg mb-4">
                     {item.step}
                   </div>

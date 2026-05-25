@@ -2,8 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
-import { Mail } from "lucide-react";
+import { CalendarClock, Mail, ShieldCheck, TimerReset } from "lucide-react";
 import { PageBackLink } from "../design/PageBackLink";
+import { Button } from "../design/Button";
 import { slideUp } from "@/lib/motion";
 import { useBookingScheduler } from "@/lib/booking/use-booking-scheduler";
 import { BookingSuccessView } from "./book/BookingSuccessView";
@@ -30,6 +31,24 @@ export const BookPage = ({ turnstileSiteKey }: BookPageProps) => {
   const scheduler = useBookingScheduler({
     requireTurnstile: Boolean(turnstileSiteKey),
   });
+
+  const bookingHighlights = [
+    {
+      icon: CalendarClock,
+      title: "30 Minute Intro Call",
+      body: "Enough time to understand the business, the pressure points, and the next decision.",
+    },
+    {
+      icon: TimerReset,
+      title: "Simple Scheduling",
+      body: "Pick a live slot, confirm your details, and get a clear confirmation without extra steps.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "No Sales Team Detour",
+      body: "You talk directly with the person doing the strategy and the work.",
+    },
+  ];
 
   if (scheduler.success) {
     return (
@@ -66,6 +85,22 @@ export const BookPage = ({ turnstileSiteKey }: BookPageProps) => {
               >
                 Choose a time that works for you. In 30 minutes, we can talk through what feels unclear, what you have already tried, and whether I am the right fit to help.
               </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-5xl mx-auto text-left">
+                {bookingHighlights.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-(--brand-primary)/15 bg-white/80 p-4 shadow-[0_18px_40px_-28px_rgba(23,120,142,0.35)] backdrop-blur-sm"
+                  >
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-secondary) text-white">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h2 className="mb-2 font-headline text-lg" style={{ color: "var(--brand-deep)" }}>
+                      {item.title}
+                    </h2>
+                    <p className="font-body text-sm leading-relaxed text-(--brand-neutral)">{item.body}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -75,14 +110,21 @@ export const BookPage = ({ turnstileSiteKey }: BookPageProps) => {
 
       <section className="relative py-12 sm:py-16 bg-muted border-t border-border pb-[max(3rem,env(safe-area-inset-bottom,0px))]">
         <div className={PAGE_BOOK_FOOTER}>
-          <Mail className="w-8 h-8 text-(--brand-primary) mx-auto mb-4" aria-hidden />
-          <p className="font-body text-(--brand-neutral) leading-relaxed">
-            Prefer email first?{" "}
-            <a href="/contact" className="text-(--brand-primary) font-semibold hover:underline">
-              Use the contact form
-            </a>
-            .
-          </p>
+          <div className="rounded-3xl border border-border bg-white p-6 shadow-[0_20px_50px_-34px_rgba(38,70,83,0.25)] sm:p-8">
+            <Mail className="mx-auto mb-4 h-8 w-8 text-(--brand-primary)" aria-hidden />
+            <h2 className="mb-3 font-headline text-3xl" style={{ color: "var(--brand-deep)" }}>
+              Prefer To Start In Writing?
+            </h2>
+            <p className="mx-auto mb-6 max-w-2xl font-body leading-relaxed text-(--brand-neutral)">
+              Use the contact form if you want to send context, links, or questions first. You can always book the call after the direction feels clearer.
+            </p>
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Button href="/contact" size="lg" icon="arrow">
+                Contact FrameScale
+              </Button>
+              <p className="font-body text-sm text-(--brand-neutral)">A clear written start is often the fastest way to get unstuck.</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
