@@ -11,6 +11,10 @@ import { PAGE_HERO_INNER, PAGE_SHELL_FLUID_RELATIVE_FULL } from "@/lib/page-layo
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { motion } from "motion/react";
 
+async function wait(ms: number) {
+  await new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
 export function AdminLoginPage() {
   const router = useRouter();
   const supabase = useMemo(() => getSupabaseBrowserClient(), []);
@@ -55,10 +59,25 @@ export function AdminLoginPage() {
         throw new Error("Unable to prepare the admin login.");
       }
 
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: ADMIN_EMAIL,
-        password,
-      });
+      let signInError: Error | null = null;
+      const normalizedPassword = password.trim();
+
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: ADMIN_EMAIL,
+          password: normalizedPassword,
+        });
+
+        if (!error) {
+          signInError = null;
+          break;
+        }
+
+        signInError = error;
+        if (attempt < 2) {
+          await wait(400);
+        }
+      }
 
       if (signInError) {
         throw new Error("The password was not accepted.");

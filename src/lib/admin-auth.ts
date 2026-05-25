@@ -4,7 +4,7 @@ import { ADMIN_EMAIL } from "@/lib/admin-config";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
 function getAdminPassword(): string {
-  const password = process.env.ADMIN_PASSWORD;
+  const password = process.env.ADMIN_PASSWORD?.trim();
   if (!password) {
     throw new Error("Missing ADMIN_PASSWORD.");
   }
