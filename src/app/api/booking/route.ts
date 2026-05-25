@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isTurnstileConfigured, validateTurnstileToken } from "@/lib/cloudflare-turnstile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   BOOKING_ZONE,
@@ -29,6 +30,7 @@ type BookingPostBody = {
   confirmEmail?: string;
   company?: string;
   notes?: string;
+  turnstileToken?: string;
 };
 
 export async function GET(req: NextRequest) {
@@ -81,11 +83,8 @@ export async function GET(req: NextRequest) {
       if (n) booked.add(n);
     }
     const externallyBlocked = await loadExternalBusySlotStarts(monthStartUtc, nextMonthUtc);
-    for (const startsAt of externallyBlocked) {
-      booked.add(startsAt);
-    }
 
-    const payload = buildSlotsPayload(year, monthNum, booked);
+    const payload = buildSlotsPayload(year, monthNum, booked, externallyBlocked);
     if (!payload) {
       return NextResponse.json({ error: "Invalid month." }, { status: 400 });
     }
@@ -119,6 +118,8 @@ export async function POST(req: NextRequest) {
   const confirmEmail = cleanString(body.confirmEmail, 320).toLowerCase();
   const company = cleanString(body.company, 160);
   const notes = cleanString(body.notes, 2000);
+  const turnstileToken = cleanString(body.turnstileToken, 2048);
+  const clientIp = getClientIp(req);
 
   if (!startsAtRaw) {
     return NextResponse.json({ error: "A start time is required." }, { status: 400 });
@@ -135,6 +136,20 @@ export async function POST(req: NextRequest) {
   if (!startsNorm || !isAlgebraicallyValidSlot(startsNorm)) {
     return NextResponse.json({ error: "That time is not available." }, { status: 400 });
   }
+  if (isTurnstileConfigured()) {
+    if (!turnstileToken) {
+      return NextResponse.json({ error: "Please complete the security check." }, { status: 400 });
+    }
+
+    const verification = await validateTurnstileToken({
+      token: turnstileToken,
+      remoteIp: clientIp,
+    });
+
+    if (!verification.success) {
+      return NextResponse.json({ error: "Security check failed. Please try again." }, { status: 400 });
+    }
+  }
 
   try {
     const slotUtc = DateTime.fromISO(startsNorm, { zone: "utc" });
@@ -149,7 +164,7 @@ export async function POST(req: NextRequest) {
     if (slotMonthStartUtc && slotNextMonthUtc) {
       const externallyBlocked = await loadExternalBusySlotStarts(slotMonthStartUtc, slotNextMonthUtc);
       if (externallyBlocked.has(startsNorm)) {
-        return NextResponse.json({ error: "That slot is already booked. Pick another time." }, { status: 409 });
+        return NextResponse.json({ error: "That time is unavailable. Pick another time." }, { status: 409 });
       }
     }
 
@@ -183,7 +198,7 @@ export async function POST(req: NextRequest) {
       company: company || null,
       notes: notes || null,
       user_agent: req.headers.get("user-agent"),
-      ip_address: getClientIp(req),
+      ip_address: clientIp,
       metadata: {},
       status: "booked",
     });

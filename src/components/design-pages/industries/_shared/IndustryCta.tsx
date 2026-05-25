@@ -17,7 +17,7 @@ export const IndustryCta = ({ title, body, secondaryButtonLabel }: IndustryCtaPr
         <p className="font-body text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto">{body}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="secondary" size="lg" href={site.bookingPath}>
-            Schedule Intro Call
+            Schedule A Call
           </Button>
           <Button
             variant="ghost"

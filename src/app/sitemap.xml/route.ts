@@ -6,7 +6,8 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${SITEMAP_ENTRIES.map(
-  ({ path, changeFrequency, priority }) => `  <url>
+  ({ path, changeFrequency, priority, includeInXml }) =>
+    includeInXml === false ? "" : `  <url>
     <loc>${site.url}${path}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>${changeFrequency}</changefreq>

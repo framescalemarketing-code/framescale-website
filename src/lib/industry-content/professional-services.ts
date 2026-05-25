@@ -13,9 +13,9 @@ export const professionalServicesContent: IndustryPageContent = {
   hero: {
     icon: Scale,
     badge: "Professional Services",
-    title: "Help The Right Clients Trust You Faster",
+    title: "Help The People Who Need You Find You",
     description:
-      "Most firms I help already get referrals. Then a prospect looks you up. The website needs to sound credible, show real work, and make the right client comfortable reaching out.",
+      "Most small firms and independent consultants live on referrals, and inbound leads are often nonexistent. Today, a website is crucial for building a proper funnel.",
     media: {
       label: "Workspace detail or bookshelf",
       description:
@@ -33,25 +33,25 @@ export const professionalServicesContent: IndustryPageContent = {
   highlights: {
     header: {
       badge: "Where We Help",
-      title: "Built For Trust-Led Firms",
+      title: "Modernizing Your Inbound Leads",
       description:
-        "This fits firms where trust, clarity, and good-fit clients matter more than raw lead volume.",
+        "Your referrals may already be strong, but when they slow down, you are left doing outreach and taking on too many sales calls. A stronger inbound system with the right website, search visibility, and intake experience can take unnecessary work off your plate.",
     },
     items: [
       {
         icon: Briefcase,
         label: "Consulting & Advisory",
-        description: "Consultants and advisors who do strong work and need the site to make that obvious faster.",
+        description: "Consultants and advisors who need a clearer website and intake path so more of the right prospects reach out.",
       },
       {
         icon: Scale,
         label: "Legal Services",
-        description: "Firms that need people to understand the practice, the proof, and the reason to reach out.",
+        description: "Firms that need search, credibility, and next steps to help serious prospects take action.",
       },
       {
         icon: FileText,
         label: "Accounting & Finance",
-        description: "Practices that want better questions, better-fit inquiries, and less explaining on the first call.",
+        description: "Practices that want inbound leads to arrive with more trust, more context, and a better fit.",
       },
     ],
   },
@@ -59,30 +59,30 @@ export const professionalServicesContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "Why Good Prospects Pause",
+      title: "Where Inbound Leads Get Lost",
       description:
-        "These are the gaps that show up after someone hears your name and starts reading.",
+        "There is room for you in any industry, and leads exist in every market. They often get lost in saturation, but you can still stand out among the many options.",
     },
     items: [
       {
         title: "The Site Feels Thin",
         description:
-          "A serious prospect needs more than a logo, a list of services, and a contact form before they trust the next step.",
+          "A serious prospect lands on the site and looks for enough substance to trust the next step. If the pages feel thin, inbound leads drop before the conversation starts.",
       },
       {
-        title: "Proof Stays In Your Head",
+        title: "The Proof Needs To Be Visible",
         description:
-          "You know the wins, the hard cases, and the reasons clients stay. The site should bring those details forward.",
+          "Clients need to see proof early. Clear examples, outcomes, and signals of trust help them feel confident enough to move forward.",
       },
       {
-        title: "Wrong Inquiries Come In",
+        title: "Your Message Doesn't Show What You Do Differently",
         description:
-          "The wrong people keep reaching out because the site is not clear enough about who you help and how you work.",
+          "If your message doesn't make your difference clear, people compare you to the next best alternative and move on. Your value has to feel specific and easy to understand.",
       },
       {
-        title: "Referrals Need Backup",
+        title: "Your Complexity Needs To Feel Simple",
         description:
-          "Even a warm referral wants to feel reassured. Your site should make the handoff feel easy and credible.",
+          "Professional services can be complex, but your website and process should feel easy to follow. People come to you for help, not for more work before they can get started.",
       },
     ],
   },
@@ -90,36 +90,36 @@ export const professionalServicesContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "What We Make Clearer",
+      title: "We Make It Clear",
       description:
-        "We sharpen what you say, show the work clearly, and make the website easier for the right client to trust.",
+        "We clarify what makes you different, bring the proof forward, and make the website and intake path easier for the right clients to trust.",
     },
     items: [
       {
         icon: Target,
-        title: "Your Message",
+        title: "Your Difference",
         items: [
-          "The clients you want more of and what they need to hear first",
-          "The proof that makes your firm easier to trust",
-          "Case studies that sound specific, useful, and real",
+          "What makes your firm different from the next best alternative",
+          "What the right client needs to hear before they reach out",
+          "Messaging that makes your value easier to understand",
         ],
       },
       {
         icon: Code,
-        title: "Your Website",
+        title: "Your Proof",
         items: [
-          "Pages that explain the work without sounding stiff",
-          "Intake forms that help you spot fit before the first conversation",
-          "Tracking that shows which pages and channels bring better inquiries",
+          "Proof that shows up early instead of staying in your head",
+          "Case studies, examples, and outcomes that build trust faster",
+          "Signals that help serious prospects feel confident moving forward",
         ],
       },
       {
         icon: TrendingUp,
-        title: "Better Inbound",
+        title: "Your Website And Intake",
         items: [
-          "SEO built around what a serious prospect actually searches",
-          "Pages your referrers can send without needing to explain everything",
-          "Follow-up that respects how long trust can take to build",
+          "Pages that make complex work feel simple to understand",
+          "A website and intake path that feel easy to follow",
+          "Search and tracking that show where better inquiries come from",
         ],
       },
     ],

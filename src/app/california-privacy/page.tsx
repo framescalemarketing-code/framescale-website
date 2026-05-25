@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBackLink } from "@/components/design/PageBackLink";
+import { iubenda } from "@/lib/iubenda";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -37,24 +38,37 @@ export default function CaliforniaPrivacyPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="space-y-8 bg-white rounded-2xl border border-border depth-card p-8 lg:p-10">
             <p className="font-body text-(--brand-neutral) leading-relaxed">
-              Last updated: May 11, 2026. This page is a pre-Iubenda compliance structure and will be replaced
-              or synchronized once your final policy documents are published.
+              Last updated: May 25, 2026. This notice explains the California-specific rights available on this site and works alongside the main privacy and cookie policies.
             </p>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href={iubenda.privacyPolicyUrl}
+                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-white bg-(--brand-primary) hover:bg-(--brand-primary-hover) transition-colors"
+                title="Privacy Policy"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href={iubenda.cookiePolicyUrl}
+                className="iubenda-white iubenda-noiframe iubenda-embed inline-flex items-center justify-center rounded-xl px-5 py-3 font-ui text-sm font-semibold text-(--brand-primary) border border-(--brand-primary)/40 hover:bg-(--brand-primary)/8 transition-colors"
+                title="Cookie Policy"
+              >
+                Cookie Policy
+              </a>
+            </div>
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Notice at Collection</h2>
               <p className="font-body text-(--brand-neutral) leading-relaxed">
-                We collect identifiers and contact information submitted through forms (for example name,
-                email, company, and message content), along with limited technical data used for website
-                security and performance.
+                We collect identifiers and contact information submitted through forms, such as name, email, company, and message content, along with limited technical data used for website security and performance.
               </p>
             </div>
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">How Information Is Used</h2>
               <p className="font-body text-(--brand-neutral) leading-relaxed">
-                Information is used to respond to inquiries, provide requested services, and improve site
-                operations and reporting.
+                Information is used to respond to inquiries, provide requested services, support the booking and contact process, and improve site operations and reporting.
               </p>
             </div>
 
@@ -72,13 +86,11 @@ export default function CaliforniaPrivacyPage() {
             <div id="privacy-choices">
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Your Privacy Choices</h2>
               <p className="font-body text-(--brand-neutral) leading-relaxed">
-                To submit a California privacy rights request, email
-                {" "}
+                To submit a California privacy rights request, email{" "}
                 <Link className="text-(--brand-primary) hover:underline" href={`mailto:${site.email}`}>
                   {site.email}
-                </Link>
-                {" "}
-                with the subject line “California Privacy Request.”
+                </Link>{" "}
+                with the subject line "California Privacy Request."
               </p>
 
               <div className="mt-5 flex flex-wrap items-center gap-4">
@@ -107,8 +119,7 @@ export default function CaliforniaPrivacyPage() {
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Authorized Agent Requests</h2>
               <p className="font-body text-(--brand-neutral) leading-relaxed">
-                California residents may designate an authorized agent to submit requests on their behalf.
-                Verification requirements may apply before processing the request.
+                California residents may designate an authorized agent to submit requests on their behalf. Verification requirements may apply before processing the request.
               </p>
             </div>
           </div>

@@ -12,7 +12,8 @@ import {
   type BookingSlotsPayload,
 } from "@/lib/booking-schedule";
 
-export function useBookingScheduler() {
+export function useBookingScheduler(options?: { requireTurnstile?: boolean }) {
+  const requireTurnstile = options?.requireTurnstile ?? false;
   const [yearMonth, setYearMonth] = useState(currentYearMonthPacific);
   const [payload, setPayload] = useState<BookingSlotsPayload | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -26,6 +27,8 @@ export function useBookingScheduler() {
   const [confirmEmail, setConfirmEmail] = useState("");
   const [company, setCompany] = useState("");
   const [notes, setNotes] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetCount, setTurnstileResetCount] = useState(0);
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -128,6 +131,11 @@ export function useBookingScheduler() {
     setFormError(null);
   }, []);
 
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken("");
+    setTurnstileResetCount((count) => count + 1);
+  }, []);
+
   const resetFormFields = useCallback(() => {
     setName("");
     setEmail("");
@@ -143,16 +151,23 @@ export function useBookingScheduler() {
     setBookedWhenLabel(null);
   }, []);
 
-  const handleBook = async (e: React.FormEvent) => {
+  const handleBook = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedSlot || selectedSlot.status !== "available") return;
+
     const emailCheck = validateEmailConfirm(email, confirmEmail);
     if (emailCheck) {
       setFormError(emailCheck);
       return;
     }
+    if (requireTurnstile && !turnstileToken) {
+      setFormError("Please complete the security check.");
+      return;
+    }
+
     setSubmitting(true);
     setFormError(null);
+
     try {
       const res = await fetch("/api/booking", {
         method: "POST",
@@ -164,6 +179,7 @@ export function useBookingScheduler() {
           confirmEmail,
           company,
           notes,
+          turnstileToken,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string; whenLabel?: string };
@@ -178,9 +194,25 @@ export function useBookingScheduler() {
     } catch (err) {
       setFormError(err instanceof Error ? err.message : "Booking failed.");
     } finally {
+      if (requireTurnstile) {
+        resetTurnstile();
+      }
       setSubmitting(false);
     }
-  };
+  }, [
+    company,
+    confirmEmail,
+    email,
+    loadSlotsForMonth,
+    name,
+    notes,
+    requireTurnstile,
+    resetFormFields,
+    resetTurnstile,
+    selectedSlot,
+    turnstileToken,
+    yearMonth,
+  ]);
 
   return {
     yearMonth,
@@ -210,6 +242,9 @@ export function useBookingScheduler() {
     setCompany,
     notes,
     setNotes,
+    turnstileToken,
+    setTurnstileToken,
+    turnstileResetCount,
     formError,
     setFormError,
     submitting,

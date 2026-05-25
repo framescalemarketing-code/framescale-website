@@ -16,7 +16,7 @@ function ownerAlertPlainText(input: {
   notes: string;
 }): string {
   return [
-    "New intro call booking",
+    "New call booking",
     "",
     `When: ${input.when}`,
     `Name: ${input.name}`,
@@ -66,7 +66,7 @@ export async function sendBookingNotifications(input: {
       from,
       to: [getContactNotificationEmail()],
       reply_to: input.email,
-      subject: `Intro call booked: ${input.name}`,
+      subject: `Call booked: ${input.name}`,
       text: ownerAlertPlainText({
         when,
         name: input.name,
@@ -81,7 +81,7 @@ export async function sendBookingNotifications(input: {
       from,
       to: [input.email],
       reply_to: site.email,
-      subject: `Your FrameScale intro call: ${when}`,
+      subject: `Your FrameScale call: ${when}`,
       text: guestText,
       html: guestHtml,
     });

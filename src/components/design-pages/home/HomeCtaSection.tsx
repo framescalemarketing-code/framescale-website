@@ -15,7 +15,7 @@ export const HomeCtaSection = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="secondary" size="lg" href={site.bookingPath}>
-            Schedule Intro Call
+            Schedule A Call
           </Button>
           <Button
             variant="ghost"
@@ -26,9 +26,6 @@ export const HomeCtaSection = () => (
             Learn About Our Process
           </Button>
         </div>
-        <p className="font-body text-sm text-white/60 mt-8">
-          Free 30 minute intro call. We listen, ask the right questions, and give you an honest next step. If we are not the right fit for your business, we'll tell you.
-        </p>
       </motion.div>
     </div>
   </section>

@@ -3,14 +3,14 @@ import { DateTime } from "luxon";
 /** All slots are interpreted and displayed in this zone (matches 916 service area). */
 export const BOOKING_ZONE = "America/Los_Angeles";
 
-const SLOT_MINUTES = 30;
+const BOOKABLE_INTERVAL_MINUTES = 60;
 /** First bookable start (Pacific). */
 const OPEN_MINUTES = 9 * 60; // 09:00
 /**
  * Last start (Pacific): 4:30 PM so a 30-minute intro call ends at 5:00 PM.
  * Monday–Friday only; weekends are excluded in the slot builder.
  */
-const LAST_START_MINUTES = 16 * 60 + 30; // 16:30
+const LAST_START_MINUTES = 16 * 60; // 16:00
 const MIN_LEAD_MINUTES = 120;
 const MAX_WEEKS_AHEAD = 8;
 
@@ -105,6 +105,7 @@ export function buildSlotsPayload(
   year: number,
   month: number,
   bookedStartsUtc: Set<string>,
+  unavailableStartsUtc: Set<string>,
 ): BookingSlotsPayload | null {
   const monthStart = DateTime.fromObject({ year, month, day: 1 }, { zone: BOOKING_ZONE });
   if (!monthStart.isValid) return null;
@@ -122,7 +123,7 @@ export function buildSlotsPayload(
     if (!dayStart.isValid) continue;
     if (dayStart.weekday >= 6) continue; // Saturday / Sunday
 
-    for (let mins = OPEN_MINUTES; mins <= LAST_START_MINUTES; mins += SLOT_MINUTES) {
+    for (let mins = OPEN_MINUTES; mins <= LAST_START_MINUTES; mins += BOOKABLE_INTERVAL_MINUTES) {
       const h = Math.floor(mins / 60);
       const m = mins % 60;
       const slotZoned = DateTime.fromObject(
@@ -135,7 +136,11 @@ export function buildSlotsPayload(
       let status: BookingSlotStatus;
       if (bookedStartsUtc.has(startIso)) {
         status = "booked";
-      } else if (slotZoned < earliestBookable || slotZoned > lastBookableDay) {
+      } else if (
+        unavailableStartsUtc.has(startIso) ||
+        slotZoned < earliestBookable ||
+        slotZoned > lastBookableDay
+      ) {
         status = "unavailable";
       } else {
         status = "available";
@@ -166,10 +171,10 @@ export function isAlgebraicallyValidSlot(startsAtIso: string): boolean {
   const slot = slotUtc.setZone(BOOKING_ZONE);
   if (slot.weekday >= 6) return false;
   if (slot.second !== 0 || slot.millisecond !== 0) return false;
-  if (slot.minute !== 0 && slot.minute !== 30) return false;
+  if (slot.minute !== 0) return false;
 
   const minutesFromMidnight = slot.hour * 60 + slot.minute;
-  if (minutesFromMidnight < OPEN_MINUTES || minutesFromMidnight > LAST_START_MINUTES) return false;
+  if (minutesFromMidnight < OPEN_MINUTES || minutesFromMidnight >= LAST_START_MINUTES) return false;
 
   const nowZoned = DateTime.now().setZone(BOOKING_ZONE);
   if (slot < nowZoned.plus({ minutes: MIN_LEAD_MINUTES })) return false;

@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/design/Button";
+import { TurnstileWidget } from "@/components/design/TurnstileWidget";
 import type { useBookingScheduler } from "@/lib/booking/use-booking-scheduler";
 import type { BookingSlotDto } from "@/lib/booking-schedule";
 import { PAGE_BOOKING_CAL_GRID, PAGE_SHELL_BOOK_MAIN } from "@/lib/page-layout";
@@ -13,9 +13,13 @@ type Scheduler = ReturnType<typeof useBookingScheduler>;
 
 type BookingSchedulerPanelProps = {
   scheduler: Scheduler;
+  turnstileSiteKey: string;
 };
 
-export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps) => {
+export const BookingSchedulerPanel = ({
+  scheduler,
+  turnstileSiteKey,
+}: BookingSchedulerPanelProps) => {
   const {
     payload,
     loading,
@@ -43,6 +47,8 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
     setCompany,
     notes,
     setNotes,
+    setTurnstileToken,
+    turnstileResetCount,
     formError,
     setFormError,
     submitting,
@@ -89,7 +95,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
             {loading && (
               <div className="flex items-center justify-center gap-2 text-(--brand-neutral) font-body text-sm w-full sm:w-auto">
                 <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
-                Loading open times…
+                Loading open times...
               </div>
             )}
           </div>
@@ -105,7 +111,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
               {loading && !payload ? (
                 <div className="flex flex-col items-center justify-center min-h-[280px] gap-3 text-(--brand-neutral) font-body text-sm">
                   <Loader2 className="w-8 h-8 animate-spin text-(--brand-primary)" aria-hidden />
-                  Loading calendar…
+                  Loading calendar...
                 </div>
               ) : !payload ? (
                 <div className="min-h-[200px] flex items-center justify-center font-body text-sm text-(--brand-neutral)">
@@ -161,8 +167,7 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
             <div className="rounded-xl border border-border bg-white p-4 sm:p-5 shadow-[var(--shadow-depth-1)] min-h-[240px] sm:min-h-[260px] flex flex-col min-w-0 lg:min-h-[25rem] xl:min-h-[27rem]">
               {!selectedDay && (
                 <p className="font-body text-(--brand-neutral) text-sm sm:text-base leading-relaxed">
-                  Choose a weekday on the calendar. Times that are already taken stay visible with a Booked
-                  label. Gray rows marked Closed are outside the booking window or too soon to book.
+                  Choose a weekday to see available times. Booked means the time is taken, and Unavailable means it is not open to book.
                 </p>
               )}
               {selectedDay && selectedDaySlots.length === 0 && (
@@ -269,26 +274,30 @@ export const BookingSchedulerPanel = ({ scheduler }: BookingSchedulerPanelProps)
                       placeholder="Anything you want us to read before the call"
                     />
                   </div>
+                  {turnstileSiteKey ? (
+                    <div className="space-y-3">
+                      <TurnstileWidget
+                        siteKey={turnstileSiteKey}
+                        onTokenChange={setTurnstileToken}
+                        resetSignal={turnstileResetCount}
+                      />
+                      <p className="font-body text-xs text-(--brand-neutral)">
+                        This security check helps block spam and fake bookings.
+                      </p>
+                    </div>
+                  ) : null}
                   {formError && (
                     <p className="text-sm text-destructive font-body" role="alert">
                       {formError}
                     </p>
                   )}
                   <Button type="submit" size="md" className="w-full" icon="none" disabled={submitting}>
-                    {submitting ? "Booking…" : "Confirm this time"}
+                    {submitting ? "Booking..." : "Confirm this time"}
                   </Button>
                 </form>
               )}
             </div>
           </div>
-
-          <p className="mt-6 sm:mt-8 text-center font-body text-sm sm:text-base text-(--brand-neutral) max-w-2xl xl:max-w-3xl mx-auto px-1">
-            Prefer email first?{" "}
-            <Link href="/contact" className="text-(--brand-primary) font-semibold hover:underline">
-              Use the contact form
-            </Link>
-            .
-          </p>
         </motion.div>
       </div>
     </section>
@@ -318,13 +327,13 @@ function SlotRow({
             }`}
         >
           <span>{slot.label}</span>
-          <span className="font-ui text-[10px] uppercase tracking-wide text-(--brand-primary) shrink-0">Open</span>
+          <span className="font-ui text-[10px] uppercase tracking-wide text-(--brand-primary) shrink-0">Book</span>
         </button>
       </li>
     );
   }
 
-  const tag = slot.status === "booked" ? "Booked" : "Closed";
+  const tag = slot.status === "booked" ? "Booked" : "Unavailable";
   return (
     <li>
       <div

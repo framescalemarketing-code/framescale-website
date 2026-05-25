@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isTurnstileConfigured, validateTurnstileToken } from "@/lib/cloudflare-turnstile";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { validateEmailConfirm } from "@/lib/email-validation";
 import { contactInquiryOwnerHtml } from "@/lib/email/templates";
@@ -18,6 +19,7 @@ type ContactPayload = {
   industry?: string;
   message?: string;
   sourcePage?: string;
+  turnstileToken?: string;
 };
 
 async function sendNotificationEmail(input: {
@@ -88,6 +90,8 @@ export async function POST(req: NextRequest) {
   const industry = cleanString(payload.industry, 80);
   const message = cleanString(payload.message, 5000);
   const sourcePage = cleanString(payload.sourcePage, 500) || "/contact";
+  const turnstileToken = cleanString(payload.turnstileToken, 2048);
+  const clientIp = getClientIp(req);
 
   if (!name) {
     return NextResponse.json({ error: "Name is required." }, { status: 400 });
@@ -98,6 +102,20 @@ export async function POST(req: NextRequest) {
   }
   if (!message || message.length < 10) {
     return NextResponse.json({ error: "Please include at least 10 characters in your message." }, { status: 400 });
+  }
+  if (isTurnstileConfigured()) {
+    if (!turnstileToken) {
+      return NextResponse.json({ error: "Please complete the security check." }, { status: 400 });
+    }
+
+    const verification = await validateTurnstileToken({
+      token: turnstileToken,
+      remoteIp: clientIp,
+    });
+
+    if (!verification.success) {
+      return NextResponse.json({ error: "Security check failed. Please try again." }, { status: 400 });
+    }
   }
 
   try {
@@ -110,7 +128,7 @@ export async function POST(req: NextRequest) {
       message,
       source_page: sourcePage,
       user_agent: req.headers.get("user-agent"),
-      ip_address: getClientIp(req),
+      ip_address: clientIp,
       metadata: {},
       status: "new",
     });

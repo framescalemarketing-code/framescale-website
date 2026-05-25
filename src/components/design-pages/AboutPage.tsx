@@ -21,27 +21,27 @@ export const AboutPage = () => {
   const values = [
     {
       icon: Target,
-      title: "Research Before Spend",
+      title: "Research Comes First",
       description:
-        "We learn your market, your customers, and your numbers before we ask you to spend more.",
+        "We start with the market, the buyer, and the alternatives so every recommendation has a reason behind it.",
     },
     {
       icon: Code,
-      title: "Built Around You",
+      title: "Built For Scale",
       description:
-        "Your website and marketing should fit the way you sell, book, and follow up.",
+        "The website, message, and plan should fit how your business actually sells, books, follows up, and grows.",
     },
     {
       icon: Users,
-      title: "Always Informed",
+      title: "Connected Systems",
       description:
-        "You see what changed, what it cost, and what the results mean in plain language.",
+        "If the right website, tracking, dashboard, or workflow is missing, we build what is needed to support growth and measure it clearly.",
     },
     {
       icon: TrendingUp,
-      title: "One Point Person",
+      title: "Clear Next Steps",
       description:
-        "You work with Jonathan from the first call through the day to day work.",
+        "You should be able to see what is working, what needs to change, and what the next move should be without digging through scattered reports.",
     },
   ];
 
@@ -49,17 +49,17 @@ export const AboutPage = () => {
     {
       icon: Heart,
       name: "Healthcare",
-      description: "Practices that already earn trust in person and need the website to keep up.",
+      description: "Practices that need stronger trust signals, clearer local visibility, and an easier path for patients to book.",
     },
     {
       icon: ShoppingBag,
       name: "Retail & E-commerce",
-      description: "Stores and product brands that need clearer numbers before they spend more.",
+      description: "Stores and product brands that need better numbers, stronger systems, and a clearer path from traffic to profit.",
     },
     {
       icon: Scale,
       name: "Professional Services",
-      description: "Firms that need a website and proof that match the quality of the work.",
+      description: "Firms that need clearer positioning, visible proof, and a better inbound system for the right clients.",
     },
   ];
 
@@ -94,7 +94,7 @@ export const AboutPage = () => {
                 className="font-body text-lg lg:text-xl leading-relaxed max-w-xl"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                FrameScale is how I work with a small number of business owners at a time. You get research before spend, a website built around your business, clear reporting, and one person who stays with the work.
+                FrameScale is built for owners who know how to run the business, but need a clearer way to scale it. I help turn strong businesses into stronger growth systems through research, strategy, websites, and tracking that support the next stage.
               </p>
             </div>
 
@@ -123,23 +123,26 @@ export const AboutPage = () => {
               className="font-headline text-3xl lg:text-4xl mb-6"
               style={{ color: "var(--brand-deep)" }}
             >
-              Why I Work This Way
+              Why I Built FrameScale
             </h2>
             <div className="space-y-6 font-body text-lg leading-relaxed" style={{ color: "var(--brand-neutral)" }}>
               <p>
-                I built FrameScale for owners who are tired of paying for activity they cannot explain. You should know where the money goes, what is working, and who is making the calls.
+                Many owners know their business well. Scaling it is a different challenge. Growth creates pressure around the message, the website, the systems, and the numbers behind the decisions.
               </p>
               <p>
-                I spent six years in optical retail and the lab. That experience taught me how the day to day work inside a business shapes trust, revenue, and repeat business.
+                A lot of good businesses are already doing strong work, but the market does not always see that clearly. The website may be thin, the follow-up may be inconsistent, the reporting may feel scattered, or the strategy may not match how customers actually buy.
               </p>
               <p>
-                I keep my client list small on purpose. Your work does not get handed to a junior account manager. It stays with me.
+                That is where I come in. I help owners understand the market, clarify what makes them different, build the systems that support the plan, and track what is actually helping the business grow.
               </p>
               <p>
-                I do the research before I ask you to spend more. Then I build around how your business actually sells, books, and follows up.
+                I spent six years in optical retail and the lab. That experience taught me how the day to day reality inside a business shapes trust, revenue, repeat business, and the customer experience that growth depends on.
               </p>
               <p>
-                If we work together, you should end up clearer on your market, your numbers, and your next move.
+                I keep the client list small on purpose so the work stays close. You are not passed from strategy to design to reporting with pieces getting lost between people.
+              </p>
+              <p>
+                If we work together, the goal is not just more marketing activity. The goal is a business that is easier to understand, easier to choose, and easier to scale with confidence.
               </p>
             </div>
           </motion.div>
@@ -151,8 +154,8 @@ export const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="What Matters"
-            title="How I Work"
-            description="The rules stay simple: learn first, build around your business, explain the numbers, and keep one person on the work."
+            title="How I Help You Scale"
+            description="The work stays grounded in research, shaped around your business, supported by connected systems, and measured in a way that helps you decide what comes next."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -192,8 +195,8 @@ export const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             badge="Who I Help"
-            title="Best Fit"
-            description="FrameScale is built for owners who need clear thinking, clear reporting, and work that fits the way they actually operate."
+            title="Where It Fits Best"
+            description="FrameScale works best for owners who already run a solid business and need a clearer path to growth, better systems, and more confidence in what to do next."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -248,7 +251,7 @@ export const AboutPage = () => {
               className="font-body text-lg leading-relaxed mb-8"
               style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
             >
-              FrameScale Inc is the company behind the work. Contracts, billing, and delivery stay straightforward so you always know who you hired and who is responsible.
+              FrameScale Inc is the company behind the work. Contracts, billing, delivery, and reporting stay straightforward so you know who is responsible, what is being built, and how decisions are being made.
             </p>
           </motion.div>
         </div>
@@ -267,10 +270,10 @@ export const AboutPage = () => {
               Talk It Through
             </h2>
             <p className="font-body text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Bring the questions you already have. I will tell you plainly whether I am the right fit and what the next step should be.
+              If the business runs well but growth still feels harder than it should, we can look at what is getting in the way and what the next step should be.
             </p>
             <Button variant="secondary" size="lg" href={site.bookingPath}>
-              Schedule Intro Call
+              Schedule A Call
             </Button>
           </motion.div>
         </div>

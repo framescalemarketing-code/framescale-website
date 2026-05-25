@@ -8,6 +8,7 @@ import { StickyCallCTA } from "@/components/design/StickyCallCTA";
 import { PageTransition } from "@/components/design/PageTransition";
 import { AccessibilityWidget } from "@/components/design/AccessibilityWidget";
 import { GAEventTracker } from "@/components/design/GAEventTracker";
+import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { site } from "@/lib/site";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { iubenda } from "@/lib/iubenda";
@@ -103,6 +104,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const turnstileSiteKey = getTurnstileSiteKeyForServer();
+
   return (
     <html lang="en">
       <head>
@@ -126,7 +129,9 @@ export default function RootLayout({
         {/* eslint-disable @next/next/google-font-preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
         {/* eslint-enable @next/next/google-font-preconnect */}
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
@@ -151,6 +156,12 @@ export default function RootLayout({
           src={`https://embeds.iubenda.com/widgets/${iubenda.widgetId}.js`}
           strategy="afterInteractive"
         />
+        {turnstileSiteKey ? (
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+            strategy="afterInteractive"
+          />
+        ) : null}
         
         <GAEventTracker />
         <MotionProvider>

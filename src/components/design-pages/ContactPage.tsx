@@ -1,14 +1,13 @@
-﻿"use client";
+"use client";
 
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { PageBackLink } from "../design/PageBackLink";
 import { Mail, Calendar, ArrowRight } from "lucide-react";
-import { site } from "@/lib/site";
-import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
-import { createContactFormState, useContactForm } from "@/lib/contact/use-contact-form";
+import { PageBackLink } from "../design/PageBackLink";
 import { ContactForm } from "./contact/ContactForm";
+import { createContactFormState, useContactForm } from "@/lib/contact/use-contact-form";
+import { slideByIndex, slideInFromRight, slideUp } from "@/lib/motion";
 import {
   PAGE_CONTACT_FORM_MAX,
   PAGE_HERO_INNER,
@@ -16,10 +15,17 @@ import {
   PAGE_SHELL_FLUID,
   PAGE_SHELL_FLUID_RELATIVE_FULL,
 } from "@/lib/page-layout";
+import { site } from "@/lib/site";
 
-export const ContactPage = () => {
+type ContactPageProps = {
+  turnstileSiteKey: string;
+};
+
+export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
   const searchParams = useSearchParams();
-  const form = useContactForm(createContactFormState(searchParams));
+  const form = useContactForm(createContactFormState(searchParams), {
+    requireTurnstile: Boolean(turnstileSiteKey),
+  });
 
   const contactMethods = [
     {
@@ -62,7 +68,7 @@ export const ContactPage = () => {
                 className="font-body text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                Book a free 30 minute intro call or send a note. I will ask direct questions and give you an honest next step.
+                Book a free 30 minute call or send a note. I will ask direct questions and give you an honest next step.
               </p>
             </motion.div>
           </div>
@@ -112,7 +118,7 @@ export const ContactPage = () => {
             viewport={{ once: true }}
             className={PAGE_CONTACT_FORM_MAX}
           >
-            <ContactForm form={form} />
+            <ContactForm form={form} turnstileSiteKey={turnstileSiteKey} />
           </motion.div>
         </div>
       </section>
@@ -133,7 +139,7 @@ export const ContactPage = () => {
                 {
                   step: "2",
                   title: "We Talk",
-                  body: "The intro call is 30 minutes. We cover the business, the pressure points, and what you want clearer.",
+                  body: "The call is 30 minutes. We cover the business, the pressure points, and what you want clearer.",
                 },
                 {
                   step: "3",

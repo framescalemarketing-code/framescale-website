@@ -39,11 +39,11 @@ export const StickyCallCTA = () => {
           <Link
             href={site.bookingPath}
             className="group inline-flex items-center gap-2 rounded-full bg-(--brand-primary) px-4 py-3 text-white shadow-[0_18px_42px_-18px_rgba(23,120,142,0.7)] hover:bg-(--brand-primary-hover) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--brand-primary) focus-visible:ring-offset-2 transition-all duration-200 font-ui text-sm font-semibold sm:px-5"
-            aria-label="Book an Intro Call"
+            aria-label="Schedule A Call"
           >
             <Calendar className="w-4 h-4" aria-hidden />
-            <span className="hidden sm:inline">Book Intro Call</span>
-            <span className="sm:hidden">Book Call</span>
+            <span className="hidden sm:inline">Schedule A Call</span>
+            <span className="sm:hidden">Schedule</span>
           </Link>
         </motion.div>
       )}

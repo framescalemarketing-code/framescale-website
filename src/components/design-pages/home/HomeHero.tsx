@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { User } from "lucide-react";
 import { Button } from "@/components/design/Button";
 import { slideUp } from "@/lib/motion";
 
@@ -88,40 +87,19 @@ export const HomeHero = () => {
             className="flex flex-wrap justify-center gap-8 text-left"
           >
             <div>
-              <div className="font-headline text-3xl text-(--brand-primary)">Five phases</div>
-              <div className="font-ui text-sm text-(--brand-neutral)">End-to-end process</div>
+              <div className="font-headline text-3xl text-(--brand-primary)">Five Phases</div>
+              <div className="font-ui text-sm text-(--brand-neutral)">End-To-End Process</div>
             </div>
             <div className="w-px h-12 bg-border" />
             <div>
-              <div className="font-headline text-3xl text-(--brand-primary)">Research based solutions</div>
-              <div className="font-ui text-sm text-(--brand-neutral)">Built around your business</div>
+              <div className="font-headline text-3xl text-(--brand-primary)">Research-Based Solutions</div>
+              <div className="font-ui text-sm text-(--brand-neutral)">Built Around Your Business</div>
             </div>
             <div className="w-px h-12 bg-border" />
             <div>
-              <div className="font-headline text-3xl text-(--brand-primary)">Custom build</div>
-              <div className="font-ui text-sm text-(--brand-neutral)">Strategy to launch</div>
+              <div className="font-headline text-3xl text-(--brand-primary)">Custom-Built Systems</div>
+              <div className="font-ui text-sm text-(--brand-neutral)">For Efficient Strategy</div>
             </div>
-          </motion.div>
-
-          <motion.div
-            variants={slideUp}
-            initial="hidden"
-            animate="show"
-            transition={{ delay: 0.68 }}
-            className="mt-12 flex items-center justify-center gap-4"
-            aria-label="Founder headshot placeholder"
-          >
-            <div
-              className="w-16 h-16 shrink-0 rounded-full overflow-hidden border border-dashed border-(--brand-primary)/40 bg-linear-to-br from-(--brand-primary)/10 via-(--brand-secondary)/10 to-(--brand-primary)/5 flex items-center justify-center"
-              title="Headshot placeholder: founder headshot, natural daylight, head-and-shoulders."
-            >
-              <User className="w-6 h-6 text-(--brand-primary)" />
-            </div>
-            <p className="font-body text-sm text-(--brand-neutral) text-left max-w-xs">
-              FrameScale is run by Jonathan.
-              <br />
-              You work with him directly from first call to launch.
-            </p>
           </motion.div>
         </div>
       </div>

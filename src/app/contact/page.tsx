@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactPage } from "@/components/design-pages/ContactPage";
+import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 
 const title = "Contact FrameScale";
 const description =
-  "Book a free 30-minute intro call. Share goals and constraints, get candid feedback, and leave with an honest next step.";
+  "Book a free 30-minute call. Share goals and constraints, get candid feedback, and leave with an honest next step.";
 
 export const metadata: Metadata = {
   title,
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <Suspense>
-      <ContactPage />
+      <ContactPage turnstileSiteKey={getTurnstileSiteKeyForServer()} />
     </Suspense>
   );
 }

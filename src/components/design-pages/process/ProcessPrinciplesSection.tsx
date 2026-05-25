@@ -11,8 +11,8 @@ export const ProcessPrinciplesSection = () => (
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
         badge="Working Standards"
-        title="How We Protect The Work"
-        description="Every decision needs a reason. The process stays focused on the customer, the business goal, and the evidence behind each move."
+        title="Our Decisions Come With Reason"
+        description="Each recommendation ties back to the market, the buyer, the business goal, and the systems needed to execute and measure the work properly."
       />
 
       <div className="grid md:grid-cols-2 gap-8">

@@ -61,7 +61,7 @@ export default function TermsPage() {
 
             <Section title="Using This Website">
               <p>
-                You may use this website to learn about FrameScale, contact us, book an intro call, and review public information about our services.
+                You may use this website to learn about FrameScale, contact us, book a call, and review public information about our services.
               </p>
               <p>
                 You agree not to misuse the site, interfere with its operation, attempt unauthorized access, submit false information, scrape the site in a way that burdens the service, or use the site for unlawful activity.
@@ -84,9 +84,9 @@ export default function TermsPage() {
               </p>
             </Section>
 
-            <Section title="Intro Calls">
+            <Section title="Calls">
               <p>
-                Intro calls are used to understand your business, your goals, and whether FrameScale is the right fit. Booking a call does not create a paid service relationship by itself.
+                Calls are used to understand your business, your goals, and whether FrameScale is the right fit. Booking a call does not create a paid service relationship by itself.
               </p>
               <p>
                 We may decline, reschedule, or cancel a call when needed.

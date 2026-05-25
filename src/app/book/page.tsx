@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { BookPage } from "@/components/design-pages/BookPage";
+import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 
-const title = "Book an intro call";
+const title = "Schedule A Call";
 const description =
-  "Schedule a free 30-minute intro call with FrameScale. Share goals and constraints, and leave with a clear next step.";
+  "Schedule a free 30-minute call with FrameScale. Share goals and constraints, and leave with a clear next step.";
 
 export const metadata: Metadata = {
   title,
@@ -14,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function Book() {
-  return <BookPage />;
+  return <BookPage turnstileSiteKey={getTurnstileSiteKeyForServer()} />;
 }

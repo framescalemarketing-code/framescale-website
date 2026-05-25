@@ -61,12 +61,23 @@ function validateAll(data: ContactFormState): ContactFieldErrors {
   return next;
 }
 
-export function useContactForm(initial: ContactFormState) {
+export function useContactForm(
+  initial: ContactFormState,
+  options?: { requireTurnstile?: boolean },
+) {
+  const requireTurnstile = options?.requireTurnstile ?? false;
   const [formData, setFormData] = useState<ContactFormState>(initial);
   const [touched, setTouched] = useState<Partial<Record<keyof ContactFormState, boolean>>>({});
   const [errors, setErrors] = useState<ContactFieldErrors>({});
   const [submitNote, setSubmitNote] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetCount, setTurnstileResetCount] = useState(0);
+
+  const resetTurnstile = () => {
+    setTurnstileToken("");
+    setTurnstileResetCount((count) => count + 1);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,6 +97,10 @@ export function useContactForm(initial: ContactFormState) {
       setSubmitNote("Please correct the highlighted fields and try again.");
       return;
     }
+    if (requireTurnstile && !turnstileToken) {
+      setSubmitNote("Please complete the security check and try again.");
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitNote("Sending your message...");
@@ -96,6 +111,7 @@ export function useContactForm(initial: ContactFormState) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          turnstileToken,
           sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
         }),
       });
@@ -113,6 +129,9 @@ export function useContactForm(initial: ContactFormState) {
       const message = err instanceof Error ? err.message : "Unable to submit right now.";
       setSubmitNote(`${message} Please try again in a moment.`);
     } finally {
+      if (requireTurnstile) {
+        resetTurnstile();
+      }
       setIsSubmitting(false);
     }
   };
@@ -160,6 +179,9 @@ export function useContactForm(initial: ContactFormState) {
     errors,
     submitNote,
     isSubmitting,
+    turnstileToken,
+    setTurnstileToken,
+    turnstileResetCount,
     handleSubmit,
     handleChange,
     handleBlur,

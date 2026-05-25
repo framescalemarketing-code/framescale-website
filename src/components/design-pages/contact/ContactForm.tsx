@@ -2,14 +2,27 @@
 
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/design/Button";
+import { TurnstileWidget } from "@/components/design/TurnstileWidget";
 import type { useContactForm } from "@/lib/contact/use-contact-form";
 
 type ContactFormProps = {
   form: ReturnType<typeof useContactForm>;
+  turnstileSiteKey: string;
 };
 
-export const ContactForm = ({ form }: ContactFormProps) => {
-  const { formData, touched, errors, submitNote, isSubmitting, handleSubmit, handleChange, handleBlur } = form;
+export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
+  const {
+    formData,
+    touched,
+    errors,
+    submitNote,
+    isSubmitting,
+    setTurnstileToken,
+    turnstileResetCount,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+  } = form;
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 xl:p-12 border border-border shadow-lg">
@@ -160,6 +173,19 @@ export const ContactForm = ({ form }: ContactFormProps) => {
             </p>
           )}
         </div>
+
+        {turnstileSiteKey ? (
+          <div className="space-y-3">
+            <TurnstileWidget
+              siteKey={turnstileSiteKey}
+              onTokenChange={setTurnstileToken}
+              resetSignal={turnstileResetCount}
+            />
+            <p className="font-body text-xs text-(--brand-neutral)">
+              This security check helps block spam and automated submissions.
+            </p>
+          </div>
+        ) : null}
 
         <Button type="submit" size="lg" className="w-full" icon="none">
           {isSubmitting ? "Sending..." : "Send Message"}

@@ -14,7 +14,7 @@ export const ProcessCtaSection = () => (
           Bring the goals, questions, and rough spots. I will help you identify the first moves that can make the website, tracking, and marketing work together.
         </p>
         <Button variant="secondary" size="lg" href={site.bookingPath}>
-          Schedule Intro Call
+          Schedule A Call
         </Button>
       </motion.div>
     </div>

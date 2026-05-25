@@ -64,7 +64,7 @@ export function introCallGuestConfirmationHtml(input: {
     : "";
 
   const inner = `
-    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${BRAND_PRIMARY};">Intro call confirmed</p>
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${BRAND_PRIMARY};">Call confirmed</p>
     <h1 style="margin:0 0 16px;font-family:Georgia,serif;font-size:24px;font-weight:600;color:${BRAND_DEEP};line-height:1.3;">You are booked</h1>
     <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:${BRAND_DEEP};">Hi ${escapeHtml(input.name)}, thank you for choosing a time with us.</p>
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:20px 0 0;border-radius:10px;background:rgba(104,179,181,0.12);border:1px solid rgba(23,120,142,0.2);">
@@ -82,7 +82,7 @@ export function introCallGuestConfirmationHtml(input: {
     <p style="margin:14px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:${BRAND_MUTED};">If you need to reschedule, reply to this email and suggest a few alternatives.</p>
   `;
 
-  return brandedShell(inner, `Intro call confirmed: ${input.whenLine}`);
+  return brandedShell(inner, `Call confirmed: ${input.whenLine}`);
 }
 
 export function introCallGuestConfirmationText(input: {
@@ -92,7 +92,7 @@ export function introCallGuestConfirmationText(input: {
   notes?: string;
 }): string {
   const lines = [
-    `${site.name}: intro call confirmed`,
+    `${site.name}: call confirmed`,
     "",
     `Hi ${input.name},`,
     "",
@@ -120,7 +120,7 @@ export function introCallOwnerAlertHtml(input: {
   notes: string;
 }): string {
   const inner = `
-    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${BRAND_PRIMARY};">New intro call booking</p>
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${BRAND_PRIMARY};">New call booking</p>
     <h1 style="margin:0 0 16px;font-family:Georgia,serif;font-size:22px;font-weight:600;color:${BRAND_DEEP};line-height:1.3;">Calendar update</h1>
     <p style="margin:0 0 14px;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:${BRAND_DEEP};"><strong>When:</strong> ${escapeHtml(input.whenLine)}</p>
     <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:${BRAND_DEEP};"><strong>Name:</strong> ${escapeHtml(input.name)}</p>

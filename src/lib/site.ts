@@ -23,7 +23,7 @@ export const site = {
   ogImage: "/opengraph-image",
   twitterImage: "/twitter-image",
   social: {
-    linkedin: "https://www.linkedin.com/company/framescale",
+    linkedin: "https://www.linkedin.com/company/framescaleinc",
     fiverr: "https://www.fiverr.com/s/xX8GAv4",
   },
 } as const;
@@ -32,17 +32,17 @@ export const industries = [
   {
     label: "Healthcare",
     href: "/industries/healthcare",
-    description: "For practices that need the website to match the trust they already earn.",
+    description: "For practices that need stronger trust signals, clearer local visibility, and an easier path to book.",
   },
   {
     label: "Retail & E-commerce",
     href: "/industries/retail",
-    description: "For stores and product brands that need clearer numbers before they spend more.",
+    description: "For stores and product brands that need better numbers, stronger systems, and a clearer path to profit.",
   },
   {
     label: "Professional Services",
     href: "/industries/professional-services",
-    description: "For firms that need a site and proof that help the right clients say yes.",
+    description: "For firms that need clearer positioning, visible proof, and a better inbound system.",
   },
 ] as const;
 
@@ -61,15 +61,15 @@ export const footerLinks = {
   Company: [
     { label: "About", href: "/about" },
     { label: "Process", href: "/process" },
-    { label: "Book A Call", href: site.bookingPath },
+    { label: "Schedule A Call", href: site.bookingPath },
     { label: "Contact", href: "/contact" },
     { label: "Sitemap", href: "/sitemap" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
     { label: "California Privacy Notice", href: "/california-privacy" },
     { label: "Your Privacy Choices", href: "/california-privacy#privacy-choices" },
-    { label: "Cookie Policy", href: "/cookie-policy" },
     { label: "Accessibility Statement", href: "/accessibility" },
     { label: "Terms of Service", href: "/terms" },
   ],

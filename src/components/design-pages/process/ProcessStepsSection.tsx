@@ -11,7 +11,7 @@ export const ProcessStepsSection = () => (
   <section className="relative py-20 bg-white">
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
-        badge="Five Phase Process"
+        badge="The SCALE Method"
         title="From Research To Measurable Growth"
         description="Each phase turns uncertainty into a clear decision. You see what we are learning, what we are building, and what should happen next."
       />
@@ -67,7 +67,7 @@ export const ProcessStepsSection = () => (
 
                   <div className="bg-linear-to-br from-(--brand-primary)/5 to-(--brand-secondary)/5 rounded-2xl p-8 border border-(--brand-primary)/20">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      What You Leave With
+                      What You Get
                     </h3>
                     <ul className="space-y-2">
                       {step.deliverables.map((deliverable) => (

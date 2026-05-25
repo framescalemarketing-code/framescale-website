@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 import { Mail } from "lucide-react";
 import { PageBackLink } from "../design/PageBackLink";
-import { site } from "@/lib/site";
 import { slideUp } from "@/lib/motion";
 import { useBookingScheduler } from "@/lib/booking/use-booking-scheduler";
 import { BookingSuccessView } from "./book/BookingSuccessView";
@@ -23,8 +22,14 @@ const BookingSchedulerPanel = dynamic(
   },
 );
 
-export const BookPage = () => {
-  const scheduler = useBookingScheduler();
+type BookPageProps = {
+  turnstileSiteKey: string;
+};
+
+export const BookPage = ({ turnstileSiteKey }: BookPageProps) => {
+  const scheduler = useBookingScheduler({
+    requireTurnstile: Boolean(turnstileSiteKey),
+  });
 
   if (scheduler.success) {
     return (
@@ -47,7 +52,7 @@ export const BookPage = () => {
             <motion.div variants={slideUp} initial="hidden" animate="show">
               <PageBackLink className="mb-6" />
               <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
-                Intro Call
+                Call
               </span>
               <h1
                 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight px-1"
@@ -59,22 +64,22 @@ export const BookPage = () => {
                 className="font-body text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                Pick a time that works for you. The call is 30 minutes. We will talk about where things feel unclear, what you have already tried, and whether I am the right fit.
+                Choose a time that works for you. In 30 minutes, we can talk through what feels unclear, what you have already tried, and whether I am the right fit to help.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <BookingSchedulerPanel scheduler={scheduler} />
+      <BookingSchedulerPanel scheduler={scheduler} turnstileSiteKey={turnstileSiteKey} />
 
       <section className="relative py-12 sm:py-16 bg-muted border-t border-border pb-[max(3rem,env(safe-area-inset-bottom,0px))]">
         <div className={PAGE_BOOK_FOOTER}>
           <Mail className="w-8 h-8 text-(--brand-primary) mx-auto mb-4" aria-hidden />
           <p className="font-body text-(--brand-neutral) leading-relaxed">
-            This booking tool runs inside this site. After you book, you will get a confirmation email and a confirmation screen here. Questions?{" "}
-            <a href={`mailto:${site.email}`} className="text-(--brand-primary) font-semibold hover:underline">
-              {site.email}
+            Prefer email first?{" "}
+            <a href="/contact" className="text-(--brand-primary) font-semibold hover:underline">
+              Use the contact form
             </a>
             .
           </p>

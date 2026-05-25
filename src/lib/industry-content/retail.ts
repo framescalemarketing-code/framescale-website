@@ -16,7 +16,7 @@ export const retailContent: IndustryPageContent = {
     badge: "Retail & E-commerce",
     title: "Make Your Store And Spend Work Together",
     description:
-      "When sales activity is up and margin still feels tight, the answer is usually in the message, the website, or the spend. We look at all three so you can see where the money is going.",
+      "When sales are up but profit feels low, the answer is usually in the message, the website, or the spend. We look at all three so you can see where the money is going.",
     media: {
       label: "Real packing station or storefront",
       description:
@@ -60,30 +60,30 @@ export const retailContent: IndustryPageContent = {
   challenges: {
     header: {
       badge: "Common Challenges",
-      title: "Why Sales Feel Hard To Read",
+      title: "Marketing And Sales Go Hand In Hand",
       description:
-        "These are the patterns that show up when spend climbs and the numbers still do not feel right.",
+        "When marketing and sales stay connected, you can see what is driving revenue and what is pulling profit down.",
     },
     items: [
       {
         title: "Message Misses The Buyer",
         description:
-          "Traffic is not the same as intent. The page needs to make the right buyer feel like the product fits them.",
+          "Traffic is not the same as conversion. The page needs to speak to the buyer so they can take action.",
       },
       {
         title: "Costs Keep Climbing",
         description:
-          "Ads, fees, discounts, and shipping can eat margin quietly. You need to see the full picture before spending more.",
+          "Ads in multiple channels, fees, discounts on sales, and shipping can eat up your margins. You need to see the full picture before spending more.",
       },
       {
-        title: "The Site Slows Sales",
+        title: "Your Site And Store Aren't Cohesive",
         description:
-          "Your team may know exactly how to sell the product in person. The website should be pulling its weight too.",
+          "Your website is an extension of your store and a common first place people engage with your brand. It must work together with your store to bring more sales.",
       },
       {
-        title: "Reporting Stays Scattered",
+        title: "Reporting Is Hard To Track",
         description:
-          "Store sales, web data, and ad reports all say something different. That makes it hard to know what deserves your attention.",
+          "With new AI and data tools, reporting is easier to get and harder to keep organized. You need a strong central system that gives you a proper source of truth for your data.",
       },
     ],
   },
@@ -91,36 +91,38 @@ export const retailContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "What We Tighten First",
+      title: "What We Do First",
       description:
-        "We find what is dragging profit down, then fix the message, the site, and the tracking in the right order.",
+        "We start with research so we understand who your buyer really is. A mixed customer base can lead to a mixed message, a disconnected website, and reporting that is hard to trust.",
     },
     items: [
       {
         icon: Target,
-        title: "Your Buyer",
+        title: "Who Is Your Primary Buyer",
         items: [
-          "What customers compare before they decide to buy",
-          "Which channels are worth your attention right now",
-          "What should change before more budget goes into ads",
+          "What are their standard demographics",
+          "What are they thinking when they decide to buy a product like yours",
+          "What are they looking to hear",
+          "Where are they looking for a product like yours",
         ],
       },
       {
         icon: Code,
-        title: "Your Store",
+        title: "Is Your Store Working For You",
         items: [
-          "A website built around the way people actually shop",
-          "Checkout, forms, and tracking that do not create friction",
-          "Faster pages and product stories that make the choice easier",
+          "Does a physical location enhance the customer experience or make it more difficult",
+          "Does the experience stay consistent for someone who visits in store",
+          "Where are people falling off in the funnel in store and online",
         ],
       },
       {
         icon: TrendingUp,
-        title: "Your Follow-Up",
+        title: "What Is Your Follow-Up",
         items: [
-          "SEO built around what buyers search before they are ready",
-          "Paid search and paid social used only when the math supports it",
-          "Email and follow-up that give people a real reason to come back",
+          "Are you re-engaging potential buyers",
+          "Are you providing value for people who have purchased",
+          "Is there a loop for your customers that keeps them buying your product",
+          "Are you gaining feedback to strengthen your product",
         ],
       },
     ],
