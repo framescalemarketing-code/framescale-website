@@ -22,9 +22,9 @@ type ImagePlaceholderProps = {
 const aspectClass: Record<ImagePlaceholderAspect, string> = {
   "1/1": "aspect-square",
   "16/9": "aspect-video",
-  "4/3": "aspect-[4/3]",
-  "3/4": "aspect-[3/4]",
-  "21/9": "aspect-[21/9]",
+  "4/3": "aspect-4/3",
+  "3/4": "aspect-3/4",
+  "21/9": "aspect-21/9",
 };
 
 const variantClass: Record<ImagePlaceholderVariant, string> = {

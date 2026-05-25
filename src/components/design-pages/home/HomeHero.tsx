@@ -84,19 +84,17 @@ export const HomeHero = () => {
             initial="hidden"
             animate="show"
             transition={{ delay: 0.56 }}
-            className="flex flex-wrap justify-center gap-8 text-left"
+            className="mx-auto grid max-w-5xl gap-4 text-left sm:grid-cols-3"
           >
-            <div>
-              <div className="font-headline text-3xl text-(--brand-primary)">Five Phases</div>
-              <div className="font-ui text-sm text-(--brand-neutral)">End-To-End Process</div>
+            <div className="rounded-2xl border border-(--brand-primary)/15 bg-white/80 p-5 shadow-[0_18px_40px_-30px_rgba(23,120,142,0.3)] backdrop-blur-sm">
+              <div className="font-headline text-3xl text-(--brand-primary)">SCALE Method</div>
+              <div className="font-ui text-sm text-(--brand-neutral)">Five Phase Process</div>
             </div>
-            <div className="w-px h-12 bg-border" />
-            <div>
+            <div className="rounded-2xl border border-(--brand-primary)/15 bg-white/80 p-5 shadow-[0_18px_40px_-30px_rgba(23,120,142,0.3)] backdrop-blur-sm">
               <div className="font-headline text-3xl text-(--brand-primary)">Research-Based Solutions</div>
               <div className="font-ui text-sm text-(--brand-neutral)">Built Around Your Business</div>
             </div>
-            <div className="w-px h-12 bg-border" />
-            <div>
+            <div className="rounded-2xl border border-(--brand-primary)/15 bg-white/80 p-5 shadow-[0_18px_40px_-30px_rgba(23,120,142,0.3)] backdrop-blur-sm">
               <div className="font-headline text-3xl text-(--brand-primary)">Custom-Built Systems</div>
               <div className="font-ui text-sm text-(--brand-neutral)">For Efficient Strategy</div>
             </div>

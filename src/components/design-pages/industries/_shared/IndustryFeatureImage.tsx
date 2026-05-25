@@ -49,7 +49,7 @@ export const IndustryFeatureImage = ({
         viewport={{ once: true }}
       >
         {src ? (
-          <div className="relative w-full aspect-21/9 overflow-hidden rounded-2xl shadow-md">
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-md" style={{ aspectRatio: "21 / 9" }}>
             <Image
               src={src}
               alt={alt}
