@@ -23,7 +23,7 @@ export const HomeCtaSection = () => (
             href="/process"
             className="text-white bg-white/10 hover:bg-white/20 border-white/20"
           >
-            Learn About Our Process
+            See the SCALE Method
           </Button>
         </div>
       </motion.div>

@@ -62,7 +62,7 @@ export const IndustryHero = ({ content }: IndustryHeroProps) => {
           Schedule A Call
         </Button>
         <Button size="lg" variant="ghost" href="/process">
-          See Our Process
+          See the SCALE Method
         </Button>
       </div>
     </>

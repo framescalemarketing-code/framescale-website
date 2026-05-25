@@ -128,6 +128,6 @@ export const professionalServicesContent: IndustryPageContent = {
   cta: {
     title: "Review The Client Path",
     body: "We can look at what a prospect sees now, where confidence drops, and what proof should be doing more work for you.",
-    secondaryButtonLabel: "See Our 5-Step Process",
+    secondaryButtonLabel: "See the SCALE Method",
   },
 };

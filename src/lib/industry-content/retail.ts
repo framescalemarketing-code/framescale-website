@@ -131,6 +131,6 @@ export const retailContent: IndustryPageContent = {
   cta: {
     title: "Review The Buying Path",
     body: "We can look at the spend, the site, and the buying path together. Then I will show you where I think money is leaking first.",
-    secondaryButtonLabel: "See Our 5-Step Process",
+    secondaryButtonLabel: "See the SCALE Method",
   },
 };

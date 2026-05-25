@@ -75,7 +75,7 @@ export const HomeHero = () => {
               Choose Your Industry
             </Button>
             <Button size="lg" variant="ghost" href="/process">
-              See Our Process
+              See the SCALE Method
             </Button>
           </motion.div>
 

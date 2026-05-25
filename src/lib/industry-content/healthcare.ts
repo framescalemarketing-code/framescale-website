@@ -129,6 +129,6 @@ export const healthcareContent: IndustryPageContent = {
   cta: {
     title: "Review The Patient Path",
     body: "We can look at the site, the search results, and the booking path together.",
-    secondaryButtonLabel: "See Our 5-Step Process",
+    secondaryButtonLabel: "See the SCALE Method",
   },
 };
