@@ -121,7 +121,7 @@ export function useContactForm(
         throw new Error(data.error || "Unable to submit form.");
       }
 
-      setSubmitNote("Thanks. Your message was received and I will get back to you within 24 hours.");
+      setSubmitNote("Thanks. Your message was received.");
       setFormData(EMPTY_FORM);
       setTouched({});
       setErrors({});

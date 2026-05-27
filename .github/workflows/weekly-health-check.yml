@@ -1,0 +1,39 @@
+name: Weekly Health Check
+
+on:
+  schedule:
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    name: Lint, Audit, And Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Run Brand Guard
+        run: npm run brand:check
+
+      - name: Audit Dependencies
+        run: npm audit --audit-level=high
+
+      - name: Build Site
+        run: npm run build

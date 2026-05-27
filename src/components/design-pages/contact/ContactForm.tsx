@@ -201,9 +201,6 @@ export const ContactForm = ({ form, turnstileSiteKey }: ContactFormProps) => {
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
 
-        <p className="text-center font-body text-sm text-(--brand-neutral)">
-          I will get back to you within 24 hours. No spam, ever.
-        </p>
         {submitNote ? (
           <p
             className="text-center font-body text-sm text-(--brand-primary)"

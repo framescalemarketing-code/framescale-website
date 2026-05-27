@@ -92,7 +92,7 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
                 className="font-body text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-2xl xl:max-w-3xl mx-auto px-1"
                 style={{ color: "var(--brand-neutral)" }}
               >
-                Book a free 30 minute call or send a note. I will ask direct questions and give you an honest next step.
+                Book a free 30 minute call or send a note. I will ask direct questions and give you the next step.
               </p>
               <div className="grid gap-3 sm:grid-cols-3 max-w-5xl mx-auto text-left">
                 {contactSignals.map((item) => (

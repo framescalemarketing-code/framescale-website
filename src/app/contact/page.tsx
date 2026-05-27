@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 
 const title = "Contact FrameScale";
 const description =
-  "Book a free 30-minute call. Share goals and constraints, get candid feedback, and leave with an honest next step.";
+  "Book a free 30-minute call. Share goals and constraints, get candid feedback, and leave with the next step.";
 
 export const metadata = buildPageMetadata({ title, description, path: "/contact" });
 
