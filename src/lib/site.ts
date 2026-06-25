@@ -64,6 +64,7 @@ export const footerLinks = {
     { label: "Process", href: "/process" },
     { label: "Schedule A Call", href: site.bookingPath },
     { label: "Contact", href: "/contact" },
+    { label: "Make a payment", href: "/payment" },
     { label: "Sitemap", href: "/sitemap" },
   ],
   Legal: [

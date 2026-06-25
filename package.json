@@ -19,6 +19,7 @@
     "next": "^16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
+    "stripe": "^22.3.0",
     "tw-animate-css": "^1.3.8"
   },
   "devDependencies": {
