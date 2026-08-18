@@ -11,7 +11,7 @@ export const ProcessPrinciplesSection = () => (
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
         badge="Working Standards"
-        title="Our Decisions Come With Reason"
+        title="Every Decision Comes With Reason"
         description="Each recommendation ties back to the market, the buyer, the business goal, and the systems needed to execute and measure the work properly."
       />
 

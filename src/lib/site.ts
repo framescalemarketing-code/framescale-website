@@ -8,7 +8,7 @@ export const site = {
   shortName: "FrameScale",
   tagline: "Hands-on growth marketing that teaches you to scale.",
   description:
-    "Research-led strategy and custom marketing sites for owners who want clarity, not noise. SEO, Google Business Profile, analytics, and paid media led directly by the principal so you can own the systems behind the results.",
+    "Research-led strategy and custom marketing sites for owners who want clarity. You work directly with Jonathan on SEO, Google Business Profile, analytics, and paid media, and you keep the systems behind the results.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */

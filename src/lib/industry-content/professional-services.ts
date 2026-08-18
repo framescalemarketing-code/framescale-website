@@ -32,7 +32,7 @@ export const professionalServicesContent: IndustryPageContent = {
 
   highlights: {
     header: {
-      badge: "Where We Help",
+      badge: "Where I Help",
       title: "Modernizing Your Inbound Leads",
       description:
         "Your referrals may already be strong, but when they slow down, you are left doing outreach and taking on too many sales calls. A stronger inbound system with the right website, search visibility, and intake experience can take unnecessary work off your plate.",
@@ -90,9 +90,9 @@ export const professionalServicesContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "We Make It Clear",
+      title: "I Make It Clear",
       description:
-        "We clarify what makes you different, bring the proof forward, and make the website and intake path easier for the right clients to trust.",
+        "I clarify what makes you different, bring the proof forward, and make the website and intake path easier for the right clients to trust.",
     },
     items: [
       {

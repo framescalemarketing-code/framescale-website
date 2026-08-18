@@ -12,9 +12,9 @@ export const CapabilitiesSection = () => (
   <section className="relative py-20 lg:py-32 bg-white">
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
-        badge="What We Deliver"
+        badge="What I Deliver"
         title="Everything Your Business Needs to Grow"
-        description="From your website to your ad spend, every service we offer is connected to a clear strategy and a result you can actually see."
+        description="From your website to your ad spend, every service I offer is connected to a clear strategy and a result you can actually see."
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

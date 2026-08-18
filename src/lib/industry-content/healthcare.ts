@@ -16,7 +16,7 @@ export const healthcareContent: IndustryPageContent = {
     badge: "Healthcare",
     title: "Help More Patients Feel Ready To Book",
     description:
-      "Patients usually hear your name before they visit your site. Then they decide if you feel credible enough to call or book. We build around trust, clear answers, and next steps that are easy on any device.",
+      "Patients usually hear your name before they visit your site. Then they decide if you feel credible enough to call or book. I build around trust, clear answers, and next steps that are easy on any device.",
     media: {
       label: "Editorial close-up of a designer optical frame",
       description:
@@ -91,9 +91,9 @@ export const healthcareContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "What We Improve First",
+      title: "What I Improve First",
       description:
-        "We map how patients find you, what they need to trust you, and what helps them take the next step.",
+        "I map how patients find you, what they need to trust you, and what helps them take the next step.",
     },
     items: [
       {

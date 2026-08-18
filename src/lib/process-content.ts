@@ -20,9 +20,9 @@ export const processSteps: ProcessStep[] = [
     icon: Search,
     title: "Study The Market",
     description:
-      "We look at the bigger picture first: your market, how many buyers are in it, which buyers are the best fit for you, what other options they have, and what may be helping or stopping a purchase with you or the next best alternative.",
+      "I look at the bigger picture first: your market, how many buyers are in it, which buyers are the best fit for you, what other options they have, and what may be helping or stopping a purchase with you or the next best alternative.",
     activities: [
-      "Research the market at a broad level so we understand the space you are selling into",
+      "Research the market at a broad level so I understand the space you are selling into",
       "Study the buyers who are most relevant to your business, including what they care about and how they decide",
       "Compare competitors, alternatives, positioning, pricing cues, and proof across the market",
       "Identify what may be shaping demand, hesitation, and purchase behavior in your category",
@@ -38,7 +38,7 @@ export const processSteps: ProcessStep[] = [
     icon: Users,
     title: "Clarify The Client View",
     description:
-      "You already know your business well. We help you see it through your clients' eyes so the message, offer, and experience reflect what matters most to the people you want to reach.",
+      "You already know your business well. I help you see it through your clients' eyes so the message, offer, and experience reflect what matters most to the people you want to reach.",
     activities: [
       "Talk with the owner, managers, and customer-facing team to understand the business from the inside",
       "Review testimonials, reviews, and customer feedback to see how people describe the experience now",
@@ -56,12 +56,12 @@ export const processSteps: ProcessStep[] = [
     icon: Target,
     title: "Align The Strategy",
     description:
-      "Once the market and customer picture are clear, we turn that research into a strategy built for your business. This is where we decide what to say, where to show up, and what needs to happen first.",
+      "Once the market and customer picture are clear, I turn that research into a strategy built for your business. This is where we decide together what to say, where to show up, and what needs to happen first.",
     activities: [
       "Shape the message around what the right buyer needs to hear",
       "Decide which pages, channels, and follow-up your buyer actually uses",
       "Align the work with the business goals and budget",
-      "Set up clear KPIs so we can measure how well the strategy is working",
+      "Set up clear KPIs so you can measure how well the strategy is working",
     ],
     deliverables: [
       "A strategy built around your buyer, business goals, and budget",
@@ -74,7 +74,7 @@ export const processSteps: ProcessStep[] = [
     icon: Rocket,
     title: "Launch The System",
     description:
-      "Once the plan is clear, we build the systems needed to support it. If the right website, dashboard, tracking setup, or internal sales system does not exist yet, we create it so the strategy can run and be measured in one connected setup.",
+      "Once the plan is clear, I build the systems needed to support it. If the right website, dashboard, tracking setup, or internal sales system does not exist yet, I create it so the strategy can run and be measured in one connected setup.",
     activities: [
       "Build or improve the website, pages, and conversion paths the strategy depends on",
       "Set up tracking, dashboards, and reporting inside the system so performance is visible in one place",
@@ -92,11 +92,11 @@ export const processSteps: ProcessStep[] = [
     icon: BarChart3,
     title: "Evaluate And Improve",
     description:
-      "Once the system is live, we track how people move through it and how the business responds. Because the tracking is built into the system, we can measure the signals that matter without relying on scattered tools or guesswork.",
+      "Once the system is live, I track how people move through it and how the business responds. Because the tracking is built into the system, we can measure the signals that matter without relying on scattered tools or guesswork.",
     activities: [
       "Track traffic, leads, inquiries, bookings, and conversion points across the system",
       "Review how people move through the website, forms, follow-up, and sales process",
-      "Measure results against the KPIs we set at the strategy stage",
+      "Measure results against the KPIs set at the strategy stage",
       "Adjust the message, pages, and budget based on what the numbers show",
     ],
     deliverables: [
@@ -111,7 +111,7 @@ export const processPrinciples: ProcessPrinciple[] = [
   {
     title: "Research Comes First",
     description:
-      "We start with the market, the buyer, and the alternatives before recommending anything. That keeps the strategy grounded before more time or budget is spent.",
+      "I start with the market, the buyer, and the alternatives before recommending anything. That keeps the strategy grounded before more time or budget is spent.",
   },
   {
     title: "Built Around Your Business",
@@ -121,11 +121,11 @@ export const processPrinciples: ProcessPrinciple[] = [
   {
     title: "Systems Need To Be Connected",
     description:
-      "If the website, tracking, dashboard, or internal tools do not exist yet, we build them into one connected system. That makes the strategy easier to execute and easier to track.",
+      "If the website, tracking, dashboard, or internal tools do not exist yet, I build them into one connected system. That makes the strategy easier to execute and easier to track.",
   },
   {
     title: "Tracking Should Lead To Action",
     description:
-      "KPIs, traffic, leads, inquiries, bookings, and conversion points should show what is happening clearly. Reporting only matters when it tells us what to improve next.",
+      "KPIs, traffic, leads, inquiries, bookings, and conversion points should show what is happening clearly. Reporting only matters when it tells you what to improve next.",
   },
 ];

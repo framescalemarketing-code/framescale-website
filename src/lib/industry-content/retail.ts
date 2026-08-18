@@ -16,7 +16,7 @@ export const retailContent: IndustryPageContent = {
     badge: "Retail & E-commerce",
     title: "Make Your Store And Spend Work Together",
     description:
-      "When sales are up but profit feels low, the answer is usually in the message, the website, or the spend. We look at all three so you can see where the money is going.",
+      "When sales are up but profit feels low, the answer is usually in the message, the website, or the spend. I look at all three so you can see where the money is going.",
     media: {
       label: "Real packing station or storefront",
       description:
@@ -91,9 +91,9 @@ export const retailContent: IndustryPageContent = {
   solutions: {
     header: {
       badge: "What You Get",
-      title: "What We Do First",
+      title: "What I Do First",
       description:
-        "We start with research so we understand who your buyer really is. A mixed customer base can lead to a mixed message, a disconnected website, and reporting that is hard to trust.",
+        "I start with research so I understand who your buyer really is. A mixed customer base can lead to a mixed message, a disconnected website, and reporting that is hard to trust.",
     },
     items: [
       {

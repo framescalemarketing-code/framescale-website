@@ -86,7 +86,7 @@ export const PaymentPage = () => {
           {canceled && (
             <div className="mx-auto mb-10 max-w-2xl rounded-xl border border-(--brand-primary)/30 bg-(--brand-primary)/5 px-5 py-4 text-center">
               <p className="font-body text-sm text-(--brand-deep)">
-                Payment canceled — nothing was charged. You can pick a package and try again whenever you are ready.
+                Payment canceled. Nothing was charged, so you can pick a package and try again whenever you are ready.
               </p>
             </div>
           )}

@@ -41,13 +41,13 @@ export const WhyFrameScaleSection = () => (
             <div>
               <h3 className="font-headline text-2xl mb-3">What Makes This Different</h3>
               <p className="font-body text-white/90 leading-relaxed" style={{ maxWidth: "none" }}>
-                You should always know what is happening with your marketing. We keep you informed at every stage so nothing ever feels like a black box.
+                You should always know what is happening with your marketing. I keep you informed at every stage so nothing ever feels like a black box.
               </p>
             </div>
           </div>
           <div className="space-y-4">
-            <ValuePoint text="You always know where your budget is going" icon={Users} />
-            <ValuePoint text="You see the research before we spend anything" icon={Target} />
+            <ValuePoint text="You work with me directly, on a short client roster" icon={Users} />
+            <ValuePoint text="You see the research before I spend anything" icon={Target} />
             <ValuePoint text="Your website is built around your business not pulled from a template" icon={Code} />
             <ValuePoint text="Your SEO, Google Business Profile, and analytics are tracked and explained in plain language" icon={BarChart3} />
           </div>

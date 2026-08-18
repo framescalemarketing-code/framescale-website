@@ -30,7 +30,7 @@ export const ProcessHero = () => (
             className="font-body text-xl lg:text-2xl mb-8 leading-relaxed"
             style={{ color: "var(--brand-neutral)", maxWidth: "none" }}
           >
-            Your website and marketing should be built from what your buyers need, how your business works, and where growth is getting stuck. We research first, make the plan clear, then build the pieces that help you scale with confidence.
+            Your website and marketing should be built from what your buyers need, how your business works, and where growth is getting stuck. I research first, make the plan clear, then build the pieces that help you scale with confidence.
           </p>
         </motion.div>
       </div>

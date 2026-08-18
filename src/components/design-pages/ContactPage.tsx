@@ -30,7 +30,7 @@ export const ContactPage = ({ turnstileSiteKey }: ContactPageProps) => {
   const contactMethods = [
     {
       icon: Calendar,
-      title: "Schedule a Call",
+      title: "Schedule A Call",
       description: "Pick a time and tell me where things feel unclear.",
       action: "Book A Time",
       href: site.bookingPath,

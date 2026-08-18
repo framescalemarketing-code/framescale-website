@@ -34,7 +34,7 @@ export const homeIndustries: HomeIndustryCard[] = [
     name: "Retail & E-commerce",
     icon: ShoppingBag,
     description:
-      "Every dollar you spend on ads needs a strategy behind it. We make sure your store, your story, and your spend are all working together.",
+      "Every dollar you spend on ads needs a strategy behind it. I make sure your store, your story, and your spend are all working together.",
     examples: "Stores online and in person, small teams",
     path: "/industries/retail",
     color: "from-(--brand-secondary) to-(--brand-primary)",
@@ -43,7 +43,7 @@ export const homeIndustries: HomeIndustryCard[] = [
     name: "Professional Services",
     icon: Scale,
     description:
-      "Your reputation brings clients in. Your website should close them. We build around the work you do and the clients you want more of.",
+      "Your reputation brings clients in. Your website should close them. I build around the work you do and the clients you want more of.",
     examples: "Consultants and partner-led firms",
     path: "/industries/professional-services",
     color: "from-(--brand-deep) to-(--brand-primary)",
@@ -60,7 +60,7 @@ export const homeMetrics: HomeMetric[] = [
 export const homeCapabilityBlocks: HomeCapabilityBlock[] = [
   {
     icon: Target,
-    title: "We Start With Research",
+    title: "I Start With Research",
     items: [
       "Market and competitor research specific to your industry",
       "A clear picture of who your customer is and how they make buying decisions",
@@ -70,7 +70,7 @@ export const homeCapabilityBlocks: HomeCapabilityBlock[] = [
   },
   {
     icon: Code,
-    title: "We Build Around Your Business",
+    title: "I Build Around Your Business",
     items: [
       "A custom website designed around how you operate",
       "Forms and integrations that match your day to day workflow",
@@ -80,7 +80,7 @@ export const homeCapabilityBlocks: HomeCapabilityBlock[] = [
   },
   {
     icon: Users,
-    title: "We Get You Found",
+    title: "I Get You Found",
     items: [
       "SEO and content built around how your customers actually search",
       "Your Google Business Profile fully managed and optimized",

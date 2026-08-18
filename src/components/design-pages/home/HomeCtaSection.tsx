@@ -11,7 +11,7 @@ export const HomeCtaSection = () => (
       <motion.div variants={slideUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
         <h2 className="font-headline text-4xl lg:text-6xl mb-6">Growth You Can See and Understand</h2>
         <p className="font-body text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
-          {`If you are looking for a marketing partner who does the research, builds around your business, and keeps you informed every step of the way, let's find out if we are a good fit.`}
+          {`If you want a marketing partner who does the research, builds around your business, and keeps you informed at every step, let's find out if we are a good fit.`}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="secondary" size="lg" href={site.bookingPath}>

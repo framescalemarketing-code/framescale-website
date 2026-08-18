@@ -13,9 +13,9 @@ export const IndustriesSection = () => (
   <section id="industries" className="relative py-20 lg:py-32 bg-white">
     <div className={PAGE_SHELL_INDUSTRY}>
       <SectionHeader
-        badge="Choose Your Industry"
+        badge="Who I Work With"
         title="Start Where You Already Compete"
-        description="Every business is different. Pick the category that fits yours and we will tailor the solution specifically to you."
+        description="Most of my work sits in three areas. Pick the one closest to yours and I will tailor the approach from there."
       />
 
       <div className="grid md:grid-cols-3 gap-8">

@@ -13,7 +13,7 @@ export const ProcessStepsSection = () => (
       <SectionHeader
         badge="The SCALE Method"
         title="From Research To Measurable Growth"
-        description="Each phase turns uncertainty into a clear decision. You see what we are learning, what we are building, and what should happen next."
+        description="Each phase turns uncertainty into a clear decision. You see what I am learning, what I am building, and what should happen next."
       />
 
       <div className="space-y-24">
@@ -51,7 +51,7 @@ export const ProcessStepsSection = () => (
                 <div className="space-y-8">
                   <div className="bg-white rounded-2xl p-8 border border-border">
                     <h3 className="font-headline text-xl mb-4" style={{ color: "var(--brand-deep)" }}>
-                      What We Do
+                      What I Do
                     </h3>
                     <ul className="space-y-3">
                       {step.activities.map((activity) => (
