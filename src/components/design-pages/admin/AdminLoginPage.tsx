@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LockKeyhole } from "lucide-react";
 import { Button } from "@/components/design/Button";
@@ -16,7 +16,6 @@ async function wait(ms: number) {
 
 export function AdminLoginPage() {
   const router = useRouter();
-  const supabase = useMemo(() => getSupabaseBrowserClient(), []);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
@@ -27,6 +26,8 @@ export function AdminLoginPage() {
     let active = true;
 
     void (async () => {
+      const supabase = getSupabaseBrowserClient();
+
       try {
         const { data } = await supabase.auth.getSession();
         const accessToken = data.session?.access_token;
@@ -64,7 +65,7 @@ export function AdminLoginPage() {
     return () => {
       active = false;
     };
-  }, [router, supabase]);
+  }, [router]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -74,6 +75,7 @@ export function AdminLoginPage() {
     setError(null);
 
     try {
+      const supabase = getSupabaseBrowserClient();
       const submittedEmail = email.trim().toLowerCase();
 
       if (!submittedEmail) {

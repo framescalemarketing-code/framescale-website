@@ -2,7 +2,7 @@
 
 This maps **where** photography or illustration will have the most impact, **how** to treat it (full-bleed background vs contained frame), and **what** to put in each spot so it matches positioning: human, research-led, teaching, SMB operators, optical-first healthcare, retail, and consulting-led professional services.
 
-**Repo reality today:** Pages use gradients and blur orbs only. `public/` has no marketing photos yet. `next/image` is not used on marketing pages yet (only a small compliance snippet elsewhere). Implement with `next/image` when you add assets, with explicit `sizes` and meaningful `alt` text.
+**Repo reality today:** Photography is live on the three industry pages and the about page, served through `next/image` (`IndustryHero`, `IndustryFeatureImage`, `AboutPage`). Assets live under `public/photos/<industry>/`. Spots without a photo still fall back to the designed `ImagePlaceholder`. Keep using `next/image` with explicit `sizes` and meaningful `alt` text as you fill the remaining slots.
 
 ---
 

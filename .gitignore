@@ -41,7 +41,6 @@ lighthouse-*.report.json
 # local editor history
 .history/
 .incoming-design/
-Premium Website Concept Design.zip
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -52,5 +51,3 @@ Premium Website Concept Design.zip
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.vercel

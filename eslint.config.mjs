@@ -18,6 +18,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     ".history/**",
+    "awesome-cursorrules/**",
     ".incoming-design/**",
   ]),
 ]);

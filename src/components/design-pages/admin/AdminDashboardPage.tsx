@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CalendarDays, LogOut, Mailbox, RefreshCw } from "lucide-react";
 import { Button } from "@/components/design/Button";
@@ -17,13 +17,13 @@ function formatDateTime(value: string) {
 
 export function AdminDashboardPage() {
   const router = useRouter();
-  const supabase = useMemo(() => getSupabaseBrowserClient(), []);
   const [payload, setPayload] = useState<AdminDashboardPayload | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const loadDashboard = async () => {
+    const supabase = getSupabaseBrowserClient();
     const { data: sessionData } = await supabase.auth.getSession();
     const accessToken = sessionData.session?.access_token;
 
@@ -89,7 +89,7 @@ export function AdminDashboardPage() {
   };
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    await getSupabaseBrowserClient().auth.signOut();
     router.replace("/admin/login");
     router.refresh();
   };

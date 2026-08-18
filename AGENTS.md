@@ -13,7 +13,7 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 | **UI structure** | Shared chrome in `src/components/design/`; page bodies in `src/components/design-pages/` (including `industries/`). |
 | **Motion / icons** | `motion` (`motion/react`), shared variants in `src/lib/motion.ts`; icons via `lucide-react`. |
 | **Data / server** | Supabase via **`getSupabaseServerClient()`** in `src/lib/supabase/server.ts` (trusted server usage). **No BigQuery** (or other data warehouses) in this repository. Do not introduce them unless explicitly requested. |
-| **HTTP API** | Route handlers under `src/app/api/contact/route.ts`, `src/app/api/consent/route.ts`, and `src/app/api/booking/route.ts`. |
+| **HTTP API** | Route handlers under `src/app/api/contact/route.ts`, `src/app/api/consent/route.ts`, `src/app/api/booking/route.ts`, `src/app/api/checkout/route.ts` (Stripe Checkout), and `src/app/api/admin/dashboard/route.ts`. |
 | **Deployment** | Typical **Vercel** + Next (`@vercel/analytics`, `@vercel/speed-insights`); no `vercel.json` in repo. Follow existing Next/Vercel defaults unless told otherwise. |
 | **Quality gates** | `npm run lint`, `npm run brand:check` (see `scripts/brand-guard.mjs`). |
 
@@ -49,8 +49,9 @@ These rules apply to new copy and to edits you make to existing pages unless the
 ## Where to look
 
 - **Site copy / URLs / nav:** `src/lib/site.ts`
-- **API + env patterns:** `src/app/api/contact/route.ts`, `src/app/api/consent/route.ts`, `src/app/api/booking/route.ts`
+- **API + env patterns:** `src/app/api/contact/route.ts`, `src/app/api/consent/route.ts`, `src/app/api/booking/route.ts`, `src/app/api/checkout/route.ts`
 - **Supabase server:** `src/lib/supabase/server.ts`
+- **Payments / packages:** `src/lib/pricing.ts`, `src/lib/stripe.ts`
 - **Stack detail and SEO/legal/brand:** `.cursorrules`
 
 ## Scoped Cursor rules
