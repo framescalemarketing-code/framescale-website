@@ -16,12 +16,3 @@ export function validateEmailInput(email: string): string | undefined {
   if (e.includes("..")) return "Enter a valid email address.";
   return undefined;
 }
-
-export function validateEmailConfirm(email: string, confirm: string): string | undefined {
-  const primary = validateEmailInput(email);
-  if (primary) return primary;
-  const c = confirm.trim();
-  if (!c) return "Please confirm your email.";
-  if (email.trim().toLowerCase() !== c.toLowerCase()) return "Email addresses do not match.";
-  return undefined;
-}

@@ -1,34 +1,31 @@
 import type { Variants } from "motion/react";
 
-export const slideUp: Variants = {
-  hidden: { opacity: 0, y: 44, filter: "blur(12px)" },
+/**
+ * One variant, used everywhere. The previous design had four directional
+ * variants with blur filters; they cost paint time and made long pages feel
+ * busy. A single short rise reads as calm and stays out of the way.
+ */
+export const rise: Variants = {
+  hidden: { opacity: 0, y: 18 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.72, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-export const slideInFromLeft: Variants = {
-  hidden: { opacity: 0, x: -72, filter: "blur(12px)" },
+/** Parent wrapper that walks its children in sequence. */
+export const stagger: Variants = {
+  hidden: {},
   show: {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.76, ease: [0.16, 1, 0.3, 1] },
+    transition: { staggerChildren: 0.07, delayChildren: 0.04 },
   },
 };
 
-export const slideInFromRight: Variants = {
-  hidden: { opacity: 0, x: 72, filter: "blur(12px)" },
-  show: {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.76, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-export const slideByIndex = (index: number): Variants =>
-  index % 2 === 0 ? slideInFromLeft : slideInFromRight;
+/**
+ * Shared viewport config. `amount: "some"` matters: these wrappers can be taller
+ * than the viewport, and a percentage threshold on a tall container means
+ * content sitting in plain sight stays at opacity 0 until the user scrolls far
+ * past it. "some" fires as soon as any part enters view.
+ */
+export const viewportOnce = { once: true, amount: "some" } as const;

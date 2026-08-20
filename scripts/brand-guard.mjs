@@ -59,6 +59,24 @@ function run() {
     "Brand guard failed: --font-body must map to Open Sans"
   );
 
+  // Brand colors are part of the same contract as the fonts and the logo.
+  // The redesign is allowed to change every layout rule below the token
+  // block, but these five values define the brand and must survive.
+  const BRAND_COLORS = [
+    ["--brand-primary: #17788e;", "primary teal"],
+    ["--brand-primary-hover: #145f71;", "primary hover"],
+    ["--brand-secondary: #68b3b5;", "secondary aqua"],
+    ["--brand-deep: #264653;", "deep teal"],
+    ["--brand-neutral: #6c7a7c;", "neutral slate"],
+  ];
+  for (const [declaration, label] of BRAND_COLORS) {
+    assertIncludes(
+      globalsCss,
+      declaration,
+      `Brand guard failed: the ${label} brand color must stay in src/app/globals.css`
+    );
+  }
+
   const layoutTsx = read("src/app/layout.tsx");
   assertNotIncludes(
     layoutTsx,
@@ -76,6 +94,15 @@ function run() {
     brandTsx,
     'const LOGO_VIEWBOX = "0 0 200 80";',
     "Brand guard failed: original clipped logo viewBox cannot be reintroduced"
+  );
+
+  // Launch blocker: the principal's surname is the site's primary search
+  // entity. It renders in the nav, every h1, all title tags, and Person JSON-LD.
+  const siteTs = read("src/lib/site.ts");
+  assertNotIncludes(
+    siteTs,
+    'const PRINCIPAL_LAST_NAME = "Doe";',
+    "Brand guard failed: PRINCIPAL_LAST_NAME is still the placeholder. Set the real surname in src/lib/site.ts before launch."
   );
 
   console.log("Brand guard passed: baseline reference + approved exceptions are intact.");

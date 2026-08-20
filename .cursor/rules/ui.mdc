@@ -10,8 +10,10 @@ globs:
 
 ## Component locations
 
-- **Shared UI / chrome:** `src/components/design/` (navigation, footer, buttons, motion wrappers, etc.).
-- **Full marketing pages:** `src/components/design-pages/` (including `industries/`).
+- **Primitives:** `src/components/ui/` (Button, Container, Section, Eyebrow, Reveal).
+- **Chrome:** `src/components/layout/` (Header, Footer, MobileCTABar, LegalShell).
+- **Page sections:** `src/components/sections/`, each driven by a module in `src/content/`.
+- **Frozen brand asset:** `src/components/design/Brand.tsx`. Do not move or edit it; `npm run brand:check` enforces its viewBox.
 - Prefer **extending** these components over introducing parallel primitives or a second UI kit.
 
 ## Visual system

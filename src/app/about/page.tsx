@@ -1,12 +1,78 @@
-import { AboutPage } from "@/components/design-pages/AboutPage";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { Chapters, Philosophy, SanDiegoSection } from "@/components/sections/Chapters";
+import { Credentials } from "@/components/sections/Credentials";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { Container } from "@/components/ui/Container";
+import { aboutHero } from "@/content/about";
+import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
+import { location, practice, principal } from "@/lib/site";
 
-const title = "About FrameScale";
-const description =
-  "Meet Jonathan and see how FrameScale works: research before spend, clear reporting, custom websites, and one point person from start to finish.";
+export const metadata: Metadata = buildPageMetadata({
+  title: `About ${principal.displayName} | ${location.city} ${principal.jobTitle}`,
+  absoluteTitle: true,
+  description: `${principal.jobTitle} in ${location.city}. From the optical manufacturing floor to retail management to an MBA in marketing, and how that background shapes the work.`,
+  path: "/about",
+  keywords: [
+    `${principal.fullName}`,
+    `business consultant ${location.city}`,
+    "MBA marketing consultant",
+    "optical industry marketing",
+  ],
+});
 
-export const metadata = buildPageMetadata({ title, description, path: "/about" });
+export default function AboutPage() {
+  return (
+    <>
+      <script
+        {...jsonLdProps(
+          buildBreadcrumbGraph([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        )}
+      />
 
-export default function About() {
-  return <AboutPage />;
+      {/* Portrait-led hero. The photo is the point of this page, so it gets real
+          space rather than being cropped into a card. */}
+      <section className="pt-14 pb-16 md:pt-20 md:pb-24">
+        <Container width="wide">
+          <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+            <div className="flex flex-col gap-6">
+              <p className="eyebrow">{aboutHero.eyebrow}</p>
+              <h1 className="display-xl text-(--brand-deep)">{aboutHero.headline}</h1>
+              <p className="lead">{aboutHero.lead}</p>
+              <p className="font-ui text-[11px] font-semibold tracking-[0.14em] text-(--text-muted) uppercase">
+                {principal.jobTitle} · {practice.name} · {location.city}, {location.region}
+              </p>
+            </div>
+
+            <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-4xl lg:max-w-none">
+              <Image
+                src="/photos/founder/jonathan-about.jpg"
+                alt={`${principal.displayName}, ${principal.jobTitle} in ${location.city}`}
+                fill
+                sizes="(max-width: 1024px) 80vw, 38vw"
+                className="object-cover object-[center_18%]"
+                priority
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <Chapters />
+      <Credentials />
+      <SanDiegoSection />
+      <Philosophy />
+      <Testimonials />
+      <ContactSection
+        eyebrow="Say Hello"
+        title="Tell me what you are working on"
+        lead="If any of that sounded like the kind of thinking your business needs, the next step is a thirty minute call. No pitch deck."
+      />
+    </>
+  );
 }

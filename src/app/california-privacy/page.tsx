@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageBackLink } from "@/components/design/PageBackLink";
+import { LegalShell } from "@/components/layout/LegalShell";
 import { iubenda } from "@/lib/iubenda";
 import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
@@ -16,32 +16,8 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function CaliforniaPrivacyPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-32 pb-16">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-16 right-10 w-80 h-80 bg-linear-to-br from-(--brand-primary)/10 to-(--brand-secondary)/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="max-w-3xl">
-            <PageBackLink className="mb-8 lg:mb-10" />
-            <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
-              California Privacy
-            </span>
-            <h1 className="font-headline text-5xl lg:text-6xl mb-6 leading-tight text-(--brand-deep)">
-              California Privacy Notice
-            </h1>
-            <p className="font-body text-xl text-(--brand-neutral) leading-relaxed">
-              This notice describes privacy rights available to California residents under the CCPA/CPRA.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="space-y-8 bg-white rounded-2xl border border-border depth-card p-8 lg:p-10">
-            <p className="font-body text-(--brand-neutral) leading-relaxed">
+    <LegalShell eyebrow="California Privacy" title="California Privacy Notice" lead="This notice describes privacy rights available to California residents under the CCPA/CPRA.">
+            <p className="font-body text-(--text-muted) leading-relaxed">
               Last updated: May 25, 2026. This notice explains the California-specific rights available on this site and works alongside the main privacy and cookie policies.
             </p>
 
@@ -64,21 +40,21 @@ export default function CaliforniaPrivacyPage() {
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Notice at Collection</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
+              <p className="font-body text-(--text-muted) leading-relaxed">
                 We collect identifiers and contact information submitted through forms, such as name, email, company, and message content, along with limited technical data used for website security and performance.
               </p>
             </div>
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">How Information Is Used</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
+              <p className="font-body text-(--text-muted) leading-relaxed">
                 Information is used to respond to inquiries, provide requested services, support the booking and contact process, and improve site operations and reporting.
               </p>
             </div>
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">California Privacy Rights</h2>
-              <ul className="list-disc pl-5 space-y-2 font-body text-(--brand-neutral)">
+              <ul className="list-disc pl-5 space-y-2 font-body text-(--text-muted)">
                 <li>Right to know what personal information is collected, used, and disclosed.</li>
                 <li>Right to request deletion of personal information, subject to legal exceptions.</li>
                 <li>Right to request correction of inaccurate personal information.</li>
@@ -89,7 +65,7 @@ export default function CaliforniaPrivacyPage() {
 
             <div id="privacy-choices">
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Your Privacy Choices</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
+              <p className="font-body text-(--text-muted) leading-relaxed">
                 To submit a California privacy rights request, email{" "}
                 <Link className="text-(--brand-primary) hover:underline" href={`mailto:${site.email}`}>
                   {site.email}
@@ -122,13 +98,10 @@ export default function CaliforniaPrivacyPage() {
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Authorized Agent Requests</h2>
-              <p className="font-body text-(--brand-neutral) leading-relaxed">
+              <p className="font-body text-(--text-muted) leading-relaxed">
                 California residents may designate an authorized agent to submit requests on their behalf. Verification requirements may apply before processing the request.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </LegalShell>
   );
 }

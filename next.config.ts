@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 /** Directory that contains this config file (repo root), not `process.cwd()` (which may be `src/app`). */
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
-const supabaseOrigin = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
 
 const scriptSrc = [
   "'self'",
@@ -31,10 +30,7 @@ const connectSrc = [
   "https://vitals.vercel-insights.com",
   "https://vitals.vercel-analytics.com",
   "https://challenges.cloudflare.com",
-  supabaseOrigin,
-]
-  .filter(Boolean)
-  .join(" ");
+].join(" ");
 
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -80,6 +76,25 @@ const securityHeaders = [
   },
 ];
 
+/**
+ * Routes retired in the three-page rebuild. All of them were in the previous
+ * sitemap and may be indexed or linked, so they redirect rather than 404.
+ */
+const retiredRoutes: { source: string; destination: string }[] = [
+  { source: "/process", destination: "/services#method" },
+  { source: "/book", destination: "/#contact" },
+  { source: "/contact", destination: "/#contact" },
+  { source: "/industries/healthcare", destination: "/services#industries" },
+  { source: "/industries/retail", destination: "/services#industries" },
+  { source: "/industries/professional-services", destination: "/services#industries" },
+  { source: "/industries", destination: "/services#industries" },
+  { source: "/payment", destination: "/services#pricing" },
+  { source: "/payment/success", destination: "/" },
+  { source: "/sitemap", destination: "/" },
+  { source: "/admin", destination: "/" },
+  { source: "/admin/login", destination: "/" },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
@@ -93,6 +108,9 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
     ];
+  },
+  async redirects() {
+    return retiredRoutes.map((route) => ({ ...route, permanent: true }));
   },
 };
 

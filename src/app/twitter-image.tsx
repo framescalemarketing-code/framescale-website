@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/site";
+import { location, principal, site } from "@/lib/site";
 
 export const size = {
   width: 1200,
@@ -9,6 +9,8 @@ export const size = {
 export const contentType = "image/png";
 
 export default function TwitterImage() {
+  const eyebrow = `${location.city} · ${location.serviceArea}`;
+
   return new ImageResponse(
     (
       <div
@@ -19,27 +21,22 @@ export default function TwitterImage() {
           background: "linear-gradient(135deg, #17788e 0%, #264653 100%)",
           color: "white",
           fontFamily: "sans-serif",
-          padding: "64px",
+          padding: "72px",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          gap: "24px",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div style={{ fontSize: 28, letterSpacing: 1.2, opacity: 0.95 }}>GUIDED GROWTH MARKETING</div>
-          <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 700, maxWidth: "920px" }}>
-            Research first. One principal. Custom build.
-          </div>
-          <div style={{ fontSize: 28, opacity: 0.9, maxWidth: "980px" }}>{site.description}</div>
+        <div style={{ fontSize: 26, letterSpacing: 4, opacity: 0.72, textTransform: "uppercase" }}>
+          {eyebrow}
         </div>
-
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, opacity: 0.9 }}>
-          <span>{site.name}</span>
-          <span>{site.url.replace("https://", "")}</span>
+        <div style={{ fontSize: 76, lineHeight: 1.04, fontWeight: 600, maxWidth: "960px" }}>
+          {principal.displayName}
         </div>
+        <div style={{ fontSize: 32, opacity: 0.82 }}>{principal.jobTitle}</div>
+        <div style={{ fontSize: 22, opacity: 0.62, marginTop: "16px" }}>{site.hostname}</div>
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size },
   );
 }

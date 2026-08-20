@@ -1,21 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Navigation } from "@/components/design/Navigation";
-import { Footer } from "@/components/design/Footer";
-import { MotionProvider } from "@/components/design/MotionProvider";
-import { ScrollProgress } from "@/components/design/ScrollProgress";
-import { StickyCallCTA } from "@/components/design/StickyCallCTA";
-import { PageTransition } from "@/components/design/PageTransition";
-import { AccessibilityWidget } from "@/components/design/AccessibilityWidget";
-import { GAEventTracker } from "@/components/design/GAEventTracker";
-import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
-import { site } from "@/lib/site";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { MobileCTABar } from "@/components/layout/MobileCTABar";
+import { MotionProvider } from "@/components/system/MotionProvider";
+import { AccessibilityWidget } from "@/components/system/AccessibilityWidget";
+import { GAEventTracker } from "@/components/system/GAEventTracker";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { iubenda } from "@/lib/iubenda";
 import { buildIubendaConsentConfigScript } from "@/lib/iubenda-consent-config";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script";
+import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
+import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
+import { location, principal, site } from "@/lib/site";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -25,47 +24,38 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: site.name,
-  url: site.url,
-  email: site.email,
-  telephone: site.phone,
-  sameAs: [site.social.linkedin, site.social.fiverr],
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: site.name,
-    template: `%s | ${site.name}`,
+    default: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+    template: `%s | ${principal.displayName}`,
   },
   description: site.description,
   keywords: [
-    "growth marketing",
-    "healthcare marketing",
-    "retail marketing",
-    "professional services marketing",
-    "marketing strategy",
-    "conversion optimization",
-    "marketing systems",
-    "small business marketing",
+    `business growth consultant ${location.city}`,
+    `marketing consultant ${location.city}`,
+    `${location.city} small business consultant`,
+    "growth strategy consultant",
+    "local SEO consultant",
+    "Google Business Profile management",
+    "website conversion optimization",
+    "marketing analytics consultant",
   ],
   category: "business",
-  creator: site.name,
-  publisher: site.name,
-  applicationName: site.shortName,
+  creator: principal.fullName,
+  publisher: principal.fullName,
+  applicationName: principal.fullName,
+  authors: [{ name: principal.fullName, url: `${site.url}/about` }],
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: site.name,
+    title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
     description: site.description,
     url: site.url,
-    siteName: site.name,
+    siteName: principal.displayName,
     locale: site.locale,
     type: "website",
     images: [
@@ -73,18 +63,18 @@ export const metadata: Metadata = {
         url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: `${site.name} - ${site.tagline}`,
+        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: site.name,
+    title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
     description: site.description,
     images: [
       {
         url: site.twitterImage,
-        alt: `${site.name} - ${site.tagline}`,
+        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
       },
     ],
   },
@@ -128,31 +118,55 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        {/* eslint-disable @next/next/google-font-preconnect */}
+        {/* eslint-disable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://challenges.cloudflare.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
-        {/* eslint-enable @next/next/google-font-preconnect */}
+
+        {/* The brand fonts are loaded by an @import inside globals.css, which
+            the browser cannot discover until that stylesheet has downloaded and
+            parsed. Preloading the same URL starts the request in parallel; the
+            @import then resolves from cache. Preload rather than a stylesheet
+            link, which would be render-blocking and delay first paint. The
+            @import stays because `npm run brand:check` treats it as part of the
+            brand contract. */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        />
+        {/* eslint-enable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
+
+        {/* Scroll reveals are serialized into the HTML as inline opacity:0.
+            If the bundle never runs, the page would render mostly blank, so
+            reveal them unconditionally when scripting is unavailable. */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: '[style*="opacity:0"]{opacity:1!important;transform:none!important}',
+            }}
+          />
+        </noscript>
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <a
           href="#main-content"
-          className="skip-to-content sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-(--brand-primary) focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-(--brand-primary) focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline-none"
         >
           Skip to main content
         </a>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        
+
+        {/* One entity graph for the whole site: WebSite, ProfessionalService,
+            and the Person the site is actually about. */}
+        <script {...jsonLdProps(buildSiteGraph())} />
+
         {/* IUBENDA CONFIG - BEFORE INTERACTIVE (runs before hydration) */}
         <Script id="iubenda-cs-config" strategy="beforeInteractive">
           {buildIubendaConsentConfigScript()}
         </Script>
-        
+
         {/* IUBENDA WIDGET LOADER - AFTER INTERACTIVE */}
         <Script
           src={`https://embeds.iubenda.com/widgets/${iubenda.widgetId}.js`}
@@ -164,14 +178,13 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         ) : null}
-        
+
         <GAEventTracker />
         <MotionProvider>
-          <ScrollProgress />
-          <Navigation />
-          <PageTransition>{children}</PageTransition>
+          <Header />
+          <main id="main-content">{children}</main>
           <Footer />
-          <StickyCallCTA />
+          <MobileCTABar />
           <AccessibilityWidget />
         </MotionProvider>
         <Analytics />

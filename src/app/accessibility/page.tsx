@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { PageBackLink } from "@/components/design/PageBackLink";
+import { LegalShell } from "@/components/layout/LegalShell";
 import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
@@ -40,28 +40,8 @@ const knownLimitations = [
 
 export default function AccessibilityPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative flex min-h-[36vh] items-center overflow-hidden bg-linear-to-br from-white via-(--brand-secondary)/5 to-white pt-28 pb-14 sm:pt-32 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="max-w-3xl">
-            <PageBackLink className="mb-8 lg:mb-10" />
-            <span className="inline-block px-3 py-1.5 rounded-full bg-linear-to-r from-(--brand-primary)/10 to-(--brand-secondary)/10 border border-(--brand-primary)/20 font-ui text-xs font-semibold uppercase tracking-wide text-(--brand-primary) mb-6">
-              Accessibility
-            </span>
-            <h1 className="font-headline text-4xl sm:text-5xl lg:text-6xl mb-6 leading-tight text-(--brand-deep)">
-              Accessibility Statement
-            </h1>
-            <p className="font-body text-lg sm:text-xl text-(--brand-neutral) leading-relaxed">
-              FrameScale wants this website to be usable for as many people as possible, including people who use assistive technology.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 lg:py-18 bg-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="space-y-10">
-            <p className="font-body text-sm text-(--brand-neutral) leading-relaxed">
+    <LegalShell eyebrow="Accessibility" title="Accessibility Statement" lead="FrameScale wants this website to be usable for as many people as possible, including people who use assistive technology.">
+            <p className="font-body text-sm text-(--text-muted) leading-relaxed">
               Last updated: {lastUpdated}
             </p>
 
@@ -77,7 +57,7 @@ export default function AccessibilityPage() {
             <Section title="What We Do">
               <ul className="space-y-3">
                 {measures.map((item) => (
-                  <li key={item} className="font-body text-(--brand-neutral) leading-relaxed">
+                  <li key={item} className="font-body text-(--text-muted) leading-relaxed">
                     {item}
                   </li>
                 ))}
@@ -90,7 +70,7 @@ export default function AccessibilityPage() {
               </p>
               <ul className="space-y-3">
                 {supportedUse.map((item) => (
-                  <li key={item} className="font-body text-(--brand-neutral) leading-relaxed">
+                  <li key={item} className="font-body text-(--text-muted) leading-relaxed">
                     {item}
                   </li>
                 ))}
@@ -103,7 +83,7 @@ export default function AccessibilityPage() {
               </p>
               <ul className="space-y-3">
                 {knownLimitations.map((item) => (
-                  <li key={item} className="font-body text-(--brand-neutral) leading-relaxed">
+                  <li key={item} className="font-body text-(--text-muted) leading-relaxed">
                     {item}
                   </li>
                 ))}
@@ -128,16 +108,13 @@ export default function AccessibilityPage() {
                 Accessibility feedback is welcome. It helps us make the site better for everyone who uses it.
               </p>
             </Section>
-          </div>
-        </div>
-      </section>
-    </div>
+    </LegalShell>
   );
 }
 
 const Section = ({ title, children }: { title: string; children: ReactNode }) => (
   <section className="border-t border-border pt-8">
     <h2 className="font-headline text-2xl sm:text-3xl text-(--brand-deep) mb-4">{title}</h2>
-    <div className="space-y-4 font-body text-(--brand-neutral) leading-relaxed">{children}</div>
+    <div className="space-y-4 font-body text-(--text-muted) leading-relaxed">{children}</div>
   </section>
 );

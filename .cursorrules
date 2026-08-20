@@ -5,9 +5,10 @@ You are working on **framescale-website**: a marketing site for FrameScale Inc (
 ## Stack and sources of truth
 
 - **Framework:** Next.js 16+ (App Router), `src/app/` for routes and layouts.
-- **UI:** React 19; shared chrome in `src/components/design/`; full page content in `src/components/design-pages/` (and `design-pages/industries/`).
+- **UI:** React 19; primitives in `src/components/ui/`; chrome in `src/components/layout/`; page sections in `src/components/sections/`; framework plumbing in `src/components/system/`. `src/components/design/Brand.tsx` holds the frozen logo.
 - **Imports:** use the `@/*` alias → `src/*` (see `tsconfig.json`).
-- **Site copy & URLs:** `src/lib/site.ts` (`site`, nav, footer links, industries). Prefer extending `site` over hardcoding brand strings in components.
+- **Site facts & URLs:** `src/lib/site.ts` (`principal`, `practice`, `location`, `site`, nav, footer links). Prefer extending these over hardcoding brand strings in components.
+- **Marketing copy:** `src/content/*.ts` as typed data. Do not inline user-facing strings in JSX.
 - **Motion:** use the `motion` package (`motion/react`, `Variants` from `@/lib/motion`). Keep animation tokens consistent with existing variants.
 - **Icons:** `lucide-react` only unless the file already uses something else.
 - **Analytics:** `@vercel/analytics`, `@vercel/speed-insights`, and `src/lib/analytics.ts` / `GAEventTracker`. Do not strip or bypass without an explicit request.
@@ -17,12 +18,12 @@ You are working on **framescale-website**: a marketing site for FrameScale Inc (
 - **Default to Server Components.** Add `'use client'` only for hooks, browser APIs, or event handlers. Push the boundary to the **smallest** leaf component.
 - **Async runtime APIs:** in current Next versions, use `await` for `cookies()`, `headers()`, and for **dynamic** route segments use `await params` / `await searchParams` when you introduce them (typed as `Promise<...>` where required).
 
-## Supabase and secrets (this repo’s model)
+## Data and secrets (this repo’s model)
 
-- Server DB access is **`getSupabaseServerClient()`** in `src/lib/supabase/server.ts`: service role + **no** persisted session (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_SECRET_SUPABASE_API_KEY`). It is for **trusted server code only** (e.g. API routes).
-- **Never** put service keys, Resend keys, or other secrets in `NEXT_PUBLIC_*`.
-- If you ever add **user-facing Supabase Auth**, do **not** use `getSession()` on the server for security decisions; use verified patterns (`getUser()` with `@supabase/ssr`). This project today is mostly server-side inserts, not end-user auth. Do not invent cookie-based user sessions without an explicit product decision.
-
+- **There is no database.** Supabase, Stripe, the booking scheduler, and the admin dashboard were removed in the three-page rebuild. Lead capture is `src/app/api/contact/route.ts`, which verifies Turnstile and sends through Resend.
+- Because email is the only record of a lead, a Resend failure must surface as an error response, not be swallowed.
+- Server-only secrets belong in `server-only` modules (`src/lib/cloudflare-turnstile.ts` is the pattern). Never expose a secret through a `NEXT_PUBLIC_` variable.
+- `.env.example` is the source of truth for variable names. Do not invent new ones.
 ## API routes (`src/app/api/**/route.ts`)
 
 - Validate and bound input (length, format); return `NextResponse.json` with appropriate status codes (400, 413, 500).

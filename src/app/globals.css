@@ -78,63 +78,31 @@
   --font-display: var(--font-headline);
 }
 
+/* ==========================================================================
+   Editorial layer.
+   The token block above is the brand contract (colors, fonts) and is frozen.
+   Everything below is presentation and may be reworked freely.
+   ========================================================================== */
+
+:root {
+  /* Derived from --brand-neutral, darkened just enough to clear WCAG AA for
+     body text on both #ffffff (5.38:1) and the #f2f7f7 panel (4.98:1).
+     --brand-neutral itself is frozen by the brand guard and still drives
+     borders, dividers, and other non-text uses. */
+  --text-muted: #5f6d6f;
+}
+
 @layer base {
   * {
     border-color: var(--border);
   }
 }
 
-@layer components {
-  .depth-card {
-    box-shadow: var(--shadow-depth-1);
-    transition: box-shadow 240ms ease, border-color 240ms ease;
-  }
-
-  .depth-card:hover {
-    box-shadow: var(--shadow-depth-2);
-  }
-
-  .depth-card-dark {
-    box-shadow: var(--shadow-depth-dark-1);
-    transition: box-shadow 240ms ease, border-color 240ms ease;
-  }
-
-  .depth-card-dark:hover {
-    box-shadow: var(--shadow-depth-dark-2);
-  }
-
-  .depth-card-soft {
-    box-shadow: 0 10px 30px -20px rgba(38, 70, 83, 0.24);
-  }
-
-  /* Subtle SVG turbulence grain overlay for dark/premium sections.
-     Apply via <div className="grain-overlay" /> inside a relative parent. */
-  .grain-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
-    background-size: 220px 220px;
-  }
-}
-
-/* Native cross-document view transitions (progressive enhancement).
-   Browsers without support simply ignore this. */
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 320ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+  /* Sticky header clearance for in-page anchors. */
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -142,6 +110,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
   overflow-x: clip;
+  text-rendering: optimizeLegibility;
 }
 
 .font-headline,
@@ -151,6 +120,7 @@ body {
 
 .font-ui {
   font-family: var(--font-ui);
+  letter-spacing: 0.01em;
 }
 
 .font-body {
@@ -167,6 +137,7 @@ h6 {
   letter-spacing: -0.02em;
   line-height: 1.1;
   font-weight: 500;
+  text-wrap: balance;
 }
 
 h1 {
@@ -178,12 +149,185 @@ p {
   line-height: 1.7;
 }
 
-.font-ui {
-  letter-spacing: 0.01em;
-}
-
 ::selection {
   background: rgba(104, 179, 181, 0.35);
+}
+
+@layer components {
+  /* --- Display type scale -------------------------------------------------
+     Source Serif 4 pushed to real editorial sizes. The whole design leans on
+     this; there are no decorative cards doing the work instead. */
+  .display-xl {
+    font-family: var(--font-headline);
+    font-size: clamp(2.75rem, 7vw, 5.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.038em;
+    font-weight: 500;
+  }
+
+  .display-lg {
+    font-family: var(--font-headline);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.032em;
+    font-weight: 500;
+  }
+
+  .display-md {
+    font-family: var(--font-headline);
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.026em;
+    font-weight: 500;
+  }
+
+  .display-sm {
+    font-family: var(--font-headline);
+    font-size: clamp(1.3rem, 2.1vw, 1.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    font-weight: 500;
+  }
+
+  /* Montserrat small-caps label. The only place the UI font carries meaning
+     rather than just sitting on a button. */
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--brand-primary);
+  }
+
+  .eyebrow-muted {
+    color: var(--text-muted);
+  }
+
+  .eyebrow-light {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  /* Body copy held to a readable measure. */
+  .lead {
+    font-family: var(--font-body);
+    font-size: clamp(1.06rem, 1.5vw, 1.28rem);
+    line-height: 1.65;
+    color: var(--text-muted);
+    max-width: 60ch;
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* --- Hairlines, used instead of shadowed cards -------------------------- */
+  .rule {
+    border-top: 1px solid var(--border);
+  }
+
+  .hairline-box {
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: border-color 240ms ease, background-color 240ms ease;
+  }
+
+  .hairline-box:hover {
+    border-color: rgba(23, 120, 142, 0.38);
+  }
+
+  /* --- Dark anchor section ------------------------------------------------
+     One per page. Pairs with a .grain-overlay child for texture. */
+  .dark-section {
+    position: relative;
+    background: var(--brand-deep);
+    color: #ffffff;
+    isolation: isolate;
+  }
+
+  .dark-section h1,
+  .dark-section h2,
+  .dark-section h3,
+  .dark-section h4 {
+    color: #ffffff;
+  }
+
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    background-size: 220px 220px;
+    z-index: -1;
+  }
+
+  /* --- Text link with a growing underline --------------------------------- */
+  .link-quiet {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-quiet:hover,
+  .link-quiet:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* --- Form fields -------------------------------------------------------- */
+  .field {
+    width: 100%;
+    background: var(--input-background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.97rem;
+    color: var(--foreground);
+    transition: border-color 200ms ease, background-color 200ms ease;
+  }
+
+  .field::placeholder {
+    color: var(--text-muted);
+    opacity: 0.75;
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    background: var(--background);
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: var(--destructive);
+  }
+
+  .field-label {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-deep);
+    margin-bottom: 0.4rem;
+  }
+}
+
+/* Native cross-document view transitions (progressive enhancement).
+   Browsers without support simply ignore this. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -248,6 +392,7 @@ html.a11y-high-contrast {
   --brand-neutral: #1a1a1a;
   --muted: #f0f0f0;
   --muted-foreground: #1a1a1a;
+  --text-muted: #1a1a1a;
   --border: #000000;
   --ring: #000000;
 }
@@ -257,6 +402,10 @@ html.a11y-high-contrast .bg-white,
 html.a11y-high-contrast .bg-background {
   background: #ffffff !important;
   color: #000000 !important;
+}
+
+html.a11y-high-contrast .eyebrow {
+  color: #0b3a47 !important;
 }
 
 html.a11y-high-contrast a,
@@ -339,3 +488,35 @@ html.a11y-high-contrast :focus-visible {
   color: #264653 !important;
 }
 
+/* Typography defaults for the legal pages, which carry long prose rather than
+   the editorial section layouts used everywhere else. */
+@layer components {
+  .legal-prose h2 {
+    font-size: 1.5rem;
+    color: var(--brand-deep);
+  }
+
+  .legal-prose p,
+  .legal-prose li {
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .legal-prose a:not([class*="inline-flex"]) {
+    color: var(--brand-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    /* Long email addresses and URLs are common here and would otherwise
+       push the page wider than the viewport on a phone. */
+    overflow-wrap: anywhere;
+  }
+
+  .legal-prose ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
+  .legal-prose ul li {
+    padding-left: 0.25rem;
+  }
+}
