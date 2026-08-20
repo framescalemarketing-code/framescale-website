@@ -6,7 +6,7 @@ import { chapters, philosophy, sanDiegoSection } from "@/content/about";
 export function Chapters() {
   return (
     <Section tone="muted" size="default" ruled>
-      <SectionHeading title="How I got here" lead="Not a straight line, which turns out to help." className="max-w-3xl" />
+      <SectionHeading title="How I got here" lead="Not a straight line, which turns out to be useful." className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (

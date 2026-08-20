@@ -7,46 +7,47 @@ export type FaqItem = {
 };
 
 /**
- * Short, plain answers. This is also the surface AI assistants quote from, so
- * each answer has to make sense on its own.
+ * Short answers, written the way they would be said out loud. This is also the
+ * surface AI assistants quote from, so each one has to stand on its own.
  */
 export const homeFaqs: FaqItem[] = [
   {
     question: "What does a small business consultant actually do?",
     answer:
-      "I find out why your business isn't growing the way it should, then I fix it. That usually means a better " +
-      "website, showing up on Google, and reports you can actually read.",
+      "In my case, I find out why the business isn't growing and then I go fix it. Usually that means a better " +
+      "website, turning up on Google when people search, and reports you can read without me sitting next to you.",
   },
   {
     question: `Do you only work with ${location.city} small businesses?`,
     answer:
-      `Mostly, yes. Being local means I can come see how your business really runs. I do take work outside ` +
-      `${location.serviceArea} when it's a good fit.`,
+      "Mostly. Being local means I can come and see how the place runs, which tells me more than a phone call " +
+      `ever does. I do take work elsewhere when it's a good fit, but ${location.serviceArea} is where I'm most useful.`,
   },
   {
     question: "What does it cost?",
     answer:
-      "It depends on your business, so I don't have a set price list. Some owners need one thing fixed, others " +
-      "need the whole picture rebuilt. We talk first, then I give you a number and what it covers. That first " +
-      "call is free.",
+      "Depends on the business, so I don't have a price list. Some owners need one thing fixed, others need " +
+      "the whole picture rebuilt. We talk first, then I give you a number and tell you exactly what it covers. " +
+      "That first call is free.",
   },
   {
     question: "How long until I see results?",
     answer:
-      "The research takes a few weeks. Website work depends on the size of the job. Showing up on Google usually " +
-      "takes a few months. Anyone promising faster is guessing.",
+      "Research takes a few weeks. Website work depends on how big the job is. Google takes a few months, because " +
+      "that's how long it takes for anyone to notice you changed something. If someone promises you faster, they " +
+      "are guessing.",
   },
   {
     question: "Can you promise I'll be number one on Google?",
     answer:
-      "No, and I'd be careful with anyone who does. Nobody controls Google. What I can promise is that you'll " +
+      "No. Nobody can, and I'd be careful with anyone who says otherwise. What I will promise is that you'll " +
       "always know what I did and what it cost.",
   },
   {
     question: "What happens on the first call?",
     answer:
-      "Thirty minutes, just you and me. You tell me what's not working, I ask some questions, and you leave " +
-      "knowing what I'd do first. If I'm not the right fit, I'll tell you.",
+      "Half an hour, just the two of us. You tell me what's not working, I ask a few questions, and you come away " +
+      "knowing what I'd tackle first. If I'm not the right person, I'll say so then rather than string it out.",
   },
 ];
 
@@ -54,37 +55,37 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Can I hire you for just one thing?",
     answer:
-      "Yes, though I'll usually want to do the research first. Building a website before we know who we're talking " +
-      "to is how money gets wasted.",
+      "Sure, though I'll usually push to do the research first. Building a website before we know who we're " +
+      "talking to is how budgets disappear.",
   },
   {
     question: "Do I own the website when we're done?",
     answer:
-      "Yes. The website, the Google listing, and the reports are all yours, in your accounts. You can run them " +
-      "without me.",
+      "Yes, all of it. The website, the Google listing, the reporting, all in your own accounts. You can keep " +
+      "running it without me, and some people do.",
   },
   {
     question: "I already have a website. Is that a problem?",
     answer:
-      "Not at all. Sometimes it just needs fixing rather than replacing. I'll tell you honestly which one you're " +
-      "looking at.",
+      "Not really. Plenty of sites just need fixing rather than replacing, and replacing one that works is a waste " +
+      "of your money. I'll tell you honestly which situation you're in.",
   },
   {
     question: "Am I locked into a contract?",
     answer:
-      "No. Ongoing work is month to month, and you can stop whenever it stops being worth it. We agree the scope " +
-      "and the price before anything starts.",
+      "No. Ongoing work is month to month and you can stop when it stops being worth it. We agree the scope and " +
+      "the price before anything starts.",
   },
   {
     question: "What kind of businesses do you work with?",
     answer:
-      "Small businesses that have been open a while. Eye doctors and medical offices, shops and online stores, and " +
-      "small firms. If you're just starting out or you want a big agency team, I'm probably not your best option.",
+      "Small ones that have been open a while and want to get bigger. If you're still working out what you sell, " +
+      "or you want a whole agency team on it, I'm not your best bet.",
   },
   {
     question: "How do I reach you?",
     answer:
-      `Use the form on this page, email ${site.email}, or call ${site.phone}. I read every message myself and ` +
-      "usually reply the next business day.",
+      `The form on this page, or email ${site.email}, or call ${site.phone}. I read everything myself and usually ` +
+      "come back the next business day.",
   },
 ];

@@ -7,7 +7,7 @@ export function Credentials() {
     <Section tone="dark" size="tall">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
-          <SectionHeading title="The background" lead="School, and years on the shop floor." tone="light" />
+          <SectionHeading title="The background" lead="School, and a lot of years on a sales floor." tone="light" />
 
           <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (

@@ -66,7 +66,7 @@ export default function AboutPage() {
       <SanDiegoSection />
       <ContactSection
         title="Tell me what you're working on"
-        lead="Thirty minutes on the phone. No slides, no pitch."
+        lead="Half an hour on the phone. No slides, no pitch."
       />
     </>
   );

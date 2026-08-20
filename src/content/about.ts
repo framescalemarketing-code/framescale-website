@@ -2,7 +2,7 @@ import { location, principal } from "@/lib/site";
 
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: `I help small business owners in ${location.city} figure out what's holding them back, then fix it.`,
+  lead: `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it.`,
 } as const;
 
 export type Chapter = {
@@ -12,40 +12,43 @@ export type Chapter = {
   body: string;
 };
 
-/** The founder story, cut to the essentials. Short beats, plain language. */
+/** The real story, told the way it would be told out loud. */
 export const chapters: Chapter[] = [
   {
     marker: "01",
     kicker: "Where I Started",
-    title: "Making Glasses In A Lab",
+    title: "In The Back Of The Shop",
     body:
-      "My first job was at an optical company, making glasses in the back. Then I moved out to the sales floor, and " +
-      "eventually into managing the store. I learned what customers actually want, and what it takes to hit numbers " +
-      "every month.",
+      "My first job was at an optical company, in the back, making the product. Not glamorous. After a while they " +
+      "moved me out front to sell, and eventually I ended up managing the store, which meant a number to hit every " +
+      "month and a team to hit it with.",
   },
   {
     marker: "02",
     kicker: "What Happened",
     title: "Hitting A Ceiling",
     body:
-      "I worked in corporate stores, franchises, and small businesses. I could see exactly how far that path went, " +
-      "and it wasn't as far as I wanted. So I decided to think bigger than one store.",
+      "I worked in corporate stores, in franchises, and in small independents. Spend enough time doing that and you " +
+      "can see the whole road in front of you. Mine didn't go as far as I wanted it to, which is an uncomfortable " +
+      "thing to work out about your own job.",
   },
   {
     marker: "03",
     kicker: "What I Did About It",
     title: "Back To School",
     body:
-      "I went back and earned my bachelor's degree at UC Riverside, then a master's in business with a marketing " +
-      "focus. I wanted to understand why some businesses grow and others just stay busy.",
+      "So I went back. Bachelor's degree at UC Riverside, then a master's in business with a marketing focus. What " +
+      "I wanted to understand was why some businesses grow and others just stay busy. I'd worked in both and " +
+      "couldn't have told you the difference at the time.",
   },
   {
     marker: "04",
     kicker: "Where I Am Now",
-    title: "Using Both Sides",
+    title: "Using Both Halves",
     body:
-      "Now I put the two together. Most small businesses I meet already do good work. What they're missing is a clear " +
-      "message, a website that helps, and numbers they can understand.",
+      "These days I use both sides of that. Nearly every small business I meet is already good at the thing it " +
+      "does. What's missing is usually a clear message, a website that pulls its weight, and numbers the owner can " +
+      "read without help.",
   },
 ];
 
@@ -69,22 +72,22 @@ export const credentialDetails: CredentialDetail[] = [
   {
     label: "Experience",
     value: "Small Business Management",
-    note: "The shop floor, then sales, then running the store.",
+    note: "The back of the shop, then the sales floor, then running it.",
   },
   {
     label: "Experience",
     value: "Real Numbers, Real Targets",
-    note: "Years of hitting sales goals, not just reporting on them.",
+    note: "Years of having to hit sales goals rather than just write about them.",
   },
 ];
 
 export const workingWithMe = {
   title: "What you get",
   points: [
-    "Someone who has worked the floor, not just read about it.",
-    "Business and marketing advice in the same conversation.",
-    "My direct phone number.",
-    "An honest answer about whether I can help.",
+    "Someone who has worked a sales floor, not just read about one.",
+    "Business sense and marketing in the same conversation.",
+    "My direct number.",
+    "A straight answer about whether I can help you, including when the answer is no.",
   ],
 } as const;
 
@@ -97,17 +100,20 @@ export const sanDiegoSection = {
   title: `Why ${location.city}`,
   lead: "Small business is all I work on.",
   paragraphs: [
-    `${location.city} runs on small businesses. Owners competing with national chains, working on thin margins, ` +
-      "living off referrals. Small business is all I work on, and it is what I know.",
-    "Being local means I can come sit down with you and see how things actually work. That matters more than it " +
-      "sounds. A lot of bad advice comes from people who never visited the business they were advising.",
-    "I keep my list of clients short on purpose. You can't give a business real attention while juggling twenty.",
+    `${location.city} runs on small businesses. Owners going up against national chains, working on margins that ` +
+      "don't leave much room, living off referrals until the referrals go quiet. That's the whole of who I work " +
+      "with.",
+    "Being local means I can come sit in your shop for an hour and watch how it runs, which sounds like a small " +
+      "thing and isn't. Most bad marketing advice comes from people who never saw the business they were advising.",
+    "I keep the client list short. You can't give a business proper attention while juggling twenty of them, and I " +
+      "would rather do a few well.",
   ],
 } as const;
 
 export const philosophy = {
   title: "You should understand your own business",
   body:
-    "You shouldn't need a marketing person to explain your own numbers to you. I go through everything with you " +
-    "instead of handing over a report, so when we're done you can keep running it yourself.",
+    "You shouldn't need to call a marketing person to have your own numbers explained back to you. I go through " +
+    "everything with you as we do it, so when we're finished you can keep it running yourself. Plenty of people " +
+    "in this line of work would rather you couldn't.",
 } as const;

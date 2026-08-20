@@ -40,7 +40,7 @@ export default function ServicesPage() {
 
       <PageHero
         headline={`How I help ${location.city} small businesses`}
-        lead="Four things, and they work together. I always start by finding the real problem."
+        lead="Four things I do. I always start by working out what the real problem is, because it usually isn't the one you called about."
       />
 
       <ServiceDetails />
@@ -49,11 +49,11 @@ export default function ServicesPage() {
       <FAQ
         items={servicesFaqs}
         title="The practical questions"
-        lead="Scope, ownership, and what happens next."
+        lead="The ones that come up once it gets real."
       />
       <ContactSection
         title="Not sure which one you need?"
-        lead="That's normal, and it's what the call is for. Tell me what's going on and I'll tell you where I'd start."
+        lead="Most people aren't, and that's what the call is for. Tell me what's going on and I'll tell you where I'd start."
       />
     </>
   );

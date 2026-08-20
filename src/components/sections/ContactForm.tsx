@@ -193,7 +193,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           rows={5}
           required
           className="field resize-y"
-          placeholder="A sentence or two is plenty."
+          placeholder="A couple of sentences is plenty."
           value={data.message}
           onChange={(e) => update("message", e.target.value)}
           onBlur={() => blur("message")}
@@ -240,7 +240,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
             "Send Message"
           )}
         </button>
-        <p className="text-sm text-(--text-muted)">Replies within one business day.</p>
+        <p className="text-sm text-(--text-muted)">I usually reply the next business day.</p>
       </div>
 
       {note ? (

@@ -10,10 +10,10 @@ type ContactSectionProps = {
 };
 
 const STEPS = [
-  "I read it myself.",
-  "We talk for thirty minutes.",
-  "I tell you straight if I can help.",
-  "You decide. No pressure.",
+  "I read it. Not an assistant, me.",
+  "We get on the phone for half an hour.",
+  "I tell you whether I can help, honestly.",
+  "You decide. I won't chase you.",
 ];
 
 /**
@@ -22,7 +22,7 @@ const STEPS = [
  */
 export function ContactSection({
   title = "Let's talk",
-  lead = "Tell me what's going on. Thirty minutes is usually enough to see what to do first.",
+  lead = "Tell me what's going on. Half an hour is usually enough to work out where to start.",
 }: ContactSectionProps) {
   const turnstileSiteKey = getTurnstileSiteKeyForServer();
 
@@ -73,7 +73,7 @@ export function ContactSection({
         <div className="hairline-box rounded-2xl bg-background p-6 md:p-8">
           <h3 className="display-sm mb-2 text-(--brand-deep)">Tell me what's going on</h3>
           <p className="mb-7 text-sm text-(--text-muted)">
-            Three boxes, that's it.
+            Three boxes. It doesn't need to be long.
           </p>
           <ContactForm turnstileSiteKey={turnstileSiteKey} />
         </div>
