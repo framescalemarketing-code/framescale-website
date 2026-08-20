@@ -26,8 +26,9 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "What does it cost?",
     answer:
-      "Two options. A one-time review to find the problem, or a monthly arrangement where I handle the work. " +
-      "Both prices are listed on the services page so there are no surprises.",
+      "It depends on your business, so I don't have a set price list. Some owners need one thing fixed, others " +
+      "need the whole picture rebuilt. We talk first, then I give you a number and what it covers. That first " +
+      "call is free.",
   },
   {
     question: "How long until I see results?",
@@ -70,7 +71,9 @@ export const servicesFaqs: FaqItem[] = [
   },
   {
     question: "Am I locked into a contract?",
-    answer: "No. The monthly option is month to month. You can stop whenever it stops being worth it.",
+    answer:
+      "No. Ongoing work is month to month, and you can stop whenever it stops being worth it. We agree the scope " +
+      "and the price before anything starts.",
   },
   {
     question: "What kind of businesses do you work with?",

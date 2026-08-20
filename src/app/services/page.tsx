@@ -12,7 +12,7 @@ import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `Small Business Marketing Help in ${location.city}`,
-  description: `Help for ${location.city} small businesses: getting found on Google, a website that works, and reports you can read. A $200 one-time review or monthly help, with prices listed.`,
+  description: `Help for ${location.city} small businesses: getting found on Google, a website that works, and reports you can read. No set packages, so we talk first and I quote from there.`,
   path: "/services",
   keywords: [
     `small business consultant ${location.city}`,

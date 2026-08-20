@@ -1,74 +1,39 @@
-
-/** Set here and nowhere else. These render on /services. */
-const AUDIT_PRICE = 200;
-const PARTNER_PRICE = 1500;
-
-export type PricingTier = {
-  id: string;
-  name: string;
-  /** Whole dollars. Formatted for display at render time. */
-  price: number;
-  /** Billing cadence shown next to the price. */
-  cadence: string;
-  tagline: string;
-  description: string;
-  includes: string[];
-  cta: string;
-  /** Renders the emphasized tier. Exactly one should be true. */
-  featured?: boolean;
-};
-
-export const pricingTiers: PricingTier[] = [
-  {
-    id: "audit",
-    name: "The Once-Over",
-    price: AUDIT_PRICE,
-    cadence: "one time",
-    tagline: "Find the problem",
-    description:
-      "A one-time review of your business, your customers, and your competition. You get a plan for what to fix " +
-      "first, and it's yours to keep either way.",
-    includes: [
-      "A look at your customers and your competition",
-      "A review of your website and your Google listing",
-      "A plan for what to fix, in order",
-      "A call to walk through all of it together",
-    ],
-    cta: "Start Here",
-  },
-  {
-    id: "partner",
-    name: "Ongoing Help",
-    price: PARTNER_PRICE,
-    cadence: "per month",
-    tagline: "I handle it",
-    description:
-      "I handle the website, the Google listing, the ads, and the reporting. Month to month, so you can stop " +
-      "whenever it stops being worth it.",
-    includes: [
-      "Everything in The Once-Over",
-      "Your website, built and looked after",
-      "Your Google listing and reviews",
-      "Ads, when the numbers make sense",
-      "Reports you can actually read",
-      "My direct phone number",
-    ],
-    cta: "Let's Talk",
-    featured: true,
-  },
-];
-
+/**
+ * No published prices. Every engagement is scoped with the owner, so this
+ * section explains how a number gets arrived at rather than listing packages.
+ * Keeping the section is deliberate: "what does it cost" is the question the
+ * page has to answer, and refusing to address it at all reads as evasive.
+ */
 export const pricingSection = {
-  title: "Two ways to work together",
-  lead: "Prices up front, so you know before you call.",
-  footnote: "If neither one fits, tell me on the call and I'll point you somewhere that does.",
+  title: "What it costs",
+  lead: "There is no set price list. It depends on your business.",
+  intro:
+    "Every business I work with needs something a little different. Some need one thing fixed. Some need the whole " +
+    "picture rebuilt. Putting a package price on that would mean guessing, and you would end up paying for work " +
+    "you do not need.",
+  cta: "Ask What It Would Cost",
 } as const;
 
-/** Consistent currency formatting for display. */
-export function formatPrice(dollars: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(dollars);
-}
+export type PricingPoint = {
+  title: string;
+  body: string;
+};
+
+export const pricingPoints: PricingPoint[] = [
+  {
+    title: "We Talk First",
+    body: "Thirty minutes on the phone so I understand the business. That call is free.",
+  },
+  {
+    title: "Then I Quote",
+    body: "Once I know what you actually need, I give you a number and what it covers.",
+  },
+  {
+    title: "You Approve It",
+    body: "Nothing starts until you have seen the scope and the price and said yes.",
+  },
+  {
+    title: "No Surprise Invoices",
+    body: "The number we agree on is the number you pay. If the work changes, we talk before it does.",
+  },
+];

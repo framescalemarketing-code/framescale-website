@@ -1,83 +1,38 @@
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { formatPrice, pricingSection, pricingTiers } from "@/content/pricing";
+import { pricingPoints, pricingSection } from "@/content/pricing";
 import { site } from "@/lib/site";
 
 /**
- * Two tiers with visible prices. Listing them filters out bad-fit inquiries
- * before the call, which is the main reason to show pricing at all.
+ * Explains how a price gets arrived at rather than listing packages. Work is
+ * scoped with each owner, so there is no honest number to publish. The section
+ * stays because "what does it cost" is the question the page has to answer.
  */
 export function Pricing() {
   return (
     <Section id="pricing" tone="muted" size="default" ruled>
-      <SectionHeading title={pricingSection.title} lead={pricingSection.lead} className="max-w-3xl" />
+      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
+          <SectionHeading title={pricingSection.title} lead={pricingSection.lead} />
+          <p className="measure text-(--text-muted)">{pricingSection.intro}</p>
+          <Button href={site.contactAnchor} size="lg" withArrow className="mt-1 w-fit">
+            {pricingSection.cta}
+          </Button>
+        </div>
 
-      <Reveal group className="mt-10 grid gap-6 lg:grid-cols-2">
-        {pricingTiers.map((tier) => (
-          <RevealItem
-            key={tier.id}
-            className={`flex flex-col gap-7 rounded-2xl p-8 md:p-10 ${
-              tier.featured
-                ? "dark-section overflow-hidden"
-                : "hairline-box"
-            }`}
-          >
-            {tier.featured ? <div className="grain-overlay" /> : null}
-
-            <div className="flex flex-col gap-3">
-              <h3 className={`display-md ${tier.featured ? "text-white" : "text-(--brand-deep)"}`}>
-                {tier.name}
-              </h3>
-              <p className="flex items-baseline gap-2">
-                <span
-                  className={`font-headline text-4xl ${tier.featured ? "text-white" : "text-(--brand-deep)"}`}
-                >
-                  {formatPrice(tier.price)}
-                </span>
-                <span
-                  className={`font-ui text-sm ${tier.featured ? "text-white/55" : "text-(--text-muted)"}`}
-                >
-                  {tier.cadence}
-                </span>
-              </p>
-              <p className={tier.featured ? "text-white/65" : "text-(--text-muted)"}>{tier.description}</p>
-            </div>
-
-            <ul className="flex flex-1 flex-col gap-3">
-              {tier.includes.map((item) => (
-                <li
-                  key={item}
-                  className={`flex gap-3 text-sm leading-relaxed ${
-                    tier.featured ? "text-white/75" : "text-(--brand-deep)"
-                  }`}
-                >
-                  <Check
-                    className={`mt-1 size-4 shrink-0 ${
-                      tier.featured ? "text-(--brand-secondary)" : "text-(--brand-primary)"
-                    }`}
-                    aria-hidden="true"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <Button
-              href={site.contactAnchor}
-              size="lg"
-              variant={tier.featured ? "light" : "primary"}
-              withArrow
-              className="w-full"
-            >
-              {tier.cta}
-            </Button>
-          </RevealItem>
-        ))}
-      </Reveal>
-
-      <p className="mt-10 max-w-2xl text-sm text-(--text-muted)">{pricingSection.footnote}</p>
+        <Reveal group className="grid gap-4 sm:grid-cols-2">
+          {pricingPoints.map((point, index) => (
+            <RevealItem key={point.title} className="soft-card flex flex-col gap-2 p-6">
+              <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
+                0{index + 1}
+              </span>
+              <h3 className="display-sm text-(--brand-deep)">{point.title}</h3>
+              <p className="text-sm leading-relaxed text-(--text-muted)">{point.body}</p>
+            </RevealItem>
+          ))}
+        </Reveal>
+      </div>
     </Section>
   );
 }
