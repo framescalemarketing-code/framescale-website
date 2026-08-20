@@ -52,6 +52,7 @@ export const problems: Problem[] = [
 
 export const problemSection = {
   title: "Where most owners get stuck",
+  lead: "Almost everyone I talk to has one of these.",
 } as const;
 
 export type Differentiator = {

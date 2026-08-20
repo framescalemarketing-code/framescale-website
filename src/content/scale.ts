@@ -15,6 +15,7 @@ export type ScalePhase = {
 
 export const scaleIntro = {
   name: "The SCALE Method",
+  lead: "The same five steps, every time.",
 } as const;
 
 /**

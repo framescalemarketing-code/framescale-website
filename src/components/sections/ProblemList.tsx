@@ -12,6 +12,7 @@ export function ProblemList() {
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           title={problemSection.title}
+          lead={problemSection.lead}
           className="lg:sticky lg:top-24 lg:self-start"
         />
 

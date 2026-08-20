@@ -12,7 +12,7 @@ import { site } from "@/lib/site";
 export function Pricing() {
   return (
     <Section id="pricing" tone="muted" size="default" ruled>
-      <SectionHeading title={pricingSection.title} className="max-w-3xl" />
+      <SectionHeading title={pricingSection.title} lead={pricingSection.lead} className="max-w-3xl" />
 
       <Reveal group className="mt-10 grid gap-6 lg:grid-cols-2">
         {pricingTiers.map((tier) => (

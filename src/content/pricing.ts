@@ -60,6 +60,7 @@ export const pricingTiers: PricingTier[] = [
 
 export const pricingSection = {
   title: "Two ways to work together",
+  lead: "Prices up front, so you know before you call.",
   footnote: "If neither one fits, tell me on the call and I'll point you somewhere that does.",
 } as const;
 

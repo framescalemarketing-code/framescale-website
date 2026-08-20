@@ -237,6 +237,16 @@ p {
     max-width: 68ch;
   }
 
+  /* Quieter than .lead. Used for the one-line signpost under a section
+     heading, which should not compete with the heading itself. */
+  .section-lead {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 46ch;
+  }
+
   /* --- Hairlines, used instead of shadowed cards -------------------------- */
   .rule {
     border-top: 1px solid var(--border);

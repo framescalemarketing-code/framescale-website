@@ -53,7 +53,7 @@ type SectionHeadingProps = {
   className?: string;
 };
 
-/** Eyebrow plus display heading plus optional lead. Consistent across all pages. */
+/** Display heading with an optional one-line signpost under it. */
 export function SectionHeading({
   title,
   lead,
@@ -63,10 +63,10 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const alignment = align === "center" ? "text-center mx-auto items-center" : "";
   return (
-    <div className={`flex flex-col gap-4 ${alignment} ${className}`}>
+    <div className={`flex flex-col gap-3 ${alignment} ${className}`}>
       <h2 className={`display-lg ${tone === "light" ? "text-white" : "text-(--brand-deep)"}`}>{title}</h2>
       {lead ? (
-        <p className={`lead ${align === "center" ? "mx-auto" : ""} ${tone === "light" ? "text-white/72" : ""}`}>
+        <p className={`section-lead ${align === "center" ? "mx-auto" : ""} ${tone === "light" ? "text-white/65" : ""}`}>
           {lead}
         </p>
       ) : null}

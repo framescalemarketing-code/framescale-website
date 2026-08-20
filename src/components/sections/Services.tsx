@@ -8,7 +8,7 @@ import { services } from "@/content/services";
 export function ServiceOverview() {
   return (
     <Section size="default" ruled>
-      <SectionHeading title="Four ways I help" className="max-w-3xl" />
+      <SectionHeading title="Four ways I help" lead="They all work together." className="max-w-3xl" />
 
       <Reveal group className="mt-10 flex flex-col">
         {services.map((service, index) => (
@@ -47,7 +47,7 @@ export function ServiceOverview() {
 export function ServiceDetails() {
   return (
     <Section tone="muted" size="default" ruled>
-      <SectionHeading title="Four ways I help" className="max-w-2xl" />
+      <SectionHeading title="Four ways I help" lead="They all work together." className="max-w-2xl" />
 
       <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
         {services.map((service) => {

@@ -95,6 +95,7 @@ export const workingWithMe = {
  */
 export const sanDiegoSection = {
   title: `Why ${location.city}`,
+  lead: "Small business is all I work on.",
   paragraphs: [
     `${location.city} runs on small businesses. Owners competing with national chains, working on thin margins, ` +
       "living off referrals. Small business is all I work on, and it is what I know.",

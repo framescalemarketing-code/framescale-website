@@ -46,7 +46,11 @@ export default function ServicesPage() {
       <ServiceDetails />
       <ScaleDetail />
       <Pricing />
-      <FAQ items={servicesFaqs} title="The practical questions" />
+      <FAQ
+        items={servicesFaqs}
+        title="The practical questions"
+        lead="Scope, ownership, and what happens next."
+      />
       <ContactSection
         title="Not sure which one you need?"
         lead="That's normal, and it's what the call is for. Tell me what's going on and I'll tell you where I'd start."
