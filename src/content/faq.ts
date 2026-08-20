@@ -12,13 +12,13 @@ export type FaqItem = {
  */
 export const homeFaqs: FaqItem[] = [
   {
-    question: "What do you actually do?",
+    question: "What does a small business consultant actually do?",
     answer:
       "I find out why your business isn't growing the way it should, then I fix it. That usually means a better " +
       "website, showing up on Google, and reports you can actually read.",
   },
   {
-    question: `Do you only work with ${location.city} businesses?`,
+    question: `Do you only work with ${location.city} small businesses?`,
     answer:
       `Mostly, yes. Being local means I can come see how your business really runs. I do take work outside ` +
       `${location.serviceArea} when it's a good fit.`,
@@ -75,8 +75,8 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "What kind of businesses do you work with?",
     answer:
-      "Small and mid-size local businesses that have been around a while. Eye doctors and medical offices, shops " +
-      "and online stores, and small firms. If you're just starting out, I'm probably not your best option.",
+      "Small businesses that have been open a while. Eye doctors and medical offices, shops and online stores, and " +
+      "small firms. If you're just starting out or you want a big agency team, I'm probably not your best option.",
   },
   {
     question: "How do I reach you?",

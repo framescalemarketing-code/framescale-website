@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/Hero";
 import { ServiceDetails } from "@/components/sections/Services";
 import { ScaleDetail } from "@/components/sections/ScaleMethod";
-import { IndustryFocus } from "@/components/sections/IndustryFocus";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -12,16 +11,16 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `Growth Marketing Services in ${location.city}`,
-  description: `Growth strategy, websites that convert, local SEO and Google Business Profile, and analytics you can read. A fixed-price audit or a monthly partnership, with prices listed. I work across ${location.serviceArea}.`,
+  title: `Small Business Marketing Help in ${location.city}`,
+  description: `Help for ${location.city} small businesses: getting found on Google, a website that works, and reports you can read. A $200 one-time review or monthly help, with prices listed.`,
   path: "/services",
   keywords: [
-    `marketing consultant ${location.city}`,
+    `small business consultant ${location.city}`,
+    `small business marketing ${location.city}`,
     `local SEO ${location.city}`,
     "Google Business Profile management",
-    "website design and conversion optimization",
-    "GA4 analytics setup",
-    "growth strategy consulting",
+    "small business website design",
+    "small business marketing help",
   ],
 });
 
@@ -41,13 +40,12 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Services"
-        headline={`How I help ${location.city} businesses`}
+        headline={`How I help ${location.city} small businesses`}
         lead="Four things, and they work together. I always start by finding the real problem."
       />
 
       <ServiceDetails />
       <ScaleDetail />
-      <IndustryFocus />
       <Pricing />
       <FAQ
         items={servicesFaqs}

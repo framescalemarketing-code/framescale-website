@@ -13,7 +13,7 @@ export type Testimonial = {
  *
  * TODO(owner): social proof is the largest remaining conversion gap. One or two
  * real quotes will do more here than any other change. LinkedIn recommendations
- * count, and so do anonymized results ("an optical practice in North County")
+ * count, and so do anonymized results ("a shop owner in North County")
  * when a client will not go on the record by name.
  */
 export const testimonials: Testimonial[] = [];

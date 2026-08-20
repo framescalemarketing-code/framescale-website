@@ -40,13 +40,13 @@ export function Chapters() {
 }
 
 /**
- * The local section. This is the page's unique local content, which is what
- * separates a genuine local page from a doorway page.
+ * The local section, with the closing belief folded in. These were two bands
+ * making one point, so they are now one.
  */
 export function SanDiegoSection() {
   return (
-    <Section tone="muted" size="tall" ruled>
-      <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+    <Section tone="muted" size="default" ruled>
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
           <p className="eyebrow">{sanDiegoSection.eyebrow}</p>
           <h2 className="display-lg text-(--brand-deep)">{sanDiegoSection.title}</h2>
@@ -58,20 +58,13 @@ export function SanDiegoSection() {
               {paragraph}
             </p>
           ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
 
-/** Closing philosophy note on /about. */
-export function Philosophy() {
-  return (
-    <Section size="default" ruled width="narrow">
-      <div className="flex flex-col gap-5">
-        <p className="eyebrow">{philosophy.eyebrow}</p>
-        <h2 className="display-md text-(--brand-deep)">{philosophy.title}</h2>
-        <p className="text-lg leading-relaxed text-(--text-muted)">{philosophy.body}</p>
+          <div className="soft-card mt-2 flex flex-col gap-3 p-6 sm:p-7">
+            <p className="eyebrow">{philosophy.eyebrow}</p>
+            <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
+            <p className="text-(--text-muted)">{philosophy.body}</p>
+          </div>
+        </div>
       </div>
     </Section>
   );

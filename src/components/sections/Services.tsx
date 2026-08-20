@@ -46,58 +46,55 @@ export function ServiceOverview() {
 }
 
 /**
- * Full detail for /services. Each service is an anchor target, so these ids are
- * linked from the home page and the footer and should stay stable.
+ * Full detail for /services, as one section rather than four stacked bands.
+ * The ids stay anchor targets, linked from the home page and the footer.
  */
 export function ServiceDetails() {
   return (
-    <>
-      {services.map((service, index) => {
-        const Icon = service.icon;
-        return (
-          <Section
-            key={service.id}
-            id={service.id}
-            tone={index % 2 === 1 ? "muted" : "default"}
-            ruled
-            size="default"
-          >
-            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-4">
-                  <span className="flex size-12 items-center justify-center rounded-xl bg-(--brand-primary)/10">
-                    <Icon className="size-6 text-(--brand-primary)" aria-hidden="true" />
-                  </span>
-                  <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
-                    {service.number}
-                  </span>
-                </div>
-                <h2 className="display-md text-(--brand-deep)">{service.title}</h2>
-                <p className="text-(--text-muted)">{service.body}</p>
+    <Section tone="muted" size="default" ruled>
+      <SectionHeading
+        eyebrow="What I Do"
+        title="Four ways I help"
+        lead="They work together. That is the point."
+        className="max-w-2xl"
+      />
+
+      <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
+        {services.map((service) => {
+          const Icon = service.icon;
+          return (
+            <RevealItem
+              key={service.id}
+              id={service.id}
+              as="section"
+              className="soft-card flex scroll-mt-28 flex-col gap-4 p-6 sm:p-7"
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-(--brand-primary)/10">
+                  <Icon className="size-5 text-(--brand-primary)" aria-hidden="true" />
+                </span>
+                <h2 className="display-sm text-(--brand-deep)">{service.title}</h2>
               </div>
 
-              <div className="flex flex-col gap-8">
-                <div>
-                  <p className="eyebrow eyebrow-muted mb-5">What You Get</p>
-                  <ul className="flex flex-col gap-3">
-                    {service.included.map((item) => (
-                      <li key={item} className="flex gap-3 text-(--brand-deep)">
-                        <Check className="mt-1 size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-                        <span className="measure">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <p className="text-(--text-muted)">{service.body}</p>
 
-                <div className="rule pt-6">
-                  <p className="eyebrow eyebrow-muted mb-3">This Is For You If</p>
-                  <p className="measure text-(--text-muted)">{service.bestFor}</p>
-                </div>
-              </div>
-            </div>
-          </Section>
-        );
-      })}
-    </>
+              <ul className="flex flex-col gap-2.5">
+                {service.included.map((item) => (
+                  <li key={item} className="flex gap-2.5 text-sm text-(--brand-deep)">
+                    <Check className="mt-1 size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="rule mt-auto pt-4 text-sm text-(--text-muted)">
+                <span className="font-ui font-semibold text-(--brand-deep)">For you if: </span>
+                {service.bestFor}
+              </p>
+            </RevealItem>
+          );
+        })}
+      </Reveal>
+    </Section>
   );
 }

@@ -20,7 +20,7 @@ export const principal = {
   get displayName() {
     return `${this.fullName}, ${this.suffix}`;
   },
-  jobTitle: "Business Growth Consultant",
+  jobTitle: "Small Business Consultant",
   alumniOf: "University of California, Riverside",
   credential: "Master of Business Administration, Marketing Concentration",
 } as const;
@@ -59,9 +59,8 @@ export const site = {
   shortName: principal.fullName,
   tagline: `${principal.jobTitle} in ${location.city}`,
   description:
-    `I am ${principal.displayName}, a business growth consultant in ${location.city}. Market research, websites ` +
-    "that convert, local SEO and Google Business Profile, and reporting you can actually read. You work with me " +
-    "directly, never a handoff.",
+    `I am ${principal.displayName}, a small business consultant in ${location.city}. I help local owners get found ` +
+    "on Google, fix the website, and understand their own numbers. You work with me directly, never a handoff.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */
@@ -96,10 +95,10 @@ export const footerLinks = {
     { label: "Contact", href: `/${site.contactAnchor}` },
   ],
   Services: [
-    { label: "Growth Strategy", href: "/services#strategy" },
-    { label: "Websites That Convert", href: "/services#websites" },
-    { label: "Local SEO And Google Business Profile", href: "/services#local-seo" },
-    { label: "Analytics And Paid Media", href: "/services#analytics" },
+    { label: "Figuring Out What's Wrong", href: "/services#strategy" },
+    { label: "Websites That Work", href: "/services#websites" },
+    { label: "Getting Found On Google", href: "/services#local-seo" },
+    { label: "Ads And Straight Answers", href: "/services#analytics" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

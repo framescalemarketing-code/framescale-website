@@ -10,17 +10,20 @@ type RevealProps = {
   /** Stagger children instead of moving as one block. */
   group?: boolean;
   as?: "div" | "li" | "section";
+  /** Anchor target, for revealed blocks that are also link destinations. */
+  id?: string;
 };
 
 /**
  * Scroll-triggered fade and rise. Honors both `prefers-reduced-motion` and the
  * accessibility widget's reduce-motion toggle by way of MotionProvider.
  */
-export function Reveal({ children, className = "", group = false, as = "div" }: RevealProps) {
+export function Reveal({ children, className = "", group = false, as = "div", id }: RevealProps) {
   const Component = motion[as];
 
   return (
     <Component
+      id={id}
       className={className}
       variants={group ? stagger : rise}
       initial="hidden"
@@ -33,10 +36,10 @@ export function Reveal({ children, className = "", group = false, as = "div" }: 
 }
 
 /** Child of a `<Reveal group>`; rises on its own beat. */
-export function RevealItem({ children, className = "", as = "div" }: Omit<RevealProps, "group">) {
+export function RevealItem({ children, className = "", as = "div", id }: Omit<RevealProps, "group">) {
   const Component = motion[as];
   return (
-    <Component className={className} variants={rise}>
+    <Component id={id} className={className} variants={rise}>
       {children}
     </Component>
   );

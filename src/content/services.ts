@@ -36,7 +36,7 @@ export const services: Service[] = [
       "A plan for what to fix, in order",
       "A budget that makes sense for your size",
     ],
-    bestFor: "You're working hard and it isn't turning into growth.",
+    bestFor: "Your small business is working hard and it isn't turning into growth.",
   },
   {
     id: "websites",
@@ -88,32 +88,5 @@ export const services: Service[] = [
       "A regular check-in on what's working",
     ],
     bestFor: "You're spending on marketing and nobody can tell you what came back.",
-  },
-];
-
-export type IndustryFocus = {
-  title: string;
-  body: string;
-};
-
-/**
- * The three verticals that used to be standalone landing pages. They live as a
- * single section now: near-duplicate vertical pages are the pattern search
- * engines demote as doorway content.
- */
-export const industryFocus: IndustryFocus[] = [
-  {
-    title: "Eye Doctors And Medical Offices",
-    body:
-      "I spent years in optical, from the lab to the sales floor to managing the store. You won't have to explain " +
-      "frame boards or scheduling to me.",
-  },
-  {
-    title: "Shops And Online Stores",
-    body: "When sales look fine but the profit doesn't, the answer is usually in the website or the ad spend.",
-  },
-  {
-    title: "Small Firms And Consultants",
-    body: "Referrals work until they slow down. A good website turns your reputation into new inquiries.",
   },
 ];

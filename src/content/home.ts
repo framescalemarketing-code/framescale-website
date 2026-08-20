@@ -6,10 +6,10 @@ import { location, principal } from "@/lib/site";
  */
 export const hero = {
   eyebrow: `${principal.jobTitle} · ${location.city}`,
-  headline: `More customers for your ${location.city} business`,
+  headline: `More customers for your ${location.city} small business`,
   lead:
-    `Hi, I'm ${principal.firstName}. I help local owners work out why growth has stalled, then fix it. ` +
-    "No jargon, no big agency. Just me.",
+    `Hi, I'm ${principal.firstName}. I help small business owners in ${location.city} work out why growth has ` +
+    "stalled, then fix it. No jargon, no big agency. Just me.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
   reassurance: "Thirty minutes, on the phone. No pressure, no obligation.",
@@ -23,7 +23,7 @@ export type Credential = {
 export const credentials: Credential[] = [
   { value: "MBA", label: "In marketing" },
   { value: "UC Riverside", label: "Bachelor's degree" },
-  { value: "Optical And Retail", label: "Store management" },
+  { value: "Small Business", label: "All I work on" },
   { value: location.city, label: "Local, one on one" },
 ];
 
@@ -54,7 +54,7 @@ export const problems: Problem[] = [
 export const problemSection = {
   eyebrow: "Sound Familiar?",
   title: "Where most owners get stuck",
-  lead: "Almost everyone I meet is dealing with one of these four.",
+  lead: "Almost every small business owner I meet is dealing with one of these four.",
 } as const;
 
 export type Differentiator = {
@@ -90,8 +90,8 @@ export const aboutStrip = {
   eyebrow: "Who You'd Be Working With",
   title: "I started on the floor, not in an office",
   body:
-    "My first job was making glasses in an optical lab. Then the sales floor. Then managing the store. " +
-    "Later I went back to school and earned an MBA in marketing. I've seen both sides of a small business.",
+    "I started out on the shop floor, then in sales, then managing a store and carrying real numbers every month. " +
+    "Later I went back to school and earned an MBA in marketing. I've worked both sides of a small business.",
   cta: "Read My Story",
 } as const;
 
@@ -99,7 +99,7 @@ export const aboutStrip = {
 export const personalNote = {
   eyebrow: "A Note From Me",
   body: [
-    "I know marketing people have a reputation. Lots of words, big invoices, and nothing you can point to at the end.",
+    "I know marketing people have a reputation with small business owners. Lots of words, big invoices, and nothing you can point to at the end.",
     "That's not how I work. I explain things in plain English, I show you the numbers, and you keep everything we build together.",
     "If that sounds like what you've been looking for, let's talk.",
   ],

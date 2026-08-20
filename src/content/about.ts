@@ -3,7 +3,7 @@ import { location, principal } from "@/lib/site";
 export const aboutHero = {
   eyebrow: "About",
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: `I help ${location.city} business owners figure out what's holding them back, then help them fix it.`,
+  lead: `I help small business owners in ${location.city} figure out what's holding them back, then fix it.`,
 } as const;
 
 export type Chapter = {
@@ -45,7 +45,7 @@ export const chapters: Chapter[] = [
     kicker: "Where I Am Now",
     title: "Using Both Sides",
     body:
-      "Now I put the two together. Most businesses I meet already do good work. What they're missing is a clear " +
+      "Now I put the two together. Most small businesses I meet already do good work. What they're missing is a clear " +
       "message, a website that helps, and numbers they can understand.",
   },
 ];
@@ -69,8 +69,8 @@ export const credentialDetails: CredentialDetail[] = [
   },
   {
     label: "Experience",
-    value: "Optical And Retail Management",
-    note: "The lab, the sales floor, then running the store.",
+    value: "Small Business Management",
+    note: "The shop floor, then sales, then running the store.",
   },
   {
     label: "Experience",
@@ -99,8 +99,8 @@ export const sanDiegoSection = {
   eyebrow: `Based In ${location.city}`,
   title: `Why ${location.city}`,
   paragraphs: [
-    `${location.city} runs on small businesses. Eye doctors competing with the chains, shops working on thin ` +
-      "margins, small firms living off referrals. Those are the businesses I know how to help.",
+    `${location.city} runs on small businesses. Owners competing with national chains, working on thin margins, ` +
+      "living off referrals. Small business is all I work on, and it is what I know.",
     "Being local means I can come sit down with you and see how things actually work. That matters more than it " +
       "sounds. A lot of bad advice comes from people who never visited the business they were advising.",
     "I keep my list of clients short on purpose. You can't give a business real attention while juggling twenty.",

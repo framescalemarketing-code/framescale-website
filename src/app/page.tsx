@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
 import { ProblemList } from "@/components/sections/ProblemList";
 import { ServiceOverview } from "@/components/sections/Services";
-import { ScaleSummary } from "@/components/sections/ScaleMethod";
-import { Differentiators } from "@/components/sections/Differentiators";
-import { AboutStrip } from "@/components/sections/AboutStrip";
-import { PersonalNote } from "@/components/sections/PersonalNote";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { AboutMe } from "@/components/sections/AboutMe";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { homeFaqs } from "@/content/faq";
@@ -19,13 +14,13 @@ import { location, principal } from "@/lib/site";
 export const metadata: Metadata = buildPageMetadata({
   title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
   absoluteTitle: true,
-  description: `I am ${principal.displayName}. I help ${location.city} business owners find where growth is stalling and fix it. Market research, websites that convert, local SEO, and reporting you can read yourself.`,
+  description: `I am ${principal.displayName}, a small business consultant in ${location.city}. I help local owners get found on Google, fix the website, and understand their own numbers.`,
   path: "/",
 });
 
 /**
- * Section order follows the conversion sequence: promise, trust, problem,
- * solution, method, differentiation, person, proof, objections, action.
+ * Six sections, in the order a visitor decides: promise, problem, what I do,
+ * who I am, objections, action.
  */
 export default function HomePage() {
   return (
@@ -33,14 +28,9 @@ export default function HomePage() {
       <script {...jsonLdProps(buildFaqGraph(homeFaqs))} />
 
       <HomeHero />
-      <TrustBar />
       <ProblemList />
       <ServiceOverview />
-      <ScaleSummary />
-      <Differentiators />
-      <AboutStrip />
-      <PersonalNote />
-      <Testimonials />
+      <AboutMe />
       <FAQ
         items={homeFaqs}
         eyebrow="Questions"

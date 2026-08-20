@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Chapters, Philosophy, SanDiegoSection } from "@/components/sections/Chapters";
+import { Chapters, SanDiegoSection } from "@/components/sections/Chapters";
 import { Credentials } from "@/components/sections/Credentials";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/content/about";
@@ -13,13 +12,13 @@ import { location, practice, principal } from "@/lib/site";
 export const metadata: Metadata = buildPageMetadata({
   title: `About ${principal.displayName} | ${location.city} ${principal.jobTitle}`,
   absoluteTitle: true,
-  description: `I am a business growth consultant in ${location.city}. From the optical manufacturing floor to retail management to an MBA in marketing, and how that background shapes the work I do.`,
+  description: `I am a small business consultant in ${location.city}. From the shop floor to store management to an MBA in marketing, and how that background shapes the work I do.`,
   path: "/about",
   keywords: [
     `${principal.fullName}`,
-    `business consultant ${location.city}`,
+    `small business consultant ${location.city}`,
     "MBA marketing consultant",
-    "optical industry marketing",
+    "small business marketing help",
   ],
 });
 
@@ -66,8 +65,6 @@ export default function AboutPage() {
       <Chapters />
       <Credentials />
       <SanDiegoSection />
-      <Philosophy />
-      <Testimonials />
       <ContactSection
         eyebrow="Say Hello"
         title="Tell me what you're working on"

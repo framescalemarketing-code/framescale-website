@@ -81,13 +81,13 @@ function personNode() {
       name: principal.credential,
     },
     knowsAbout: [
+      "Small business consulting",
+      "Small business marketing",
       "Business growth strategy",
-      "Marketing strategy",
       "Market and competitor research",
       "Local SEO",
       "Google Business Profile optimization",
       "Website conversion optimization",
-      "Google Analytics 4 and conversion tracking",
       "Paid search and paid social advertising",
     ],
     workLocation: {

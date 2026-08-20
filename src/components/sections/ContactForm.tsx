@@ -18,7 +18,7 @@ type FieldErrors = Partial<Record<keyof FormState, string>>;
 
 const EMPTY: FormState = { name: "", email: "", company: "", industry: "", message: "" };
 
-const INDUSTRIES = ["Healthcare or Optical", "Retail or E-commerce", "Professional Services", "Other"];
+const INDUSTRIES = ["Shop or storefront", "Online store", "Services or trades", "Professional practice", "Other"];
 
 function validateField(field: keyof FormState, value: string): string | undefined {
   if (field === "name" && !value.trim()) return "Please enter your name.";
