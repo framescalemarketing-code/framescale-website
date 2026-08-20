@@ -31,12 +31,8 @@ export default function HomePage() {
       <ProblemList />
       <ServiceOverview />
       <AboutMe />
-      <FAQ
-        items={homeFaqs}
-        eyebrow="Questions"
-        title="Questions I get a lot"
-      />
-      <ContactSection eyebrow={closingCta.eyebrow} title={closingCta.title} lead={closingCta.lead} />
+      <FAQ items={homeFaqs} />
+      <ContactSection title={closingCta.title} lead={closingCta.lead} />
     </>
   );
 }

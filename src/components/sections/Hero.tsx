@@ -16,8 +16,6 @@ export function HomeHero() {
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
           <div className="flex flex-col gap-6">
-            <p className="eyebrow">{hero.eyebrow}</p>
-
             <h1 className="display-xl text-(--brand-deep)">{hero.headline}</h1>
 
             <p className="lead">{hero.lead}</p>
@@ -72,7 +70,6 @@ export function HomeHero() {
 }
 
 type PageHeroProps = {
-  eyebrow: string;
   headline: string;
   lead: string;
   /** Rendered inside the same section, so a related block does not become another band. */
@@ -80,12 +77,11 @@ type PageHeroProps = {
 };
 
 /** Shared hero for /services and /about. */
-export function PageHero({ eyebrow, headline, lead, children }: PageHeroProps) {
+export function PageHero({ headline, lead, children }: PageHeroProps) {
   return (
     <section className="pt-10 pb-10 md:pt-16 md:pb-14">
       <Container>
         <div className="flex max-w-3xl flex-col gap-5">
-          <p className="eyebrow">{eyebrow}</p>
           <h1 className="display-xl text-(--brand-deep)">{headline}</h1>
           <p className="lead">{lead}</p>
         </div>

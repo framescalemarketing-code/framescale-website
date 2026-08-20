@@ -8,7 +8,6 @@ export default function NotFound() {
     <section className="flex min-h-[70vh] items-center py-24">
       <Container width="narrow">
         <div className="flex flex-col gap-6">
-          <p className="eyebrow">404</p>
           <h1 className="display-lg text-(--brand-deep)">That page is not here</h1>
           <p className="lead">
             The site was recently rebuilt and a few old pages were retired. The link you followed may be one of them.

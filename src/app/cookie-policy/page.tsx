@@ -14,7 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function CookiePolicyPage() {
   return (
-    <LegalShell eyebrow="Cookies" title="Cookie Policy" lead="This page explains how cookies and similar technologies are used on this website.">
+    <LegalShell title="Cookie Policy" lead="This page explains how cookies and similar technologies are used on this website.">
             <p className="font-body text-(--text-muted) leading-relaxed">
               This page opens your full Iubenda cookie policy. If the embed does not initialize, use the direct link.
             </p>

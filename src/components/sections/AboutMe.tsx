@@ -29,7 +29,6 @@ export function AboutMe() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <p className="eyebrow">{aboutStrip.eyebrow}</p>
           <h2 className="display-lg text-(--brand-deep)">{aboutStrip.title}</h2>
           <p className="measure text-(--text-muted)">{aboutStrip.body}</p>
 

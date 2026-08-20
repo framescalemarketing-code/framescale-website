@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function CaliforniaPrivacyPage() {
   return (
-    <LegalShell eyebrow="California Privacy" title="California Privacy Notice" lead="This notice describes privacy rights available to California residents under the CCPA/CPRA.">
+    <LegalShell title="California Privacy Notice" lead="This notice describes privacy rights available to California residents under the CCPA/CPRA.">
             <p className="font-body text-(--text-muted) leading-relaxed">
               Last updated: May 25, 2026. This notice explains the California-specific rights available on this site and works alongside the main privacy and cookie policies.
             </p>

@@ -8,12 +8,10 @@ import { problemSection, problems } from "@/content/home";
  */
 export function ProblemList() {
   return (
-    <Section size="tall">
+    <Section tone="muted" size="default" ruled>
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
-          eyebrow={problemSection.eyebrow}
           title={problemSection.title}
-          lead={problemSection.lead}
           className="lg:sticky lg:top-24 lg:self-start"
         />
 

@@ -6,13 +6,7 @@ import { scaleIntro, scalePhases, workingStandards } from "@/content/scale";
 export function ScaleDetail() {
   return (
     <Section id="method" tone="dark" size="default">
-      <SectionHeading
-        eyebrow={scaleIntro.name}
-        title={scaleIntro.headline}
-        lead={scaleIntro.lead}
-        tone="light"
-        className="max-w-2xl"
-      />
+      <SectionHeading title={scaleIntro.name} tone="light" className="max-w-2xl" />
 
       <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {scalePhases.map((phase) => (

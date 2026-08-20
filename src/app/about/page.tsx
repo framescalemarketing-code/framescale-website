@@ -40,7 +40,6 @@ export default function AboutPage() {
         <Container width="wide">
           <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
             <div className="flex flex-col gap-6">
-              <p className="eyebrow">{aboutHero.eyebrow}</p>
               <h1 className="display-xl text-(--brand-deep)">{aboutHero.headline}</h1>
               <p className="lead">{aboutHero.lead}</p>
               <p className="font-ui text-[11px] font-semibold tracking-[0.14em] text-(--text-muted) uppercase">
@@ -66,7 +65,6 @@ export default function AboutPage() {
       <Credentials />
       <SanDiegoSection />
       <ContactSection
-        eyebrow="Say Hello"
         title="Tell me what you're working on"
         lead="Thirty minutes on the phone. No slides, no pitch."
       />

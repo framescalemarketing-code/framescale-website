@@ -11,13 +11,8 @@ import { site } from "@/lib/site";
  */
 export function Pricing() {
   return (
-    <Section id="pricing" size="tall" ruled>
-      <SectionHeading
-        eyebrow={pricingSection.eyebrow}
-        title={pricingSection.title}
-        lead={pricingSection.lead}
-        className="max-w-3xl"
-      />
+    <Section id="pricing" tone="muted" size="default" ruled>
+      <SectionHeading title={pricingSection.title} className="max-w-3xl" />
 
       <Reveal group className="mt-10 grid gap-6 lg:grid-cols-2">
         {pricingTiers.map((tier) => (
@@ -32,7 +27,6 @@ export function Pricing() {
             {tier.featured ? <div className="grain-overlay" /> : null}
 
             <div className="flex flex-col gap-3">
-              <p className={`eyebrow ${tier.featured ? "eyebrow-light" : ""}`}>{tier.tagline}</p>
               <h3 className={`display-md ${tier.featured ? "text-white" : "text-(--brand-deep)"}`}>
                 {tier.name}
               </h3>

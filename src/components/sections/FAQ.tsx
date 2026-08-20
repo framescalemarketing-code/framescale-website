@@ -3,9 +3,7 @@ import type { FaqItem } from "@/content/faq";
 
 type FaqProps = {
   items: FaqItem[];
-  eyebrow?: string;
   title?: string;
-  lead?: string;
   tone?: "default" | "muted";
 };
 
@@ -14,22 +12,11 @@ type FaqProps = {
  * keyboard accessible for free, and leaves the answers in the DOM where search
  * engines and AI crawlers can read them. The same items feed FAQPage JSON-LD.
  */
-export function FAQ({
-  items,
-  eyebrow = "Questions",
-  title = "Straight answers",
-  lead,
-  tone = "default",
-}: FaqProps) {
+export function FAQ({ items, title = "Questions I get a lot", tone = "default" }: FaqProps) {
   return (
     <Section tone={tone} size="tall" ruled>
       <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-        <SectionHeading
-          eyebrow={eyebrow}
-          title={title}
-          lead={lead}
-          className="lg:sticky lg:top-24 lg:self-start"
-        />
+        <SectionHeading title={title} className="lg:sticky lg:top-24 lg:self-start" />
 
         <div className="flex flex-col">
           {items.map((item, index) => (

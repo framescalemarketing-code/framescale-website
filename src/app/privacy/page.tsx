@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalShell eyebrow="Privacy" title="Privacy Policy" lead="We collect only the information needed to respond to your inquiry and deliver agreed services.">
+    <LegalShell title="Privacy Policy" lead="We collect only the information needed to respond to your inquiry and deliver agreed services.">
             <p className="font-body text-(--text-muted) leading-relaxed">
               This page uses your Iubenda-hosted full policy. If the widget does not load, use the direct link below.
             </p>

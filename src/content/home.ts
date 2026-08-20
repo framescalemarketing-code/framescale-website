@@ -5,7 +5,6 @@ import { location, principal } from "@/lib/site";
  * read much. Short sentences, no jargon, one idea at a time.
  */
 export const hero = {
-  eyebrow: `${principal.jobTitle} · ${location.city}`,
   headline: `More customers for your ${location.city} small business`,
   lead:
     `Hi, I'm ${principal.firstName}. I help small business owners in ${location.city} work out why growth has ` +
@@ -52,9 +51,7 @@ export const problems: Problem[] = [
 ];
 
 export const problemSection = {
-  eyebrow: "Sound Familiar?",
   title: "Where most owners get stuck",
-  lead: "Almost every small business owner I meet is dealing with one of these four.",
 } as const;
 
 export type Differentiator = {
@@ -81,13 +78,7 @@ export const differentiators: Differentiator[] = [
   },
 ];
 
-export const differentiatorSection = {
-  eyebrow: "Why People Hire Me",
-  title: "Simple, honest, and yours to keep",
-} as const;
-
 export const aboutStrip = {
-  eyebrow: "Who You'd Be Working With",
   title: "I started on the floor, not in an office",
   body:
     "I started out on the shop floor, then in sales, then managing a store and carrying real numbers every month. " +
@@ -97,7 +88,6 @@ export const aboutStrip = {
 
 /** A short signed note. The most personal thing on the page. */
 export const personalNote = {
-  eyebrow: "A Note From Me",
   body: [
     "I know marketing people have a reputation with small business owners. Lots of words, big invoices, and nothing you can point to at the end.",
     "That's not how I work. I explain things in plain English, I show you the numbers, and you keep everything we build together.",
@@ -107,7 +97,6 @@ export const personalNote = {
 } as const;
 
 export const closingCta = {
-  eyebrow: "Next Step",
   title: "Let's talk",
   lead: "Tell me what's going on. Thirty minutes, no pressure. If I'm not the right fit, I'll say so.",
 } as const;

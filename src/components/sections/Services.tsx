@@ -7,13 +7,8 @@ import { services } from "@/content/services";
 /** Condensed overview for the home page. Each row deep-links to /services. */
 export function ServiceOverview() {
   return (
-    <Section tone="muted" size="tall" ruled>
-      <SectionHeading
-        eyebrow="What I Do"
-        title="Four ways I help"
-        lead="They work together. That is the point."
-        className="max-w-3xl"
-      />
+    <Section size="default" ruled>
+      <SectionHeading title="Four ways I help" className="max-w-3xl" />
 
       <Reveal group className="mt-10 flex flex-col">
         {services.map((service, index) => (
@@ -52,12 +47,7 @@ export function ServiceOverview() {
 export function ServiceDetails() {
   return (
     <Section tone="muted" size="default" ruled>
-      <SectionHeading
-        eyebrow="What I Do"
-        title="Four ways I help"
-        lead="They work together. That is the point."
-        className="max-w-2xl"
-      />
+      <SectionHeading title="Four ways I help" className="max-w-2xl" />
 
       <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
         {services.map((service) => {

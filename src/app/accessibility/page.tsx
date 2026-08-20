@@ -40,7 +40,7 @@ const knownLimitations = [
 
 export default function AccessibilityPage() {
   return (
-    <LegalShell eyebrow="Accessibility" title="Accessibility Statement" lead="FrameScale wants this website to be usable for as many people as possible, including people who use assistive technology.">
+    <LegalShell title="Accessibility Statement" lead="FrameScale wants this website to be usable for as many people as possible, including people who use assistive technology.">
             <p className="font-body text-sm text-(--text-muted) leading-relaxed">
               Last updated: {lastUpdated}
             </p>

@@ -5,13 +5,8 @@ import { chapters, philosophy, sanDiegoSection } from "@/content/about";
 /** The founder story on /about, as a numbered editorial sequence. */
 export function Chapters() {
   return (
-    <Section size="tall" ruled>
-      <SectionHeading
-        eyebrow="The Path"
-        title="How I got here"
-        lead="Not a straight line, which turns out to be the useful part."
-        className="max-w-3xl"
-      />
+    <Section tone="muted" size="default" ruled>
+      <SectionHeading title="How I got here" className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (
@@ -45,10 +40,9 @@ export function Chapters() {
  */
 export function SanDiegoSection() {
   return (
-    <Section tone="muted" size="default" ruled>
+    <Section size="default" ruled>
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
-          <p className="eyebrow">{sanDiegoSection.eyebrow}</p>
           <h2 className="display-lg text-(--brand-deep)">{sanDiegoSection.title}</h2>
         </div>
 
@@ -60,7 +54,6 @@ export function SanDiegoSection() {
           ))}
 
           <div className="soft-card mt-2 flex flex-col gap-3 p-6 sm:p-7">
-            <p className="eyebrow">{philosophy.eyebrow}</p>
             <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
             <p className="text-(--text-muted)">{philosophy.body}</p>
           </div>

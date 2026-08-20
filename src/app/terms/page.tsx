@@ -25,7 +25,7 @@ const serviceExamples = [
 
 export default function TermsPage() {
   return (
-    <LegalShell eyebrow="Legal" title="Terms of Service" lead="These terms explain how this website may be used and how FrameScale services are handled unless a signed agreement says otherwise.">
+    <LegalShell title="Terms of Service" lead="These terms explain how this website may be used and how FrameScale services are handled unless a signed agreement says otherwise.">
             <p className="font-body text-sm text-(--text-muted) leading-relaxed">
               Last updated: {lastUpdated}
             </p>

@@ -4,7 +4,6 @@ import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 type LegalShellProps = {
-  eyebrow: string;
   title: string;
   lead: string;
   lastUpdated?: string;
@@ -16,7 +15,7 @@ type LegalShellProps = {
  * simply inherit the editorial shell, so nothing legally meaningful changes.
  * `.legal-prose` supplies the typography the individual pages used to hand-roll.
  */
-export function LegalShell({ eyebrow, title, lead, lastUpdated, children }: LegalShellProps) {
+export function LegalShell({ title, lead, lastUpdated, children }: LegalShellProps) {
   return (
     <>
       <section className="pt-12 pb-12 md:pt-16 md:pb-16">
@@ -30,7 +29,6 @@ export function LegalShell({ eyebrow, title, lead, lastUpdated, children }: Lega
           </Link>
 
           <div className="flex flex-col gap-4">
-            <p className="eyebrow">{eyebrow}</p>
             <h1 className="display-lg text-(--brand-deep)">{title}</h1>
             <p className="lead">{lead}</p>
             {lastUpdated ? (

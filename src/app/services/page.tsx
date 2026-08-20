@@ -39,7 +39,6 @@ export default function ServicesPage() {
       />
 
       <PageHero
-        eyebrow="Services"
         headline={`How I help ${location.city} small businesses`}
         lead="Four things, and they work together. I always start by finding the real problem."
       />
@@ -47,14 +46,8 @@ export default function ServicesPage() {
       <ServiceDetails />
       <ScaleDetail />
       <Pricing />
-      <FAQ
-        items={servicesFaqs}
-        eyebrow="Before You Ask"
-        title="The practical questions"
-        tone="muted"
-      />
+      <FAQ items={servicesFaqs} title="The practical questions" />
       <ContactSection
-        eyebrow="Get Started"
         title="Not sure which one you need?"
         lead="That's normal, and it's what the call is for. Tell me what's going on and I'll tell you where I'd start."
       />

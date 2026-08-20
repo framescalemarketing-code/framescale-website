@@ -5,7 +5,6 @@ import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { location, site } from "@/lib/site";
 
 type ContactSectionProps = {
-  eyebrow?: string;
   title?: string;
   lead?: string;
 };
@@ -22,8 +21,7 @@ const STEPS = [
  * pages. The NAP details here must match the footer and the JSON-LD exactly.
  */
 export function ContactSection({
-  eyebrow = "Next Step",
-  title = "Let's find out if this is a fit",
+  title = "Let's talk",
   lead = "Tell me what's going on. Thirty minutes is usually enough to see what to do first.",
 }: ContactSectionProps) {
   const turnstileSiteKey = getTurnstileSiteKeyForServer();
@@ -33,7 +31,6 @@ export function ContactSection({
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <p className="eyebrow">{eyebrow}</p>
             <h2 className="display-lg text-(--brand-deep)">{title}</h2>
             <p className="lead">{lead}</p>
           </div>

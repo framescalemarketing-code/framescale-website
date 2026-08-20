@@ -1,7 +1,6 @@
 import { location, principal } from "@/lib/site";
 
 export const aboutHero = {
-  eyebrow: "About",
   headline: `Hi, I'm ${principal.firstName}`,
   lead: `I help small business owners in ${location.city} figure out what's holding them back, then fix it.`,
 } as const;
@@ -80,7 +79,6 @@ export const credentialDetails: CredentialDetail[] = [
 ];
 
 export const workingWithMe = {
-  eyebrow: "Working With Me",
   title: "What you get",
   points: [
     "Someone who has worked the floor, not just read about it.",
@@ -96,7 +94,6 @@ export const workingWithMe = {
  * detail is what separates this from generic city copy.
  */
 export const sanDiegoSection = {
-  eyebrow: `Based In ${location.city}`,
   title: `Why ${location.city}`,
   paragraphs: [
     `${location.city} runs on small businesses. Owners competing with national chains, working on thin margins, ` +
@@ -108,7 +105,6 @@ export const sanDiegoSection = {
 } as const;
 
 export const philosophy = {
-  eyebrow: "What I Believe",
   title: "You should understand your own business",
   body:
     "You shouldn't need a marketing person to explain your own numbers to you. I go through everything with you " +

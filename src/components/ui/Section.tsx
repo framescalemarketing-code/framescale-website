@@ -46,7 +46,6 @@ export function Section({
 }
 
 type SectionHeadingProps = {
-  eyebrow?: string;
   title: ReactNode;
   lead?: string;
   tone?: "default" | "light";
@@ -56,7 +55,6 @@ type SectionHeadingProps = {
 
 /** Eyebrow plus display heading plus optional lead. Consistent across all pages. */
 export function SectionHeading({
-  eyebrow,
   title,
   lead,
   tone = "default",
@@ -66,7 +64,6 @@ export function SectionHeading({
   const alignment = align === "center" ? "text-center mx-auto items-center" : "";
   return (
     <div className={`flex flex-col gap-4 ${alignment} ${className}`}>
-      {eyebrow ? <p className={`eyebrow ${tone === "light" ? "eyebrow-light" : ""}`}>{eyebrow}</p> : null}
       <h2 className={`display-lg ${tone === "light" ? "text-white" : "text-(--brand-deep)"}`}>{title}</h2>
       {lead ? (
         <p className={`lead ${align === "center" ? "mx-auto" : ""} ${tone === "light" ? "text-white/72" : ""}`}>

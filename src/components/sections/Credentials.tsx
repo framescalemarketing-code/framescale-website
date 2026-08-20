@@ -7,7 +7,7 @@ export function Credentials() {
     <Section tone="dark" size="tall">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
-          <SectionHeading eyebrow="Background" title="The background" tone="light" />
+          <SectionHeading title="The background" tone="light" />
 
           <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (
@@ -30,7 +30,6 @@ export function Credentials() {
         </div>
 
         <div className="flex flex-col gap-5 rounded-2xl border border-white/15 bg-white/4 p-8 lg:sticky lg:top-24 lg:self-start">
-          <p className="eyebrow eyebrow-light">{workingWithMe.eyebrow}</p>
           <h3 className="display-md text-white">{workingWithMe.title}</h3>
           <ul className="flex flex-col gap-4">
             {workingWithMe.points.map((point) => (
