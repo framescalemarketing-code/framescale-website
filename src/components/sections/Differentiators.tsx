@@ -8,13 +8,12 @@ export function Differentiators() {
       <SectionHeading
         eyebrow={differentiatorSection.eyebrow}
         title={differentiatorSection.title}
-        lead={differentiatorSection.lead}
         className="max-w-3xl"
       />
 
-      <Reveal group className="mt-14 grid gap-x-14 gap-y-12 md:grid-cols-2">
+      <Reveal group className="mt-10 grid gap-5 md:grid-cols-2">
         {differentiators.map((item, index) => (
-          <RevealItem key={item.title} className="flex gap-6">
+          <RevealItem key={item.title} className="soft-card flex gap-5 p-6 sm:p-7">
             <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
               0{index + 1}
             </span>

@@ -17,7 +17,7 @@ const VARIANTS: Record<Variant, string> = {
     "border border-(--brand-primary) text-(--brand-primary) hover:bg-(--brand-primary) hover:text-white " +
     "focus-visible:outline-(--brand-primary)",
   light:
-    "bg-white text-(--brand-deep) hover:bg-[#f2f7f7] focus-visible:outline-white",
+    "bg-white text-(--brand-deep) hover:bg-(--muted) focus-visible:outline-white",
   quiet:
     "border border-white/35 text-white hover:bg-white/10 focus-visible:outline-white",
 };

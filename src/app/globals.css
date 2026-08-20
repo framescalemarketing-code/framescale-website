@@ -86,10 +86,25 @@
 
 :root {
   /* Derived from --brand-neutral, darkened just enough to clear WCAG AA for
-     body text on both #ffffff (5.38:1) and the #f2f7f7 panel (4.98:1).
+     body text on every surface below (4.78:1 at worst).
      --brand-neutral itself is frozen by the brand guard and still drives
      borders, dividers, and other non-text uses. */
   --text-muted: #5f6d6f;
+
+  /* Bumped from the 16px baseline. The audience skews older and this reads
+     noticeably easier; the accessibility text-scale classes multiply from it. */
+  --font-size: 17px;
+
+  /* Paper tones, deliberately not brand colors. The five brand values in the
+     block above are untouched. A warm ground and softer edges are what make
+     the site read as one person rather than a firm; pure white plus hairlines
+     reads corporate no matter how the copy is written. */
+  --background: #fdfbf7;
+  --card: #fffdfa;
+  --muted: #f6f1e7;
+  --input-background: #fbf8f2;
+  --border: rgba(38, 70, 83, 0.13);
+  --radius: 0.875rem;
 }
 
 @layer base {
@@ -134,14 +149,14 @@ h4,
 h5,
 h6 {
   font-family: var(--font-headline);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.008em;
+  line-height: 1.2;
   font-weight: 500;
   text-wrap: balance;
 }
 
 h1 {
-  letter-spacing: -0.035em;
+  letter-spacing: -0.015em;
 }
 
 p {
@@ -159,33 +174,33 @@ p {
      this; there are no decorative cards doing the work instead. */
   .display-xl {
     font-family: var(--font-headline);
-    font-size: clamp(2.75rem, 7vw, 5.25rem);
-    line-height: 1.02;
-    letter-spacing: -0.038em;
+    font-size: clamp(2.15rem, 4.6vw, 3.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
     font-weight: 500;
   }
 
   .display-lg {
     font-family: var(--font-headline);
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    line-height: 1.06;
-    letter-spacing: -0.032em;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.012em;
     font-weight: 500;
   }
 
   .display-md {
     font-family: var(--font-headline);
-    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-    line-height: 1.12;
-    letter-spacing: -0.026em;
+    font-size: clamp(1.45rem, 2.3vw, 1.85rem);
+    line-height: 1.25;
+    letter-spacing: -0.008em;
     font-weight: 500;
   }
 
   .display-sm {
     font-family: var(--font-headline);
-    font-size: clamp(1.3rem, 2.1vw, 1.6rem);
-    line-height: 1.2;
-    letter-spacing: -0.018em;
+    font-size: clamp(1.12rem, 1.5vw, 1.3rem);
+    line-height: 1.35;
+    letter-spacing: -0.004em;
     font-weight: 500;
   }
 
@@ -212,10 +227,10 @@ p {
   /* Body copy held to a readable measure. */
   .lead {
     font-family: var(--font-body);
-    font-size: clamp(1.06rem, 1.5vw, 1.28rem);
+    font-size: clamp(1rem, 1.1vw, 1.12rem);
     line-height: 1.65;
     color: var(--text-muted);
-    max-width: 60ch;
+    max-width: 58ch;
   }
 
   .measure {
@@ -230,11 +245,36 @@ p {
   .hairline-box {
     border: 1px solid var(--border);
     background: var(--card);
+    border-radius: 1.25rem;
     transition: border-color 240ms ease, background-color 240ms ease;
   }
 
   .hairline-box:hover {
-    border-color: rgba(23, 120, 142, 0.38);
+    border-color: rgba(23, 120, 142, 0.3);
+  }
+
+  /* Soft card. Used where the old design used a bare hairline divider; a
+     rounded surface on a warm ground feels approachable where a rule feels
+     like a report. */
+  .soft-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    transition: border-color 220ms ease, transform 220ms ease;
+  }
+
+  .soft-card:hover {
+    border-color: rgba(23, 120, 142, 0.28);
+  }
+
+  /* Handwritten-feeling sign-off. Source Serif italic is the closest the brand
+     type gets to a signature, and it stays inside the font contract. */
+  .signature {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: var(--brand-primary);
   }
 
   /* --- Dark anchor section ------------------------------------------------

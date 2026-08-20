@@ -10,12 +10,12 @@ export function ServiceOverview() {
     <Section tone="muted" size="tall" ruled>
       <SectionHeading
         eyebrow="What I Do"
-        title="Four things, done properly"
-        lead="Most of my work falls into these four areas. They connect, which is the point: strategy without a site to run it on, or a site without tracking behind it, is where budget goes to die."
+        title="Four ways I help"
+        lead="They work together. That is the point."
         className="max-w-3xl"
       />
 
-      <Reveal group className="mt-14 flex flex-col">
+      <Reveal group className="mt-10 flex flex-col">
         {services.map((service, index) => (
           <RevealItem key={service.id} className={index === 0 ? "" : "rule"}>
             <Link
@@ -62,7 +62,7 @@ export function ServiceDetails() {
             ruled
             size="default"
           >
-            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
               <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
                   <span className="flex size-12 items-center justify-center rounded-xl bg-(--brand-primary)/10">
@@ -78,7 +78,7 @@ export function ServiceDetails() {
 
               <div className="flex flex-col gap-8">
                 <div>
-                  <p className="eyebrow eyebrow-muted mb-5">What Is Included</p>
+                  <p className="eyebrow eyebrow-muted mb-5">What You Get</p>
                   <ul className="flex flex-col gap-3">
                     {service.included.map((item) => (
                       <li key={item} className="flex gap-3 text-(--brand-deep)">
@@ -90,7 +90,7 @@ export function ServiceDetails() {
                 </div>
 
                 <div className="rule pt-6">
-                  <p className="eyebrow eyebrow-muted mb-3">Best For</p>
+                  <p className="eyebrow eyebrow-muted mb-3">This Is For You If</p>
                   <p className="measure text-(--text-muted)">{service.bestFor}</p>
                 </div>
               </div>

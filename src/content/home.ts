@@ -1,17 +1,18 @@
 import { location, principal } from "@/lib/site";
 
+/**
+ * Copy is written for owners who are not marketing people and do not want to
+ * read much. Short sentences, no jargon, one idea at a time.
+ */
 export const hero = {
   eyebrow: `${principal.jobTitle} · ${location.city}`,
-  /** Benefit-led, with the city in it. Both the buyer and local search need it there. */
-  headline: `Growth marketing for ${location.city} owners who are done guessing`,
+  headline: `More customers for your ${location.city} business`,
   lead:
-    `I am ${principal.displayName}. I research your market before you spend a dollar, build the website and tracking ` +
-    "around how your business actually runs, and explain every decision in plain language. You work with me " +
-    "directly, from the first call through to launch.",
+    `Hi, I'm ${principal.firstName}. I help local owners work out why growth has stalled, then fix it. ` +
+    "No jargon, no big agency. Just me.",
   primaryCta: "Book A Free Call",
-  secondaryCta: "See What I Do",
-  /** Sits directly under the buttons. One risk-reducing line, per the hero rules. */
-  reassurance: "Thirty minutes, no sales team, no obligation.",
+  secondaryCta: "See How I Help",
+  reassurance: "Thirty minutes, on the phone. No pressure, no obligation.",
 } as const;
 
 export type Credential = {
@@ -19,15 +20,11 @@ export type Credential = {
   label: string;
 };
 
-/**
- * Proof-by-credential. There are no testimonials yet, so the trust bar leans on
- * what is verifiable. Replace or supplement once client quotes exist.
- */
 export const credentials: Credential[] = [
-  { value: "MBA", label: "Marketing concentration" },
+  { value: "MBA", label: "In marketing" },
   { value: "UC Riverside", label: "Bachelor's degree" },
-  { value: "Retail And Optical", label: "Management background" },
-  { value: location.city, label: "Direct access, short roster" },
+  { value: "Optical And Retail", label: "Store management" },
+  { value: location.city, label: "Local, one on one" },
 ];
 
 export type Problem = {
@@ -37,36 +34,27 @@ export type Problem = {
 
 export const problems: Problem[] = [
   {
-    title: "You Cannot Tell What Your Marketing Did",
-    body:
-      "Most owners have worked with an agency and walked away still not knowing where the money went or what actually " +
-      "moved the needle. The reporting arrived, but it never answered the question.",
+    title: "You Don't Know What Your Marketing Did",
+    body: "You paid for it. The reports showed up. You still can't say what worked.",
   },
   {
-    title: "The Website Brings Traffic That Never Converts",
-    body:
-      "People land, look, and leave. Usually the message is aimed at the wrong buyer, or the path from interest to " +
-      "inquiry has friction nobody has looked at in years.",
+    title: "People Visit Your Website And Leave",
+    body: "They find you, look around, then go somewhere else.",
   },
   {
-    title: "Nearby Customers Cannot Find You",
-    body:
-      `Your ${location.city} competitors show up in Maps, in local results, and now in AI answers. You are somewhere ` +
-      "further down, and it is not obvious why.",
+    title: "Nearby Customers Can't Find You",
+    body: "Your competitors show up on Google and Maps. You don't.",
   },
   {
-    title: "You Are Busy, But Not Growing",
-    body:
-      "Revenue is steady and the work is constant, but the business is not moving to its next stage. Running it and " +
-      "scaling it are two different problems.",
+    title: "You're Busy But Not Growing",
+    body: "The work never stops, but the business stays the same size.",
   },
 ];
 
 export const problemSection = {
-  eyebrow: "The Usual Starting Point",
-  title: "Where growth actually stalls",
-  lead:
-    "Almost every business I talk to is stuck on one of these four. None of them are fixed by posting more often.",
+  eyebrow: "Sound Familiar?",
+  title: "Where most owners get stuck",
+  lead: "Almost everyone I meet is dealing with one of these four.",
 } as const;
 
 export type Differentiator = {
@@ -76,54 +64,50 @@ export type Differentiator = {
 
 export const differentiators: Differentiator[] = [
   {
-    title: "You Work With Me Directly",
-    body:
-      "No account manager, no handoff to a junior team. The person doing the research and the strategy is the person " +
-      "you talk to. I keep a short roster so that stays true.",
+    title: "You Work With Me",
+    body: "Not an assistant. Not a junior. The person you call is the person doing the work.",
   },
   {
-    title: "You See The Research Before Any Spend",
-    body:
-      "The market work happens first and you get to read it. If the research says a channel is wrong for you, I will " +
-      "tell you that instead of selling it to you.",
+    title: "You See The Homework First",
+    body: "I look at your market and your customers before you spend a dollar.",
   },
   {
-    title: "Everything Is Built Around Your Business",
-    body:
-      "Your website, your tracking, and your follow-up get built around how you actually operate and close work, not " +
-      "adapted from a template someone else was using.",
+    title: "Built For Your Business",
+    body: "Not a template that belonged to someone else.",
   },
   {
-    title: "Nothing Is A Black Box",
-    body:
-      "You get reporting you can open and read yourself, in language that does not need a translator. If you cannot " +
-      "explain what your marketing is doing, I have not finished the job.",
+    title: "You'll Understand The Reports",
+    body: "Plain English. If you can't explain it, I haven't finished.",
   },
 ];
 
 export const differentiatorSection = {
-  eyebrow: "What Makes This Different",
-  title: "Complex problems, clear answers",
-  lead:
-    "You should always know what is happening with your marketing, what it cost, and what it returned. That is the " +
-    "whole standard.",
+  eyebrow: "Why People Hire Me",
+  title: "Simple, honest, and yours to keep",
 } as const;
 
 export const aboutStrip = {
-  eyebrow: "Who You Would Be Working With",
-  title: `${principal.firstName} started on the floor, not in an agency`,
+  eyebrow: "Who You'd Be Working With",
+  title: "I started on the floor, not in an office",
   body:
-    "My first job was in a corporate optical company, starting on the manufacturing side of glasses before moving to " +
-    "the retail floor and then into management. I learned the customer experience, the training, the KPIs, and the " +
-    "production targets firsthand. Then I went back to school, earned a bachelor's degree at UC Riverside and an MBA " +
-    "with a marketing concentration, and started applying both sides to how businesses grow.",
-  cta: "Read The Full Story",
+    "My first job was making glasses in an optical lab. Then the sales floor. Then managing the store. " +
+    "Later I went back to school and earned an MBA in marketing. I've seen both sides of a small business.",
+  cta: "Read My Story",
+} as const;
+
+/** A short signed note. The most personal thing on the page. */
+export const personalNote = {
+  eyebrow: "A Note From Me",
+  body: [
+    "I know marketing people have a reputation. Lots of words, big invoices, and nothing you can point to at the end.",
+    "That's not how I work. I explain things in plain English, I show you the numbers, and you keep everything we build together.",
+    "If that sounds like what you've been looking for, let's talk.",
+  ],
+  signOff: principal.firstName,
 } as const;
 
 export const closingCta = {
   eyebrow: "Next Step",
-  title: "Let's find out if this is a fit",
-  lead:
-    "Bring your goals, your questions, and the parts that are not working. In thirty minutes we can figure out what " +
-    "should happen first. If I am not the right person for it, I will tell you that on the call.",
+  title: "Let's talk",
+  lead: "Tell me what's going on. Thirty minutes, no pressure. If I'm not the right fit, I'll say so.",
 } as const;

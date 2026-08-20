@@ -9,11 +9,11 @@ export function Chapters() {
       <SectionHeading
         eyebrow="The Path"
         title="How I got here"
-        lead="Not a straight line, and that turns out to be the useful part."
+        lead="Not a straight line, which turns out to be the useful part."
         className="max-w-3xl"
       />
 
-      <Reveal group className="mt-16 flex flex-col">
+      <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (
           <RevealItem
             key={chapter.marker}
@@ -46,8 +46,8 @@ export function Chapters() {
 export function SanDiegoSection() {
   return (
     <Section tone="muted" size="tall" ruled>
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <div className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
+      <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+        <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
           <p className="eyebrow">{sanDiegoSection.eyebrow}</p>
           <h2 className="display-lg text-(--brand-deep)">{sanDiegoSection.title}</h2>
         </div>

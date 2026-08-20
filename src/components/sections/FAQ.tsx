@@ -23,12 +23,12 @@ export function FAQ({
 }: FaqProps) {
   return (
     <Section tone={tone} size="tall" ruled>
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           eyebrow={eyebrow}
           title={title}
           lead={lead}
-          className="lg:sticky lg:top-28 lg:self-start"
+          className="lg:sticky lg:top-24 lg:self-start"
         />
 
         <div className="flex flex-col">

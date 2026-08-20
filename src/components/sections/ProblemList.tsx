@@ -9,20 +9,17 @@ import { problemSection, problems } from "@/content/home";
 export function ProblemList() {
   return (
     <Section size="tall">
-      <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           eyebrow={problemSection.eyebrow}
           title={problemSection.title}
           lead={problemSection.lead}
-          className="lg:sticky lg:top-28 lg:self-start"
+          className="lg:sticky lg:top-24 lg:self-start"
         />
 
-        <Reveal group className="flex flex-col">
+        <Reveal group className="flex flex-col gap-4">
           {problems.map((problem, index) => (
-            <RevealItem
-              key={problem.title}
-              className={`flex gap-6 py-8 ${index === 0 ? "" : "rule"}`}
-            >
+            <RevealItem key={problem.title} className="soft-card flex gap-5 p-6 sm:gap-6 sm:p-7">
               <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
                 0{index + 1}
               </span>

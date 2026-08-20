@@ -11,8 +11,8 @@ import { scaleIntro, scalePhases, workingStandards } from "@/content/scale";
 export function ScaleSummary() {
   return (
     <Section tone="dark" size="tall">
-      <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-        <div className="flex flex-col gap-5 lg:sticky lg:top-28 lg:self-start">
+      <div className="grid gap-9 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+        <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
           <p className="eyebrow eyebrow-light">{scaleIntro.name}</p>
           <h2 className="display-lg text-white">{scaleIntro.headline}</h2>
           <p className="lead text-white/65">{scaleIntro.lead}</p>
@@ -62,13 +62,13 @@ export function ScaleDetail() {
           className="max-w-3xl"
         />
 
-        <div className="mt-16 flex flex-col gap-12">
+        <div className="mt-11 flex flex-col gap-12">
           {scalePhases.map((phase) => {
             const Icon = phase.icon;
             return (
               <article
                 key={phase.letter}
-                className="grid gap-8 border-t border-white/12 pt-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"
+                className="grid gap-8 border-t border-white/12 pt-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12"
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">
@@ -124,10 +124,10 @@ export function ScaleDetail() {
       <Section ruled>
         <SectionHeading
           eyebrow="Working Standards"
-          title="Every decision comes with a reason"
+          title="How I work"
           className="max-w-3xl"
         />
-        <Reveal group className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+        <Reveal group className="mt-9 grid gap-x-9 gap-y-8 md:grid-cols-2">
           {workingStandards.map((standard) => (
             <RevealItem key={standard.title} className="rule flex flex-col gap-2 pt-6">
               <h3 className="display-sm text-(--brand-deep)">{standard.title}</h3>

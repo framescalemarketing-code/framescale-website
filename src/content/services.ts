@@ -7,91 +7,87 @@ export type Service = {
   number: string;
   icon: LucideIcon;
   title: string;
-  /** One line, used on the home page overview row. */
+  /** One short line for the home page overview row. */
   summary: string;
-  /** Two or three sentences, used at the top of the section on /services. */
+  /** Two short sentences at the top of the section on /services. */
   body: string;
   included: string[];
   bestFor: string;
 };
 
+/**
+ * Plain titles on purpose. The audience is owners who do not know or care what
+ * "conversion rate optimization" means; the longer keyword phrases live in the
+ * page metadata instead.
+ */
 export const services: Service[] = [
   {
     id: "strategy",
     number: "01",
     icon: Compass,
-    title: "Growth Strategy And Consulting",
-    summary: "Find out where the growth actually is before you spend anything on reaching it.",
+    title: "Figuring Out What's Wrong",
+    summary: "Find the real problem before you spend money on the wrong fix.",
     body:
-      "Most marketing problems are really positioning problems. I start by studying your market, your buyers, and the " +
-      "alternatives they are weighing against you, then turn that into a plan you can follow. You see the research " +
-      "before a dollar goes out the door, and you keep it whether we work together after that or not.",
+      "Most marketing problems turn out to be a different problem underneath. I look at your customers, your " +
+      "competition, and your numbers first, then tell you what I found.",
     included: [
-      "Market and competitor research specific to your industry",
-      "Customer profiles built on how your buyers actually decide",
-      "Positioning and messaging aimed at the buyer worth winning",
-      "A growth roadmap with priorities, budget ranges, and KPIs",
-      "A clear read on which channels are worth your money and which are not",
+      "A look at who your customers really are",
+      "A look at what your competition is doing",
+      "A plan for what to fix, in order",
+      "A budget that makes sense for your size",
     ],
-    bestFor: "Owners who are busy but not growing, and cannot tell which part of the funnel is the problem.",
+    bestFor: "You're working hard and it isn't turning into growth.",
   },
   {
     id: "websites",
     number: "02",
     icon: Monitor,
-    title: "Websites That Convert",
-    summary: "A site built around how your business runs, not pulled off a template shelf.",
+    title: "Websites That Work",
+    summary: "A website built around how you actually do business.",
     body:
-      "A website earns its keep when it turns a visitor into an inquiry. I design and build around your actual sales " +
-      "process, which means the pages, the forms, and the follow-up match how you take on work. Everything is built " +
-      "to load fast, work on a phone, and stay usable for the people who need accessibility support.",
+      "A website earns its keep when it turns a visitor into a phone call. I build yours around the way you " +
+      "actually sell, and it stays fast and easy to use on a phone.",
     included: [
-      "Custom design and build, never a purchased template",
-      "Conversion paths mapped to how you actually close work",
-      "Forms and intake that match your day to day workflow",
-      "Fast, mobile-first pages that meet accessibility standards",
-      "Content structure that gives search engines something to rank",
+      "Built for you, not from a template",
+      "Easy to use on a phone",
+      "Forms that reach you the way you want",
+      "Set up so Google can read it",
     ],
-    bestFor: "Businesses whose site looks dated, loads slowly, or brings in traffic that never turns into inquiries.",
+    bestFor: "Your site looks old, loads slowly, or never brings in calls.",
   },
   {
     id: "local-seo",
     number: "03",
     icon: MapPin,
-    title: "Local SEO And Google Business Profile",
-    summary: `Be the business ${location.city} buyers find when they search for what you do.`,
+    title: "Getting Found On Google",
+    summary: `Show up when someone nearby searches for what you do.`,
     body:
-      `Local search is where most ${location.city} buying decisions start, and it is increasingly where AI assistants ` +
-      "pull their answers from too. I work on the parts that decide whether you show up: your Google Business Profile, " +
-      "your review flow, the structured data on your site, and content written around how people in your area actually " +
-      "search. No guaranteed rankings, because nobody can promise those honestly.",
+      `Most ${location.city} customers start on Google or Maps. I work on the things that decide whether you show ` +
+      "up there, including your Google listing and your reviews.",
     included: [
-      "Google Business Profile setup, cleanup, and ongoing management",
-      "Local keyword research based on real search behavior in your area",
-      "Structured data and technical SEO so search engines can read your site",
-      "Review generation and response process you can hand to your team",
-      "Visibility in AI answer engines, not just the traditional results page",
+      "Your Google listing, set up and looked after",
+      "Reviews, and a simple way to get more",
+      "Words on your site that match what people search",
+      "Showing up in AI answers too",
     ],
-    bestFor: "Practices, stores, and firms that depend on nearby customers and are hard to find on Google or Maps.",
+    bestFor: "You rely on local customers and you're hard to find.",
   },
   {
     id: "analytics",
     number: "04",
     icon: BarChart3,
-    title: "Analytics, Tracking And Paid Media",
-    summary: "Reporting you can read yourself, and ad spend that has to justify itself.",
+    title: "Ads And Straight Answers",
+    summary: "Spend only where it pays, and see the numbers in plain English.",
     body:
-      "You should never have to take a marketer's word for what is working. I set up tracking and dashboards you can " +
-      "open and understand without a translator, then use them to decide where budget goes. Paid search and paid " +
-      "social only enter the picture once the numbers say they will pay for themselves.",
+      "You shouldn't have to take anyone's word for what's working. I set up simple tracking you can read " +
+      "yourself, and we only run ads once the numbers say they'll pay for themselves.",
     included: [
-      "GA4 and conversion tracking configured and explained in plain language",
-      "Dashboards that answer your questions, not vanity metrics",
-      "Paid search and paid social when the math supports the spend",
-      "Email and follow-up sequences built around your sales process",
-      "Regular reviews tied to the KPIs we set at the strategy stage",
+      "Simple reports you can actually read",
+      "Ads only when they make sense",
+      "Follow-up emails to people who inquire",
+      "A regular check-in on what's working",
     ],
-    bestFor: "Owners who are spending on marketing but cannot say what any of it returned.",
+    bestFor: "You're spending on marketing and nobody can tell you what came back.",
   },
 ];
 
@@ -102,27 +98,22 @@ export type IndustryFocus = {
 
 /**
  * The three verticals that used to be standalone landing pages. They live as a
- * single section now: near-duplicate location and vertical pages are the exact
- * pattern search engines demote as doorway content.
+ * single section now: near-duplicate vertical pages are the pattern search
+ * engines demote as doorway content.
  */
 export const industryFocus: IndustryFocus[] = [
   {
-    title: "Healthcare And Optical Practices",
+    title: "Eye Doctors And Medical Offices",
     body:
-      "I spent the first part of my career in optical, from the manufacturing side of glasses to managing the retail " +
-      "floor. I can talk about frame boards, exam scheduling, and managed care without needing it explained. Patients " +
-      "decide whether you feel credible long before they call, and that is usually where the work is.",
+      "I spent years in optical, from the lab to the sales floor to managing the store. You won't have to explain " +
+      "frame boards or scheduling to me.",
   },
   {
-    title: "Retail And E-commerce",
-    body:
-      "When sales look fine but profit does not, the answer is usually hiding in the message, the site, or the ad " +
-      "spend. I look at all three together so you can see where the money is actually going instead of guessing at it.",
+    title: "Shops And Online Stores",
+    body: "When sales look fine but the profit doesn't, the answer is usually in the website or the ad spend.",
   },
   {
-    title: "Professional Services",
-    body:
-      "Referrals are a great business until they slow down and you are suddenly doing outreach. A credible site, " +
-      "visible proof, and a real intake process turn your reputation into inbound inquiries instead of cold calls.",
+    title: "Small Firms And Consultants",
+    body: "Referrals work until they slow down. A good website turns your reputation into new inquiries.",
   },
 ];

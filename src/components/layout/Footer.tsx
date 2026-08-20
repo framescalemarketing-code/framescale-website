@@ -24,16 +24,17 @@ export function Footer() {
         Site footer
       </h2>
 
-      <Container width="wide">
-        <div className="grid gap-12 py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <Container>
+        <div className="grid gap-x-10 gap-y-10 py-12 sm:grid-cols-2 lg:grid-cols-[2fr_0.85fr_1.1fr_1.05fr]">
           {/* NAP block. These values must match the JSON-LD exactly; consistency
               between the visible page and the markup is what local ranking uses. */}
-          <div className="flex flex-col gap-5">
-            <BrandMark width={72} height={30} tone="light" />
+          <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
+            <BrandMark width={60} height={25} tone="light" />
             <div>
-              <p className="font-headline text-xl text-white">{principal.displayName}</p>
-              <p className="mt-1 font-ui text-[11px] font-semibold tracking-[0.14em] text-white/45 uppercase">
-                {principal.jobTitle} · {practice.name}
+              <p className="font-headline text-lg text-white">{principal.displayName}</p>
+              <p className="mt-1.5 font-ui text-[10px] leading-relaxed font-semibold tracking-[0.14em] text-white/45 uppercase">
+                {principal.jobTitle}
+                <span className="block">{practice.name}</span>
               </p>
             </div>
 
@@ -54,9 +55,9 @@ export function Footer() {
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="link-quiet flex items-center gap-2.5 text-sm break-all text-white/70 hover:text-white"
+                className="link-quiet flex items-start gap-2.5 text-xs wrap-anywhere text-white/70 hover:text-white"
               >
-                <Mail className="size-4 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
+                <Mail className="mt-0.5 size-4 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
                 {site.email}
               </a>
             </address>
@@ -78,7 +79,7 @@ export function Footer() {
                 <p className="font-ui text-[11px] font-semibold tracking-[0.16em] text-white/45 uppercase">
                   {heading}
                 </p>
-                <ul className="mt-5 flex flex-col gap-3">
+                <ul className="mt-4 flex flex-col gap-2.5">
                   {links.map((link) => (
                     <li key={link.href}>
                       <Link href={link.href} className="link-quiet text-sm text-white/70 hover:text-white">
@@ -94,14 +95,14 @@ export function Footer() {
 
         {/* Service area. Plain prose, not a keyword block: a bare list of cities
             is the pattern Google treats as a doorway signal. */}
-        <div className="border-t border-white/10 py-8">
+        <div className="border-t border-white/10 py-6">
           <p className="text-sm text-white/45">
-            {principal.firstName} works with owners across {location.serviceArea}, including{" "}
+            I work with owners across {location.serviceArea}, including{" "}
             {location.areaServed.slice(0, -1).join(", ")}, and {location.areaServed.at(-1)}.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-white/10 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/40">
             &copy; {YEAR} {practice.name}. All rights reserved.
           </p>

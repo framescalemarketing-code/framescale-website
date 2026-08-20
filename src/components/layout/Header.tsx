@@ -69,7 +69,7 @@ export function Header() {
         scrolled ? "border-(--border)" : "border-transparent"
       }`}
     >
-      <Container width="wide">
+      <Container>
         <div className="flex h-20 items-center justify-between gap-6">
           <Link
             href="/"

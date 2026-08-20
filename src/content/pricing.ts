@@ -1,11 +1,7 @@
-import { location, principal } from "@/lib/site";
 
-/**
- * TODO(owner): both amounts are placeholders. Set the real numbers here and
- * nowhere else. They render on /services and feed the pricing JSON-LD.
- */
-const PLACEHOLDER_AUDIT_PRICE = 750;
-const PLACEHOLDER_PARTNER_PRICE = 2500;
+/** Set here and nowhere else. These render on /services. */
+const AUDIT_PRICE = 200;
+const PARTNER_PRICE = 1500;
 
 export type PricingTier = {
   id: string;
@@ -25,40 +21,39 @@ export type PricingTier = {
 export const pricingTiers: PricingTier[] = [
   {
     id: "audit",
-    name: "The Growth Audit",
-    price: PLACEHOLDER_AUDIT_PRICE,
+    name: "The Once-Over",
+    price: AUDIT_PRICE,
     cadence: "one time",
-    tagline: "Find out what is actually wrong",
+    tagline: "Find the problem",
     description:
-      "A fixed-scope engagement that covers the first two phases of the SCALE Method. You get the research and the " +
-      "roadmap, and you keep both whether we work together after that or not.",
+      "A one-time review of your business, your customers, and your competition. You get a plan for what to fix " +
+      "first, and it's yours to keep either way.",
     includes: [
-      "Market and competitor research for your industry",
-      "Customer profile built on how your buyers decide",
-      "Review of your website, local search presence, and tracking",
-      "A prioritized roadmap of what to fix, in order",
-      "A working session to walk through all of it together",
+      "A look at your customers and your competition",
+      "A review of your website and your Google listing",
+      "A plan for what to fix, in order",
+      "A call to walk through all of it together",
     ],
-    cta: "Start With The Audit",
+    cta: "Start Here",
   },
   {
     id: "partner",
-    name: "Growth Partner",
-    price: PLACEHOLDER_PARTNER_PRICE,
+    name: "Ongoing Help",
+    price: PARTNER_PRICE,
     cadence: "per month",
-    tagline: "Build it, run it, and improve it",
+    tagline: "I handle it",
     description:
-      "Ongoing work across all five phases. Strategy, the website and systems behind it, local search, and the " +
-      "reporting that tells you what to do next. Month to month, no long-term contract.",
+      "I handle the website, the Google listing, the ads, and the reporting. Month to month, so you can stop " +
+      "whenever it stops being worth it.",
     includes: [
-      "Everything in The Growth Audit",
-      "Website and conversion work, built and maintained",
-      "Google Business Profile and local SEO management",
-      "Analytics, dashboards, and reporting you can read yourself",
-      "Paid search and paid social when the numbers support it",
-      "Direct access to me, not an account manager",
+      "Everything in The Once-Over",
+      "Your website, built and looked after",
+      "Your Google listing and reviews",
+      "Ads, when the numbers make sense",
+      "Reports you can actually read",
+      "My direct phone number",
     ],
-    cta: "Talk About A Partnership",
+    cta: "Let's Talk",
     featured: true,
   },
 ];
@@ -66,12 +61,8 @@ export const pricingTiers: PricingTier[] = [
 export const pricingSection = {
   eyebrow: "Pricing",
   title: "Two ways to work together",
-  lead:
-    "Prices are listed because you should be able to tell whether this is realistic before you spend time on a call. " +
-    "Larger builds get quoted separately after the audit.",
-  footnote:
-    `Both options are available to businesses across ${location.serviceArea}. If neither fits what you need, say so ` +
-    `on the call and ${principal.firstName} will point you somewhere that does.`,
+  lead: "I put the prices up front so you know before you call. Bigger jobs get quoted separately.",
+  footnote: "If neither one fits, tell me on the call and I'll point you somewhere that does.",
 } as const;
 
 /** Consistent currency formatting for display. */

@@ -24,7 +24,7 @@ function validateField(field: keyof FormState, value: string): string | undefine
   if (field === "name" && !value.trim()) return "Please enter your name.";
   if (field === "email") return validateEmailInput(value);
   if (field === "message") {
-    if (!value.trim()) return "A short description helps me prepare.";
+    if (!value.trim()) return "A sentence or two helps me prepare.";
     if (value.trim().length < 10) return "Please add a little more detail.";
   }
   return undefined;
@@ -185,7 +185,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
       <div>
         <label htmlFor="message" className="field-label">
-          What Is Not Working <span aria-hidden="true">*</span>
+          What's Going On <span aria-hidden="true">*</span>
         </label>
         <textarea
           id="message"
@@ -193,7 +193,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           rows={5}
           required
           className="field resize-y"
-          placeholder="Tell me about the business, what you have already tried, and what you want to change."
+          placeholder="A sentence or two is plenty."
           value={data.message}
           onChange={(e) => update("message", e.target.value)}
           onBlur={() => blur("message")}

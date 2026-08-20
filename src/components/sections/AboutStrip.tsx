@@ -8,7 +8,7 @@ import { principal } from "@/lib/site";
 export function AboutStrip() {
   return (
     <Section tone="muted" size="tall" ruled>
-      <div className="grid items-center gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+      <div className="grid items-center gap-9 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
         <div className="relative mx-auto aspect-4/5 w-full max-w-xs overflow-hidden rounded-4xl lg:max-w-none">
           <Image
             src="/photos/founder/jonathan-about.jpg"

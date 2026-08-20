@@ -18,7 +18,7 @@ export function Testimonials() {
         className="max-w-3xl"
       />
 
-      <Reveal group className="mt-14 grid gap-8 md:grid-cols-2">
+      <Reveal group className="mt-10 grid gap-8 md:grid-cols-2">
         {testimonials.map((testimonial) => (
           <RevealItem
             key={testimonial.name}

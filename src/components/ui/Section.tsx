@@ -15,14 +15,14 @@ type SectionProps = {
 
 const TONES = {
   default: "bg-background",
-  muted: "bg-[#f2f7f7]",
+  muted: "bg-(--muted)",
   dark: "dark-section",
 } as const;
 
 const SIZES = {
-  compact: "py-14 md:py-20",
-  default: "py-20 md:py-28",
-  tall: "py-24 md:py-36",
+  compact: "py-10 md:py-14",
+  default: "py-14 md:py-18",
+  tall: "py-16 md:py-24",
 } as const;
 
 export function Section({

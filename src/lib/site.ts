@@ -3,24 +3,20 @@ const SITE_PUBLIC_HOSTNAME = "framescalemarketing.com";
 /** Inbox local part for the public contact address (must match DNS / Resend setup). */
 const SITE_CONTACT_MAILBOX_LOCAL = "framescalemarketing";
 
-/**
- * TODO(owner): replace `lastName` with the real surname before launch.
- * It renders in the nav, every <h1>, all title tags, and `Person.name` in JSON-LD.
- * `npm run brand:check` fails while the placeholder is present.
- */
-const PRINCIPAL_LAST_NAME = "Doe";
+/** Renders in the nav, every <h1>, all title tags, and `Person.name` in JSON-LD. */
+const PRINCIPAL_LAST_NAME = "Mejia";
 
 /** The person the site is about. Everything else is the practice he runs. */
 export const principal = {
   firstName: "Jonathan",
   lastName: PRINCIPAL_LAST_NAME,
-  /** "Jonathan Doe" - used wherever a bare legal name is needed (schema `name`). */
+  /** "Jonathan Mejia" - used wherever a bare legal name is needed (schema `name`). */
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   },
   /** Post-nominal, rendered after the name and mapped to `Person.honorificSuffix`. */
   suffix: "MBA",
-  /** "Jonathan Doe, MBA" - the display form used in nav, headings, and footer. */
+  /** "Jonathan Mejia, MBA" - the display form used in nav, headings, and footer. */
   get displayName() {
     return `${this.fullName}, ${this.suffix}`;
   },
@@ -63,9 +59,9 @@ export const site = {
   shortName: principal.fullName,
   tagline: `${principal.jobTitle} in ${location.city}`,
   description:
-    `${principal.displayName} is a business growth consultant in ${location.city}. Market research, ` +
-    "websites that convert, local SEO and Google Business Profile, and analytics you can actually read. " +
-    "You work directly with Jonathan, never a handoff.",
+    `I am ${principal.displayName}, a business growth consultant in ${location.city}. Market research, websites ` +
+    "that convert, local SEO and Google Business Profile, and reporting you can actually read. You work with me " +
+    "directly, never a handoff.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */

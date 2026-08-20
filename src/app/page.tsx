@@ -6,6 +6,7 @@ import { ServiceOverview } from "@/components/sections/Services";
 import { ScaleSummary } from "@/components/sections/ScaleMethod";
 import { Differentiators } from "@/components/sections/Differentiators";
 import { AboutStrip } from "@/components/sections/AboutStrip";
+import { PersonalNote } from "@/components/sections/PersonalNote";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -18,7 +19,7 @@ import { location, principal } from "@/lib/site";
 export const metadata: Metadata = buildPageMetadata({
   title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
   absoluteTitle: true,
-  description: `${principal.displayName} helps ${location.city} business owners find where growth is stalling and fix it. Market research, websites that convert, local SEO, and reporting you can read yourself.`,
+  description: `I am ${principal.displayName}. I help ${location.city} business owners find where growth is stalling and fix it. Market research, websites that convert, local SEO, and reporting you can read yourself.`,
   path: "/",
 });
 
@@ -38,12 +39,12 @@ export default function HomePage() {
       <ScaleSummary />
       <Differentiators />
       <AboutStrip />
+      <PersonalNote />
       <Testimonials />
       <FAQ
         items={homeFaqs}
         eyebrow="Questions"
-        title="Straight answers, before you call"
-        lead="The things owners usually want to know before booking time with someone."
+        title="Questions I get a lot"
       />
       <ContactSection eyebrow={closingCta.eyebrow} title={closingCta.title} lead={closingCta.lead} />
     </>

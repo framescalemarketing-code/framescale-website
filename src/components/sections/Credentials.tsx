@@ -5,11 +5,11 @@ import { credentialDetails, workingWithMe } from "@/content/about";
 export function Credentials() {
   return (
     <Section tone="dark" size="tall">
-      <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
-          <SectionHeading eyebrow="Background" title="Where the thinking comes from" tone="light" />
+          <SectionHeading eyebrow="Background" title="The background" tone="light" />
 
-          <dl className="mt-12 flex flex-col">
+          <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (
               <div
                 key={item.value}
@@ -29,7 +29,7 @@ export function Credentials() {
           </dl>
         </div>
 
-        <div className="flex flex-col gap-5 rounded-2xl border border-white/15 bg-white/4 p-8 lg:sticky lg:top-28 lg:self-start">
+        <div className="flex flex-col gap-5 rounded-2xl border border-white/15 bg-white/4 p-8 lg:sticky lg:top-24 lg:self-start">
           <p className="eyebrow eyebrow-light">{workingWithMe.eyebrow}</p>
           <h3 className="display-md text-white">{workingWithMe.title}</h3>
           <ul className="flex flex-col gap-4">

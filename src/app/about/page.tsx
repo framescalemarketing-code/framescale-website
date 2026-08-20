@@ -13,7 +13,7 @@ import { location, practice, principal } from "@/lib/site";
 export const metadata: Metadata = buildPageMetadata({
   title: `About ${principal.displayName} | ${location.city} ${principal.jobTitle}`,
   absoluteTitle: true,
-  description: `${principal.jobTitle} in ${location.city}. From the optical manufacturing floor to retail management to an MBA in marketing, and how that background shapes the work.`,
+  description: `I am a business growth consultant in ${location.city}. From the optical manufacturing floor to retail management to an MBA in marketing, and how that background shapes the work I do.`,
   path: "/about",
   keywords: [
     `${principal.fullName}`,
@@ -70,8 +70,8 @@ export default function AboutPage() {
       <Testimonials />
       <ContactSection
         eyebrow="Say Hello"
-        title="Tell me what you are working on"
-        lead="If any of that sounded like the kind of thinking your business needs, the next step is a thirty minute call. No pitch deck."
+        title="Tell me what you're working on"
+        lead="Thirty minutes on the phone. No slides, no pitch."
       />
     </>
   );

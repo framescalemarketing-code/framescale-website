@@ -9,11 +9,11 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { servicesFaqs } from "@/content/faq";
 import { buildBreadcrumbGraph, buildFaqGraph, buildServicesGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
-import { location, principal } from "@/lib/site";
+import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `Growth Marketing Services in ${location.city}`,
-  description: `Growth strategy, websites that convert, local SEO and Google Business Profile, and analytics you can read. Fixed-price audit or monthly partnership, prices listed. Serving ${location.serviceArea}.`,
+  description: `Growth strategy, websites that convert, local SEO and Google Business Profile, and analytics you can read. A fixed-price audit or a monthly partnership, with prices listed. I work across ${location.serviceArea}.`,
   path: "/services",
   keywords: [
     `marketing consultant ${location.city}`,
@@ -41,8 +41,8 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Services"
-        headline={`Growth marketing services in ${location.city}`}
-        lead={`Four connected areas of work. ${principal.firstName} does the research first, builds what the strategy needs, and gives you reporting you can read without a translator.`}
+        headline={`How I help ${location.city} businesses`}
+        lead="Four things, and they work together. I always start by finding the real problem."
       />
 
       <ServiceDetails />
@@ -52,14 +52,13 @@ export default function ServicesPage() {
       <FAQ
         items={servicesFaqs}
         eyebrow="Before You Ask"
-        title="Scope, ownership, and fit"
-        lead="The practical questions that usually come up once the work gets real."
+        title="The practical questions"
         tone="muted"
       />
       <ContactSection
         eyebrow="Get Started"
         title="Not sure which one you need?"
-        lead="That is a normal place to be, and it is exactly what the first call is for. Describe the situation and I will tell you where I would start."
+        lead="That's normal, and it's what the call is for. Tell me what's going on and I'll tell you where I'd start."
       />
     </>
   );

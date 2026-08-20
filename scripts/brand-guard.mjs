@@ -96,15 +96,6 @@ function run() {
     "Brand guard failed: original clipped logo viewBox cannot be reintroduced"
   );
 
-  // Launch blocker: the principal's surname is the site's primary search
-  // entity. It renders in the nav, every h1, all title tags, and Person JSON-LD.
-  const siteTs = read("src/lib/site.ts");
-  assertNotIncludes(
-    siteTs,
-    'const PRINCIPAL_LAST_NAME = "Doe";',
-    "Brand guard failed: PRINCIPAL_LAST_NAME is still the placeholder. Set the real surname in src/lib/site.ts before launch."
-  );
-
   console.log("Brand guard passed: baseline reference + approved exceptions are intact.");
 }
 

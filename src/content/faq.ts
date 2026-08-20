@@ -1,4 +1,4 @@
-import { location, principal, site } from "@/lib/site";
+import { location, site } from "@/lib/site";
 
 export type FaqItem = {
   question: string;
@@ -7,92 +7,81 @@ export type FaqItem = {
 };
 
 /**
- * FAQ content does double duty: it handles objections before the form, and it
- * is the most quotable surface on the site for AI answer engines. Answers are
- * written to stand alone if a machine lifts one out of context.
+ * Short, plain answers. This is also the surface AI assistants quote from, so
+ * each answer has to make sense on its own.
  */
 export const homeFaqs: FaqItem[] = [
   {
-    question: "What does a business growth consultant actually do?",
+    question: "What do you actually do?",
     answer:
-      "I work out where your growth is stalling and then fix it. That usually means researching your market and " +
-      "buyers, sharpening your positioning, rebuilding the website and tracking around how you actually sell, and " +
-      "making you easier to find in local and AI search. Some of it is strategy and some of it is hands-on build work.",
+      "I find out why your business isn't growing the way it should, then I fix it. That usually means a better " +
+      "website, showing up on Google, and reports you can actually read.",
   },
   {
-    question: `Do you only work with businesses in ${location.city}?`,
+    question: `Do you only work with ${location.city} businesses?`,
     answer:
-      `Most of my work is with owners across ${location.serviceArea}, because being local means I can sit down with ` +
-      "you and see how the business actually runs. I do take work outside the area when the fit is right, but local " +
-      "clients get the most out of how I work.",
+      `Mostly, yes. Being local means I can come see how your business really runs. I do take work outside ` +
+      `${location.serviceArea} when it's a good fit.`,
   },
   {
-    question: "How much does it cost to work with you?",
+    question: "What does it cost?",
     answer:
-      "There are two options. A fixed-price Growth Audit that delivers the research and a prioritized roadmap, and a " +
-      "monthly Growth Partner engagement that covers ongoing strategy, build, and reporting. Both prices are listed " +
-      "on the services page so you can tell whether it is realistic before booking a call.",
+      "Two options. A one-time review to find the problem, or a monthly arrangement where I handle the work. " +
+      "Both prices are listed on the services page so there are no surprises.",
   },
   {
-    question: "How long before I see results?",
+    question: "How long until I see results?",
     answer:
-      "Research and strategy take a few weeks. Website and tracking work depends on scope. Local search and content " +
-      "generally take a few months to move, because search engines need time to reflect changes. Anyone who promises " +
-      "you faster than that is guessing.",
+      "The research takes a few weeks. Website work depends on the size of the job. Showing up on Google usually " +
+      "takes a few months. Anyone promising faster is guessing.",
   },
   {
-    question: "Do you guarantee rankings or a specific return on ad spend?",
+    question: "Can you promise I'll be number one on Google?",
     answer:
-      "No, and you should be wary of anyone who does. Nobody controls Google's results or your market's demand. What " +
-      "I do commit to is that you will always know what work was done, what it cost, and what the numbers did in " +
-      "response.",
+      "No, and I'd be careful with anyone who does. Nobody controls Google. What I can promise is that you'll " +
+      "always know what I did and what it cost.",
   },
   {
     question: "What happens on the first call?",
     answer:
-      "Thirty minutes, directly with me. You describe what is not working and what you have already tried, I ask " +
-      "direct questions, and you leave with a clear view of what should happen first. If I am not the right person " +
-      "for the job, I will tell you on that call rather than sell you something.",
+      "Thirty minutes, just you and me. You tell me what's not working, I ask some questions, and you leave " +
+      "knowing what I'd do first. If I'm not the right fit, I'll tell you.",
   },
 ];
 
 export const servicesFaqs: FaqItem[] = [
   {
-    question: "Can I hire you for just one of these services?",
+    question: "Can I hire you for just one thing?",
     answer:
-      "Yes, though I will usually want to do the research first. Building a website or running ads before " +
-      "understanding the market is how budget gets wasted, so if you come to me for one piece I may recommend " +
-      "starting with the audit instead.",
+      "Yes, though I'll usually want to do the research first. Building a website before we know who we're talking " +
+      "to is how money gets wasted.",
   },
   {
-    question: "Do I own the website and the systems you build?",
+    question: "Do I own the website when we're done?",
     answer:
-      "Yes. The website, the analytics setup, the dashboards, and the Google Business Profile are all yours, in your " +
-      "accounts. Part of the point of how I work is that you keep the systems and can run them without me.",
+      "Yes. The website, the Google listing, and the reports are all yours, in your accounts. You can run them " +
+      "without me.",
   },
   {
-    question: "What if I already have a website?",
+    question: "I already have a website. Is that a problem?",
     answer:
-      "Then we start by finding out whether it is worth improving or worth replacing. Plenty of sites just need the " +
-      "message, the conversion path, and the tracking fixed. I will tell you honestly which situation you are in.",
+      "Not at all. Sometimes it just needs fixing rather than replacing. I'll tell you honestly which one you're " +
+      "looking at.",
   },
   {
-    question: "Do you require a long-term contract?",
-    answer:
-      "No. The Growth Partner engagement is month to month. I would rather keep clients because the work is worth it " +
-      "than because they are locked in.",
+    question: "Am I locked into a contract?",
+    answer: "No. The monthly option is month to month. You can stop whenever it stops being worth it.",
   },
   {
-    question: "What size business do you work with?",
+    question: "What kind of businesses do you work with?",
     answer:
-      "Small and mid-size businesses, usually established and past the startup stage, most often in healthcare and " +
-      "optical, retail and e-commerce, or professional services. If you are pre-revenue or looking for a full agency " +
-      "team, I am probably not the right fit.",
+      "Small and mid-size local businesses that have been around a while. Eye doctors and medical offices, shops " +
+      "and online stores, and small firms. If you're just starting out, I'm probably not your best option.",
   },
   {
-    question: `How do I get in touch with ${principal.firstName}?`,
+    question: "How do I reach you?",
     answer:
-      `Use the form on any page of this site, email ${site.email}, or call ${site.phone}. Most messages get a reply ` +
-      "within one business day.",
+      `Use the form on this page, email ${site.email}, or call ${site.phone}. I read every message myself and ` +
+      "usually reply the next business day.",
   },
 ];

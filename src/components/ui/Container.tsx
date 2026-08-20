@@ -8,11 +8,11 @@ type ContainerProps = {
 };
 
 const WIDTHS = {
-  default: "max-w-6xl",
-  wide: "max-w-7xl",
-  narrow: "max-w-3xl",
+  default: "max-w-5xl",
+  wide: "max-w-6xl",
+  narrow: "max-w-2xl",
 } as const;
 
 export function Container({ children, width = "default", className = "" }: ContainerProps) {
-  return <div className={`mx-auto w-full ${WIDTHS[width]} px-6 md:px-10 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full ${WIDTHS[width]} px-5 md:px-8 ${className}`}>{children}</div>;
 }

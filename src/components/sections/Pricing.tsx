@@ -19,7 +19,7 @@ export function Pricing() {
         className="max-w-3xl"
       />
 
-      <Reveal group className="mt-14 grid gap-6 lg:grid-cols-2">
+      <Reveal group className="mt-10 grid gap-6 lg:grid-cols-2">
         {pricingTiers.map((tier) => (
           <RevealItem
             key={tier.id}
