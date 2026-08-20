@@ -23,7 +23,7 @@ export type Credential = {
 export const credentials: Credential[] = [
   { value: "MBA", label: "In marketing" },
   { value: "UC Riverside", label: "Bachelor's degree" },
-  { value: "Small Business", label: "All I work on" },
+  { value: "Small Businesses", label: "Who I work with" },
   { value: location.city, label: "Local, one on one" },
 ];
 
