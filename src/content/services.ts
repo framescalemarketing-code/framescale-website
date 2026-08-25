@@ -42,7 +42,7 @@ export const services: Service[] = [
     number: "02",
     icon: Monitor,
     title: "Websites That Work",
-    summary: "A site built around how you take work in, not around what looks good in a portfolio.",
+    summary: "A site built around the way you actually take work in.",
     body:
       "A website is only worth anything if it turns someone looking into someone calling. I build around the way " +
       "you take work in now, and it has to be quick and easy on a phone, because that is where most people will " +

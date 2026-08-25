@@ -10,10 +10,10 @@ type ContactSectionProps = {
 };
 
 const STEPS = [
-  "I read it. Not an assistant, me.",
-  "We get on the phone for half an hour.",
-  "I tell you whether I can help, honestly.",
-  "You decide. I won't chase you.",
+  "I read it myself.",
+  "We talk for half an hour.",
+  "I tell you whether I can help.",
+  "You decide. No follow-up unless you ask.",
 ];
 
 /**

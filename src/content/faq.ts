@@ -14,40 +14,38 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "What does a small business consultant actually do?",
     answer:
-      "In my case, I find out why the business isn't growing and then I go fix it. Usually that means a better " +
-      "website, turning up on Google when people search, and reports you can read without me sitting next to you.",
+      "I find out why the business isn't growing, then I fix it. Usually that means a better website, showing up " +
+      "on Google when people search, and reports you can read on your own.",
   },
   {
     question: `Do you only work with ${location.city} small businesses?`,
     answer:
       "Mostly. Being local means I can come and see how the place runs, which tells me more than a phone call " +
-      `ever does. I do take work elsewhere when it's a good fit, but ${location.serviceArea} is where I'm most useful.`,
+      `does. I take work elsewhere when it fits, but ${location.serviceArea} is where I'm most useful.`,
   },
   {
     question: "What does it cost?",
     answer:
-      "Depends on the business, so I don't have a price list. Some owners need one thing fixed, others need " +
-      "the whole picture rebuilt. We talk first, then I give you a number and tell you exactly what it covers. " +
-      "That first call is free.",
+      "It depends on the business, so there is no price list. Some owners need one thing fixed, others need the " +
+      "whole picture rebuilt. We talk first, then I give you a number and what it covers. The first call is free.",
   },
   {
     question: "How long until I see results?",
     answer:
-      "Research takes a few weeks. Website work depends on how big the job is. Google takes a few months, because " +
-      "that's how long it takes for anyone to notice you changed something. If someone promises you faster, they " +
-      "are guessing.",
+      "Research takes a few weeks. Website work depends on the size of the job. Google takes a few months, " +
+      "because that is how long it takes for anyone to notice you changed something. Anyone promising faster " +
+      "is guessing.",
   },
   {
     question: "Can you promise I'll be number one on Google?",
     answer:
-      "No. Nobody can, and I'd be careful with anyone who says otherwise. What I will promise is that you'll " +
-      "always know what I did and what it cost.",
+      "No, and nobody can. What I will promise is that you always know what I did and what it cost.",
   },
   {
     question: "What happens on the first call?",
     answer:
-      "Half an hour, just the two of us. You tell me what's not working, I ask a few questions, and you come away " +
-      "knowing what I'd tackle first. If I'm not the right person, I'll say so then rather than string it out.",
+      "Half an hour, just the two of us. You tell me what isn't working, I ask a few questions, and you come away " +
+      "knowing what I would tackle first. If I'm not the right person, I'll say so then.",
   },
 ];
 
