@@ -54,7 +54,7 @@ export function SanDiegoSection() {
             </p>
           ))}
 
-          <div className="soft-card mt-2 flex flex-col gap-3 p-6 sm:p-7">
+          <div className="soft-card mt-2 flex flex-col gap-3 p-6 sm:p-8">
             <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
             <p className="text-(--text-muted)">{philosophy.body}</p>
           </div>

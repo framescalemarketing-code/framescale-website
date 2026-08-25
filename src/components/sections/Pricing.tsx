@@ -12,7 +12,7 @@ import { site } from "@/lib/site";
 export function Pricing() {
   return (
     <Section id="pricing" tone="muted" size="default">
-      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
           <SectionHeading title={pricingSection.title} lead={pricingSection.lead} />
           <p className="measure text-(--text-muted)">{pricingSection.intro}</p>
@@ -23,7 +23,7 @@ export function Pricing() {
 
         <Reveal group className="grid gap-4 sm:grid-cols-2">
           {pricingPoints.map((point, index) => (
-            <RevealItem key={point.title} className="soft-card flex flex-col gap-2 p-6">
+            <RevealItem key={point.title} className="soft-card flex flex-col gap-2 p-6 sm:p-8">
               <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
                 0{index + 1}
               </span>

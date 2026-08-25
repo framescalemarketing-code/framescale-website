@@ -38,7 +38,7 @@ export default function AboutPage() {
           space rather than being cropped into a card. */}
       <section className="pt-14 pb-16 md:pt-20 md:pb-24">
         <Container width="wide">
-          <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+          <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div className="flex flex-col gap-6">
               <h1 className="display-xl text-(--brand-deep)">{aboutHero.headline}</h1>
               <p className="lead">{aboutHero.lead}</p>

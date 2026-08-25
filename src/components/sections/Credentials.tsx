@@ -5,6 +5,10 @@ import { credentialDetails, workingWithMe } from "@/content/about";
 export function Credentials() {
   return (
     <Section tone="dark" size="tall">
+      {/* Inverted against the usual 0.8/1.2 band ratio on purpose: here the wide
+          column is on the left, because that is where the credential list lives.
+          The panel on the right is the secondary element. Narrowing the left
+          column wraps "University Of California, Riverside" onto three lines. */}
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
           <SectionHeading title="The background" lead="School, and a lot of years on a sales floor." tone="light" />
@@ -29,7 +33,7 @@ export function Credentials() {
           </dl>
         </div>
 
-        <div className="flex flex-col gap-5 rounded-2xl border border-white/15 bg-white/4 p-8 lg:sticky lg:top-24 lg:self-start">
+        <div className="flex flex-col gap-5 rounded-(--radius-card) border border-white/15 bg-white/4 p-6 sm:p-8 lg:sticky lg:top-24 lg:self-start">
           <h3 className="display-md text-white">{workingWithMe.title}</h3>
           <ul className="flex flex-col gap-4">
             {workingWithMe.points.map((point) => (
