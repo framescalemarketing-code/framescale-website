@@ -13,7 +13,7 @@ const STEPS = [
   "I read it myself.",
   "We talk for half an hour.",
   "I tell you whether I can help.",
-  "You decide. No follow-up unless you ask.",
+  "You decide. I won't chase you.",
 ];
 
 /**

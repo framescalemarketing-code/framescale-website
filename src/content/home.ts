@@ -1,18 +1,19 @@
 import { location, principal } from "@/lib/site";
 
 /**
- * Plain and direct, in one person's voice. Short sentences, concrete nouns, no
- * throat-clearing before the point. Warmth comes from what is said, not from
- * conversational padding around it.
+ * Plain and direct, in one person's voice. Every line is a real sentence with
+ * a subject and an active verb. Clipped noun-phrase fragments stacked in
+ * parallel ("Big invoice, plenty of talk.") read as machine-written, so they
+ * stay out. Warmth comes from what is said, not from padding around it.
  */
 export const hero = {
-  headline: `More customers for your ${location.city} small business`,
+  headline: `Grow your ${location.city} small business`,
   lead:
-    `Hi, I'm ${principal.firstName}. I work out why a small business stopped growing, then I fix it. ` +
+    `Hi, I'm ${principal.firstName}. I find out what's holding your business back, then I fix it. ` +
     "You work with me directly, start to finish.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
-  reassurance: "Half an hour on the phone, free. No follow-up unless you ask for one.",
+  reassurance: "The call is free and takes half an hour. I won't chase you afterward.",
 } as const;
 
 export type Credential = {
@@ -74,7 +75,7 @@ export const differentiators: Differentiator[] = [
   },
   {
     title: "Built For Your Business",
-    body: "Nothing recycled from another client with the logo swapped out.",
+    body: "I won't hand you something I built for someone else with the logo swapped out.",
   },
   {
     title: "You'll Understand Your Own Numbers",
@@ -94,13 +95,20 @@ export const aboutStrip = {
   cta: "Read My Story",
 } as const;
 
-/** A short signed note. The most personal thing on the page. */
+/**
+ * A short signed note. The most personal thing on the page, and the only place
+ * that corrects the assumption most owners arrive with: that marketing means
+ * social media. Widening the definition is what earns the call.
+ */
 export const personalNote = {
   body: [
-    "Marketing has a poor reputation with small business owners, and some of that is earned. Big invoice, plenty " +
-      "of talk, and no clear answer about what you paid for.",
-    "I'd rather show you the numbers and let you decide. Everything we build sits in your accounts, and you can " +
-      "keep running it without me.",
+    "Most owners think marketing means posting on social media. That is one small piece of it. Marketing is also " +
+      "who your customer really is, what you charge, what your website says, and whether anyone can find you on " +
+      "Google.",
+    "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice, and " +
+      "you still can't say what either one did for you.",
+    "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
+      "accounts, so you can keep running it without me.",
     "If you've been putting this off, a call costs you nothing.",
   ],
   signOff: principal.firstName,
