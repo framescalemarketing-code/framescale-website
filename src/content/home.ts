@@ -13,7 +13,6 @@ export const hero = {
     "You work with me directly, start to finish.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
-  reassurance: "The call is free and takes half an hour. I won't chase you afterward.",
 } as const;
 
 export type Credential = {

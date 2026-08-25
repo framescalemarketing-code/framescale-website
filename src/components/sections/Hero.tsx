@@ -28,8 +28,6 @@ export function HomeHero() {
                 {hero.secondaryCta}
               </Button>
             </div>
-
-            <p className="font-ui text-sm text-(--text-muted)">{hero.reassurance}</p>
           </div>
 
           <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
