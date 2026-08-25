@@ -52,7 +52,7 @@ These rules apply to new copy and to edits you make to existing pages unless the
 ## Where to look
 
 - **Site facts / URLs / nav:** `src/lib/site.ts` (also holds `principal`, `practice`, and `location`)
-- **All marketing copy:** `src/content/{home,services,about,scale,pricing,faq,testimonials}.ts`
+- **All marketing copy:** `src/content/{home,services,about,scale,pricing,faq}.ts`
 - **API + env patterns:** `src/app/api/contact/route.ts`, `.env.example`
 - **Structured data:** `src/lib/schema.ts`
 - **Retired-route redirects:** `next.config.ts`
