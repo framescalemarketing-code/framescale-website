@@ -10,7 +10,7 @@ import { aboutStrip, differentiators, personalNote } from "@/content/home";
  */
 export function AboutMe() {
   return (
-    <Section tone="muted" size="default" ruled>
+    <Section tone="muted" size="default">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
           <SectionHeading title={aboutStrip.title} />
@@ -31,7 +31,7 @@ export function AboutMe() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="soft-card flex flex-col gap-5 p-6 sm:p-7">
+          <div className="soft-card flex flex-col gap-5 p-6 sm:p-8">
             {personalNote.body.map((paragraph) => (
               <p key={paragraph.slice(0, 32)} className="text-(--brand-deep)">
                 {paragraph}

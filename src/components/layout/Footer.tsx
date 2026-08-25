@@ -22,7 +22,12 @@ function LinkedInIcon({ className }: { className?: string }) {
  */
 export function Footer() {
   return (
-    <footer className="dark-section" aria-labelledby="footer-heading">
+    /* The mobile CTA bar is fixed to the bottom of the viewport and would
+       otherwise cover this last row. The bar is md:hidden, so the clearance is. */
+    <footer
+      className="dark-section pb-(--mobile-cta-clearance) md:pb-0"
+      aria-labelledby="footer-heading"
+    >
       <div className="grain-overlay" />
       <h2 id="footer-heading" className="sr-only">
         Site footer

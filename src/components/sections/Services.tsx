@@ -7,7 +7,7 @@ import { services } from "@/content/services";
 /** Condensed overview for the home page. Each row deep-links to /services. */
 export function ServiceOverview() {
   return (
-    <Section size="default" ruled>
+    <Section size="default">
       <SectionHeading title="Four ways I help" lead="Most people need more than one." className="max-w-3xl" />
 
       <Reveal group className="mt-10 flex flex-col">
@@ -15,7 +15,7 @@ export function ServiceOverview() {
           <RevealItem key={service.id} className={index === 0 ? "" : "rule"}>
             <Link
               href={`/services#${service.id}`}
-              className="group flex flex-col gap-4 py-8 md:flex-row md:items-center md:gap-10"
+              className="focus-ring group flex flex-col gap-4 py-8 md:flex-row md:items-center md:gap-10"
             >
               <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums md:w-10">
                 {service.number}
@@ -46,7 +46,7 @@ export function ServiceOverview() {
  */
 export function ServiceDetails() {
   return (
-    <Section tone="muted" size="default" ruled>
+    <Section tone="muted" size="default">
       <SectionHeading title="Four ways I help" lead="Most people need more than one." className="max-w-2xl" />
 
       <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
@@ -57,7 +57,7 @@ export function ServiceDetails() {
               key={service.id}
               id={service.id}
               as="section"
-              className="soft-card flex scroll-mt-28 flex-col gap-4 p-6 sm:p-7"
+              className="soft-card flex scroll-mt-28 flex-col gap-4 p-6 sm:p-8"
             >
               <div className="flex items-center gap-3">
                 <span className="flex size-10 items-center justify-center rounded-xl bg-(--brand-primary)/10">

@@ -104,7 +104,20 @@
   --muted: #f6f1e7;
   --input-background: #fbf8f2;
   --border: rgba(38, 70, 83, 0.13);
+
+  /* Radius scale. Three sizes, each with one job, so a card and a photo are
+     never rounded by whatever utility came to hand:
+       --radius        form fields and other small controls
+       --radius-card   any panel holding content (soft-card, hairline-box)
+       --radius-media  photography, which needs a larger radius to read as
+                       rounded at all at its size. */
   --radius: 0.875rem;
+  --radius-card: 1.25rem;
+  --radius-media: 2rem;
+
+  /* Vertical clearance for the fixed mobile CTA bar, which otherwise sits on
+     top of the last row of the footer. */
+  --mobile-cta-clearance: 4.25rem;
 }
 
 @layer base {
@@ -196,9 +209,11 @@ p {
     font-weight: 500;
   }
 
+  /* The smallest step still has to outrank body copy. Against the 17px base
+     the old 1.12rem floor was only 1.05x, which is not a hierarchy. */
   .display-sm {
     font-family: var(--font-headline);
-    font-size: clamp(1.12rem, 1.5vw, 1.3rem);
+    font-size: clamp(1.2rem, 1.6vw, 1.35rem);
     line-height: 1.35;
     letter-spacing: -0.004em;
     font-weight: 500;
@@ -255,7 +270,7 @@ p {
   .hairline-box {
     border: 1px solid var(--border);
     background: var(--card);
-    border-radius: 1.25rem;
+    border-radius: var(--radius-card);
     transition: border-color 240ms ease, background-color 240ms ease;
   }
 
@@ -269,8 +284,8 @@ p {
   .soft-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 1.25rem;
-    transition: border-color 220ms ease, transform 220ms ease;
+    border-radius: var(--radius-card);
+    transition: border-color 220ms ease;
   }
 
   .soft-card:hover {
@@ -326,6 +341,16 @@ p {
   .link-quiet:hover,
   .link-quiet:focus-visible {
     background-size: 100% 1px;
+  }
+
+  /* Keyboard focus for interactive elements that are not buttons: whole-row
+     links and the FAQ disclosure summaries. Buttons carry their own ring via
+     the Button component, and this matches its offset so focus looks the same
+     wherever it lands. */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius);
   }
 
   /* --- Form fields -------------------------------------------------------- */

@@ -20,14 +20,14 @@ export function FAQ({
   tone = "default",
 }: FaqProps) {
   return (
-    <Section tone={tone} size="tall" ruled>
-      <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+    <Section tone={tone} size="tall">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading title={title} lead={lead} className="lg:sticky lg:top-24 lg:self-start" />
 
         <div className="flex flex-col">
           {items.map((item, index) => (
             <details key={item.question} className={`group py-6 ${index === 0 ? "" : "rule"}`}>
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
+              <summary className="focus-ring flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
                 <h3 className="display-sm text-(--brand-deep) transition-colors group-hover:text-(--brand-primary)">
                   {item.question}
                 </h3>

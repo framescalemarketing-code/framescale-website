@@ -6,7 +6,11 @@ type SectionProps = {
   id?: string;
   /** `dark` paints the deep-teal anchor band and adds the grain texture. */
   tone?: "default" | "muted" | "dark";
-  /** Hairline above the section. The design separates with rules, not shadows. */
+  /**
+   * Hairline above the section. Only needed when this section and the one
+   * above it share a `tone`: a tone change already reads as a boundary, and
+   * drawing both separates the same edge twice.
+   */
   ruled?: boolean;
   size?: "default" | "compact" | "tall";
   width?: "default" | "wide" | "narrow";
@@ -19,10 +23,15 @@ const TONES = {
   dark: "dark-section",
 } as const;
 
+/**
+ * One rhythm, each step roughly 1.3x the last, so the difference between two
+ * sizes is always visible. The old scale stepped 10/14/16 on mobile, where
+ * `tall` was only 1.14x `default` and the two were hard to tell apart.
+ */
 const SIZES = {
-  compact: "py-10 md:py-14",
-  default: "py-14 md:py-18",
-  tall: "py-16 md:py-24",
+  compact: "py-12 md:py-16",
+  default: "py-16 md:py-22",
+  tall: "py-20 md:py-28",
 } as const;
 
 export function Section({
@@ -37,7 +46,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`${TONES[tone]} ${SIZES[size]} ${ruled ? "rule" : ""} ${className}`}
+      className={[TONES[tone], SIZES[size], ruled ? "rule" : "", className].filter(Boolean).join(" ")}
     >
       {tone === "dark" ? <div className="grain-overlay" /> : null}
       <Container width={width}>{children}</Container>

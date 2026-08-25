@@ -8,7 +8,7 @@ import { problemSection, problems } from "@/content/home";
  */
 export function ProblemList() {
   return (
-    <Section tone="muted" size="default" ruled>
+    <Section tone="muted" size="default">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           title={problemSection.title}
@@ -18,7 +18,7 @@ export function ProblemList() {
 
         <Reveal group className="flex flex-col gap-4">
           {problems.map((problem, index) => (
-            <RevealItem key={problem.title} className="soft-card flex gap-5 p-6 sm:gap-6 sm:p-7">
+            <RevealItem key={problem.title} className="soft-card flex gap-5 p-6 sm:gap-6 sm:p-8">
               <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
                 0{index + 1}
               </span>

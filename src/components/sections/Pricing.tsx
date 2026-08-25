@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
  */
 export function Pricing() {
   return (
-    <Section id="pricing" tone="muted" size="default" ruled>
+    <Section id="pricing" tone="muted" size="default">
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
         <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
           <SectionHeading title={pricingSection.title} lead={pricingSection.lead} />

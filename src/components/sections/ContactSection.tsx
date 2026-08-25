@@ -27,8 +27,8 @@ export function ContactSection({
   const turnstileSiteKey = getTurnstileSiteKeyForServer();
 
   return (
-    <Section id="contact" tone="muted" size="tall" ruled>
-      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+    <Section id="contact" tone="muted" size="tall">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <h2 className="display-lg text-(--brand-deep)">{title}</h2>
@@ -70,7 +70,7 @@ export function ContactSection({
           </div>
         </div>
 
-        <div className="hairline-box rounded-2xl bg-background p-6 md:p-8">
+        <div className="hairline-box p-6 sm:p-8">
           <h3 className="display-sm mb-2 text-(--brand-deep)">Tell me what's going on</h3>
           <p className="mb-7 text-sm text-(--text-muted)">
             Three boxes. It doesn't need to be long.

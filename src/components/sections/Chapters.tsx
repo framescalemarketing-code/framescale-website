@@ -5,7 +5,7 @@ import { chapters, philosophy, sanDiegoSection } from "@/content/about";
 /** The founder story on /about, as a numbered editorial sequence. */
 export function Chapters() {
   return (
-    <Section tone="muted" size="default" ruled>
+    <Section tone="muted" size="default">
       <SectionHeading title="How I got here" lead="Not a straight line, which turns out to be useful." className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
@@ -40,7 +40,7 @@ export function Chapters() {
  */
 export function SanDiegoSection() {
   return (
-    <Section size="default" ruled>
+    <Section size="default">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
           <h2 className="display-lg text-(--brand-deep)">{sanDiegoSection.title}</h2>
