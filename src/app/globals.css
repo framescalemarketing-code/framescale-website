@@ -333,18 +333,26 @@ p {
     border-radius: var(--radius);
   }
 
-  /* Cloudflare renders Turnstile as a fixed 300px iframe, which is wider than
-     the form card on every phone below about 394px. The body clips overflow, so
-     the widget was losing its right edge rather than scrolling. Scale it to the
-     room it actually has and hold the matching height so the layout does not
-     jump. The 65px is Turnstile's own rendered height. */
+  /* Cloudflare renders Turnstile at a fixed 300px, wider than the form card on
+     any phone below about 394px.
+
+     Scaling the widget is not enough on its own: `transform` is a paint-time
+     effect, so the 300px stays in layout and propagates up the flex chain as a
+     min-content floor, which widened the whole contact grid and pushed the page
+     to 374px on a 320px screen. The wrapper therefore also carries the scaled
+     width explicitly, and clips, so nothing downstream sees the 300px.
+
+     Keep each width equal to 300 x its scale, and each height to 65 x its
+     scale; 65px is Turnstile's own rendered height. */
   .turnstile-fit > div {
     transform-origin: top left;
   }
 
   @media (max-width: 400px) {
     .turnstile-fit {
+      width: 270px;
       height: 59px;
+      overflow: hidden;
     }
 
     .turnstile-fit > div {
@@ -354,7 +362,9 @@ p {
 
   @media (max-width: 365px) {
     .turnstile-fit {
+      width: 225px;
       height: 49px;
+      overflow: hidden;
     }
 
     .turnstile-fit > div {
