@@ -86,11 +86,22 @@ export const differentiatorSection = {
   title: "Why people hire me",
 } as const;
 
+/**
+ * The condensed version of the story told in full on /about. Keep the two in
+ * step: manufacturing, then the sales floor, then managing, then the ceiling
+ * that sent him back to school.
+ */
 export const aboutStrip = {
   title: "I started on the floor, not in an office",
-  body:
-    "I made the product, then sold it, then ran the place with a number to hit every month. School came after. " +
-    "So when you talk about payroll or a quarter that went sideways, I know what you mean.",
+  body: [
+    "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
+      "front to sell it, and before long I was managing the store with a number to hit every month.",
+    "I did that in corporate stores, in franchises, and in small independents. After enough years of it I could " +
+      "see exactly where that road ended, and I did not want to get stuck on it.",
+    "So I went back to school. A bachelor's at UC Riverside, then an MBA in marketing, because I wanted to know " +
+      "why some businesses grow while others just stay busy. When you talk about payroll or a quarter that went " +
+      "sideways, I know what you mean.",
+  ],
   cta: "Read My Story",
 } as const;
 
