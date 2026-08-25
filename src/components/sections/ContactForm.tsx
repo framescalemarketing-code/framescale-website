@@ -79,6 +79,8 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
     setStatus("sending");
     setNote("");
 
+    const sourcePage = typeof window !== "undefined" ? window.location.pathname : "/";
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -87,7 +89,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           ...data,
           website: honeypot,
           turnstileToken: token,
-          sourcePage: typeof window !== "undefined" ? window.location.pathname : "/",
+          sourcePage,
         }),
       });
 
@@ -99,6 +101,11 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       setTouched({});
       setErrors({});
       trackEvent("contact_form_submit", { form_location: "inline" });
+      // The conversion event. It belongs here, after the API confirmed the
+      // message was sent, and not on the submit event: that fires for validation
+      // failures and failed sends too, which inflated the only metric that says
+      // whether the site works.
+      trackEvent("generate_lead", { form_id: "contact", form_location: "inline", location: sourcePage });
     } catch (err) {
       setStatus("error");
       setNote(err instanceof Error ? err.message : "Unable to submit right now. Please try again.");

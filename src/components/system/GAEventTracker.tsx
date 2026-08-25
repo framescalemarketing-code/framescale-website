@@ -43,7 +43,7 @@ export const GAEventTracker = () => {
           return;
         }
 
-        if (href.includes("/contact") || label.includes("contact") || label.includes("book") || label.includes("get started")) {
+        if (href.includes("#contact") || label.includes("contact") || label.includes("book") || label.includes("get started")) {
           trackEvent("cta_click", {
             label: label || href,
             destination: href,
@@ -61,22 +61,9 @@ export const GAEventTracker = () => {
       }
     };
 
-    const handleSubmit = (event: Event) => {
-      const form = event.target as HTMLFormElement | null;
-      if (!form) return;
-
-      trackEvent("generate_lead", {
-        form_id: form.id || "unknown_form",
-        form_action: form.getAttribute("action") || pathname,
-        location: pathname,
-      });
-    };
-
     document.addEventListener("click", handleClick, true);
-    document.addEventListener("submit", handleSubmit, true);
     return () => {
       document.removeEventListener("click", handleClick, true);
-      document.removeEventListener("submit", handleSubmit, true);
     };
   }, [pathname]);
 
