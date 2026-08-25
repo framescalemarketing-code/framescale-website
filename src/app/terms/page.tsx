@@ -36,7 +36,7 @@ export default function TermsPage() {
                 <Link className="text-(--brand-primary) font-semibold hover:underline" href={site.url}>
                   {site.hostname}
                 </Link>
-                , any contact or booking forms on the site, and services provided by FrameScale Inc.
+                , the contact form on the site, and services provided by FrameScale Inc.
               </p>
               <p>
                 If you sign a separate proposal, statement of work, master services agreement, or similar written agreement with FrameScale, that written agreement controls the paid services covered by it.

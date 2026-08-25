@@ -1,5 +1,13 @@
 # FrameScale positioning & ideal customer profiles
 
+> **Predates the 2026-08-20 rebuild. Read as history, not as current direction.**
+> The site now positions to small business generally. The optical, dental, and
+> retail verticals described below were dropped on purpose, and the industry
+> pages that served them were retired and are 308-redirected in `next.config.ts`.
+> Do not reintroduce vertical targeting from this document. The current
+> positioning lives in `src/content/*.ts` and the entity graph in
+> `src/lib/schema.ts`.
+
 Internal reference aligned to public site copy (as of this document). Use this when writing case studies, proposals, ads, or future page updates.
 
 ---

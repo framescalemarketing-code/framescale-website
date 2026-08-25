@@ -48,7 +48,7 @@ export default function CaliforniaPrivacyPage() {
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">How Information Is Used</h2>
               <p className="font-body text-(--text-muted) leading-relaxed">
-                Information is used to respond to inquiries, provide requested services, support the booking and contact process, and improve site operations and reporting.
+                Information is used to respond to inquiries, provide requested services, support the contact process, and improve site operations and reporting.
               </p>
             </div>
 

@@ -1,18 +1,19 @@
-# Jonathan Doe, MBA — Business Growth Consultant, San Diego
+# Jonathan Mejia, MBA: Small Business Consultant, San Diego
 
 Personal-brand marketing site. Three pages, one conversion path.
 
-> **Before launch:** two placeholder values must be replaced.
->
-> 1. `PRINCIPAL_LAST_NAME` in `src/lib/site.ts` (currently `"Doe"`). It renders in the nav, every `<h1>`, all title tags, and `Person` JSON-LD. `npm run brand:check` fails until it is set.
-> 2. `PLACEHOLDER_AUDIT_PRICE` and `PLACEHOLDER_PARTNER_PRICE` in `src/content/pricing.ts`.
+> **Before launch:** set `RESEND_API_KEY` and `CONTACT_NOTIFICATION_EMAIL` in
+> `.env.local`. The contact form is the only lead path on the site, and without
+> the key `src/app/api/contact/route.ts` returns its "not configured yet" error.
+> Setting `CLOUDFLARE_SITE_KEY` and `CLOUDFLARE_SECRET_KEY` turns on the spam
+> check; until both are set the form accepts anything. See `.env.example`.
 
 ## Pages
 
 | Route | Purpose |
 |---|---|
 | `/` | Home. Full conversion sequence, ending in the contact form. |
-| `/services` | Four service areas, the SCALE Method, industries, pricing, FAQ. |
+| `/services` | Four service areas, the SCALE Method, how pricing is scoped, FAQ. |
 | `/about` | Background, credentials, San Diego, philosophy. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
 

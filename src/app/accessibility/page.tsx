@@ -50,7 +50,7 @@ export default function AccessibilityPage() {
                 FrameScale is committed to making this website accessible, understandable, and usable. Our goal is to follow the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA as the practical standard for this site.
               </p>
               <p>
-                Accessibility is ongoing work. We review the site as pages, forms, images, and booking tools change.
+                Accessibility is ongoing work. We review the site as pages, forms, and images change.
               </p>
             </Section>
 
@@ -92,7 +92,7 @@ export default function AccessibilityPage() {
 
             <Section title="Need Help">
               <p>
-                If you cannot access part of the site, have trouble using the booking form, or notice an accessibility issue, email{" "}
+                If you cannot access part of the site, have trouble using the contact form, or notice an accessibility issue, email{" "}
                 <Link className="text-(--brand-primary) font-semibold hover:underline" href={`mailto:${site.email}`}>
                   {site.email}
                 </Link>
