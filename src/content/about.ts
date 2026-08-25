@@ -92,9 +92,11 @@ export const workingWithMe = {
 } as const;
 
 /**
- * TODO(owner): this is the best section to make your own. Add the
- * neighborhoods you know and the local groups you're part of. Real local
- * detail is what separates this from generic city copy.
+ * Written from the market rather than from Jonathan's own life. Naming
+ * neighborhoods, local groups, or a real client would make it stronger, but
+ * inventing any of that would be dishonest and, for a local-search page,
+ * a liability rather than an asset. It stays general until there is genuine
+ * detail to put here.
  */
 export const sanDiegoSection = {
   title: `Why ${location.city}`,
