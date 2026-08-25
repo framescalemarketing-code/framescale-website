@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Chapters, SanDiegoSection } from "@/components/sections/Chapters";
+import { Chapters } from "@/components/sections/Chapters";
 import { Credentials } from "@/components/sections/Credentials";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Container } from "@/components/ui/Container";
@@ -63,7 +63,6 @@ export default function AboutPage() {
 
       <Chapters />
       <Credentials />
-      <SanDiegoSection />
       <ContactSection
         title="Tell me what you're working on"
         lead="Half an hour on the phone. No slides, no pitch."

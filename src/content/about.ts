@@ -91,27 +91,6 @@ export const workingWithMe = {
   ],
 } as const;
 
-/**
- * Written from the market rather than from Jonathan's own life. Naming
- * neighborhoods, local groups, or a real client would make it stronger, but
- * inventing any of that would be dishonest and, for a local-search page,
- * a liability rather than an asset. It stays general until there is genuine
- * detail to put here.
- */
-export const sanDiegoSection = {
-  title: `Why ${location.city}`,
-  lead: "Small business is all I work on.",
-  paragraphs: [
-    `${location.city} runs on small businesses. Owners going up against national chains, working on margins that ` +
-      "don't leave much room, living off referrals until the referrals go quiet. That's the whole of who I work " +
-      "with.",
-    "Being local means I can come sit in your shop for an hour and watch how it runs, which sounds like a small " +
-      "thing and isn't. Most bad marketing advice comes from people who never saw the business they were advising.",
-    "I keep the client list short. You can't give a business proper attention while juggling twenty of them, and I " +
-      "would rather do a few well.",
-  ],
-} as const;
-
 export const philosophy = {
   title: "You should understand your own business",
   body:

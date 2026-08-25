@@ -1,6 +1,6 @@
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { chapters, philosophy, sanDiegoSection } from "@/content/about";
+import { chapters, philosophy } from "@/content/about";
 
 /** The founder story on /about, as a numbered editorial sequence. */
 export function Chapters() {
@@ -30,35 +30,13 @@ export function Chapters() {
           </RevealItem>
         ))}
       </Reveal>
-    </Section>
-  );
-}
 
-/**
- * The local section, with the closing belief folded in. These were two bands
- * making one point, so they are now one.
- */
-export function SanDiegoSection() {
-  return (
-    <Section size="default">
-      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-        <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
-          <h2 className="display-lg text-(--brand-deep)">{sanDiegoSection.title}</h2>
-          <p className="section-lead">{sanDiegoSection.lead}</p>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          {sanDiegoSection.paragraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)} className="measure text-(--text-muted)">
-              {paragraph}
-            </p>
-          ))}
-
-          <div className="soft-card mt-2 flex flex-col gap-3 p-6 sm:p-8">
-            <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
-            <p className="text-(--text-muted)">{philosophy.body}</p>
-          </div>
-        </div>
+      {/* Closes the story: what the whole run through the shop and back to
+          school was actually for. It used to sit in the San Diego band, which
+          has been removed. */}
+      <div className="soft-card mt-10 flex flex-col gap-3 p-6 sm:p-8">
+        <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
+        <p className="measure text-(--text-muted)">{philosophy.body}</p>
       </div>
     </Section>
   );
