@@ -15,11 +15,22 @@ export function ServiceOverview() {
           <RevealItem key={service.id} className={index === 0 ? "" : "rule"}>
             <Link
               href={`/services#${service.id}`}
-              className="focus-ring group flex flex-col gap-4 py-8 md:flex-row md:items-center md:gap-10"
+              className="focus-ring group flex flex-col gap-3 py-8 md:flex-row md:items-center md:gap-10"
             >
-              <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums md:w-10">
-                {service.number}
-              </span>
+              {/* On phones the number and the arrow share one line above the
+                  text, so the arrow is not left stranded below it. `contents`
+                  dissolves this wrapper from md up, where the row is a single
+                  flex line again. */}
+              <div className="flex items-center justify-between md:contents">
+                <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums md:w-10">
+                  {service.number}
+                </span>
+
+                <ArrowRight
+                  className="size-5 shrink-0 text-(--brand-primary) transition-transform group-hover:translate-x-1 md:order-last"
+                  aria-hidden="true"
+                />
+              </div>
 
               <div className="flex flex-1 flex-col gap-2">
                 <h3 className="display-sm text-(--brand-deep) transition-colors group-hover:text-(--brand-primary)">
@@ -27,11 +38,6 @@ export function ServiceOverview() {
                 </h3>
                 <p className="measure text-(--text-muted)">{service.summary}</p>
               </div>
-
-              <ArrowRight
-                className="size-5 shrink-0 text-(--brand-primary) transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              />
             </Link>
           </RevealItem>
         ))}

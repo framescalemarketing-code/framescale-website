@@ -65,7 +65,7 @@ export const AccessibilityWidget = () => {
 
   // Raised on small screens so it clears the sticky mobile CTA bar.
   return (
-    <div className="fixed bottom-20 left-4 z-40 md:bottom-4">
+    <div className="fixed right-4 bottom-20 z-40 md:right-auto md:bottom-4 md:left-4">
       <button
         ref={buttonRef}
         type="button"
@@ -89,7 +89,7 @@ export const AccessibilityWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.96 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute bottom-14 left-0 w-76 rounded-2xl border border-border bg-white p-5 shadow-[0_24px_56px_-24px_rgba(38,70,83,0.4)]"
+            className="absolute right-0 bottom-14 w-76 max-w-[calc(100vw-2.5rem)] rounded-2xl border border-border bg-white p-5 shadow-[0_24px_56px_-24px_rgba(38,70,83,0.4)] md:right-auto md:left-0"
           >
             <div className="mb-4 flex items-center justify-between">
               <h2 className="font-headline text-lg text-(--brand-deep)">
