@@ -42,7 +42,7 @@ export function Footer() {
               <BrandMark width={46} height={19} tone="light" />
               <div>
                 <p className="font-headline text-base leading-tight text-white">{principal.displayName}</p>
-                <p className="font-ui text-[9px] font-semibold tracking-[0.14em] text-white/45 uppercase">
+                <p className="font-ui text-[9px] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {principal.jobTitle} · {practice.name}
                 </p>
               </div>
@@ -84,7 +84,7 @@ export function Footer() {
           {(Object.entries(footerLinks) as [string, readonly { label: string; href: string }[]][]).map(
             ([heading, links]) => (
               <nav key={heading} aria-label={heading}>
-                <p className="font-ui text-[10px] font-semibold tracking-[0.16em] text-white/40 uppercase">
+                <p className="font-ui text-[10px] font-semibold tracking-[0.16em] text-white/65 uppercase">
                   {heading}
                 </p>
                 <ul className="mt-2.5 flex flex-col gap-1.5">
@@ -104,11 +104,11 @@ export function Footer() {
         {/* Service area as plain prose rather than a bare list of cities, which
             is the pattern Google reads as a doorway signal. */}
         <div className="flex flex-col gap-2 border-t border-white/10 py-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-          <p className="text-xs leading-relaxed text-white/40">
+          <p className="text-xs leading-relaxed text-white/60">
             I work with owners across {location.serviceArea}, including{" "}
             {location.areaServed.slice(0, -1).join(", ")}, and {location.areaServed.at(-1)}.
           </p>
-          <p className="text-xs whitespace-nowrap text-white/35">
+          <p className="text-xs whitespace-nowrap text-white/60">
             &copy; {YEAR} {practice.name}
           </p>
         </div>

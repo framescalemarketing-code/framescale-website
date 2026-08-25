@@ -219,26 +219,6 @@ p {
     font-weight: 500;
   }
 
-  /* Montserrat small-caps label. The only place the UI font carries meaning
-     rather than just sitting on a button. */
-  .eyebrow {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1.4;
-    color: var(--brand-primary);
-  }
-
-  .eyebrow-muted {
-    color: var(--text-muted);
-  }
-
-  .eyebrow-light {
-    color: rgba(255, 255, 255, 0.66);
-  }
-
   /* Body copy held to a readable measure. */
   .lead {
     font-family: var(--font-body);
@@ -351,6 +331,35 @@ p {
     outline: 2px solid var(--brand-primary);
     outline-offset: 4px;
     border-radius: var(--radius);
+  }
+
+  /* Cloudflare renders Turnstile as a fixed 300px iframe, which is wider than
+     the form card on every phone below about 394px. The body clips overflow, so
+     the widget was losing its right edge rather than scrolling. Scale it to the
+     room it actually has and hold the matching height so the layout does not
+     jump. The 65px is Turnstile's own rendered height. */
+  .turnstile-fit > div {
+    transform-origin: top left;
+  }
+
+  @media (max-width: 400px) {
+    .turnstile-fit {
+      height: 59px;
+    }
+
+    .turnstile-fit > div {
+      transform: scale(0.9);
+    }
+  }
+
+  @media (max-width: 365px) {
+    .turnstile-fit {
+      height: 49px;
+    }
+
+    .turnstile-fit > div {
+      transform: scale(0.75);
+    }
   }
 
   /* --- Form fields -------------------------------------------------------- */
@@ -477,10 +486,6 @@ html.a11y-high-contrast .bg-white,
 html.a11y-high-contrast .bg-background {
   background: #ffffff !important;
   color: #000000 !important;
-}
-
-html.a11y-high-contrast .eyebrow {
-  color: #0b3a47 !important;
 }
 
 html.a11y-high-contrast a,

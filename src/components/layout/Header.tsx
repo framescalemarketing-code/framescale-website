@@ -14,24 +14,16 @@ import { contactHrefFor, mainNav, practice, principal, site } from "@/lib/site";
  * asset and stays frozen, while the wordmark is now the principal's name
  * because that is the entity people search for.
  */
-function NameLockup({ onDark = false }: { onDark?: boolean }) {
+function NameLockup() {
   return (
     <span className="inline-flex items-center gap-3">
-      <BrandMark width={54} height={22} tone={onDark ? "light" : "color"} />
+      <BrandMark width={54} height={22} tone="color" />
       <span className="flex flex-col leading-none">
-        <span
-          className={`font-ui text-[15px] font-bold tracking-tight ${
-            onDark ? "text-white" : "text-(--brand-deep)"
-          }`}
-        >
+        <span className="font-ui text-[15px] font-bold tracking-tight text-(--brand-deep)">
           {principal.fullName}
-          <span className={onDark ? "text-white/55" : "text-(--text-muted)"}>, {principal.suffix}</span>
+          <span className="text-(--text-muted)">, {principal.suffix}</span>
         </span>
-        <span
-          className={`mt-1 font-ui text-[10px] font-medium tracking-[0.14em] uppercase ${
-            onDark ? "text-white/45" : "text-(--text-muted)"
-          }`}
-        >
+        <span className="mt-1 font-ui text-[10px] font-medium tracking-[0.14em] text-(--text-muted) uppercase">
           {practice.name}
         </span>
       </span>

@@ -82,10 +82,6 @@ export const differentiators: Differentiator[] = [
   },
 ];
 
-export const differentiatorSection = {
-  title: "Why people hire me",
-} as const;
-
 /**
  * The condensed version of the story told in full on /about. Keep the two in
  * step: manufacturing, then the sales floor, then managing, then the ceiling

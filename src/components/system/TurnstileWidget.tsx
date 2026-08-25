@@ -91,7 +91,7 @@ export function TurnstileWidget({
   if (!siteKey) return null;
 
   return (
-    <div role="group" aria-label={label} aria-describedby={descriptionId}>
+    <div className="turnstile-fit" role="group" aria-label={label} aria-describedby={descriptionId}>
       <div ref={containerRef} />
     </div>
   );

@@ -16,12 +16,16 @@ import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
 import { location, principal, site } from "@/lib/site";
 
+/**
+ * The site has no dark theme: the paper tones in globals.css are the whole
+ * palette. Declaring `light dark` told the browser otherwise, so on a machine
+ * set to dark mode the UA painted form fields, the industry `<select>`, and the
+ * scrollbar dark against a light page. One theme colour, matching
+ * `--background`, for the same reason.
+ */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1f24" },
-  ],
-  colorScheme: "light dark",
+  themeColor: "#fdfbf7",
+  colorScheme: "light",
 };
 
 export const metadata: Metadata = {
@@ -135,7 +139,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="style"
-          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Montserrat:wght@400..700&family=Open+Sans:wght@400..700&display=swap"
         />
         {/* eslint-enable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
 

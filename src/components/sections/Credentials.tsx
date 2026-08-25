@@ -17,7 +17,7 @@ export function Credentials() {
                   index === 0 ? "" : "border-t border-white/12"
                 }`}
               >
-                <dt className="font-ui text-[11px] font-semibold tracking-[0.14em] text-white/40 uppercase md:w-52 md:shrink-0 md:pt-1">
+                <dt className="font-ui text-[11px] font-semibold tracking-[0.14em] text-white/65 uppercase md:w-52 md:shrink-0 md:pt-1">
                   {item.label}
                 </dt>
                 <dd className="flex flex-col gap-1">
