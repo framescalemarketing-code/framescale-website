@@ -12,12 +12,12 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 | **Styling** | Tailwind CSS v4, `src/app/globals.css`, `src/styles/fonts.css`. |
 | **UI structure** | Primitives in `src/components/ui/`; chrome in `src/components/layout/`; page sections in `src/components/sections/`; framework plumbing in `src/components/system/`. The brand logo lives at `src/components/design/Brand.tsx` and is frozen (see brand guard). |
 | **Motion / icons** | `motion` (`motion/react`), shared variants in `src/lib/motion.ts`; icons via `lucide-react`. |
-| **Content** | All user-facing copy lives in `src/content/*.ts` as typed data, never inline in JSX. Site facts (name, location, phone, nav) live in `src/lib/site.ts`. |
+| **Content** | All user-facing copy lives in `src/content/*.ts` as typed data, never inline in JSX. Long-form prose uses the `ContentBlock` union in `src/content/blocks.ts`, rendered by the exhaustive switch in `src/components/content/ProseBlocks.tsx`. There is deliberately no MDX pipeline. Site facts (name, location, phone, nav) live in `src/lib/site.ts`. |
 | **Data / server** | **No database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Email via Resend is the system of record for leads. Do not reintroduce a datastore unless explicitly requested. |
 | **HTTP API** | One route handler: `src/app/api/contact/route.ts`. |
 | **Deployment** | Typical **Vercel** + Next (`@vercel/analytics`, `@vercel/speed-insights`); no `vercel.json` in repo. Follow existing Next/Vercel defaults unless told otherwise. |
-| **Routes** | Three marketing pages (`/`, `/services`, `/about`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. |
-| **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage and Service). `LocalBusiness` is deliberately not used: there is no public street address. |
+| **Routes** | Four marketing pages (`/`, `/optical-marketing`, `/services`, `/about`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. |
+| **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage and Service). `LocalBusiness` is deliberately not used: there is no public street address, and the practice is remote and national rather than local. Optical is the lead vertical; one vertical page only, see the rule in `README.md`. |
 | **Quality gates** | `npm run lint`, `npm run brand:check` (see `scripts/brand-guard.mjs`). |
 
 ## Mandatory behaviors

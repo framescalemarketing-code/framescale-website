@@ -20,7 +20,7 @@ export const principal = {
   get displayName() {
     return `${this.fullName}, ${this.suffix}`;
   },
-  jobTitle: "Small Business Consultant",
+  jobTitle: "Optical Practice Marketing Consultant",
   alumniOf: "University of California, Riverside",
   credential: "Master of Business Administration, Marketing Concentration",
 } as const;
@@ -31,36 +31,37 @@ export const practice = {
   shortName: "FrameScale",
 } as const;
 
-/** Geography. No public address exists, so this is a service area, not a storefront. */
+/**
+ * Geography. The practice is remote and national, so there is deliberately no
+ * `city` here at all. The previous San Diego framing capped the audience at one
+ * metro while naming a city the practice does not operate from, and a service
+ * area business cannot rank locally in a metro it has no presence in. The niche
+ * travels and the geography does not, so optical is the positioning and the
+ * address carries region and country only.
+ */
 export const location = {
-  city: "San Diego",
   region: "CA",
   regionName: "California",
   country: "US",
-  /** Drives `areaServed` in JSON-LD and the service-area copy in the footer. */
-  areaServed: [
-    "San Diego",
-    "La Jolla",
-    "Carlsbad",
-    "Encinitas",
-    "Del Mar",
-    "Poway",
-    "Chula Vista",
-    "Oceanside",
-    "Escondido",
-    "Coronado",
-  ],
-  /** Broad label for prose and schema. */
-  serviceArea: "San Diego County",
+  /** Drives `areaServed` in JSON-LD. */
+  areaServed: "United States",
+  /** Human-readable form for prose. */
+  serviceArea: "the United States",
 } as const;
 
 export const site = {
   name: principal.displayName,
   shortName: principal.fullName,
-  tagline: `${principal.jobTitle} in ${location.city}`,
+  tagline: "Marketing for independent optical practices",
+  /**
+   * The highest-leverage string on the site. It feeds root metadata, the OG and
+   * Twitter cards, `WebSite.description`, and `ProfessionalService.description`,
+   * so the optical claim has to lead here before it leads anywhere else. Kept
+   * near 180 characters and front-loaded, because search results truncate.
+   */
   description:
-    `I am ${principal.displayName}, a small business consultant in ${location.city}. I help local owners get found ` +
-    "on Google, fix the website, and understand their own numbers. You work with me directly, never a handoff.",
+    `I am ${principal.displayName}. I spent years in optical, from the back of the shop to managing stores. ` +
+    "Now I help independent practices and eyewear retailers grow. You work with me directly, never a handoff.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */
@@ -74,15 +75,19 @@ export const site = {
   locale: "en_US",
   ogImage: "/opengraph-image",
   twitterImage: "/twitter-image",
-  /** Anchor for the inline contact form, which appears at the foot of all three pages. */
+  /** Anchor for the inline contact form, which appears at the foot of every marketing page. */
   contactAnchor: "#contact",
   social: {
+    /** The practice page. Anchors the ProfessionalService entity. */
     linkedin: "https://www.linkedin.com/company/framescaleinc",
+    /** The personal profile. It already ranks for the name, so it anchors the Person entity. */
+    linkedinPersonal: "https://www.linkedin.com/in/jmejia96/",
     fiverr: "https://www.fiverr.com/s/xX8GAv4",
   },
 } as const;
 
 export const mainNav = [
+  { label: "Optical", href: "/optical-marketing" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
 ] as const;
@@ -90,6 +95,7 @@ export const mainNav = [
 export const footerLinks = {
   Site: [
     { label: "Home", href: "/" },
+    { label: "Optical", href: "/optical-marketing" },
     { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
     { label: "Contact", href: `/${site.contactAnchor}` },
@@ -111,7 +117,7 @@ export const footerLinks = {
 } as const;
 
 /** Pages that render an inline `#contact` section at their foot. */
-const PAGES_WITH_CONTACT_SECTION = new Set(["/", "/services", "/about"]);
+const PAGES_WITH_CONTACT_SECTION = new Set(["/", "/optical-marketing", "/services", "/about"]);
 
 /**
  * Resolve the right contact link for the page the visitor is currently on.

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { location, principal, site } from "@/lib/site";
+import { principal, site } from "@/lib/site";
 
 export const size = {
   width: 1200,
@@ -9,7 +9,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default function TwitterImage() {
-  const eyebrow = `${location.city} · ${location.serviceArea}`;
+  const eyebrow = principal.jobTitle;
 
   return new ImageResponse(
     (

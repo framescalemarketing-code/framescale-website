@@ -8,19 +8,18 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { servicesFaqs } from "@/content/faq";
 import { buildBreadcrumbGraph, buildFaqGraph, buildServicesGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
-import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `Small Business Marketing Help in ${location.city}`,
-  description: `Help for ${location.city} small businesses: getting found on Google, a website that works, and reports you can read. No set packages, so we talk first and I quote from there.`,
+  title: "Websites, Local Search, and Reporting for Optical Practices",
+  description: "Help for independent optical practices and eyewear retailers: getting found on Google, a website that books exams, and reports you can read. No set packages, so we talk first and I quote from there.",
   path: "/services",
   keywords: [
-    `small business consultant ${location.city}`,
-    `small business marketing ${location.city}`,
-    `local SEO ${location.city}`,
-    "Google Business Profile management",
-    "small business website design",
-    "small business marketing help",
+    "optical practice marketing",
+    "optometry practice marketing",
+    "eyewear retail marketing",
+    "optical practice SEO",
+    "optical practice website design",
+    "marketing for optometrists",
   ],
 });
 
@@ -39,7 +38,7 @@ export default function ServicesPage() {
       />
 
       <PageHero
-        headline={`How I help ${location.city} small businesses`}
+        headline="How I help independent optical practices"
         lead="Four things I do. I always start by working out what the real problem is, because it usually isn't the one you called about."
       />
 

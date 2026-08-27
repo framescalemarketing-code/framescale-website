@@ -52,7 +52,7 @@ export function Footer() {
               <span className="flex items-start gap-2 text-[13px] text-white/70">
                 <MapPin className="mt-0.5 size-3.5 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
                 <span>
-                  {location.city}, {location.region}. Serving {location.serviceArea}.
+                  Based in {location.regionName}. Working remotely across {location.serviceArea}.
                 </span>
               </span>
               <a
@@ -101,15 +101,9 @@ export function Footer() {
           )}
         </div>
 
-        {/* Service area as plain prose rather than a bare list of cities, which
-            is the pattern Google reads as a doorway signal. */}
-        <div className="flex flex-col gap-2 border-t border-white/10 py-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-          <p className="text-xs leading-relaxed text-white/60">
-            I work with owners across {location.serviceArea}, including{" "}
-            {location.areaServed.slice(0, -1).join(", ")}, and {location.areaServed.at(-1)}.
-          </p>
-          <p className="text-xs whitespace-nowrap text-white/60">
-            &copy; {YEAR} {practice.name}
+        <div className="flex border-t border-white/10 py-4">
+          <p className="text-xs text-white/60">
+            &copy; {YEAR} {practice.name}. All rights reserved.
           </p>
         </div>
       </Container>

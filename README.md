@@ -1,6 +1,6 @@
-# Jonathan Mejia, MBA: Small Business Consultant, San Diego
+# Jonathan Mejia, MBA: Optical Practice Marketing Consultant
 
-Personal-brand marketing site. Three pages, one conversion path.
+Personal-brand marketing site. Four marketing pages, one conversion path.
 
 > **Before launch:** set `RESEND_API_KEY` and `CONTACT_NOTIFICATION_EMAIL` in
 > `.env.local`. The contact form is the only lead path on the site, and without
@@ -14,11 +14,12 @@ Personal-brand marketing site. Three pages, one conversion path.
 |---|---|
 | `/` | Home. Full conversion sequence, ending in the contact form. |
 | `/services` | Four service areas, the SCALE Method, how pricing is scoped, FAQ. |
-| `/about` | Background, credentials, San Diego, philosophy. |
+| `/optical-marketing` | The vertical hub. Why optical is different, optical FAQ. Owns the head term. |
+| `/about` | Background, credentials, philosophy. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
 
-There is no separate contact page. The form is a section at the foot of all three
-marketing pages, anchored at `#contact`.
+There is no separate contact page. The form is a section at the foot of every
+marketing page, anchored at `#contact`.
 
 Routes retired in the rebuild (`/process`, `/book`, `/contact`, `/industries/*`,
 `/payment`, `/sitemap`, `/admin`) are 308-redirected in `next.config.ts`. Do not
@@ -80,14 +81,23 @@ dashboard were removed in the rebuild.
 ## SEO notes
 
 The site uses one entity graph: `Person` (the primary entity) wired to
-`ProfessionalService` and `WebSite`, plus `FAQPage` on the home and services
-pages and `Service` nodes per pillar.
+`ProfessionalService` and `WebSite`, plus `FAQPage` on the home, services, and
+optical pages, `Service` nodes per pillar, and one `Service` node with a
+`BusinessAudience` for the optical vertical.
 
 `LocalBusiness` is deliberately **not** used. It expects a customer-accessible
 street address, and there isn't one. `ProfessionalService` with `areaServed` is
 the accurate and penalty-safe choice.
 
 Similarly, there are no per-city landing pages. Near-duplicate location pages are
-the pattern search engines demote as doorway content; the local signal comes from
-the San Diego section on `/about`, consistent NAP between the footer and the
-JSON-LD, and genuine FAQ content instead.
+the pattern search engines demote as doorway content. The site no longer targets
+a single metro at all: it works remotely nationwide, `areaServed` is one
+`Country` node, and the address in the JSON-LD carries region and country only.
+
+One vertical page exists, `/optical-marketing`, because Jonathan worked in
+optical for years. A second vertical page may be added only when its copy is at
+least 70% different from the first and drawn from comparable first-hand
+experience. There is currently no second vertical that qualifies. Never create
+city by vertical pages such as `/optical-marketing-carlsbad`. That matrix is the
+doorway pattern the no-city-pages rule already forbids, and it is how solo
+consultants most often get demoted.

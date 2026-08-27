@@ -1,4 +1,4 @@
-import { location, principal } from "@/lib/site";
+import { principal } from "@/lib/site";
 
 /**
  * Plain and direct, in one person's voice. Every line is a real sentence with
@@ -7,7 +7,7 @@ import { location, principal } from "@/lib/site";
  * stay out. Warmth comes from what is said, not from padding around it.
  */
 export const hero = {
-  headline: `Grow your ${location.city} small business`,
+  headline: "Grow your optical practice",
   lead:
     `Hi, I'm ${principal.firstName}. I find out what's holding your business back, then I fix it. ` +
     "You work with me directly, start to finish.",
@@ -23,8 +23,8 @@ export type Credential = {
 export const credentials: Credential[] = [
   { value: "MBA", label: "In marketing" },
   { value: "UC Riverside", label: "Bachelor's degree" },
-  { value: "Small Businesses", label: "Who I work with" },
-  { value: location.city, label: "Local, one on one" },
+  { value: "Optical", label: "Where I came from" },
+  { value: "Nationwide", label: "Remote, one on one" },
 ];
 
 export type Problem = {

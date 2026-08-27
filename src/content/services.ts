@@ -1,5 +1,4 @@
 import { BarChart3, Compass, MapPin, Monitor, type LucideIcon } from "lucide-react";
-import { location } from "@/lib/site";
 
 export type Service = {
   /** Anchor id. Linked from the home page and the footer, so keep these stable. */
@@ -62,7 +61,7 @@ export const services: Service[] = [
     title: "Getting Found On Google",
     summary: "Come up when someone nearby goes looking for what you sell.",
     body:
-      `Most people looking for you in ${location.city} start on Google or Maps, and a growing number are asking an ` +
+      "Most people looking for an optical practice start on Google or Maps, and a growing number are asking an " +
       "AI instead. I work on the things that decide whether your name comes up at all.",
     included: [
       "Your Google listing, set up properly and kept up to date",

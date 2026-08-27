@@ -1,8 +1,8 @@
-import { location, principal } from "@/lib/site";
+import { principal } from "@/lib/site";
 
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it.`,
+  lead: "I help independent optical practices work out what's holding them back, and then I go fix it.",
 } as const;
 
 export type Chapter = {

@@ -34,7 +34,7 @@ export function HomeHero() {
             <div className="relative aspect-4/5 overflow-hidden rounded-(--radius-media) border border-(--border)">
               <Image
                 src="/photos/founder/jonathan-about.jpg"
-                alt={`${principal.displayName}, ${principal.jobTitle} in San Diego`}
+                alt={`${principal.displayName}, ${principal.jobTitle}`}
                 fill
                 sizes="(max-width: 1024px) 90vw, 42vw"
                 className="object-cover object-[center_15%]"

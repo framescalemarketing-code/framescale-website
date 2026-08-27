@@ -61,7 +61,7 @@ export function ContactSection({
             </a>
             <p className="flex items-center gap-3 text-sm text-(--text-muted)">
               <MapPin className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-              {location.city}, {location.region}. Serving {location.serviceArea}.
+              Based in {location.regionName}. Working remotely across {location.serviceArea}.
             </p>
             <p className="flex items-center gap-3 text-sm text-(--text-muted)">
               <Clock className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />

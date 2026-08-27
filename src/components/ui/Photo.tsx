@@ -1,0 +1,52 @@
+import Image from "next/image";
+
+type PhotoProps = {
+  src: string;
+  alt: string;
+  /** Aspect-ratio utility, e.g. `aspect-4/5`. Defaults to a wide editorial crop. */
+  aspect?: string;
+  /**
+   * Responsive sizes hint. Required on purpose: `fill` without an accurate
+   * `sizes` ships a desktop-width image to phones.
+   */
+  sizes: string;
+  /**
+   * Short line under the image. Real detail here reads as expertise and gives
+   * image search actual text to work with, so prefer naming the thing over
+   * describing the photo.
+   */
+  caption?: string;
+  /** Only for an above-the-fold image. */
+  priority?: boolean;
+  className?: string;
+};
+
+/**
+ * One photo, framed the way this site frames photography: the media radius, a
+ * hairline border, and a cover crop. Wraps `next/image` so the aspect box and
+ * the `fill` pairing stay in one place rather than being rebuilt per page.
+ */
+export function Photo({
+  src,
+  alt,
+  aspect = "aspect-16/10",
+  sizes,
+  caption,
+  priority = false,
+  className = "",
+}: PhotoProps) {
+  return (
+    <figure className={`flex flex-col gap-3 ${className}`}>
+      <div
+        className={`relative ${aspect} w-full overflow-hidden rounded-(--radius-media) border border-(--border)`}
+      >
+        <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" priority={priority} />
+      </div>
+      {caption ? (
+        <figcaption className="font-ui text-[11px] font-medium tracking-[0.08em] text-(--text-muted) uppercase">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}

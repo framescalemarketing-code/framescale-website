@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { location, practice, principal, site } from "@/lib/site";
+import { practice, principal, site } from "@/lib/site";
 
 export const size = {
   width: 1200,
@@ -11,7 +11,7 @@ export const contentType = "image/png";
 export default function OpenGraphImage() {
   // Satori requires an explicit display value on any element with more than
   // one child, so each text node is precomposed into a single string.
-  const eyebrow = `${principal.jobTitle} · ${location.city}`;
+  const eyebrow = `${principal.jobTitle} · ${practice.name}`;
 
   return new ImageResponse(
     (

@@ -1,4 +1,4 @@
-import { location, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export type FaqItem = {
   question: string;
@@ -18,10 +18,11 @@ export const homeFaqs: FaqItem[] = [
       "on Google when people search, and reports you can read on your own.",
   },
   {
-    question: `Do you only work with ${location.city} small businesses?`,
+    question: "Do you only work with optical practices?",
     answer:
-      "Mostly. Being local means I can come and see how the place runs, which tells me more than a phone call " +
-      `does. I take work elsewhere when it fits, but ${location.serviceArea} is where I'm most useful.`,
+      "Mostly, and that is on purpose. I spent years in optical, so I already know how the schedule, the frame " +
+      "board, and the insurance side actually work. I take other work when it fits, but optical is where I save " +
+      "you the most time.",
   },
   {
     question: "What does it cost?",

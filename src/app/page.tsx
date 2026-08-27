@@ -9,12 +9,12 @@ import { homeFaqs } from "@/content/faq";
 import { closingCta } from "@/content/home";
 import { buildFaqGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
-import { location, principal } from "@/lib/site";
+import { principal } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+  title: `${principal.displayName} | ${principal.jobTitle}`,
   absoluteTitle: true,
-  description: `I am ${principal.displayName}, a small business consultant in ${location.city}. I help local owners get found on Google, fix the website, and understand their own numbers.`,
+  description: `I am ${principal.displayName}. I spent years in optical, from the back of the shop to managing stores. Now I help independent practices and eyewear retailers get found, fill the schedule, and understand their own numbers.`,
   path: "/",
 });
 

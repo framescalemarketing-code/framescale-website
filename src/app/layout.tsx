@@ -14,7 +14,7 @@ import { iubenda } from "@/lib/iubenda";
 import { buildIubendaConsentConfigScript } from "@/lib/iubenda-consent-config";
 import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
-import { location, principal, site } from "@/lib/site";
+import { principal, site } from "@/lib/site";
 
 /**
  * The site has no dark theme: the paper tones in globals.css are the whole
@@ -31,19 +31,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+    default: `${principal.displayName} | ${principal.jobTitle}`,
     template: `%s | ${principal.displayName}`,
   },
   description: site.description,
   keywords: [
-    `small business consultant ${location.city}`,
-    `small business marketing ${location.city}`,
-    `${location.city} marketing consultant`,
-    "small business growth",
-    "local SEO consultant",
-    "Google Business Profile management",
-    "small business website design",
-    "small business marketing help",
+    "optical practice marketing",
+    "optometry practice marketing",
+    "eyewear retail marketing",
+    "marketing for optometrists",
+    "independent optical practice growth",
+    "optical practice SEO",
+    "optical practice website design",
+    "eyecare marketing consultant",
   ],
   category: "business",
   creator: principal.fullName,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+    title: `${principal.displayName} | ${principal.jobTitle}`,
     description: site.description,
     url: site.url,
     siteName: principal.displayName,
@@ -67,18 +67,18 @@ export const metadata: Metadata = {
         url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
+        alt: `${principal.displayName}, ${principal.jobTitle}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+    title: `${principal.displayName} | ${principal.jobTitle}`,
     description: site.description,
     images: [
       {
         url: site.twitterImage,
-        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
+        alt: `${principal.displayName}, ${principal.jobTitle}`,
       },
     ],
   },

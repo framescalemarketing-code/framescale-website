@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { location, principal, site } from "@/lib/site";
+import { principal, site } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
+    name: `${principal.displayName} | ${principal.jobTitle}`,
     short_name: principal.fullName,
     description: site.description,
     start_url: "/",

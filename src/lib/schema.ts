@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/content/faq";
+import { opticalSchemaDescription } from "@/content/optical";
 import { services } from "@/content/services";
 import { location, practice, principal, site } from "@/lib/site";
 
@@ -13,14 +14,15 @@ export const SCHEMA_IDS = {
   practice: `${site.url}/#practice`,
 } as const;
 
-const areaServed = location.areaServed.map((city) => ({
-  "@type": "City",
-  name: city,
-  containedInPlace: {
-    "@type": "AdministrativeArea",
-    name: `${location.serviceArea}, ${location.regionName}`,
-  },
-}));
+/**
+ * One Country node rather than a list of cities. The practice works remotely
+ * with optical practices anywhere, so enumerating metros would claim a local
+ * presence that does not exist.
+ */
+const areaServed = {
+  "@type": "Country",
+  name: location.areaServed,
+};
 
 /**
  * Deliberately ProfessionalService and not LocalBusiness. LocalBusiness expects
@@ -41,10 +43,9 @@ function practiceNode() {
     employee: { "@id": SCHEMA_IDS.person },
     areaServed,
     priceRange: "$$",
-    sameAs: [site.social.linkedin, site.social.fiverr],
+    sameAs: [site.social.linkedin],
     address: {
       "@type": "PostalAddress",
-      addressLocality: location.city,
       addressRegion: location.region,
       addressCountry: location.country,
     },
@@ -81,6 +82,9 @@ function personNode() {
       name: principal.credential,
     },
     knowsAbout: [
+      "Optical practice marketing",
+      "Eyewear retail operations",
+      "Optical retail management",
       "Small business consulting",
       "Small business marketing",
       "Business growth strategy",
@@ -94,12 +98,11 @@ function personNode() {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressLocality: location.city,
         addressRegion: location.region,
         addressCountry: location.country,
       },
     },
-    sameAs: [site.social.linkedin, site.social.fiverr],
+    sameAs: [site.social.linkedinPersonal, site.social.fiverr],
   };
 }
 
@@ -166,6 +169,30 @@ export function buildBreadcrumbGraph(trail: { name: string; path: string }[]) {
       name: crumb.name,
       item: `${site.url}${crumb.path}`,
     })),
+  };
+}
+
+/**
+ * The vertical page's own Service node. Kept separate from `buildServicesGraph`
+ * so the four general pillars and the optical positioning can move
+ * independently. `audience` is what tells a search or answer engine who this is
+ * for, which is the whole reason the page exists.
+ */
+export function buildOpticalServiceGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${site.url}/optical-marketing#service`,
+    name: "Optical practice marketing",
+    serviceType: "Optical practice marketing",
+    description: opticalSchemaDescription,
+    provider: { "@id": SCHEMA_IDS.person },
+    areaServed,
+    url: `${site.url}/optical-marketing`,
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Independent optical practices and eyewear retailers",
+    },
   };
 }
 

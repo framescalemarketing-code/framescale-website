@@ -7,18 +7,18 @@ import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/content/about";
 import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
-import { location, practice, principal } from "@/lib/site";
+import { practice, principal } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `About ${principal.displayName} | ${location.city} ${principal.jobTitle}`,
+  title: `About ${principal.displayName} | ${principal.jobTitle}`,
   absoluteTitle: true,
-  description: `I am a small business consultant in ${location.city}. From the shop floor to store management to an MBA in marketing, and how that background shapes the work I do.`,
+  description: "I spent years in optical, from the back of the shop to managing stores, then took an MBA in marketing. Here is how that background shapes the work I do.",
   path: "/about",
   keywords: [
     `${principal.fullName}`,
-    `small business consultant ${location.city}`,
+    "optical practice marketing consultant",
     "MBA marketing consultant",
-    "small business marketing help",
+    "optical industry marketing",
   ],
 });
 
@@ -43,14 +43,14 @@ export default function AboutPage() {
               <h1 className="display-xl text-(--brand-deep)">{aboutHero.headline}</h1>
               <p className="lead">{aboutHero.lead}</p>
               <p className="font-ui text-[11px] font-semibold tracking-[0.14em] text-(--text-muted) uppercase">
-                {principal.jobTitle} · {practice.name} · {location.city}, {location.region}
+                {principal.jobTitle} · {practice.name}
               </p>
             </div>
 
             <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-4xl lg:max-w-none">
               <Image
                 src="/photos/founder/jonathan-about.jpg"
-                alt={`${principal.displayName}, ${principal.jobTitle} in ${location.city}`}
+                alt={`${principal.displayName}, ${principal.jobTitle}`}
                 fill
                 sizes="(max-width: 1024px) 80vw, 38vw"
                 className="object-cover object-[center_18%]"
