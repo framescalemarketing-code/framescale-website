@@ -15,12 +15,15 @@ export type ScalePhase = {
 
 export const scaleIntro = {
   name: "The SCALE Method",
-  lead: "I work the same way every time, and you see each step before we move on.",
+  lead: "I work the same way every time. You see each step before we move to the next one.",
 } as const;
 
 /**
  * The letters are spelled out here. The previous site used these five titles
  * but never explained the acronym anywhere, so a reader had to work it out.
+ *
+ * Each `description` says what happens in that phase and why it is in this
+ * order. A phase that cannot justify its position does not need to be a phase.
  */
 export const scalePhases: ScalePhase[] = [
   {
@@ -30,8 +33,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Study The Market",
     summary: "Who is buying, and who else they could buy from.",
     description:
-      "I start wide. Who is buying in your area, what else they could pick instead of you, and what tips them one " +
-      "way or the other.",
+      "I start wide, because narrowing too early is how you end up solving the wrong problem well. Who is buying " +
+      "in your area, what else they could pick instead of you, and what tips them one way or the other.",
     activities: [
       "Look at who is buying near you",
       "See what the competition charges and how they talk about it",
@@ -50,8 +53,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Clarify The Client View",
     summary: "See the business the way a customer sees it.",
     description:
-      "You know your business from the inside. Customers only ever see the outside, and the two rarely match. This " +
-      "is where we close that gap.",
+      "You know your business from the inside. Customers only ever see the outside, and the two rarely match. " +
+      "The gap between them is where most of the lost work goes.",
     activities: [
       "Talk to you, and to whoever deals with customers day to day",
       "Read your reviews properly, including the bad ones",
@@ -69,7 +72,9 @@ export const scalePhases: ScalePhase[] = [
     icon: Target,
     title: "Align The Strategy",
     summary: "Agree what to say and where to say it.",
-    description: "Now we turn what I found into a plan, and we decide it together rather than me handing it over.",
+    description:
+      "Now we turn what I found into a plan. We decide it together, in the same room, rather than me handing you " +
+      "a document and wishing you luck with it.",
     activities: [
       "Settle on what you're saying and who you're saying it to",
       "Pick the handful of places worth showing up",
@@ -88,8 +93,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Launch The System",
     summary: "Build the website and the tracking the plan needs.",
     description:
-      "Then I build the thing. If the website or the tracking doesn't exist yet, that gets built too, rather than " +
-      "handed to someone else.",
+      "Then I build the thing. If the website or the tracking does not exist yet, I build that too. It does not " +
+      "get handed to someone else halfway through.",
     activities: [
       "Build or fix the website and the pages that matter",
       "Put tracking in so we can see what happens",
@@ -108,8 +113,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Evaluate And Improve",
     summary: "Watch what people do, then change what isn't working.",
     description:
-      "Once it's live I watch how people move through it and how the business responds. Then we change the parts " +
-      "that aren't pulling their weight.",
+      "Once it is live I watch how people move through it and how the business responds. Then we change the " +
+      "parts that are not pulling their weight. Nothing here is precious.",
     activities: [
       "Track the calls, the forms, and the visits",
       "Find where people give up and leave",

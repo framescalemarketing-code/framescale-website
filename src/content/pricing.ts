@@ -6,11 +6,11 @@
  */
 export const pricingSection = {
   title: "What it costs",
-  lead: "There's no price list. It depends on the business.",
+  lead: "There is no price list, and here is why.",
   intro:
-    "Everyone needs something a bit different. One owner needs their Google listing fixed and nothing else. " +
-    "Another needs the whole thing pulled apart and rebuilt. If I put a package price on that I'd only be " +
-    "guessing, and you'd end up paying for work you didn't need.",
+    "Everyone needs something different. One owner needs their Google listing fixed and nothing else. Another " +
+    "needs the whole thing pulled apart and rebuilt. A package price on that would be a guess, and you would " +
+    "end up paying for work you did not need.",
   cta: "Ask What It Would Cost",
 } as const;
 
@@ -22,7 +22,7 @@ export type PricingPoint = {
 export const pricingPoints: PricingPoint[] = [
   {
     title: "We Talk First",
-    body: "Half an hour on the phone so I understand what I'm looking at. Costs you nothing.",
+    body: "Half an hour on the phone so I understand what I am looking at. It costs you nothing.",
   },
   {
     title: "Then I Quote",
@@ -30,7 +30,7 @@ export const pricingPoints: PricingPoint[] = [
   },
   {
     title: "You Approve It",
-    body: "Nothing starts until you've seen that and said yes to it.",
+    body: "Nothing starts until you have seen that and said yes to it.",
   },
   {
     title: "No Surprise Invoices",

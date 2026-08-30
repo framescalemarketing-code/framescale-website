@@ -18,6 +18,10 @@ export type Service = {
 /**
  * Plain titles on purpose. The audience does not know or care what "conversion
  * rate optimization" means; the keyword phrasing lives in the page metadata.
+ *
+ * Each `body` opens on the claim rather than warming up to it, and `bestFor`
+ * is written as the sentence an owner would use about themselves, not as a
+ * category they have to file themselves under.
  */
 export const services: Service[] = [
   {
@@ -25,17 +29,17 @@ export const services: Service[] = [
     number: "01",
     icon: Compass,
     title: "Figuring Out What's Wrong",
-    summary: "Work out the real problem before you spend money fixing the wrong one.",
+    summary: "Find the real problem before you spend money on the wrong one.",
     body:
-      "Half the time the marketing isn't the problem. It's who you're talking to, or what you're saying to them. " +
-      "So I go and look at your customers and the businesses you're up against before I recommend anything.",
+      "Half the time the marketing is not the problem. It is who you are talking to, or what you are saying to " +
+      "them. So I go and look at your customers and the businesses you are up against before I recommend a thing.",
     included: [
       "Who your customers really are, as opposed to who you assume they are",
       "What the businesses near you are offering and charging",
       "A list of what to fix, in the order I would fix it",
       "A budget that fits a business your size",
     ],
-    bestFor: "You're working flat out and it isn't showing up in the numbers.",
+    bestFor: "You are working flat out and it is not showing up in the numbers.",
   },
   {
     id: "websites",
@@ -44,16 +48,16 @@ export const services: Service[] = [
     title: "Websites That Work",
     summary: "A site built around the way you actually take work in.",
     body:
-      "A website is only worth anything if it turns someone looking into someone calling. I build around the way " +
-      "you take work in now, and it has to be quick and easy on a phone, because that is where most people will " +
-      "see it.",
+      "A website earns its keep by turning someone looking into someone calling. Everything else it does is " +
+      "decoration. I build around the way you take work in now, and it has to be fast on a phone, because that " +
+      "is where most people will see it.",
     included: [
       "Built for you, not pulled off a shelf",
       "Works properly on a phone",
       "Forms that reach you however you want to be reached",
       "Set up so Google can read it",
     ],
-    bestFor: "Your site is old, slow, or just doesn't ring the phone.",
+    bestFor: "Your site is old, slow, or it just doesn't ring the phone.",
   },
   {
     id: "local-seo",
@@ -62,25 +66,26 @@ export const services: Service[] = [
     title: "Getting Found On Google",
     summary: "Come up when someone nearby goes looking for what you sell.",
     body:
-      `Most people looking for you in ${location.city} start on Google or Maps, and a growing number are asking an ` +
-      "AI instead. I work on the things that decide whether your name comes up at all.",
+      `Most people looking for you in ${location.city} start on Google or Maps, and a growing number ask an AI ` +
+      "instead. I work on the things that decide whether your name comes up at all. This is the cheapest ground " +
+      "most businesses are giving away.",
     included: [
       "Your Google listing, set up properly and kept up to date",
       "Reviews, and a way of asking for them that isn't awkward",
       "Wording on your site that matches what people type",
       "Turning up when someone asks an AI rather than searching",
     ],
-    bestFor: "You need local customers and right now they're finding somebody else.",
+    bestFor: "You need local customers and right now they are finding somebody else.",
   },
   {
     id: "analytics",
     number: "04",
     icon: BarChart3,
     title: "Ads And Straight Answers",
-    summary: "Only spend where it pays, and be able to check that yourself.",
+    summary: "Only spend where it pays, and check that yourself.",
     body:
-      "You shouldn't have to take my word for what's working. I set up tracking you can open and read on your own, " +
-      "and I don't put money into ads until the numbers say they will pay for themselves.",
+      "You should not have to take my word for what is working. I set up tracking you can open and read on your " +
+      "own. I do not put money into ads until the numbers say they will pay for themselves.",
     included: [
       "Reports you can read without me on the phone",
       "Ads, but only when they make sense",
