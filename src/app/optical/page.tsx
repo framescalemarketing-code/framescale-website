@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/Hero";
@@ -49,20 +50,33 @@ export default function OpticalPage() {
       {/* The credibility band. This is the whole reason the page exists, so it
           comes before any problem or service framing. */}
       <Section tone="muted" size="default">
-        <div className="flex max-w-3xl flex-col gap-5">
-          <SectionHeading title={opticalBackground.title} />
-          {opticalBackground.body.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)} className="measure text-(--text-muted)">
-              {paragraph}
-            </p>
-          ))}
-          <Link
-            href="/about"
-            className="font-ui text-sm font-semibold text-(--brand-primary) inline-flex items-center gap-2 hover:underline"
-          >
-            The Longer Version
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div className="flex flex-col gap-5">
+            <SectionHeading title={opticalBackground.title} />
+            {opticalBackground.body.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)} className="measure text-(--text-muted)">
+                {paragraph}
+              </p>
+            ))}
+            <Link
+              href="/about"
+              className="font-ui text-sm font-semibold text-(--brand-primary) inline-flex items-center gap-2 hover:underline"
+            >
+              The Longer Version
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="relative aspect-3/2 w-full overflow-hidden rounded-(--radius-media) border border-(--border)">
+            <Image
+              src={opticalBackground.image.src}
+              alt={opticalBackground.image.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 38vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </Section>
 

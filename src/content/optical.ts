@@ -28,6 +28,10 @@ export const opticalBackground = {
     "So when you tell me the frame board is not moving, or that the floor was busy all month and the month still " +
       "came up short, I am not taking notes on what those words mean.",
   ],
+  image: {
+    src: "/photos/story/cartier-rimless.webp",
+    alt: "A gold rimless Cartier frame on a white surface, the panther detail on the temple in focus.",
+  },
 } as const;
 
 export type OpticalProblem = {
