@@ -85,6 +85,7 @@ export const site = {
 
 export const mainNav = [
   { label: "Services", href: "/services" },
+  { label: "Optical", href: "/optical" },
   { label: "About", href: "/about" },
 ] as const;
 
@@ -92,6 +93,7 @@ export const footerLinks = {
   Site: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Optical", href: "/optical" },
     { label: "About", href: "/about" },
     { label: "Contact", href: `/${site.contactAnchor}` },
   ],
@@ -112,7 +114,7 @@ export const footerLinks = {
 } as const;
 
 /** Pages that render an inline `#contact` section at their foot. */
-const PAGES_WITH_CONTACT_SECTION = new Set(["/", "/services", "/about"]);
+const PAGES_WITH_CONTACT_SECTION = new Set(["/", "/services", "/optical", "/about"]);
 
 /**
  * Resolve the right contact link for the page the visitor is currently on.

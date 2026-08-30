@@ -1,0 +1,130 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/sections/Hero";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { Reveal, RevealItem } from "@/components/ui/Reveal";
+import { Section, SectionHeading } from "@/components/ui/Section";
+import {
+  opticalBackground,
+  opticalClosing,
+  opticalHero,
+  opticalProblems,
+  opticalSteps,
+} from "@/content/optical";
+import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { buildPageMetadata } from "@/lib/metadata";
+import { location } from "@/lib/site";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: `Marketing For Optical Practices in ${location.city}`,
+  description:
+    `I spent my first career in optical, from the lab to store management, before the MBA. ` +
+    `Marketing help for independent optical and optometry practices in ${location.city}.`,
+  path: "/optical",
+  keywords: [
+    "optical practice marketing",
+    `optometry marketing ${location.city}`,
+    `optical marketing ${location.city}`,
+    "eye care practice website",
+    "optometrist local SEO",
+    "independent optical practice growth",
+  ],
+});
+
+export default function OpticalPage() {
+  return (
+    <>
+      <script
+        {...jsonLdProps(
+          buildBreadcrumbGraph([
+            { name: "Home", path: "/" },
+            { name: "Optical", path: "/optical" },
+          ]),
+        )}
+      />
+
+      <PageHero headline={opticalHero.headline} lead={opticalHero.lead} />
+
+      {/* The credibility band. This is the whole reason the page exists, so it
+          comes before any problem or service framing. */}
+      <Section tone="muted" size="default">
+        <div className="flex max-w-3xl flex-col gap-5">
+          <SectionHeading title={opticalBackground.title} />
+          {opticalBackground.body.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)} className="measure text-(--text-muted)">
+              {paragraph}
+            </p>
+          ))}
+          <Link
+            href="/about"
+            className="font-ui text-sm font-semibold text-(--brand-primary) inline-flex items-center gap-2 hover:underline"
+          >
+            The Longer Version
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </Section>
+
+      <Section size="default">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <SectionHeading
+            title="What Usually Needs Fixing"
+            lead="Not every practice has all four. Most have two."
+            className="lg:sticky lg:top-24 lg:self-start"
+          />
+
+          <Reveal group className="flex flex-col gap-4">
+            {opticalProblems.map((problem, index) => (
+              <RevealItem key={problem.title} className="soft-card flex gap-5 p-6 sm:gap-6 sm:p-8">
+                <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums">
+                  0{index + 1}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className="display-sm text-(--brand-deep)">{problem.title}</h3>
+                  <p className="measure text-(--text-muted)">{problem.body}</p>
+                </div>
+              </RevealItem>
+            ))}
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section tone="dark" size="default">
+        <SectionHeading
+          title="How I Would Work On It"
+          lead="The same four things I do for any small business, pointed at a practice."
+          tone="light"
+          className="max-w-3xl"
+        />
+
+        <Reveal group className="mt-11 grid gap-4 md:grid-cols-2">
+          {opticalSteps.map((step) => (
+            <RevealItem key={step.title}>
+              <Link
+                href={step.href}
+                className="flex h-full flex-col gap-3 rounded-(--radius-card) border border-white/15 bg-white/5 p-6 transition-colors hover:border-white/35 sm:p-8"
+              >
+                <step.icon className="h-5 w-5 text-white/70" aria-hidden="true" />
+                <h3 className="display-sm text-white">{step.title}</h3>
+                <p className="text-white/65">{step.body}</p>
+              </Link>
+            </RevealItem>
+          ))}
+        </Reveal>
+      </Section>
+
+      <Section size="compact">
+        <div className="soft-card flex flex-col gap-3 p-6 sm:p-8">
+          <h2 className="display-sm text-(--brand-deep)">{opticalClosing.title}</h2>
+          <p className="measure text-(--text-muted)">{opticalClosing.body}</p>
+        </div>
+      </Section>
+
+      <ContactSection
+        title="Tell me about the practice"
+        lead="Half an hour on the phone. Optical is the one industry where you can skip the part that explains it to me."
+      />
+    </>
+  );
+}
