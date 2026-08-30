@@ -1,15 +1,23 @@
 import { location, principal } from "@/lib/site";
 
 /**
- * Plain and direct, in one person's voice. Every line is a real sentence with
- * a subject and an active verb. Clipped noun-phrase fragments stacked in
- * parallel ("Big invoice, plenty of talk.") read as machine-written, so they
- * stay out. Warmth comes from what is said, not from padding around it.
+ * Plain and direct, in one person's voice. Two different rules apply, and
+ * mixing them up is what makes copy read as machine-written.
  *
- * Hedges are the thing to watch here. "Usually", "mostly", "a bit", "plenty
- * of" and "rather" all crept in over earlier passes and each one takes a
- * degree off a claim that was fine at full strength. Qualify only where the
- * qualifier is load-bearing, and then say it in its own sentence.
+ * Headings compress. A heading is a label, so it is a short noun phrase:
+ * "Busy But Flat", "Common Sticking Points". Not a full explanatory clause
+ * ("You're Busy But Not Growing"), and never question-framed ("What Usually
+ * Needs Fixing"), which is the strongest tell of the lot.
+ *
+ * Body stays in full sentences with a subject and an active verb. Clipped
+ * fragments stacked in parallel ("Big invoice, plenty of talk.") read as
+ * generated, so they stay out of prose.
+ *
+ * Two habits to keep watching. Hedges: "usually", "mostly", "a bit", "plenty
+ * of", "rather" each take a degree off a claim that was fine at full
+ * strength. And the aphoristic closer, a short punchy line bolted onto a
+ * longer sentence to sound wise ("That is most of the job."). One is a voice.
+ * Six across a site is a tic.
  */
 export const hero = {
   headline: `Grow the ${location.city} business you already built`,
@@ -46,26 +54,26 @@ export type Problem = {
 
 export const problems: Problem[] = [
   {
-    title: "You Don't Know What Your Marketing Did",
+    title: "Spending Without Answers",
     body: "A report lands every month. You still can't point at the part of it that made you money.",
   },
   {
-    title: "People Land On Your Site And Leave",
+    title: "Visitors Who Bounce",
     body: "They find you, look for a few seconds, and book with whoever came up next.",
   },
   {
-    title: "Nearby Customers Can't Find You",
+    title: "Invisible Nearby",
     body: "Someone two miles away searches for what you sell. The place down the road comes up instead.",
   },
   {
-    title: "You're Busy But Not Growing",
+    title: "Busy But Flat",
     body: "You haven't had a slow week in months. The business is still the size it was.",
   },
 ];
 
 export const problemSection = {
-  title: "Where most owners get stuck",
-  lead: "Most owners I meet recognize at least one of these. Plenty recognize all four.",
+  title: "Common Sticking Points",
+  lead: "Most owners I meet recognize at least one. Plenty recognize all four.",
 } as const;
 
 export type Differentiator = {
@@ -79,17 +87,17 @@ export const differentiators: Differentiator[] = [
     body: "You call, I answer, and I did the work you're calling about.",
   },
   {
-    title: "You See The Homework First",
+    title: "Homework First",
     body:
       "I study your market and your customers before I recommend spending anything. If you don't need what you " +
       "came to me for, I will tell you that on the first call.",
   },
   {
-    title: "Built For Your Business",
+    title: "Built To Fit",
     body: "I won't hand you something I built for someone else with the logo swapped out.",
   },
   {
-    title: "You'll Understand Your Own Numbers",
+    title: "Numbers You Can Read",
     body: "If you can't explain your marketing to someone else when we're done, I did it wrong.",
   },
 ];
@@ -100,7 +108,7 @@ export const differentiators: Differentiator[] = [
  * that sent him back to school.
  */
 export const aboutStrip = {
-  title: "I started on the floor, not in an office",
+  title: "Shop Floor First",
   body: [
     "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
       "front to sell it, and then I was managing the store with a number to hit every month.",

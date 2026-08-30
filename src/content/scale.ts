@@ -114,7 +114,7 @@ export const scalePhases: ScalePhase[] = [
     summary: "Watch what people do, then change what isn't working.",
     description:
       "Once it is live I watch how people move through it and how the business responds. Then we change the " +
-      "parts that are not pulling their weight. Nothing here is precious.",
+      "parts that are not pulling their weight.",
     activities: [
       "Track the calls, the forms, and the visits",
       "Find where people give up and leave",

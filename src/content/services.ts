@@ -48,9 +48,8 @@ export const services: Service[] = [
     title: "Websites That Work",
     summary: "A site built around the way you actually take work in.",
     body:
-      "A website earns its keep by turning someone looking into someone calling. Everything else it does is " +
-      "decoration. I build around the way you take work in now, and it has to be fast on a phone, because that " +
-      "is where most people will see it.",
+      "A website earns its keep by turning someone looking into someone calling. I build around the way you take " +
+      "work in now, and it has to be fast on a phone, because that is where most people will see it.",
     included: [
       "Built for you, not pulled off a shelf",
       "Works properly on a phone",
@@ -67,8 +66,7 @@ export const services: Service[] = [
     summary: "Come up when someone nearby goes looking for what you sell.",
     body:
       `Most people looking for you in ${location.city} start on Google or Maps, and a growing number ask an AI ` +
-      "instead. I work on the things that decide whether your name comes up at all. This is the cheapest ground " +
-      "most businesses are giving away.",
+      "instead. I work on the things that decide whether your name comes up at all.",
     included: [
       "Your Google listing, set up properly and kept up to date",
       "Reviews, and a way of asking for them that isn't awkward",

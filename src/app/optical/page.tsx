@@ -83,8 +83,8 @@ export default function OpticalPage() {
       <Section size="default">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <SectionHeading
-            title="What Usually Needs Fixing"
-            lead="Not every practice has all four. Most have two."
+            title="Areas Overlooked"
+            lead="Most practices have two of these. Some have all four."
             className="lg:sticky lg:top-24 lg:self-start"
           />
 
@@ -106,7 +106,7 @@ export default function OpticalPage() {
 
       <Section tone="dark" size="default">
         <SectionHeading
-          title="How I Would Work On It"
+          title="My Approach"
           lead="The same four things I do for any small business, pointed at a practice."
           tone="light"
           className="max-w-3xl"

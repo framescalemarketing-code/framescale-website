@@ -96,7 +96,7 @@ export const credentialDetails: CredentialDetail[] = [
 ];
 
 export const workingWithMe = {
-  title: "What you get",
+  title: "What You Get",
   points: [
     "Someone who has worked a sales floor, not just read about one.",
     "Business sense and marketing in the same conversation.",
@@ -106,7 +106,7 @@ export const workingWithMe = {
 } as const;
 
 export const philosophy = {
-  title: "You should understand your own business",
+  title: "Your Numbers, Your Business",
   body:
     "You should not need to call a marketing person to have your own numbers explained back to you. I go through " +
     "everything with you as we do it, so when we are finished you can keep it running yourself. Plenty of people " +
