@@ -10,6 +10,12 @@ export type Chapter = {
   kicker: string;
   title: string;
   body: string;
+  /**
+   * Optional photo for the chapter. These are Jonathan's own product
+   * photographs from the optical years, not stock. Credits in
+   * `docs/photo-credits.md`.
+   */
+  image?: { src: string; alt: string };
 };
 
 /** The real story, told the way it would be told out loud. */
@@ -22,6 +28,10 @@ export const chapters: Chapter[] = [
       "My first job was at an optical company, in the back, making the product. Not glamorous. After a while they " +
       "moved me out front to sell, and eventually I ended up managing the store, which meant a number to hit every " +
       "month and a team to hit it with.",
+    image: {
+      src: "/photos/story/rayban-frame.webp",
+      alt: "Close-up of a black Ray-Ban optical frame at a low angle, the temple signature in focus.",
+    },
   },
   {
     marker: "02",
