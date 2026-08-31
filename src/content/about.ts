@@ -55,8 +55,9 @@ export const chapters: Chapter[] = [
     title: "Back To School",
     body:
       "So I went back. Bachelor's degree at UC Riverside, then a master's in business with a marketing focus. " +
-      "I wanted to understand why some businesses grow and others just stay busy. I'd worked in both and " +
-      "couldn't have told you the difference at the time.",
+      "I'd worked out by then that working with people was where I enjoyed the job most, and I wanted to " +
+      "understand why some businesses grow while others just stay busy. I'd worked in both and couldn't have " +
+      "told you the difference at the time.",
   },
   {
     marker: "04",

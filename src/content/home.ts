@@ -126,10 +126,11 @@ export const differentiators: Differentiator[] = [
 ];
 
 /**
- * Jonathan's own words, corrected for grammar only. This is the short version
- * of the story told at length on /about, and the two currently give different
- * reasons for the MBA: here it is that he enjoyed working with people, on
- * /about it is wanting to know why some businesses grow. Worth reconciling.
+ * Jonathan's own words, corrected for grammar only. The short version of the
+ * story told at length on /about. Both give the same reason for going back to
+ * school, that working with people was where he enjoyed the job most; /about
+ * carries the second half of it too, wanting to know why some businesses grow
+ * and others stay busy. Keep the two in step.
  */
 export const aboutStrip = {
   title: "I started on the floor, not in an office",
