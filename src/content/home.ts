@@ -146,9 +146,13 @@ export const aboutStrip = {
 } as const;
 
 /**
- * A short signed note. The most personal thing on the page, and the only place
- * that corrects the assumption most owners arrive with: that marketing means
- * social media. Widening the definition is what earns the call.
+ * A signed note, and the most personal thing on the page. It does three jobs:
+ * widens the definition of marketing past social media, says what other
+ * marketers leave out, and ends on the point Jonathan cares about most, that
+ * the work is meant to leave the owner able to run it without him.
+ *
+ * It deliberately does not close on a call to action. The contact section is
+ * directly below it and asking twice in the same breath reads as a pitch.
  */
 export const personalNote = {
   body: [
@@ -156,10 +160,14 @@ export const personalNote = {
       "who your customer really is, what you charge, what your website says, and whether anyone can find you on " +
       "Google.",
     "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice, " +
-      "and you still can't say what either one did for you.",
-    "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
-      "accounts, so you can keep running it without me.",
-    "If you've been putting this off, a call costs you nothing.",
+      "and you still can't say what either one did for you. They also never work out the exact things your " +
+      "business needs to fix, so you end up with general tactics that would suit any company on the street.",
+    "I use my experience to run proper market research and identify where the growth actually is for your " +
+      "business.",
+    "I work with you one on one to understand where the business is struggling, what to do about it, and how to " +
+      "keep it growing after that.",
+    "I explain all of it as we go, because I want you to understand it yourself. You need me now, and the aim " +
+      "is that eventually you won't.",
   ],
   signOff: principal.firstName,
 } as const;
