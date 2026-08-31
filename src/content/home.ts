@@ -42,15 +42,15 @@ export type Credential = {
 };
 
 /**
- * Four slots, four pieces of evidence. Two of these used to restate the
- * audience and the city, which the rest of the page already says, so they
- * carried nothing. The shop floor belongs here: it is the one item on the
- * list a competitor cannot copy.
+ * Four slots under the hero: the two qualifications, who the work is for, and
+ * how it is done. The shop floor is deliberately not one of them. The hero
+ * directly above already opens on it, and the about strip further down tells
+ * it properly, so putting it here a third time spent a slot on a repeat.
  */
 export const credentials: Credential[] = [
   { value: "MBA", label: "Marketing concentration" },
   { value: "UC Riverside", label: "Bachelor's in business" },
-  { value: "Shop Floor", label: "Where I started" },
+  { value: "Small Business", label: "Who I work with" },
   { value: location.city, label: "In person, one on one" },
 ];
 

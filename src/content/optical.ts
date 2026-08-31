@@ -17,7 +17,7 @@ export const opticalHero = {
   headline: "Marketing help for optical practices",
   lead:
     "I spent my first career in optical. I worked in the lab, sold on the floor, and managed the store with a " +
-    `number to hit every month. Now I do the marketing side for practices around ${location.city}, so you ` +
+    "number to hit every month. Now I do the marketing side for practices around Southern California, so you " +
     "won't have to explain your business to me first.",
 } as const;
 
