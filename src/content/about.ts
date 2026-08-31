@@ -2,7 +2,7 @@ import { location, principal } from "@/lib/site";
 
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: `I help small business owners in ${location.city} work out what is holding them back, and then I go fix it.`,
+  lead: `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it.`,
 } as const;
 
 export type Chapter = {
@@ -43,8 +43,8 @@ export const chapters: Chapter[] = [
     title: "Hitting A Ceiling",
     body:
       "I worked in corporate stores, in franchises, and in small independents. Spend enough time doing that and " +
-      "you can see the whole road in front of you. Mine did not go as far as I wanted it to, which is an " +
-      "uncomfortable thing to work out about your own job.",
+      "you can see the whole road in front of you. Mine didn't go as far as I wanted, which is an uncomfortable " +
+      "thing to work out about your own job.",
   },
   {
     marker: "03",
@@ -52,8 +52,8 @@ export const chapters: Chapter[] = [
     title: "Back To School",
     body:
       "So I went back. Bachelor's degree at UC Riverside, then a master's in business with a marketing focus. " +
-      "What I wanted to understand was why some businesses grow and others just stay busy. I had worked in both " +
-      "and could not have told you the difference at the time.",
+      "I wanted to understand why some businesses grow and others just stay busy. I'd worked in both and " +
+      "couldn't have told you the difference at the time.",
   },
   {
     marker: "04",
@@ -61,8 +61,8 @@ export const chapters: Chapter[] = [
     title: "Using Both Halves",
     body:
       "These days I use both sides of that. Nearly every small business I meet is already good at the thing it " +
-      "does. What is missing is a clear message, a website that pulls its weight, and numbers the owner can read " +
-      "without help.",
+      "does. What's missing is a clear message, a website that works, and numbers the owner can read without " +
+      "help.",
   },
 ];
 
@@ -106,9 +106,9 @@ export const workingWithMe = {
 } as const;
 
 export const philosophy = {
-  title: "Your Numbers, Your Business",
+  title: "Understand Your Own Business",
   body:
-    "You should not need to call a marketing person to have your own numbers explained back to you. I go through " +
-    "everything with you as we do it, so when we are finished you can keep it running yourself. Plenty of people " +
-    "in this line of work would rather you could not.",
+    "You shouldn't need to call a marketing person to get your own numbers explained back to you. I go through " +
+    "everything with you as we do it, so when we're finished you can keep it running yourself. Plenty of people " +
+    "in this line of work would rather you couldn't.",
 } as const;

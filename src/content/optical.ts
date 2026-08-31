@@ -16,17 +16,17 @@ import { location } from "@/lib/site";
 export const opticalHero = {
   headline: "Marketing help for optical practices",
   lead:
-    "I spent my first career in optical. The lab, the sales floor, and a number to hit at the end of every " +
-    "month. You will not be explaining any of it to me.",
+    "I spent my first career in optical. I worked in the lab, sold on the floor, and managed the store. You " +
+    "won't have to explain your business to me.",
 } as const;
 
 export const opticalBackground = {
-  title: "Same Side Of The Counter",
+  title: "My Background In Optical",
   body: [
-    "I started in the lab making the product, moved out front to sell it, and ended up managing the store with a " +
-      "number to hit every month. I did that in corporate stores, in franchises, and in small independents.",
-    "So when you tell me the frame board is not moving, or that the floor was busy all month and the month still " +
-      "came up short, I am not taking notes on what those words mean.",
+    "I started in the lab making the product, moved out front to sell it, and ended up managing the store with " +
+      "a number to hit every month. I did that in corporate stores, in franchises, and in small independents.",
+    "So when you tell me the frame board isn't moving, or the store was busy all month and you still missed " +
+      "your number, I know what you mean.",
   ],
   image: {
     src: "/photos/story/cartier-rimless.webp",
@@ -45,28 +45,28 @@ export type OpticalProblem = {
  */
 export const opticalProblems: OpticalProblem[] = [
   {
-    title: "A Site That Undersells You",
+    title: "Your Website Looks Dated",
     body:
-      "The room is calm, the frames are good, and the staff know what they are doing. Then the site is a template " +
-      "from years ago, and it is the first thing a new patient sees.",
+      "The room is calm, the frames are good, and your staff know what they're doing. Then the site is a template " +
+      "from years ago, and it's the first thing a new patient sees.",
   },
   {
-    title: "Invisible On Maps",
+    title: "Hard To Find On Google",
     body:
-      "Someone looking for an eye exam searches on their phone and picks from what comes up nearby. A thin " +
-      "listing or the wrong hours keeps you off that shortlist entirely.",
+      "Someone looking for an eye exam searches on their phone and picks from what comes up nearby. If your " +
+      "listing is thin or your hours are wrong, you're not on that list.",
   },
   {
-    title: "The Frame Board Nobody Sees",
+    title: "Nobody Can See Your Frames",
     body:
-      "You choose the frame board carefully and it stays invisible until somebody walks in. The part of the " +
-      "business with the best margin is the part nobody can look at first.",
+      "You pick the frame board carefully and nobody sees it until they walk in. The part of the business with " +
+      "the best margin is the part nobody can look at first.",
   },
   {
-    title: "Reports Without Answers",
+    title: "Reports You Can't Use",
     body:
-      "A report arrives with impressions on it. Nobody tells you whether it produced exams, and you should not " +
-      "have to call someone to have your own numbers read back to you.",
+      "A report arrives with impressions on it. Nobody tells you whether it booked any exams, and you shouldn't " +
+      "have to call someone to get your own numbers explained.",
   },
 ];
 
@@ -81,22 +81,22 @@ export type OpticalStep = {
 export const opticalSteps: OpticalStep[] = [
   {
     icon: Ruler,
-    title: "Diagnosis First",
+    title: "Find The Real Problem",
     body:
-      "It is rarely the thing you called about. I look at who is walking in, who is not, and what the practices " +
-      "near you are offering before I recommend spending a dollar.",
+      "It's rarely the thing you called about. I look at who's walking in, who isn't, and what the practices near " +
+      "you are offering before I tell you to spend anything.",
     href: "/services#strategy",
   },
   {
     icon: Monitor,
-    title: "A Site That Pulls Its Weight",
+    title: "Fix The Website",
     body:
-      "It should look like the practice, load fast on a phone, and make booking an exam obvious.",
+      "It should look like the practice, load fast on a phone, and make booking an exam easy to find.",
     href: "/services#websites",
   },
   {
     icon: MapPin,
-    title: "Local Visibility",
+    title: "Get Found On Google",
     body:
       "Your listing, your hours, your reviews, and the pages that put you in front of someone searching in " +
       `${location.city}.`,
@@ -104,17 +104,17 @@ export const opticalSteps: OpticalStep[] = [
   },
   {
     icon: Eye,
-    title: "Reading The Numbers",
+    title: "Show You The Numbers",
     body:
-      "I go through the numbers with you as we go. By the end you can tell what is working without me on the " +
-      "phone, and all of it sits in your accounts.",
+      "I go through the numbers with you as we go. By the end you can tell what's working without calling me, " +
+      "and all of it sits in your accounts.",
     href: "/services#analytics",
   },
 ];
 
 export const opticalClosing = {
-  title: "The Handoff",
+  title: "You Keep It",
   body:
-    "I am not trying to become a line item you pay forever. I am trying to leave the practice easier to find, " +
-    "easier to book, and legible to you when you sit down and look at it.",
+    "I'm not trying to be a bill you pay forever. I want the practice easier to find, easier to book, and the " +
+    "numbers simple enough that you can read them yourself.",
 } as const;

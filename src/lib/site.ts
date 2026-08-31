@@ -59,7 +59,7 @@ export const site = {
   shortName: principal.fullName,
   tagline: `${principal.jobTitle} in ${location.city}`,
   description:
-    `I am ${principal.displayName}, a small business consultant in ${location.city}. I find what is holding your ` +
+    `I am ${principal.displayName}, a small business consultant in ${location.city}. I find what's holding your ` +
     "business back, then I fix it: the website, the Google listing, and numbers you can read yourself. You work " +
     "with me directly, never a handoff.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */

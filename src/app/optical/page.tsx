@@ -62,7 +62,7 @@ export default function OpticalPage() {
               href="/about"
               className="font-ui text-sm font-semibold text-(--brand-primary) inline-flex items-center gap-2 hover:underline"
             >
-              The Longer Version
+              More About Me
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -106,8 +106,8 @@ export default function OpticalPage() {
 
       <Section tone="dark" size="default">
         <SectionHeading
-          title="My Approach"
-          lead="The same four things I do for any small business, pointed at a practice."
+          title="How I Work"
+          lead="The same four things I do for any small business, aimed at a practice."
           tone="light"
           className="max-w-3xl"
         />
@@ -137,7 +137,7 @@ export default function OpticalPage() {
 
       <ContactSection
         title="Tell me about the practice"
-        lead="Half an hour on the phone. Optical is the one industry where you can skip the part that explains it to me."
+        lead="Half an hour on the phone. You won't have to explain optical to me."
       />
     </>
   );

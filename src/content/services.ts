@@ -31,15 +31,15 @@ export const services: Service[] = [
     title: "Figuring Out What's Wrong",
     summary: "Find the real problem before you spend money on the wrong one.",
     body:
-      "Half the time the marketing is not the problem. It is who you are talking to, or what you are saying to " +
-      "them. So I go and look at your customers and the businesses you are up against before I recommend a thing.",
+      "Half the time the marketing isn't the problem. It's who you're talking to, or what you're saying to them. " +
+      "So I look at your customers and the businesses you're up against before I recommend anything.",
     included: [
       "Who your customers really are, as opposed to who you assume they are",
       "What the businesses near you are offering and charging",
       "A list of what to fix, in the order I would fix it",
       "A budget that fits a business your size",
     ],
-    bestFor: "You are working flat out and it is not showing up in the numbers.",
+    bestFor: "You're working flat out and it isn't showing up in the numbers.",
   },
   {
     id: "websites",
@@ -48,8 +48,8 @@ export const services: Service[] = [
     title: "Websites That Work",
     summary: "A site built around the way you actually take work in.",
     body:
-      "A website earns its keep by turning someone looking into someone calling. I build around the way you take " +
-      "work in now, and it has to be fast on a phone, because that is where most people will see it.",
+      "A website is only worth something if it turns someone looking into someone calling. I build around the way " +
+      "you take work in now, and it has to be fast on a phone, because that's where most people will see it.",
     included: [
       "Built for you, not pulled off a shelf",
       "Works properly on a phone",
@@ -73,7 +73,7 @@ export const services: Service[] = [
       "Wording on your site that matches what people type",
       "Turning up when someone asks an AI rather than searching",
     ],
-    bestFor: "You need local customers and right now they are finding somebody else.",
+    bestFor: "You need local customers and right now they're finding somebody else.",
   },
   {
     id: "analytics",
@@ -82,8 +82,8 @@ export const services: Service[] = [
     title: "Ads And Straight Answers",
     summary: "Only spend where it pays, and check that yourself.",
     body:
-      "You should not have to take my word for what is working. I set up tracking you can open and read on your " +
-      "own. I do not put money into ads until the numbers say they will pay for themselves.",
+      "You shouldn't have to take my word for what's working. I set up tracking you can open and read on your " +
+      "own, and I don't put money into ads until the numbers say they'll pay for themselves.",
     included: [
       "Reports you can read without me on the phone",
       "Ads, but only when they make sense",

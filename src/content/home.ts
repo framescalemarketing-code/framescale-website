@@ -1,30 +1,31 @@
 import { location, principal } from "@/lib/site";
 
 /**
- * Plain and direct, in one person's voice. Two different rules apply, and
- * mixing them up is what makes copy read as machine-written.
+ * Plain, in one person's voice. Say the thing the way you would say it out
+ * loud to an owner across a counter. If a line would sound odd spoken, it is
+ * wrong here.
  *
- * Headings compress. A heading is a label, so it is a short noun phrase:
- * "Busy But Flat", "Common Sticking Points". Not a full explanatory clause
- * ("You're Busy But Not Growing"), and never question-framed ("What Usually
- * Needs Fixing"), which is the strongest tell of the lot.
+ * Four habits make copy read as machine-written, and all four have shown up
+ * in this file at some point:
  *
- * Body stays in full sentences with a subject and an active verb. Clipped
- * fragments stacked in parallel ("Big invoice, plenty of talk.") read as
- * generated, so they stay out of prose.
+ * 1. Clever headings. "Busy But Flat", "The Handoff", "Same Side Of The
+ *    Counter". A heading names the thing plainly: "Busy But Not Growing".
+ *    Question-framed headings are just as bad ("What Usually Needs Fixing").
+ * 2. Dropped contractions. "It is not", "I am", "you are" read stiff. Write
+ *    "isn't", "I'm", "you're", the way it is actually said.
+ * 3. The aphoristic closer, a short punchy line bolted onto a longer sentence
+ *    to sound wise. "That is most of the job." One is a voice. Four is a tic.
+ * 4. Hedges. "Usually", "mostly", "a bit", "plenty of" each take a degree off
+ *    a claim that was fine at full strength.
  *
- * Two habits to keep watching. Hedges: "usually", "mostly", "a bit", "plenty
- * of", "rather" each take a degree off a claim that was fine at full
- * strength. And the aphoristic closer, a short punchy line bolted onto a
- * longer sentence to sound wise ("That is most of the job."). One is a voice.
- * Six across a site is a tic.
+ * Body copy stays in full sentences with a subject and an active verb.
  */
 export const hero = {
-  headline: `Grow the ${location.city} business you already built`,
+  headline: `Grow your ${location.city} small business`,
   lead:
-    `I'm ${principal.firstName}. I made the product in the back of an optical shop, sold it out front, and ran ` +
-    "the store with a number to hit every month. Then I went and got the MBA. You will not be paying me to " +
-    "learn how your business works.",
+    `I'm ${principal.firstName}. I made glasses in the back of an optical shop, then sold them out front, then ` +
+    "ran the store. After that I got an MBA in marketing. You won't be paying me to learn how a small business " +
+    "works.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
 } as const;
@@ -54,26 +55,26 @@ export type Problem = {
 
 export const problems: Problem[] = [
   {
-    title: "Spending Without Answers",
+    title: "You Can't Tell What Your Marketing Did",
     body: "A report lands every month. You still can't point at the part of it that made you money.",
   },
   {
-    title: "Visitors Who Bounce",
+    title: "People Leave Your Website",
     body: "They find you, look for a few seconds, and book with whoever came up next.",
   },
   {
-    title: "Invisible Nearby",
+    title: "Local Customers Can't Find You",
     body: "Someone two miles away searches for what you sell. The place down the road comes up instead.",
   },
   {
-    title: "Busy But Flat",
+    title: "Busy But Not Growing",
     body: "You haven't had a slow week in months. The business is still the size it was.",
   },
 ];
 
 export const problemSection = {
-  title: "Common Sticking Points",
-  lead: "Most owners I meet recognize at least one. Plenty recognize all four.",
+  title: "Common Problems",
+  lead: "Most owners I meet have at least one of these. Plenty have all four.",
 } as const;
 
 export type Differentiator = {
@@ -87,13 +88,13 @@ export const differentiators: Differentiator[] = [
     body: "You call, I answer, and I did the work you're calling about.",
   },
   {
-    title: "Homework First",
+    title: "Research First",
     body:
-      "I study your market and your customers before I recommend spending anything. If you don't need what you " +
-      "came to me for, I will tell you that on the first call.",
+      "I study your market and your customers before I tell you to spend anything. If you don't need what you " +
+      "came to me for, I'll tell you on the first call.",
   },
   {
-    title: "Built To Fit",
+    title: "Built For You",
     body: "I won't hand you something I built for someone else with the logo swapped out.",
   },
   {
@@ -108,12 +109,12 @@ export const differentiators: Differentiator[] = [
  * that sent him back to school.
  */
 export const aboutStrip = {
-  title: "Shop Floor First",
+  title: "My Background",
   body: [
     "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
       "front to sell it, and then I was managing the store with a number to hit every month.",
-    "I did that in corporate stores, in franchises, and in small independents. I could see exactly where that " +
-      "road ended. I did not want to get stuck on it.",
+    "I did that in corporate stores, in franchises, and in small independents. I could see where that road " +
+      "ended, and I didn't want to get stuck on it.",
     "So I went back to school. A bachelor's at UC Riverside, then an MBA in marketing, because I wanted to know " +
       "why some businesses grow while others just stay busy. When you talk about payroll or a quarter that went " +
       "sideways, I know what you mean.",

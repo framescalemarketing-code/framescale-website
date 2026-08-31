@@ -25,21 +25,21 @@ export const homeFaqs: FaqItem[] = [
   {
     question: `Do you only work with ${location.city} small businesses?`,
     answer:
-      "Mostly, and that is deliberate. Being local means I can come and stand in the place while it is running, " +
-      `which tells me more in half an hour than a phone call does in three. I take work elsewhere when it fits, ` +
-      `but ${location.serviceArea} is where I am most useful.`,
+      "Mostly, and that's on purpose. Being local means I can come and see how the place runs, which tells me " +
+      `more than a phone call does. I take work elsewhere when it fits, but ${location.serviceArea} is where ` +
+      "I'm most useful.",
   },
   {
     question: "What does it cost?",
     answer:
-      "It depends on the business, so there is no price list. Some owners need one thing fixed. Others need the " +
+      "It depends on the business, so there's no price list. Some owners need one thing fixed. Others need the " +
       "whole picture rebuilt. We talk first, then I give you a number and what it covers. The first call is free.",
   },
   {
     question: "How long until I see results?",
     answer:
       "Research takes a few weeks. Website work depends on the size of the job. Google takes a few months, " +
-      "because that is how long it takes for anyone to notice you changed something. Anyone promising faster " +
+      "because that's how long it takes for anyone to notice you changed something. Anyone promising faster " +
       "is guessing.",
   },
   {
@@ -59,8 +59,8 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Can I hire you for just one thing?",
     answer:
-      "Yes. I will push to do the research first, though. Building a website before we know who we are talking " +
-      "to is how budgets disappear.",
+      "Yes. I'll push to do the research first, though. Building a website before we know who we're talking to " +
+      "is how budgets disappear.",
   },
   {
     question: "Do I own the website when we're done?",
@@ -72,7 +72,7 @@ export const servicesFaqs: FaqItem[] = [
     question: "I already have a website. Is that a problem?",
     answer:
       "No. Plenty of sites need fixing rather than replacing, and replacing one that works is a waste of your " +
-      "money. I will tell you honestly which situation you are in.",
+      "money. I'll tell you honestly which one you're in.",
   },
   {
     question: "Am I locked into a contract?",
@@ -83,8 +83,8 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "What kind of businesses do you work with?",
     answer:
-      "Small ones that have been open a while and want to get bigger. If you are still working out what you " +
-      "sell, or you want a whole agency team on it, I am not your best bet.",
+      "Small ones that have been open a while and want to get bigger. If you're still working out what you sell, " +
+      "or you want a whole agency team on it, I'm not your best bet.",
   },
   {
     question: "How do I reach you?",
