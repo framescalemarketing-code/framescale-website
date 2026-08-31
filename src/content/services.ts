@@ -29,7 +29,7 @@ export const services: Service[] = [
     number: "01",
     icon: Compass,
     title: "Figuring Out What's Wrong",
-    summary: "Find the real problem before you spend money on the wrong one.",
+    summary: "Work out the real problem before you spend money fixing the wrong one.",
     body:
       "Most owners I work with don't realize how much depends on who they're marketing to and what they actually " +
       "say to them. So before I recommend anything I go and look at your customers and the businesses you're up " +
@@ -50,8 +50,9 @@ export const services: Service[] = [
     title: "Websites That Work",
     summary: "A site built around the way you actually take work in.",
     body:
-      "A website has one job, which is turning someone who's looking into someone who calls. I build around the " +
-      "way you take work in now, and it has to be fast on a phone, because that's where most people will see it.",
+      "A website is only worth anything if it turns someone looking into someone calling. I build around the way " +
+      "you take work in now, and it has to be quick and easy on a phone, because that's where most people will " +
+      "see it.",
     included: [
       "Put together for your business from scratch",
       "Works properly on a phone",

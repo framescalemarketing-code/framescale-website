@@ -29,10 +29,9 @@ import { location, principal } from "@/lib/site";
 export const hero = {
   headline: `Grow your ${location.city} small business`,
   lead:
-    `I'm ${principal.firstName}. I made glasses in the back of an optical shop, then sold them out front, then ` +
-    "ran the store. After that I got an MBA in marketing. Now I work with owners around " +
-    `${location.city} on getting found, getting the website right, and understanding what their numbers are ` +
-    "telling them. You won't be paying me to learn how a small business works.",
+    `Hi, I'm ${principal.firstName}. I made glasses in the back of an optical shop and ended up running the ` +
+    "store, so I know how a small business actually works. I find out what's holding yours back, then I fix " +
+    "it. You work with me directly, start to finish.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
 } as const;
@@ -63,15 +62,15 @@ export type Problem = {
 export const problems: Problem[] = [
   {
     title: "You Can't Tell What Your Marketing Did",
-    body: "A report lands every month. You still can't point at the part of it that made you money.",
+    body: "A report arrives every month, and you still can't say which part of it made you money.",
   },
   {
-    title: "People Leave Your Website",
+    title: "People Land On Your Site And Leave",
     body: "They find you, look for a few seconds, and book with whoever came up next.",
   },
   {
-    title: "Local Customers Can't Find You",
-    body: "Someone two miles away searches for what you sell. The place down the road comes up instead.",
+    title: "Nearby Customers Can't Find You",
+    body: "Someone two miles away searches for what you sell, and the place down the road comes up.",
   },
   {
     title: "Busy But Not Growing",
@@ -80,7 +79,7 @@ export const problems: Problem[] = [
 ];
 
 export const problemSection = {
-  title: "Common Problems",
+  title: "Where most owners get stuck",
   lead:
     "Most owners I meet have at least one of these. Plenty have all four, and none of them mean you're running " +
     "the business badly.",
@@ -99,19 +98,19 @@ export const differentiators: Differentiator[] = [
       "the same person who built the thing.",
   },
   {
-    title: "Research First",
+    title: "You See The Homework First",
     body:
       "I study your market and your customers before I tell you to spend anything. If you don't need what you " +
       "came to me for, I'll tell you on the first call.",
   },
   {
-    title: "Built For You",
+    title: "Built For Your Business",
     body:
-      "Everything I build gets put together for your business, from what it says to how it works. I start with how " +
-      "you actually take work in, because a website that fights the way you run things gets abandoned in a month.",
+      "I won't hand you something I built for someone else with the logo swapped out. I start with how you " +
+      "actually take work in, because a website that fights the way you run things gets abandoned in a month.",
   },
   {
-    title: "Numbers You Can Read",
+    title: "You'll Understand Your Own Numbers",
     body:
       "If you can't explain your marketing to someone else when we're done, I did it wrong. I'll sit with you and " +
       "go through the reporting until it makes sense.",
@@ -124,7 +123,7 @@ export const differentiators: Differentiator[] = [
  * that sent him back to school.
  */
 export const aboutStrip = {
-  title: "My Background",
+  title: "I started on the floor, not in an office",
   body: [
     "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
       "front to sell it, and then I was managing the store with a number to hit every month.",
@@ -151,7 +150,7 @@ export const personalNote = {
       "and you still can't say what either one did for you.",
     "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
       "accounts, so you can keep running it without me.",
-    "If you've been putting this off, the call costs you nothing.",
+    "If you've been putting this off, a call costs you nothing.",
   ],
   signOff: principal.firstName,
 } as const;

@@ -94,14 +94,14 @@ export const credentialDetails: CredentialDetail[] = [
   {
     label: "Experience",
     value: "Real Numbers, Real Targets",
-    note: "Years of carrying a monthly sales target and having to hit it.",
+    note: "Years of having to hit sales goals rather than just write about them.",
   },
 ];
 
 export const workingWithMe = {
-  title: "What You Get",
+  title: "What you get",
   points: [
-    "Someone who has spent years on a sales floor.",
+    "Someone who has worked a sales floor, not just read about one.",
     "Business sense and marketing in the same conversation.",
     "My direct number.",
     "A straight answer about whether I can help, including when the answer is no.",
@@ -110,7 +110,7 @@ export const workingWithMe = {
 } as const;
 
 export const philosophy = {
-  title: "Understand Your Own Business",
+  title: "You should understand your own business",
   body:
     "You shouldn't need to call a marketing person to get your own numbers explained back to you. I go through " +
     "everything with you as we do it, so when we're finished you can keep it running yourself. Plenty of people " +
