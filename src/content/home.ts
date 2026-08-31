@@ -62,27 +62,35 @@ export type Problem = {
 export const problems: Problem[] = [
   {
     title: "You Can't Tell What Your Marketing Did",
-    body: "A report arrives every month, and you still can't say which part of it made you money.",
+    body:
+      "A report arrives every month, and you still can't say which part of it made you money. So you keep paying " +
+      "for it, because stopping feels riskier than carrying on.",
   },
   {
     title: "People Land On Your Site And Leave",
-    body: "They find you, look for a few seconds, and book with whoever came up next.",
+    body:
+      "They find you, look for a few seconds, and book with whoever came up next. You paid to get them there " +
+      "and never found out what put them off.",
   },
   {
     title: "Nearby Customers Can't Find You",
-    body: "Someone two miles away searches for what you sell, and the place down the road comes up.",
+    body:
+      "Someone two miles away searches for what you sell, and the place down the road comes up. They were ready " +
+      "to buy and they never knew you existed.",
   },
   {
     title: "Busy But Not Growing",
-    body: "You haven't had a slow week in months. The business is still the size it was.",
+    body:
+      "You haven't had a slow week in months. The business is still the size it was. Working harder has stopped " +
+      "moving the number, and it isn't obvious what would.",
   },
 ];
 
 export const problemSection = {
   title: "Where most owners get stuck",
   lead:
-    "Most owners I meet have at least one of these. Plenty have all four, and none of them mean you're running " +
-    "the business badly.",
+    "Most owners I meet have at least one of these. Plenty get stuck on all four, and it can be hard to " +
+    "identify which problem you're actually experiencing.",
 } as const;
 
 export type Differentiator = {

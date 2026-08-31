@@ -7,7 +7,7 @@ export type Service = {
   number: string;
   icon: LucideIcon;
   title: string;
-  /** One short line for the home page overview row. */
+  /** The home page overview row. Two or three sentences, not a single line. */
   summary: string;
   /** Two short sentences at the top of the card on /services. */
   body: string;
@@ -29,7 +29,9 @@ export const services: Service[] = [
     number: "01",
     icon: Compass,
     title: "Figuring Out What's Wrong",
-    summary: "Work out the real problem before you spend money fixing the wrong one.",
+    summary:
+      "Work out the real problem before you spend money fixing the wrong one. I look at who's actually buying from " +
+      "you and what the businesses near you are doing. You get a list of what to fix and the order I'd fix it in.",
     body:
       "Most owners I work with don't realize how much depends on who they're marketing to and what they actually " +
       "say to them. So before I recommend anything I go and look at your customers and the businesses you're up " +
@@ -48,7 +50,9 @@ export const services: Service[] = [
     number: "02",
     icon: Monitor,
     title: "Websites That Work",
-    summary: "A site built around the way you actually take work in.",
+    summary:
+      "A site built around the way you actually take work in. It has to be quick on a phone and make getting in " +
+      "touch obvious, because that's where most people will see it. When it's done it sits in your own accounts.",
     body:
       "A website is only worth anything if it turns someone looking into someone calling. I build around the way " +
       "you take work in now, and it has to be quick and easy on a phone, because that's where most people will " +
@@ -67,7 +71,9 @@ export const services: Service[] = [
     number: "03",
     icon: MapPin,
     title: "Getting Found On Google",
-    summary: "Come up when someone nearby goes looking for what you sell.",
+    summary:
+      "Come up when someone nearby goes looking for what you sell. That means your listing, your reviews, and the " +
+      "wording on your site all pulling the same way. Most businesses never touch any of it.",
     body:
       `Most people looking for you in ${location.city} start on Google or Maps, and a growing number ask an AI ` +
       "instead. I work on the things that decide whether your name comes up at all.",
@@ -85,7 +91,9 @@ export const services: Service[] = [
     number: "04",
     icon: BarChart3,
     title: "Ads And Straight Answers",
-    summary: "Only spend where it pays, and check that yourself.",
+    summary:
+      "Only spend where it pays, and check that yourself. I set up tracking you can open and read on your own. " +
+      "Money goes into ads once the numbers say they'll pay for themselves.",
     body:
       "You shouldn't have to take my word for what's working. I set up tracking you can open and read on your " +
       "own, and I don't put money into ads until the numbers say they'll pay for themselves.",
