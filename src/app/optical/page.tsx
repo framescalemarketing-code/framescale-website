@@ -87,7 +87,7 @@ export default function OpticalPage() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <SectionHeading
             title="Areas Overlooked"
-            lead="Most practices have two of these. Some have all four."
+            lead="Most practices have two of these. Some have all four, and every one of them is fixable without starting over."
             className="lg:sticky lg:top-24 lg:self-start"
           />
 
@@ -110,7 +110,7 @@ export default function OpticalPage() {
       <Section tone="dark" size="default">
         <SectionHeading
           title="How I Work"
-          lead="The same four things I do for any small business, aimed at a practice."
+          lead="The same four things I do for any small business, aimed at a practice. Most owners start with one and add the others once it is paying for itself."
           tone="light"
           className="max-w-3xl"
         />
@@ -141,7 +141,7 @@ export default function OpticalPage() {
       <FAQ
         items={opticalFaqs}
         title="Questions I get from practices"
-        lead="The ones that come up before we talk."
+        lead="The ones that come up before we talk. Anything not covered here, ask me on the call."
       />
 
       <ContactSection

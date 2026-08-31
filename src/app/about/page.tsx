@@ -65,7 +65,7 @@ export default function AboutPage() {
       <Credentials />
       <ContactSection
         title="Tell me what you're working on"
-        lead="Half an hour on the phone. No slides, no pitch."
+        lead="Half an hour on the phone. You talk, I ask questions, and you'll get a straight answer about whether I can help."
       />
     </>
   );

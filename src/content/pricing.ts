@@ -6,7 +6,7 @@
  */
 export const pricingSection = {
   title: "What it costs",
-  lead: "There's no price list. It depends on the business.",
+  lead: "There's no price list, because it depends on the business. Here is how the number gets worked out.",
   intro:
     "Everyone needs something different. One owner needs their Google listing fixed and nothing else. Another " +
     "needs the whole thing pulled apart and rebuilt. If I put a package price on that I'd be guessing, and " +

@@ -2,7 +2,10 @@ import { location, principal } from "@/lib/site";
 
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it.`,
+  lead:
+    `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it. ` +
+    "I spent years on a shop floor before I did this, so most of what you deal with in a week I've dealt with " +
+    "myself.",
 } as const;
 
 export type Chapter = {

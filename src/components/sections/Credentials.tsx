@@ -11,7 +11,7 @@ export function Credentials() {
           column wraps "University Of California, Riverside" onto three lines. */}
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
-          <SectionHeading title="The background" lead="School, and a lot of years on a sales floor." tone="light" />
+          <SectionHeading title="The background" lead="School, and a lot of years on a sales floor. I did the job first and went back for the degrees later." tone="light" />
 
           <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (

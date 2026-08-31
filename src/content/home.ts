@@ -30,8 +30,9 @@ export const hero = {
   headline: `Grow your ${location.city} small business`,
   lead:
     `I'm ${principal.firstName}. I made glasses in the back of an optical shop, then sold them out front, then ` +
-    "ran the store. After that I got an MBA in marketing. You won't be paying me to learn how a small business " +
-    "works.",
+    "ran the store. After that I got an MBA in marketing. Now I work with owners around " +
+    `${location.city} on getting found, getting the website right, and understanding what their numbers are ` +
+    "telling them. You won't be paying me to learn how a small business works.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Help",
 } as const;
@@ -80,7 +81,9 @@ export const problems: Problem[] = [
 
 export const problemSection = {
   title: "Common Problems",
-  lead: "Most owners I meet have at least one of these. Plenty have all four.",
+  lead:
+    "Most owners I meet have at least one of these. Plenty have all four, and none of them mean you're running " +
+    "the business badly.",
 } as const;
 
 export type Differentiator = {
@@ -155,5 +158,7 @@ export const personalNote = {
 
 export const closingCta = {
   title: "Tell me what isn't working",
-  lead: "Half an hour on the phone is usually enough to find it. If I can't help, I'll say so on that call.",
+  lead:
+    "Half an hour on the phone is usually enough to find it. Tell me what's going on and I'll tell you where " +
+    "I'd start. If I can't help, I'll say so on that call.",
 } as const;
