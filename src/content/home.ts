@@ -126,20 +126,21 @@ export const differentiators: Differentiator[] = [
 ];
 
 /**
- * The condensed version of the story told in full on /about. Keep the two in
- * step: manufacturing, then the sales floor, then managing, then the ceiling
- * that sent him back to school.
+ * Jonathan's own words, corrected for grammar only. This is the short version
+ * of the story told at length on /about, and the two currently give different
+ * reasons for the MBA: here it is that he enjoyed working with people, on
+ * /about it is wanting to know why some businesses grow. Worth reconciling.
  */
 export const aboutStrip = {
   title: "I started on the floor, not in an office",
   body: [
-    "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
-      "front to sell it, and then I was managing the store with a number to hit every month.",
-    "I did that in corporate stores, in franchises, and in small independents. I could see where that road " +
-      "ended, and I didn't want to get stuck on it.",
-    "So I went back to school. A bachelor's at UC Riverside, then an MBA in marketing, because I wanted to know " +
-      "why some businesses grow while others just stay busy. When you talk about payroll or a quarter that went " +
-      "sideways, I know what you mean.",
+    "My first job was making glasses. Then I started working on the retail side, selling them and running the " +
+      "store as a manager.",
+    "I worked in corporate stores, in franchises, and even in small optical practices. It was a long road that " +
+      "led nowhere, and I had to find a way out of the rat race.",
+    "So I went back to school. I got a bachelor's at UC Riverside and then an MBA in marketing, because I " +
+      "realized working with people was where I enjoyed the work most. My aim was to help small businesses grow " +
+      "and thrive in their respective industries.",
   ],
   cta: "Read My Story",
 } as const;
