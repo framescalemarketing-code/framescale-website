@@ -31,8 +31,9 @@ export const services: Service[] = [
     title: "Figuring Out What's Wrong",
     summary: "Find the real problem before you spend money on the wrong one.",
     body:
-      "Half the time the marketing isn't the problem. It's who you're talking to, or what you're saying to them. " +
-      "So I look at your customers and the businesses you're up against before I recommend anything.",
+      "Most owners I work with don't realize how much depends on who they're marketing to and what they actually " +
+      "say to them. So before I recommend anything I go and look at your customers and the businesses you're up " +
+      "against.",
     included: [
       "Who your customers really are, as opposed to who you assume they are",
       "What the businesses near you are offering and charging",
@@ -48,10 +49,10 @@ export const services: Service[] = [
     title: "Websites That Work",
     summary: "A site built around the way you actually take work in.",
     body:
-      "A website is only worth something if it turns someone looking into someone calling. I build around the way " +
-      "you take work in now, and it has to be fast on a phone, because that's where most people will see it.",
+      "A website has one job, which is turning someone who's looking into someone who calls. I build around the " +
+      "way you take work in now, and it has to be fast on a phone, because that's where most people will see it.",
     included: [
-      "Built for you, not pulled off a shelf",
+      "Put together for your business from scratch",
       "Works properly on a phone",
       "Forms that reach you however you want to be reached",
       "Set up so Google can read it",

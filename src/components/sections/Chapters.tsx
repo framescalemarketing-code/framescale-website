@@ -7,7 +7,7 @@ import { chapters, philosophy } from "@/content/about";
 export function Chapters() {
   return (
     <Section tone="muted" size="default">
-      <SectionHeading title="How I got here" lead="Not a straight line." className="max-w-3xl" />
+      <SectionHeading title="How I got here" lead="It took me a while to get here." className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (

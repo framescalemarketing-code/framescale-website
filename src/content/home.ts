@@ -5,17 +5,23 @@ import { location, principal } from "@/lib/site";
  * loud to an owner across a counter. If a line would sound odd spoken, it is
  * wrong here.
  *
- * Four habits make copy read as machine-written, and all four have shown up
+ * Five habits make copy read as machine-written, and all five have shown up
  * in this file at some point:
  *
- * 1. Clever headings. "Busy But Flat", "The Handoff", "Same Side Of The
+ * 1. The antithesis pivot, which is the worst of them: negate a thing, pause,
+ *    then reveal the replacement. "The marketing isn't the problem. It's who
+ *    you're talking to." "Built for you, not pulled off a shelf." "A plan
+ *    built for your business, not a template." Say it affirmatively and keep
+ *    going instead: "Most owners don't realize how much depends on who
+ *    they're marketing to and what they say to them."
+ * 2. Clever headings. "Busy But Flat", "The Handoff", "Same Side Of The
  *    Counter". A heading names the thing plainly: "Busy But Not Growing".
  *    Question-framed headings are just as bad ("What Usually Needs Fixing").
- * 2. Dropped contractions. "It is not", "I am", "you are" read stiff. Write
+ * 3. Dropped contractions. "It is not", "I am", "you are" read stiff. Write
  *    "isn't", "I'm", "you're", the way it is actually said.
- * 3. The aphoristic closer, a short punchy line bolted onto a longer sentence
+ * 4. The aphoristic closer, a short punchy line bolted onto a longer sentence
  *    to sound wise. "That is most of the job." One is a voice. Four is a tic.
- * 4. Hedges. "Usually", "mostly", "a bit", "plenty of" each take a degree off
+ * 5. Hedges. "Usually", "mostly", "a bit", "plenty of" each take a degree off
  *    a claim that was fine at full strength.
  *
  * Body copy stays in full sentences with a subject and an active verb.
@@ -95,7 +101,7 @@ export const differentiators: Differentiator[] = [
   },
   {
     title: "Built For You",
-    body: "I won't hand you something I built for someone else with the logo swapped out.",
+    body: "Everything I build gets put together for your business, from what it says to how it works.",
   },
   {
     title: "Numbers You Can Read",
@@ -129,11 +135,11 @@ export const aboutStrip = {
  */
 export const personalNote = {
   body: [
-    "Most owners think marketing means posting on social media. That is one small piece of it. Marketing is also " +
+    "Most owners think marketing means posting on social media. That's one small piece of it. Marketing is also " +
       "who your customer really is, what you charge, what your website says, and whether anyone can find you on " +
       "Google.",
-    "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice. " +
-      "You still can't say what either one did for you.",
+    "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice, " +
+      "and you still can't say what either one did for you.",
     "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
       "accounts, so you can keep running it without me.",
     "If you've been putting this off, the call costs you nothing.",

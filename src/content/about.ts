@@ -91,14 +91,14 @@ export const credentialDetails: CredentialDetail[] = [
   {
     label: "Experience",
     value: "Real Numbers, Real Targets",
-    note: "Years of having to hit a sales goal rather than write about one.",
+    note: "Years of carrying a monthly sales target and having to hit it.",
   },
 ];
 
 export const workingWithMe = {
   title: "What You Get",
   points: [
-    "Someone who has worked a sales floor, not just read about one.",
+    "Someone who has spent years on a sales floor.",
     "Business sense and marketing in the same conversation.",
     "My direct number.",
     "A straight answer about whether I can help, including when the answer is no.",

@@ -35,7 +35,7 @@ export const pricingPoints: PricingPoint[] = [
   {
     title: "No Surprise Invoices",
     body:
-      "The number we agreed is the number you pay. If the job changes halfway through, we have that conversation " +
-      "before the work happens, not after.",
+      "The number we agreed is the number you pay. If the job changes halfway through, we talk about it before " +
+      "any of that work happens.",
   },
 ];

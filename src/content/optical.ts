@@ -83,8 +83,9 @@ export const opticalSteps: OpticalStep[] = [
     icon: Ruler,
     title: "Find The Real Problem",
     body:
-      "It's rarely the thing you called about. I look at who's walking in, who isn't, and what the practices near " +
-      "you are offering before I tell you to spend anything.",
+      "Owners usually call me about one thing and the real problem turns out to be somewhere else. So I look at " +
+      "who's walking in, who's walking past, and what the practices near you are offering before I tell you to " +
+      "spend anything.",
     href: "/services#strategy",
   },
   {
@@ -115,6 +116,6 @@ export const opticalSteps: OpticalStep[] = [
 export const opticalClosing = {
   title: "You Keep It",
   body:
-    "I'm not trying to be a bill you pay forever. I want the practice easier to find, easier to book, and the " +
-    "numbers simple enough that you can read them yourself.",
+    "The point is to leave the practice easier to find, easier to book, and the numbers simple enough that you " +
+    "can read them yourself and keep it going.",
 } as const;

@@ -73,15 +73,15 @@ export const scalePhases: ScalePhase[] = [
     title: "Align The Strategy",
     summary: "Agree what to say and where to say it.",
     description:
-      "Now we turn what I found into a plan, and we decide it together rather than me handing you a document and " +
-      "leaving you to it.",
+      "Now we turn what I found into a plan, and we sit down and decide it together so you know why every piece " +
+      "of it is there.",
     activities: [
       "Settle on what you're saying and who you're saying it to",
       "Pick the handful of places worth showing up",
       "Match it to your goals and what you can spend",
     ],
     deliverables: [
-      "A plan built for your business, not a template",
+      "A plan built around your business",
       "Which pages and which channels are worth it",
       "A short list of numbers worth watching",
     ],
@@ -93,8 +93,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Launch The System",
     summary: "Build the website and the tracking the plan needs.",
     description:
-      "Then I build it. If the website or the tracking doesn't exist yet, I build that too. It doesn't get handed " +
-      "off to someone else halfway through.",
+      "Then I build it. If the website or the tracking doesn't exist yet, I build that too, and I stay on it from " +
+      "the start of the job to the end of it.",
     activities: [
       "Build or fix the website and the pages that matter",
       "Put tracking in so we can see what happens",
@@ -144,7 +144,7 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Everything Connected",
-    description: "The website, the tracking, and the reporting live in one place instead of five.",
+    description: "The website, the tracking, and the reporting all live in one place.",
   },
   {
     title: "Reports You Can Use",
