@@ -4,8 +4,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/Hero";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { FAQ } from "@/components/sections/FAQ";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { opticalFaqs } from "@/content/faq";
 import {
   opticalBackground,
   opticalClosing,
@@ -13,7 +15,7 @@ import {
   opticalProblems,
   opticalSteps,
 } from "@/content/optical";
-import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { buildBreadcrumbGraph, buildFaqGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 import { location } from "@/lib/site";
 
@@ -36,6 +38,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function OpticalPage() {
   return (
     <>
+      <script {...jsonLdProps(buildFaqGraph(opticalFaqs))} />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([
@@ -128,12 +131,18 @@ export default function OpticalPage() {
         </Reveal>
       </Section>
 
-      <Section size="compact">
+      <Section tone="muted" size="compact">
         <div className="soft-card flex flex-col gap-3 p-6 sm:p-8">
           <h2 className="display-sm text-(--brand-deep)">{opticalClosing.title}</h2>
           <p className="measure text-(--text-muted)">{opticalClosing.body}</p>
         </div>
       </Section>
+
+      <FAQ
+        items={opticalFaqs}
+        title="Questions I get from practices"
+        lead="The ones that come up before we talk."
+      />
 
       <ContactSection
         title="Tell me about the practice"

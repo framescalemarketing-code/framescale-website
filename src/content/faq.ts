@@ -55,6 +55,39 @@ export const homeFaqs: FaqItem[] = [
   },
 ];
 
+/**
+ * Optical-specific. These are the questions a practice owner asks that a
+ * general small business owner would not, so none of them repeat the home or
+ * services sets. The page also emits these as FAQPage JSON-LD.
+ */
+export const opticalFaqs: FaqItem[] = [
+  {
+    question: "Do you work with optometrists, or just optical retail?",
+    answer:
+      "Both. The exam side and the frame side pull on each other, so I look at the whole practice. If you only " +
+      "want help with one of them, that works too.",
+  },
+  {
+    question: "You were in optical years ago. Does that still apply?",
+    answer:
+      "The marketing has changed a lot since then and I keep up with that side for a living. What the years in " +
+      "optical gave me is knowing how the business runs day to day, which is the part most marketing people " +
+      "have to guess at.",
+  },
+  {
+    question: "Can you help if I'm part of a franchise?",
+    answer:
+      "Yes. I worked in corporate stores and franchises as well as independents. There's usually less you're " +
+      "allowed to change in a franchise, so we start by working out what's actually yours to decide.",
+  },
+  {
+    question: "What would you look at first?",
+    answer:
+      "Your Google listing, and what somebody sees when they search for an eye exam near you. It takes about ten " +
+      "minutes to check and it's where the quickest gains usually are.",
+  },
+];
+
 export const servicesFaqs: FaqItem[] = [
   {
     question: "Can I hire you for just one thing?",
