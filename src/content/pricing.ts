@@ -33,6 +33,12 @@ export const pricingPoints: PricingPoint[] = [
     body: "Nothing starts until you've seen that and said yes to it.",
   },
   {
+    title: "Month To Month After That",
+    body:
+      "If we carry on once the first job is done, it runs month to month. You can stop when it stops being " +
+      "worth it to you.",
+  },
+  {
     title: "No Surprise Invoices",
     body:
       "The number we agreed is the number you pay. If the job changes halfway through, we talk about it before " +

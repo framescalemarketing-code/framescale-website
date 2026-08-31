@@ -27,6 +27,8 @@ export const opticalBackground = {
       "a number to hit every month. I did that in corporate stores, in franchises, and in small independents.",
     "So when you tell me the frame board isn't moving, or the store was busy all month and you still missed " +
       "your number, I know what you mean.",
+    "Optical is an odd business to market. Half of what you sell is a medical appointment and half of it is a " +
+      "retail product, and those two get bought for completely different reasons on the same website.",
   ],
   image: {
     src: "/photos/story/cartier-rimless.webp",

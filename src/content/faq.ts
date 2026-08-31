@@ -48,6 +48,12 @@ export const homeFaqs: FaqItem[] = [
       "No, and nobody can. What I will promise is that you always know what I did and what it cost.",
   },
   {
+    question: "Do I have to sign up for something ongoing?",
+    answer:
+      "No. Some owners bring me in for one job and that's the end of it. Others keep me on month to month once " +
+      "things are running. Both are normal, and you decide which one you want after the work is done.",
+  },
+  {
     question: "What happens on the first call?",
     answer:
       "Half an hour, just the two of us. You tell me what isn't working, I ask a few questions, and you come away " +
@@ -118,6 +124,12 @@ export const servicesFaqs: FaqItem[] = [
     answer:
       "Small ones that have been open a while and want to get bigger. If you're still working out what you sell, " +
       "or you want a whole agency team on it, I'm not your best bet.",
+  },
+  {
+    question: "Who actually does the work?",
+    answer:
+      "I do, all of it. When you email or call, you're getting the person who built the thing, and that's the " +
+      "same person who'll explain the numbers to you afterwards.",
   },
   {
     question: "How do I reach you?",

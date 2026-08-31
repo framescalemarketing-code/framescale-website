@@ -44,7 +44,7 @@ export const chapters: Chapter[] = [
     body:
       "I worked in corporate stores, in franchises, and in small independents. Spend enough time doing that and " +
       "you can see the whole road in front of you. Mine didn't go as far as I wanted, which is an uncomfortable " +
-      "thing to work out about your own job.",
+      "thing to work out about your own job. I was good at it by then and I still couldn't see a way further up.",
   },
   {
     marker: "03",
@@ -62,7 +62,7 @@ export const chapters: Chapter[] = [
     body:
       "These days I use both sides of that. Nearly every small business I meet is already good at the thing it " +
       "does. What's missing is a clear message, a website that works, and numbers the owner can read without " +
-      "help.",
+      "help. Those three things are what I spend my time on.",
   },
 ];
 
@@ -102,6 +102,7 @@ export const workingWithMe = {
     "Business sense and marketing in the same conversation.",
     "My direct number.",
     "A straight answer about whether I can help, including when the answer is no.",
+    "Work that stays in your own accounts, so you can carry on without me.",
   ],
 } as const;
 

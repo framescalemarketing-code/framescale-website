@@ -91,7 +91,9 @@ export type Differentiator = {
 export const differentiators: Differentiator[] = [
   {
     title: "You Work With Me",
-    body: "You call, I answer, and I did the work you're calling about.",
+    body:
+      "You call, I answer, and I did the work you're calling about. The person going through your numbers is " +
+      "the same person who built the thing.",
   },
   {
     title: "Research First",
@@ -101,11 +103,15 @@ export const differentiators: Differentiator[] = [
   },
   {
     title: "Built For You",
-    body: "Everything I build gets put together for your business, from what it says to how it works.",
+    body:
+      "Everything I build gets put together for your business, from what it says to how it works. I start with how " +
+      "you actually take work in, because a website that fights the way you run things gets abandoned in a month.",
   },
   {
     title: "Numbers You Can Read",
-    body: "If you can't explain your marketing to someone else when we're done, I did it wrong.",
+    body:
+      "If you can't explain your marketing to someone else when we're done, I did it wrong. I'll sit with you and " +
+      "go through the reporting until it makes sense.",
   },
 ];
 
