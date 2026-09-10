@@ -1,3 +1,4 @@
+import { bookingEmails } from "@/content/booking";
 import { contactReceipt } from "@/content/contact";
 import { site } from "@/lib/site";
 import { escapeHtml } from "@/lib/email/escape-html";
@@ -100,4 +101,36 @@ export function contactReceiptHtml(input: { name: string }): string {
 
 export function contactReceiptText(input: { name: string }): string {
   return contactReceipt.paragraphs(input.name).join("\n\n");
+}
+
+/** The alert Jonathan gets when a call is booked. The event is already in his calendar. */
+export function bookingOwnerHtml(input: {
+  name: string;
+  email: string;
+  phone: string;
+  note: string;
+  when: string;
+}): string {
+  const inner = `
+    ${kickerAndTitle("Call booked", input.when)}
+    ${detailLine("Name", input.name, true)}
+    ${detailLine("Phone", input.phone)}
+    ${detailLine("Email", input.email)}
+    <hr style="margin:18px 0;border:none;border-top:1px solid rgba(108,122,124,0.25);" />
+    <p style="margin:0 0 6px;font-family:${BODY_FONT};font-size:13px;font-weight:600;color:${BRAND_DEEP};">Note</p>
+    <p style="margin:0;font-family:${BODY_FONT};font-size:14px;color:${BRAND_MUTED};">${escapeHtml(input.note || "None").replace(/\n/g, "<br />")}</p>
+  `;
+  return brandedShell(inner, `Call booked: ${input.name}`);
+}
+
+/** The visitor's confirmation. The .ics is attached by the sender; wording lives in src/content/booking.ts. */
+export function bookingVisitorHtml(input: { phone: string; when: string }): string {
+  const inner = bookingEmails
+    .visitorParagraphs(input.phone, input.when)
+    .map(
+      (paragraph, index) =>
+        `<p style="margin:${index === 0 ? "0" : "12px 0 0"};font-family:${BODY_FONT};font-size:15px;line-height:1.6;color:${BRAND_DEEP};">${escapeHtml(paragraph)}</p>`,
+    )
+    .join("\n");
+  return brandedShell(inner, bookingEmails.visitorSubject(input.when));
 }

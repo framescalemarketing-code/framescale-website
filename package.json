@@ -13,9 +13,11 @@
     "brand:check": "node scripts/brand-guard.mjs"
   },
   "dependencies": {
+    "@types/luxon": "^3.7.5",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.32.0",
+    "luxon": "^3.7.2",
     "motion": "^12.40.0",
     "next": "^16.3.1",
     "react": "19.2.8",

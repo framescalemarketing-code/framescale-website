@@ -118,6 +118,7 @@ export const footerLinks = {
     { label: "Optical", href: "/optical" },
     { label: "About", href: "/about" },
     { label: "Contact", href: `/${site.contactAnchor}` },
+    ...(bookingLive ? [{ label: ctaLabels.book, href: site.bookingPath }] : []),
   ],
   Services: [
     { label: "Figuring Out What's Wrong", href: "/services#strategy" },

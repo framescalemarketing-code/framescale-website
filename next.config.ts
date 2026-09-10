@@ -88,7 +88,6 @@ const securityHeaders = [
  */
 const retiredRoutes: { source: string; destination: string }[] = [
   { source: "/process", destination: "/services#method" },
-  { source: "/book", destination: "/#contact" },
   { source: "/contact", destination: "/#contact" },
   { source: "/industries/healthcare", destination: "/services" },
   { source: "/industries/retail", destination: "/services" },
