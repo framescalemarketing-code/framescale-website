@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/Hero";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FAQ } from "@/components/sections/FAQ";
+import { ShareBar } from "@/components/sections/ShareBar";
+import { Work } from "@/components/sections/Work";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { opticalFaqs } from "@/content/faq";
@@ -12,6 +14,7 @@ import {
   opticalBackground,
   opticalClosing,
   opticalHero,
+  opticalPage,
   opticalProblems,
   opticalSteps,
 } from "@/content/optical";
@@ -20,10 +23,10 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `Marketing For Optical Practices in ${location.city}`,
+  title: "Marketing For Optical Practices",
   description:
-    `I spent my first career in optical, from the lab to store management, before the MBA. ` +
-    `Marketing help for independent optical and optometry practices in ${location.city}.`,
+    `Marketing help for optical and optometry practices in ${location.serviceRegion}, from someone who worked the ` +
+    "lab, sold on the floor, and ran the store.",
   path: "/optical",
   keywords: [
     "optical practice marketing",
@@ -65,7 +68,7 @@ export default function OpticalPage() {
               href="/about"
               className="font-ui text-sm font-semibold text-(--brand-primary) inline-flex items-center gap-2 hover:underline"
             >
-              More About Me
+              {opticalBackground.moreAboutMe}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -86,8 +89,8 @@ export default function OpticalPage() {
       <Section size="default">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <SectionHeading
-            title="Areas Overlooked"
-            lead="Most practices have two of these. Some have all four, and every one of them is fixable without starting over."
+            title={opticalPage.problems.title}
+            lead={opticalPage.problems.lead}
             className="lg:sticky lg:top-24 lg:self-start"
           />
 
@@ -109,8 +112,8 @@ export default function OpticalPage() {
 
       <Section tone="dark" size="default">
         <SectionHeading
-          title="How I Work"
-          lead="The same four things I do for any small business, aimed at a practice. Most owners start with one and add the others once it is paying for itself."
+          title={opticalPage.steps.title}
+          lead={opticalPage.steps.lead}
           tone="light"
           className="max-w-3xl"
         />
@@ -131,6 +134,9 @@ export default function OpticalPage() {
         </Reveal>
       </Section>
 
+      {/* An optical client, so the proof belongs on this page as well as home. */}
+      <Work tone="default" />
+
       <Section tone="muted" size="compact">
         <div className="soft-card flex flex-col gap-3 p-6 sm:p-8">
           <h2 className="display-sm text-(--brand-deep)">{opticalClosing.title}</h2>
@@ -138,16 +144,10 @@ export default function OpticalPage() {
         </div>
       </Section>
 
-      <FAQ
-        items={opticalFaqs}
-        title="Questions I get from practices"
-        lead="The ones that come up before we talk. Anything not covered here, ask me on the call."
-      />
+      <FAQ items={opticalFaqs} title={opticalPage.faq.title} lead={opticalPage.faq.lead} />
 
-      <ContactSection
-        title="Tell me about the practice"
-        lead="Half an hour on the phone. You won't have to explain optical to me."
-      />
+      <ContactSection title={opticalPage.contact.title} lead={opticalPage.contact.lead} />
+      <ShareBar />
     </>
   );
 }

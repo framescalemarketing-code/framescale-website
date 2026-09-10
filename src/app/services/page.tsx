@@ -5,14 +5,18 @@ import { ScaleDetail } from "@/components/sections/ScaleMethod";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { ShareBar } from "@/components/sections/ShareBar";
 import { servicesFaqs } from "@/content/faq";
+import { servicesPage } from "@/content/services";
 import { buildBreadcrumbGraph, buildFaqGraph, buildServicesGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 import { location } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `Small Business Marketing Help in ${location.city}`,
-  description: `Help for ${location.city} small businesses: getting found on Google, a website that works, and reports you can read. No set packages, so we talk first and I quote from there.`,
+  description:
+    "Four things I fix for small businesses: what's actually wrong, the website, getting found on Google, and " +
+    "reports you can read. No packages. We talk, then I quote.",
   path: "/services",
   keywords: [
     `small business consultant ${location.city}`,
@@ -38,23 +42,14 @@ export default function ServicesPage() {
         )}
       />
 
-      <PageHero
-        headline={`How I help ${location.city} small businesses`}
-        lead="There are four things I do, and most owners need more than one of them. I start by working out what the real problem is, because owners usually call me about one thing and it turns out to be something else. Once we know that, we only spend money on the part that matters."
-      />
+      <PageHero headline={servicesPage.hero.headline} lead={servicesPage.hero.lead} />
 
       <ServiceDetails />
       <ScaleDetail />
       <Pricing />
-      <FAQ
-        items={servicesFaqs}
-        title="The practical questions"
-        lead="The ones that come up when somebody's close to deciding. Anything not covered here, ask me on the call."
-      />
-      <ContactSection
-        title="Not sure which one you need?"
-        lead="Most people aren't, and that's what the call is for. Tell me what's going on and I'll tell you where I'd start."
-      />
+      <FAQ items={servicesFaqs} title={servicesPage.faq.title} lead={servicesPage.faq.lead} />
+      <ContactSection title={servicesPage.contact.title} lead={servicesPage.contact.lead} />
+      <ShareBar />
     </>
   );
 }

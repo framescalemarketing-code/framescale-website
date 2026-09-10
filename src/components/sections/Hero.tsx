@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { credentials, hero } from "@/content/home";
-import { practice, principal, site } from "@/lib/site";
+import { bookingHrefFor, location, practice, principal } from "@/lib/site";
 
 /**
  * Home hero. The credential strip sits inside this section rather than in a
@@ -21,7 +21,7 @@ export function HomeHero() {
             <p className="lead">{hero.lead}</p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href={site.contactAnchor} size="lg" withArrow>
+              <Button href={bookingHrefFor("/")} size="lg" withArrow>
                 {hero.primaryCta}
               </Button>
               <Button href="/services" size="lg" variant="outline">
@@ -34,7 +34,7 @@ export function HomeHero() {
             <div className="relative aspect-4/5 overflow-hidden rounded-(--radius-media) border border-(--border)">
               <Image
                 src="/photos/founder/jonathan-about.jpg"
-                alt={`${principal.displayName}, ${principal.jobTitle} in San Diego`}
+                alt={`${principal.displayName}, ${principal.jobTitle} in ${location.city}`}
                 fill
                 sizes="(max-width: 1024px) 90vw, 42vw"
                 className="object-cover object-[center_15%]"
@@ -74,7 +74,7 @@ type PageHeroProps = {
   children?: ReactNode;
 };
 
-/** Shared hero for /services and /about. */
+/** Shared hero for /services and /optical. */
 export function PageHero({ headline, lead, children }: PageHeroProps) {
   return (
     <section className="pt-12 pb-12 md:pt-16 md:pb-16">

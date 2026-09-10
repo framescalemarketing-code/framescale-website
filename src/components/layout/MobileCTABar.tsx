@@ -2,16 +2,19 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { contactHrefFor, site } from "@/lib/site";
+import { bookingHrefFor, ctaLabels, footerLinks, site } from "@/lib/site";
+
+/** The legal pages have no form to point at, so the bar stays off all of them. */
+const SUPPRESSED_PREFIXES = footerLinks.Legal.map((link) => link.href.split("#")[0]);
 
 /**
  * Mobile-only bottom bar. Replaces the old floating circular button, which
  * covered content and offered a single action. This gives both a call and a
- * form path without obscuring the page.
+ * booking path without obscuring the page.
  */
 export function MobileCTABar() {
   const pathname = usePathname();
-  const contactHref = contactHrefFor(pathname);
+  const bookHref = bookingHrefFor(pathname);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -21,9 +24,7 @@ export function MobileCTABar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // The bar competes with the form itself on the legal pages and while the
-  // visitor is already at the contact section, so keep it off those routes.
-  const suppressed = pathname.startsWith("/privacy") || pathname.startsWith("/terms");
+  const suppressed = SUPPRESSED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
   if (suppressed) return null;
 
@@ -40,14 +41,14 @@ export function MobileCTABar() {
           tabIndex={visible ? 0 : -1}
           className="flex-1 rounded-full border border-(--brand-primary) px-4 py-3 text-center font-ui text-sm font-semibold text-(--brand-primary)"
         >
-          Call
+          {ctaLabels.call}
         </a>
         <a
-          href={contactHref}
+          href={bookHref}
           tabIndex={visible ? 0 : -1}
           className="flex-[1.4] rounded-full bg-(--brand-primary) px-4 py-3 text-center font-ui text-sm font-semibold text-white"
         >
-          Book A Call
+          {ctaLabels.book}
         </a>
       </div>
     </div>

@@ -3,9 +3,9 @@ import { location, principal } from "@/lib/site";
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
   lead:
-    `I help small business owners in ${location.city} work out what's holding them back, and then I go fix it. ` +
-    "I spent years on a shop floor before I did this, so most of what you deal with in a week I've dealt with " +
-    "myself.",
+    `I help small business owners across ${location.serviceRegion} work out what's holding them back, and then I ` +
+    "go and fix it with them. I spent years on a shop floor before I did this, so most of what you deal with in a " +
+    "week I've dealt with myself.",
 } as const;
 
 export type Chapter = {
@@ -20,6 +20,11 @@ export type Chapter = {
    */
   image?: { src: string; alt: string };
 };
+
+export const chaptersSection = {
+  title: "How I got here",
+  lead: "It took me a while to get here, and the parts that look like detours are the ones I use most.",
+} as const;
 
 /**
  * The real story, told the way it would be told out loud. Each chapter ends on
@@ -76,6 +81,11 @@ export type CredentialDetail = {
   note: string;
 };
 
+export const credentialsSection = {
+  title: "The background",
+  lead: "School, and a lot of years on a sales floor. I did the job first and went back for the degrees later.",
+} as const;
+
 export const credentialDetails: CredentialDetail[] = [
   {
     label: "Education",
@@ -116,4 +126,9 @@ export const philosophy = {
     "You shouldn't need to call a marketing person to get your own numbers explained back to you. I go through " +
     "everything with you as we do it, so when we're finished you can keep it running yourself. Plenty of people " +
     "in this line of work would rather you couldn't.",
+} as const;
+
+export const aboutClosing = {
+  title: "Tell me what you're working on",
+  lead: "Half an hour on the phone. You talk, I ask questions, and you get a straight answer about whether I can help.",
 } as const;

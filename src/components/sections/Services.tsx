@@ -2,13 +2,13 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { services } from "@/content/services";
+import { services, servicesSection } from "@/content/services";
 
 /** Condensed overview for the home page. Each row deep-links to /services. */
 export function ServiceOverview() {
   return (
     <Section size="default">
-      <SectionHeading title="What I Do" lead="Most owners have difficulty identifying their problem, and I work with you to figure it out. Most need more than one of these, so we settle which ones on the first call and in what order." className="max-w-3xl" />
+      <SectionHeading title={servicesSection.title} lead={servicesSection.lead} className="max-w-3xl" />
 
       <Reveal group className="mt-10 flex flex-col">
         {services.map((service, index) => (
@@ -53,7 +53,7 @@ export function ServiceOverview() {
 export function ServiceDetails() {
   return (
     <Section tone="muted" size="default">
-      <SectionHeading title="What I Do" lead="Most owners have difficulty identifying their problem, and I work with you to figure it out. Most need more than one of these, so we settle which ones on the first call and in what order." className="max-w-2xl" />
+      <SectionHeading title={servicesSection.title} lead={servicesSection.lead} className="max-w-2xl" />
 
       <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
         {services.map((service) => {

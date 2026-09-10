@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandMark } from "@/components/design/Brand";
 import { Container } from "@/components/ui/Container";
+import { contactSection } from "@/content/contact";
 import { footerLinks, location, practice, principal, site } from "@/lib/site";
 
 const YEAR = new Date().getFullYear();
@@ -51,9 +52,7 @@ export function Footer() {
             <address className="flex flex-col gap-1.5 not-italic">
               <span className="flex items-start gap-2 text-[13px] text-white/70">
                 <MapPin className="mt-0.5 size-3.5 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
-                <span>
-                  {location.city}, {location.region}. Serving {location.serviceArea}.
-                </span>
+                <span>{contactSection.locationLine}</span>
               </span>
               <a
                 href={`tel:${site.phoneHref}`}
@@ -105,7 +104,7 @@ export function Footer() {
             is the pattern Google reads as a doorway signal. */}
         <div className="flex flex-col gap-2 border-t border-white/10 py-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
           <p className="text-xs leading-relaxed text-white/60">
-            I work with owners across {location.serviceArea}, including{" "}
+            I work with owners across {location.serviceRegion}, and most of them are in {location.serviceArea}:{" "}
             {location.areaServed.slice(0, -1).join(", ")}, and {location.areaServed.at(-1)}.
           </p>
           <p className="text-xs whitespace-nowrap text-white/60">

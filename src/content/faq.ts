@@ -1,10 +1,16 @@
-import { location, site } from "@/lib/site";
+import { bookingLive, location, site } from "@/lib/site";
 
 export type FaqItem = {
   question: string;
   /** Plain text. Rendered on the page and emitted verbatim into FAQPage JSON-LD. */
   answer: string;
 };
+
+/** Default heading and signpost. Pages with a distinct audience pass their own. */
+export const faqSection = {
+  title: "Questions I get a lot",
+  lead: "The things people ask me before we talk. If yours isn't here, put it in the form and I'll answer it.",
+} as const;
 
 /**
  * Short answers, written the way they would be said out loud. This is also the
@@ -25,9 +31,8 @@ export const homeFaqs: FaqItem[] = [
   {
     question: `Do you only work with ${location.city} small businesses?`,
     answer:
-      "Mostly, and that's on purpose. Being local means I can come and see how the place runs, which tells me " +
-      `more than a phone call does. I take work elsewhere when it fits, but ${location.serviceArea} is where ` +
-      "I'm most useful.",
+      `${location.city} is home base, and I work with owners across ${location.serviceRegion}. Being able to come ` +
+      "and see how the place runs tells me more than a phone call does, so I stay close enough to do that.",
   },
   {
     question: "What does it cost?",
@@ -56,8 +61,9 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "What happens on the first call?",
     answer:
-      "Half an hour, just the two of us. You tell me what isn't working, I ask a few questions, and you come away " +
-      "knowing what I would tackle first. If I'm not the right person, I'll say so then.",
+      (bookingLive ? "Half an hour, just the two of us, at a time you pick. " : "Half an hour, just the two of us. ") +
+      "You tell me what isn't working, I ask a few questions, and you come away knowing what I would tackle " +
+      "first. If I'm not the right person, I'll say so then.",
   },
 ];
 

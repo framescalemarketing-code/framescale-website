@@ -11,7 +11,10 @@ export const SCHEMA_IDS = {
   website: `${site.url}/#website`,
   person: `${site.url}/#person`,
   practice: `${site.url}/#practice`,
+  profilePage: `${site.url}/about#profilepage`,
 } as const;
+
+const HEADSHOT_URL = `${site.url}/photos/founder/jonathan-about.jpg`;
 
 const areaServed = location.areaServed.map((city) => ({
   "@type": "City",
@@ -23,9 +26,9 @@ const areaServed = location.areaServed.map((city) => ({
 }));
 
 /**
- * Deliberately ProfessionalService and not LocalBusiness. LocalBusiness expects
- * a customer-accessible street address; there isn't one, and claiming a fake
- * address is both dishonest and a real ranking liability.
+ * ProfessionalService rather than a bare LocalBusiness. There is no public
+ * street address, and claiming a fake one is both dishonest and a ranking
+ * liability, so the address stops at the city.
  */
 function practiceNode() {
   return {
@@ -37,11 +40,18 @@ function practiceNode() {
     email: site.email,
     telephone: site.phoneHref,
     description: site.description,
+    image: HEADSHOT_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${site.url}/brand/logo-512.png`,
+      width: 512,
+      height: 512,
+    },
     founder: { "@id": SCHEMA_IDS.person },
     employee: { "@id": SCHEMA_IDS.person },
     areaServed,
     priceRange: "$$",
-    sameAs: [site.social.linkedin, site.social.fiverr],
+    sameAs: [site.social.linkedin],
     address: {
       "@type": "PostalAddress",
       addressLocality: location.city,
@@ -57,7 +67,10 @@ function practiceNode() {
   };
 }
 
-/** The primary entity. This is what should surface for a search on the name. */
+/**
+ * The primary entity. This is what should surface for a search on the name,
+ * so `sameAs` points at the personal profile, not the company page.
+ */
 function personNode() {
   return {
     "@type": "Person",
@@ -68,7 +81,7 @@ function personNode() {
     url: `${site.url}/about`,
     email: site.email,
     telephone: site.phoneHref,
-    image: `${site.url}/photos/founder/jonathan-about.jpg`,
+    image: HEADSHOT_URL,
     worksFor: { "@id": SCHEMA_IDS.practice },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -99,7 +112,7 @@ function personNode() {
         addressCountry: location.country,
       },
     },
-    sameAs: [site.social.linkedin, site.social.fiverr],
+    sameAs: [site.social.linkedinPersonal],
   };
 }
 
@@ -156,6 +169,22 @@ export function buildFaqGraph(items: FaqItem[]) {
   };
 }
 
+/**
+ * /about as the page about the person. This is the node search engines key a
+ * person's knowledge panel off, and it ties the page back into the site graph.
+ */
+export function buildProfilePageGraph() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": SCHEMA_IDS.profilePage,
+    url: `${site.url}/about`,
+    name: `About ${principal.displayName}`,
+    mainEntity: { "@id": SCHEMA_IDS.person },
+    isPartOf: { "@id": SCHEMA_IDS.website },
+  };
+}
+
 export function buildBreadcrumbGraph(trail: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
@@ -164,7 +193,8 @@ export function buildBreadcrumbGraph(trail: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
-      item: `${site.url}${crumb.path}`,
+      // The home item matches the canonical, which has no trailing slash.
+      item: crumb.path === "/" ? site.url : `${site.url}${crumb.path}`,
     })),
   };
 }

@@ -17,7 +17,7 @@ export const opticalHero = {
   headline: "Marketing help for optical practices",
   lead:
     "I spent my first career in optical. I worked in the lab, sold on the floor, and managed the store with a " +
-    "number to hit every month. Now I do the marketing side for practices around Southern California, so you " +
+    `number to hit every month. Now I do the marketing side for practices around ${location.serviceRegion}, so you ` +
     "won't have to explain your business to me first.",
 } as const;
 
@@ -35,6 +35,7 @@ export const opticalBackground = {
     src: "/photos/story/cartier-rimless.webp",
     alt: "A gold rimless Cartier frame on a white surface, the panther detail on the temple in focus.",
   },
+  moreAboutMe: "More About Me",
 } as const;
 
 export type OpticalProblem = {
@@ -121,4 +122,26 @@ export const opticalClosing = {
   body:
     "The point is to leave the practice easier to find, easier to book, and the numbers simple enough that you " +
     "can read them yourself and keep it going.",
+} as const;
+
+/** Section headings and signposts that used to sit inline in the page file. */
+export const opticalPage = {
+  problems: {
+    title: "Areas Overlooked",
+    lead: "Most practices have two of these. Some have all four, and every one of them is fixable without starting over.",
+  },
+  steps: {
+    title: "How I Work",
+    lead:
+      "The same four things I do for any small business, aimed at a practice. Most owners start with one and add " +
+      "the others once it's paying for itself.",
+  },
+  faq: {
+    title: "Questions I get from practices",
+    lead: "The ones that come up before we talk. Anything not covered here, ask me on the call.",
+  },
+  contact: {
+    title: "Tell me about the practice",
+    lead: "Half an hour on the phone. You won't have to explain optical to me.",
+  },
 } as const;

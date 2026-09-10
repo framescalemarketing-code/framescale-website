@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { pricingPoints, pricingSection } from "@/content/pricing";
-import { site } from "@/lib/site";
+import { bookingHrefFor } from "@/lib/site";
 
 /**
  * Explains how a price gets arrived at rather than listing packages. Work is
@@ -16,7 +16,7 @@ export function Pricing() {
         <div className="flex flex-col gap-5 lg:sticky lg:top-24 lg:self-start">
           <SectionHeading title={pricingSection.title} lead={pricingSection.lead} />
           <p className="measure text-(--text-muted)">{pricingSection.intro}</p>
-          <Button href={site.contactAnchor} size="lg" withArrow className="mt-1 w-fit">
+          <Button href={bookingHrefFor("/services")} size="lg" withArrow className="mt-1 w-fit">
             {pricingSection.cta}
           </Button>
         </div>

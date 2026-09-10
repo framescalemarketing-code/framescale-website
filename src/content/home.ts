@@ -1,4 +1,4 @@
-import { location, principal } from "@/lib/site";
+import { bookingLive, ctaLabels, location, principal, site } from "@/lib/site";
 
 /**
  * Plain, in one person's voice. Say the thing the way you would say it out
@@ -27,12 +27,13 @@ import { location, principal } from "@/lib/site";
  * Body copy stays in full sentences with a subject and an active verb.
  */
 export const hero = {
-  headline: `Grow your ${location.city} small business`,
+  headline: "Find out what's holding your small business back",
   lead:
     `Hi, I'm ${principal.firstName}. I made glasses in the back of an optical shop and ended up running the ` +
-    "store, so I know how a small business actually works. I find out what's holding yours back, then I fix " +
-    "it. You work with me directly, start to finish.",
-  primaryCta: "Book A Free Call",
+    `store, so I know how a small business actually works. Now I work with owners across ${location.serviceRegion} ` +
+    "on the things that decide whether the business grows: the numbers, the plan, the website, and whether anyone " +
+    "can find you. I explain the work as I go, so when we're done you can run it yourself.",
+  primaryCta: ctaLabels.book,
   secondaryCta: "See How I Help",
 } as const;
 
@@ -43,15 +44,15 @@ export type Credential = {
 
 /**
  * Four slots under the hero: the two qualifications, who the work is for, and
- * how it is done. The shop floor is deliberately not one of them. The hero
- * directly above already opens on it, and the about strip further down tells
- * it properly, so putting it here a third time spent a slot on a repeat.
+ * where. The shop floor is deliberately not one of them. The hero directly
+ * above already opens on it, and the about strip further down tells it
+ * properly, so putting it here a third time spent a slot on a repeat.
  */
 export const credentials: Credential[] = [
   { value: "MBA", label: "Marketing concentration" },
   { value: "UC Riverside", label: "Bachelor's in business" },
   { value: "Small Business", label: "Who I work with" },
-  { value: location.city, label: "In person, one on one" },
+  { value: location.city, label: "Home base, I come to you" },
 ];
 
 export type Problem = {
@@ -59,38 +60,47 @@ export type Problem = {
   body: string;
 };
 
+/**
+ * Written from what owners actually say on the first call, in the order they
+ * tend to say it: the money, then where it came from, then the lack of a plan,
+ * then the thing they thought marketing was. The website and Google problems
+ * that used to have cards of their own now sit inside the fourth, and the
+ * services section underneath carries the fixes.
+ */
 export const problems: Problem[] = [
   {
-    title: "You Can't Tell What Your Marketing Did",
+    title: "You Only Look At Profit",
     body:
-      "A report arrives every month, and you still can't say which part of it made you money. So you keep paying " +
-      "for it, because stopping feels riskier than carrying on.",
+      "You check what's left at the end of the month and run the business off that one number. What came in, what " +
+      "it cost to bring in, and which part of the business earned it never get a look, so every decision gets made " +
+      "after the fact.",
   },
   {
-    title: "People Land On Your Site And Leave",
+    title: "Money Comes In And You Can't Say From Where",
     body:
-      "They find you, look for a few seconds, and book with whoever came up next. You paid to get them there " +
-      "and never found out what put them off.",
+      "Some of it is repeat customers, some walked past, some found you online, and the split is a guess. Without " +
+      "it you can't tell what to do more of, so you keep paying for all of it.",
   },
   {
-    title: "Nearby Customers Can't Find You",
+    title: "No Plan Past This Month",
     body:
-      "Someone two miles away searches for what you sell, and the place down the road comes up. They were ready " +
-      "to buy and they never knew you existed.",
+      "You're busy running the week and there's no plan for the year. Every problem gets dealt with when it lands " +
+      "on you, and the same ones keep landing.",
   },
   {
-    title: "Busy But Not Growing",
+    title: "Posting Online And Calling It Marketing",
     body:
-      "You haven't had a slow week in months. The business is still the size it was. Working harder has stopped " +
-      "moving the number, and it isn't obvious what would.",
+      "You post most days and a few people like it. The people ready to spend money are on Google looking for your " +
+      "hours and a way to book, and your website and your listing haven't been touched in years.",
   },
 ];
 
 export const problemSection = {
   title: "Where most owners get stuck",
   lead:
-    "Most owners I meet have at least one of these. Plenty get stuck on all four, and it can be hard to " +
-    "identify which problem you're actually experiencing.",
+    "Most owners I meet have at least one of these, and the ones with all four are the busiest people I know. The " +
+    "hard part is telling which one you've actually got, because from the inside they all feel like being short " +
+    "of time.",
 } as const;
 
 export type Differentiator = {
@@ -158,8 +168,8 @@ export const aboutStrip = {
 export const personalNote = {
   body: [
     "Most owners think marketing means posting on social media. That's one small piece of it. Marketing is also " +
-      "who your customer really is, what you charge, what your website says, and whether anyone can find you on " +
-      "Google.",
+      "who your customer really is, what you charge, what your website says, whether anyone can find you on " +
+      "Google, and whether you can tell which of those brought the money in.",
     "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice, " +
       "and you still can't say what either one did for you. They also never work out the exact things your " +
       "business needs to fix, so you end up with general tactics that would suit any company on the street.",
@@ -175,7 +185,25 @@ export const personalNote = {
 
 export const closingCta = {
   title: "Tell me what isn't working",
-  lead:
-    "Half an hour on the phone is usually enough to find it. Tell me what's going on and I'll tell you where " +
-    "I'd start. If I can't help, I'll say so on that call.",
+  lead: bookingLive
+    ? "Half an hour on the phone is enough to find where I'd start. Pick a time, or write it down and I'll come " +
+      "back to you the next business day. If I can't help, I'll say so on the call."
+    : "Half an hour on the phone is enough to find where I'd start. Tell me what's going on and I'll come back " +
+      "to you the next business day. If I can't help, I'll say so on the call.",
+} as const;
+
+/**
+ * The one thing on the site written for the person who was sent the link and
+ * knows someone else who needs it. The share text is the sentence a friend
+ * would say out loud, in the third person, with the address on the end.
+ */
+export const shareBar = {
+  text: "Know an owner who's working every hour and still stuck? Send them this page.",
+  button: "Send This Page",
+  copyButton: "Copy Link",
+  copied: "Link Copied",
+  shareTitle: site.name,
+  shareText:
+    `${principal.firstName} helps small business owners find out what's holding them back, then fixes it with ` +
+    "them. Worth a call.",
 } as const;

@@ -1,5 +1,5 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { credentialDetails, workingWithMe } from "@/content/about";
+import { credentialDetails, credentialsSection, workingWithMe } from "@/content/about";
 
 /** The dark anchor section on /about. Carries the verifiable trust signals. */
 export function Credentials() {
@@ -11,7 +11,7 @@ export function Credentials() {
           column wraps "University Of California, Riverside" onto three lines. */}
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <div>
-          <SectionHeading title="The background" lead="School, and a lot of years on a sales floor. I did the job first and went back for the degrees later." tone="light" />
+          <SectionHeading title={credentialsSection.title} lead={credentialsSection.lead} tone="light" />
 
           <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (

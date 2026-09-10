@@ -1,5 +1,5 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
-import type { FaqItem } from "@/content/faq";
+import { faqSection, type FaqItem } from "@/content/faq";
 
 type FaqProps = {
   items: FaqItem[];
@@ -15,8 +15,8 @@ type FaqProps = {
  */
 export function FAQ({
   items,
-  title = "Questions I get a lot",
-  lead = "The things people ask me before we talk. If yours isn't here, put it in the form and I'll answer it.",
+  title = faqSection.title,
+  lead = faqSection.lead,
   tone = "default",
 }: FaqProps) {
   return (

@@ -4,9 +4,13 @@ import type { Variants } from "motion/react";
  * One variant, used everywhere. The previous design had four directional
  * variants with blur filters; they cost paint time and made long pages feel
  * busy. A single short rise reads as calm and stays out of the way.
+ *
+ * The `hidden` state carries a zero-length transition on purpose: Reveal
+ * moves a block from visible to hidden right after hydration, and that step
+ * has to be instant so nothing is seen fading out.
  */
 export const rise: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 18, transition: { duration: 0 } },
   show: {
     opacity: 1,
     y: 0,
@@ -16,16 +20,8 @@ export const rise: Variants = {
 
 /** Parent wrapper that walks its children in sequence. */
 export const stagger: Variants = {
-  hidden: {},
+  hidden: { transition: { duration: 0 } },
   show: {
     transition: { staggerChildren: 0.07, delayChildren: 0.04 },
   },
 };
-
-/**
- * Shared viewport config. `amount: "some"` matters: these wrappers can be taller
- * than the viewport, and a percentage threshold on a tall container means
- * content sitting in plain sight stays at opacity 0 until the user scrolls far
- * past it. "some" fires as soon as any part enters view.
- */
-export const viewportOnce = { once: true, amount: "some" } as const;

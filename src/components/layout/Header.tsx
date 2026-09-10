@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/design/Brand";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { contactHrefFor, mainNav, practice, principal, site } from "@/lib/site";
+import { bookingHrefFor, ctaLabels, mainNav, practice, principal, site } from "@/lib/site";
 
 /**
  * The lockup is composed here rather than in Brand.tsx: the mark is the brand
@@ -33,7 +33,7 @@ function NameLockup() {
 
 export function Header() {
   const pathname = usePathname();
-  const contactHref = contactHrefFor(pathname);
+  const bookHref = bookingHrefFor(pathname);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -86,8 +86,8 @@ export function Header() {
                 </Link>
               );
             })}
-            <Button href={contactHref} size="md" withArrow>
-              Book A Call
+            <Button href={bookHref} size="md" withArrow>
+              {ctaLabels.book}
             </Button>
           </nav>
 
@@ -117,8 +117,8 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <Button href={contactHref} size="lg" withArrow className="mt-4 w-full">
-                Book A Call
+              <Button href={bookHref} size="lg" withArrow className="mt-4 w-full">
+                {ctaLabels.book}
               </Button>
               <a
                 href={`tel:${site.phoneHref}`}

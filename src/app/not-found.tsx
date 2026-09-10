@@ -1,24 +1,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { mainNav, site } from "@/lib/site";
+import { notFound } from "@/content/not-found";
+import { bookingHrefFor, mainNav } from "@/lib/site";
 
 export default function NotFound() {
   return (
     <section className="flex min-h-[70vh] items-center py-24">
       <Container width="narrow">
         <div className="flex flex-col gap-6">
-          <h1 className="display-lg text-(--brand-deep)">That page is not here</h1>
-          <p className="lead">
-            Some older pages were retired when the site was rebuilt. The link you followed may be one of them.
-          </p>
+          <h1 className="display-lg text-(--brand-deep)">{notFound.title}</h1>
+          <p className="lead">{notFound.lead}</p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button href="/" size="lg" withArrow>
-              Back To Home
+              {notFound.home}
             </Button>
-            <Button href={`/${site.contactAnchor}`} size="lg" variant="outline">
-              Get In Touch
+            <Button href={bookingHrefFor("/404")} size="lg" variant="outline">
+              {notFound.book}
             </Button>
           </div>
 

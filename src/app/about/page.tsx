@@ -3,16 +3,19 @@ import Image from "next/image";
 import { Chapters } from "@/components/sections/Chapters";
 import { Credentials } from "@/components/sections/Credentials";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { ShareBar } from "@/components/sections/ShareBar";
 import { Container } from "@/components/ui/Container";
-import { aboutHero } from "@/content/about";
-import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { aboutClosing, aboutHero } from "@/content/about";
+import { buildBreadcrumbGraph, buildProfilePageGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 import { location, practice, principal } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `About ${principal.displayName} | ${location.city} ${principal.jobTitle}`,
   absoluteTitle: true,
-  description: `I am a small business consultant in ${location.city}. From the shop floor to store management to an MBA in marketing, and how that background shapes the work I do.`,
+  description:
+    `I'm a small business consultant in ${location.city}. From the back of an optical shop to running the store ` +
+    "to an MBA in marketing, and how that shapes the work.",
   path: "/about",
   keywords: [
     `${principal.fullName}`,
@@ -25,6 +28,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function AboutPage() {
   return (
     <>
+      <script {...jsonLdProps(buildProfilePageGraph())} />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([
@@ -63,10 +67,8 @@ export default function AboutPage() {
 
       <Chapters />
       <Credentials />
-      <ContactSection
-        title="Tell me what you're working on"
-        lead="Half an hour on the phone. You talk, I ask questions, and you'll get a straight answer about whether I can help."
-      />
+      <ContactSection title={aboutClosing.title} lead={aboutClosing.lead} />
+      <ShareBar />
     </>
   );
 }

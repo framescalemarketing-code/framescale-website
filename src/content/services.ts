@@ -1,5 +1,5 @@
 import { BarChart3, Compass, MapPin, Monitor, type LucideIcon } from "lucide-react";
-import { location } from "@/lib/site";
+import { bookingLive, location } from "@/lib/site";
 
 export type Service = {
   /** Anchor id. Linked from the home page and the footer, so keep these stable. */
@@ -14,6 +14,14 @@ export type Service = {
   included: string[];
   bestFor: string;
 };
+
+/** Heading and signpost shared by the home overview and the /services detail. */
+export const servicesSection = {
+  title: "What I Do",
+  lead:
+    "Owners call me about one thing and it turns out to be another, so the first call is for working out which " +
+    "of these you need and in what order.",
+} as const;
 
 /**
  * Plain titles on purpose. The audience does not know or care what "conversion
@@ -38,6 +46,7 @@ export const services: Service[] = [
       "against.",
     included: [
       "Who your customers really are, as opposed to who you assume they are",
+      "Which part of the business is making the money, and which part just keeps you busy",
       "What the businesses near you are offering and charging",
       "A list of what to fix, in the order I would fix it",
       "A budget that fits a business your size",
@@ -99,11 +108,34 @@ export const services: Service[] = [
       "own, and I don't put money into ads until the numbers say they'll pay for themselves.",
     included: [
       "Reports you can read without me on the phone",
+      "Where each dollar came from: walk-ins, repeat customers, Google, or ads",
       "Ads, but only when they make sense",
       "Follow-up for the people who get in touch and then go quiet",
-      "A regular look at what's working and what isn't",
       "A number I can point at that tells you whether the spend earned its place",
     ],
     bestFor: "Money goes out every month and nobody can tell you what came back.",
   },
 ];
+
+/** The strings that belong to /services itself rather than to a service. */
+export const servicesPage = {
+  hero: {
+    headline: `How I help ${location.city} small businesses`,
+    lead:
+      "There are four things I do, and most owners need more than one of them. I start by working out what the " +
+      "real problem is, because owners call me about one thing and it turns out to be something else. Once we " +
+      "know that, we only spend money on the part that matters.",
+  },
+  faq: {
+    title: "The practical questions",
+    lead: "The ones that come up when somebody's close to deciding. Anything not covered here, ask me on the call.",
+  },
+  contact: {
+    title: "Tell me what's going on",
+    lead: bookingLive
+      ? "Most people don't know which one they need, and that's what the call is for. Pick a time or write it " +
+        "down, and I'll tell you where I'd start."
+      : "Most people don't know which one they need, and that's what the call is for. Tell me what's going on " +
+        "and I'll tell you where I'd start.",
+  },
+} as const;

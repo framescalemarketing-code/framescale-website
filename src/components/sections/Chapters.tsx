@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { chapters, philosophy } from "@/content/about";
+import { chapters, chaptersSection, philosophy } from "@/content/about";
 
 /** The founder story on /about, as a numbered editorial sequence. */
 export function Chapters() {
   return (
     <Section tone="muted" size="default">
-      <SectionHeading title="How I got here" lead="It took me a while to get here, and the parts that look like detours are the ones I use most." className="max-w-3xl" />
+      <SectionHeading title={chaptersSection.title} lead={chaptersSection.lead} className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (
