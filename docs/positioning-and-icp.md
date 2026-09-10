@@ -6,7 +6,8 @@
 > pages that served them were retired and are 308-redirected in `next.config.ts`.
 > Do not reintroduce vertical targeting from this document. The current
 > positioning lives in `src/content/*.ts` and the entity graph in
-> `src/lib/schema.ts`.
+> `src/lib/schema.ts`. One optical page (`/optical`) was added back later as a
+> single page for the industry Jonathan came from, not as a vertical strategy.
 
 Internal reference aligned to public site copy (as of this document). Use this when writing case studies, proposals, ads, or future page updates.
 
@@ -118,6 +119,6 @@ Internal reference aligned to public site copy (as of this document). Use this w
 ## Related files
 
 - Global blurbs: `src/lib/site.ts`
-- Page copy: `src/components/design-pages/*.tsx`, `src/components/design-pages/industries/*.tsx`
+- Page copy: `src/content/*.ts`
 - SEO titles/descriptions: `src/app/**/page.tsx` (route metadata), `src/app/layout.tsx`
-- Photography & layout plan: `docs/image-placement-plan.md`
+- Photography: `docs/photo-credits.md`

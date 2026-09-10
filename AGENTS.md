@@ -9,15 +9,15 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 |------|--------|
 | **Framework** | Next.js **App Router** only (`src/app/`). There is **no** `src/pages/` Pages Router tree. Do not add or assume one. |
 | **Runtime** | React 19, TypeScript `strict`, path alias `@/*` → `src/*`. |
-| **Styling** | Tailwind CSS v4, `src/app/globals.css`, `src/styles/fonts.css`. |
+| **Styling** | Tailwind CSS v4, `src/app/globals.css`, `src/styles/fonts.css` (self-hosted `@font-face`; files in `public/fonts`). |
 | **UI structure** | Primitives in `src/components/ui/`; chrome in `src/components/layout/`; page sections in `src/components/sections/`; framework plumbing in `src/components/system/`. The brand logo lives at `src/components/design/Brand.tsx` and is frozen (see brand guard). |
 | **Motion / icons** | `motion` (`motion/react`), shared variants in `src/lib/motion.ts`; icons via `lucide-react`. |
 | **Content** | All user-facing copy lives in `src/content/*.ts` as typed data, never inline in JSX. Site facts (name, location, phone, nav) live in `src/lib/site.ts`. |
-| **Data / server** | **No database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Email via Resend is the system of record for leads. Do not reintroduce a datastore unless explicitly requested. |
-| **HTTP API** | One route handler: `src/app/api/contact/route.ts`. |
+| **Data / server** | **No database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Email via Resend is the system of record for leads; bookings live in Jonathan's Google Calendar through a service account (`src/lib/booking/google-calendar.ts`). Do not reintroduce a datastore unless explicitly requested. |
+| **HTTP API** | Two route handlers: `src/app/api/contact/route.ts` (message form) and `src/app/api/booking/route.ts` (availability and booking). |
 | **Deployment** | Typical **Vercel** + Next (`@vercel/analytics`, `@vercel/speed-insights`); no `vercel.json` in repo. Follow existing Next/Vercel defaults unless told otherwise. |
-| **Routes** | Three marketing pages (`/`, `/services`, `/about`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. |
-| **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage and Service). `LocalBusiness` is deliberately not used: there is no public street address. |
+| **Routes** | Four marketing pages (`/`, `/services`, `/optical`, `/about`), the booking page (`/book`), and five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create one without removing its redirect. |
+| **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage, Service, and ProfilePage). Share cards: one `opengraph-image.tsx` per route segment, content in `src/content/share-cards.ts`. `LocalBusiness` is deliberately not used: there is no public street address. |
 | **Quality gates** | `npm run lint`, `npm run brand:check` (see `scripts/brand-guard.mjs`). |
 
 ## Mandatory behaviors
@@ -32,7 +32,7 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 8. For Next.js routing, **confirm App Router**: this app uses **`src/app/`** only. Do not mix in Pages Router patterns (`getServerSideProps`, `pages/api`, etc.).
 9. For server code, preserve this repo’s patterns: **Resend** for email, **Cloudflare Turnstile** for spam gating, **environment variable naming** as in `.env.example`, and **Vercel-oriented** Next deployment. There is no database; do not add one.
 10. For UI, follow the **existing design system** (Tailwind tokens, design components, motion variants). Do not introduce a parallel visual system (e.g. MUI, Bootstrap, second component library) unless explicitly requested.
-11. After substantive TS/TSX edits, use **`npm run lint`**; after brand-tied changes, **`npm run brand:check`**. The brand guard freezes the three font families, the five brand colors, and the logo viewBox. It also fails while `PRINCIPAL_LAST_NAME` in `src/lib/site.ts` is still the placeholder.
+11. After substantive TS/TSX edits, use **`npm run lint`**; after brand-tied changes, **`npm run brand:check`**. The brand guard freezes the three font families, the five brand colors, and the logo viewBox.
 
 ## Marketing copy style (site text and docs)
 
@@ -52,8 +52,8 @@ These rules apply to new copy and to edits you make to existing pages unless the
 ## Where to look
 
 - **Site facts / URLs / nav:** `src/lib/site.ts` (also holds `principal`, `practice`, and `location`)
-- **All marketing copy:** `src/content/{home,services,about,scale,pricing,faq}.ts`
-- **API + env patterns:** `src/app/api/contact/route.ts`, `.env.example`
+- **All marketing copy:** `src/content/*.ts` (home, services, optical, about, scale, pricing, faq, contact, booking, work, share-cards, not-found). The fuller voice guide is the header comment in `src/content/home.ts`.
+- **API + env patterns:** `src/app/api/contact/route.ts`, `src/app/api/booking/route.ts`, `.env.example`
 - **Structured data:** `src/lib/schema.ts`
 - **Retired-route redirects:** `next.config.ts`
 - **Stack detail and SEO/legal/brand:** `.cursorrules`
