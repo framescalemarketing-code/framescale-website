@@ -103,13 +103,25 @@ export function contactReceiptText(input: { name: string }): string {
   return contactReceipt.paragraphs(input.name).join("\n\n");
 }
 
-/** The alert Jonathan gets when a call is booked. The event is already in his calendar. */
+/** A button-shaped link, used for "Add to Google Calendar". The href is built server-side, never from user text. */
+function linkButton(label: string, href: string): string {
+  return `<p style="margin:18px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;padding:10px 18px;border-radius:999px;background:${BRAND_PRIMARY};color:#ffffff;font-family:${BODY_FONT};font-size:14px;font-weight:600;text-decoration:none;">${escapeHtml(label)}</a></p>`;
+}
+
+/**
+ * The alert Jonathan gets when a call is booked. When the site wrote the
+ * calendar itself the link is a convenience; when it could not, the note says
+ * so and the link plus the attached invite are how the slot gets closed.
+ */
 export function bookingOwnerHtml(input: {
   name: string;
   email: string;
   phone: string;
   note: string;
   when: string;
+  calendarLink: string | null;
+  calendarLabel: string;
+  needsAdding: boolean;
 }): string {
   const inner = `
     ${kickerAndTitle("Call booked", input.when)}
@@ -119,18 +131,25 @@ export function bookingOwnerHtml(input: {
     <hr style="margin:18px 0;border:none;border-top:1px solid rgba(108,122,124,0.25);" />
     <p style="margin:0 0 6px;font-family:${BODY_FONT};font-size:13px;font-weight:600;color:${BRAND_DEEP};">Note</p>
     <p style="margin:0;font-family:${BODY_FONT};font-size:14px;color:${BRAND_MUTED};">${escapeHtml(input.note || "None").replace(/\n/g, "<br />")}</p>
+    ${
+      input.needsAdding
+        ? `<p style="margin:18px 0 0;font-family:${BODY_FONT};font-size:14px;line-height:1.6;color:${BRAND_DEEP};">${escapeHtml(bookingEmails.ownerAddNote)}</p>`
+        : ""
+    }
+    ${input.calendarLink ? linkButton(input.calendarLabel, input.calendarLink) : ""}
   `;
   return brandedShell(inner, `Call booked: ${input.name}`);
 }
 
 /** The visitor's confirmation. The .ics is attached by the sender; wording lives in src/content/booking.ts. */
-export function bookingVisitorHtml(input: { phone: string; when: string }): string {
-  const inner = bookingEmails
-    .visitorParagraphs(input.phone, input.when)
-    .map(
-      (paragraph, index) =>
-        `<p style="margin:${index === 0 ? "0" : "12px 0 0"};font-family:${BODY_FONT};font-size:15px;line-height:1.6;color:${BRAND_DEEP};">${escapeHtml(paragraph)}</p>`,
-    )
-    .join("\n");
+export function bookingVisitorHtml(input: { phone: string; when: string; calendarLink: string }): string {
+  const inner =
+    bookingEmails
+      .visitorParagraphs(input.phone, input.when)
+      .map(
+        (paragraph, index) =>
+          `<p style="margin:${index === 0 ? "0" : "12px 0 0"};font-family:${BODY_FONT};font-size:15px;line-height:1.6;color:${BRAND_DEEP};">${escapeHtml(paragraph)}</p>`,
+      )
+      .join("\n") + linkButton(bookingEmails.addToGoogle, input.calendarLink);
   return brandedShell(inner, bookingEmails.visitorSubject(input.when));
 }

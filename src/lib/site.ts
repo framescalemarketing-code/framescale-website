@@ -93,11 +93,11 @@ export const site = {
 
 /**
  * Whether "Book A Free Call" sends people to the booking page or to the
- * message form. The page needs the Google Calendar credentials from
- * `.env.example` in production before it can take a booking, so this stays
- * false until they are in place and is flipped in a commit of its own.
+ * message form. The page needs a calendar to read from (the Google service
+ * account, or the private iCal feed URL; see `.env.example`) before it can
+ * offer a time, and shows the phone and email instead until then.
  */
-export const bookingLive = false;
+export const bookingLive = true;
 
 /** One set of labels, so the same action reads the same everywhere. */
 export const ctaLabels = {

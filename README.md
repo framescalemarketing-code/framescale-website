@@ -28,20 +28,31 @@ Routes retired in the rebuild (`/process`, `/contact`, `/industries/*`, `/paymen
 
 ## Booking
 
-`/book` reads availability from, and writes bookings to, a Google Calendar
-through a service account (`src/lib/booking/google-calendar.ts`, no SDK).
-Setup: create a Google Cloud project, enable the Calendar API, create a
-service account and download its JSON key, share the calendar with the
-service account's email at "Make changes to events", then set
-`GOOGLE_CALENDAR_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, and
-`GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`. Without them the route reports the
-calendar unavailable and the page shows the phone and email instead.
+`/book` offers half-hour slots, Monday to Friday 9:00 to 4:30 Pacific, minus
+whatever the calendar says is busy. It has two ways of seeing the calendar:
 
-`bookingLive` in `src/lib/site.ts` is the switch: while it is `false`, every
-"Book A Free Call" points at the message form, `/book` is `noindex`, and it is
-out of the sitemap and the footer. Flip it once the credentials are in
-production. A service account cannot invite attendees on a personal calendar,
-so the visitor's invite goes out as an `.ics` on the Resend confirmation.
+- **Email mode** (`BOOKING_EXTERNAL_CALENDAR_ICS_URL`): the calendar's private
+  iCal feed supplies busy time, with recurring series expanded and "Free"
+  events ignored, the way Google's own freeBusy behaves. A booking sends
+  Jonathan the event (`.ics` plus an "Add to Google Calendar" link) which he
+  adds; the visitor gets a confirmation with their own invite. The booking
+  counts as made only once Resend has accepted the owner alert. Each server
+  instance holds a booked slot in memory for twelve hours, which narrows but
+  does not close the window before the calendar reflects it, so the alert asks
+  him to add it promptly.
+- **Google mode** (the three `GOOGLE_*` variables, a service account the
+  calendar is shared with at "Make changes to events"): the site reads busy
+  time live and writes each booking into the calendar itself, no clicking. A
+  service account cannot invite attendees on a personal calendar, so the
+  visitor's invite still goes out on the Resend confirmation.
+
+With both set, Google is the record and the feed adds a second calendar's busy
+time. With neither, the route reports the calendar unavailable and the page
+shows the phone and email.
+
+`bookingLive` in `src/lib/site.ts` is the switch for whether "Book A Free Call"
+points at `/book` (and whether `/book` is indexed and in the sitemap and footer)
+or at the message form.
 
 ## Architecture
 

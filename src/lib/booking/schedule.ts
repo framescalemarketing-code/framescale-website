@@ -169,11 +169,12 @@ export function buildSlotsPayload(ym: string, unavailableStartsUtc: Set<string>)
 }
 
 /**
- * Whether a start the client sent back is one the builder above could have
- * produced right now: on the grid, in hours, on a weekday, and inside the
- * lead and horizon windows. The busy check against the calendar is separate.
+ * Whether a start is one the builder above could ever produce: a real
+ * instant, on the half-hour grid, inside working hours, on a weekday. The
+ * time-window check is separate because it changes with the clock, and the
+ * client is told something different when a slot merely went stale.
  */
-export function isValidSlotStart(startsAtIso: string): boolean {
+export function isSlotShape(startsAtIso: string): boolean {
   const slotUtc = DateTime.fromISO(startsAtIso, { zone: "utc" });
   if (!slotUtc.isValid) return false;
   const slot = slotUtc.setZone(BOOKING_ZONE);
@@ -182,11 +183,20 @@ export function isValidSlotStart(startsAtIso: string): boolean {
   if (slot.minute % BOOKABLE_INTERVAL_MINUTES !== 0) return false;
 
   const minutesFromMidnight = slot.hour * 60 + slot.minute;
-  if (minutesFromMidnight < OPEN_MINUTES || minutesFromMidnight > LAST_START_MINUTES) return false;
+  return minutesFromMidnight >= OPEN_MINUTES && minutesFromMidnight <= LAST_START_MINUTES;
+}
 
+/** Whether a well-formed start is still inside the lead-time and horizon windows right now. */
+export function isSlotWithinWindow(startsAtIso: string): boolean {
+  const slot = DateTime.fromISO(startsAtIso, { zone: "utc" }).setZone(BOOKING_ZONE);
+  if (!slot.isValid) return false;
   const nowZoned = nowPacific();
   if (slot < nowZoned.plus({ minutes: MIN_LEAD_MINUTES })) return false;
   if (slot > nowZoned.plus({ weeks: MAX_WEEKS_AHEAD }).endOf("day")) return false;
-
   return true;
+}
+
+/** Both checks: the slot the builder would produce right now. The busy check against the calendar is separate. */
+export function isValidSlotStart(startsAtIso: string): boolean {
+  return isSlotShape(startsAtIso) && isSlotWithinWindow(startsAtIso);
 }

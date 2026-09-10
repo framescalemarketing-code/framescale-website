@@ -9,7 +9,7 @@ export const booking = {
   headline: "Book a free call",
   lead:
     "Half an hour, just the two of us. You tell me what's going on, I ask questions, and you leave knowing what " +
-    "I'd do first. Pick a time and it goes straight into my calendar.",
+    "I'd do first. Pick a time and it comes straight to me.",
   aside: "If you'd rather write first, the form is at the bottom of every page.",
   calendar: {
     pickDay: "Pick A Day",
@@ -57,13 +57,20 @@ export const bookingEmails = {
   visitorSubject: (when: string) => `Your call with ${principal.firstName}, ${when}`,
   visitorParagraphs: (phone: string, when: string) => [
     `Thanks for booking. I'll call you on ${phone} at ${when}.`,
-    "The invite is attached. If you want to move the call, reply to this email.",
+    "The invite is attached, and the link below puts it in Google Calendar. If you want to move the call, reply " +
+      `to this email. If you need me before then, call ${site.phone}.`,
     principal.firstName,
   ],
   ownerSubject: (name: string, when: string) => `New call booked: ${name}, ${when}`,
+  /** Shown in the owner alert only when the site could not write the calendar itself. */
+  ownerAddNote:
+    "This one isn't in your calendar yet. Add it now, with the link below or the attached invite. Until it's " +
+    "there the site can offer the same time to someone else.",
+  addToGoogle: "Add to Google Calendar",
+  openInGoogle: "Open in Google Calendar",
   eventSummary: (name: string) => `Call with ${name}`,
   icsSummary: `Call with ${principal.fullName}`,
   icsDescription: (phone: string) =>
     `${principal.firstName} will call you on ${phone}. To move the call, reply to the confirmation email or ` +
-    `write to ${site.email}.`,
+    `write to ${site.email}. To reach him before then, call ${site.phone}.`,
 } as const;

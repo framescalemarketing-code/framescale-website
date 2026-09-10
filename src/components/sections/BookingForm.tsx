@@ -39,11 +39,16 @@ type FieldErrors = Partial<Record<keyof FormState, string>>;
 const EMPTY: FormState = { name: "", email: "", phone: "", note: "" };
 const HONEYPOT_FIELD = "fs_contact_extra";
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+/** Mirrors the server: digits and the usual punctuation, at least ten digits. */
+const PHONE_SHAPE = /^\+?[\d\s().-]{10,40}$/;
 
 function validateField(field: keyof FormState, value: string): string | undefined {
   if (field === "name" && !value.trim()) return booking.validation.name;
   if (field === "email") return validateEmailInput(value);
-  if (field === "phone" && value.replace(/\D/g, "").length < 10) return booking.validation.phone;
+  if (field === "phone") {
+    const trimmed = value.trim();
+    if (trimmed.replace(/\D/g, "").length < 10 || !PHONE_SHAPE.test(trimmed)) return booking.validation.phone;
+  }
   return undefined;
 }
 
@@ -58,8 +63,8 @@ function longDayLabel(key: string): string {
 
 /**
  * Day grid, time list, four fields. Availability comes from /api/booking,
- * which reads the calendar; the booking goes back the same way and lands in
- * the calendar before the response returns.
+ * which reads the calendar; the booking goes back the same way and is only
+ * reported as made once the server has recorded it.
  */
 export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const [month, setMonth] = useState<string | null>(null);
@@ -87,6 +92,13 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
     setCalendar("loading");
     try {
       const res = await fetch(`/api/booking${ym ? `?month=${ym}` : ""}`, { cache: "no-store" });
+      // A month that was pageable when the payload was built can fall out of
+      // the window at midnight. That is not the calendar being down; go back
+      // to the current month, which the server always accepts.
+      if (res.status === 400 && ym) {
+        setMonth(null);
+        return;
+      }
       if (!res.ok) throw new Error(String(res.status));
       const next = (await res.json()) as MonthPayload;
       setPayload(next);
@@ -99,6 +111,14 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
   useEffect(() => {
     void loadMonth(month);
   }, [month, loadMonth]);
+
+  /** Paging clears the selection, so nothing picked in another month is submitted unseen. */
+  const goToMonth = (ym: string | null) => {
+    if (calendar !== "ready" || !ym) return;
+    setDay(null);
+    setStart(null);
+    setMonth(ym);
+  };
 
   const availableByDay = useMemo(() => {
     const counts = new Map<string, number>();
@@ -174,13 +194,18 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       const body = (await res.json().catch(() => ({}))) as { error?: string; when?: string };
 
       if (res.status === 409) {
+        // Taken, or gone stale. Either way: drop it and show the fresh list.
         setStart(null);
         void loadMonth(month);
-        fail(booking.errors.slotTaken, false);
+        fail(body.error || booking.errors.slotTaken, false);
         return;
       }
       if (res.status === 503) {
         fail(booking.errors.calendarDown, true);
+        return;
+      }
+      if (res.status >= 500) {
+        fail(booking.errors.generic, true);
         return;
       }
       if (!res.ok) {
@@ -211,7 +236,8 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         <CheckCircle2 className="size-9 text-(--brand-primary)" aria-hidden="true" />
         <h2 className="display-sm text-(--brand-deep)">{booking.success.title}</h2>
         {bookedWhen ? <p className="font-ui font-semibold text-(--brand-deep)">{bookedWhen}</p> : null}
-        <p className="text-(--text-muted)">{booking.success.body.replace("{address}", bookedEmail)}</p>
+        {/* Function replacer, so a `$` in the address is inserted literally. */}
+        <p className="text-(--text-muted)">{booking.success.body.replace("{address}", () => bookedEmail)}</p>
       </div>
     );
   }
@@ -227,27 +253,34 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-7">
-      {/* Day picker */}
+      {/* Day picker. The legend names the group for assistive tech; the
+          visible label sits in the header row next to the month controls. */}
       <fieldset className="flex flex-col gap-3">
+        <legend className="sr-only">{booking.calendar.pickDay}</legend>
         <div className="flex items-center justify-between gap-4">
-          <legend className="field-label mb-0">{booking.calendar.pickDay}</legend>
+          <span className="field-label mb-0" aria-hidden="true">
+            {booking.calendar.pickDay}
+          </span>
           <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={() => payload?.prevMonth && setMonth(payload.prevMonth)}
-              disabled={!payload?.prevMonth || calendar !== "ready"}
+              onClick={() => goToMonth(payload?.prevMonth ?? null)}
+              disabled={!payload?.prevMonth}
               className="rounded-full p-1.5 text-(--brand-deep) transition-colors hover:bg-(--muted) disabled:opacity-30"
               aria-label={booking.calendar.earlier}
             >
               <ChevronLeft className="size-4" aria-hidden="true" />
             </button>
-            <span className="min-w-36 text-center font-ui text-sm font-semibold text-(--brand-deep)">
+            <span
+              className="min-w-36 text-center font-ui text-sm font-semibold text-(--brand-deep)"
+              aria-live="polite"
+            >
               {payload?.monthLabel ?? ""}
             </span>
             <button
               type="button"
-              onClick={() => payload?.nextMonth && setMonth(payload.nextMonth)}
-              disabled={!payload?.nextMonth || calendar !== "ready"}
+              onClick={() => goToMonth(payload?.nextMonth ?? null)}
+              disabled={!payload?.nextMonth}
               className="rounded-full p-1.5 text-(--brand-deep) transition-colors hover:bg-(--muted) disabled:opacity-30"
               aria-label={booking.calendar.later}
             >

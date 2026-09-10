@@ -29,16 +29,20 @@ type ContactPayload = {
 const SEND_FAILED = "Unable to send your message right now. Please email or call instead.";
 
 export async function POST(req: NextRequest) {
-  const contentLength = Number(req.headers.get("content-length") ?? 0);
-  if (contentLength > 16_000) {
+  // Measured on the body itself: the Content-Length header is optional.
+  const raw = await req.text();
+  if (Buffer.byteLength(raw, "utf8") > 16_000) {
     return NextResponse.json({ error: "Payload too large." }, { status: 413 });
   }
 
   let payload: ContactPayload;
 
   try {
-    payload = (await req.json()) as ContactPayload;
+    payload = JSON.parse(raw) as ContactPayload;
   } catch {
+    return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
+  }
+  if (!payload || typeof payload !== "object") {
     return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
   }
 
