@@ -14,20 +14,23 @@ import { iubenda } from "@/lib/iubenda";
 import { buildIubendaConsentConfigScript } from "@/lib/iubenda-consent-config";
 import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
-import { location, principal, site } from "@/lib/site";
+import { location, practice, principal, site } from "@/lib/site";
 
 /**
  * The site has no dark theme: the paper tones in globals.css are the whole
  * palette. Declaring `light dark` told the browser otherwise, so on a machine
- * set to dark mode the UA painted form fields, the industry `<select>`, and the
- * scrollbar dark against a light page. One theme colour, matching
- * `--background`, for the same reason.
+ * set to dark mode the UA painted form fields and the scrollbar dark against a
+ * light page. One theme colour, matching `--background`, for the same reason.
  */
 export const viewport: Viewport = {
   themeColor: "#fdfbf7",
   colorScheme: "light",
 };
 
+/**
+ * No `openGraph.images` or `twitter.images` here: the `opengraph-image.tsx`
+ * file in this directory and in each route segment supplies them, hashed.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -59,28 +62,14 @@ export const metadata: Metadata = {
     title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
     description: site.description,
     url: site.url,
-    siteName: principal.displayName,
+    siteName: practice.name,
     locale: site.locale,
     type: "website",
-    images: [
-      {
-        url: site.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${principal.displayName} | ${principal.jobTitle} in ${location.city}`,
     description: site.description,
-    images: [
-      {
-        url: site.twitterImage,
-        alt: `${principal.displayName}, ${principal.jobTitle} in ${location.city}`,
-      },
-    ],
   },
   robots: {
     index: true,
@@ -107,6 +96,25 @@ export default function RootLayout({
       <head>
         {GA_MEASUREMENT_ID ? (
           <>
+            {/* Consent Mode needs a default on the page before gtag.js runs.
+                iubenda sends the `update` when the visitor accepts or rejects;
+                without a default already in place, GA can initialise with
+                storage granted in the gap before the widget loads. */}
+            <Script id="consent-default" strategy="beforeInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('consent', 'default', {
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied',
+                  analytics_storage: 'denied',
+                  functionality_storage: 'granted',
+                  security_storage: 'granted',
+                  wait_for_update: 500
+                });
+              `}
+            </Script>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
@@ -122,37 +130,28 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        {/* eslint-disable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://challenges.cloudflare.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
 
-        {/* The brand fonts are loaded by an @import inside globals.css, which
-            the browser cannot discover until that stylesheet has downloaded and
-            parsed. Preloading the same URL starts the request in parallel; the
-            @import then resolves from cache. Preload rather than a stylesheet
-            link, which would be render-blocking and delay first paint. The
-            @import stays because `npm run brand:check` treats it as part of the
-            brand contract. */}
+        {/* The brand fonts are self-hosted (src/styles/fonts.css). The two
+            faces used above the fold are preloaded so the headline and the
+            body copy paint in the right type on first view. `crossOrigin` is
+            required on font preloads even from the same origin, or the browser
+            fetches each file twice. */}
         <link
           rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Montserrat:wght@400..700&family=Open+Sans:wght@400..700&display=swap"
+          href="/fonts/source-serif-4-v14-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
-        {/* eslint-enable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
-
-        {/* Scroll reveals are serialized into the HTML as inline opacity:0.
-            If the bundle never runs, the page would render mostly blank, so
-            reveal them unconditionally when scripting is unavailable. */}
-        <noscript>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: '[style*="opacity:0"]{opacity:1!important;transform:none!important}',
-            }}
-          />
-        </noscript>
+        <link
+          rel="preload"
+          href="/fonts/open-sans-v44-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <a

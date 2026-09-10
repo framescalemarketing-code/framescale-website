@@ -8,8 +8,10 @@ export default function manifest(): MetadataRoute.Manifest {
     description: site.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#17788e",
+    // Same paper tone as `--background` in globals.css and `themeColor` in
+    // layout.tsx, so the installed app and the browser chrome match the page.
+    background_color: "#fdfbf7",
+    theme_color: "#fdfbf7",
     icons: [
       {
         src: "/icon.svg",
