@@ -1,33 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState, type ReactNode } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { TurnstileWidget } from "@/components/system/TurnstileWidget";
+import { contactForm } from "@/content/contact";
 import { validateEmailInput } from "@/lib/email-validation";
 import { trackEvent } from "@/lib/analytics";
+import { site } from "@/lib/site";
 
 type FormState = {
   name: string;
   email: string;
-  company: string;
-  industry: string;
   message: string;
 };
 
 type FieldErrors = Partial<Record<keyof FormState, string>>;
 
-const EMPTY: FormState = { name: "", email: "", company: "", industry: "", message: "" };
+const EMPTY: FormState = { name: "", email: "", message: "" };
 
-const INDUSTRIES = ["Shop or storefront", "Online store", "Services or trades", "Professional practice", "Other"];
+/** The honeypot's field name. Meaningless on purpose so no autofill maps to it. */
+const HONEYPOT_FIELD = "fs_contact_extra";
 
 function validateField(field: keyof FormState, value: string): string | undefined {
-  if (field === "name" && !value.trim()) return "Please enter your name.";
+  if (field === "name" && !value.trim()) return contactForm.validation.name;
   if (field === "email") return validateEmailInput(value);
   if (field === "message") {
-    if (!value.trim()) return "A sentence or two helps me prepare.";
-    if (value.trim().length < 10) return "Please add a little more detail.";
+    if (!value.trim()) return contactForm.validation.messageEmpty;
+    if (value.trim().length < 10) return contactForm.validation.messageShort;
   }
   return undefined;
+}
+
+/**
+ * Turns `{phone}` and `{email}` in a content string into working links, so the
+ * fallback lines can be written as sentences in the content file.
+ */
+function withContactLinks(text: string): ReactNode[] {
+  return text.split(/(\{phone\}|\{email\})/).map((part, index) => {
+    if (part === "{phone}") {
+      return (
+        <a key={index} href={`tel:${site.phoneHref}`} className="link-quiet font-semibold text-(--brand-primary)">
+          {site.phone}
+        </a>
+      );
+    }
+    if (part === "{email}") {
+      return (
+        <a key={index} href={`mailto:${site.email}`} className="link-quiet font-semibold wrap-anywhere text-(--brand-primary)">
+          {site.email}
+        </a>
+      );
+    }
+    return part;
+  });
 }
 
 export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
@@ -36,9 +61,14 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [note, setNote] = useState("");
+  /** True when the failure came from the network or the API rather than validation. */
+  const [serverError, setServerError] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [token, setToken] = useState("");
+  const [turnstileFailed, setTurnstileFailed] = useState(false);
   const [resetCount, setResetCount] = useState(0);
+
+  const onTurnstileFailed = useCallback(() => setTurnstileFailed(true), []);
 
   const update = (field: keyof FormState, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
@@ -54,7 +84,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (status === "sending") return;
+    if (status === "sending" || turnstileFailed) return;
 
     const nextErrors: FieldErrors = {
       name: validateField("name", data.name),
@@ -66,17 +96,20 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
     if (Object.values(nextErrors).some(Boolean)) {
       setStatus("error");
-      setNote("Please correct the highlighted fields and try again.");
+      setServerError(false);
+      setNote(contactForm.validation.summary);
       return;
     }
 
     if (turnstileSiteKey && !token) {
       setStatus("error");
-      setNote("Please complete the security check and try again.");
+      setServerError(false);
+      setNote(contactForm.validation.securityMissing);
       return;
     }
 
     setStatus("sending");
+    setServerError(false);
     setNote("");
 
     const sourcePage = typeof window !== "undefined" ? window.location.pathname : "/";
@@ -87,7 +120,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
-          website: honeypot,
+          [HONEYPOT_FIELD]: honeypot,
           turnstileToken: token,
           sourcePage,
         }),
@@ -108,6 +141,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       trackEvent("generate_lead", { form_id: "contact", form_location: "inline", location: sourcePage });
     } catch (err) {
       setStatus("error");
+      setServerError(true);
       setNote(err instanceof Error ? err.message : "Unable to submit right now. Please try again.");
     } finally {
       if (turnstileSiteKey) {
@@ -121,27 +155,29 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
     return (
       <div className="hairline-box flex flex-col items-start gap-4 rounded-xl p-8" role="status" aria-live="polite">
         <CheckCircle2 className="size-9 text-(--brand-primary)" aria-hidden="true" />
-        <h3 className="display-sm text-(--brand-deep)">Message received</h3>
-        <p className="text-(--text-muted)">
-          Thanks for reaching out. I read every message myself and reply within one business day, usually sooner.
-        </p>
+        <h3 className="display-sm text-(--brand-deep)">{contactForm.success.title}</h3>
+        <p className="text-(--text-muted)">{contactForm.success.body}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="link-quiet font-ui text-sm font-semibold text-(--brand-primary)"
         >
-          Send another message
+          {contactForm.success.again}
         </button>
       </div>
     );
   }
+
+  const securityFallback = (
+    <p className="text-sm text-(--text-muted)">{withContactLinks(contactForm.securityFallback)}</p>
+  );
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
           id="name"
-          label="Your Name"
+          label={contactForm.labels.name}
           required
           value={data.name}
           error={touched.name ? errors.name : undefined}
@@ -151,7 +187,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         />
         <Field
           id="email"
-          label="Email"
+          label={contactForm.labels.email}
           type="email"
           required
           value={data.email}
@@ -160,39 +196,11 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           onBlur={() => blur("email")}
           autoComplete="email"
         />
-        <Field
-          id="company"
-          label="Business Name"
-          value={data.company}
-          onChange={(v) => update("company", v)}
-          onBlur={() => blur("company")}
-          autoComplete="organization"
-          optional
-        />
-        <div>
-          <label htmlFor="industry" className="field-label">
-            Industry <span className="font-normal text-(--text-muted) normal-case">(optional)</span>
-          </label>
-          <select
-            id="industry"
-            name="industry"
-            className="field"
-            value={data.industry}
-            onChange={(e) => update("industry", e.target.value)}
-          >
-            <option value="">Select one</option>
-            {INDUSTRIES.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
 
       <div>
         <label htmlFor="message" className="field-label">
-          What's Going On <span aria-hidden="true">*</span>
+          {contactForm.labels.message} <span aria-hidden="true">*</span>
         </label>
         <textarea
           id="message"
@@ -200,7 +208,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           rows={5}
           required
           className="field resize-y"
-          placeholder="A couple of sentences is plenty."
+          placeholder={contactForm.placeholder}
           value={data.message}
           onChange={(e) => update("message", e.target.value)}
           onBlur={() => blur("message")}
@@ -214,46 +222,63 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         ) : null}
       </div>
 
-      {/* Honeypot. Positioned off-screen and hidden from assistive tech. */}
+      {/* Honeypot. Off-screen, out of the tab order, and marked for every
+          password manager that honours an opt-out, so nothing fills it in
+          on a real visitor's behalf. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-        <label htmlFor="website">Website</label>
+        <label htmlFor={HONEYPOT_FIELD}>{contactForm.honeypotLabel}</label>
         <input
-          id="website"
-          name="website"
+          id={HONEYPOT_FIELD}
+          name={HONEYPOT_FIELD}
           type="text"
           tabIndex={-1}
           autoComplete="off"
+          data-lpignore="true"
+          data-1p-ignore=""
+          data-bwignore=""
+          data-form-type="other"
           value={honeypot}
           onChange={(e) => setHoneypot(e.target.value)}
         />
       </div>
 
       {turnstileSiteKey ? (
-        <TurnstileWidget siteKey={turnstileSiteKey} onTokenChange={setToken} resetSignal={resetCount} />
+        <TurnstileWidget
+          siteKey={turnstileSiteKey}
+          onTokenChange={setToken}
+          onFailed={onTurnstileFailed}
+          fallback={securityFallback}
+          resetSignal={resetCount}
+        />
       ) : null}
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
-          disabled={status === "sending"}
+          disabled={status === "sending" || turnstileFailed}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-primary) px-7 py-3.5 font-ui text-base font-semibold text-white transition-colors hover:bg-(--brand-primary-hover) disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "sending" ? (
             <>
               <Loader2 className="size-4 animate-spin" aria-hidden="true" />
-              Sending
+              {contactForm.sending}
             </>
           ) : (
-            "Send Message"
+            contactForm.submit
           )}
         </button>
-        <p className="text-sm text-(--text-muted)">I usually reply the next business day.</p>
+        <p className="text-sm text-(--text-muted)">{contactForm.helper}</p>
       </div>
 
       {note ? (
-        <p role="alert" className="text-sm text-(--destructive)">
-          {note}
-        </p>
+        <div className="flex flex-col gap-1">
+          <p role="alert" className="text-sm text-(--destructive)">
+            {note}
+          </p>
+          {serverError ? (
+            <p className="text-sm text-(--text-muted)">{withContactLinks(contactForm.serverErrorLine)}</p>
+          ) : null}
+        </div>
       ) : null}
     </form>
   );
@@ -267,7 +292,6 @@ type FieldProps = {
   onBlur: () => void;
   type?: string;
   required?: boolean;
-  optional?: boolean;
   error?: string;
   autoComplete?: string;
 };
@@ -280,7 +304,6 @@ function Field({
   onBlur,
   type = "text",
   required = false,
-  optional = false,
   error,
   autoComplete,
 }: FieldProps) {
@@ -289,7 +312,6 @@ function Field({
       <label htmlFor={id} className="field-label">
         {label}
         {required ? <span aria-hidden="true"> *</span> : null}
-        {optional ? <span className="font-normal text-(--text-muted) normal-case"> (optional)</span> : null}
       </label>
       <input
         id={id}

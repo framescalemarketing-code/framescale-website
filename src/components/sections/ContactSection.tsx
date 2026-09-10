@@ -1,28 +1,25 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
+import { contactSection, contactSteps } from "@/content/contact";
 import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
-import { location, site } from "@/lib/site";
+import { bookingLive, ctaLabels, site } from "@/lib/site";
 
 type ContactSectionProps = {
   title?: string;
   lead?: string;
 };
 
-const STEPS = [
-  "I read it myself.",
-  "We talk for half an hour.",
-  "I tell you whether I can help.",
-  "You decide. I won't chase you.",
-];
-
 /**
- * The single conversion point on the site, repeated at the foot of all three
- * pages. The NAP details here must match the footer and the JSON-LD exactly.
+ * The single conversion point on the site, repeated at the foot of the four
+ * marketing pages. The NAP details here must match the footer and the JSON-LD
+ * exactly. Once booking is live the left column also offers the calendar, and
+ * the form becomes the second path.
  */
 export function ContactSection({
-  title = "Let's talk",
-  lead = "Tell me what's going on. Half an hour is usually enough to work out where to start.",
+  title = contactSection.title,
+  lead = contactSection.lead,
 }: ContactSectionProps) {
   const turnstileSiteKey = getTurnstileSiteKeyForServer();
 
@@ -33,10 +30,15 @@ export function ContactSection({
           <div className="flex flex-col gap-4">
             <h2 className="display-lg text-(--brand-deep)">{title}</h2>
             <p className="lead">{lead}</p>
+            {bookingLive ? (
+              <Button href={site.bookingPath} size="lg" withArrow className="mt-2 w-fit">
+                {ctaLabels.book}
+              </Button>
+            ) : null}
           </div>
 
           <ol className="flex flex-col gap-3">
-            {STEPS.map((step, index) => (
+            {contactSteps.map((step, index) => (
               <li key={step} className="flex gap-3 text-sm text-(--text-muted)">
                 <span className="font-ui text-xs font-bold text-(--brand-primary)">0{index + 1}</span>
                 {step}
@@ -61,20 +63,18 @@ export function ContactSection({
             </a>
             <p className="flex items-center gap-3 text-sm text-(--text-muted)">
               <MapPin className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-              {location.city}, {location.region}. Serving {location.serviceArea}.
+              {contactSection.locationLine}
             </p>
             <p className="flex items-center gap-3 text-sm text-(--text-muted)">
               <Clock className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-              Monday to Friday, 9 to 5.
+              {contactSection.hours}
             </p>
           </div>
         </div>
 
         <div className="hairline-box p-6 sm:p-8">
-          <h3 className="display-sm mb-2 text-(--brand-deep)">Tell me what's going on</h3>
-          <p className="mb-7 text-sm text-(--text-muted)">
-            Three boxes. It doesn't need to be long.
-          </p>
+          <h3 className="display-sm mb-2 text-(--brand-deep)">{contactSection.card.title}</h3>
+          <p className="mb-7 text-sm text-(--text-muted)">{contactSection.card.lead}</p>
           <ContactForm turnstileSiteKey={turnstileSiteKey} />
         </div>
       </div>
