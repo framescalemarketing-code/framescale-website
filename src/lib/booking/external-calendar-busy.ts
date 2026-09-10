@@ -4,10 +4,10 @@ import { BOOKING_ZONE } from "@/lib/booking/schedule";
 import type { BusyWindow } from "@/lib/booking/busy";
 
 /**
- * Fallback busy-time reader: a private iCal feed URL, with no credentials.
- * Only consulted when Google Calendar is not configured. It can read a
- * calendar but never write to one, so on its own it cannot hold a booking;
- * see the API route for how that is handled.
+ * Extra busy-time source: a private iCal feed URL for a second calendar, read
+ * with no credentials. It can read a calendar but never write to one, so it
+ * only ever adds busy time on top of Google Calendar and never stands in for
+ * it; without Google the booking route reports the calendar unavailable.
  */
 const BOOKING_EXTERNAL_CALENDAR_ICS_URL = process.env.BOOKING_EXTERNAL_CALENDAR_ICS_URL?.trim() || "";
 const FETCH_TIMEOUT_MS = 8_000;

@@ -97,7 +97,7 @@ Copy `.env.example` to `.env.local`.
 
 - **Resend** (required): `RESEND_API_KEY`, optionally `RESEND_NOREPLY_FROM` and `CONTACT_NOTIFICATION_EMAIL`. Email is the system of record for leads, so a missing key makes both forms return an error rather than fail quietly. Each contact message costs two sends (the alert and the visitor's receipt); each booking, two as well.
 - **Cloudflare Turnstile** (required in production, optional elsewhere): `CLOUDFLARE_SITE_KEY`, `CLOUDFLARE_SECRET_KEY`. Set both or neither. If the widget never loads in the browser, the forms show the phone and email instead of a dead check.
-- **Google Calendar** (booking): the three `GOOGLE_*` variables above. `BOOKING_EXTERNAL_CALENDAR_ICS_URL` is an optional read-only fallback.
+- **Google Calendar** (booking): the three `GOOGLE_*` variables above. `BOOKING_EXTERNAL_CALENDAR_ICS_URL` optionally adds busy time from a second calendar's private iCal feed; it never replaces Google.
 - **Analytics** (optional): `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Without it the GA4 scripts are not injected. Events are held until iubenda reports consent and dropped on reject.
 - **Consent** (optional): `NEXT_PUBLIC_IUBENDA_POLICY_ID`, `NEXT_PUBLIC_IUBENDA_SITE_ID`, `NEXT_PUBLIC_IUBENDA_WIDGET_ID`. All fall back to committed defaults.
 

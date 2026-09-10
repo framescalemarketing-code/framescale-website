@@ -53,10 +53,8 @@ function noStore(body: unknown, init?: ResponseInit) {
  *
  * Google Calendar is the system of record. Without it there is nowhere to
  * hold a booking, so the route reports the calendar as unavailable and the
- * page falls back to the phone and the email. The iCal fallback only refines
- * availability when Google is present but temporarily unreachable is not a
- * case it can cover, so it is consulted only when Google is unconfigured and
- * a booking will fail anyway.
+ * page shows the phone and the email instead of a grid nobody can book from.
+ * The optional iCal feed only adds busy time from a second calendar on top.
  */
 export async function GET(req: NextRequest) {
   const ym = parseMonthParam(req.nextUrl.searchParams.get("month")) ?? currentYearMonthPacific();
@@ -66,9 +64,7 @@ export async function GET(req: NextRequest) {
 
   const config = getGoogleCalendarConfig();
   if (!config) {
-    if (!isExternalCalendarConfigured()) {
-      return noStore({ error: CALENDAR_DOWN }, { status: 503 });
-    }
+    return noStore({ error: CALENDAR_DOWN }, { status: 503 });
   }
 
   const monthStart = yearMonthStartPacific(ym);
@@ -76,9 +72,10 @@ export async function GET(req: NextRequest) {
   const rangeEnd = normalizeUtcIso(monthStart.plus({ months: 1 }));
 
   try {
-    const windows = config
-      ? await fetchGoogleBusyWindows(config, rangeStart, rangeEnd)
-      : await fetchExternalBusyWindows();
+    const windows = await fetchGoogleBusyWindows(config, rangeStart, rangeEnd);
+    if (isExternalCalendarConfigured()) {
+      windows.push(...(await fetchExternalBusyWindows()));
+    }
     const blocked = collectBlockedStartsForRange(
       windows,
       DateTime.fromISO(rangeStart, { zone: "utc" }),
