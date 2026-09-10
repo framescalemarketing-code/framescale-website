@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { trackEvent, trackPageView } from "@/lib/analytics";
+import { CONSENT_EVENT, setAnalyticsConsent, trackEvent, trackPageView } from "@/lib/analytics";
 
 function normalizeText(text: string | null | undefined) {
   return (text ?? "").trim().replace(/\s+/g, " ").toLowerCase();
@@ -11,6 +11,21 @@ function normalizeText(text: string | null | undefined) {
 export const GAEventTracker = () => {
   const pathname = usePathname();
   const lastTrackedPath = useRef<string>("");
+
+  // Consent. iubenda dispatches the event on every decision and again on load
+  // for a returning visitor with a stored choice. The mount-time check covers
+  // the case where the widget finished before React did.
+  useEffect(() => {
+    const onConsent = (event: Event) => {
+      const detail = (event as CustomEvent<{ analytics?: boolean }>).detail;
+      setAnalyticsConsent(Boolean(detail?.analytics));
+    };
+    window.addEventListener(CONSENT_EVENT, onConsent);
+    if (window._iub?.cs?.api?.isConsentGiven?.()) {
+      setAnalyticsConsent(true);
+    }
+    return () => window.removeEventListener(CONSENT_EVENT, onConsent);
+  }, []);
 
   useEffect(() => {
     const path = pathname;
@@ -43,7 +58,32 @@ export const GAEventTracker = () => {
           return;
         }
 
-        if (href.includes("#contact") || label.includes("contact") || label.includes("book") || label.includes("get started")) {
+        // Links that leave the site: the work sample, LinkedIn. Named
+        // `outbound_click` so it cannot collide with the `click` event GA4's
+        // enhanced measurement sends when that is switched on.
+        let url: URL | null = null;
+        try {
+          url = new URL(href, window.location.href);
+        } catch {
+          url = null;
+        }
+        if (url && url.protocol.startsWith("http") && url.hostname !== window.location.hostname) {
+          trackEvent("outbound_click", {
+            link_url: url.href,
+            link_domain: url.hostname,
+            label: label || url.hostname,
+            location: pathname,
+          });
+          return;
+        }
+
+        if (
+          href.includes("#contact") ||
+          href.startsWith("/book") ||
+          label.includes("contact") ||
+          label.includes("book") ||
+          label.includes("get started")
+        ) {
           trackEvent("cta_click", {
             label: label || href,
             destination: href,
