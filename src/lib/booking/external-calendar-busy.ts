@@ -1,5 +1,5 @@
 import "server-only";
-import { DateTime, IANAZone } from "luxon";
+import { DateTime, Duration, IANAZone } from "luxon";
 import { rrulestr } from "rrule";
 import { BOOKING_ZONE, normalizeUtcIso } from "@/lib/booking/schedule";
 import type { BusyWindow } from "@/lib/booking/busy";
@@ -51,14 +51,21 @@ export function isExternalCalendarConfigured(): boolean {
 
 type ParsedDate = {
   dt: DateTime;
-  /** The zone the wall-clock time was given in; all-day dates use the booking zone. */
+  /**
+   * The zone a recurring series repeats in: the TZID it was given, "utc" for
+   * a Z-stamped time (which RFC 5545 fixes at that instant across DST), and
+   * the booking zone for all-day dates.
+   */
   zone: string;
+  allDay: boolean;
 };
 
 type EventRecord = {
   uid: string;
   start: ParsedDate | null;
   end: ParsedDate | null;
+  /** ISO 8601 duration, used when DTEND is absent. */
+  duration: string | null;
   rrule: string | null;
   exdates: DateTime[];
   recurrenceId: DateTime | null;
@@ -79,13 +86,29 @@ function unfoldIcsLines(ics: string): string[] {
   return out;
 }
 
-function parseField(line: string): { name: string; params: Map<string, string>; value: string } | null {
-  const i = line.indexOf(":");
-  if (i <= 0) return null;
+/** Split on a separator, ignoring any inside double quotes (a TZID may read `"(UTC-08:00) Pacific Time"`). */
+function splitOutsideQuotes(text: string, separator: string, limit = Infinity): string[] {
+  const parts: string[] = [];
+  let current = "";
+  let quoted = false;
+  for (const ch of text) {
+    if (ch === '"') quoted = !quoted;
+    if (ch === separator && !quoted && parts.length < limit - 1) {
+      parts.push(current);
+      current = "";
+      continue;
+    }
+    current += ch;
+  }
+  parts.push(current);
+  return parts;
+}
 
-  const head = line.slice(0, i);
-  const value = line.slice(i + 1);
-  const [rawName, ...paramParts] = head.split(";");
+function parseField(line: string): { name: string; params: Map<string, string>; value: string } | null {
+  const [head, value] = splitOutsideQuotes(line, ":", 2);
+  if (!head || value === undefined) return null;
+
+  const [rawName, ...paramParts] = splitOutsideQuotes(head, ";");
   const name = rawName.trim().toUpperCase();
   const params = new Map<string, string>();
 
@@ -119,7 +142,7 @@ function parseIcsDate(value: string, params: Map<string, string>): ParsedDate | 
   if (valueType === "DATE" || /^\d{8}$/.test(value)) {
     if (!/^\d{8}$/.test(value)) return null;
     const dt = DateTime.fromFormat(value, "yyyyLLdd", { zone: BOOKING_ZONE }).startOf("day");
-    return dt.isValid ? { dt, zone: BOOKING_ZONE } : null;
+    return dt.isValid ? { dt, zone: BOOKING_ZONE, allDay: true } : null;
   }
 
   const m = value.match(/^(\d{8})T(\d{4}|\d{6})(Z?)$/);
@@ -130,7 +153,23 @@ function parseIcsDate(value: string, params: Map<string, string>): ParsedDate | 
   const format = zPart ? `yyyyLLdd'T'${timeFormat}'Z'` : `yyyyLLdd'T'${timeFormat}`;
   const zone = zPart ? "utc" : resolveIcsTimezone(params.get("TZID"));
   const dt = DateTime.fromFormat(`${datePart}${zPart ? "T" + timePart + "Z" : "T" + timePart}`, format, { zone });
-  return dt.isValid ? { dt, zone: zPart ? BOOKING_ZONE : zone } : null;
+  return dt.isValid ? { dt, zone, allDay: false } : null;
+}
+
+/** DTEND is optional: a DURATION, or for an all-day date the rest of that day, stands in for it. */
+function resolveEnd(record: EventRecord): ParsedDate | null {
+  if (record.end) return record.end;
+  if (!record.start) return null;
+  if (record.duration) {
+    const span = Duration.fromISO(record.duration);
+    if (span.isValid && span.as("minutes") > 0) {
+      return { ...record.start, dt: record.start.dt.plus(span) };
+    }
+  }
+  if (record.start.allDay) {
+    return { ...record.start, dt: record.start.dt.plus({ days: 1 }) };
+  }
+  return null;
 }
 
 /** EXDATE and RECURRENCE-ID may list several values separated by commas. */
@@ -153,6 +192,7 @@ function parseEvents(ics: string): EventRecord[] {
         uid: "",
         start: null,
         end: null,
+        duration: null,
         rrule: null,
         exdates: [],
         recurrenceId: null,
@@ -165,6 +205,7 @@ function parseEvents(ics: string): EventRecord[] {
     if (!current) continue;
 
     if (line === "END:VEVENT") {
+      current.end = resolveEnd(current);
       records.push(current);
       current = null;
       continue;
@@ -184,8 +225,7 @@ function parseEvents(ics: string): EventRecord[] {
         current.end = parseIcsDate(field.value, field.params);
         break;
       case "DURATION":
-        // Rare in Google feeds; handled after the loop once DTSTART is known.
-        current.end = null;
+        current.duration = field.value.trim();
         break;
       case "RRULE":
         current.rrule = field.value.trim();
@@ -222,6 +262,7 @@ function floatingDate(dt: DateTime, zone: string): Date {
 
 /** rrule reads UNTIL against the floating times, so a UTC UNTIL is moved into the event's zone first. */
 function normalizeUntil(rule: string, zone: string): string {
+  if (zone === "utc") return rule;
   return rule.replace(/UNTIL=(\d{8}T\d{6})Z/, (_, stamp: string) => {
     const until = DateTime.fromFormat(stamp, "yyyyLLdd'T'HHmmss", { zone: "utc" });
     return until.isValid ? `UNTIL=${until.setZone(zone).toFormat("yyyyLLdd'T'HHmmss")}` : `UNTIL=${stamp}Z`;

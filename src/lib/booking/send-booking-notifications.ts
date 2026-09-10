@@ -170,6 +170,11 @@ export async function sendBookingNotifications(
     } catch (err) {
       console.warn(`[booking] ${send.label} email threw`, err instanceof Error ? err.message : String(err));
     }
+    // In email mode a booking the owner never hears about is not a booking,
+    // so the visitor must not be told it is one either.
+    if (send.label === "owner" && input.mode === "email" && !result.owner) {
+      break;
+    }
   }
   return result;
 }

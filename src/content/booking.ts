@@ -20,6 +20,7 @@ export const booking = {
     noDay: "Pick a day first.",
     earlier: "Earlier",
     later: "Later",
+    retry: "Try Again",
   },
   labels: {
     name: "Your Name",

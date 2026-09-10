@@ -41,6 +41,9 @@ const HONEYPOT_FIELD = "fs_contact_extra";
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 /** Mirrors the server: digits and the usual punctuation, at least ten digits. */
 const PHONE_SHAPE = /^\+?[\d\s().-]{10,40}$/;
+/** Mirror the server's caps so nothing is cut off after the fact. */
+const NAME_MAX = 120;
+const NOTE_MAX = 1000;
 
 function validateField(field: keyof FormState, value: string): string | undefined {
   if (field === "name" && !value.trim()) return booking.validation.name;
@@ -56,6 +59,10 @@ function dayKey(year: number, month: number, day: number): string {
   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
+function monthKey(payload: MonthPayload): string {
+  return `${payload.year}-${String(payload.month).padStart(2, "0")}`;
+}
+
 function longDayLabel(key: string): string {
   const [y, m, d] = key.split("-").map(Number);
   return new Date(y, m - 1, d).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
@@ -68,6 +75,8 @@ function longDayLabel(key: string): string {
  */
 export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const [month, setMonth] = useState<string | null>(null);
+  /** Bumped to fetch the month on screen again, from a 409 or the retry button. */
+  const [reload, setReload] = useState(0);
   const [payload, setPayload] = useState<MonthPayload | null>(null);
   const [calendar, setCalendar] = useState<"loading" | "ready" | "down">("loading");
   const [day, setDay] = useState<string | null>(null);
@@ -88,36 +97,57 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
   const onTurnstileFailed = useCallback(() => setTurnstileFailed(true), []);
 
-  const loadMonth = useCallback(async (ym: string | null) => {
-    setCalendar("loading");
-    try {
-      const res = await fetch(`/api/booking${ym ? `?month=${ym}` : ""}`, { cache: "no-store" });
-      // A month that was pageable when the payload was built can fall out of
-      // the window at midnight. That is not the calendar being down; go back
-      // to the current month, which the server always accepts.
-      if (res.status === 400 && ym) {
-        setMonth(null);
-        return;
-      }
-      if (!res.ok) throw new Error(String(res.status));
-      const next = (await res.json()) as MonthPayload;
-      setPayload(next);
-      setCalendar("ready");
-    } catch {
-      setCalendar("down");
-    }
+  const clearSelection = useCallback(() => {
+    setDay(null);
+    setStart(null);
   }, []);
 
   useEffect(() => {
-    void loadMonth(month);
-  }, [month, loadMonth]);
+    let cancelled = false;
+    setCalendar("loading");
+    (async () => {
+      try {
+        const res = await fetch(`/api/booking${month ? `?month=${month}` : ""}`, { cache: "no-store" });
+        if (cancelled) return;
+        // A month that was pageable when the payload was built can fall out
+        // of the window at midnight. That is not the calendar being down; go
+        // back to the current month, which the server always accepts.
+        if (res.status === 400 && month) {
+          clearSelection();
+          setMonth(null);
+          return;
+        }
+        if (!res.ok) throw new Error(String(res.status));
+        const next = (await res.json()) as MonthPayload;
+        if (cancelled) return;
+        setPayload(next);
+        setCalendar("ready");
+      } catch {
+        if (!cancelled) setCalendar("down");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [month, reload, clearSelection]);
+
+  // Whatever was picked belongs to the month on screen, or to nothing.
+  useEffect(() => {
+    if (payload && day && !day.startsWith(monthKey(payload))) clearSelection();
+  }, [payload, day, clearSelection]);
+
+  const busy = calendar !== "ready" || status === "sending";
 
   /** Paging clears the selection, so nothing picked in another month is submitted unseen. */
   const goToMonth = (ym: string | null) => {
-    if (calendar !== "ready" || !ym) return;
-    setDay(null);
-    setStart(null);
+    if (busy || !ym) return;
+    clearSelection();
     setMonth(ym);
+  };
+
+  const retry = () => {
+    if (status === "sending") return;
+    setReload((n) => n + 1);
   };
 
   const availableByDay = useMemo(() => {
@@ -153,7 +183,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (status === "sending" || turnstileFailed) return;
+    if (status === "sending" || turnstileFailed || calendar !== "ready") return;
 
     if (!start) {
       fail(booking.validation.slot, false);
@@ -194,9 +224,9 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       const body = (await res.json().catch(() => ({}))) as { error?: string; when?: string };
 
       if (res.status === 409) {
-        // Taken, or gone stale. Either way: drop it and show the fresh list.
+        // Taken, or gone stale. Drop it and fetch the month on screen again.
         setStart(null);
-        void loadMonth(month);
+        setReload((n) => n + 1);
         fail(body.error || booking.errors.slotTaken, false);
         return;
       }
@@ -251,6 +281,15 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
     ...Array.from({ length: payload?.daysInMonth ?? 0 }, (_, index) => index + 1),
   ];
 
+  // aria-disabled rather than disabled: a button that goes inert under the
+  // keyboard user's focus must keep that focus, so the click is ignored instead.
+  const canGoEarlier = !busy && Boolean(payload?.prevMonth);
+  const canGoLater = !busy && Boolean(payload?.nextMonth);
+  const pagerClass = (enabled: boolean) =>
+    `rounded-full p-1.5 text-(--brand-deep) transition-colors ${
+      enabled ? "hover:bg-(--muted)" : "cursor-default opacity-30"
+    }`;
+
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-7">
       {/* Day picker. The legend names the group for assistive tech; the
@@ -264,9 +303,9 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={() => goToMonth(payload?.prevMonth ?? null)}
-              disabled={!payload?.prevMonth}
-              className="rounded-full p-1.5 text-(--brand-deep) transition-colors hover:bg-(--muted) disabled:opacity-30"
+              onClick={() => canGoEarlier && goToMonth(payload?.prevMonth ?? null)}
+              aria-disabled={!canGoEarlier}
+              className={pagerClass(canGoEarlier)}
               aria-label={booking.calendar.earlier}
             >
               <ChevronLeft className="size-4" aria-hidden="true" />
@@ -279,9 +318,9 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
             </span>
             <button
               type="button"
-              onClick={() => goToMonth(payload?.nextMonth ?? null)}
-              disabled={!payload?.nextMonth}
-              className="rounded-full p-1.5 text-(--brand-deep) transition-colors hover:bg-(--muted) disabled:opacity-30"
+              onClick={() => canGoLater && goToMonth(payload?.nextMonth ?? null)}
+              aria-disabled={!canGoLater}
+              className={pagerClass(canGoLater)}
               aria-label={booking.calendar.later}
             >
               <ChevronRight className="size-4" aria-hidden="true" />
@@ -290,7 +329,16 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         </div>
 
         {calendar === "down" ? (
-          <p className="text-sm text-(--destructive)">{withContactLinks(booking.errors.calendarDown)}</p>
+          <div className="flex flex-col items-start gap-2">
+            <p className="text-sm text-(--destructive)">{withContactLinks(booking.errors.calendarDown)}</p>
+            <button
+              type="button"
+              onClick={retry}
+              className="link-quiet font-ui text-sm font-semibold text-(--brand-primary)"
+            >
+              {booking.calendar.retry}
+            </button>
+          </div>
         ) : null}
 
         {calendar === "loading" && !payload ? (
@@ -301,7 +349,10 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         ) : null}
 
         {payload ? (
-          <div className={`grid grid-cols-7 gap-1 ${calendar === "loading" ? "opacity-50" : ""}`}>
+          <div
+            className={`grid grid-cols-7 gap-1 ${calendar === "loading" ? "opacity-50" : ""}`}
+            aria-busy={calendar === "loading"}
+          >
             {WEEKDAYS.map((weekday) => (
               <span
                 key={weekday}
@@ -319,7 +370,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
                 <button
                   key={key}
                   type="button"
-                  disabled={!open}
+                  disabled={!open || busy}
                   aria-pressed={selected}
                   aria-label={longDayLabel(key)}
                   onClick={() => {
@@ -357,6 +408,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
                 <button
                   key={slot.start}
                   type="button"
+                  disabled={busy}
                   aria-pressed={selected}
                   onClick={() => setStart(slot.start)}
                   className={`rounded-full border px-4 py-2 font-ui text-sm font-semibold transition-colors ${
@@ -385,6 +437,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           onChange={(v) => update("name", v)}
           onBlur={() => blur("name")}
           autoComplete="name"
+          maxLength={NAME_MAX}
         />
         <Field
           id="phone"
@@ -396,6 +449,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           onChange={(v) => update("phone", v)}
           onBlur={() => blur("phone")}
           autoComplete="tel"
+          maxLength={40}
         />
         <Field
           id="email"
@@ -407,6 +461,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
           onChange={(v) => update("email", v)}
           onBlur={() => blur("email")}
           autoComplete="email"
+          maxLength={320}
         />
         <div>
           <label htmlFor="note" className="field-label">
@@ -416,6 +471,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
             id="note"
             name="note"
             rows={3}
+            maxLength={NOTE_MAX}
             className="field resize-y"
             placeholder={booking.notePlaceholder}
             value={data.note}
@@ -454,7 +510,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
-          disabled={status === "sending" || turnstileFailed || calendar === "down"}
+          disabled={busy || turnstileFailed}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-primary) px-7 py-3.5 font-ui text-base font-semibold text-white transition-colors hover:bg-(--brand-primary-hover) disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "sending" ? (
@@ -487,9 +543,21 @@ type FieldProps = {
   required?: boolean;
   error?: string;
   autoComplete?: string;
+  maxLength?: number;
 };
 
-function Field({ id, label, value, onChange, onBlur, type = "text", required = false, error, autoComplete }: FieldProps) {
+function Field({
+  id,
+  label,
+  value,
+  onChange,
+  onBlur,
+  type = "text",
+  required = false,
+  error,
+  autoComplete,
+  maxLength,
+}: FieldProps) {
   return (
     <div>
       <label htmlFor={id} className="field-label">
@@ -502,6 +570,7 @@ function Field({ id, label, value, onChange, onBlur, type = "text", required = f
         type={type}
         required={required}
         autoComplete={autoComplete}
+        maxLength={maxLength}
         className="field"
         value={value}
         onChange={(e) => onChange(e.target.value)}

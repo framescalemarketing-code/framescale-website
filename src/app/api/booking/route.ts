@@ -31,8 +31,13 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { getResendApiKey } from "@/lib/resend-client";
 import { site } from "@/lib/site";
 
-/** Google plus two Resend calls can pass the default function budget. */
-export const maxDuration = 30;
+/**
+ * Turnstile, the calendar read (8 s budget), the Google write, and two Resend
+ * calls (12 s each) have to fit with room to spare: a request cut off between
+ * the owner alert and the visitor confirmation would put the call in the
+ * owner's calendar and tell the visitor it failed.
+ */
+export const maxDuration = 60;
 
 const MAX_BODY_BYTES = 16_000;
 const CALENDAR_DOWN = "I can't reach my calendar right now. Call or email instead.";
