@@ -5,16 +5,18 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { testimonials, workItems, workSection } from "@/content/work";
 
 type WorkProps = {
-  /** `dark` on the home page, where it is the page's one anchor band. */
+  /** `dark` paints it as a page's anchor band; the light tones sit between bands. */
   tone?: "default" | "muted" | "dark";
 };
 
 /**
- * The proof section: a real site, with a screenshot that links to it. One
- * item for now; the layout already handles more. Testimonials render only
- * once there is one to show.
+ * The proof section: a real site, with a screenshot that links to it. It
+ * appears once, on /optical, because the client is an optical company and
+ * the sample lands hardest next to that page's pitch. One item for now; the
+ * layout already handles more. Testimonials render only once there is one to
+ * show.
  */
-export function Work({ tone = "dark" }: WorkProps) {
+export function Work({ tone = "default" }: WorkProps) {
   const light = tone === "dark";
   const muted = light ? "text-white/65" : "text-(--text-muted)";
   const strong = light ? "text-white" : "text-(--brand-deep)";

@@ -96,7 +96,7 @@ const retiredRoutes: { source: string; destination: string }[] = [
   { source: "/payment", destination: "/services#pricing" },
   { source: "/payment/success", destination: "/" },
   { source: "/pricing", destination: "/services#pricing" },
-  { source: "/case-studies", destination: "/#work" },
+  { source: "/case-studies", destination: "/optical#work" },
   { source: "/sitemap", destination: "/" },
   { source: "/admin", destination: "/" },
   { source: "/admin/login", destination: "/" },

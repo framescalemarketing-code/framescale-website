@@ -7,7 +7,7 @@ All photography on this site is Jonathan's own. There is no stock imagery.
 | `public/photos/founder/jonathan-about.jpg` | Portrait | Home hero, about hero, `Person.image` and the practice `image` in JSON-LD, and the share card on every route |
 | `public/photos/story/rayban-frame.webp` | Black Ray-Ban optical frame, low angle | About → chapter 01, "In The Back Of The Shop" |
 | `public/photos/story/cartier-rimless.webp` | Gold rimless Cartier frame, panther temple detail | Optical → "My Background In Optical" |
-| `public/photos/work/onsight-home.webp` | The On-Sight Optics home page, a site Jonathan built | "Something I built" on the home page and the optical page |
+| `public/photos/work/onsight-home.webp` | The On-Sight Optics home page, a site Jonathan built | "Something I built" on the optical page |
 
 Each frame appears on exactly one page. They are the only two frame
 photographs in the repo, so using both in both places would make a four-page

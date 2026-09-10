@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { HomeHero } from "@/components/sections/Hero";
 import { ProblemList } from "@/components/sections/ProblemList";
 import { ServiceOverview } from "@/components/sections/Services";
-import { Work } from "@/components/sections/Work";
 import { AboutMe } from "@/components/sections/AboutMe";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -23,9 +22,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 /**
- * Seven sections, in the order a visitor decides: promise, problem, what I do,
- * proof, who I am, objections, action. Then one line for whoever wants to pass
- * the page on.
+ * Six sections, in the order a visitor decides: promise, problem, what I do,
+ * who I am, objections, action. Then one line for whoever wants to pass the
+ * page on. The work sample lives on /optical, where the client's industry
+ * makes it land harder, rather than appearing on both pages.
  */
 export default function HomePage() {
   return (
@@ -35,7 +35,6 @@ export default function HomePage() {
       <HomeHero />
       <ProblemList />
       <ServiceOverview />
-      <Work tone="dark" />
       <AboutMe />
       <FAQ items={homeFaqs} />
       <ContactSection title={closingCta.title} lead={closingCta.lead} />

@@ -12,9 +12,9 @@ Personal-brand marketing site. Four pages, a booking page, one conversion path.
 
 | Route | Purpose |
 |---|---|
-| `/` | Home. Promise, problem, what I do, proof, who I am, objections, action. |
+| `/` | Home. Promise, problem, what I do, who I am, objections, action. |
 | `/services` | Four service areas, the SCALE Method, how pricing is scoped, FAQ. |
-| `/optical` | The same offer for optical practices, from the years Jonathan spent in one. |
+| `/optical` | The same offer for optical practices, from the years Jonathan spent in one, plus the work sample (On-Sight Optics). |
 | `/about` | Background, credentials, philosophy. Emits `ProfilePage`. |
 | `/book` | Free-call booking against Jonathan's Google Calendar. See below. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
