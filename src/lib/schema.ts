@@ -173,6 +173,32 @@ export function buildBreadcrumbGraph(trail: { name: string; path: string }[]) {
 }
 
 /**
+ * Article for one Insights piece. Only emitted once an article is published,
+ * because `datePublished` is a claim and a draft has no publication date.
+ */
+export function buildArticleGraph(article: {
+  slug: string;
+  title: string;
+  description: string;
+  datePublished: string;
+}) {
+  const url = `${site.url}/insights/${article.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.datePublished,
+    mainEntityOfPage: url,
+    url,
+    inLanguage: "en-US",
+    author: { "@id": SCHEMA_IDS.person },
+    publisher: { "@id": SCHEMA_IDS.practice },
+  };
+}
+
+/**
  * The vertical page's own Service node. Kept separate from `buildServicesGraph`
  * so the four general pillars and the optical positioning can move
  * independently. `audience` is what tells a search or answer engine who this is

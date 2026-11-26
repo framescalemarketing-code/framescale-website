@@ -47,9 +47,9 @@ export function ProseBlocks({ blocks }: { blocks: ContentBlock[] }) {
             );
           case "heading":
             return (
-              <h3 key={index} className="display-sm mt-4 text-(--brand-deep)">
+              <h2 key={index} className="display-sm mt-6 text-(--brand-deep)">
                 {block.text}
-              </h3>
+              </h2>
             );
           case "list":
             return (

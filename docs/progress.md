@@ -12,8 +12,9 @@ Plan: `C:\Users\jonat\.claude\plans\please-take-this-repo-synchronous-lollipop-o
 | 4 | Home | Done, committed (`c873592`). Deep hero with Rings + portrait lens, `MarketingScope`, `ServiceOverview` (muted), `MethodPreview` (dark, SCALE letters on a shared rule), `AboutMe`, FAQ, `CtaBand` (`id="contact"`, links to `/contact`). `services.ts` rewritten (new titles, `phase` field, ids unchanged); footer Services labels updated. `ProblemList` removed. Checked at 375/1440: one h1, no overflow. Home CTA 404s until Unit 6 builds `/contact`. |
 | 5 | Services, Optical, About | Done (local commit). tsc, lint, brand:check clean; one h1 and no horizontal overflow at 375 and 1440. Pages now end in `CtaBand`; `ScaleDetail` is no longer used on /services (moves to /method in Unit 6). Known leftovers for Unit 8: `schema.ts` line 93 says "Google Business Profile optimization"; `terms/page.tsx` line 21 (legal text, not touched). |
 | 6 | /method, /contact | Done (local commit). `/method` has anchors `#phase-s` to `#phase-e`; `/contact` holds the form. `next.config.ts` redirects updated (`/book` to `/contact`, `/process` to `/method`, the old `/contact` to `/#contact` rule removed). `route.ts` and `Brand.tsx` diffs empty. Form check at 320/375/1440 with Cloudflare test keys: no overflow, widget fits, empty submit shows field errors; the POST was mocked, so no real email sent and the real submit stays owner-run (A-14). Only style change in `ContactForm.tsx`: Send button radius (pill to 8px). |
-| 7 | /insights + 3 drafts | Next. |
-| 6-9 | See plan | Not started |
+| 7 | /insights + 3 drafts | Done (local commit). `src/content/insights.ts` holds three drafts, all `published: false`: they are `noindex`, 404 on the Vercel production deployment, render with a "Draft, not published" label locally and on previews, and stay off the index and sitemap. `/insights` shows an honest empty state and is `noindex` until one article is published. `buildArticleGraph` emits Article schema only for published pieces. Jonathan edits each draft in his own voice, then sets `published: true` and `datePublished`. tsc, lint, brand:check clean; one h1 and no overflow at 375/1440. |
+| 8 | SEO plumbing, OG images, legal/404 restyle | Next. |
+| 9 | QA, docs, cleanup | Not started |
 
 Acceptance lines: `docs/briefs/redesign-2026-11-26.acceptance.json` (A-2 and A-11 proved so far).
 
