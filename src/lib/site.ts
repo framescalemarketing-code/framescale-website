@@ -110,10 +110,10 @@ export const footerLinks = {
     { label: "Contact", href: site.contactPath },
   ],
   Services: [
-    { label: "Figuring Out What's Wrong", href: "/services#strategy" },
-    { label: "Websites That Work", href: "/services#websites" },
-    { label: "Getting Found On Google", href: "/services#local-seo" },
-    { label: "Ads And Straight Answers", href: "/services#analytics" },
+    { label: "Strategy Before Spending", href: "/services#strategy" },
+    { label: "A Website That Books Appointments", href: "/services#websites" },
+    { label: "Search And AI Visibility", href: "/services#local-seo" },
+    { label: "Reports You Can Read", href: "/services#analytics" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

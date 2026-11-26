@@ -12,10 +12,11 @@ export type FaqItem = {
  */
 export const homeFaqs: FaqItem[] = [
   {
-    question: "What does a small business consultant actually do?",
+    question: "What does an optical marketing consultant do?",
     answer:
-      "I find out why the business isn't growing, then I fix it. Usually that means a better website, showing up " +
-      "on Google when people search, and reports you can read on your own.",
+      "I work out why a practice isn't growing, then I fix the cause. Usually that means a clearer website, " +
+      "better visibility in search and in AI answers, and reports that show which marketing brought in " +
+      "appointments.",
   },
   {
     question: "Do you only work with optical practices?",
@@ -25,16 +26,16 @@ export const homeFaqs: FaqItem[] = [
       "you the most time.",
   },
   {
-    question: "What does it cost?",
+    question: "How much does optical marketing cost?",
     answer:
-      "It depends on the business, so there is no price list. Some owners need one thing fixed, others need the " +
+      "It depends on the practice, so there is no price list. Some owners need one thing fixed, others need the " +
       "whole picture rebuilt. We talk first, then I give you a number and what it covers. The first call is free.",
   },
   {
     question: "How long until I see results?",
     answer:
-      "Research takes a few weeks. Website work depends on the size of the job. Google takes a few months, " +
-      "because that is how long it takes for anyone to notice you changed something. Anyone promising faster " +
+      "Research takes a few weeks. Website work depends on the size of the job. Search takes a few months, " +
+      "because that is how long it takes for search engines to notice a change. Anyone promising faster " +
       "is guessing.",
   },
   {

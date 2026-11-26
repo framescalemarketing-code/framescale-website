@@ -1,0 +1,21 @@
+{
+  "brief": "FrameScale redesign (Deep Teal Editorial) + SEO copy rewrite, 2026-11-26. Plan: C:/Users/jonat/.claude/plans/please-take-this-repo-synchronous-lollipop-of-074bc5cd-cdb8-4926-879f-7de7183b6b22.md",
+  "note": "Only passes and evidence change. A line passes only with quoted evidence from this session.",
+  "lines": [
+    { "id": "A-1", "line": "When npm run lint, brand:check and build run, then all exit 0.", "proved_by": "command output", "evidence": "", "passes": false },
+    { "id": "A-2", "line": "When a font declaration or brand hex is altered in a scratch copy, then brand:check fails.", "proved_by": "scratchpad/guardtest.mjs", "evidence": "2026-11-26: control exit 0; body font, aqua hex, layout font, Google Fonts link, logo viewBox altered cases all exit 1 (ALL CASES AS EXPECTED)", "passes": true },
+    { "id": "A-3", "line": "When each page is opened at 375 and 1440, then no horizontal scroll, one h1, CTA in first screen.", "proved_by": "Playwright shoot.mjs", "evidence": "", "passes": false },
+    { "id": "A-4", "line": "When palette text/background pairs are measured, then normal text >= 4.5:1, large/UI >= 3:1.", "proved_by": "contrast table", "evidence": "", "passes": false },
+    { "id": "A-5", "line": "When /sitemap.xml is fetched, then it lists every route and each published article.", "proved_by": "output", "evidence": "", "passes": false },
+    { "id": "A-6", "line": "When each page source is read, then unique title and description, JSON-LD present, no LocalBusiness.", "proved_by": "script over built HTML", "evidence": "", "passes": false },
+    { "id": "A-7", "line": "When copy is scanned, then zero em dashes, Title Case CTAs and headings, no San Diego or GBP language.", "proved_by": "grep output", "evidence": "", "passes": false },
+    { "id": "A-8", "line": "When git diff for route.ts and Brand.tsx runs, then empty.", "proved_by": "command output", "evidence": "", "passes": false },
+    { "id": "A-9", "line": "When reduced motion is on, then no transform animation runs.", "proved_by": "Playwright emulation", "evidence": "", "passes": false },
+    { "id": "A-10", "line": "When the contact form is filled locally with Turnstile test keys at 320, 375, 1440, then widget fits, validation shows, submit returns route response.", "proved_by": "Playwright", "evidence": "", "passes": false },
+    { "id": "A-11", "line": "When globals.css is grepped after Unit 2, then every carry-over selector is present.", "proved_by": "grep output", "evidence": "2026-11-26 grep counts: turnstile-fit 5, 400px 1, 365px 1, a11y-text-lg 1, a11y-text-xl 1, a11y-reduce-motion 7, a11y-underline-links 1, a11y-high-contrast 9, iubenda-cs-banner 19, legal-prose 6, --mobile-cta-clearance 1, :focus-visible 1, @view-transition 1, prefers-reduced-motion 1, sr-only 1; noscript rule present in layout.tsx", "passes": true },
+    { "id": "A-12", "line": "When #contact and contactHref are grepped, then every CTA resolves to /contact and each page CTA band has id=contact.", "proved_by": "grep + screenshot", "evidence": "", "passes": false },
+    { "id": "A-13", "line": "When an article has published:false, then it is noindex and absent from the sitemap.", "proved_by": "built HTML + sitemap", "evidence": "", "passes": false },
+    { "id": "A-14", "line": "After the push, the form with live Turnstile keys submits and the email arrives.", "proved_by": "owner-run", "evidence": "", "passes": false },
+    { "id": "A-15", "line": "When git status and git ls-files are checked, then no .env* other than .env.example is tracked and no secret appears in output.", "proved_by": "command output", "evidence": "", "passes": false }
+  ]
+}

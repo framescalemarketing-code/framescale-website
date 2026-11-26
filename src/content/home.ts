@@ -5,14 +5,18 @@ import { principal } from "@/lib/site";
  * a subject and an active verb. Clipped noun-phrase fragments stacked in
  * parallel ("Big invoice, plenty of talk.") read as machine-written, so they
  * stay out. Warmth comes from what is said, not from padding around it.
+ *
+ * Facts come from Jonathan's own account of his career and from the credentials
+ * in `site.ts`. No statistics, prices or client results appear here.
  */
 export const hero = {
-  headline: "Grow your optical practice",
+  headline: "Marketing For Independent Optical Practices, Explained Plainly",
   lead:
-    `Hi, I'm ${principal.firstName}. I find out what's holding your business back, then I fix it. ` +
-    "You work with me directly, start to finish.",
+    `I'm ${principal.fullName}, an optical practice marketing consultant who started in manufacturing, moved to ` +
+    "the sales floor and went on to manage stores. You work with me directly, from the first call to the " +
+    "monthly report.",
   primaryCta: "Book A Free Call",
-  secondaryCta: "See How I Help",
+  secondaryCta: "See How I Work",
 } as const;
 
 export type Credential = {
@@ -21,40 +25,55 @@ export type Credential = {
 };
 
 export const credentials: Credential[] = [
-  { value: "MBA", label: "In marketing" },
-  { value: "UC Riverside", label: "Bachelor's degree" },
-  { value: "Optical", label: "Where I came from" },
-  { value: "Nationwide", label: "Remote, one on one" },
+  { value: "MBA", label: "in marketing" },
+  { value: "UC Riverside", label: "bachelor's degree" },
+  { value: "Optical", label: "from the back room to the sales floor" },
+  { value: "Remote", label: "across the United States" },
 ];
 
-export type Problem = {
+export type MarketingPart = {
   title: string;
   body: string;
 };
 
-export const problems: Problem[] = [
+/**
+ * The corrective at the center of the pitch: owners hear "marketing" and think
+ * social media, and nobody explains the rest. The five parts map onto the four
+ * services and the SCALE phases, so this section is also the table of contents.
+ */
+export const marketingScope = {
+  title: "Marketing Is More Than Social Media",
+  lead:
+    "Most owners I meet were told marketing means posting online. Posting is one small part of a list that is " +
+    "longer and more useful.",
+} as const;
+
+export const marketingParts: MarketingPart[] = [
   {
-    title: "You Don't Know What Your Marketing Did",
-    body: "A report arrives every month, and you still can't say which part of it made you money.",
+    title: "Who Your Customer Is",
+    body: "Everything else depends on this. I start with who buys from you now and who you want more of.",
   },
   {
-    title: "People Land On Your Site And Leave",
-    body: "They find you, look for a few seconds, and book with whoever came up next.",
+    title: "How You Compare",
+    body: "I look at what other practices offer and charge, so you can decide where yours stands.",
   },
   {
-    title: "Nearby Customers Can't Find You",
-    body: "Someone two miles away searches for what you sell, and the place down the road comes up.",
+    title: "What Your Website Says",
+    body:
+      "A visitor decides in seconds whether to book. The site has to say what you offer, who it is for and " +
+      "how to reach you.",
   },
   {
-    title: "You're Busy But Not Growing",
-    body: "You haven't had a slow week in months. The business is still the size it was.",
+    title: "Whether People Can Find You",
+    body:
+      "Search engines and AI assistants answer questions about glasses and eye care every day. I work on the " +
+      "pages and wording that decide whether your name appears.",
+  },
+  {
+    title: "Which Numbers Matter",
+    body: "A report should tell you which marketing brought in appointments. If yours does not, I can build one that does.",
   },
 ];
-
-export const problemSection = {
-  title: "Where most owners get stuck",
-  lead: "Most owners I meet have at least one of these.",
-} as const;
 
 export type Differentiator = {
   title: string;
@@ -64,21 +83,21 @@ export type Differentiator = {
 export const differentiators: Differentiator[] = [
   {
     title: "You Work With Me",
-    body: "You call, I answer, and I did the work you're calling about.",
+    body: "You call, I answer, and I did the work you are calling about.",
   },
   {
     title: "You See The Homework First",
     body:
-      "I study your market and your customers before I recommend spending anything. If you don't need what you " +
-      "came to me for, I'll tell you.",
+      "I study your market and your customers before I recommend spending anything. If you do not need what " +
+      "you came to me for, I will tell you.",
   },
   {
-    title: "Built For Your Business",
-    body: "I won't hand you something I built for someone else with the logo swapped out.",
+    title: "Built For Your Practice",
+    body: "I do not hand you something I built for someone else with the logo swapped out.",
   },
   {
-    title: "You'll Understand Your Own Numbers",
-    body: "If you can't explain your marketing to someone else when we're done, I did it wrong.",
+    title: "You Will Understand Your Numbers",
+    body: "If you cannot explain your marketing to someone else when we finish, I did it wrong.",
   },
 ];
 
@@ -88,39 +107,35 @@ export const differentiators: Differentiator[] = [
  * that sent him back to school.
  */
 export const aboutStrip = {
-  title: "I started on the floor, not in an office",
+  title: "I Started On The Floor, Not In An Office",
   body: [
     "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
       "front to sell it, and before long I was managing the store with a number to hit every month.",
-    "I did that in corporate stores, in franchises, and in small independents. After enough years of it I could " +
-      "see exactly where that road ended, and I did not want to get stuck on it.",
-    "So I went back to school. A bachelor's at UC Riverside, then an MBA in marketing, because I wanted to know " +
-      "why some businesses grow while others just stay busy. When you talk about payroll or a quarter that went " +
-      "sideways, I know what you mean.",
+    "I did that in corporate stores, in franchises and in small independents. After enough years of it I could " +
+      "see where that road ended, and I did not want to get stuck on it.",
+    "So I went back to school. I earned a bachelor's at UC Riverside and then an MBA in marketing, because I " +
+      "wanted to know why some businesses grow while others just stay busy. When you talk about payroll or a " +
+      "quarter that went sideways, I know what you mean.",
   ],
   cta: "Read My Story",
 } as const;
 
 /**
- * A short signed note. The most personal thing on the page, and the only place
- * that corrects the assumption most owners arrive with: that marketing means
- * social media. Widening the definition is what earns the call.
+ * A short signed note about how the work runs. The marketing-is-misunderstood
+ * point lives in its own section above, so this note covers the working
+ * arrangement: explained as it happens, owned by the practice, free first call.
  */
 export const personalNote = {
   body: [
-    "Most owners think marketing means posting on social media. That is one small piece of it. Marketing is also " +
-      "who your customer really is, what you charge, what your website says, and whether anyone can find you on " +
-      "Google.",
-    "Social media managers and marketers rarely explain any of that. You get a monthly report and an invoice, and " +
-      "you still can't say what either one did for you.",
     "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
-      "accounts, so you can keep running it without me.",
-    "If you've been putting this off, a call costs you nothing.",
+      "own accounts, so you can keep running it without me.",
+    "If you have been putting this off, the first call costs you nothing.",
   ],
   signOff: principal.firstName,
 } as const;
 
 export const closingCta = {
-  title: "Let's talk",
-  lead: "Tell me what's going on and we'll set up a call. If I can't help, I'll say so.",
+  title: "Let's Talk About Your Practice",
+  lead: "Tell me what is going on and we will set up a call. If I cannot help, I will say so.",
+  cta: "Book A Free Call",
 } as const;

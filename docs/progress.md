@@ -8,8 +8,13 @@ Plan: `C:\Users\jonat\.claude\plans\please-take-this-repo-synchronous-lollipop-o
 | 0 | Env, Playwright, baselines | Done except `.env.development.local` pull (Jonathan runs it; safety hook blocks Claude from `.env*` paths). Baseline: lint, brand:check, build all pass; 19 pages. |
 | 1 | SEO map | Done, committed: `docs/briefs/redesign-seo-map-2026-11-26.md` |
 | 2 | Design system + brand guard | Done, committed locally. `next/font/google` works through `next-from-root.mjs` (build passes, fonts self-hosted, wdth axis present). Guard now pins Bricolage + Hanken in layout.tsx and globals.css, bans a Google Fonts link; `src/styles/fonts.css` deleted. A-2 failing-case run: 5 of 5 altered cases fail, control passes. A-11 grep: every carry-over selector present. |
-| 3 | Chrome: Header, Footer, MobileCTABar, site.ts nav, `/contact` repoint | Next |
-| 4-9 | See plan | Not started |
+| 3 | Chrome: Header, Footer, MobileCTABar, site.ts nav, `/contact` repoint | Done, committed (`48598b8`). Deep masthead + footer, nav = Optical, Services, Method, About, Insights, `contactHref()` replaces `contactHrefFor`, MobileCTABar hidden on /contact. Checked at 375/1440 with Playwright (menu opens, aria-current works, no overflow). `/method`, `/insights`, `/contact` routes do not exist yet, so those links 404 until Units 6-7. |
+| 4 | Home | Next |
+| 5-9 | See plan | Not started |
+
+Acceptance lines: `docs/briefs/redesign-2026-11-26.acceptance.json` (A-2 and A-11 proved so far).
+
+Known, not mine: the iubenda banner sits first in the tab order (before the skip link) and covers the whole top of a phone screen until answered. It is third-party markup; flag to Jonathan at the end.
 
 ## Carry-forward notes
 - Docs still say fonts live in `src/styles/fonts.css` and the guard bans `next/font/google` (AGENTS.md line 12, `.cursorrules` line 44, `.cursor/rules/ui.mdc` line 21). Fix all three in Unit 9 along with the false `PRINCIPAL_LAST_NAME` claim.

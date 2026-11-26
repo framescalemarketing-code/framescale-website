@@ -1,67 +1,68 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
+import { Rings } from "@/components/design/Rings";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { credentials, hero } from "@/content/home";
-import { practice, principal, site } from "@/lib/site";
+import { principal, contactHref } from "@/lib/site";
 
 /**
- * Home hero. The credential strip sits inside this section rather than in a
- * band of its own, so the page is one section shorter and the proof sits next
- * to the claim it supports.
+ * Home hero: the one full-bleed deep band at the top of the site. The ring
+ * motif draws itself around the portrait like a lens, and the credential line
+ * sits on a ruler-tick hairline at the foot so the proof is read next to the
+ * claim it supports.
  */
 export function HomeHero() {
   return (
-    <section className="pt-12 pb-0 md:pt-16">
-      <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-          <div className="flex flex-col gap-6">
-            <h1 className="display-xl text-(--brand-deep)">{hero.headline}</h1>
+    <section className="dark-section">
+      <div className="grain-overlay" />
+      <Container width="wide">
+        <div className="flex flex-col lg:min-h-[min(44rem,calc(100svh-4.5rem))]">
+          <div className="grid flex-1 items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8">
+            <div className="flex flex-col gap-7">
+              <h1 className="display-xl max-w-[16ch] text-[clamp(2.4rem,5.2vw,4.5rem)]">{hero.headline}</h1>
 
-            <p className="lead">{hero.lead}</p>
+              <p className="lead">{hero.lead}</p>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href={site.contactAnchor} size="lg" withArrow>
-                {hero.primaryCta}
-              </Button>
-              <Button href="/services" size="lg" variant="outline">
-                {hero.secondaryCta}
-              </Button>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
+                <Button href={contactHref()} size="lg" variant="light" withArrow>
+                  {hero.primaryCta}
+                </Button>
+                <Link
+                  href="/method"
+                  className="link-quiet w-fit font-ui text-base font-semibold text-white hover:text-(--brand-secondary)"
+                >
+                  {hero.secondaryCta}
+                </Link>
+              </div>
             </div>
-          </div>
 
-          <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
-            <div className="relative aspect-4/5 overflow-hidden rounded-(--radius-media) border border-(--border)">
+            <Rings className="mx-auto max-w-sm lg:max-w-none">
               <Image
                 src="/photos/founder/jonathan-about.jpg"
                 alt={`${principal.displayName}, ${principal.jobTitle}`}
                 fill
-                sizes="(max-width: 1024px) 90vw, 42vw"
-                className="object-cover object-[center_15%]"
+                sizes="(max-width: 1024px) 190px, 260px"
+                className="object-cover object-[center_18%]"
                 priority
                 fetchPriority="high"
               />
-            </div>
+            </Rings>
+          </div>
 
-            <div className="absolute right-4 bottom-4 left-4 rounded-(--radius-card) border border-white/25 bg-(--brand-deep)/90 px-5 py-4 backdrop-blur-sm">
-              <p className="font-headline text-lg leading-tight text-white">{principal.displayName}</p>
-              <p className="mt-1 font-ui text-[10px] font-semibold tracking-[0.14em] text-white/60 uppercase">
-                {practice.name}
-              </p>
-            </div>
+          <div>
+            <div className="tick-rule text-(--ring-line)" aria-hidden="true" />
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-4 py-6 md:grid-cols-4">
+              {credentials.map((item) => (
+                <li key={item.value} className="flex flex-col gap-0.5">
+                  <span className="font-headline text-lg leading-tight font-semibold text-white">{item.value}</span>
+                  <span className="font-ui text-sm text-(--on-deep-muted)">{item.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <dl className="rule mt-12 grid grid-cols-2 gap-x-8 gap-y-6 py-8 md:grid-cols-4">
-          {credentials.map((item) => (
-            <div key={item.value} className="flex flex-col gap-1">
-              <dt className="display-sm text-(--brand-deep)">{item.value}</dt>
-              <dd className="font-ui text-[11px] font-medium tracking-[0.08em] text-(--text-muted) uppercase">
-                {item.label}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </Container>
     </section>
   );

@@ -1,4 +1,4 @@
-import { BarChart3, Compass, MapPin, Monitor, type LucideIcon } from "lucide-react";
+import { BarChart3, Compass, Monitor, Search, type LucideIcon } from "lucide-react";
 
 export type Service = {
   /** Anchor id. Linked from the home page and the footer, so keep these stable. */
@@ -8,84 +8,91 @@ export type Service = {
   title: string;
   /** One short line for the home page overview row. */
   summary: string;
-  /** Two short sentences at the top of the card on /services. */
+  /** Two short sentences at the top of the service on /services. */
   body: string;
   included: string[];
   bestFor: string;
+  /** The SCALE phase this service leans on most, linked on /services. */
+  phase: string;
 };
 
 /**
- * Plain titles on purpose. The audience does not know or care what "conversion
- * rate optimization" means; the keyword phrasing lives in the page metadata.
+ * Plain titles on purpose. Optical owners search for websites, visibility and
+ * reports, not for "conversion rate optimization", so the page says what the
+ * work is. The ids are older than the titles: they stay put because they are
+ * anchor targets in links that already exist.
  */
 export const services: Service[] = [
   {
     id: "strategy",
     number: "01",
     icon: Compass,
-    title: "Figuring Out What's Wrong",
-    summary: "Work out the real problem before you spend money fixing the wrong one.",
+    title: "Strategy Before Spending",
+    summary: "I study your customers, your competitors and your numbers before I recommend a single purchase.",
     body:
-      "Half the time the marketing isn't the problem. It's who you're talking to, or what you're saying to them. " +
-      "So I go and look at your customers and the businesses you're up against before I recommend anything.",
+      "Half the time the marketing is not the problem. It is who the practice is talking to, or what it says to " +
+      "them. I look at your customers and the practices you compete with before I recommend anything.",
     included: [
-      "Who your customers really are, as opposed to who you assume they are",
-      "What the businesses near you are offering and charging",
-      "A list of what to fix, in the order I would fix it",
-      "A budget that fits a business your size",
+      "Who your customers are today, and who you want more of",
+      "What nearby and online competitors offer and charge",
+      "A list of fixes in the order I would make them",
+      "A budget that fits a practice your size",
     ],
-    bestFor: "You're working flat out and it isn't showing up in the numbers.",
+    bestFor: "You are working flat out and it is not showing up in the numbers.",
+    phase: "S",
   },
   {
     id: "websites",
     number: "02",
     icon: Monitor,
-    title: "Websites That Work",
-    summary: "A site built around the way you actually take work in.",
+    title: "A Website That Books Appointments",
+    summary: "A fast, clear site built around how your practice takes appointments and sells frames.",
     body:
-      "A website is only worth anything if it turns someone looking into someone calling. I build around the way " +
-      "you take work in now, and it has to be quick and easy on a phone, because that is where most people will " +
-      "see it.",
+      "A website earns its keep when a visitor turns into an appointment. I build around how you take bookings " +
+      "now, and I design for the phone first because that is where most people will see it.",
     included: [
-      "Built for you, not pulled off a shelf",
-      "Works properly on a phone",
-      "Forms that reach you however you want to be reached",
-      "Set up so Google can read it",
+      "Built for your practice, not pulled off a shelf",
+      "Fast and easy to use on a phone",
+      "Contact forms that reach you the way you prefer",
+      "Page titles, headings and structure that search engines can read",
     ],
-    bestFor: "Your site is old, slow, or just doesn't ring the phone.",
+    bestFor: "Your site is old, slow, or does not bring in appointments.",
+    phase: "L",
   },
   {
     id: "local-seo",
     number: "03",
-    icon: MapPin,
-    title: "Getting Found On Google",
-    summary: "Come up when someone nearby goes looking for what you sell.",
+    icon: Search,
+    title: "Search And AI Visibility",
+    summary: "Pages and wording that help your practice appear when people search or ask an AI assistant.",
     body:
-      "Most people looking for an optical practice start on Google or Maps, and a growing number are asking an " +
-      "AI instead. I work on the things that decide whether your name comes up at all.",
+      "Most people begin with a search engine, and a growing number ask an AI assistant instead. I work on the " +
+      "pages and wording that decide whether your practice gets mentioned at all.",
     included: [
-      "Your Google listing, set up properly and kept up to date",
-      "Reviews, and a way of asking for them that isn't awkward",
-      "Wording on your site that matches what people type",
-      "Turning up when someone asks an AI rather than searching",
+      "Pages written around the questions people ask about eyewear and eye care",
+      "Titles, descriptions and structured data that search engines read",
+      "Reviews and a way of asking for them that feels natural",
+      "Answers on your site that an AI assistant can quote accurately",
     ],
-    bestFor: "You need local customers and right now they're finding somebody else.",
+    bestFor: "You want new customers to find you, and right now they find somebody else.",
+    phase: "A",
   },
   {
     id: "analytics",
     number: "04",
     icon: BarChart3,
-    title: "Ads And Straight Answers",
-    summary: "Only spend where it pays, and be able to check that yourself.",
+    title: "Reports You Can Read",
+    summary: "Tracking and a monthly report that shows which marketing brought in appointments.",
     body:
-      "You shouldn't have to take my word for what's working. I set up tracking you can open and read on your own, " +
-      "and I don't put money into ads until the numbers say they will pay for themselves.",
+      "You should not have to take my word for what is working. I set up tracking you can open and read on your " +
+      "own, and I recommend ads only when the numbers say they can pay for themselves.",
     included: [
-      "Reports you can read without me on the phone",
-      "Ads, but only when they make sense",
+      "A report you can read without me on the phone",
+      "Ads, but only where the numbers support them",
       "Follow-up for the people who get in touch and then go quiet",
-      "A regular look at what's working and what isn't",
+      "A monthly look at what is working and what is not",
     ],
     bestFor: "Money goes out every month and nobody can tell you what came back.",
+    phase: "E",
   },
 ];

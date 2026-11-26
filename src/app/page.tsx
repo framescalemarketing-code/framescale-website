@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/sections/Hero";
-import { ProblemList } from "@/components/sections/ProblemList";
+import { MarketingScope } from "@/components/sections/MarketingScope";
 import { ServiceOverview } from "@/components/sections/Services";
+import { MethodPreview } from "@/components/sections/MethodPreview";
 import { AboutMe } from "@/components/sections/AboutMe";
 import { FAQ } from "@/components/sections/FAQ";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { homeFaqs } from "@/content/faq";
 import { closingCta } from "@/content/home";
 import { buildFaqGraph, jsonLdProps } from "@/lib/schema";
@@ -12,15 +13,17 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { principal } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `${principal.displayName} | ${principal.jobTitle}`,
+  title: `${principal.jobTitle} | ${principal.fullName}`,
   absoluteTitle: true,
-  description: `I am ${principal.displayName}. I spent years in optical, from the back of the shop to managing stores. Now I help independent practices and eyewear retailers get found, fill the schedule, and understand their own numbers.`,
+  description:
+    `${principal.displayName} is an optical practice marketing consultant. Years in optical retail, a ` +
+    "marketing MBA and one person to work with. Book a free call.",
   path: "/",
 });
 
 /**
- * Six sections, in the order a visitor decides: promise, problem, what I do,
- * who I am, objections, action.
+ * Seven sections, in the order a visitor decides: promise, what marketing
+ * really covers, what I do, how I work, who I am, objections, action.
  */
 export default function HomePage() {
   return (
@@ -28,11 +31,12 @@ export default function HomePage() {
       <script {...jsonLdProps(buildFaqGraph(homeFaqs))} />
 
       <HomeHero />
-      <ProblemList />
+      <MarketingScope />
       <ServiceOverview />
+      <MethodPreview />
       <AboutMe />
-      <FAQ items={homeFaqs} />
-      <ContactSection title={closingCta.title} lead={closingCta.lead} />
+      <FAQ items={homeFaqs} tone="muted" />
+      <CtaBand title={closingCta.title} lead={closingCta.lead} cta={closingCta.cta} />
     </>
   );
 }
