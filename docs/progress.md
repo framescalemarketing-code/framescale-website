@@ -9,8 +9,10 @@ Plan: `C:\Users\jonat\.claude\plans\please-take-this-repo-synchronous-lollipop-o
 | 1 | SEO map | Done, committed: `docs/briefs/redesign-seo-map-2026-11-26.md` |
 | 2 | Design system + brand guard | Done, committed locally. `next/font/google` works through `next-from-root.mjs` (build passes, fonts self-hosted, wdth axis present). Guard now pins Bricolage + Hanken in layout.tsx and globals.css, bans a Google Fonts link; `src/styles/fonts.css` deleted. A-2 failing-case run: 5 of 5 altered cases fail, control passes. A-11 grep: every carry-over selector present. |
 | 3 | Chrome: Header, Footer, MobileCTABar, site.ts nav, `/contact` repoint | Done, committed (`48598b8`). Deep masthead + footer, nav = Optical, Services, Method, About, Insights, `contactHref()` replaces `contactHrefFor`, MobileCTABar hidden on /contact. Checked at 375/1440 with Playwright (menu opens, aria-current works, no overflow). `/method`, `/insights`, `/contact` routes do not exist yet, so those links 404 until Units 6-7. |
-| 4 | Home | Next |
-| 5-9 | See plan | Not started |
+| 4 | Home | Done, committed (`c873592`). Deep hero with Rings + portrait lens, `MarketingScope`, `ServiceOverview` (muted), `MethodPreview` (dark, SCALE letters on a shared rule), `AboutMe`, FAQ, `CtaBand` (`id="contact"`, links to `/contact`). `services.ts` rewritten (new titles, `phase` field, ids unchanged); footer Services labels updated. `ProblemList` removed. Checked at 375/1440: one h1, no overflow. Home CTA 404s until Unit 6 builds `/contact`. |
+| 5 | Services, Optical, About | Done (local commit). tsc, lint, brand:check clean; one h1 and no horizontal overflow at 375 and 1440. Pages now end in `CtaBand`; `ScaleDetail` is no longer used on /services (moves to /method in Unit 6). Known leftovers for Unit 8: `schema.ts` line 93 says "Google Business Profile optimization"; `terms/page.tsx` line 21 (legal text, not touched). |
+| 6 | /method, /contact | Next. `/contact` 404s until this lands; Home and every CtaBand already link to it. /method needs anchors `#phase-s` `#phase-c` `#phase-a` `#phase-l` `#phase-e` (services page links to them). |
+| 6-9 | See plan | Not started |
 
 Acceptance lines: `docs/briefs/redesign-2026-11-26.acceptance.json` (A-2 and A-11 proved so far).
 

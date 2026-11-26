@@ -15,7 +15,7 @@ type FaqProps = {
  */
 export function FAQ({
   items,
-  title = "Questions I get a lot",
+  title = "Questions I Get A Lot",
   lead = "The things people ask me before we talk.",
   tone = "default",
 }: FaqProps) {

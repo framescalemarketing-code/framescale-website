@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/Hero";
 import { FAQ } from "@/components/sections/FAQ";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Photo } from "@/components/ui/Photo";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
@@ -16,18 +17,19 @@ import { buildPageMetadata } from "@/lib/metadata";
  * compete for the same query.
  */
 export const metadata: Metadata = buildPageMetadata({
-  title: "Optical Practice Marketing",
+  title: "Optical Marketing For Independent Practices | Jonathan Mejia",
+  absoluteTitle: true,
   description:
-    "I worked in optical for years before I did this. I help independent practices and eyewear retailers fill " +
-    "the schedule, fix the website, and bring patients back. Remote, and you work with me directly.",
+    "Optical marketing from a consultant who worked in optical retail first. I help independent practices " +
+    "fix the website, show up in search and AI answers, and bring patients back. Book a free call.",
   path: "/optical-marketing",
   keywords: [
+    "optical marketing",
     "optical practice marketing",
     "optometry practice marketing",
     "marketing for optometrists",
     "eyewear retail marketing",
     "independent optical practice growth",
-    "optical practice SEO",
   ],
 });
 
@@ -45,7 +47,19 @@ export default function OpticalMarketingPage() {
         )}
       />
 
-      <PageHero headline={opticalHero.headline} lead={opticalHero.lead} />
+      <PageHero headline={opticalHero.headline} lead={opticalHero.lead}>
+        <p className="measure mt-6 text-(--text-muted)">
+          The four things I do are on the{" "}
+          <Link href="/services" className="link-quiet font-semibold text-(--brand-primary)">
+            services page
+          </Link>
+          , and the five phases I follow are on the{" "}
+          <Link href="/method" className="link-quiet font-semibold text-(--brand-primary)">
+            method page
+          </Link>
+          .
+        </p>
+      </PageHero>
 
       <Section size="compact" width="wide">
         <Photo
@@ -60,10 +74,14 @@ export default function OpticalMarketingPage() {
         <SectionHeading
           title="Why Optical Is Not Like Other Retail"
           lead="These are the things you will not have to teach me."
+          className="max-w-3xl"
         />
-        <Reveal group className="mt-10 grid gap-5 md:grid-cols-2">
-          {opticalDifferences.map((item) => (
-            <RevealItem key={item.title} className="soft-card flex flex-col gap-3 p-6 sm:p-8">
+        <Reveal group className="mt-10 flex flex-col">
+          {opticalDifferences.map((item, index) => (
+            <RevealItem
+              key={item.title}
+              className={`grid gap-4 py-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 ${index === 0 ? "" : "rule"}`}
+            >
               <h3 className="display-sm text-(--brand-deep)">{item.title}</h3>
               <p className="measure text-(--text-muted)">{item.body}</p>
             </RevealItem>
@@ -76,17 +94,29 @@ export default function OpticalMarketingPage() {
           aspect="aspect-2/1"
           sizes="(max-width: 768px) 92vw, 1000px"
         />
+
+        <p className="measure mt-8 text-(--text-muted)">
+          Want to see how I think before you call? I write it down on the{" "}
+          <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary)">
+            insights page
+          </Link>
+          , and{" "}
+          <Link href="/about" className="link-quiet font-semibold text-(--brand-primary)">
+            my story
+          </Link>{" "}
+          explains how I got from the lab bench to marketing.
+        </p>
       </Section>
 
       <FAQ
         items={opticalFaqs}
-        title="Questions optical owners ask me"
+        title="Questions Optical Owners Ask Me"
         lead="The ones that come up before we ever talk about money."
       />
 
-      <ContactSection
-        title="Tell me about your practice"
-        lead="Half an hour on the phone. I'll tell you where I'd start, and whether I'm the right person at all."
+      <CtaBand
+        title="Tell Me About Your Practice"
+        lead="Half an hour on the phone. I will tell you where I would start, and whether I am the right person at all."
       />
     </>
   );

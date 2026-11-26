@@ -75,16 +75,21 @@ type PageHeroProps = {
   children?: ReactNode;
 };
 
-/** Shared hero for /services and /about. */
+/**
+ * Shared hero for the inner pages. Paper ground under the deep masthead, with a
+ * short ruler-tick hairline at the foot so the page opens on the same measuring
+ * motif as the home hero.
+ */
 export function PageHero({ headline, lead, children }: PageHeroProps) {
   return (
-    <section className="pt-12 pb-12 md:pt-16 md:pb-16">
+    <section className="pt-14 pb-12 md:pt-20 md:pb-16">
       <Container>
-        <div className="flex max-w-3xl flex-col gap-5">
-          <h1 className="display-xl text-(--brand-deep)">{headline}</h1>
+        <div className="flex max-w-4xl flex-col gap-6">
+          <h1 className="display-xl text-[clamp(2.2rem,4.8vw,4rem)] text-(--brand-deep)">{headline}</h1>
           <p className="lead">{lead}</p>
         </div>
         {children}
+        <div className="tick-rule mt-12 max-w-xs text-(--brand-primary)" aria-hidden="true" />
       </Container>
     </section>
   );

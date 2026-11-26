@@ -5,12 +5,12 @@
  * page has to answer, and dodging it entirely reads as evasive.
  */
 export const pricingSection = {
-  title: "What it costs",
-  lead: "There's no price list. It depends on the business.",
+  title: "What It Costs",
+  lead: "There is no price list. It depends on the practice.",
   intro:
-    "Everyone needs something a bit different. One owner needs their Google listing fixed and nothing else. " +
-    "Another needs the whole thing pulled apart and rebuilt. If I put a package price on that I'd only be " +
-    "guessing, and you'd end up paying for work you didn't need.",
+    "Everyone needs something a bit different. One owner needs a single page fixed and nothing else. " +
+    "Another needs the whole thing pulled apart and rebuilt. If I put a package price on that I would only be " +
+    "guessing, and you would end up paying for work you did not need.",
   cta: "Ask What It Would Cost",
 } as const;
 

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Chapters } from "@/components/sections/Chapters";
 import { Credentials } from "@/components/sections/Credentials";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/content/about";
 import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
@@ -10,9 +11,11 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { practice, principal } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `About ${principal.displayName} | ${principal.jobTitle}`,
+  title: `About ${principal.fullName} | ${practice.name}`,
   absoluteTitle: true,
-  description: "I spent years in optical, from the back of the shop to managing stores, then took an MBA in marketing. Here is how that background shapes the work I do.",
+  description:
+    "I spent years in optical, from the back of the shop to managing stores, then earned an MBA in marketing. " +
+    "Here is how that background shapes the work I do.",
   path: "/about",
   keywords: [
     `${principal.fullName}`,
@@ -40,14 +43,21 @@ export default function AboutPage() {
         <Container width="wide">
           <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div className="flex flex-col gap-6">
-              <h1 className="display-xl text-(--brand-deep)">{aboutHero.headline}</h1>
-              <p className="lead">{aboutHero.lead}</p>
-              <p className="font-ui text-[11px] font-semibold tracking-[0.14em] text-(--text-muted) uppercase">
-                {principal.jobTitle} · {practice.name}
+              <h1 className="display-xl text-[clamp(2.2rem,4.8vw,4rem)] text-(--brand-deep)">
+                {aboutHero.headline}
+              </h1>
+              <p className="lead measure">{aboutHero.lead}</p>
+              <p className="measure text-(--text-muted)">
+                Most of my work is for independent practices, which is why the{" "}
+                <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
+                  optical marketing page
+                </Link>{" "}
+                goes into detail about that side of it.
               </p>
+              <div className="tick-rule mt-4 max-w-xs text-(--brand-primary)" aria-hidden="true" />
             </div>
 
-            <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-4xl lg:max-w-none">
+            <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-(--radius-media) lg:max-w-none">
               <Image
                 src="/photos/founder/jonathan-about.jpg"
                 alt={`${principal.displayName}, ${principal.jobTitle}`}
@@ -63,9 +73,9 @@ export default function AboutPage() {
 
       <Chapters />
       <Credentials />
-      <ContactSection
-        title="Tell me what you're working on"
-        lead="Half an hour on the phone. No slides, no pitch."
+      <CtaBand
+        title="Tell Me What You Are Working On"
+        lead="Half an hour on the phone. No slides and no pitch."
       />
     </>
   );

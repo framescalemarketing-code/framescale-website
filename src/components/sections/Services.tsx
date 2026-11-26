@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { scalePhases } from "@/content/scale";
 import { services } from "@/content/services";
 
 /** Condensed overview for the home page. Each row deep-links to /services. */
@@ -56,41 +57,50 @@ export function ServiceOverview() {
  */
 export function ServiceDetails() {
   return (
-    <Section tone="muted" size="default">
-      <SectionHeading title="Four ways I help" lead="Most people need more than one." className="max-w-2xl" />
-
-      <Reveal group className="mt-10 grid gap-5 lg:grid-cols-2">
+    <Section size="default">
+      <Reveal group className="flex flex-col">
         {services.map((service) => {
-          const Icon = service.icon;
+          const phase = scalePhases.find((item) => item.letter === service.phase);
           return (
             <RevealItem
               key={service.id}
               id={service.id}
               as="section"
-              className="soft-card flex scroll-mt-28 flex-col gap-4 p-6 sm:p-8"
+              className="rule grid scroll-mt-28 gap-6 py-12 first:border-t-0 first:pt-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"
             >
-              <div className="flex items-center gap-3">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-(--brand-primary)/10">
-                  <Icon className="size-5 text-(--brand-primary)" aria-hidden="true" />
+              <div className="flex flex-col gap-3">
+                <span className="font-headline text-sm font-semibold text-(--brand-primary) tabular-nums">
+                  {service.number}
                 </span>
-                <h2 className="display-sm text-(--brand-deep)">{service.title}</h2>
+                <h2 className="display-md text-(--brand-deep)">{service.title}</h2>
+                <p className="measure text-(--text-muted)">{service.body}</p>
               </div>
 
-              <p className="text-(--text-muted)">{service.body}</p>
+              <div className="flex flex-col gap-5">
+                <ul className="flex flex-col gap-3">
+                  {service.included.map((item) => (
+                    <li key={item} className="flex gap-3 text-(--brand-deep)">
+                      <Check className="mt-1 size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-              <ul className="flex flex-col gap-2.5">
-                {service.included.map((item) => (
-                  <li key={item} className="flex gap-2.5 text-sm text-(--brand-deep)">
-                    <Check className="mt-1 size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                <p className="text-sm text-(--text-muted)">
+                  <span className="font-ui font-semibold text-(--brand-deep)">For you if: </span>
+                  {service.bestFor}
+                </p>
 
-              <p className="rule mt-auto pt-4 text-sm text-(--text-muted)">
-                <span className="font-ui font-semibold text-(--brand-deep)">For you if: </span>
-                {service.bestFor}
-              </p>
+                {phase ? (
+                  <Link
+                    href={`/method#phase-${phase.letter.toLowerCase()}`}
+                    className="link-quiet inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary)"
+                  >
+                    Method phase: {phase.title}
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
+                ) : null}
+              </div>
             </RevealItem>
           );
         })}

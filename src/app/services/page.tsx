@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/Hero";
 import { ServiceDetails } from "@/components/sections/Services";
-import { ScaleDetail } from "@/components/sections/ScaleMethod";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { servicesFaqs } from "@/content/faq";
 import { buildBreadcrumbGraph, buildFaqGraph, buildServicesGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Websites, Local Search, and Reporting for Optical Practices",
-  description: "Help for independent optical practices and eyewear retailers: getting found on Google, a website that books exams, and reports you can read. No set packages, so we talk first and I quote from there.",
+  title: "Optical Marketing Services: Websites, Search, Reports",
+  absoluteTitle: true,
+  description:
+    "Optical marketing services for independent practices: strategy, a website that books appointments, " +
+    "search and AI visibility, and reports you can read. Book a free call.",
   path: "/services",
   keywords: [
-    "optical practice marketing",
-    "optometry practice marketing",
-    "eyewear retail marketing",
-    "optical practice SEO",
+    "optical marketing services",
     "optical practice website design",
-    "marketing for optometrists",
+    "optical practice SEO",
+    "optical practice marketing",
+    "eyewear retail marketing",
   ],
 });
 
@@ -38,21 +40,32 @@ export default function ServicesPage() {
       />
 
       <PageHero
-        headline="How I help independent optical practices"
-        lead="Four things I do. I always start by working out what the real problem is, because it usually isn't the one you called about."
-      />
+        headline="Four Ways I Help Optical Practices Grow"
+        lead="These are the optical marketing services I offer. I always start by working out the real problem, because it usually is not the one you called about."
+      >
+        <p className="measure mt-6 text-(--text-muted)">
+          Each service follows the same five phases, which I explain on the{" "}
+          <Link href="/method" className="link-quiet font-semibold text-(--brand-primary)">
+            method page
+          </Link>
+          . If you are in optical specifically, the{" "}
+          <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
+            optical marketing page
+          </Link>{" "}
+          covers what I already know about your side of the counter.
+        </p>
+      </PageHero>
 
       <ServiceDetails />
-      <ScaleDetail />
       <Pricing />
       <FAQ
         items={servicesFaqs}
-        title="The practical questions"
+        title="The Practical Questions"
         lead="The ones that come up once it gets real."
       />
-      <ContactSection
-        title="Not sure which one you need?"
-        lead="Most people aren't, and that's what the call is for. Tell me what's going on and I'll tell you where I'd start."
+      <CtaBand
+        title="Not Sure Which One You Need?"
+        lead="Most people are not, and that is what the call is for. Tell me what is going on and I will tell you where I would start."
       />
     </>
   );

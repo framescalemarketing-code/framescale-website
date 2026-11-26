@@ -7,14 +7,16 @@ import type { FaqItem } from "@/content/faq";
  * before adding a second one.
  *
  * Voice matches the rest of the site: first person, plain, every line a real
- * sentence. No promise of a specific ranking, revenue, or patient count.
+ * sentence. No promise of a specific ranking, revenue, or patient count. The
+ * practice is remote and national, so nothing here frames the work as local
+ * search or names a city.
  */
 export const opticalHero = {
-  headline: "Marketing for independent optical practices",
+  headline: "Optical Marketing For Independent Practices",
   lead:
-    "I worked in optical for years before I did this. I started in the back making the product, moved out front " +
-    "to sell, and ended up managing a store with a number to hit every month. I already know what your week " +
-    "looks like, so you will not spend the first month explaining it to me.",
+    "I worked in optical for years before I did optical marketing. I started in the back making the product, " +
+    "moved out front to sell, and ended up managing a store with a number to hit every month. I already know " +
+    "what your week looks like, so you will not spend the first month explaining it to me.",
 } as const;
 
 export type OpticalDifference = {
@@ -69,7 +71,7 @@ export const opticalFaqs: FaqItem[] = [
     question: "Do I have to be near you for this to work?",
     answer:
       "No. I work remotely with practices anywhere in the country. An independent optical in Ohio has the same " +
-      "problems as one in California, and everything I do happens on your website, your Google listing, and your " +
+      "problems as one in California, and everything I do happens on your website, your reports, and your " +
       "patient list rather than in your waiting room.",
   },
   {
@@ -96,9 +98,9 @@ export const opticalFaqs: FaqItem[] = [
   {
     question: "How long before the schedule starts filling?",
     answer:
-      "Recall and the Google listing can move within weeks because they use people who already know you. Anything " +
-      "that depends on ranking in search takes a few months, because that is how long it takes search engines to " +
-      "notice a change. Anyone promising faster is guessing.",
+      "Recall can move within weeks because it reaches people who already know you. Anything that depends on " +
+      "ranking in search takes a few months, because that is how long it takes search engines to notice a " +
+      "change. Anyone promising faster is guessing.",
   },
   {
     question: "Do you work with optometrists, opticians, or optical retail?",
@@ -117,7 +119,7 @@ export const opticalFaqs: FaqItem[] = [
   {
     question: "What do you need from me to get started?",
     answer:
-      "Half an hour on the phone, then access to look at your website, your Google listing, and whatever numbers " +
+      "Half an hour on the phone, then access to look at your website, your analytics, and whatever numbers " +
       "you already have. I will tell you what I think is wrong and what I would do about it. If I am not the right " +
       "person, I will say that instead.",
   },
@@ -128,5 +130,5 @@ export const opticalFaqs: FaqItem[] = [
  * written in Jonathan's voice for the page; schema wants a plain description.
  */
 export const opticalSchemaDescription =
-  "Marketing for independent optical practices and eyewear retailers, covering websites, local search, " +
-  "patient recall, and reporting. Delivered remotely across the United States.";
+  "Marketing for independent optical practices and eyewear retailers, covering strategy, websites, search " +
+  "and AI visibility, patient recall, and reporting. Delivered remotely across the United States.";

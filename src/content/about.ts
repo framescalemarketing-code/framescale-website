@@ -2,12 +2,13 @@ import { principal } from "@/lib/site";
 
 export const aboutHero = {
   headline: `Hi, I'm ${principal.firstName}`,
-  lead: "I help independent optical practices work out what's holding them back, and then I go fix it.",
+  lead:
+    "I am an optical marketing consultant. I help independent practices work out what is holding them back, " +
+    "and then I fix it.",
 } as const;
 
 export type Chapter = {
   marker: string;
-  kicker: string;
   title: string;
   body: string;
 };
@@ -16,16 +17,14 @@ export type Chapter = {
 export const chapters: Chapter[] = [
   {
     marker: "01",
-    kicker: "Where I Started",
     title: "In The Back Of The Shop",
     body:
-      "My first job was at an optical company, in the back, making the product. Not glamorous. After a while they " +
-      "moved me out front to sell, and eventually I ended up managing the store, which meant a number to hit every " +
-      "month and a team to hit it with.",
+      "My first job was at an optical company, in the back, making the product. It was not glamorous work. After " +
+      "a while they moved me out front to sell, and eventually I ended up managing the store, which meant a " +
+      "number to hit every month and a team to hit it with.",
   },
   {
     marker: "02",
-    kicker: "What Happened",
     title: "Hitting A Ceiling",
     body:
       "I worked in corporate stores, in franchises, and in small independents. Spend enough time doing that and you " +
@@ -34,7 +33,6 @@ export const chapters: Chapter[] = [
   },
   {
     marker: "03",
-    kicker: "What I Did About It",
     title: "Back To School",
     body:
       "So I went back. Bachelor's degree at UC Riverside, then a master's in business with a marketing focus. What " +
@@ -43,12 +41,11 @@ export const chapters: Chapter[] = [
   },
   {
     marker: "04",
-    kicker: "Where I Am Now",
     title: "Using Both Halves",
     body:
       "These days I use both sides of that. Nearly every small business I meet is already good at the thing it " +
-      "does. What's missing is usually a clear message, a website that pulls its weight, and numbers the owner can " +
-      "read without help.",
+      "does. What is usually missing is a clear message, a website that pulls its weight, and numbers the owner " +
+      "can read without help.",
   },
 ];
 
@@ -82,7 +79,7 @@ export const credentialDetails: CredentialDetail[] = [
 ];
 
 export const workingWithMe = {
-  title: "What you get",
+  title: "What You Get",
   points: [
     "Someone who has worked a sales floor, not just read about one.",
     "Business sense and marketing in the same conversation.",
@@ -92,9 +89,9 @@ export const workingWithMe = {
 } as const;
 
 export const philosophy = {
-  title: "You should understand your own business",
+  title: "You Should Understand Your Own Business",
   body:
-    "You shouldn't need to call a marketing person to have your own numbers explained back to you. I go through " +
-    "everything with you as we do it, so when we're finished you can keep it running yourself. Plenty of people " +
-    "in this line of work would rather you couldn't.",
+    "You should not need a marketing person to explain your own numbers back to you. I go through everything " +
+    "with you as we do it, so when we are finished you can keep it running yourself. Plenty of people in this " +
+    "line of work would rather you could not.",
 } as const;

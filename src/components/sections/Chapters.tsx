@@ -6,22 +6,21 @@ import { chapters, philosophy } from "@/content/about";
 export function Chapters() {
   return (
     <Section tone="muted" size="default">
-      <SectionHeading title="How I got here" lead="Not a straight line, which turns out to be useful." className="max-w-3xl" />
+      <SectionHeading
+        title="How I Got Here"
+        lead="Not a straight line, which turns out to be useful."
+        className="max-w-3xl"
+      />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (
           <RevealItem
             key={chapter.marker}
-            className={`grid gap-6 py-10 md:grid-cols-[auto_1fr] md:gap-14 ${index === 0 ? "" : "rule"}`}
+            className={`grid gap-4 py-10 md:grid-cols-[6rem_1fr] md:gap-10 ${index === 0 ? "" : "rule"}`}
           >
-            <div className="flex flex-row items-baseline gap-4 md:w-44 md:flex-col md:gap-2">
-              <span className="font-headline text-3xl leading-none text-(--brand-primary)">
-                {chapter.marker}
-              </span>
-              <span className="font-ui text-[11px] font-semibold tracking-[0.14em] text-(--text-muted) uppercase">
-                {chapter.kicker}
-              </span>
-            </div>
+            <span className="font-headline text-3xl leading-none text-(--brand-primary) tabular-nums">
+              {chapter.marker}
+            </span>
 
             <div className="flex flex-col gap-3">
               <h3 className="display-md text-(--brand-deep)">{chapter.title}</h3>
@@ -31,10 +30,10 @@ export function Chapters() {
         ))}
       </Reveal>
 
-      {/* Closes the story: what the whole run through the shop and back to
-          school was actually for. It used to sit in the San Diego band, which
-          has been removed. */}
-      <div className="soft-card mt-10 flex flex-col gap-3 p-6 sm:p-8">
+      {/* Closes the story: what the run through the shop and back to school was
+          for. A ruled pull-out rather than a card, so it reads as the point of
+          the page and not another box. */}
+      <div className="mt-6 flex flex-col gap-3 border-l-2 border-(--brand-primary) pl-6 sm:pl-8">
         <h3 className="display-sm text-(--brand-deep)">{philosophy.title}</h3>
         <p className="measure text-(--text-muted)">{philosophy.body}</p>
       </div>

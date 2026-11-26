@@ -61,14 +61,20 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Do I own the website when we're done?",
     answer:
-      "Yes, all of it. The website, the Google listing, the reporting, all in your own accounts. You can keep " +
+      "Yes, all of it. The website, the analytics, the reporting, all in your own accounts. You can keep " +
       "running it without me, and some people do.",
   },
   {
-    question: "I already have a website. Is that a problem?",
+    question: "Do I need a new website?",
     answer:
-      "Not really. Plenty of sites just need fixing rather than replacing, and replacing one that works is a waste " +
-      "of your money. I'll tell you honestly which situation you're in.",
+      "Not always. Plenty of sites just need fixing rather than replacing, and replacing one that works is a " +
+      "waste of your money. I'll tell you honestly which situation you're in.",
+  },
+  {
+    question: "How will I know the marketing is working?",
+    answer:
+      "You get a report you can read without me on the phone. It shows what was spent, what changed, and which " +
+      "appointments came from which work. If a number is not in the report, I will tell you why.",
   },
   {
     question: "Am I locked into a contract?",
@@ -77,15 +83,9 @@ export const servicesFaqs: FaqItem[] = [
       "the price before anything starts.",
   },
   {
-    question: "What kind of businesses do you work with?",
-    answer:
-      "Small ones that have been open a while and want to get bigger. If you're still working out what you sell, " +
-      "or you want a whole agency team on it, I'm not your best bet.",
-  },
-  {
     question: "How do I reach you?",
     answer:
-      `The form on this page, or email ${site.email}, or call ${site.phone}. I read everything myself and usually ` +
-      "come back the next business day.",
+      `Use the form on the contact page, email ${site.email}, or call ${site.phone}. I read everything myself ` +
+      "and usually come back the next business day.",
   },
 ];
