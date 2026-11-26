@@ -41,7 +41,7 @@ You are working on **framescale-website**: a marketing site for FrameScale Inc (
 
 ## Styling and brand guard
 
-- **Tailwind v4** + `src/app/globals.css` theme tokens; fonts are loaded via `src/styles/fonts.css` (not `next/font/google` for the baseline layout; **brand guard enforces this**).
+- **Tailwind v4** + `src/app/globals.css` theme tokens; fonts (Bricolage Grotesque, Hanken Grotesk) load through `next/font/google` in `src/app/layout.tsx`; **brand guard enforces this** and bans a Google Fonts `<link>`.
 - After changes to fonts, `globals.css`, `layout.tsx` font loading, or `Brand.tsx` logo constants, ensure **`npm run brand:check`** still passes.
 
 ## Code quality

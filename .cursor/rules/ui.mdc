@@ -18,7 +18,7 @@ globs:
 
 ## Visual system
 
-- **Tailwind CSS v4** with tokens and imports in `src/app/globals.css` and `src/styles/fonts.css`.
+- **Tailwind CSS v4** with tokens in `src/app/globals.css`. Fonts load through `next/font/google` in `src/app/layout.tsx`.
 - Do **not** introduce another CSS framework, component library, or icon set unless the user explicitly requests it. Icons are **`lucide-react`** in line with the rest of the repo.
 
 ## Motion

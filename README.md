@@ -1,6 +1,6 @@
 # Jonathan Mejia, MBA: Optical Practice Marketing Consultant
 
-Personal-brand marketing site. Four marketing pages, one conversion path.
+Personal-brand marketing site. Seven marketing routes, one conversion path (`/contact`).
 
 > **Before launch:** set `RESEND_API_KEY` and `CONTACT_NOTIFICATION_EMAIL` in
 > `.env.local`. The contact form is the only lead path on the site, and without
@@ -12,18 +12,22 @@ Personal-brand marketing site. Four marketing pages, one conversion path.
 
 | Route | Purpose |
 |---|---|
-| `/` | Home. Full conversion sequence, ending in the contact form. |
-| `/services` | Four service areas, the SCALE Method, how pricing is scoped, FAQ. |
+| `/` | Home. Offer, credentials, services, method preview, FAQ, closing call to action. |
+| `/services` | Four service areas, how pricing is scoped, FAQ. |
 | `/optical-marketing` | The vertical hub. Why optical is different, optical FAQ. Owns the head term. |
+| `/method` | The five-phase SCALE Method, with an anchor per phase (`#phase-s` to `#phase-e`). |
 | `/about` | Background, credentials, philosophy. |
+| `/contact` | The booking form (Turnstile plus Resend). Every call to action points here. |
+| `/insights`, `/insights/[slug]` | Guides. Drafts in `src/content/insights.ts` stay hidden until `published: true`. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
 
-There is no separate contact page. The form is a section at the foot of every
-marketing page, anchored at `#contact`.
+The form lives only on `/contact`. The closing call to action band on each page
+keeps `id="contact"`, so old `/#contact` links from emails and ads still land on
+a call to action.
 
-Routes retired in the rebuild (`/process`, `/book`, `/contact`, `/industries/*`,
-`/payment`, `/sitemap`, `/admin`) are 308-redirected in `next.config.ts`. Do not
-recreate them without also removing the redirect.
+Routes retired in the rebuild (`/process`, `/book`, `/industries/*`, `/payment`,
+`/sitemap`, `/admin`) are 308-redirected in `next.config.ts`. Do not recreate them
+without also removing the redirect.
 
 ## Architecture
 

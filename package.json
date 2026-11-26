@@ -7,7 +7,8 @@
     "build": "node scripts/next-from-root.mjs build",
     "start": "node scripts/next-from-root.mjs start",
     "lint": "eslint",
-    "brand:check": "node scripts/brand-guard.mjs"
+    "brand:check": "node scripts/brand-guard.mjs",
+    "check": "npm run lint && npm run brand:check && npm run build"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

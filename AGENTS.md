@@ -9,14 +9,14 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 |------|--------|
 | **Framework** | Next.js **App Router** only (`src/app/`). There is **no** `src/pages/` Pages Router tree. Do not add or assume one. |
 | **Runtime** | React 19, TypeScript `strict`, path alias `@/*` → `src/*`. |
-| **Styling** | Tailwind CSS v4, `src/app/globals.css`, `src/styles/fonts.css`. |
+| **Styling** | Tailwind CSS v4, `src/app/globals.css`. Fonts (Bricolage Grotesque display, Hanken Grotesk text) load through `next/font/google` in `src/app/layout.tsx`. |
 | **UI structure** | Primitives in `src/components/ui/`; chrome in `src/components/layout/`; page sections in `src/components/sections/`; framework plumbing in `src/components/system/`. The brand logo lives at `src/components/design/Brand.tsx` and is frozen (see brand guard). |
 | **Motion / icons** | `motion` (`motion/react`), shared variants in `src/lib/motion.ts`; icons via `lucide-react`. |
 | **Content** | All user-facing copy lives in `src/content/*.ts` as typed data, never inline in JSX. Long-form prose uses the `ContentBlock` union in `src/content/blocks.ts`, rendered by the exhaustive switch in `src/components/content/ProseBlocks.tsx`. There is deliberately no MDX pipeline. Site facts (name, location, phone, nav) live in `src/lib/site.ts`. |
 | **Data / server** | **No database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Email via Resend is the system of record for leads. Do not reintroduce a datastore unless explicitly requested. |
 | **HTTP API** | One route handler: `src/app/api/contact/route.ts`. |
 | **Deployment** | Typical **Vercel** + Next (`@vercel/analytics`, `@vercel/speed-insights`); no `vercel.json` in repo. Follow existing Next/Vercel defaults unless told otherwise. |
-| **Routes** | Four marketing pages (`/`, `/optical-marketing`, `/services`, `/about`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. |
+| **Routes** | Seven marketing routes (`/`, `/optical-marketing`, `/services`, `/method`, `/about`, `/contact`, `/insights` with `/insights/[slug]`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. Insights articles live in `src/content/insights.ts` and stay hidden (`noindex`, off the sitemap, 404 in production) until `published` is `true`. |
 | **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage and Service). `LocalBusiness` is deliberately not used: there is no public street address, and the practice is remote and national rather than local. Optical is the lead vertical; one vertical page only, see the rule in `README.md`. |
 | **Quality gates** | `npm run lint`, `npm run brand:check` (see `scripts/brand-guard.mjs`). |
 
@@ -32,7 +32,7 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 8. For Next.js routing, **confirm App Router**: this app uses **`src/app/`** only. Do not mix in Pages Router patterns (`getServerSideProps`, `pages/api`, etc.).
 9. For server code, preserve this repo’s patterns: **Resend** for email, **Cloudflare Turnstile** for spam gating, **environment variable naming** as in `.env.example`, and **Vercel-oriented** Next deployment. There is no database; do not add one.
 10. For UI, follow the **existing design system** (Tailwind tokens, design components, motion variants). Do not introduce a parallel visual system (e.g. MUI, Bootstrap, second component library) unless explicitly requested.
-11. After substantive TS/TSX edits, use **`npm run lint`**; after brand-tied changes, **`npm run brand:check`**. The brand guard freezes the three font families, the five brand colors, and the logo viewBox. It also fails while `PRINCIPAL_LAST_NAME` in `src/lib/site.ts` is still the placeholder.
+11. After substantive TS/TSX edits, use **`npm run lint`**; after brand-tied changes, **`npm run brand:check`**. The brand guard freezes the two font families and their `next/font` wiring, the five brand colors, and the logo viewBox. `npm run check` runs lint, the brand guard and a full build.
 
 ## Marketing copy style (site text and docs)
 
