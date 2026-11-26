@@ -25,7 +25,9 @@ export const MotionProvider = ({ children }: MotionProviderProps) => {
       reducedMotion={settings.reduceMotion ? "always" : "user"}
       transition={{
         type: "tween",
-        duration: 1.02,
+        // The default for anything that does not set its own. It used to be
+        // just over a second, which made every hover and panel feel slow.
+        duration: 0.45,
         ease: [0.16, 1, 0.3, 1],
       }}
     >

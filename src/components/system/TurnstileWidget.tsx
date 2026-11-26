@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 declare global {
   interface Window {
@@ -24,32 +24,61 @@ declare global {
 type TurnstileWidgetProps = {
   siteKey: string;
   onTokenChange: (token: string) => void;
+  /** Called once if the Cloudflare script never arrives or the widget errors. */
+  onFailed?: () => void;
+  /** Shown in place of the widget after a failure: a way to reach Jonathan without it. */
+  fallback?: ReactNode;
   resetSignal?: number;
   label?: string;
   descriptionId?: string;
 };
 
+const POLL_MS = 150;
+/** About nine seconds. Ad blockers and strict corporate networks never deliver the script at all. */
+const MAX_POLLS = 60;
+
 export function TurnstileWidget({
   siteKey,
   onTokenChange,
+  onFailed,
+  fallback,
   resetSignal = 0,
   label = "Security verification",
   descriptionId,
 }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const onFailedRef = useRef(onFailed);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    onFailedRef.current = onFailed;
+  }, [onFailed]);
 
   useEffect(() => {
     if (!siteKey || !containerRef.current) return;
 
     let cancelled = false;
     let retryTimer: number | null = null;
+    let polls = 0;
+
+    const fail = () => {
+      if (cancelled) return;
+      setFailed(true);
+      onTokenChange("");
+      onFailedRef.current?.();
+    };
 
     const renderWidget = () => {
       if (cancelled || widgetIdRef.current || !containerRef.current) return;
 
       if (!window.turnstile) {
-        retryTimer = window.setTimeout(renderWidget, 150);
+        polls += 1;
+        if (polls >= MAX_POLLS) {
+          fail();
+          return;
+        }
+        retryTimer = window.setTimeout(renderWidget, POLL_MS);
         return;
       }
 
@@ -63,7 +92,7 @@ export function TurnstileWidget({
           onTokenChange("");
         },
         "error-callback"() {
-          onTokenChange("");
+          fail();
         },
       });
     };
@@ -89,6 +118,10 @@ export function TurnstileWidget({
   }, [onTokenChange, resetSignal]);
 
   if (!siteKey) return null;
+
+  if (failed) {
+    return fallback ? <div role="status">{fallback}</div> : null;
+  }
 
   return (
     <div className="turnstile-fit" role="group" aria-label={label} aria-describedby={descriptionId}>

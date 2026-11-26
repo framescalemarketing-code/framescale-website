@@ -20,7 +20,7 @@ You are working on **framescale-website**: a marketing site for FrameScale Inc (
 
 ## Data and secrets (this repo’s model)
 
-- **There is no database.** Supabase, Stripe, the booking scheduler, and the admin dashboard were removed in the three-page rebuild. Lead capture is `src/app/api/contact/route.ts`, which verifies Turnstile and sends through Resend.
+- **There is no database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Lead capture is `src/app/api/contact/route.ts` (Turnstile, then Resend) and `src/app/api/booking/route.ts` (Turnstile, then Google Calendar and Resend).
 - Because email is the only record of a lead, a Resend failure must surface as an error response, not be swallowed.
 - Server-only secrets belong in `server-only` modules (`src/lib/cloudflare-turnstile.ts` is the pattern). Never expose a secret through a `NEXT_PUBLIC_` variable.
 - `.env.example` is the source of truth for variable names. Do not invent new ones.

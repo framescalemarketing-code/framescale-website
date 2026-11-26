@@ -1,4 +1,5 @@
 import { getPublishedInsights } from "@/content/insights";
+import { bookingLive } from "@/lib/site";
 
 export type SitemapChangeFrequency =
   | "always"
@@ -21,12 +22,14 @@ const publishedInsights = getPublishedInsights();
 /**
  * Every indexable route, and the single source for `/sitemap.xml`. Keep in sync
  * with the App Router pages under `src/app`. The footer builds its own links
- * from `footerLinks` in `src/lib/site.ts` and does not read this.
+ * from `footerLinks` in `src/lib/site.ts` and does not read this. `/book`
+ * joins the list once the calendar behind it is live.
  */
 export const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: "", priority: 1.0, changeFrequency: "weekly" },
   { path: "/optical-marketing", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services", priority: 0.9, changeFrequency: "monthly" },
+  ...(bookingLive ? [{ path: "/book", priority: 0.9, changeFrequency: "monthly" as const }] : []),
   { path: "/method", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.7, changeFrequency: "yearly" },

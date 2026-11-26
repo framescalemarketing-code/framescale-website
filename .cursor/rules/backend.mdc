@@ -10,20 +10,22 @@ globs:
 ## Existing surface (do not hallucinate more)
 
 - **Route handlers** in this repo today live at:
-  - `src/app/api/contact/route.ts`
+  - `src/app/api/contact/route.ts` (message form)
+  - `src/app/api/booking/route.ts` (availability and booking against Google Calendar)
 - Do **not** add new `route.ts` files, path segments, or HTTP clients unless the user explicitly asks for a new endpoint or integration.
 
 ## Environment variables
 
 - Only reference variables **already used** in code or named by the user. Examples that appear in the codebase include (non-exhaustive—**read the files**):
   - `RESEND_API_KEY`, `RESEND_NOREPLY_FROM`, `CONTACT_NOTIFICATION_EMAIL` (contact email)
-  - `CLOUDFLARE_SITE_KEY`, `CLOUDFLARE_SECRET_KEY` (Turnstile; the form degrades gracefully when unset)
+  - `CLOUDFLARE_SITE_KEY`, `CLOUDFLARE_SECRET_KEY` (Turnstile; optional locally, required in production)
+  - `GOOGLE_CALENDAR_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` (booking; the route reports the calendar unavailable when unset)
 - Never invent `NEXT_PUBLIC_*` secrets. Never add placeholder env names.
 
 ## Patterns to preserve
 
-- There is no database in this repo. Email through `@/lib/resend-client` is the system of record for leads; do not add a datastore without instruction.
-- Keep **validation**, **payload size limits**, and **`NextResponse.json`** error shapes consistent with the existing `contact` and `consent` handlers.
+- There is no database in this repo. Email through `@/lib/resend-client` is the system of record for leads and Google Calendar (`@/lib/booking/google-calendar`) holds bookings; do not add a datastore without instruction.
+- Keep **validation**, **payload size limits**, and **`NextResponse.json`** error shapes consistent with the existing `contact` and `booking` handlers.
 - Preserve **HTML escaping** for email HTML in `contact` (or equivalent) when touching that path.
 
 ## Auth and “middleware”

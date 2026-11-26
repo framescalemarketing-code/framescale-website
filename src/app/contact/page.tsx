@@ -5,13 +5,13 @@ import { buildBreadcrumbGraph, buildWebPageGraph, jsonLdProps } from "@/lib/sche
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Book A Free Call With Jonathan Mejia | FrameScale",
+  title: "Contact Jonathan Mejia | FrameScale",
   absoluteTitle: true,
   description:
-    "Book a free half-hour call about your optical practice's marketing. Tell me what is going on and I will " +
-    "tell you where I would start.",
+    "Send me a note about your optical practice's marketing. I read every message myself and reply within " +
+    "one business day.",
   path: "/contact",
-  keywords: ["book an optical marketing consultation", "contact marketing consultant"],
+  keywords: ["contact optical marketing consultant", "contact marketing consultant"],
 });
 
 export default function ContactPage() {
@@ -38,7 +38,7 @@ export default function ContactPage() {
 
       <PageHero
         headline="Tell Me About Your Practice"
-        lead="Half an hour on the phone, just the two of us. I will tell you where I would start, and whether I am the right person at all."
+        lead="Write a few sentences and I will reply within one business day. If you would rather talk, book a call and we will work it out live."
       />
 
       <ContactSection />

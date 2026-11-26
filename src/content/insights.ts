@@ -96,7 +96,7 @@ export const insightArticles: InsightArticle[] = [
           { text: ", and I follow the same order each time, which I explain on " },
           { text: "the method page", href: "/method" },
           { text: ". If you want to talk through where your own practice stands, " },
-          { text: "book a free call", href: "/contact" },
+          { text: "book a free call", href: "/book" },
           { text: "." },
         ],
       },

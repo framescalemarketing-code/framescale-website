@@ -14,9 +14,9 @@ Use this file together with **root `.cursorrules`** and **`.cursor/rules/*.mdc`*
 | **Motion / icons** | `motion` (`motion/react`), shared variants in `src/lib/motion.ts`; icons via `lucide-react`. |
 | **Content** | All user-facing copy lives in `src/content/*.ts` as typed data, never inline in JSX. Long-form prose uses the `ContentBlock` union in `src/content/blocks.ts`, rendered by the exhaustive switch in `src/components/content/ProseBlocks.tsx`. There is deliberately no MDX pipeline. Site facts (name, location, phone, nav) live in `src/lib/site.ts`. |
 | **Data / server** | **No database.** Supabase, Stripe, and the admin dashboard were removed in the three-page rebuild. Email via Resend is the system of record for leads. Do not reintroduce a datastore unless explicitly requested. |
-| **HTTP API** | One route handler: `src/app/api/contact/route.ts`. |
+| **HTTP API** | Two route handlers: `src/app/api/contact/route.ts` (message form) and `src/app/api/booking/route.ts` (availability and booking against Google Calendar; logic in `src/lib/booking/`). |
 | **Deployment** | Typical **Vercel** + Next (`@vercel/analytics`, `@vercel/speed-insights`); no `vercel.json` in repo. Follow existing Next/Vercel defaults unless told otherwise. |
-| **Routes** | Seven marketing routes (`/`, `/optical-marketing`, `/services`, `/method`, `/about`, `/contact`, `/insights` with `/insights/[slug]`) plus five legal pages. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. Insights articles live in `src/content/insights.ts` and stay hidden (`noindex`, off the sitemap, 404 in production) until `published` is `true`. |
+| **Routes** | Eight marketing routes (`/`, `/optical-marketing`, `/services`, `/method`, `/about`, `/book`, `/contact`, `/insights` with `/insights/[slug]`) plus five legal pages. `/book` is the primary conversion path while `bookingLive` is `true` in `src/lib/site.ts`; `/contact` is the message form. Retired routes are 308-redirected in `next.config.ts`; do not re-create them. Insights articles live in `src/content/insights.ts` and stay hidden (`noindex`, off the sitemap, 404 in production) until `published` is `true`. |
 | **SEO** | Entity graph in `src/lib/schema.ts` (Person + ProfessionalService + WebSite, plus FAQPage and Service). `LocalBusiness` is deliberately not used: there is no public street address, and the practice is remote and national rather than local. Optical is the lead vertical; one vertical page only, see the rule in `README.md`. |
 | **Quality gates** | `npm run lint`, `npm run brand:check` (see `scripts/brand-guard.mjs`). |
 
@@ -53,7 +53,7 @@ These rules apply to new copy and to edits you make to existing pages unless the
 
 - **Site facts / URLs / nav:** `src/lib/site.ts` (also holds `principal`, `practice`, and `location`)
 - **All marketing copy:** `src/content/{home,services,about,scale,pricing,faq}.ts`
-- **API + env patterns:** `src/app/api/contact/route.ts`, `.env.example`
+- **API + env patterns:** `src/app/api/contact/route.ts`, `src/app/api/booking/route.ts`, `.env.example`
 - **Structured data:** `src/lib/schema.ts`
 - **Retired-route redirects:** `next.config.ts`
 - **Stack detail and SEO/legal/brand:** `.cursorrules`

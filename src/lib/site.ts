@@ -77,18 +77,21 @@ export const site = {
   locale: "en_US",
   ogImage: "/opengraph-image",
   twitterImage: "/twitter-image",
-  /** The booking form lives on its own page. Every call to action points here. */
+  /** The message form lives on its own page. */
   contactPath: "/contact",
   /**
    * Id carried by the closing call to action band on every marketing page. Old
    * links of the form `/#contact` from emails and ads keep landing on something.
    */
   contactAnchor: "#contact",
+  /** The booking page. See `bookingLive` for whether the calls to action point at it yet. */
+  bookingPath: "/book",
   social: {
     /** The practice page. Anchors the ProfessionalService entity. */
     linkedin: "https://www.linkedin.com/company/framescaleinc",
     /** The personal profile. It already ranks for the name, so it anchors the Person entity. */
     linkedinPersonal: "https://www.linkedin.com/in/jmejia96/",
+    /** Kept for reference only. Rendered nowhere and left out of the entity graph. */
     fiverr: "https://www.fiverr.com/s/xX8GAv4",
   },
 } as const;
@@ -99,6 +102,20 @@ export const site = {
  */
 export const hasPublishedInsights = getPublishedInsights().length > 0;
 const insightsLink = hasPublishedInsights ? ([{ label: "Insights", href: "/insights" }] as const) : [];
+
+/**
+ * Whether "Book A Free Call" sends people to the booking page or to the
+ * message form. The page needs a calendar to read from (the Google service
+ * account, or the private iCal feed URL; see `.env.example`) before it can
+ * offer a time, and shows the phone and email instead until then.
+ */
+export const bookingLive = true;
+
+/** One set of labels, so the same action reads the same everywhere. */
+export const ctaLabels = {
+  book: "Book A Free Call",
+  call: "Call",
+} as const;
 
 export const mainNav = [
   { label: "Optical", href: "/optical-marketing" },
@@ -116,6 +133,7 @@ export const footerLinks = {
     { label: "Method", href: "/method" },
     { label: "About", href: "/about" },
     ...insightsLink,
+    ...(bookingLive ? [{ label: ctaLabels.book, href: site.bookingPath }] : []),
     { label: "Contact", href: site.contactPath },
   ],
   Services: [
@@ -134,11 +152,7 @@ export const footerLinks = {
   ],
 } as const;
 
-/**
- * The contact link for every call to action. The form used to sit at the foot
- * of each page, so this had to know which page the visitor was on. It now lives
- * at one route, so the answer is the same everywhere.
- */
-export function contactHref(): string {
-  return site.contactPath;
+/** Where a "Book A Free Call" button goes: the booking page once it is live, the form until then. */
+export function bookingHrefFor(): string {
+  return bookingLive ? site.bookingPath : site.contactPath;
 }

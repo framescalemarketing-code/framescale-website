@@ -65,7 +65,7 @@ export const AccessibilityWidget = () => {
 
   // Raised on small screens so it clears the sticky mobile CTA bar.
   return (
-    <div className="fixed right-4 bottom-20 z-40 md:right-auto md:bottom-4 md:left-4">
+    <div className="fixed right-4 bottom-[calc(var(--mobile-cta-clearance)_+_env(safe-area-inset-bottom,0px)_+_0.75rem)] z-40 md:right-auto md:bottom-4 md:left-4">
       <button
         ref={buttonRef}
         type="button"

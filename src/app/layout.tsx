@@ -15,7 +15,7 @@ import { iubenda } from "@/lib/iubenda";
 import { buildIubendaConsentConfigScript } from "@/lib/iubenda-consent-config";
 import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
-import { principal, site } from "@/lib/site";
+import { practice, principal, site } from "@/lib/site";
 
 /**
  * Display face: Bricolage Grotesque, with its optical-size and width axes so
@@ -48,6 +48,10 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+/**
+ * No `openGraph.images` or `twitter.images` here: the `opengraph-image.tsx`
+ * file in this directory and in each route segment supplies them, hashed.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -79,7 +83,7 @@ export const metadata: Metadata = {
     title: `${principal.displayName} | ${principal.jobTitle}`,
     description: site.description,
     url: site.url,
-    siteName: principal.displayName,
+    siteName: practice.name,
     locale: site.locale,
     type: "website",
     images: [
@@ -127,6 +131,25 @@ export default function RootLayout({
       <head>
         {GA_MEASUREMENT_ID ? (
           <>
+            {/* Consent Mode needs a default on the page before gtag.js runs.
+                iubenda sends the `update` when the visitor accepts or rejects;
+                without a default already in place, GA can initialise with
+                storage granted in the gap before the widget loads. */}
+            <Script id="consent-default" strategy="beforeInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('consent', 'default', {
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied',
+                  analytics_storage: 'denied',
+                  functionality_storage: 'granted',
+                  security_storage: 'granted',
+                  wait_for_update: 500
+                });
+              `}
+            </Script>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"

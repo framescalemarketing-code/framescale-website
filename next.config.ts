@@ -32,6 +32,11 @@ const connectSrc = [
   "https://challenges.cloudflare.com",
 ].join(" ");
 
+/**
+ * Fonts are self-hosted, so neither `style-src` nor `font-src` allows Google
+ * Fonts any more. That is deliberate: if a remote font request ever comes back
+ * it shows up as a CSP violation in the console instead of passing unnoticed.
+ */
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
@@ -60,9 +65,9 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       `script-src ${scriptSrc}`,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.iubenda.com",
-      "font-src 'self' https://fonts.gstatic.com https://cdn.iubenda.com",
-      "img-src 'self' data: blob: https://www.iubenda.com",
+      "style-src 'self' 'unsafe-inline' https://cdn.iubenda.com",
+      "font-src 'self' https://cdn.iubenda.com",
+      "img-src 'self' data: blob: https://www.iubenda.com https://cdn.iubenda.com",
       `connect-src ${connectSrc}`,
       "frame-src https://www.iubenda.com https://challenges.cloudflare.com",
       "frame-ancestors 'none'",
@@ -77,18 +82,20 @@ const securityHeaders = [
 ];
 
 /**
- * Routes retired in the three-page rebuild. All of them were in the previous
- * sitemap and may be indexed or linked, so they redirect rather than 404.
+ * Routes retired in the three-page rebuild, plus two from the site before it.
+ * All of them were in a sitemap at some point and may be indexed or linked, so
+ * they redirect rather than 404.
  */
 const retiredRoutes: { source: string; destination: string }[] = [
   { source: "/process", destination: "/method" },
-  { source: "/book", destination: "/contact" },
   { source: "/industries/healthcare", destination: "/services" },
   { source: "/industries/retail", destination: "/services" },
   { source: "/industries/professional-services", destination: "/services" },
   { source: "/industries", destination: "/services" },
   { source: "/payment", destination: "/services#pricing" },
   { source: "/payment/success", destination: "/" },
+  { source: "/pricing", destination: "/services#pricing" },
+  { source: "/case-studies", destination: "/optical-marketing" },
   { source: "/sitemap", destination: "/" },
   { source: "/admin", destination: "/" },
   { source: "/admin/login", destination: "/" },

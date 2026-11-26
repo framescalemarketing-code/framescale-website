@@ -15,12 +15,17 @@ export type ScalePhase = {
 
 export const scaleIntro = {
   name: "The SCALE Method",
-  lead: "I work the same way every time, and you see each step before we move on.",
+  lead:
+    "I work the same way every time, and you see each step before we move on. It runs to five stages, and " +
+    "you'll always know which one we're in.",
 } as const;
 
 /**
  * The letters are spelled out here. The previous site used these five titles
  * but never explained the acronym anywhere, so a reader had to work it out.
+ *
+ * Each `description` says what happens in that phase and why it is in this
+ * order. A phase that cannot justify its position does not need to be a phase.
  */
 export const scalePhases: ScalePhase[] = [
   {
@@ -30,10 +35,10 @@ export const scalePhases: ScalePhase[] = [
     title: "Study The Market",
     summary: "Who is buying, and who else they could buy from.",
     description:
-      "I start wide. Who is buying in your area, what else they could pick instead of you, and what tips them one " +
-      "way or the other.",
+      "I start wide. Narrow it down too early and you'll fix the wrong thing. Who's buying in your area, what " +
+      "else they could pick instead of you, and what tips them one way or the other.",
     activities: [
-      "Look at who is buying near you",
+      "Look at who's buying near you",
       "See what the competition charges and how they talk about it",
       "Work out what makes someone pick one over the other",
     ],
@@ -50,8 +55,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Clarify The Client View",
     summary: "See the business the way a customer sees it.",
     description:
-      "You know your business from the inside. Customers only ever see the outside, and the two rarely match. This " +
-      "is where we close that gap.",
+      "You know your business from the inside. Customers only ever see the outside, and the two rarely match. " +
+      "That gap is costing you work.",
     activities: [
       "Talk to you, and to whoever deals with customers day to day",
       "Read your reviews properly, including the bad ones",
@@ -69,14 +74,16 @@ export const scalePhases: ScalePhase[] = [
     icon: Target,
     title: "Align The Strategy",
     summary: "Agree what to say and where to say it.",
-    description: "Now we turn what I found into a plan, and we decide it together rather than me handing it over.",
+    description:
+      "Now we turn what I found into a plan, and we sit down and decide it together so you know why every piece " +
+      "of it is there.",
     activities: [
       "Settle on what you're saying and who you're saying it to",
       "Pick the handful of places worth showing up",
       "Match it to your goals and what you can spend",
     ],
     deliverables: [
-      "A plan built for your business, not a template",
+      "A plan built around your business",
       "Which pages and which channels are worth it",
       "A short list of numbers worth watching",
     ],
@@ -88,8 +95,8 @@ export const scalePhases: ScalePhase[] = [
     title: "Launch The System",
     summary: "Build the website and the tracking the plan needs.",
     description:
-      "Then I build the thing. If the website or the tracking doesn't exist yet, that gets built too, rather than " +
-      "handed to someone else.",
+      "Then I build it. If the website or the tracking doesn't exist yet, I build that too, and I stay on it from " +
+      "the start of the job to the end of it.",
     activities: [
       "Build or fix the website and the pages that matter",
       "Put tracking in so we can see what happens",
@@ -109,7 +116,7 @@ export const scalePhases: ScalePhase[] = [
     summary: "Watch what people do, then change what isn't working.",
     description:
       "Once it's live I watch how people move through it and how the business responds. Then we change the parts " +
-      "that aren't pulling their weight.",
+      "that aren't working.",
     activities: [
       "Track the calls, the forms, and the visits",
       "Find where people give up and leave",
@@ -139,7 +146,7 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Everything Connected",
-    description: "The website, the tracking, and the reporting live in one place instead of five.",
+    description: "The website, the tracking, and the reporting all live in one place.",
   },
   {
     title: "Reports You Can Use",

@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/design/Brand";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { contactHref, mainNav, practice, principal, site } from "@/lib/site";
+import { bookingHrefFor, ctaLabels, mainNav, practice, principal, site } from "@/lib/site";
 
 /**
  * The lockup is composed here rather than in Brand.tsx: the mark is the brand
@@ -40,6 +40,7 @@ function isActive(pathname: string, href: string) {
  */
 export function Header() {
   const pathname = usePathname();
+  const bookHref = bookingHrefFor();
   const [open, setOpen] = useState(false);
 
   // Close the mobile panel on navigation.
@@ -82,8 +83,8 @@ export function Header() {
                 </Link>
               );
             })}
-            <Button href={contactHref()} variant="light" size="md" withArrow>
-              Book A Call
+            <Button href={bookHref} variant="light" size="md" withArrow>
+              {ctaLabels.book}
             </Button>
           </nav>
 
@@ -119,8 +120,8 @@ export function Header() {
                   </Link>
                 );
               })}
-              <Button href={contactHref()} variant="light" size="lg" withArrow className="mt-5 w-full">
-                Book A Call
+              <Button href={bookHref} variant="light" size="lg" withArrow className="mt-5 w-full">
+                {ctaLabels.book}
               </Button>
               <a
                 href={`tel:${site.phoneHref}`}

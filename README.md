@@ -1,12 +1,16 @@
 # Jonathan Mejia, MBA: Optical Practice Marketing Consultant
 
-Personal-brand marketing site. Seven marketing routes, one conversion path (`/contact`).
+Personal-brand marketing site. Seven marketing routes plus `/book`. Two lead
+paths: booking a call (`/book`) and sending a message (`/contact`).
 
 > **Before launch:** set `RESEND_API_KEY` and `CONTACT_NOTIFICATION_EMAIL` in
-> `.env.local`. The contact form is the only lead path on the site, and without
-> the key `src/app/api/contact/route.ts` returns its "not configured yet" error.
-> Setting `CLOUDFLARE_SITE_KEY` and `CLOUDFLARE_SECRET_KEY` turns on the spam
-> check; until both are set the form accepts anything. See `.env.example`.
+> `.env.local`. Without the key `src/app/api/contact/route.ts` returns its "not
+> configured yet" error. Setting `CLOUDFLARE_SITE_KEY` and `CLOUDFLARE_SECRET_KEY`
+> turns on the spam check. Any production build (the live site, Vercel previews and
+> `npm run start`) refuses both forms until the two keys are set; only the local
+> dev server runs without them. Booking
+> also needs a calendar to read (`GOOGLE_*` or `BOOKING_EXTERNAL_CALENDAR_ICS_URL`),
+> or `/book` shows the phone and email instead of times. See `.env.example`.
 
 ## Pages
 
@@ -17,15 +21,16 @@ Personal-brand marketing site. Seven marketing routes, one conversion path (`/co
 | `/optical-marketing` | The vertical hub. Why optical is different, optical FAQ. Owns the head term. |
 | `/method` | The five-phase SCALE Method, with an anchor per phase (`#phase-s` to `#phase-e`). |
 | `/about` | Background, credentials, philosophy. |
-| `/contact` | The booking form (Turnstile plus Resend). Every call to action points here. |
+| `/book` | Pick a time from Jonathan's calendar (`/api/booking`, Turnstile, Google Calendar). Every primary call to action points here while `bookingLive` is `true` in `src/lib/site.ts`. |
+| `/contact` | The message form (Turnstile plus Resend), plus phone and email. |
 | `/insights`, `/insights/[slug]` | Guides. Drafts in `src/content/insights.ts` stay hidden until `published: true`. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
 
-The form lives only on `/contact`. The closing call to action band on each page
-keeps `id="contact"`, so old `/#contact` links from emails and ads still land on
-a call to action.
+The message form lives only on `/contact`. The closing call to action band on
+each page keeps `id="contact"`, so old `/#contact` links from emails and ads still
+land on a call to action.
 
-Routes retired in the rebuild (`/process`, `/book`, `/industries/*`, `/payment`,
+Routes retired in the rebuild (`/process`, `/industries/*`, `/payment`,
 `/sitemap`, `/admin`) are 308-redirected in `next.config.ts`. Do not recreate them
 without also removing the redirect.
 
@@ -75,12 +80,14 @@ the surname placeholder is still in place.
 Copy `.env.example` to `.env.local`. Only Resend is required.
 
 - **Resend** (required): `RESEND_API_KEY`, optionally `RESEND_NOREPLY_FROM` and `CONTACT_NOTIFICATION_EMAIL`. Email is the system of record for leads, so a missing key makes the contact form return an error rather than fail quietly.
-- **Cloudflare Turnstile** (optional): `CLOUDFLARE_SITE_KEY`, `CLOUDFLARE_SECRET_KEY`. The form works without them; the challenge simply does not render.
+- **Cloudflare Turnstile** (required in any production build): `CLOUDFLARE_SITE_KEY`, `CLOUDFLARE_SECRET_KEY`. On the dev server the forms work without them and the challenge simply does not render.
 - **Analytics** (optional): `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Without it the GA4 scripts are not injected.
 - **Consent** (optional): `NEXT_PUBLIC_IUBENDA_POLICY_ID`, `NEXT_PUBLIC_IUBENDA_SITE_ID`, `NEXT_PUBLIC_IUBENDA_WIDGET_ID`. All fall back to committed defaults.
+- **Booking** (optional): `GOOGLE_CALENDAR_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` (the calendar the site reads and writes), and `BOOKING_EXTERNAL_CALENDAR_ICS_URL` (a private iCal feed of another calendar that blocks times). Without a calendar `/book` says so and shows the phone and email.
 
-There is no database. Supabase, Stripe, the booking scheduler, and the admin
-dashboard were removed in the rebuild.
+There is no database. Supabase, Stripe, and the admin dashboard were removed in
+the rebuild. Google Calendar holds the bookings, and held slots live in memory
+(`src/lib/booking/held-slots.ts`).
 
 ## SEO notes
 

@@ -5,7 +5,7 @@ import { Rings } from "@/components/design/Rings";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { credentials, hero } from "@/content/home";
-import { principal, contactHref } from "@/lib/site";
+import { principal, bookingHrefFor } from "@/lib/site";
 
 /**
  * Home hero: the one full-bleed deep band at the top of the site. The ring
@@ -26,7 +26,7 @@ export function HomeHero() {
               <p className="lead">{hero.lead}</p>
 
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
-                <Button href={contactHref()} size="lg" variant="light" withArrow>
+                <Button href={bookingHrefFor()} size="lg" variant="light" withArrow>
                   {hero.primaryCta}
                 </Button>
                 <Link

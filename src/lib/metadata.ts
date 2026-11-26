@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { principal, site } from "@/lib/site";
+import { practice, principal, site } from "@/lib/site";
 
 type BuildPageMetadataOptions = {
   /** Page title. Runs through the root `%s | Name` template unless `absoluteTitle`. */
@@ -17,6 +17,13 @@ type BuildPageMetadataOptions = {
   absoluteTitle?: boolean;
 };
 
+/**
+ * No `images` here on purpose. Each route segment carries its own
+ * `opengraph-image.tsx`, and Next only injects those (with a content hash in
+ * the URL, which is what lets a redesigned card reach links already shared)
+ * when the page metadata does not set `openGraph.images` itself. Twitter
+ * inherits the same image.
+ */
 export function buildPageMetadata({
   title,
   description,
@@ -37,27 +44,13 @@ export function buildPageMetadata({
       description,
       url: path,
       type: "website",
-      siteName: principal.displayName,
+      siteName: practice.name,
       locale: site.locale,
-      images: [
-        {
-          url: site.ogImage,
-          width: 1200,
-          height: 630,
-          alt: socialTitle,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [
-        {
-          url: site.twitterImage,
-          alt: socialTitle,
-        },
-      ],
     },
     ...(robots ? { robots } : {}),
   };

@@ -1,7 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
-import { contactHref, site } from "@/lib/site";
+import { bookingHrefFor, site } from "@/lib/site";
 
 type CtaBandProps = {
   title: string;
@@ -12,8 +12,8 @@ type CtaBandProps = {
 /**
  * Closing band on every marketing page. It carries `id="contact"` so old
  * `/#contact` links from emails and ads still land on something, and sends the
- * visitor to /contact, where the form lives. The phone and email details are the
- * same strings the footer and the JSON-LD carry.
+ * visitor to the booking page (or to /contact until booking is live). The phone
+ * and email details are the same strings the footer and the JSON-LD carry.
  */
 export function CtaBand({ title, lead, cta = "Book A Free Call" }: CtaBandProps) {
   return (
@@ -23,7 +23,7 @@ export function CtaBand({ title, lead, cta = "Book A Free Call" }: CtaBandProps)
           <h2 className="display-lg max-w-2xl">{title}</h2>
           <p className="lead">{lead}</p>
           <div className="mt-2">
-            <Button href={contactHref()} size="lg" variant="light" withArrow>
+            <Button href={bookingHrefFor()} size="lg" variant="light" withArrow>
               {cta}
             </Button>
           </div>
