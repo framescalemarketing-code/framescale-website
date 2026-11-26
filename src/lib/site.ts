@@ -75,7 +75,12 @@ export const site = {
   locale: "en_US",
   ogImage: "/opengraph-image",
   twitterImage: "/twitter-image",
-  /** Anchor for the inline contact form, which appears at the foot of every marketing page. */
+  /** The booking form lives on its own page. Every call to action points here. */
+  contactPath: "/contact",
+  /**
+   * Id carried by the closing call to action band on every marketing page. Old
+   * links of the form `/#contact` from emails and ads keep landing on something.
+   */
   contactAnchor: "#contact",
   social: {
     /** The practice page. Anchors the ProfessionalService entity. */
@@ -89,7 +94,9 @@ export const site = {
 export const mainNav = [
   { label: "Optical", href: "/optical-marketing" },
   { label: "Services", href: "/services" },
+  { label: "Method", href: "/method" },
   { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
 ] as const;
 
 export const footerLinks = {
@@ -97,8 +104,10 @@ export const footerLinks = {
     { label: "Home", href: "/" },
     { label: "Optical", href: "/optical-marketing" },
     { label: "Services", href: "/services" },
+    { label: "Method", href: "/method" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: `/${site.contactAnchor}` },
+    { label: "Insights", href: "/insights" },
+    { label: "Contact", href: site.contactPath },
   ],
   Services: [
     { label: "Figuring Out What's Wrong", href: "/services#strategy" },
@@ -116,16 +125,11 @@ export const footerLinks = {
   ],
 } as const;
 
-/** Pages that render an inline `#contact` section at their foot. */
-const PAGES_WITH_CONTACT_SECTION = new Set(["/", "/optical-marketing", "/services", "/about"]);
-
 /**
- * Resolve the right contact link for the page the visitor is currently on.
- * On a page that has its own form, scroll to it. On the legal pages and the
- * 404, which have no form, send them to the home page section instead.
+ * The contact link for every call to action. The form used to sit at the foot
+ * of each page, so this had to know which page the visitor was on. It now lives
+ * at one route, so the answer is the same everywhere.
  */
-export function contactHrefFor(pathname: string): string {
-  return PAGES_WITH_CONTACT_SECTION.has(pathname)
-    ? site.contactAnchor
-    : `/${site.contactAnchor}`;
+export function contactHref(): string {
+  return site.contactPath;
 }

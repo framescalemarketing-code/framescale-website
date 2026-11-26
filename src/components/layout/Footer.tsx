@@ -15,17 +15,19 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
+const LINK_CLASS =
+  "link-quiet inline-flex min-h-8 items-center text-[15px] text-(--on-deep-muted) hover:text-white";
+
 /**
- * Deliberately compact. The service-area line and the copyright used to be two
- * separate bordered rows below the grid; they share one row now, which removes
- * a divider and a whole block of padding.
+ * Deep-teal base of every page. The contact details are the same strings the
+ * JSON-LD carries, so the visible page and the markup never disagree.
  */
 export function Footer() {
   return (
     /* The mobile CTA bar is fixed to the bottom of the viewport and would
-       otherwise cover this last row. The bar is md:hidden, so the clearance is. */
+       otherwise cover the last row. The bar is md:hidden, so the clearance is. */
     <footer
-      className="dark-section pb-(--mobile-cta-clearance) md:pb-0"
+      className="dark-section border-t border-white/10 pb-(--mobile-cta-clearance) md:pb-0"
       aria-labelledby="footer-heading"
     >
       <div className="grain-overlay" />
@@ -33,49 +35,41 @@ export function Footer() {
         Site footer
       </h2>
 
-      <Container>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-7 py-8 sm:gap-x-10 lg:grid-cols-[1.9fr_0.85fr_1.15fr_1.05fr]">
-          {/* NAP block. These values must match the JSON-LD exactly; consistency
-              between the visible page and the markup is what local ranking uses. */}
-          <div className="col-span-2 flex flex-col gap-3 lg:col-span-1">
+      <Container width="wide">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-14 sm:gap-x-10 lg:grid-cols-[1.9fr_0.8fr_1.2fr_1.1fr]">
+          <div className="col-span-2 flex flex-col gap-5 lg:col-span-1">
             <div className="flex items-center gap-3">
-              <BrandMark width={46} height={19} tone="light" />
+              <BrandMark width={54} height={22} tone="light" />
               <div>
-                <p className="font-headline text-base leading-tight text-white">{principal.displayName}</p>
-                <p className="font-ui text-[9px] font-semibold tracking-[0.14em] text-white/65 uppercase">
-                  {principal.jobTitle} · {practice.name}
+                <p className="font-headline text-lg leading-tight text-white">{principal.displayName}</p>
+                <p className="font-ui text-sm text-(--on-deep-muted)">
+                  {principal.jobTitle}, {practice.name}
                 </p>
               </div>
             </div>
 
-            <address className="flex flex-col gap-1.5 not-italic">
-              <span className="flex items-start gap-2 text-[13px] text-white/70">
-                <MapPin className="mt-0.5 size-3.5 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
+            <address className="flex flex-col gap-2 not-italic">
+              <span className="flex items-start gap-2 text-[15px] text-(--on-deep-muted)">
+                <MapPin className="mt-1 size-4 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
                 <span>
                   Based in {location.regionName}. Working remotely across {location.serviceArea}.
                 </span>
               </span>
-              <a
-                href={`tel:${site.phoneHref}`}
-                className="link-quiet flex items-center gap-2 text-[13px] text-white/70 hover:text-white"
-              >
-                <Phone className="size-3.5 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
+              <a href={`tel:${site.phoneHref}`} className={`${LINK_CLASS} w-fit gap-2`}>
+                <Phone className="size-4 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
                 {site.phone}
               </a>
-              <a
-                href={`mailto:${site.email}`}
-                className="link-quiet flex items-start gap-2 text-xs wrap-anywhere text-white/70 hover:text-white"
-              >
-                <Mail className="mt-0.5 size-3.5 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
+              <a href={`mailto:${site.email}`} className={`${LINK_CLASS} w-fit gap-2 wrap-anywhere`}>
+                <Mail className="size-4 shrink-0 text-(--brand-secondary)" aria-hidden="true" />
                 {site.email}
               </a>
               <a
                 href={site.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-quiet mt-0.5 flex w-fit items-center gap-2 text-[13px] text-white/70 hover:text-white"
+                className={`${LINK_CLASS} w-fit gap-2`}
               >
-                <LinkedInIcon className="size-3.5 shrink-0 text-(--brand-secondary)" />
+                <LinkedInIcon className="size-4 shrink-0 text-(--brand-secondary)" />
                 LinkedIn
               </a>
             </address>
@@ -84,13 +78,11 @@ export function Footer() {
           {(Object.entries(footerLinks) as [string, readonly { label: string; href: string }[]][]).map(
             ([heading, links]) => (
               <nav key={heading} aria-label={heading}>
-                <p className="font-ui text-[10px] font-semibold tracking-[0.16em] text-white/65 uppercase">
-                  {heading}
-                </p>
-                <ul className="mt-2.5 flex flex-col gap-1.5">
+                <p className="font-ui text-sm font-semibold text-white">{heading}</p>
+                <ul className="mt-3 flex flex-col gap-1">
                   {links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className="link-quiet text-[13px] text-white/70 hover:text-white">
+                      <Link href={link.href} className={LINK_CLASS}>
                         {link.label}
                       </Link>
                     </li>
@@ -101,8 +93,9 @@ export function Footer() {
           )}
         </div>
 
-        <div className="flex border-t border-white/10 py-4">
-          <p className="text-xs text-white/60">
+        <div className="tick-rule text-white" aria-hidden="true" />
+        <div className="flex py-5">
+          <p className="text-sm text-(--on-deep-muted)">
             &copy; {YEAR} {practice.name}. All rights reserved.
           </p>
         </div>

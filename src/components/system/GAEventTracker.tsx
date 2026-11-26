@@ -43,7 +43,7 @@ export const GAEventTracker = () => {
           return;
         }
 
-        if (href.includes("#contact") || label.includes("contact") || label.includes("book") || label.includes("get started")) {
+        if (href.includes("#contact") || href.startsWith("/contact") || label.includes("contact") || label.includes("book") || label.includes("get started")) {
           trackEvent("cta_click", {
             label: label || href,
             destination: href,

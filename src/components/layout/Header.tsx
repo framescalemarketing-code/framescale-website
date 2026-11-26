@@ -7,42 +7,40 @@ import { Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/design/Brand";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { contactHrefFor, mainNav, practice, principal, site } from "@/lib/site";
+import { contactHref, mainNav, practice, principal, site } from "@/lib/site";
 
 /**
  * The lockup is composed here rather than in Brand.tsx: the mark is the brand
- * asset and stays frozen, while the wordmark is now the principal's name
- * because that is the entity people search for.
+ * asset and stays frozen, while the wordmark is the principal's name because
+ * that is the entity people search for.
  */
 function NameLockup() {
   return (
     <span className="inline-flex items-center gap-3">
-      <BrandMark width={54} height={22} tone="color" />
+      <BrandMark width={54} height={22} tone="light" />
       <span className="flex flex-col leading-none">
-        <span className="font-ui text-[15px] font-bold tracking-tight text-(--brand-deep)">
+        <span className="font-ui text-[15px] font-bold tracking-tight text-white">
           {principal.fullName}
-          <span className="text-(--text-muted)">, {principal.suffix}</span>
+          <span className="text-(--on-deep-muted)">, {principal.suffix}</span>
         </span>
-        <span className="mt-1 font-ui text-[10px] font-medium tracking-[0.14em] text-(--text-muted) uppercase">
-          {practice.name}
-        </span>
+        <span className="mt-1 font-ui text-xs text-(--on-deep-muted)">{practice.name}</span>
       </span>
     </span>
   );
 }
 
+/** A section's own page stays marked while the visitor is on one of its children. */
+function isActive(pathname: string, href: string) {
+  return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+}
+
+/**
+ * Deep-teal masthead. On the home page it continues straight into the deep
+ * hero; on every other page it is the one brand-colored bar above paper.
+ */
 export function Header() {
   const pathname = usePathname();
-  const contactHref = contactHrefFor(pathname);
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Close the mobile panel on navigation.
   useEffect(() => setOpen(false), [pathname]);
@@ -56,13 +54,9 @@ export function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-40 border-b bg-background/92 backdrop-blur-md transition-colors duration-200 ${
-        scrolled ? "border-(--border)" : "border-transparent"
-      }`}
-    >
-      <Container>
-        <div className="flex h-20 items-center justify-between gap-6">
+    <header className="dark-section sticky top-0 z-40 border-b border-white/10">
+      <Container width="wide">
+        <div className="flex h-[4.5rem] items-center justify-between gap-6">
           <Link
             href="/"
             className="shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4"
@@ -70,23 +64,25 @@ export function Header() {
             <NameLockup />
           </Link>
 
-          <nav className="hidden items-center gap-9 md:flex" aria-label="Main">
+          <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
             {mainNav.map((item) => {
-              const active = pathname === item.href;
+              const active = isActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={`link-quiet font-ui text-sm font-semibold transition-colors ${
-                    active ? "text-(--brand-primary)" : "text-(--brand-deep) hover:text-(--brand-primary)"
+                    active
+                      ? "text-white [background-size:100%_1px]"
+                      : "text-(--on-deep-muted) hover:text-white"
                   }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <Button href={contactHref} size="md" withArrow>
+            <Button href={contactHref()} variant="light" size="md" withArrow>
               Book A Call
             </Button>
           </nav>
@@ -94,7 +90,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 text-(--brand-deep) md:hidden"
+            className="-mr-2 inline-flex size-11 items-center justify-center rounded-md text-white lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -105,24 +101,30 @@ export function Header() {
       </Container>
 
       {open ? (
-        <div id="mobile-nav" className="border-t border-(--border) bg-background md:hidden">
-          <Container>
-            <nav className="flex flex-col gap-1 py-6" aria-label="Mobile">
-              {mainNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-md px-2 py-3 font-headline text-2xl text-(--brand-deep)"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Button href={contactHref} size="lg" withArrow className="mt-4 w-full">
+        <div id="mobile-nav" className="border-t border-white/10 lg:hidden">
+          <Container width="wide">
+            <nav className="flex flex-col py-4" aria-label="Mobile">
+              {mainNav.map((item) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`rule border-white/10 px-1 py-3 font-headline text-2xl ${
+                      active ? "text-white" : "text-(--on-deep-muted)"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <Button href={contactHref()} variant="light" size="lg" withArrow className="mt-5 w-full">
                 Book A Call
               </Button>
               <a
                 href={`tel:${site.phoneHref}`}
-                className="mt-3 px-2 py-2 text-center font-ui text-sm font-semibold text-(--brand-primary)"
+                className="mt-2 inline-flex min-h-11 items-center justify-center font-ui text-sm font-semibold text-white"
               >
                 {site.phone}
               </a>

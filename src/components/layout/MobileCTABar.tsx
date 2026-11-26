@@ -2,16 +2,14 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { contactHrefFor, site } from "@/lib/site";
+import { contactHref, site } from "@/lib/site";
 
 /**
- * Mobile-only bottom bar. Replaces the old floating circular button, which
- * covered content and offered a single action. This gives both a call and a
- * form path without obscuring the page.
+ * Mobile-only bottom bar. It gives both a call and a form path without
+ * covering the page, and appears only after the first screen has been read.
  */
 export function MobileCTABar() {
   const pathname = usePathname();
-  const contactHref = contactHrefFor(pathname);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -21,15 +19,16 @@ export function MobileCTABar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // The bar competes with the form itself on the legal pages and while the
-  // visitor is already at the contact section, so keep it off those routes.
-  const suppressed = pathname.startsWith("/privacy") || pathname.startsWith("/terms");
+  // The bar competes with the form itself on the contact page, and with the
+  // long reading on the legal pages, so keep it off those routes.
+  const suppressed =
+    pathname.startsWith("/contact") || pathname.startsWith("/privacy") || pathname.startsWith("/terms");
 
   if (suppressed) return null;
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-30 border-t border-(--border) bg-background/95 backdrop-blur-md transition-transform duration-300 md:hidden ${
+      className={`dark-section fixed inset-x-0 bottom-0 z-30 border-t border-white/10 transition-transform duration-300 md:hidden ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       aria-hidden={!visible}
@@ -38,14 +37,14 @@ export function MobileCTABar() {
         <a
           href={`tel:${site.phoneHref}`}
           tabIndex={visible ? 0 : -1}
-          className="flex-1 rounded-full border border-(--brand-primary) px-4 py-3 text-center font-ui text-sm font-semibold text-(--brand-primary)"
+          className="flex min-h-11 flex-1 items-center justify-center rounded-(--radius) border border-white/40 px-4 text-center font-ui text-sm font-semibold text-white"
         >
           Call
         </a>
         <a
-          href={contactHref}
+          href={contactHref()}
           tabIndex={visible ? 0 : -1}
-          className="flex-[1.4] rounded-full bg-(--brand-primary) px-4 py-3 text-center font-ui text-sm font-semibold text-white"
+          className="flex min-h-11 flex-[1.4] items-center justify-center rounded-(--radius) bg-(--cta-deep-bg) px-4 text-center font-ui text-sm font-semibold text-(--cta-deep-fg)"
         >
           Book A Call
         </a>

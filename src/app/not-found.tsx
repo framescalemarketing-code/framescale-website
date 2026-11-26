@@ -17,7 +17,7 @@ export default function NotFound() {
             <Button href="/" size="lg" withArrow>
               Back To Home
             </Button>
-            <Button href={`/${site.contactAnchor}`} size="lg" variant="outline">
+            <Button href={site.contactPath} size="lg" variant="outline">
               Get In Touch
             </Button>
           </div>

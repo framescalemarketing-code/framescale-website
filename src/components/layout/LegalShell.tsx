@@ -32,7 +32,7 @@ export function LegalShell({ title, lead, lastUpdated, children }: LegalShellPro
             <h1 className="display-lg text-(--brand-deep)">{title}</h1>
             <p className="lead">{lead}</p>
             {lastUpdated ? (
-              <p className="font-ui text-xs tracking-[0.06em] text-(--text-muted) uppercase">
+              <p className="font-ui text-sm text-(--text-muted)">
                 Last updated {lastUpdated}
               </p>
             ) : null}
