@@ -31,7 +31,7 @@ export function HomeHero() {
                 </Button>
                 <Link
                   href="/method"
-                  className="link-quiet w-fit font-ui text-base font-semibold text-white hover:text-(--brand-secondary)"
+                  className="link-quiet w-fit font-ui text-base font-semibold text-white hover:text-(--on-deep-muted)"
                 >
                   {hero.secondaryCta}
                 </Link>

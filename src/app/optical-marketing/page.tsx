@@ -107,11 +107,11 @@ export default function OpticalMarketingPage() {
 
         <p className="measure mt-8 text-(--text-muted)">
           Want to see how I think before you call? I write it down on the{" "}
-          <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary)">
+          <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary-hover)">
             insights page
           </Link>
           , and{" "}
-          <Link href="/about" className="link-quiet font-semibold text-(--brand-primary)">
+          <Link href="/about" className="link-quiet font-semibold text-(--brand-primary-hover)">
             my story
           </Link>{" "}
           explains how I got from the lab bench to marketing.

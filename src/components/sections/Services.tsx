@@ -27,7 +27,7 @@ export function ServiceOverview() {
                   dissolves this wrapper from md up, where the row is a single
                   flex line again. */}
               <div className="flex items-center justify-between md:contents">
-                <span className="font-ui text-xs font-bold text-(--brand-primary) tabular-nums md:w-10">
+                <span className="font-ui text-xs font-bold text-(--brand-primary-hover) tabular-nums md:w-10">
                   {service.number}
                 </span>
 
@@ -69,7 +69,7 @@ export function ServiceDetails() {
               className="rule grid scroll-mt-28 gap-6 py-12 first:border-t-0 first:pt-0 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"
             >
               <div className="flex flex-col gap-3">
-                <span className="font-headline text-sm font-semibold text-(--brand-primary) tabular-nums">
+                <span className="font-headline text-sm font-semibold text-(--brand-primary-hover) tabular-nums">
                   {service.number}
                 </span>
                 <h2 className="display-md text-(--brand-deep)">{service.title}</h2>
@@ -94,7 +94,7 @@ export function ServiceDetails() {
                 {phase ? (
                   <Link
                     href={`/method#phase-${phase.letter.toLowerCase()}`}
-                    className="link-quiet inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary)"
+                    className="link-quiet inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary-hover)"
                   >
                     Method phase: {phase.title}
                     <ArrowRight className="size-4" aria-hidden="true" />

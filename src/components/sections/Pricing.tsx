@@ -26,7 +26,7 @@ export function Pricing() {
         <Reveal group className="flex flex-col">
           {pricingPoints.map((point, index) => (
             <RevealItem key={point.title} className="rule grid gap-2 py-6 sm:grid-cols-[3rem_1fr] sm:gap-6">
-              <span className="font-headline text-sm font-semibold text-(--brand-primary) tabular-nums">
+              <span className="font-headline text-sm font-semibold text-(--brand-primary-hover) tabular-nums">
                 0{index + 1}
               </span>
               <div className="flex flex-col gap-2">
