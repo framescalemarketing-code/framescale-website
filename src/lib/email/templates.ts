@@ -27,7 +27,7 @@ export function brandedShell(inner: string, preheader: string): string {
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid rgba(23,120,142,0.18);">
           <tr>
             <td style="background:linear-gradient(135deg,${BRAND_PRIMARY} 0%,${BRAND_DEEP} 100%);padding:20px 24px;">
-              <p style="margin:0;font-family:Montserrat,Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.9);">${escapeHtml(site.shortName)}</p>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.9);">${escapeHtml(site.shortName)}</p>
               <p style="margin:6px 0 0;font-family:Georgia,serif;font-size:22px;font-weight:600;color:#ffffff;line-height:1.25;">${escapeHtml(site.name)}</p>
             </td>
           </tr>
