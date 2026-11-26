@@ -10,6 +10,7 @@ import { opticalDifferences, opticalFaqs, opticalHero } from "@/content/optical"
 import { framePhotos } from "@/content/photos";
 import { buildBreadcrumbGraph, buildWebPageGraph, buildFaqGraph, buildOpticalServiceGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
+import { hasPublishedInsights } from "@/lib/site";
 
 /**
  * The vertical hub, and the page that owns the head term. `/services` covers
@@ -106,13 +107,18 @@ export default function OpticalMarketingPage() {
         />
 
         <p className="measure mt-8 text-(--text-muted)">
-          Want to see how I think before you call? I write it down on the{" "}
-          <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary-hover)">
-            insights page
-          </Link>
-          , and{" "}
+          Want to see how I think before you call?{" "}
+          {hasPublishedInsights ? (
+            <>
+              I write it down on the{" "}
+              <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary-hover)">
+                insights page
+              </Link>
+              , and{" "}
+            </>
+          ) : null}
           <Link href="/about" className="link-quiet font-semibold text-(--brand-primary-hover)">
-            my story
+            {hasPublishedInsights ? "my story" : "My story"}
           </Link>{" "}
           explains how I got from the lab bench to marketing.
         </p>

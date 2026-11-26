@@ -6,7 +6,7 @@ import { SITEMAP_ENTRIES } from "@/lib/sitemap-routes";
  * claimed to have changed on every deploy whether it had or not. Google only
  * trusts lastmod when it is consistently accurate and discards the whole
  * sitemap's values when it is not, so omitting it beats publishing a date that
- * is wrong for seven of the eight URLs.
+ * is wrong for most of the URLs.
  */
 export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

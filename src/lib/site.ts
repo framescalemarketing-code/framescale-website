@@ -1,3 +1,5 @@
+import { getPublishedInsights } from "@/content/insights";
+
 /** Public site hostname (no scheme, no path). Drives `url`, inbox, and noreply defaults. */
 const SITE_PUBLIC_HOSTNAME = "framescalemarketing.com";
 /** Inbox local part for the public contact address (must match DNS / Resend setup). */
@@ -91,12 +93,19 @@ export const site = {
   },
 } as const;
 
+/**
+ * Insights stays out of the nav and footer until the first article is
+ * published, so no visitor lands on an empty page.
+ */
+export const hasPublishedInsights = getPublishedInsights().length > 0;
+const insightsLink = hasPublishedInsights ? ([{ label: "Insights", href: "/insights" }] as const) : [];
+
 export const mainNav = [
   { label: "Optical", href: "/optical-marketing" },
   { label: "Services", href: "/services" },
   { label: "Method", href: "/method" },
   { label: "About", href: "/about" },
-  { label: "Insights", href: "/insights" },
+  ...insightsLink,
 ] as const;
 
 export const footerLinks = {
@@ -106,7 +115,7 @@ export const footerLinks = {
     { label: "Services", href: "/services" },
     { label: "Method", href: "/method" },
     { label: "About", href: "/about" },
-    { label: "Insights", href: "/insights" },
+    ...insightsLink,
     { label: "Contact", href: site.contactPath },
   ],
   Services: [

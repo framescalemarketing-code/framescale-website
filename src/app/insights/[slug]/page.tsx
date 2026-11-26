@@ -12,7 +12,7 @@ import { principal } from "@/lib/site";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-/** Every article gets a route. Whether a draft renders is decided per request below. */
+/** Every article gets a route. Whether a draft renders is decided at build time below. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {

@@ -1,20 +1,28 @@
 import type { ContentBlock } from "@/content/blocks";
 
-export type InsightArticle = {
+type PublicationState =
+  | {
+      /**
+       * Gate for the whole article. `false` means a draft: it is left off the index
+       * and the sitemap, carries `noindex`, and returns a 404 on the production
+       * deployment. Jonathan flips this to `true` after editing the piece in his
+       * own voice.
+       */
+      published: false;
+      datePublished?: string;
+    }
+  | {
+      published: true;
+      /** ISO date. Required once published, because Article schema uses it. */
+      datePublished: string;
+    };
+
+export type InsightArticle = PublicationState & {
   slug: string;
   /** Title tag and H1. Kept under 60 characters so it is not truncated in results. */
   title: string;
   /** Meta description and the page lead. Under 155 characters. */
   description: string;
-  /**
-   * Gate for the whole article. `false` means a draft: it is left off the index
-   * and the sitemap, carries `noindex`, and returns a 404 on the production
-   * deployment. Jonathan flips this to `true` after editing the piece in his
-   * own voice.
-   */
-  published: boolean;
-  /** ISO date. Required once `published` is true, because Article schema uses it. */
-  datePublished?: string;
   /** The one service this piece points to, besides the method and contact pages. */
   service: { label: string; href: string };
   blocks: ContentBlock[];
@@ -137,7 +145,7 @@ export const insightArticles: InsightArticle[] = [
         kind: "paragraph",
         text:
           "Take what you spent on marketing in a period and divide it by the new patients you gained in the same " +
-          "period. The answer is rough, and it is still far more useful than a list of clicks.",
+          "period. The answer is rough. It is still far more useful than a list of clicks.",
       },
       { kind: "heading", text: "Recall Rate" },
       {
@@ -231,9 +239,10 @@ export function getPublishedInsights(): InsightArticle[] {
 }
 
 /**
- * Drafts are visible on local runs and Vercel preview deployments so Jonathan
- * can read them, and hidden on the production deployment.
+ * Drafts are visible on the local dev server and on Vercel preview deployments
+ * so Jonathan can read them. Everything else, including a production build
+ * anywhere, hides them. Static pages read this at build time.
  */
 export function canShowDrafts(): boolean {
-  return process.env.VERCEL_ENV !== "production";
+  return process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview";
 }
