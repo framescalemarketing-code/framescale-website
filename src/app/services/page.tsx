@@ -14,7 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
   absoluteTitle: true,
   description:
     "Optical marketing services for independent practices: strategy, a website that books appointments, " +
-    "search and AI visibility, and reports you can read. Book a free call.",
+    "search and AI visibility, and reports you can read.",
   path: "/services",
   keywords: [
     "optical marketing services",

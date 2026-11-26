@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/Hero";
 import { ContactSection } from "@/components/sections/ContactSection";
-import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { buildBreadcrumbGraph, buildWebPageGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -17,6 +17,16 @@ export const metadata: Metadata = buildPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <script
+        {...jsonLdProps(
+          buildWebPageGraph({
+            type: "ContactPage",
+            path: "/contact",
+            name: "Contact Jonathan Mejia",
+            description: String(metadata.description),
+          }),
+        )}
+      />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([

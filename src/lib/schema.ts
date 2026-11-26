@@ -89,8 +89,8 @@ function personNode() {
       "Small business marketing",
       "Business growth strategy",
       "Market and competitor research",
-      "Local SEO",
-      "Google Business Profile optimization",
+      "Search engine optimization",
+      "AI search visibility",
       "Website conversion optimization",
       "Paid search and paid social advertising",
     ],
@@ -169,6 +169,31 @@ export function buildBreadcrumbGraph(trail: { name: string; path: string }[]) {
       name: crumb.name,
       item: `${site.url}${crumb.path}`,
     })),
+  };
+}
+
+/**
+ * Page-type node: AboutPage, ContactPage or plain WebPage. It tells a search or
+ * answer engine what the page is for and ties it back to the site and the
+ * person by @id, instead of leaving every URL as an untyped document.
+ */
+export function buildWebPageGraph(page: {
+  type: "WebPage" | "AboutPage" | "ContactPage";
+  path: string;
+  name: string;
+  description: string;
+}) {
+  const url = `${site.url}${page.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": page.type,
+    "@id": `${url}#webpage`,
+    url,
+    name: page.name,
+    description: page.description,
+    inLanguage: "en-US",
+    isPartOf: { "@id": SCHEMA_IDS.website },
+    about: { "@id": SCHEMA_IDS.person },
   };
 }
 

@@ -8,7 +8,7 @@ import { Photo } from "@/components/ui/Photo";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { opticalDifferences, opticalFaqs, opticalHero } from "@/content/optical";
 import { framePhotos } from "@/content/photos";
-import { buildBreadcrumbGraph, buildFaqGraph, buildOpticalServiceGraph, jsonLdProps } from "@/lib/schema";
+import { buildBreadcrumbGraph, buildWebPageGraph, buildFaqGraph, buildOpticalServiceGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 
 /**
@@ -20,8 +20,8 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Optical Marketing For Independent Practices | Jonathan Mejia",
   absoluteTitle: true,
   description:
-    "Optical marketing from a consultant who worked in optical retail first. I help independent practices " +
-    "fix the website, show up in search and AI answers, and bring patients back. Book a free call.",
+    "A consultant who worked in optical retail first. I help independent practices fix the website, " +
+    "show up in search and AI answers, and bring patients back.",
   path: "/optical-marketing",
   keywords: [
     "optical marketing",
@@ -38,6 +38,16 @@ export default function OpticalMarketingPage() {
     <>
       <script {...jsonLdProps(buildOpticalServiceGraph())} />
       <script {...jsonLdProps(buildFaqGraph(opticalFaqs))} />
+      <script
+        {...jsonLdProps(
+          buildWebPageGraph({
+            type: "WebPage",
+            path: "/optical-marketing",
+            name: "Optical Marketing For Independent Practices",
+            description: String(metadata.description),
+          }),
+        )}
+      />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([

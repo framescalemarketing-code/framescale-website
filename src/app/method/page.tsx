@@ -4,7 +4,7 @@ import { PageHero } from "@/components/sections/Hero";
 import { ScalePhases, WorkingStandards } from "@/components/sections/ScaleMethod";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { scaleIntro } from "@/content/scale";
-import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { buildBreadcrumbGraph, buildWebPageGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -12,7 +12,7 @@ export const metadata: Metadata = buildPageMetadata({
   absoluteTitle: true,
   description:
     "The SCALE Method is the five-phase marketing process I use with optical practices, from market study " +
-    "to evaluation. See each step before it starts. Book a free call.",
+    "to evaluation. See each step before it starts.",
   path: "/method",
   keywords: [
     "SCALE method",
@@ -25,6 +25,16 @@ export const metadata: Metadata = buildPageMetadata({
 export default function MethodPage() {
   return (
     <>
+      <script
+        {...jsonLdProps(
+          buildWebPageGraph({
+            type: "WebPage",
+            path: "/method",
+            name: "The SCALE Method",
+            description: String(metadata.description),
+          }),
+        )}
+      />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([

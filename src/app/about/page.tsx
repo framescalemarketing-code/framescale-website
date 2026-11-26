@@ -6,7 +6,7 @@ import { Credentials } from "@/components/sections/Credentials";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/content/about";
-import { buildBreadcrumbGraph, jsonLdProps } from "@/lib/schema";
+import { buildBreadcrumbGraph, buildWebPageGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 import { practice, principal } from "@/lib/site";
 
@@ -28,6 +28,16 @@ export const metadata: Metadata = buildPageMetadata({
 export default function AboutPage() {
   return (
     <>
+      <script
+        {...jsonLdProps(
+          buildWebPageGraph({
+            type: "AboutPage",
+            path: "/about",
+            name: `About ${principal.fullName}`,
+            description: String(metadata.description),
+          }),
+        )}
+      />
       <script
         {...jsonLdProps(
           buildBreadcrumbGraph([
