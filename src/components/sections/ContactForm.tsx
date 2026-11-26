@@ -236,7 +236,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-primary) px-7 py-3.5 font-ui text-base font-semibold text-white transition-colors hover:bg-(--brand-primary-hover) disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-(--radius) bg-(--brand-primary) px-7 py-3.5 font-ui text-base font-semibold text-white transition-colors hover:bg-(--brand-primary-hover) disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "sending" ? (
             <>

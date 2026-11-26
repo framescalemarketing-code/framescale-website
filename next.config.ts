@@ -81,9 +81,8 @@ const securityHeaders = [
  * sitemap and may be indexed or linked, so they redirect rather than 404.
  */
 const retiredRoutes: { source: string; destination: string }[] = [
-  { source: "/process", destination: "/services#method" },
-  { source: "/book", destination: "/#contact" },
-  { source: "/contact", destination: "/#contact" },
+  { source: "/process", destination: "/method" },
+  { source: "/book", destination: "/contact" },
   { source: "/industries/healthcare", destination: "/services" },
   { source: "/industries/retail", destination: "/services" },
   { source: "/industries/professional-services", destination: "/services" },
