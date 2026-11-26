@@ -22,7 +22,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getInsightArticle(slug);
-  if (!article) return {};
+  if (!article || (!article.published && !canShowDrafts())) return {};
 
   return buildPageMetadata({
     title: article.title,
