@@ -8,8 +8,8 @@ type ContainerProps = {
 };
 
 const WIDTHS = {
-  default: "max-w-5xl",
-  wide: "max-w-6xl",
+  default: "max-w-6xl",
+  wide: "max-w-7xl",
   narrow: "max-w-2xl",
 } as const;
 

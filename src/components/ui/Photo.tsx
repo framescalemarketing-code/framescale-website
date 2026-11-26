@@ -43,7 +43,7 @@ export function Photo({
         <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" priority={priority} />
       </div>
       {caption ? (
-        <figcaption className="font-ui text-[11px] font-medium tracking-[0.08em] text-(--text-muted) uppercase">
+        <figcaption className="font-body text-sm text-(--text-muted)">
           {caption}
         </figcaption>
       ) : null}

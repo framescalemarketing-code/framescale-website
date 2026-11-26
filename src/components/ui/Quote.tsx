@@ -15,12 +15,12 @@ export type Testimonial = {
  */
 export function Quote({ text, attribution, role }: Testimonial) {
   return (
-    <figure className="soft-card flex flex-col gap-4 p-6 md:p-8">
-      <blockquote className="measure font-headline text-lg leading-relaxed text-(--brand-deep) italic">
+    <figure className="rule flex flex-col gap-4 pt-6">
+      <blockquote className="measure font-headline text-xl leading-snug font-medium text-(--brand-deep) md:text-2xl">
         {text}
       </blockquote>
       <figcaption className="font-ui text-sm text-(--text-muted)">
-        <cite className="font-medium text-(--brand-deep) not-italic">{attribution}</cite>
+        <cite className="font-semibold text-(--brand-deep) not-italic">{attribution}</cite>
         {role ? <span className="mt-1 block">{role}</span> : null}
       </figcaption>
     </figure>

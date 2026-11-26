@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 type SectionProps = {
   children: ReactNode;
   id?: string;
-  /** `dark` paints the deep-teal anchor band and adds the grain texture. */
+  /** `dark` paints the full-bleed deep-teal band and adds the grain texture. */
   tone?: "default" | "muted" | "dark";
   /**
    * Hairline above the section. Only needed when this section and the one
@@ -25,13 +25,12 @@ const TONES = {
 
 /**
  * One rhythm, each step roughly 1.3x the last, so the difference between two
- * sizes is always visible. The old scale stepped 10/14/16 on mobile, where
- * `tall` was only 1.14x `default` and the two were hard to tell apart.
+ * sizes is always visible.
  */
 const SIZES = {
   compact: "py-12 md:py-16",
-  default: "py-16 md:py-22",
-  tall: "py-20 md:py-28",
+  default: "py-16 md:py-24",
+  tall: "py-20 md:py-32",
 } as const;
 
 export function Section({
@@ -72,10 +71,10 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const alignment = align === "center" ? "text-center mx-auto items-center" : "";
   return (
-    <div className={`flex flex-col gap-3 ${alignment} ${className}`}>
+    <div className={`flex flex-col gap-4 ${alignment} ${className}`}>
       <h2 className={`display-lg ${tone === "light" ? "text-white" : "text-(--brand-deep)"}`}>{title}</h2>
       {lead ? (
-        <p className={`section-lead ${align === "center" ? "mx-auto" : ""} ${tone === "light" ? "text-white/65" : ""}`}>
+        <p className={`section-lead ${align === "center" ? "mx-auto" : ""}`}>
           {lead}
         </p>
       ) : null}

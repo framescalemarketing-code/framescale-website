@@ -1,11 +1,10 @@
-@import "../styles/fonts.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
 :root {
-  --font-headline: "Source Serif 4", serif;
-  --font-ui: "Montserrat", sans-serif;
-  --font-body: "Open Sans", sans-serif;
+  --font-headline: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-ui: var(--font-hanken), "Hanken Grotesk", sans-serif;
+  --font-body: var(--font-hanken), "Hanken Grotesk", sans-serif;
   --font-size: 16px;
 
   --brand-primary: #17788e;
@@ -68,7 +67,7 @@
   --color-brand-aqua: #68b3b5;
   --color-brand-tealDark: #264653;
   --color-brand-slate: #6c7a7c;
-  --color-brand-sand: #f2f7f7;
+  --color-brand-sand: #f3f7f7;
   --color-brand-ink: #0b1f24;
 
   --font-sans: var(--font-body);
@@ -79,44 +78,42 @@
 }
 
 /* ==========================================================================
-   Editorial layer.
-   The token block above is the brand contract (colors, fonts) and is frozen.
-   Everything below is presentation and may be reworked freely.
+   FrameScale: Deep Teal Editorial (redesign 2026-11-26).
+   The two blocks above hold the brand contract (five colors) and the
+   shadcn-style token bridge that existing utilities read. Everything below is
+   presentation. Concept: the logo is one square growing into four circles, a
+   lens-ring scale. Rings and ruler ticks carry structure instead of cards.
    ========================================================================== */
 
 :root {
-  /* Derived from --brand-neutral, darkened just enough to clear WCAG AA for
-     body text on every surface below (4.78:1 at worst).
-     --brand-neutral itself is frozen by the brand guard and still drives
-     borders, dividers, and other non-text uses. */
-  --text-muted: #5f6d6f;
+  /* Neutrals derived from the brand deep and slate. Cool, not warm. */
+  --paper: #f3f7f7;
+  --paper-deep: #e6eeee;
+  --ink: #0b1f24;
 
-  /* Bumped from the 16px baseline. The audience skews older and this reads
-     noticeably easier; the accessibility text-scale classes multiply from it. */
+  /* Text tints. --text-muted is the slate darkened until it clears 4.5:1 on
+     --paper. --brand-neutral stays for borders and non-text marks. */
+  --text-muted: #53626a;
+  --on-deep: #ffffff;
+  --on-deep-muted: #c3d9da;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --muted: var(--paper-deep);
+  --input-background: #ffffff;
+  --border: rgba(38, 70, 83, 0.16);
+
   --font-size: 17px;
 
-  /* Paper tones, deliberately not brand colors. The five brand values in the
-     block above are untouched. A warm ground and softer edges are what make
-     the site read as one person rather than a firm; pure white plus hairlines
-     reads corporate no matter how the copy is written. */
-  --background: #fdfbf7;
-  --card: #fffdfa;
-  --muted: #f6f1e7;
-  --input-background: #fbf8f2;
-  --border: rgba(38, 70, 83, 0.13);
+  /* Squarer than before, echoing the logo's rounded square. */
+  --radius: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-media: 1rem;
 
-  /* Radius scale. Three sizes, each with one job, so a card and a photo are
-     never rounded by whatever utility came to hand:
-       --radius        form fields and other small controls
-       --radius-card   any panel holding content (soft-card, hairline-box)
-       --radius-media  photography, which needs a larger radius to read as
-                       rounded at all at its size. */
-  --radius: 0.875rem;
-  --radius-card: 1.25rem;
-  --radius-media: 2rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Vertical clearance for the fixed mobile CTA bar, which otherwise sits on
-     top of the last row of the footer. */
+  /* Vertical clearance for the fixed mobile CTA bar. */
   --mobile-cta-clearance: 4.25rem;
 }
 
@@ -131,14 +128,19 @@ html {
   scroll-behavior: smooth;
   /* Sticky header clearance for in-page anchors. */
   scroll-padding-top: 6rem;
+  /* Browser surfaces carry the palette too. */
+  scrollbar-color: var(--brand-neutral) var(--paper);
+  accent-color: var(--brand-primary);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  font-optical-sizing: auto;
   overflow-x: clip;
   text-rendering: optimizeLegibility;
+  caret-color: var(--brand-primary);
 }
 
 .font-headline,
@@ -148,7 +150,6 @@ body {
 
 .font-ui {
   font-family: var(--font-ui);
-  letter-spacing: 0.01em;
 }
 
 .font-body {
@@ -162,87 +163,88 @@ h4,
 h5,
 h6 {
   font-family: var(--font-headline);
-  letter-spacing: -0.008em;
-  line-height: 1.2;
-  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 600;
   text-wrap: balance;
-}
-
-h1 {
-  letter-spacing: -0.015em;
 }
 
 p {
   font-family: var(--font-body);
-  line-height: 1.7;
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 
 ::selection {
-  background: rgba(104, 179, 181, 0.35);
+  background: var(--brand-secondary);
+  color: var(--ink);
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }
 
 @layer components {
   /* --- Display type scale -------------------------------------------------
-     Source Serif 4 pushed to real editorial sizes. The whole design leans on
-     this; there are no decorative cards doing the work instead. */
+     Bricolage Grotesque, tightened. Display tops out at 5.25rem and tracking
+     never goes below -0.04em. Width is pulled in a little for punch. */
   .display-xl {
     font-family: var(--font-headline);
-    font-size: clamp(2.15rem, 4.6vw, 3.5rem);
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    font-weight: 500;
+    font-size: clamp(2.5rem, 6.4vw, 5.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    font-stretch: 92%;
   }
 
   .display-lg {
     font-family: var(--font-headline);
-    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-    line-height: 1.18;
-    letter-spacing: -0.012em;
-    font-weight: 500;
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-stretch: 94%;
   }
 
   .display-md {
     font-family: var(--font-headline);
-    font-size: clamp(1.45rem, 2.3vw, 1.85rem);
-    line-height: 1.25;
-    letter-spacing: -0.008em;
-    font-weight: 500;
+    font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    font-weight: 600;
   }
 
-  /* The smallest step still has to outrank body copy. Against the 17px base
-     the old 1.12rem floor was only 1.05x, which is not a hierarchy. */
   .display-sm {
     font-family: var(--font-headline);
-    font-size: clamp(1.2rem, 1.6vw, 1.35rem);
-    line-height: 1.35;
-    letter-spacing: -0.004em;
-    font-weight: 500;
+    font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    font-weight: 600;
   }
 
-  /* Body copy held to a readable measure. */
   .lead {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.1vw, 1.12rem);
-    line-height: 1.65;
+    font-size: clamp(1.08rem, 1.3vw, 1.25rem);
+    line-height: 1.55;
     color: var(--text-muted);
-    max-width: 58ch;
+    max-width: 56ch;
   }
 
   .measure {
-    max-width: 68ch;
+    max-width: 66ch;
   }
 
-  /* Quieter than .lead. Used for the one-line signpost under a section
-     heading, which should not compete with the heading itself. */
   .section-lead {
     font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.55;
     color: var(--text-muted);
-    max-width: 46ch;
+    max-width: 48ch;
   }
 
-  /* --- Hairlines, used instead of shadowed cards -------------------------- */
+  /* --- Hairlines and flat panels, in place of shadowed cards ------------- */
   .rule {
     border-top: 1px solid var(--border);
   }
@@ -251,43 +253,41 @@ p {
     border: 1px solid var(--border);
     background: var(--card);
     border-radius: var(--radius-card);
-    transition: border-color 240ms ease, background-color 240ms ease;
+    transition: border-color 160ms ease;
   }
 
   .hairline-box:hover {
-    border-color: rgba(23, 120, 142, 0.3);
+    border-color: var(--brand-primary);
   }
 
-  /* Soft card. Used where the old design used a bare hairline divider; a
-     rounded surface on a warm ground feels approachable where a rule feels
-     like a report. */
   .soft-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
-    transition: border-color 220ms ease;
+    transition: border-color 160ms ease;
   }
 
   .soft-card:hover {
-    border-color: rgba(23, 120, 142, 0.28);
+    border-color: var(--brand-primary);
   }
 
-  /* Handwritten-feeling sign-off. Source Serif italic is the closest the brand
-     type gets to a signature, and it stays inside the font contract. */
+  /* Sign-off line. Stays inside the font contract: display face, brand teal. */
   .signature {
     font-family: var(--font-headline);
-    font-style: italic;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 500;
     line-height: 1.2;
+    letter-spacing: -0.02em;
     color: var(--brand-primary);
   }
 
-  /* --- Dark anchor section ------------------------------------------------
-     One per page. Pairs with a .grain-overlay child for texture. */
+  /* --- Deep band -----------------------------------------------------------
+     Full-bleed deep teal ground: hero, method, closing call to action,
+     footer. Pairs with a .grain-overlay child for texture. */
   .dark-section {
     position: relative;
     background: var(--brand-deep);
-    color: #ffffff;
+    color: var(--on-deep);
     isolation: isolate;
   }
 
@@ -295,27 +295,47 @@ p {
   .dark-section h2,
   .dark-section h3,
   .dark-section h4 {
-    color: #ffffff;
+    color: var(--on-deep);
+  }
+
+  .dark-section .lead,
+  .dark-section .section-lead {
+    color: var(--on-deep-muted);
   }
 
   .grain-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.06;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
     background-size: 220px 220px;
     z-index: -1;
   }
 
-  /* --- Text link with a growing underline --------------------------------- */
+  /* --- Ruler ticks ----------------------------------------------------------
+     A hairline scale: small tick every 12px, tall tick every 60px. Takes its
+     color from currentColor, so it works on paper and on deep. */
+  .tick-rule {
+    height: 12px;
+    color: inherit;
+    opacity: 0.55;
+    background-image:
+      linear-gradient(90deg, currentColor 1px, transparent 1px),
+      linear-gradient(90deg, currentColor 1px, transparent 1px);
+    background-size: 12px 6px, 60px 12px;
+    background-position: 0 100%, 0 100%;
+    background-repeat: repeat-x;
+  }
+
+  /* --- Text link with a growing underline -------------------------------- */
   .link-quiet {
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-size 260ms var(--ease-out);
   }
 
   .link-quiet:hover,
@@ -323,14 +343,16 @@ p {
     background-size: 100% 1px;
   }
 
-  /* Keyboard focus for interactive elements that are not buttons: whole-row
-     links and the FAQ disclosure summaries. Buttons carry their own ring via
-     the Button component, and this matches its offset so focus looks the same
-     wherever it lands. */
+  /* Keyboard focus for interactive elements that are not buttons. */
   .focus-ring:focus-visible {
-    outline: 2px solid var(--brand-primary);
-    outline-offset: 4px;
+    outline: 3px solid var(--brand-primary);
+    outline-offset: 3px;
     border-radius: var(--radius);
+  }
+
+  .dark-section .focus-ring:focus-visible,
+  .dark-section :focus-visible {
+    outline-color: var(--brand-secondary);
   }
 
   /* Cloudflare renders Turnstile at a fixed 300px, wider than the form card on
@@ -378,22 +400,22 @@ p {
     background: var(--input-background);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 0.75rem 0.9rem;
+    padding: 0.8rem 0.95rem;
     font-family: var(--font-body);
-    font-size: 0.97rem;
+    font-size: 1rem;
     color: var(--foreground);
-    transition: border-color 200ms ease, background-color 200ms ease;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
   }
 
   .field::placeholder {
     color: var(--text-muted);
-    opacity: 0.75;
+    opacity: 0.8;
   }
 
   .field:focus {
     outline: none;
     border-color: var(--brand-primary);
-    background: var(--background);
+    box-shadow: 0 0 0 3px rgba(23, 120, 142, 0.22);
   }
 
   .field[aria-invalid="true"] {
@@ -403,13 +425,20 @@ p {
   .field-label {
     display: block;
     font-family: var(--font-ui);
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     color: var(--brand-deep);
     margin-bottom: 0.4rem;
   }
+}
+
+/* Action colors by ground. On paper the action is brand teal with white text.
+   On a deep band it is aqua with deep text. The high-contrast mode below
+   redefines the brand vars, so these tokens are overridden there too. */
+:root {
+  --cta-deep-bg: var(--brand-secondary);
+  --cta-deep-fg: var(--ink);
+  --ring-line: var(--brand-secondary);
 }
 
 /* Native cross-document view transitions (progressive enhancement).
@@ -487,8 +516,15 @@ html.a11y-high-contrast {
   --muted: #f0f0f0;
   --muted-foreground: #1a1a1a;
   --text-muted: #1a1a1a;
+  --on-deep-muted: #ffffff;
   --border: #000000;
   --ring: #000000;
+  --paper: #ffffff;
+  --paper-deep: #f0f0f0;
+  --ink: #000000;
+  --cta-deep-bg: #ffffff;
+  --cta-deep-fg: #000000;
+  --ring-line: #ffffff;
 }
 
 html.a11y-high-contrast body,
@@ -496,6 +532,11 @@ html.a11y-high-contrast .bg-white,
 html.a11y-high-contrast .bg-background {
   background: #ffffff !important;
   color: #000000 !important;
+}
+
+html.a11y-high-contrast .dark-section {
+  background: #000000 !important;
+  color: #ffffff !important;
 }
 
 html.a11y-high-contrast a,
@@ -506,6 +547,10 @@ html.a11y-high-contrast button {
 html.a11y-high-contrast :focus-visible {
   outline: 2px solid #000000 !important;
   outline-offset: 2px !important;
+}
+
+html.a11y-high-contrast .dark-section :focus-visible {
+  outline-color: #ffffff !important;
 }
 
 /* Honor universal "always show focus ring" pattern */
@@ -609,4 +654,57 @@ html.a11y-high-contrast :focus-visible {
   .legal-prose ul li {
     padding-left: 0.25rem;
   }
+}
+
+/* Ring motif (src/components/design/Rings.tsx). Rings draw outward, then the
+   dots and the square fade in. Pure CSS so the reduced-motion rules above and
+   the accessibility widget's class both cover it, and it runs with scripting
+   off. Each element carries its beat in --i. */
+@layer components {
+  .ring-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ring-draw 1.5s var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 150ms + 150ms);
+  }
+
+  .ring-fade {
+    opacity: 0;
+    animation: ring-fade 700ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 150ms + 150ms);
+  }
+
+  @keyframes ring-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes ring-fade {
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .ring-fade {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+html.a11y-reduce-motion .ring-draw {
+  animation: none !important;
+  stroke-dashoffset: 0 !important;
+}
+
+html.a11y-reduce-motion .ring-fade {
+  animation: none !important;
+  opacity: 1 !important;
 }

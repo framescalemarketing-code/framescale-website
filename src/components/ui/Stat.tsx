@@ -26,7 +26,7 @@ export function StatRow({ metrics, disclaimer }: StatRowProps) {
           <div key={metric.label} className="flex flex-col gap-1">
             <dt className="display-md text-(--brand-primary)">{metric.value}</dt>
             <dd className="flex flex-col gap-1">
-              <span className="font-ui text-[11px] font-medium tracking-[0.08em] text-(--text-muted) uppercase">
+              <span className="font-ui text-sm font-semibold text-(--brand-deep)">
                 {metric.label}
               </span>
               {metric.note ? (

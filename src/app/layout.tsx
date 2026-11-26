@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,14 +18,33 @@ import { buildSiteGraph, jsonLdProps } from "@/lib/schema";
 import { principal, site } from "@/lib/site";
 
 /**
- * The site has no dark theme: the paper tones in globals.css are the whole
- * palette. Declaring `light dark` told the browser otherwise, so on a machine
- * set to dark mode the UA painted form fields, the industry `<select>`, and the
- * scrollbar dark against a light page. One theme colour, matching
+ * Display face: Bricolage Grotesque, with its optical-size and width axes so
+ * headlines can be set tight. Text face: Hanken Grotesk. Both are exposed as
+ * CSS variables that `--font-headline`, `--font-ui` and `--font-body` in
+ * globals.css read.
+ */
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  axes: ["opsz", "wdth"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+
+/**
+ * The site has no dark theme: the paper tone in globals.css is the whole
+ * light palette. Declaring `light dark` told the browser otherwise, so on a
+ * machine set to dark mode the UA painted form fields, the industry `<select>`,
+ * and the scrollbar dark against a light page. One theme colour, matching
  * `--background`, for the same reason.
  */
 export const viewport: Viewport = {
-  themeColor: "#fdfbf7",
+  themeColor: "#f3f7f7",
   colorScheme: "light",
 };
 
@@ -103,7 +123,7 @@ export default function RootLayout({
   const turnstileSiteKey = getTurnstileSiteKeyForServer();
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${bricolage.variable} ${hanken.variable}`}>
       <head>
         {GA_MEASUREMENT_ID ? (
           <>
@@ -122,26 +142,10 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        {/* eslint-disable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* The brand fonts are self-hosted by next/font at build time, so no
+            request goes to Google at runtime. Only Turnstile needs a warm-up. */}
         <link rel="preconnect" href="https://challenges.cloudflare.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
-
-        {/* The brand fonts are loaded by an @import inside globals.css, which
-            the browser cannot discover until that stylesheet has downloaded and
-            parsed. Preloading the same URL starts the request in parallel; the
-            @import then resolves from cache. Preload rather than a stylesheet
-            link, which would be render-blocking and delay first paint. The
-            @import stays because `npm run brand:check` treats it as part of the
-            brand contract. */}
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Montserrat:wght@400..700&family=Open+Sans:wght@400..700&display=swap"
-        />
-        {/* eslint-enable @next/next/google-font-preconnect, @next/next/no-page-custom-font */}
 
         {/* Scroll reveals are serialized into the HTML as inline opacity:0.
             If the bundle never runs, the page would render mostly blank, so

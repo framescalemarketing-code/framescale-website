@@ -20,43 +20,25 @@ function assertNotIncludes(content, forbidden, message) {
 }
 
 function run() {
-  const fontsCss = read("src/styles/fonts.css");
-  assertIncludes(
-    fontsCss,
-    "Source+Serif+4",
-    "Brand guard failed: Source Serif 4 must remain in src/styles/fonts.css"
-  );
-  assertIncludes(
-    fontsCss,
-    "Montserrat",
-    "Brand guard failed: Montserrat must remain in src/styles/fonts.css"
-  );
-  assertIncludes(
-    fontsCss,
-    "Open+Sans",
-    "Brand guard failed: Open Sans must remain in src/styles/fonts.css"
-  );
-
+  // Fonts (redesign 2026-11-26): Bricolage Grotesque for display, Hanken
+  // Grotesk for text and UI. Both load through next/font/google in layout.tsx
+  // and are exposed as CSS variables that globals.css maps to the three role
+  // variables below.
   const globalsCss = read("src/app/globals.css");
   assertIncludes(
     globalsCss,
-    "@import \"../styles/fonts.css\";",
-    "Brand guard failed: globals.css must import ../styles/fonts.css"
+    '--font-headline: var(--font-bricolage), "Bricolage Grotesque", sans-serif;',
+    "Brand guard failed: --font-headline must map to Bricolage Grotesque"
   );
   assertIncludes(
     globalsCss,
-    '--font-headline: "Source Serif 4", serif;',
-    "Brand guard failed: --font-headline must map to Source Serif 4"
+    '--font-ui: var(--font-hanken), "Hanken Grotesk", sans-serif;',
+    "Brand guard failed: --font-ui must map to Hanken Grotesk"
   );
   assertIncludes(
     globalsCss,
-    '--font-ui: "Montserrat", sans-serif;',
-    "Brand guard failed: --font-ui must map to Montserrat"
-  );
-  assertIncludes(
-    globalsCss,
-    '--font-body: "Open Sans", sans-serif;',
-    "Brand guard failed: --font-body must map to Open Sans"
+    '--font-body: var(--font-hanken), "Hanken Grotesk", sans-serif;',
+    "Brand guard failed: --font-body must map to Hanken Grotesk"
   );
 
   // Brand colors are part of the same contract as the fonts and the logo.
@@ -78,10 +60,20 @@ function run() {
   }
 
   const layoutTsx = read("src/app/layout.tsx");
+  const LAYOUT_FONT_PINS = [
+    ['from "next/font/google"', "fonts must load through next/font/google"],
+    ["Bricolage_Grotesque(", "the display face must be Bricolage Grotesque"],
+    ["Hanken_Grotesk(", "the text face must be Hanken Grotesk"],
+    ['variable: "--font-bricolage"', "the display font variable must be --font-bricolage"],
+    ['variable: "--font-hanken"', "the text font variable must be --font-hanken"],
+  ];
+  for (const [expected, label] of LAYOUT_FONT_PINS) {
+    assertIncludes(layoutTsx, expected, `Brand guard failed: ${label} in src/app/layout.tsx`);
+  }
   assertNotIncludes(
     layoutTsx,
-    'from "next/font/google"',
-    "Brand guard failed: next/font/google should not be used for this project baseline"
+    "fonts.googleapis.com",
+    "Brand guard failed: fonts are self-hosted by next/font, so layout.tsx must not link Google Fonts"
   );
 
   const brandTsx = read("src/components/design/Brand.tsx");
