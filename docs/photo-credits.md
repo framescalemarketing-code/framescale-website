@@ -7,9 +7,7 @@ All photography on this site is Jonathan's own. There is no stock imagery.
 | `public/photos/founder/jonathan-about.jpg` | Portrait | Home hero, about hero, `Person.image` and the practice `image` in JSON-LD |
 | `public/photos/frames/cartier-panther-detail.webp` | Gold rimless Cartier frame, panther temple detail | Optical page, via `src/content/photos.ts` |
 | `public/photos/frames/rayban-temple-markings.webp` | Black Ray-Ban acetate frame, temple markings | Optical page, via `src/content/photos.ts` |
-| `public/photos/frames/cartier-rimless-symmetry.webp` | Gold rimless Cartier frame, symmetry | Via `src/content/photos.ts` |
-| `public/photos/frames/cartier-rimless-angle.webp` | Gold rimless Cartier frame, angle | Via `src/content/photos.ts` |
-| `public/photos/frames/cartier-rimless-front.webp`, `cartier-rimless-overhead.webp`, `rayban-acetate-shadow.webp` | Further frame photographs | In the repo, not yet placed on a page |
+| `public/photos/frames/cartier-rimless-symmetry.webp`, `cartier-rimless-angle.webp`, `cartier-rimless-front.webp`, `cartier-rimless-overhead.webp`, `rayban-acetate-shadow.webp` | Further frame photographs | Image files only, not placed on any page and not referenced in code |
 
 The frame photographs date from the optical years. They were normalized before
 committing: sRGB, EXIF and ICC stripped, longest edge capped at 2400px,

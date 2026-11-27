@@ -19,14 +19,4 @@ export const framePhotos = {
     src: "/photos/frames/rayban-temple-markings.webp",
     alt: "Close view of a Ray-Ban acetate frame temple, showing the moulded size markings",
   },
-  // Written and optimized, but not currently placed on any page. Photography is
-  // deliberately kept to the optical page rather than spread across the site.
-  frontOn: {
-    src: "/photos/frames/cartier-rimless-symmetry.webp",
-    alt: "Cartier rimless eyeglass frame photographed straight on against a white background",
-  },
-  angled: {
-    src: "/photos/frames/cartier-rimless-angle.webp",
-    alt: "Gold Cartier rimless eyeglass frame resting on a white surface, seen from an angle",
-  },
 } satisfies Record<string, SitePhoto>;
