@@ -324,8 +324,19 @@ export const caseStudyLimitations = {
  * section shows a labeled placeholder everywhere except the production
  * deployment, and shows nothing there until this is filled in. Never write a
  * quote that the owner did not give.
+ *
+ * Filled in 2026-11-26 from the owner's words as Jonathan relayed them in chat.
+ * Only spelling and grammar were fixed ("moral" to "morale", "a easygoing" to
+ * "an easygoing"). No name is given, so the attribution is the role alone. The
+ * owner agreeing to be named (A-12) is still open and must come before any push.
  */
-export const clientQuote: { text: string; name: string; role: string } | null = null;
+export const clientQuote: { text: string; name?: string; role: string } | null = {
+  text:
+    "Jonathan's work has helped improve the business substantially and provided great morale and the " +
+    "opportunity to grow. Working with Jonathan has been an easygoing and helpful learning experience. " +
+    "Highly recommend to small business owners.",
+  role: "Owner",
+};
 
 export const caseStudyQuote = {
   title: "Client Perspective",

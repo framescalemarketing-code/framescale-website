@@ -207,7 +207,8 @@ export default function OnSightCaseStudyPage() {
           <figure className="mt-6 max-w-3xl">
             <blockquote className="measure text-(--brand-deep)">{clientQuote.text}</blockquote>
             <figcaption className="mt-3 font-ui text-sm text-(--text-muted)">
-              {clientQuote.name}, {clientQuote.role}, On-Sight Safety Optics
+              {clientQuote.name ? `${clientQuote.name}, ` : ""}
+              {clientQuote.role}, On-Sight Safety Optics
             </figcaption>
           </figure>
         </Section>
