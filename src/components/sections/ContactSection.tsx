@@ -43,7 +43,7 @@ export function ContactSection() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h2 className="display-sm text-(--brand-deep)">Or Reach Me Directly</h2>
+            <h2 className="display-sm text-(--brand-deep)">Call Or Email Me</h2>
             <a
               href={`tel:${site.phoneHref}`}
               className="link-quiet flex min-h-11 w-fit items-center gap-3 text-(--brand-deep) hover:text-(--brand-primary)"
@@ -70,8 +70,7 @@ export function ContactSection() {
         </div>
 
         <div className="hairline-box p-6 sm:p-8">
-          <h2 className="display-sm mb-2 text-(--brand-deep)">{contactSection.card.title}</h2>
-          <p className="mb-7 text-sm text-(--text-muted)">{contactSection.card.lead}</p>
+          <h2 className="display-sm mb-7 text-(--brand-deep)">{contactSection.card.title}</h2>
           <ContactForm turnstileSiteKey={turnstileSiteKey} />
         </div>
       </div>

@@ -8,8 +8,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Contact Jonathan Mejia | FrameScale",
   absoluteTitle: true,
   description:
-    "Send me a note about your optical practice's marketing. I read every message myself and reply within " +
-    "one business day.",
+    "Send me a note about your optical practice's marketing.",
   path: "/contact",
   keywords: ["contact optical marketing consultant", "contact marketing consultant"],
 });
@@ -38,7 +37,7 @@ export default function ContactPage() {
 
       <PageHero
         headline="Tell Me About Your Practice"
-        lead="Write a few sentences and I will reply within one business day. If you would rather talk, book a call and we will work it out live."
+        lead="Write a few sentences about your practice. If you would rather talk, book a call."
       />
 
       <ContactSection />

@@ -2,7 +2,7 @@ import type { FaqItem } from "@/content/faq";
 
 /**
  * The vertical page. This is the only page on the site written for one industry,
- * and it exists because Jonathan actually worked in that industry rather than
+ * and it exists because Jonathan worked in that industry rather than
  * because the keyword looked available. See the one-vertical rule in README.md
  * before adding a second one.
  *
@@ -15,16 +15,13 @@ export const opticalHero = {
   headline: "Optical Marketing For Independent Practices",
   subhead: "From The Lab To The Sales Floor",
   lead:
-    "Optical marketing for an independent practice covers who your patients are, what your website says, " +
-    "whether people find you in search and AI answers, and which numbers show appointments. I made glasses in " +
-    "an optical lab, then sold on the sales floor and managed stores, so you will not spend the first month " +
-    "explaining your week to me.",
+    "I work with independent optical practices on their message, website, search visibility and reports. I " +
+    "worked in a full service optical lab, then sold on the sales floor and managed stores.",
 } as const;
 
-/** Heading and lead over the four differences below. */
+/** Heading and lead over the differences below. */
 export const opticalDifferencesIntro = {
-  title: "What Makes Optical Different",
-  lead: "These are the things you will not have to teach me.",
+  title: "My Background In Optical",
 } as const;
 
 export type OpticalDifference = {
@@ -33,44 +30,36 @@ export type OpticalDifference = {
 };
 
 /**
- * The credibility payload. Anyone can claim a vertical; these are the details
- * that are difficult to fake without having stood behind the counter.
+ * The credibility payload. Every card here comes from what Jonathan did and
+ * said himself (2026-11-26): the sales floor, the full service lab, and telling
+ * real marketing from upsell marketing. The earlier insurance, exam schedule,
+ * frame board and recall cards were the author's own research, not his, and were
+ * removed. Add nothing here that he has not said.
  */
 export const opticalDifferences: OpticalDifference[] = [
   {
-    title: "Insurance Decides What You Can Offer",
+    title: "The Sales Floor",
     body:
-      "A practice billing VSP or EyeMed cannot run the promotions a cash retailer runs. Much of the margin sits " +
-      "in lens upgrades and the second pair, and the exam brings less of it. An ad that fills the schedule with " +
-      "exam-only patients can leave you busier and no better off.",
+      "I worked the sales floor and managed stores, so I have seen how an exam turns into glasses bought, and " +
+      "where it does not. I look at that part of your practice alongside the marketing.",
   },
   {
-    title: "The Exam Schedule Is The Real Ceiling",
+    title: "The Lab",
     body:
-      "Sending more people to a practice that has no open lanes just creates a waiting list and a bad review. I " +
-      "look at how many exam slots you actually have, and what happens to a patient between the exam and the " +
-      "dispensing table, before I try to bring you anyone new.",
+      "I worked in a full service lab and repaired the machinery it ran on. Before a promise goes on your " +
+      "website, I check it against how the work gets done.",
   },
   {
-    title: "The Frame Board Is Inventory",
+    title: "Honest Selling",
     body:
-      "Boards go stale and quietly stop earning. What sells, what sits for a year, and what you reorder out of " +
-      "habit all change what is worth advertising, and none of it shows up in a marketing report that only counts " +
-      "clicks.",
-  },
-  {
-    title: "Recall Costs Less Than Advertising",
-    body:
-      "You already have the patient list. A recall that reaches patients who are due for their yearly exam or a " +
-      "new pair costs far less than advertising to strangers. It also works faster, because those patients " +
-      "already trust you.",
+      "On the floor I learned to ask customers what they need and talk it through. I work with practices the " +
+      "same way: we start with your problem and I recommend only what it needs.",
   },
 ];
 
 /** Heading and lead over the FAQ block on the optical page. */
 export const opticalFaqIntro = {
   title: "Questions From Optical Owners",
-  lead: "The ones that come up before we talk about money.",
 } as const;
 
 /**
@@ -88,7 +77,7 @@ export const opticalFaqs: FaqItem[] = [
   {
     question: "What optical experience do you have?",
     answer:
-      "I made glasses in an optical lab and did maintenance and repairs on its heavy machinery. After that I moved " +
+      "I worked in a full service optical lab and did maintenance and repairs on its heavy machinery. After that I moved " +
       "to the sales floor and into store management, and then I earned an MBA in marketing.",
   },
   {
@@ -100,48 +89,39 @@ export const opticalFaqs: FaqItem[] = [
   {
     question: "How is this different from hiring a general marketing agency?",
     answer:
-      "I already know the business, so you do not pay for me to learn it. I know what a second-pair attach rate " +
-      "is and why a January schedule looks different from a September one. You can spend the first call on your " +
-      "practice instead of on the basics.",
+      "I worked in a full service lab, on the sales floor and in store management. We can spend the first call " +
+      "on your practice.",
   },
   {
-    question: "My buying group already gives me a website. Is that enough?",
+    question: "How is an independent practice different from a chain?",
     answer:
-      "Sometimes. If it books appointments and loads quickly on a phone, keep it. A template shared by every " +
-      "member says nothing specific about your practice and can be hard to change.",
+      "A chain focuses on bringing in as many people as it can. An independent practice depends on keeping its " +
+      "patients, so I work on better workflows and follow-up systems, clear communication and consistency.",
   },
   {
     question: "How long before the schedule starts filling?",
     answer:
-      "Recall can move within weeks because it reaches people who already know you. Search work usually takes a " +
+      "Follow-up with patients you already have can move within weeks. Search work usually takes a " +
       "few months because search engines are slow to notice a change. You get a report every month and a " +
-      "review at 90 days, so you see the trend as it forms.",
+      "review at 90 days.",
   },
   {
     question: "What will I get each month?",
     answer:
-      "A report you can read without a translator, built around which marketing brought in appointments. Every " +
-      "90 days we review the results together and agree what to do next.",
+      "A monthly report on which marketing brought in appointments. Every 90 days we review the results " +
+      "together and agree what to do next.",
   },
   {
     question: "Do you work with optometrists, opticians, or optical retail?",
     answer:
-      "Yes, all three, and the work differs for each. A practice with exam lanes has a schedule to fill. A " +
-      "dispensary without an OD depends on the frame board and the lab. Tell me which one you are and I will say " +
-      "where I would start.",
-  },
-  {
-    question: "There is a chain a mile away. Is that hopeless?",
-    answer:
-      "No. Do not try to match a chain on price or hours. An independent practice can compete on what a chain " +
-      "has trouble staffing: the exam itself, frames nobody else carries and one person who remembers the " +
-      "patient next year.",
+      "Yes, I work with all three, and I have worked in all three. Tell me which one you are and we will talk " +
+      "through where to start.",
   },
   {
     question: "What do you need from me to get started?",
     answer:
       "Half an hour on the phone, then access to your website, your analytics and whatever numbers you already " +
-      "have. After that I tell you what I think is wrong and what I would do about it. If I am not the right " +
+      "have. After that we talk through what looks wrong and where to start. If I am not the right " +
       "person, I will say so.",
   },
 ];
@@ -152,5 +132,5 @@ export const opticalFaqs: FaqItem[] = [
  */
 export const opticalSchemaDescription =
   "Marketing for independent optical practices, covering strategy, websites, search and AI visibility, " +
-  "patient recall, and reporting. Delivered remotely across the United States by a consultant who worked in an " +
-  "optical lab, on the sales floor and in store management.";
+  "patient follow-up, and reporting. Delivered remotely across the United States by a consultant who worked in a " +
+  "full service optical lab, on the sales floor and in store management.";

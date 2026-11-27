@@ -1,4 +1,3 @@
-import { getPublishedInsights } from "@/content/insights";
 import { caseStudyPath, onSightApproved } from "@/content/onsight";
 import { bookingLive } from "@/lib/site";
 
@@ -18,8 +17,6 @@ export type SitemapEntry = {
   priority: number;
 };
 
-const publishedInsights = getPublishedInsights();
-
 /**
  * Every indexable route, and the single source for `/sitemap.xml`. Keep in sync
  * with the App Router pages under `src/app`. The footer builds its own links
@@ -36,17 +33,6 @@ export const SITEMAP_ENTRIES: SitemapEntry[] = [
   // The case study is a 404 while `onSightApproved` is false, so it only enters the sitemap while the switch is on.
   ...(onSightApproved ? [{ path: caseStudyPath, priority: 0.7, changeFrequency: "monthly" as const }] : []),
   { path: "/contact", priority: 0.7, changeFrequency: "yearly" },
-  // /insights is `noindex` until an article is published, so it only enters the
-  // sitemap together with its first article. Drafts never appear here.
-  ...(publishedInsights.length > 0
-    ? [
-        { path: "/insights", priority: 0.6, changeFrequency: "weekly" } satisfies SitemapEntry,
-        ...publishedInsights.map(
-          (article) =>
-            ({ path: `/insights/${article.slug}`, priority: 0.6, changeFrequency: "monthly" }) satisfies SitemapEntry,
-        ),
-      ]
-    : []),
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/california-privacy", priority: 0.3, changeFrequency: "yearly" },

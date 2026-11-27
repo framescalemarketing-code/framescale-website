@@ -8,8 +8,7 @@ import { principal, site } from "@/lib/site";
 export const booking = {
   headline: "Book A Free Call",
   lead:
-    "Half an hour, just the two of us. You tell me what's going on, I ask questions, and you leave knowing what " +
-    "I'd do first. Pick a time and it comes straight to me.",
+    "We talk for half an hour, just the two of us, about what's going on and where to start.",
   aside: "If you would rather write first,",
   asideLink: "send me a note.",
   calendar: {

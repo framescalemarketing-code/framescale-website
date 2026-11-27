@@ -14,18 +14,19 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/terms",
 });
 
-const lastUpdated = "May 20, 2026";
+const lastUpdated = "November 26, 2026";
 
+// Mirrors the four services on /services (src/content/services.ts). Change both together.
 const serviceExamples = [
-  "Website planning, design, development, and related updates.",
-  "SEO, Google Business Profile support, analytics setup, reporting, and marketing review.",
-  "Paid search, paid social, email, follow-up, and other marketing services when included in a written scope.",
-  "Research, recommendations, copy, creative direction, and related project work.",
+  "Strategy: research into your customers, competitors and numbers, with a list of recommended fixes and a budget.",
+  "Website: design, development and updates for an independent optical practice.",
+  "Search and AI visibility: page content, titles, descriptions, structured data and review requests.",
+  "Reports: tracking, a monthly report and a review every 90 days, plus advertising and follow-up where the numbers support them.",
 ];
 
 export default function TermsPage() {
   return (
-    <LegalShell title="Terms of Service" lead="These terms explain how this website may be used and how FrameScale services are handled unless a signed agreement says otherwise.">
+    <LegalShell title="Terms of Service" lead="These terms cover this website and FrameScale services, unless a signed agreement says otherwise.">
             <p className="font-body text-sm text-(--text-muted) leading-relaxed">
               Last updated: {lastUpdated}
             </p>
@@ -45,7 +46,7 @@ export default function TermsPage() {
 
             <Section title="Using This Website">
               <p>
-                You may use this website to learn about FrameScale, contact us, book a call, and review public information about our services.
+                You may use this website to learn about FrameScale Inc., make contact, book a call, and review public information about its services.
               </p>
               <p>
                 You agree not to misuse the site, interfere with its operation, attempt unauthorized access, submit false information, scrape the site in a way that burdens the service, or use the site for unlawful activity.
@@ -54,7 +55,7 @@ export default function TermsPage() {
 
             <Section title="Services">
               <p>
-                FrameScale provides marketing and website services for business clients. Services may include:
+                FrameScale provides marketing and website services for independent optical practices. Services may include:
               </p>
               <ul className="space-y-3">
                 {serviceExamples.map((item) => (
@@ -70,16 +71,16 @@ export default function TermsPage() {
 
             <Section title="Calls">
               <p>
-                Calls are used to understand your business, your goals, and whether FrameScale is the right fit. Booking a call does not create a paid service relationship by itself.
+                Booking a call does not create a paid service relationship by itself.
               </p>
               <p>
-                We may decline, reschedule, or cancel a call when needed.
+                FrameScale Inc. may decline, reschedule, or cancel a call when needed.
               </p>
             </Section>
 
             <Section title="Client Responsibilities">
               <p>
-                To keep work moving, clients are responsible for providing accurate information, timely feedback, access to required accounts, brand assets, approvals, and any legal or regulated-industry requirements that apply to their business.
+                Clients are responsible for providing accurate information, timely feedback, access to required accounts, brand assets, approvals, and any legal or regulated-industry requirements that apply to their business.
               </p>
               <p>
                 You are responsible for making sure materials you provide to FrameScale are accurate, lawful, and that you have the right to use them.
@@ -88,16 +89,13 @@ export default function TermsPage() {
 
             <Section title="Payments">
               <p>
-                Fees, deposits, billing schedules, late payment rules, and payment methods are defined in the written scope or invoice. Work may pause if payments are late or required information is missing.
-              </p>
-              <p>
-                Unless the written agreement says otherwise, fees already paid for completed work, reserved time, or delivered work are not refundable.
+                Fees and payment terms for paid work are set out in the written proposal that FrameScale Inc. provides before the work begins.
               </p>
             </Section>
 
             <Section title="Results">
               <p>
-                FrameScale works carefully, researches before recommending spend, and explains what is being done. Marketing results still depend on market conditions, competition, customer behavior, budgets, platform changes, client operations, and other factors outside FrameScale's control.
+                Marketing results depend on market conditions, competition, customer behavior, budgets, platform changes, client operations, and other factors outside FrameScale's control.
               </p>
               <p>
                 FrameScale does not guarantee specific rankings, revenue, leads, bookings, ad performance, or business outcomes.
@@ -115,7 +113,7 @@ export default function TermsPage() {
 
             <Section title="Ownership">
               <p>
-                Unless a written agreement says otherwise, clients own final paid deliverables after full payment is received. FrameScale retains ownership of pre-existing tools, methods, know-how, reusable code, templates, internal systems, and working files.
+                Ownership of the finished work is set out in the written proposal.
               </p>
               <p>
                 Third-party tools, fonts, images, software, plugins, platforms, stock assets, and services may be subject to their own licenses and terms.
@@ -124,7 +122,7 @@ export default function TermsPage() {
 
             <Section title="Third-Party Platforms">
               <p>
-                Services may involve platforms such as Google, website hosting providers, analytics tools, email tools, ad platforms, scheduling tools, payment processors, and other third-party services.
+                Services may involve platforms such as Google, website hosting providers, analytics tools, email tools, ad platforms, scheduling tools, and other third-party services.
               </p>
               <p>
                 FrameScale is not responsible for outages, pricing changes, policy changes, account restrictions, data loss, or decisions made by third-party platforms.
@@ -142,7 +140,7 @@ export default function TermsPage() {
 
             <Section title="Portfolio Use">
               <p>
-                Unless a written agreement says otherwise, FrameScale may identify a client by name and describe completed work in general portfolio, sales, or case-study materials after launch or project completion.
+                FrameScale Inc. asks before it names a client or describes completed work in portfolio, sales, or case-study materials.
               </p>
               <p>
                 Sensitive business information, private numbers, and non-public details will not be shared without permission.
@@ -151,7 +149,7 @@ export default function TermsPage() {
 
             <Section title="Privacy">
               <p>
-                Use of this site is also covered by our{" "}
+                Use of this site is also covered by the{" "}
                 <Link className="text-(--brand-primary) font-semibold hover:underline" href="/privacy">
                   Privacy Policy
                 </Link>
@@ -178,7 +176,7 @@ export default function TermsPage() {
 
             <Section title="Disclaimers">
               <p>
-                This website and the information on it are provided on an as-is and as-available basis. FrameScale makes reasonable efforts to keep information accurate, but we do not promise the site will be error-free, uninterrupted, or available at all times.
+                This website and the information on it are provided on an as-is and as-available basis. FrameScale Inc. makes reasonable efforts to keep information accurate, but does not promise the site will be error-free, uninterrupted, or available at all times.
               </p>
             </Section>
 

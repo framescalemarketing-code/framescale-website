@@ -3,7 +3,7 @@ import { principal } from "@/lib/site";
 export const aboutHero = {
   headline: `Hi, I'm ${principal.fullName}`,
   lead:
-    "I'm an optical marketing consultant. I made glasses in a lab, worked the sales floor, managed stores and " +
+    "I'm an optical marketing consultant. I worked in a full service optical lab, then the sales floor, managed stores and " +
     "then earned an MBA in marketing. Now I help independent practices find what is holding them back, and then " +
     "I fix it.",
 } as const;
@@ -11,7 +11,6 @@ export const aboutHero = {
 /** The heading over the story. "From the lab to the sales floor" is the spine of this page. */
 export const chaptersIntro = {
   title: "From The Lab To The Sales Floor",
-  lead: "This is how I got from the lab bench to marketing, in the order it happened.",
 } as const;
 
 export type Chapter = {
@@ -22,7 +21,8 @@ export type Chapter = {
 
 /**
  * The real story, told the way it would be told out loud. Facts are only those
- * Jonathan gave on 2026-11-26: he made glasses in the lab, did maintenance and
+ * Jonathan gave on 2026-11-26 (lab wording corrected the same day): he worked
+ * in a full service lab, not only on finished glasses, and did maintenance and
  * repairs on the heavy machinery, then managed at LensCrafters and at Site for
  * Sore Eyes. The store names appear here and nowhere else on the site.
  */
@@ -31,8 +31,8 @@ export const chapters: Chapter[] = [
     marker: "01",
     title: "In The Lab",
     body:
-      "My first job in optical was in the lab. I made finished glasses, and I did maintenance and repairs on the " +
-      "heavy machinery the lab ran on. It was not glamorous work. It taught me how a pair of glasses actually " +
+      "My first job in optical was in a full service lab. I did the lab work, and I did maintenance and repairs " +
+      "on the heavy machinery the lab ran on. It taught me how a pair of glasses " +
       "gets made.",
   },
   {
@@ -54,15 +54,14 @@ export const chapters: Chapter[] = [
     title: "Back To School",
     body:
       "I went back to school for a bachelor's degree at UC Riverside and then an MBA in marketing. I wanted to " +
-      "understand why some businesses grow and others just stay busy.",
+      "understand why some businesses grow and others just stay busy, and I wanted to learn it well enough to " +
+      "teach it.",
   },
   {
     marker: "05",
     title: "Using Both Halves",
     body:
-      "These days I put both sides to work for independent optical practices. You already know how to run the " +
-      "exam lane and the frame board. I add a clear message, a website that pulls its weight and numbers you " +
-      "can read without help.",
+      "These days I work with independent optical practices on their message, their website and their reporting.",
   },
 ];
 
@@ -71,6 +70,11 @@ export type CredentialDetail = {
   value: string;
   note: string;
 };
+
+/** Heading over the credential list on /about. The order is the order it happened. */
+export const credentialsIntro = {
+  title: "The Background",
+} as const;
 
 export const credentialDetails: CredentialDetail[] = [
   {
@@ -86,7 +90,7 @@ export const credentialDetails: CredentialDetail[] = [
   {
     label: "Experience",
     value: "Optical Lab And Sales Floor",
-    note: "Making glasses, repairing the lab's heavy machinery, then selling them.",
+    note: "A full service lab, repairing its heavy machinery, then the sales floor.",
   },
   {
     label: "Experience",
@@ -98,17 +102,14 @@ export const credentialDetails: CredentialDetail[] = [
 export const workingWithMe = {
   title: "What You Get",
   points: [
-    "A consultant who has worked a lab bench and a sales floor.",
-    "Business sense and marketing in the same conversation.",
-    "A direct line to me, by phone or email.",
-    "A monthly report and a review every 90 days.",
-    "A straight answer about whether I can help you, including when the answer is no.",
+    "You can reach me by phone or email.",
+    "You get a monthly report and a review every 90 days.",
+    "I will tell you if I cannot help you.",
   ],
 } as const;
 
 export const philosophy = {
   title: "You Should Understand Your Own Business",
   body:
-    "You should not need a marketing person to explain your own numbers back to you. I go through everything " +
-    "with you as we do it, so when we are finished you can keep it running yourself.",
+    "I go through everything with you as we do it.",
 } as const;

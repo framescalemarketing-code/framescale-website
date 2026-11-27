@@ -10,7 +10,7 @@ export default function NotFound() {
         <div className="flex flex-col gap-6">
           <h1 className="display-lg text-(--brand-deep)">That page is not here</h1>
           <p className="lead">
-            Some older pages were retired when the site was rebuilt. The link you followed may be one of them.
+            I retired some older pages when I rebuilt the site, and this link may be one of them.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">

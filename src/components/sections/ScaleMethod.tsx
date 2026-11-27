@@ -66,7 +66,6 @@ export function WorkingStandards() {
     <Section tone="muted" size="default">
       <SectionHeading
         title="How I Work Throughout"
-        lead="These hold in every phase, whichever service you hire me for."
         className="max-w-3xl"
       />
       <Reveal group className="mt-10 grid gap-x-16 md:grid-cols-2">

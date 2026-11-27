@@ -27,16 +27,16 @@ export const services: Service[] = [
     id: "strategy",
     number: "01",
     icon: Compass,
-    title: "Strategy Before Spending",
-    summary: "I study your customers, your competitors and your numbers before I recommend a single purchase.",
+    title: "Strategy",
+    summary: "I study your customers, your competitors and your numbers before I recommend a purchase.",
     body:
-      "Before I recommend any spending, I look at who buys from your practice, what the practices you compete " +
-      "with offer and charge, and what your numbers show. Then I list the fixes in the order I would make them.",
+      "I look at who buys from your practice, what competing practices offer and charge, and what your " +
+      "numbers show.",
     included: [
       "Who your customers are today, and who you want more of",
       "What nearby and online competitors offer and charge",
       "A list of fixes in the order I would make them",
-      "A budget that fits a practice your size",
+      "A budget for each fix",
     ],
     bestFor: "You are working flat out and it is not showing up in the numbers.",
     phase: "S",
@@ -45,16 +45,14 @@ export const services: Service[] = [
     id: "websites",
     number: "02",
     icon: Monitor,
-    title: "A Website That Books Appointments",
-    summary: "A fast, clear site built around how your practice takes appointments and sells frames.",
-    body:
-      "A website earns its keep when a visitor turns into an appointment. I build around how you take bookings " +
-      "now, and I design for the phone first because that is where most people will see it.",
+    title: "Websites",
+    summary: "A site built around how your practice takes appointments and sells frames.",
+    body: "I build around how you take bookings now, and I design for the phone first.",
     included: [
       "A site designed for your practice from the start",
-      "Fast and easy to use on a phone",
-      "Contact forms that reach you the way you prefer",
-      "Page titles, headings and structure that search engines can read",
+      "Booking built into the site, or linked to the tool your practice already uses",
+      "Contact forms that reach you where you want them",
+      "Page titles, headings and structure set up for search",
     ],
     bestFor: "Your site is old, slow, or does not bring in appointments.",
     phase: "L",
@@ -66,13 +64,13 @@ export const services: Service[] = [
     title: "Search And AI Visibility",
     summary: "Pages and wording that help your practice appear when people search or ask an AI assistant.",
     body:
-      "Most people begin with a search engine, and a growing number ask an AI assistant instead. I work on the " +
-      "pages and wording that decide whether your practice gets mentioned at all.",
+      "I work on the pages and wording that decide whether your practice gets mentioned in search and by AI " +
+      "assistants.",
     included: [
       "Pages written around the questions people ask about eyewear and eye care",
       "Titles, descriptions and structured data that search engines read",
-      "Reviews and a way of asking for them that feels natural",
-      "Answers on your site that an AI assistant can quote accurately",
+      "A way to ask patients for reviews",
+      "Answers on your site that an AI assistant can quote",
     ],
     bestFor: "You want new customers to find you, and right now they find somebody else.",
     phase: "A",
@@ -81,14 +79,12 @@ export const services: Service[] = [
     id: "analytics",
     number: "04",
     icon: BarChart3,
-    title: "Reports You Can Read",
+    title: "Reports",
     summary: "Tracking and a monthly report that shows which marketing brought in appointments.",
     body:
-      "I set up tracking you can open and read on your own, so you do not have to take my word for what is " +
-      "working. I recommend ads only when the numbers say they can pay for themselves.",
+      "I set up tracking for the calls, the forms and the visits. I recommend ads only when the numbers say " +
+      "they can pay for themselves.",
     included: [
-      "A report you can read without me on the phone",
-      "Ads, but only where the numbers support them",
       "Follow-up for the people who get in touch and then go quiet",
       "A monthly report and a review every 90 days of what is working and what is not",
     ],

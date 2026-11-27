@@ -8,7 +8,7 @@ import { bookingLive, ctaLabels } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: ctaLabels.book,
-  description: "Half an hour on the phone. Pick a time, tell me what's going on, and leave knowing what I'd do first.",
+  description: "Pick a time and tell me about your practice. We will talk through where to start.",
   path: "/book",
   // Kept out of the index until the calendar credentials are in place and
   // the calls to action point here.

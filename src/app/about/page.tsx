@@ -15,8 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: `About ${principal.fullName} | ${practice.name}`,
   absoluteTitle: true,
   description:
-    "I went from an optical lab to the sales floor to store management, then earned an MBA in marketing. " +
-    "Here is how that shapes my work.",
+    "I went from a full service optical lab to the sales floor to store management, then earned an MBA in marketing.",
   path: "/about",
   keywords: [
     `${principal.fullName}`,
@@ -59,11 +58,11 @@ export default function AboutPage() {
               </h1>
               <p className="lead measure">{aboutHero.lead}</p>
               <p className="measure text-(--text-muted)">
-                My work is for independent optical practices, and the{" "}
+                The{" "}
                 <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
                   optical marketing page
                 </Link>{" "}
-                covers that side of it in detail.
+                covers that side of my work.
               </p>
               {onSightApproved ? (
                 <p className="measure text-(--text-muted)">

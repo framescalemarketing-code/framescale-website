@@ -13,8 +13,8 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Optical Marketing Services: Websites, Search, Reports",
   absoluteTitle: true,
   description:
-    "Optical marketing services for independent practices: strategy, a website that books appointments, " +
-    "search and AI visibility, and reports you can read.",
+    "Optical marketing services for independent practices: strategy, websites, search and AI visibility, " +
+    "and reports.",
   path: "/services",
   keywords: [
     "optical marketing services",
@@ -39,33 +39,22 @@ export default function ServicesPage() {
         )}
       />
 
-      <PageHero
-        headline="Optical Marketing Services"
-        lead="These are the four services I offer independent optical practices, with what each one includes and who it is for. I work out the real problem before I recommend anything."
-      >
+      <PageHero headline="Optical Marketing Services">
         <p className="measure mt-6 text-(--text-muted)">
-          Each service follows the same five phases, which I explain on the{" "}
+          Each service follows the same five phases, listed on the{" "}
           <Link href="/method" className="link-quiet font-semibold text-(--brand-primary)">
             method page
           </Link>
-          . The{" "}
-          <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
-            optical marketing page
-          </Link>{" "}
-          covers what I already know about your side of the counter.
+          .
         </p>
       </PageHero>
 
       <ServiceDetails />
       <Pricing />
-      <FAQ
-        items={servicesFaqs}
-        title="Practical Questions"
-        lead="How I work, what you own and how I handle price."
-      />
+      <FAQ items={servicesFaqs} title="Practical Questions" />
       <CtaBand
         title="Not Sure Which One You Need?"
-        lead="That is what the first call is for. Tell me what is going on and I will tell you where I would start."
+        lead="Tell me what is going on and we will pick a place to start on a free call."
       />
     </>
   );

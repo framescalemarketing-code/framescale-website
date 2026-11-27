@@ -14,15 +14,16 @@
  * Switch one. When false, nothing on the site mentions On-Sight: the case study
  * route returns 404, the sitemap and footer drop it, and the links, FAQ answer
  * and schema node that point to it disappear. Ships true because Jonathan chose
- * to name his client. The push still waits for On-Sight's owner to agree.
+ * to name his client. Jonathan said in chat on 2026-11-26 that he has the owner's
+ * consent, so no push waits on it.
  */
 export const onSightApproved = true;
 
 /**
  * Switch two. When false, the page keeps the work and the search figures but
  * drops the review gains, the pricing change and the yearly revenue figure.
- * Those four come from Jonathan's own account, and the owner of On-Sight should
- * agree to the revenue lines before they go live.
+ * Those four come from Jonathan's own account. He confirmed on 2026-11-26 that
+ * the owner of On-Sight consented, so the revenue lines may go live.
  */
 export const onSightFiguresApproved = true;
 
@@ -167,8 +168,7 @@ export const caseStudyHero = {
   subhead: "Website, Marketing And Ordering Application In Development",
   lead:
     `This case study describes the website and marketing program that Jonathan Mejia developed for ` +
-    `${onSightName}, a client of FrameScale, and an ordering application that is still in development. It ` +
-    "reports what changed and states the source and date of each figure.",
+    `${onSightName}, a client of FrameScale, and an ordering application that is still in development.`,
 } as const;
 
 export const caseStudyWho = {
@@ -178,9 +178,8 @@ export const caseStudyWho = {
       "programs. Its customers are employers, which distinguishes it from an independent optical practice.",
     // The sentence that carries the published figures is built in the page from `figures`, so the numbers
     // can only come from the table.
-    "The engagement is relevant to independent practices because the underlying problems are shared. The " +
-      "website must be discoverable, online reviews must accumulate, and the owner must be able to interpret " +
-      "the reporting.",
+    "Independent practices share these problems. The website has to be found, reviews have to build up, and " +
+      "the owner has to be able to read the reporting.",
   ],
   /** Lead-in for the sentence that lists On-Sight's own figures. The page appends the numbers. */
   publishedLead: "On-Sight reports",
@@ -220,14 +219,13 @@ export const caseStudyWork = {
   lead:
     "The new website went live in January 2026, and the revised pricing took effect the same month. Work on " +
     "the application, marketing, content and analytics began in approximately March 2026 and continues. The " +
-    "ordering application is still in development. The engagement comprises six areas of work: the website, " +
-    "the application, marketing, content, analytics and pricing.",
+    "ordering application is still in development.",
   items: [
     { title: "Website Development", body: "A custom website was designed and built for On-Sight." },
     { title: "App Development", body: "An ordering and operations application is in development for the business." },
-    { title: "Marketing Strategy", body: "The strategy determines the message, the audience and the channels." },
+    { title: "Marketing Strategy", body: "The strategy sets the message, the audience and the channels." },
     { title: "Content And Posting", body: "Content is written and published on an ongoing basis." },
-    { title: "Business Analytics", body: "Analytics reporting identifies which activity is producing results." },
+    { title: "Business Analytics", body: "Reporting shows which activity is producing results." },
     { title: "Pricing Strategy", body: "A revised pricing structure was designed for the companies that On-Sight serves." },
   ] satisfies WorkItem[],
 } as const;
@@ -327,8 +325,8 @@ export const caseStudyLimitations = {
  *
  * Filled in 2026-11-26 from the owner's words as Jonathan relayed them in chat.
  * Only spelling and grammar were fixed ("moral" to "morale", "a easygoing" to
- * "an easygoing"). No name is given, so the attribution is the role alone. The
- * owner agreeing to be named (A-12) is still open and must come before any push.
+ * "an easygoing"). No name is given, so the attribution is the role alone. Jonathan
+ * confirmed the owner's consent on 2026-11-26 (A-12).
  */
 export const clientQuote: { text: string; name?: string; role: string } | null = {
   text:
@@ -369,15 +367,14 @@ export const caseStudyCta = {
 export const proofStrip = {
   title: "Work I Have Done",
   body:
-    `I built the website and ordering app for ${onSightName}, a prescription safety eyewear business, and I ` +
-    `work on its marketing, analytics and pricing. Organic search visits to its site rose ` +
-    `${plain(figures.organicGrowth.value)} from July to October 2026.`,
+    `I built the website for ${onSightName}, a prescription safety eyewear business, and I am building its ` +
+    "ordering app. I also work on its marketing, analytics and pricing.",
   cta: "Read The Case Study",
 } as const;
 
 /** One sentence each for the optical page and the about page, plus the home FAQ question and answer. */
 export const proofLinks = {
-  about: "I also built the website and ordering app for a prescription safety eyewear client.",
+  about: "I also built the website for a prescription safety eyewear client, and I am building its ordering app.",
   aboutLink: "Read The Case Study",
   optical: "For proof of the work, I wrote up the website and marketing I did for a client.",
   opticalLink: "Read The Case Study",

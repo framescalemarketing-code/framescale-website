@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 const title = "Accessibility Statement";
-const description = "FrameScale accessibility statement, including our target standard, supported use, contact process, and known limits.";
+const description = "FrameScale Inc. accessibility statement, including its target standard, supported use, contact process, and known limits.";
 
 export const metadata: Metadata = buildPageMetadata({
   title,
@@ -14,14 +14,13 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/accessibility",
 });
 
-const lastUpdated = "May 20, 2026";
+const lastUpdated = "November 26, 2026";
 
 const measures = [
   "Semantic headings, landmarks, labels, and alt text are used where they help people navigate the site.",
   "The site includes a skip link, keyboard focus styles, and an accessibility options widget for text size, contrast, motion, and link visibility.",
-  "Forms are built with visible labels, required field states, confirmation fields where needed, and plain-language error messages.",
+  "Forms are built with visible labels, required field states, and plain-language error messages.",
   "Motion respects the user preference for reduced motion, and the site also offers a reduce motion control.",
-  "Color choices are checked against the brand palette for readable contrast where text is used.",
   "Pages are designed to reflow across phone, tablet, laptop, and desktop screen sizes.",
 ];
 
@@ -33,28 +32,25 @@ const supportedUse = [
 ];
 
 const knownLimitations = [
-  "Some third-party tools, scripts, embedded services, or browser extensions may not be fully controlled by FrameScale.",
+  "Some third-party tools, scripts, embedded services, or browser extensions may not be fully controlled by FrameScale Inc.",
   "Older browsers may not support every visual or accessibility enhancement used on the site.",
-  "Some downloaded or linked documents from outside FrameScale may have different accessibility support.",
+  "Some downloaded or linked documents from outside FrameScale Inc. may have different accessibility support.",
 ];
 
 export default function AccessibilityPage() {
   return (
-    <LegalShell title="Accessibility Statement" lead="FrameScale wants this website to be usable for as many people as possible, including people who use assistive technology.">
+    <LegalShell title="Accessibility Statement" lead="FrameScale Inc. works to make this website usable with assistive technology.">
             <p className="font-body text-sm text-(--text-muted) leading-relaxed">
               Last updated: {lastUpdated}
             </p>
 
-            <Section title="Our Commitment">
+            <Section title="Commitment">
               <p>
-                FrameScale is committed to making this website accessible, understandable, and usable. Our goal is to follow the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA as the practical standard for this site.
-              </p>
-              <p>
-                Accessibility is ongoing work. We review the site as pages, forms, and images change.
+                FrameScale Inc. aims to follow the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA and to fix any issue that is reported.
               </p>
             </Section>
 
-            <Section title="What We Do">
+            <Section title="What Is Built In">
               <ul className="space-y-3">
                 {measures.map((item) => (
                   <li key={item} className="font-body text-(--text-muted) leading-relaxed">
@@ -66,7 +62,7 @@ export default function AccessibilityPage() {
 
             <Section title="Supported Use">
               <p>
-                This site is designed to work with common modern browsers and devices. It should support:
+                The site should support:
               </p>
               <ul className="space-y-3">
                 {supportedUse.map((item) => (
@@ -79,7 +75,7 @@ export default function AccessibilityPage() {
 
             <Section title="Known Limits">
               <p>
-                We try to keep the site accessible, but some limits may remain:
+                FrameScale Inc. tries to keep the site accessible, but some limits may remain:
               </p>
               <ul className="space-y-3">
                 {knownLimitations.map((item) => (
@@ -99,15 +95,10 @@ export default function AccessibilityPage() {
                 .
               </p>
               <p>
-                Please include the page URL, what you were trying to do, the device and browser you used, and any assistive technology involved. We will review the issue and respond as soon as reasonably possible.
+                Please include the page URL, what you were trying to do, the device and browser you used, and any assistive technology involved. FrameScale Inc. will review the issue and respond as soon as reasonably possible.
               </p>
             </Section>
 
-            <Section title="Feedback">
-              <p>
-                Accessibility feedback is welcome. It helps us make the site better for everyone who uses it.
-              </p>
-            </Section>
     </LegalShell>
   );
 }

@@ -6,7 +6,7 @@ import { chapters, chaptersIntro, philosophy } from "@/content/about";
 export function Chapters() {
   return (
     <Section tone="muted" size="default">
-      <SectionHeading title={chaptersIntro.title} lead={chaptersIntro.lead} className="max-w-3xl" />
+      <SectionHeading title={chaptersIntro.title} className="max-w-3xl" />
 
       <Reveal group className="mt-11 flex flex-col">
         {chapters.map((chapter, index) => (

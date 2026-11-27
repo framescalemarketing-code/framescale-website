@@ -60,7 +60,6 @@ function practiceNode() {
     founder: { "@id": SCHEMA_IDS.person },
     employee: { "@id": SCHEMA_IDS.person },
     areaServed,
-    priceRange: "$$",
     sameAs: [site.social.linkedin],
     address: {
       "@type": "PostalAddress",
@@ -107,13 +106,11 @@ function personNode() {
       "Eyewear retail operations",
       "Optical retail management",
       "Optical lab operations",
-      "Small business consulting",
       "Small business marketing",
-      "Business growth strategy",
       "Market and competitor research",
       "Search engine optimization",
       "AI search visibility",
-      "Website conversion optimization",
+      "Website design for optical practices",
       "Paid search and paid social advertising",
     ],
     workLocation: {
@@ -148,6 +145,18 @@ export function buildSiteGraph() {
   };
 }
 
+/**
+ * Longer names for the hidden Service labels only. The visible titles on the
+ * page are one word, so a search engine reading the label alone would not know
+ * these are optical services. Ids match `src/content/services.ts`.
+ */
+const serviceSchemaNames: Record<string, string> = {
+  strategy: "Optical Practice Marketing Strategy",
+  websites: "Optical Practice Website Design",
+  "local-seo": "Optical Practice Search And AI Visibility",
+  analytics: "Optical Practice Marketing Reports",
+};
+
 /** One Service node per pillar, provided by the person, scoped to the area. */
 export function buildServicesGraph() {
   return {
@@ -155,9 +164,9 @@ export function buildServicesGraph() {
     "@graph": services.map((service) => ({
       "@type": "Service",
       "@id": `${site.url}/services#${service.id}-service`,
-      name: service.title,
+      name: serviceSchemaNames[service.id] ?? service.title,
       description: service.summary,
-      serviceType: service.title,
+      serviceType: serviceSchemaNames[service.id] ?? service.title,
       provider: { "@id": SCHEMA_IDS.person },
       areaServed,
       url: `${site.url}/services#${service.id}`,
@@ -233,32 +242,6 @@ export function buildWebPageGraph(page: {
     inLanguage: "en-US",
     isPartOf: { "@id": SCHEMA_IDS.website },
     about: { "@id": SCHEMA_IDS.person },
-  };
-}
-
-/**
- * Article for one Insights piece. Only emitted once an article is published,
- * because `datePublished` is a claim and a draft has no publication date.
- */
-export function buildArticleGraph(article: {
-  slug: string;
-  title: string;
-  description: string;
-  datePublished: string;
-}) {
-  const url = `${site.url}/insights/${article.slug}`;
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "@id": `${url}#article`,
-    headline: article.title,
-    description: article.description,
-    datePublished: article.datePublished,
-    mainEntityOfPage: url,
-    url,
-    inLanguage: "en-US",
-    author: { "@id": SCHEMA_IDS.person },
-    publisher: { "@id": SCHEMA_IDS.practice },
   };
 }
 

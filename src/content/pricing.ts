@@ -8,9 +8,8 @@ export const pricingSection = {
   title: "What It Costs",
   lead: "There is no price list. It depends on the practice.",
   intro:
-    "Everyone needs something a bit different. One owner needs a single page fixed and nothing else. " +
-    "Another needs the whole thing pulled apart and rebuilt. If I put a package price on that I would only be " +
-    "guessing, and you would end up paying for work you did not need.",
+    "One owner needs a single page fixed. Another needs the whole site rebuilt. A package price would be a " +
+    "guess, so I quote each job once I know what it is.",
   cta: "Ask What It Would Cost",
 } as const;
 
@@ -26,16 +25,15 @@ export const pricingPoints: PricingPoint[] = [
   },
   {
     title: "Then I Quote",
-    body: "Once I know what the job actually is, you get a number and a list of what it covers.",
+    body: "Once I know what the job is, you get a number and a list of what it covers.",
   },
   {
     title: "You Approve It",
     body: "Nothing starts until you have seen the quote and said yes.",
   },
   {
-    title: "No Surprise Invoices",
+    title: "Changes Are Agreed First",
     body:
-      "The number we agreed is the number you pay. If the job changes halfway through, we have that conversation " +
-      "before the work happens, not after.",
+      "If the job changes halfway through, we talk about it before the work happens.",
   },
 ];

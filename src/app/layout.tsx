@@ -190,7 +190,7 @@ export default function RootLayout({
         </a>
 
         {/* One entity graph for the whole site: WebSite, ProfessionalService,
-            and the Person the site is actually about. */}
+            and the Person the site is about. */}
         <script {...jsonLdProps(buildSiteGraph())} />
 
         {/* IUBENDA CONFIG - BEFORE INTERACTIVE (runs before hydration) */}

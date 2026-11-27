@@ -11,7 +11,6 @@ export function ServiceOverview() {
     <Section tone="muted" size="default">
       <SectionHeading
         title="Four Ways I Help Optical Practices"
-        lead="Most practices need more than one. We settle the mix on the first call."
         className="max-w-3xl"
       />
 

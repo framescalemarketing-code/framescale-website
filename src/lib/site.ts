@@ -1,4 +1,3 @@
-import { getPublishedInsights } from "@/content/insights";
 import { caseStudyMeta, caseStudyPath, onSightApproved } from "@/content/onsight";
 
 /** Public site hostname (no scheme, no path). Drives `url`, inbox, and noreply defaults. */
@@ -63,8 +62,8 @@ export const site = {
    * near 180 characters and front-loaded, because search results truncate.
    */
   description:
-    `I am ${principal.displayName}, a marketing consultant for independent optical practices. I came up from ` +
-    "the lab to the sales floor, and you work with me directly.",
+    `I am ${principal.displayName}, a marketing consultant for independent optical practices. I worked in ` +
+    "a full service optical lab and managed stores.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */
@@ -97,13 +96,6 @@ export const site = {
   },
 } as const;
 
-/**
- * Insights stays out of the nav and footer until the first article is
- * published, so no visitor lands on an empty page.
- */
-export const hasPublishedInsights = getPublishedInsights().length > 0;
-const insightsLink = hasPublishedInsights ? ([{ label: "Insights", href: "/insights" }] as const) : [];
-
 /** The On-Sight case study joins the footer only while its switch in `src/content/onsight.ts` is on. */
 const caseStudyLink = onSightApproved
   ? ([{ label: caseStudyMeta.linkLabel, href: caseStudyPath }] as const)
@@ -128,7 +120,6 @@ export const mainNav = [
   { label: "Services", href: "/services" },
   { label: "Method", href: "/method" },
   { label: "About", href: "/about" },
-  ...insightsLink,
 ] as const;
 
 export const footerLinks = {
@@ -139,15 +130,14 @@ export const footerLinks = {
     { label: "Method", href: "/method" },
     { label: "About", href: "/about" },
     ...caseStudyLink,
-    ...insightsLink,
     ...(bookingLive ? [{ label: ctaLabels.book, href: site.bookingPath }] : []),
     { label: "Contact", href: site.contactPath },
   ],
   Services: [
-    { label: "Strategy Before Spending", href: "/services#strategy" },
-    { label: "A Website That Books Appointments", href: "/services#websites" },
+    { label: "Strategy", href: "/services#strategy" },
+    { label: "Websites", href: "/services#websites" },
     { label: "Search And AI Visibility", href: "/services#local-seo" },
-    { label: "Reports You Can Read", href: "/services#analytics" },
+    { label: "Reports", href: "/services#analytics" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

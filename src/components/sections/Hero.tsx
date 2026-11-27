@@ -75,7 +75,7 @@ type PageHeroProps = {
   headline: string;
   /** A short line under the headline, in the brand color. */
   subhead?: string;
-  lead: string;
+  lead?: string;
   /** Rendered inside the same section, so a related block does not become another band. */
   children?: ReactNode;
 };
@@ -94,7 +94,7 @@ export function PageHero({ headline, subhead, lead, children }: PageHeroProps) {
             <h1 className="display-xl text-[clamp(2.2rem,4.8vw,4rem)] text-(--brand-deep)">{headline}</h1>
             {subhead ? <p className="display-sm text-(--brand-primary)">{subhead}</p> : null}
           </div>
-          <p className="lead">{lead}</p>
+          {lead ? <p className="lead">{lead}</p> : null}
         </div>
         {children}
         <div className="tick-rule mt-12 max-w-xs text-(--brand-primary)" aria-hidden="true" />

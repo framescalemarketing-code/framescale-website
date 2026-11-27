@@ -15,9 +15,8 @@ export const hero = {
   headline: "Marketing For Independent Optical Practices",
   subhead: "From The Lab To The Sales Floor",
   lead:
-    `I'm ${principal.fullName}. I handle the strategy, the website, the search work and the reporting for ` +
-    "independent optical practices, so you can see which marketing brings in appointments. You work with me " +
-    "directly, from the first call to the monthly report.",
+    `I'm ${principal.fullName}, and I work with independent optical practices. Each month you get a plain ` +
+    "report that shows which of your marketing is bringing in appointments.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Work",
 } as const;
@@ -49,14 +48,13 @@ export type MarketingPart = {
 export const marketingScope = {
   title: "What Does Optical Marketing Include?",
   lead:
-    "Marketing covers more than posting online. Posting is one small part of a list that is longer and more " +
-    "useful.",
+    "Many owners hear marketing and think of social posts. The work covers five other things.",
 } as const;
 
 export const marketingParts: MarketingPart[] = [
   {
     title: "Who Your Customer Is",
-    body: "Everything else depends on this. I start with who buys from you now and who you want more of.",
+    body: "I start with who buys from you now and who you want more of.",
   },
   {
     title: "How You Compare",
@@ -64,19 +62,17 @@ export const marketingParts: MarketingPart[] = [
   },
   {
     title: "What Your Website Says",
-    body:
-      "A visitor decides in seconds whether to book. The site has to say what you offer, who it is for and " +
-      "how to reach you.",
+    body: "I check that the site says what you offer, who it is for and how to reach you.",
   },
   {
     title: "Whether People Can Find You",
     body:
-      "Search engines and AI assistants answer questions about glasses and eye care every day. I work on the " +
-      "pages and wording that decide whether your name appears.",
+      "I work on the pages and wording that decide whether your name appears when people search or ask an AI " +
+      "assistant.",
   },
   {
     title: "Which Numbers Matter",
-    body: "A report should tell you which marketing brought in appointments. If yours does not, I can build one that does.",
+    body: "I build a report that shows which marketing brought in appointments.",
   },
 ];
 
@@ -87,22 +83,22 @@ export type Differentiator = {
 
 export const differentiators: Differentiator[] = [
   {
-    title: "You Work With Me",
+    title: "Direct Access To Me",
     body: "You call and I answer, and I do the work myself.",
   },
   {
-    title: "You See The Homework First",
+    title: "Homework Before Spending",
     body:
       "I study your market and your customers before I recommend spending anything. If you do not need what " +
       "you came to me for, I will tell you.",
   },
   {
-    title: "Built For Your Practice",
-    body: "I do not hand you something I built for someone else with the logo swapped out.",
+    title: "Made For Optical",
+    body: "I build each site for your practice from the start.",
   },
   {
-    title: "You Will Understand Your Numbers",
-    body: "If you cannot explain your marketing to someone else when we finish, I did it wrong.",
+    title: "Numbers In Plain Words",
+    body: "I explain the numbers until you can explain them to someone else.",
   },
 ];
 
@@ -114,8 +110,8 @@ export const differentiators: Differentiator[] = [
 export const aboutStrip = {
   title: "What Working With Me Looks Like",
   body: [
-    "You get a report from me every month and a review every 90 days. I came up through an optical lab, the " +
-      "sales floor and store management, and the full story is on my About page.",
+    "You get a report from me every month and a review every 90 days. I came up through a full service optical lab, the " +
+      "sales floor and store management.",
   ],
   cta: "Read My Story",
 } as const;
@@ -123,13 +119,13 @@ export const aboutStrip = {
 /**
  * A short signed note about how the work runs. The marketing-is-misunderstood
  * point lives in its own section above, so this note covers the working
- * arrangement: explained as it happens, owned by the practice, free first call.
+ * arrangement: explained as it happens, account ownership settled up front, free first call.
  */
 export const personalNote = {
   body: [
-    "I explain the work while I do it, and I show you the numbers behind it. Everything we build sits in your " +
-      "own accounts, so you can keep running it without me.",
-    "If you have been putting this off, the first call costs you nothing.",
+    "I explain the work while I do it, and I show you the numbers behind it. Who holds each account is " +
+      "settled with you before work starts.",
+    "The first call is free.",
   ],
   signOff: principal.firstName,
 } as const;

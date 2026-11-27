@@ -30,7 +30,7 @@ export const framePhotos = {
   frontOn: {
     src: "/photos/frames/cartier-rimless-symmetry.webp",
     alt: "Cartier rimless eyeglass frame photographed straight on against a white background",
-    caption: "A frame board is inventory. What sells and what sits decides what is worth advertising.",
+    caption: "Cartier rimless, photographed straight on.",
   },
   angled: {
     src: "/photos/frames/cartier-rimless-angle.webp",

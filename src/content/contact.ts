@@ -6,21 +6,23 @@ import { location, principal, site } from "@/lib/site";
  */
 
 export const contactSteps = [
-  "I read it myself.",
-  "We talk for half an hour.",
-  "I tell you whether I can help.",
-  "You decide. I won't chase you.",
+  "I read your message myself.",
+  "We talk for half an hour while I ask about your practice.",
+  "We discuss whether I can help and where to start.",
+  "You decide what happens next.",
 ] as const;
+
+/** The same steps without the first: the booking page has no message box to read. */
+export const bookingSteps = contactSteps.slice(1);
 
 export const contactSection = {
   /** Defaults. Each page passes its own title and lead. */
   title: "Let's Talk",
-  lead: "Tell me what's going on. Half an hour is enough to work out where to start.",
+  lead: "Tell me what is going on and we will work out where to start.",
   card: {
     title: "Send Me A Note",
-    lead: "The form has three boxes and does not need to be long.",
   },
-  hours: "Monday to Friday, 9 to 5 Pacific.",
+  hours: "Calls can be booked Monday to Friday, 9 to 5 Pacific.",
   locationLine: `I am based in ${location.regionName} and work remotely across ${location.serviceArea}.`,
 } as const;
 
@@ -33,7 +35,6 @@ export const contactForm = {
   placeholder: "A couple of sentences is plenty.",
   submit: "Send Message",
   sending: "Sending",
-  helper: "I reply within one business day.",
   validation: {
     name: "Please enter your name.",
     messageEmpty: "A sentence or two helps me prepare.",
@@ -44,9 +45,11 @@ export const contactForm = {
   /** `{phone}` and `{email}` are rendered as links by the form. */
   securityFallback: "The security check didn't load. Call me on {phone} or email {email} instead.",
   serverErrorLine: "Or call {phone} or email {email}.",
+  /** Shown when the browser could not reach the server at all. */
+  sendFailed: "That did not send. Please try again.",
   success: {
     title: "Message Received",
-    body: "Thanks. I read every message myself and reply within one business day.",
+    body: "Thanks. I will write back as soon as I can.",
     again: "Send Another Message",
   },
   /** Only ever read by bots. */
@@ -62,7 +65,7 @@ export const contactReceipt = {
   subject: "Got your message",
   paragraphs: [
     "Thanks for writing.",
-    `I read every message myself and I'll come back to you within one business day. If it's urgent, call me on ${site.phone}.`,
+    `I'll come back to you as soon as I can. If it's urgent, call me on ${site.phone}.`,
     principal.firstName,
   ],
 } as const;

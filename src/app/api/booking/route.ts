@@ -125,17 +125,17 @@ export async function POST(req: NextRequest) {
   // Measured on the body itself: the Content-Length header is optional.
   const raw = await req.text();
   if (Buffer.byteLength(raw, "utf8") > MAX_BODY_BYTES) {
-    return noStore({ error: "Payload too large." }, { status: 413 });
+    return noStore({ error: "That request is too long to send. Please shorten your note." }, { status: 413 });
   }
 
   let payload: BookingPayload;
   try {
     payload = JSON.parse(raw) as BookingPayload;
   } catch {
-    return noStore({ error: "Invalid JSON payload." }, { status: 400 });
+    return noStore({ error: "That did not send. Please try again." }, { status: 400 });
   }
   if (!payload || typeof payload !== "object") {
-    return noStore({ error: "Invalid JSON payload." }, { status: 400 });
+    return noStore({ error: "That did not send. Please try again." }, { status: 400 });
   }
 
   const clientIp = getClientIp(req);

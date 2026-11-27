@@ -1,5 +1,5 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { credentialDetails, workingWithMe } from "@/content/about";
+import { credentialDetails, credentialsIntro, workingWithMe } from "@/content/about";
 
 /**
  * The trust signals on /about. Paper tone on purpose: the closing CtaBand that
@@ -13,7 +13,7 @@ export function Credentials() {
           three lines. */}
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
-          <SectionHeading title="The Background" lead="School, and a lot of years on a sales floor." />
+          <SectionHeading title={credentialsIntro.title} />
 
           <dl className="mt-9 flex flex-col">
             {credentialDetails.map((item, index) => (

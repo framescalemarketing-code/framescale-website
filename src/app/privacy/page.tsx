@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 const title = "Privacy Policy";
-const description = "How FrameScale collects, uses, and protects information submitted through the website and related services.";
+const description = "How FrameScale Inc. collects, uses, and protects information submitted through the website and related services.";
 
 export const metadata: Metadata = buildPageMetadata({
   title,
@@ -16,9 +16,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy" lead="We collect only the information needed to respond to your inquiry and deliver agreed services.">
+    <LegalShell title="Privacy Policy" lead="FrameScale Inc. collects the information needed to respond to your inquiry and deliver agreed services.">
             <p className="font-body text-(--text-muted) leading-relaxed">
-              This page uses your Iubenda-hosted full policy. If the widget does not load, use the direct link below.
+              The full privacy policy of FrameScale Inc. is hosted by iubenda. If it does not load, use the direct link below.
             </p>
 
             <div className="flex flex-wrap gap-4">

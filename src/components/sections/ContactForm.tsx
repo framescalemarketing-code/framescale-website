@@ -103,7 +103,7 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
       });
 
       const body = (await res.json().catch(() => ({}))) as { error?: string };
-      if (!res.ok) throw new Error(body.error || "Unable to submit the form.");
+      if (!res.ok) throw new Error(body.error || contactForm.sendFailed);
 
       setStatus("sent");
       setData(EMPTY);
@@ -118,7 +118,9 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
     } catch (err) {
       setStatus("error");
       setServerError(true);
-      setNote(err instanceof Error ? err.message : "Unable to submit right now. Please try again.");
+      // A network failure arrives as a TypeError with the browser's own wording
+      // ("Failed to fetch"), so only the server's plain messages are shown.
+      setNote(err instanceof Error && !(err instanceof TypeError) ? err.message : contactForm.sendFailed);
     } finally {
       if (turnstileSiteKey) {
         setToken("");
@@ -243,7 +245,6 @@ export function ContactForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
             contactForm.submit
           )}
         </button>
-        <p className="text-sm text-(--text-muted)">{contactForm.helper}</p>
       </div>
 
       {note ? (

@@ -12,7 +12,7 @@ export const metadata: Metadata = buildPageMetadata({
   absoluteTitle: true,
   description:
     "The SCALE Method is the five-phase marketing process I use with optical practices, from market study " +
-    "to evaluation. See each step before it starts.",
+    "to evaluation.",
   path: "/method",
   keywords: [
     "SCALE method",
@@ -59,7 +59,7 @@ export default function MethodPage() {
 
       <CtaBand
         title="See How It Would Work For You"
-        lead="Tell me about the practice on a free call. I will tell you which phase I would start in, and what that would involve."
+        lead="Tell me about the practice on a free call and we will pick the phase to start with."
       />
     </>
   );

@@ -21,7 +21,7 @@ export const scaleIntro = {
   previewTitle: "How Working With Me Goes In Five Phases",
   lead:
     "Every practice I work with goes through the same five phases. I finish one, show you what I found, and " +
-    "we agree before I start the next. You will always know where we are.",
+    "we agree before I start the next.",
 } as const;
 
 /**
@@ -39,15 +39,13 @@ export const scalePhases: ScalePhase[] = [
     title: "Study The Market",
     summary: "I find out who buys from practices like yours and who else they consider.",
     description:
-      "I start wide, because narrowing down too early means fixing the wrong thing. First I find out who buys " +
-      "from practices like yours, what else they could pick instead of you, and what tips them one way or the " +
-      "other.",
+      "First I find out who buys from practices like yours, what else they could pick instead of you, and what " +
+      "tips them one way or the other.",
     whatIDo:
       "I look at what the competition charges and how it talks about itself. Then I work out what makes " +
       "someone pick one practice over another.",
     whatYouGet:
-      "You get a clear picture of the market you are in, the gaps I found, and what I would do first given " +
-      "your budget.",
+      "You get the gaps I found in your market and what I would do first given your budget.",
   },
   {
     letter: "C",
@@ -56,14 +54,13 @@ export const scalePhases: ScalePhase[] = [
     title: "Clarify The Client View",
     summary: "I look at your business the way a customer sees it.",
     description:
-      "You know your business from the inside, but your customers only see the outside, and that is what they " +
-      "choose on. So before I change anything, I look at your practice the way a stranger would.",
+      "Before I change anything, I look at your practice the way a stranger would.",
     whatIDo:
       "I sit down with you and with whoever deals with your customers every day. Then I read your reviews, " +
       "the bad ones too, and see how the practices around you describe themselves.",
     whatYouGet:
-      "You get a plain description of the customer you do best with, what sets you apart if anything does, " +
-      "and the first few things I think are worth changing.",
+      "You get a description of the customer you do best with, what sets you apart if anything does, " +
+      "and the first changes I would make.",
   },
   {
     letter: "A",
@@ -72,13 +69,13 @@ export const scalePhases: ScalePhase[] = [
     title: "Align The Strategy",
     summary: "We agree what to say and where to say it.",
     description:
-      "Now we turn what I found into a plan. We decide it together, so you know why every piece of it is there.",
+      "Now we turn what I found into a plan, and we decide it together.",
     whatIDo:
       "We settle what you are saying and who you are saying it to. Then we pick the handful of places worth " +
       "showing up, and match all of it to your goals and what you can spend.",
     whatYouGet:
-      "You get a plan built around your business, a view of which pages and channels are worth it, and a " +
-      "short list of numbers worth watching.",
+      "You get a plan, a view of which pages and channels are worth it, and a short list of numbers worth " +
+      "watching.",
   },
   {
     letter: "L",
@@ -87,8 +84,7 @@ export const scalePhases: ScalePhase[] = [
     title: "Launch The System",
     summary: "I build the website and the tracking the plan needs.",
     description:
-      "Then I build it. If the website or the tracking does not exist yet, I build that too, and I stay on the " +
-      "job from start to finish.",
+      "Then I build it, including the website and the tracking if they do not exist yet.",
     whatIDo:
       "I build or fix the website and the pages that matter, and I put tracking in so we can see what " +
       "happens. Before anything goes live, I go through the whole thing.",
@@ -109,8 +105,8 @@ export const scalePhases: ScalePhase[] = [
       "I track the calls, the forms and the visits, and I look for where people give up and leave. Then I " +
       "adjust the message, the pages and the spend.",
     whatYouGet:
-      "You get a monthly report you can read without a translator, a review every 90 days of what is " +
-      "working, and a short list of what to do next.",
+      "You get a monthly report, a review every 90 days of what is working, and a short list of what to do " +
+      "next.",
   },
 ];
 
@@ -126,7 +122,7 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Built Around You",
-    description: "The plan has to fit your team, your budget and how you already work, or nobody follows it.",
+    description: "The plan fits your team, your budget and how you already work.",
   },
   {
     title: "Everything Connected",
@@ -134,6 +130,6 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Reports You Can Use",
-    description: "A report is only worth reading if it tells you what to do next.",
+    description: "Each report ends with a short list of what to do next.",
   },
 ];

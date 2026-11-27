@@ -24,7 +24,6 @@ paths: booking a call (`/book`) and sending a message (`/contact`).
 | `/case-studies/on-sight-safety-optics` | The On-Sight Safety Optics case study. Every number is a row in `src/content/onsight.ts` with its source and date. Two switches in that file hide the page (`onSightApproved`) or only the review, pricing and revenue lines (`onSightFiguresApproved`). |
 | `/book` | Pick a time from Jonathan's calendar (`/api/booking`, Turnstile, Google Calendar). Every primary call to action points here while `bookingLive` is `true` in `src/lib/site.ts`. |
 | `/contact` | The message form (Turnstile plus Resend), plus phone and email. |
-| `/insights`, `/insights/[slug]` | Guides. Drafts in `src/content/insights.ts` stay hidden until `published: true`. |
 | `/privacy`, `/cookie-policy`, `/california-privacy`, `/accessibility`, `/terms` | Legal. Footer-linked only. |
 
 The message form lives only on `/contact`. The closing call to action band on

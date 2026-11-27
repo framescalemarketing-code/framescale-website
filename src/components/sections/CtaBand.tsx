@@ -1,7 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
-import { bookingHrefFor, site } from "@/lib/site";
+import { bookingHrefFor, ctaLabels, site } from "@/lib/site";
 
 type CtaBandProps = {
   title: string;
@@ -15,7 +15,7 @@ type CtaBandProps = {
  * visitor to the booking page (or to /contact until booking is live). The phone
  * and email details are the same strings the footer and the JSON-LD carry.
  */
-export function CtaBand({ title, lead, cta = "Book A Free Call" }: CtaBandProps) {
+export function CtaBand({ title, lead, cta = ctaLabels.book }: CtaBandProps) {
   return (
     <Section id="contact" tone="dark" size="tall">
       <div className="grid items-end gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">

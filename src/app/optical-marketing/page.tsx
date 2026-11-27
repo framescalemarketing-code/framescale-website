@@ -17,19 +17,18 @@ import { caseStudyPath, onSightApproved, proofLinks } from "@/content/onsight";
 import { framePhotos } from "@/content/photos";
 import { buildBreadcrumbGraph, buildWebPageGraph, buildFaqGraph, buildOpticalServiceGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
-import { hasPublishedInsights } from "@/lib/site";
 
 /**
  * The vertical hub, and the page that owns the head term. `/services` covers
- * what the work actually is and targets the service phrases, so the two do not
+ * what the work is and targets the service phrases, so the two do not
  * compete for the same query.
  */
 export const metadata: Metadata = buildPageMetadata({
   title: "Optical Marketing For Independent Practices | Jonathan Mejia",
   absoluteTitle: true,
   description:
-    "From the lab to the sales floor, I know optical. I help independent practices fix the website, " +
-    "show up in search and AI answers, and bring patients back.",
+    "I worked in a full service optical lab and managed stores. I help independent practices get found in search " +
+    "and AI answers and keep patients coming back.",
   path: "/optical-marketing",
   keywords: [
     "optical marketing",
@@ -66,17 +65,6 @@ export default function OpticalMarketingPage() {
       />
 
       <PageHero headline={opticalHero.headline} subhead={opticalHero.subhead} lead={opticalHero.lead}>
-        <p className="measure mt-6 text-(--text-muted)">
-          The four things I do are on the{" "}
-          <Link href="/services" className="link-quiet font-semibold text-(--brand-primary)">
-            services page
-          </Link>
-          , and the five phases I follow are on the{" "}
-          <Link href="/method" className="link-quiet font-semibold text-(--brand-primary)">
-            method page
-          </Link>
-          .
-        </p>
       </PageHero>
 
       <Section size="compact" width="wide">
@@ -89,11 +77,7 @@ export default function OpticalMarketingPage() {
       </Section>
 
       <Section tone="muted">
-        <SectionHeading
-          title={opticalDifferencesIntro.title}
-          lead={opticalDifferencesIntro.lead}
-          className="max-w-3xl"
-        />
+        <SectionHeading title={opticalDifferencesIntro.title} className="max-w-3xl" />
         <Reveal group className="mt-10 flex flex-col">
           {opticalDifferences.map((item, index) => (
             <RevealItem
@@ -114,20 +98,11 @@ export default function OpticalMarketingPage() {
         />
 
         <p className="measure mt-8 text-(--text-muted)">
-          Want to see how I think before you call?{" "}
-          {hasPublishedInsights ? (
-            <>
-              I write it down on the{" "}
-              <Link href="/insights" className="link-quiet font-semibold text-(--brand-primary-hover)">
-                insights page
-              </Link>
-              , and{" "}
-            </>
-          ) : null}
+          The{" "}
           <Link href="/about" className="link-quiet font-semibold text-(--brand-primary-hover)">
-            {hasPublishedInsights ? "my story" : "My story"}
+            about page
           </Link>{" "}
-          explains how I got from the lab bench to marketing.
+          explains how I got from a full service lab to marketing.
         </p>
         {onSightApproved ? (
           <p className="measure mt-4 text-(--text-muted)">
@@ -140,11 +115,11 @@ export default function OpticalMarketingPage() {
         ) : null}
       </Section>
 
-      <FAQ items={opticalFaqs} title={opticalFaqIntro.title} lead={opticalFaqIntro.lead} />
+      <FAQ items={opticalFaqs} title={opticalFaqIntro.title} />
 
       <CtaBand
         title="Tell Me About Your Practice"
-        lead="Half an hour on the phone. I will tell you where I would start, and whether I am the right person at all."
+        lead="Half an hour on the phone to talk about where to start."
       />
     </>
   );

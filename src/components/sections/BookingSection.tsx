@@ -3,7 +3,7 @@ import { Mail, Phone } from "lucide-react";
 import { BookingForm } from "@/components/sections/BookingForm";
 import { Section } from "@/components/ui/Section";
 import { booking } from "@/content/booking";
-import { contactSteps } from "@/content/contact";
+import { bookingSteps } from "@/content/contact";
 import { getTurnstileSiteKeyForServer } from "@/lib/cloudflare-turnstile";
 import { site } from "@/lib/site";
 
@@ -21,7 +21,7 @@ export function BookingSection() {
           <div className="flex flex-col gap-4">
             <h2 className="display-sm text-(--brand-deep)">What Happens Next</h2>
             <ol className="flex flex-col">
-              {contactSteps.map((step, index) => (
+              {bookingSteps.map((step, index) => (
                 <li
                   key={step}
                   className={`flex gap-4 py-3 text-(--text-muted) ${index === 0 ? "" : "rule"}`}
@@ -36,7 +36,7 @@ export function BookingSection() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h2 className="display-sm text-(--brand-deep)">Or Reach Me Directly</h2>
+            <h2 className="display-sm text-(--brand-deep)">Call Or Email Me</h2>
             <p className="text-sm text-(--text-muted)">
               {booking.aside}{" "}
               <Link href={site.contactPath} className="link-quiet font-semibold text-(--brand-primary)">

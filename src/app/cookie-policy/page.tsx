@@ -4,7 +4,7 @@ import { iubenda } from "@/lib/iubenda";
 import { buildPageMetadata } from "@/lib/metadata";
 
 const title = "Cookie Policy";
-const description = "Cookie and tracking technology notice for the FrameScale website, including consent and preferences controls.";
+const description = "Cookie and tracking technology notice for the FrameScale Inc. website, including consent and preferences controls.";
 
 export const metadata: Metadata = buildPageMetadata({
   title,
@@ -14,9 +14,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function CookiePolicyPage() {
   return (
-    <LegalShell title="Cookie Policy" lead="This page explains how cookies and similar technologies are used on this website.">
+    <LegalShell title="Cookie Policy" lead="How cookies and similar technologies are used on this website.">
             <p className="font-body text-(--text-muted) leading-relaxed">
-              This page opens your full Iubenda cookie policy. If the embed does not initialize, use the direct link.
+              The full cookie policy of FrameScale Inc. is hosted by iubenda. If it does not load, use the direct link.
             </p>
 
             <div className="flex flex-wrap gap-4">

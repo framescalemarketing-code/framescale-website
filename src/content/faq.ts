@@ -23,8 +23,8 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "Who do you work with?",
     answer:
-      "Independent optical practices anywhere in the United States. I made glasses in an optical lab and managed " +
-      "stores, so I already know the schedule, the frame board and how insurance limits what you can offer.",
+      "Independent optical practices anywhere in the United States. I worked in a full service optical lab, on " +
+      "the sales floor and in store management before I moved into marketing.",
   },
   // Only while the case study is on, so the answer never points at a page that 404s.
   ...(onSightApproved ? [{ question: proofLinks.faqQuestion, answer: proofLinks.faqAnswer }] : []),
@@ -38,20 +38,19 @@ export const homeFaqs: FaqItem[] = [
     question: "How long until I see results?",
     answer:
       "Research takes a few weeks, website work depends on the size of the job, and search work takes a few " +
-      "months because search engines are slow to notice a change. You get a report every month, so you see " +
-      "the trend as it forms.",
+      "months because search engines are slow to notice a change. You get a report every month.",
   },
   {
     question: "Can you guarantee a number one ranking on Google?",
     answer:
-      "No. Nobody controls Google's rankings, so I do not guarantee one. I do promise that you always know what " +
-      "I did, what it cost and what changed.",
+      "No. Google controls its rankings, so I do not guarantee one. Each monthly report shows what was spent " +
+      "and what changed.",
   },
   {
     question: "What happens on the first call?",
     answer:
-      "It is half an hour, just the two of us. You tell me what is not working, I ask a few questions, and you " +
-      "leave knowing what I would tackle first. If I am not the right person, I will say so then.",
+      "It is half an hour, just the two of us. You tell me what is not working, I ask a few questions, and we " +
+      "talk through where to start. If I am not the right person, I will say so then.",
   },
 ];
 
@@ -59,25 +58,24 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Can I hire you for just one thing?",
     answer:
-      "Yes. I usually suggest doing the research first, because building a website before we know who it is for " +
-      "is how budgets disappear.",
+      "Yes. I usually suggest starting with the research, so we know who the website is for before I build it.",
   },
   {
     question: "Do I own the website when we're done?",
     answer:
-      "Yes, all of it. The website, the analytics and the reporting sit in your own accounts, so you can keep " +
-      "running them without me.",
+      "That depends on what you want. Before any work starts, we decide who holds the website, the analytics and " +
+      "the reporting accounts, and it goes in the written proposal.",
   },
   {
     question: "Do I need a new website?",
     answer:
-      "Not always. If your site books appointments and loads quickly on a phone, it may only need fixes, and " +
-      "replacing it wastes money. I will tell you honestly which situation you are in.",
+      "Not always. If your site books appointments and loads quickly on a phone, it may only need fixes. " +
+      "I will tell you which situation you are in.",
   },
   {
     question: "How will I know the marketing is working?",
     answer:
-      "You get a report every month that you can read without me on the phone. It shows what was spent, what " +
+      "You get a report every month. It shows what was spent, what " +
       "changed and which appointments came from which work. Every 90 days we review the results together. If a " +
       "number is missing, I will tell you why.",
   },
@@ -91,6 +89,6 @@ export const servicesFaqs: FaqItem[] = [
     question: "How do I reach you?",
     answer:
       `Use the form on the contact page, email ${site.email}, or call ${site.phone}. I read everything myself ` +
-      "and reply within one business day.",
+      "and reply as soon as I can.",
   },
 ];

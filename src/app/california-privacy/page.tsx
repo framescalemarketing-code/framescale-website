@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 const title = "California Privacy Notice";
-const description = "California Consumer Privacy Act and CPRA notice for FrameScale website visitors, including privacy rights and preference controls.";
+const description = "California Consumer Privacy Act and CPRA notice for FrameScale Inc. website visitors, including privacy rights and preference controls.";
 
 export const metadata: Metadata = buildPageMetadata({
   title,
@@ -18,7 +18,7 @@ export default function CaliforniaPrivacyPage() {
   return (
     <LegalShell title="California Privacy Notice" lead="This notice describes privacy rights available to California residents under the CCPA/CPRA.">
             <p className="font-body text-(--text-muted) leading-relaxed">
-              Last updated: May 25, 2026. This notice explains the California-specific rights available on this site and works alongside the main privacy and cookie policies.
+              Last updated: November 26, 2026. This notice works alongside the privacy and cookie policies.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -41,14 +41,14 @@ export default function CaliforniaPrivacyPage() {
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">Notice at Collection</h2>
               <p className="font-body text-(--text-muted) leading-relaxed">
-                We collect identifiers and contact information submitted through forms, such as name, email, company, and message content, along with limited technical data used for website security and performance.
+                FrameScale Inc. collects identifiers and contact information submitted through forms, such as name, email, phone number, and message content. Booking details are also saved to the Google Calendar of FrameScale Inc. Limited technical data is collected for website security and performance.
               </p>
             </div>
 
             <div>
               <h2 className="font-headline text-2xl text-(--brand-deep) mb-3">How Information Is Used</h2>
               <p className="font-body text-(--text-muted) leading-relaxed">
-                Information is used to respond to inquiries, provide requested services, support the contact process, and improve site operations and reporting.
+                Information is used to respond to inquiries, provide requested services, and improve site operations and reporting.
               </p>
             </div>
 

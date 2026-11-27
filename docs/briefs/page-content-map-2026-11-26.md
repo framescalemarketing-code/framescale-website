@@ -31,7 +31,6 @@ Why this exists: Jonathan said every heading and paragraph must do its job for t
 | About | Who I am, why optical, how I work, proof, next step. | Everything. Store names appear here only. | Story-shaped, 600 to 1,200 words. |
 | Case study | Evidence for one engagement, with sources and dates. | Role only. | Plain, factual. |
 | Contact and Book | Remove friction: what happens on the call, how long, what to bring. | No. | Verbs. |
-| Insights | Answer one question per article, answer first. | No. | The question as the heading. |
 
 ## Proposed Home outline
 
