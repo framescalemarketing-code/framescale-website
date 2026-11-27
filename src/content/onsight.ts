@@ -105,12 +105,18 @@ export const figures = {
   // "$100,000+" figures were removed: they did not match these ranges.
   pricingAccounts: { value: "40", label: "Accounts on the revised pricing", source: "jonathan", asOf: "2026-11-26" },
   pricingBefore: { value: "$2,500 to $3,000", label: "Annual fee per account, before", source: "jonathan", asOf: "2026-11-26" },
-  pricingAfter: {
-    value: "$3,000 to $5,000",
-    label: "Annual fee per account, now",
+  pricingAfter: { value: "$3,000 to $5,000", label: "Annual fee per account, now", source: "jonathan", asOf: "2026-11-26" },
+  // Calculated from the two ranges above: the lowest fee before ($2,500) against the lowest
+  // fee now ($3,000) is +20%. Jonathan decided on 2026-11-26 to state it as "at least". That
+  // wording is his call: an account at $3,000 before and $3,000 now would be 0%.
+  pricingPercent: {
+    value: "At least +20%",
+    label: "Increase in annual fee per account",
     source: "jonathan",
     asOf: "2026-11-26",
-    note: "About 40 accounts, from January 2026, varying by account. Before: about $2,500 to $3,000.",
+    note:
+      "About 40 accounts, from January 2026. Fees went from about $2,500 to $3,000 to about $3,000 to $5,000 a " +
+      "year, so the increase varies by account.",
   },
 
   // An estimate by Jonathan, not a count. No earlier count exists to check it against.
@@ -263,7 +269,8 @@ export const caseStudyChanged = {
     `from ${figures.yelpBefore.value} to ${figures.yelpAfter.value}, an increase of ` +
     `${plain(figures.yelpReviews.value)}. Both percentages rest on small review counts. The revised pricing took effect in January 2026, and ` +
     `about ${figures.pricingAccounts.value} accounts moved to it. Annual fees per account were previously about ` +
-    `${figures.pricingBefore.value} and are now about ${figures.pricingAfter.value}, varying by account.`,
+    `${figures.pricingBefore.value} and are now about ${figures.pricingAfter.value}. The increase varies by ` +
+    `account and is at least ${plain(figures.pricingPercent.value.replace("At least ", ""))}, calculated from those ranges.`,
   disclaimer: "These figures describe a single past engagement. See Limitations below.",
   businessDisclaimer:
     "These figures were confirmed by the owner of On-Sight. They describe a single past engagement. See " +

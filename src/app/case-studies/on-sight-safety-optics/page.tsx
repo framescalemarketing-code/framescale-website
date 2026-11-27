@@ -86,7 +86,7 @@ const searchMetrics = [
   },
 ];
 
-const businessMetrics = [toMetric("googleReviews"), toMetric("yelpReviews"), toMetric("pricingAfter")];
+const businessMetrics = [toMetric("googleReviews"), toMetric("yelpReviews"), toMetric("pricingPercent")];
 
 const limitations = caseStudyLimitations.items.filter((item) => onSightFiguresApproved || !item.reported);
 const challengeItems = onSightFiguresApproved
