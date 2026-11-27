@@ -50,7 +50,7 @@ export default function MethodPage() {
           <Link href="/services" className="link-quiet font-semibold text-(--brand-primary)">
             services I offer
           </Link>{" "}
-          runs on these phases, and you approve the end of one before I start the next.
+          runs on these phases.
         </p>
       </PageHero>
 

@@ -9,8 +9,10 @@ export type ScalePhase = {
   /** One short line for the condensed treatment. */
   summary: string;
   description: string;
-  activities: string[];
-  deliverables: string[];
+  /** What I do in this phase, written as a couple of plain sentences. */
+  whatIDo: string;
+  /** What the client has in hand at the end of it, also plain sentences. */
+  whatYouGet: string;
 };
 
 export const scaleIntro = {
@@ -18,8 +20,8 @@ export const scaleIntro = {
   /** The heading over the five-letter preview on the home page. */
   previewTitle: "How Working With Me Goes In Five Phases",
   lead:
-    "I use the same five phases with every practice, and you approve each one before the next begins. You " +
-    "always know which phase we are in.",
+    "Every practice I work with goes through the same five phases. I finish one, show you what I found, and " +
+    "we agree before I start the next. You will always know where we are.",
 } as const;
 
 /**
@@ -37,18 +39,15 @@ export const scalePhases: ScalePhase[] = [
     title: "Study The Market",
     summary: "I find out who buys from practices like yours and who else they consider.",
     description:
-      "I start wide, because narrowing down too early means fixing the wrong thing. I look at who buys from " +
-      "practices like yours, what else they could pick instead of you, and what tips them one way or the other.",
-    activities: [
-      "Look at who buys from practices like yours",
-      "See what the competition charges and how they talk about it",
-      "Work out what makes someone pick one practice over another",
-    ],
-    deliverables: [
-      "A clear picture of the market you are in",
-      "A list of the gaps I found",
-      "What I would do first, given your budget",
-    ],
+      "I start wide, because narrowing down too early means fixing the wrong thing. First I find out who buys " +
+      "from practices like yours, what else they could pick instead of you, and what tips them one way or the " +
+      "other.",
+    whatIDo:
+      "I look at what the competition charges and how it talks about itself. Then I work out what makes " +
+      "someone pick one practice over another.",
+    whatYouGet:
+      "You get a clear picture of the market you are in, the gaps I found, and what I would do first given " +
+      "your budget.",
   },
   {
     letter: "C",
@@ -57,18 +56,14 @@ export const scalePhases: ScalePhase[] = [
     title: "Clarify The Client View",
     summary: "I look at your business the way a customer sees it.",
     description:
-      "You know your business from the inside, and customers only see the outside. When the two views differ, " +
-      "customers choose based on the one they can see.",
-    activities: [
-      "Talk to you, and to whoever deals with customers day to day",
-      "Read your reviews closely, including the bad ones",
-      "Compare how the competition describes itself",
-    ],
-    deliverables: [
-      "A plain description of your best kind of customer",
-      "What sets you apart, if anything does",
-      "The first things worth changing",
-    ],
+      "You know your business from the inside, but your customers only see the outside, and that is what they " +
+      "choose on. So before I change anything, I look at your practice the way a stranger would.",
+    whatIDo:
+      "I sit down with you and with whoever deals with your customers every day. Then I read your reviews, " +
+      "the bad ones too, and see how the practices around you describe themselves.",
+    whatYouGet:
+      "You get a plain description of the customer you do best with, what sets you apart if anything does, " +
+      "and the first few things I think are worth changing.",
   },
   {
     letter: "A",
@@ -78,16 +73,12 @@ export const scalePhases: ScalePhase[] = [
     summary: "We agree what to say and where to say it.",
     description:
       "Now we turn what I found into a plan. We decide it together, so you know why every piece of it is there.",
-    activities: [
-      "Settle on what you are saying and who you are saying it to",
-      "Pick the handful of places worth showing up",
-      "Match it to your goals and what you can spend",
-    ],
-    deliverables: [
-      "A plan built around your business",
-      "Which pages and which channels are worth it",
-      "A short list of numbers worth watching",
-    ],
+    whatIDo:
+      "We settle what you are saying and who you are saying it to. Then we pick the handful of places worth " +
+      "showing up, and match all of it to your goals and what you can spend.",
+    whatYouGet:
+      "You get a plan built around your business, a view of which pages and channels are worth it, and a " +
+      "short list of numbers worth watching.",
   },
   {
     letter: "L",
@@ -98,16 +89,12 @@ export const scalePhases: ScalePhase[] = [
     description:
       "Then I build it. If the website or the tracking does not exist yet, I build that too, and I stay on the " +
       "job from start to finish.",
-    activities: [
-      "Build or fix the website and the pages that matter",
-      "Put tracking in so we can see what happens",
-      "Go through the whole thing before it goes live",
-    ],
-    deliverables: [
-      "A website built for the plan",
-      "Tracking and reporting in one place",
-      "A full check of the site and tracking before it goes live",
-    ],
+    whatIDo:
+      "I build or fix the website and the pages that matter, and I put tracking in so we can see what " +
+      "happens. Before anything goes live, I go through the whole thing.",
+    whatYouGet:
+      "You get a website built for the plan, tracking and reporting in one place, and a full check of both " +
+      "before launch.",
   },
   {
     letter: "E",
@@ -118,16 +105,12 @@ export const scalePhases: ScalePhase[] = [
     description:
       "Once it is live I watch how people move through it and how the business responds. We review the results " +
       "every 90 days and change the parts that are not working.",
-    activities: [
-      "Track the calls, the forms and the visits",
-      "Find where people give up and leave",
-      "Adjust the message, the pages and the spend",
-    ],
-    deliverables: [
-      "A monthly report you can read without a translator",
-      "A review every 90 days of what is working",
-      "A short list of what to do next",
-    ],
+    whatIDo:
+      "I track the calls, the forms and the visits, and I look for where people give up and leave. Then I " +
+      "adjust the message, the pages and the spend.",
+    whatYouGet:
+      "You get a monthly report you can read without a translator, a review every 90 days of what is " +
+      "working, and a short list of what to do next.",
   },
 ];
 
@@ -139,7 +122,7 @@ export type WorkingStandard = {
 export const workingStandards: WorkingStandard[] = [
   {
     title: "Homework Comes First",
-    description: "I look at your market and your customers before I suggest you spend anything.",
+    description: "Before I suggest you spend anything, I look at your market and your customers.",
   },
   {
     title: "Built Around You",
@@ -147,7 +130,7 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Everything Connected",
-    description: "The website, the tracking, and the reporting all live in one place.",
+    description: "I keep the website, the tracking and the reporting together in one place.",
   },
   {
     title: "Reports You Can Use",

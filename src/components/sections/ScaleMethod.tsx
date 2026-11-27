@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { scalePhases, workingStandards } from "@/content/scale";
@@ -46,28 +45,11 @@ export function ScalePhases() {
               <div className="grid gap-8 sm:grid-cols-2">
                 <div className="flex flex-col gap-3">
                   <h3 className="font-ui text-sm font-semibold text-(--brand-deep)">What I Do</h3>
-                  <ul className="flex flex-col gap-2.5">
-                    {phase.activities.map((item) => (
-                      <li key={item} className="flex gap-3 text-(--text-muted)">
-                        <span
-                          className="mt-2.5 block h-px w-3 shrink-0 bg-(--brand-primary)"
-                          aria-hidden="true"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-(--text-muted)">{phase.whatIDo}</p>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h3 className="font-ui text-sm font-semibold text-(--brand-deep)">What You Get</h3>
-                  <ul className="flex flex-col gap-2.5">
-                    {phase.deliverables.map((item) => (
-                      <li key={item} className="flex gap-3 text-(--brand-deep)">
-                        <Check className="mt-1 size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-(--brand-deep)">{phase.whatYouGet}</p>
                 </div>
               </div>
             </div>
