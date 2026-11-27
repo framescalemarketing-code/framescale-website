@@ -1,5 +1,6 @@
 import type { FaqItem } from "@/content/faq";
 import {
+  caseStudyDates,
   caseStudyHero,
   caseStudyMeta,
   caseStudyPath,
@@ -307,6 +308,8 @@ export function buildCaseStudyGraph() {
         isPartOf: { "@id": SCHEMA_IDS.website },
         about: { "@id": organizationId },
         author: { "@id": SCHEMA_IDS.person },
+        datePublished: caseStudyDates.published,
+        dateModified: caseStudyDates.modified,
       },
       {
         "@type": "Organization",

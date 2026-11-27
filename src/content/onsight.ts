@@ -30,7 +30,7 @@ export const onSightName = "On-Sight Safety Optics";
 export const onSightUrl = "https://onsightoptics.com";
 export const caseStudyPath = "/case-studies/on-sight-safety-optics";
 
-export type FigureSource = "on-sight-published" | "ga4" | "jonathan";
+export type FigureSource = "on-sight-published" | "ga4" | "jonathan" | "author";
 
 export type Figure = {
   value: string;
@@ -45,7 +45,8 @@ export type Figure = {
 export const sourceLabels: Record<FigureSource, string> = {
   "on-sight-published": "Published by On-Sight",
   ga4: "On-Sight's Google Analytics",
-  jonathan: "Reported by me",
+  jonathan: "Confirmed by On-Sight's owner",
+  author: "Author's estimate",
 };
 
 /** "+98%" to "98%", so a sentence can say "rose 98%" from the same row the stat tile reads. */
@@ -72,40 +73,52 @@ export const figures = {
   },
   organicBefore: { value: "47", label: "Organic search visits, July 2026", source: "ga4", asOf: "2026-11-26" },
   organicAfter: { value: "93", label: "Organic search visits, October 2026", source: "ga4", asOf: "2026-11-26" },
+  totalBefore: { value: "265", label: "Total visits, July 2026", source: "ga4", asOf: "2026-11-26" },
   organicShareBefore: { value: "18%", label: "Organic search share, July 2026", source: "ga4", asOf: "2026-11-26" },
   organicShareAfter: { value: "37%", label: "Organic search share, October 2026", source: "ga4", asOf: "2026-11-26" },
   totalLow: { value: "254", label: "Fewest total visits in a month", source: "ga4", asOf: "2026-11-26" },
   totalHigh: { value: "276", label: "Most total visits in a month", source: "ga4", asOf: "2026-11-26" },
 
-  // Jonathan's own account, 2026-11-26. No document records these, so they sit
-  // behind `onSightFiguresApproved` and are written in the first person.
+  // Given by Jonathan on 2026-11-26 and confirmed by On-Sight's owner. No
+  // document records these, so they sit behind `onSightFiguresApproved`.
+  // Review totals now: Google 31, Yelp 6. The earlier totals are the totals now
+  // minus the gains he gave (+8 and +2). The percentages follow from those.
+  googleBefore: { value: "23", label: "Google reviews, before", source: "jonathan", asOf: "2026-11-26" },
+  googleAfter: { value: "31", label: "Google reviews, now", source: "jonathan", asOf: "2026-11-26" },
+  yelpBefore: { value: "4", label: "Yelp reviews, before", source: "jonathan", asOf: "2026-11-26" },
+  yelpAfter: { value: "6", label: "Yelp reviews, now", source: "jonathan", asOf: "2026-11-26" },
   googleReviews: {
-    value: "+8",
+    value: "+35%",
     label: "Google reviews",
     source: "jonathan",
     asOf: "2026-11-26",
-    note: "Added in the past few months.",
+    note: "From 23 to 31 reviews in the past few months.",
   },
   yelpReviews: {
-    value: "+2",
+    value: "+50%",
     label: "Yelp reviews",
     source: "jonathan",
     asOf: "2026-11-26",
-    note: "Added in the past few months.",
+    note: "From 4 to 6 reviews in the past few months.",
   },
-  pricingRange: {
-    value: "10 to 15%",
-    label: "Revenue increase per account",
+  // Pricing, as given by Jonathan on 2026-11-26. The earlier "10 to 15%" and
+  // "$100,000+" figures were removed: they did not match these ranges.
+  pricingAccounts: { value: "40", label: "Accounts on the revised pricing", source: "jonathan", asOf: "2026-11-26" },
+  pricingBefore: { value: "$2,500 to $3,000", label: "Annual fee per account, before", source: "jonathan", asOf: "2026-11-26" },
+  pricingAfter: {
+    value: "$3,000 to $5,000",
+    label: "Annual fee per account, now",
     source: "jonathan",
     asOf: "2026-11-26",
-    note: "From the new pricing structure, depending on the structure each company chose.",
+    note: "About 40 accounts, from January 2026, varying by account. Before: about $2,500 to $3,000.",
   },
-  yearlyRevenue: {
-    value: "$100,000+",
-    label: "Extra revenue a year",
-    source: "jonathan",
+
+  // An estimate by Jonathan, not a count. No earlier count exists to check it against.
+  inquiryIncrease: {
+    value: "1 to 3",
+    label: "Added inquiries a month",
+    source: "author",
     asOf: "2026-11-26",
-    note: "Across the accounts On-Sight already had.",
   },
 } satisfies Record<string, Figure>;
 
@@ -136,8 +149,8 @@ export function toMetric(id: FigureId) {
 export const caseStudyMeta = {
   title: `${onSightName} Case Study | Jonathan Mejia`,
   description:
-    `I built the website and ordering app for ${onSightName} and work on its marketing and analytics. ` +
-    "See what changed and where each number comes from.",
+    `A case study of the website and marketing program developed for ${onSightName}, ` +
+    "with the source and date of every figure.",
   breadcrumb: "On-Sight Case Study",
   /** The label for links to the page, in the footer and in body copy. */
   linkLabel: "On-Sight Case Study",
@@ -145,74 +158,185 @@ export const caseStudyMeta = {
 
 export const caseStudyHero = {
   headline: `${onSightName} Case Study`,
-  subhead: "The Website, The App And The Marketing",
+  subhead: "Website, Marketing And Ordering Application In Development",
   lead:
-    `${onSightName} is a client of mine. I built its website and its ordering app, and I work on its marketing, ` +
-    "analytics, pricing and content.",
+    `This case study describes the website and marketing program that Jonathan Mejia developed for ` +
+    `${onSightName}, a client of FrameScale, and an ordering application that is still in development. It ` +
+    "reports what changed and states the source and date of each figure.",
 } as const;
 
 export const caseStudyWho = {
-  title: `Who Is ${onSightName}?`,
+  title: "Background",
   body: [
-    `${onSightName} is a prescription safety eyewear business that works with companies through corporate ` +
-      "eyewear programs. That makes it a different kind of business from an independent optical practice.",
+    `${onSightName} is a prescription safety eyewear business that serves companies through corporate eyewear ` +
+      "programs. Its customers are employers, which distinguishes it from an independent optical practice.",
     // The sentence that carries the published figures is built in the page from `figures`, so the numbers
     // can only come from the table.
-    "I wrote this up because the work behind it overlaps with what I do for practices. The website has to be " +
-      "found, the reviews have to grow, and the owner has to be able to read the reports.",
+    "The engagement is relevant to independent practices because the underlying problems are shared. The " +
+      "website must be discoverable, online reviews must accumulate, and the owner must be able to interpret " +
+      "the reporting.",
   ],
   /** Lead-in for the sentence that lists On-Sight's own figures. The page appends the numbers. */
   publishedLead: "On-Sight reports",
-  publishedTail: "These are On-Sight's own figures, from its website.",
+  publishedTail: "These figures are published by On-Sight on its website and were recorded on",
+} as const;
+
+/** The top-of-page results box. Two groups, so a reader sees which figures are documented and which are reported. */
+export const caseStudyGlance = {
+  title: "Results At A Glance",
+  documentedTitle: "Documented Figures",
+  reportedTitle: "Reported Figures",
+} as const;
+
+/**
+ * The starting position. The first paragraph is built in the page from `figures`
+ * (July 2026 baseline). The rest is Jonathan's account of the situation before
+ * the work, given 2026-11-26, so it is attributed to him by name. The pricing
+ * sentence sits behind `onSightFiguresApproved` with the other revenue lines.
+ */
+export const caseStudyChallenge = {
+  title: "The Challenge",
+  reportedLead: "On-Sight began the engagement with the following limitations.",
+  items: [
+    "The existing website did not track visitor behavior, so there was nothing to measure.",
+    "There was no ordering application.",
+  ],
+  /** Shown only while `onSightFiguresApproved` is true. */
+  pricingItem:
+    "Pricing was scattered and not categorized, so it did not capture the full value of the services provided, " +
+    "and revenue that was available went uncollected.",
 } as const;
 
 export type WorkItem = { title: string; body: string };
 
 export const caseStudyWork = {
-  title: "What Did I Do For On-Sight?",
-  lead: "My work covers the website, the app, the marketing and the numbers behind them.",
+  title: "Actions And Timeline",
+  lead:
+    "The new website went live in January 2026, and the revised pricing took effect the same month. Work on " +
+    "the application, marketing, content and analytics began in approximately March 2026 and continues. The " +
+    "ordering application is still in development. The engagement comprises six areas of work: the website, " +
+    "the application, marketing, content, analytics and pricing.",
   items: [
-    { title: "Website Development", body: "I built the On-Sight website custom." },
-    { title: "App Development", body: "I built an ordering and operations app for the business." },
-    { title: "Marketing Strategy", body: "I decide what to say, who to say it to and where to say it." },
-    { title: "Content And Posting", body: "I write the content and handle the posting." },
-    { title: "Business Analytics", body: "I handle the analytics, so the numbers show what is working." },
-    { title: "Pricing Strategy", body: "I designed a new pricing structure for the companies On-Sight serves." },
+    { title: "Website Development", body: "A custom website was designed and built for On-Sight." },
+    { title: "App Development", body: "An ordering and operations application is in development for the business." },
+    { title: "Marketing Strategy", body: "The strategy determines the message, the audience and the channels." },
+    { title: "Content And Posting", body: "Content is written and published on an ongoing basis." },
+    { title: "Business Analytics", body: "Analytics reporting identifies which activity is producing results." },
+    { title: "Pricing Strategy", body: "A revised pricing structure was designed for the companies that On-Sight serves." },
   ] satisfies WorkItem[],
 } as const;
 
-export const caseStudyChanged = {
-  title: "What Changed For On-Sight?",
-  lead:
-    "Visibility went up. On-Sight has also seen more walk-in customers and more companies asking about " +
-    "corporate eyewear programs. I do not have a clean before-and-after count for those two, so I am not " +
-    "putting a percentage on them.",
-  searchTitle: "Search Visits",
-  searchBody:
-    `Organic search visits to the On-Sight website rose ${plain(figures.organicGrowth.value)} from July to ` +
-    `October 2026, from ${figures.organicBefore.value} a month to ${figures.organicAfter.value}. Total visits ` +
-    `stayed between ${figures.totalLow.value} and ${figures.totalHigh.value} a month, so organic search grew ` +
-    `from ${figures.organicShareBefore.value} to ${figures.organicShareAfter.value} of the same traffic. ` +
-    "Google Analytics for the site starts in July 2026, which makes July the earliest month I can compare.",
-  businessTitle: "Reviews And Pricing",
-  businessBody:
-    `On-Sight's Google reviews rose by ${plain(figures.googleReviews.value)} and its Yelp reviews by ` +
-    `${plain(figures.yelpReviews.value)} in the past few months. The new pricing structure raised revenue by ` +
-    `about ${figures.pricingRange.value} per account, depending on the structure each company chose. Across ` +
-    `the accounts On-Sight already had, that came to over ${figures.yearlyRevenue.value.replace("+", "")} more a year.`,
-  disclaimer:
-    "These figures describe one past engagement. No specific result is guaranteed for any other business.",
-  businessDisclaimer:
-    "These four figures are my own account of the work. They describe one past engagement, and no specific " +
-    "result is guaranteed for any other business.",
+export const caseStudyMethod = {
+  title: "Method Of Measurement",
+  search:
+    "Search figures come from Google Analytics for the On-Sight website. Organic share is the number of organic " +
+    "search visits divided by total visits in the same month. Data begins in July 2026, so July is the " +
+    "baseline, and October is the last full month used.",
+  published:
+    "On-Sight's own figures were read from its public website, as dated in the Background section. The " +
+    "engagement timeline, the walk-in increase and the inquiry estimate come from the author's account of the " +
+    "engagement.",
+  /** Shown only while `onSightFiguresApproved` is true. */
+  reported:
+    "The review counts and the pricing figures were confirmed by the owner of On-Sight Safety Optics. They " +
+    "are not published elsewhere.",
 } as const;
 
+export const caseStudyChanged = {
+  title: "Observed Outcomes",
+  lead:
+    "Online visibility increased. Walk-in customers also increased, but no count exists. Inbound inquiries " +
+    `from companies seeking corporate eyewear programs rose by an estimated ${figures.inquiryIncrease.value} a ` +
+    "month. The estimate is the author's, and no earlier count exists to check it against.",
+  searchTitle: "Organic Search Traffic",
+  searchBody:
+    `Organic search visits to the On-Sight website increased by ${plain(figures.organicGrowth.value)} between ` +
+    `July and October 2026, from ${figures.organicBefore.value} to ${figures.organicAfter.value} per month. ` +
+    `Total monthly visits remained between ${figures.totalLow.value} and ${figures.totalHigh.value}, so the ` +
+    `share of traffic arriving from organic search rose from ${figures.organicShareBefore.value} to ` +
+    `${figures.organicShareAfter.value}. Google Analytics data for the site begins in July 2026, which makes ` +
+    "July the earliest month available as a baseline.",
+  businessTitle: "Reviews And Pricing",
+  businessBody:
+    `Over the past few months, On-Sight's Google reviews rose from ${figures.googleBefore.value} to ` +
+    `${figures.googleAfter.value}, an increase of ${plain(figures.googleReviews.value)}. Its Yelp reviews rose ` +
+    `from ${figures.yelpBefore.value} to ${figures.yelpAfter.value}, an increase of ` +
+    `${plain(figures.yelpReviews.value)}. Both percentages rest on small review counts. The revised pricing took effect in January 2026, and ` +
+    `about ${figures.pricingAccounts.value} accounts moved to it. Annual fees per account were previously about ` +
+    `${figures.pricingBefore.value} and are now about ${figures.pricingAfter.value}, varying by account.`,
+  disclaimer: "These figures describe a single past engagement. See Limitations below.",
+  businessDisclaimer:
+    "These figures were confirmed by the owner of On-Sight. They describe a single past engagement. See " +
+    "Limitations below.",
+} as const;
+
+/**
+ * Replaces the one-line "no result is guaranteed" disclaimer. The FTC's
+ * endorsement guides (16 CFR 255.2) say a generic disclaimer is unlikely to
+ * work, so the page states what the figures cannot show, including that no
+ * typical result has been established. Items marked `reported` drop out with
+ * the revenue lines when `onSightFiguresApproved` is false.
+ */
+export const caseStudyLimitations = {
+  title: "Limitations",
+  lead: "The figures above should be read with the following limits in mind.",
+  items: [
+    { text: "This is a single engagement, measured over four monthly readings from July to October 2026.", reported: false },
+    {
+      text:
+        "No analytics data exists for the period before July 2026. The new website went live in January 2026, " +
+        "so the July baseline falls six months after launch.",
+      reported: false,
+    },
+    {
+      text: "The review and pricing figures were confirmed by the owner of On-Sight and are not published or independently documented.",
+      reported: true,
+    },
+    {
+      text: "The website, the pricing change and the marketing work overlapped, so no single result can be attributed to one cause.",
+      reported: false,
+    },
+    {
+      text:
+        "Walk-in customers are not counted. The increase of " +
+        `${figures.inquiryIncrease.value} inquiries a month is the author's estimate, with no earlier count to check it against.`,
+      reported: false,
+    },
+    {
+      text:
+        "On-Sight serves employers, so its results are not representative of an independent practice that " +
+        "serves patients. No typical result has been established.",
+      reported: false,
+    },
+  ],
+} as const;
+
+/**
+ * The client's own words. `null` until On-Sight's owner supplies a quote and
+ * agrees to it being published. Jonathan asked for a placeholder for now: the
+ * section shows a labeled placeholder everywhere except the production
+ * deployment, and shows nothing there until this is filled in. Never write a
+ * quote that the owner did not give.
+ */
+export const clientQuote: { text: string; name: string; role: string } | null = null;
+
+export const caseStudyQuote = {
+  title: "Client Perspective",
+  placeholder: "A short statement from the owner of On-Sight Safety Optics will be added here.",
+} as const;
+
+/** True on every deployment except Vercel production, so a placeholder never reaches the live site. */
+export const showQuotePlaceholder = process.env.VERCEL_ENV !== "production";
+
+/** For the page's structured data. */
+export const caseStudyDates = { published: "2026-11-26", modified: "2026-11-26" } as const;
+
 export const caseStudyBridge = {
-  title: "What This Means For Your Practice",
+  title: "Implications For An Independent Practice",
   body:
-    "Your practice has its own market, schedule and starting point, so your results will differ. The method " +
-    "stays the same: study the market, build a website that books appointments, make the practice easy to find " +
-    "and report on what is working.",
+    "An independent practice has its own market, schedule and starting point, so its results will differ. The " +
+    "method is constant: study the market, build a website that books appointments, make the practice easy to " +
+    "find, and report on what is working.",
   methodLink: "See The Method",
   servicesLink: "See The Services",
 } as const;
@@ -220,7 +344,7 @@ export const caseStudyBridge = {
 export const caseStudyCta = {
   title: "Want This For Your Practice?",
   button: "Book A Free Call",
-  lead: "Half an hour on the phone. I will tell you where I would start, and whether I am the right person at all.",
+  lead: "The first call lasts half an hour. It establishes where the work should begin and whether this is the right fit.",
 } as const;
 
 /** The short proof band on the home page. Rendered only while `onSightApproved` is true. */

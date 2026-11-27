@@ -9,17 +9,24 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { StatRow } from "@/components/ui/Stat";
 import {
   caseStudyBridge,
+  caseStudyChallenge,
   caseStudyChanged,
   caseStudyCta,
+  caseStudyGlance,
   caseStudyHero,
+  caseStudyLimitations,
   caseStudyMeta,
+  caseStudyMethod,
   caseStudyPath,
+  caseStudyQuote,
   caseStudyWho,
   caseStudyWork,
+  clientQuote,
   figures,
   formatAsOf,
   onSightApproved,
   onSightFiguresApproved,
+  showQuotePlaceholder,
   sourceLabels,
   toMetric,
 } from "@/content/onsight";
@@ -51,7 +58,17 @@ function publishedFiguresSentence() {
   return (
     `${caseStudyWho.publishedLead} ${yearsInBusiness.value} years in business, ${activePrograms.value} active ` +
     `programs, ${endUsers.value} end users and ${serviceRegions.value} service regions. ` +
-    `${caseStudyWho.publishedTail} I read them on ${formatAsOf(yearsInBusiness.asOf)}.`
+    `${caseStudyWho.publishedTail} ${formatAsOf(yearsInBusiness.asOf)}.`
+  );
+}
+
+/** The documented baseline: July 2026 is the earliest month of analytics data. */
+function baselineSentence() {
+  const { totalBefore, organicBefore, organicShareBefore } = figures;
+  return (
+    `In July 2026, the earliest month for which analytics data exists, the On-Sight website received ` +
+    `${totalBefore.value} visits, of which ${organicBefore.value} (${organicShareBefore.value}) arrived from ` +
+    `organic search. ${sourceLabels.ga4}, ${formatAsOf(totalBefore.asOf)}.`
   );
 }
 
@@ -69,12 +86,12 @@ const searchMetrics = [
   },
 ];
 
-const businessMetrics = [
-  toMetric("googleReviews"),
-  toMetric("yelpReviews"),
-  toMetric("pricingRange"),
-  toMetric("yearlyRevenue"),
-];
+const businessMetrics = [toMetric("googleReviews"), toMetric("yelpReviews"), toMetric("pricingAfter")];
+
+const limitations = caseStudyLimitations.items.filter((item) => onSightFiguresApproved || !item.reported);
+const challengeItems = onSightFiguresApproved
+  ? [...caseStudyChallenge.items, caseStudyChallenge.pricingItem]
+  : caseStudyChallenge.items;
 
 export default function OnSightCaseStudyPage() {
   if (!onSightApproved) notFound();
@@ -100,11 +117,38 @@ export default function OnSightCaseStudyPage() {
       </PageHero>
 
       <Section size="default">
+        <SectionHeading title={caseStudyGlance.title} className="max-w-3xl" />
+        <div className="mt-8 flex flex-col gap-4">
+          <h3 className="display-sm text-(--brand-deep)">{caseStudyGlance.documentedTitle}</h3>
+          <StatRow metrics={searchMetrics} disclaimer={caseStudyChanged.disclaimer} />
+        </div>
+        {onSightFiguresApproved ? (
+          <div className="mt-10 flex flex-col gap-4">
+            <h3 className="display-sm text-(--brand-deep)">{caseStudyGlance.reportedTitle}</h3>
+            <StatRow metrics={businessMetrics} disclaimer={caseStudyChanged.businessDisclaimer} />
+          </div>
+        ) : null}
+      </Section>
+
+      <Section tone="muted">
         <SectionHeading title={caseStudyWho.title} className="max-w-3xl" />
         <div className="mt-6 flex max-w-3xl flex-col gap-4">
           <p className="measure text-(--text-muted)">{caseStudyWho.body[0]}</p>
           <p className="measure text-(--text-muted)">{publishedFiguresSentence()}</p>
           <p className="measure text-(--text-muted)">{caseStudyWho.body[1]}</p>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading title={caseStudyChallenge.title} className="max-w-3xl" />
+        <div className="mt-6 flex max-w-3xl flex-col gap-4">
+          <p className="measure text-(--text-muted)">{baselineSentence()}</p>
+          <p className="measure text-(--text-muted)">{caseStudyChallenge.reportedLead}</p>
+          <ul className="measure flex list-disc flex-col gap-2 pl-6 text-(--text-muted)">
+            {challengeItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </Section>
 
@@ -124,24 +168,57 @@ export default function OnSightCaseStudyPage() {
       </Section>
 
       <Section>
-        <SectionHeading title={caseStudyChanged.title} lead={caseStudyChanged.lead} className="max-w-3xl" />
+        <SectionHeading title={caseStudyMethod.title} className="max-w-3xl" />
+        <div className="mt-6 flex max-w-3xl flex-col gap-4">
+          <p className="measure text-(--text-muted)">{caseStudyMethod.search}</p>
+          <p className="measure text-(--text-muted)">{caseStudyMethod.published}</p>
+          {onSightFiguresApproved ? (
+            <p className="measure text-(--text-muted)">{caseStudyMethod.reported}</p>
+          ) : null}
+        </div>
+      </Section>
 
-        <div className="mt-10 flex flex-col gap-4">
+      <Section tone="muted">
+        <SectionHeading title={caseStudyChanged.title} lead={caseStudyChanged.lead} className="max-w-3xl" />
+        <div className="mt-10 flex max-w-3xl flex-col gap-4">
           <h3 className="display-sm text-(--brand-deep)">{caseStudyChanged.searchTitle}</h3>
           <p className="measure text-(--text-muted)">{caseStudyChanged.searchBody}</p>
-          <StatRow metrics={searchMetrics} disclaimer={caseStudyChanged.disclaimer} />
         </div>
-
         {onSightFiguresApproved ? (
-          <div className="mt-12 flex flex-col gap-4">
+          <div className="mt-12 flex max-w-3xl flex-col gap-4">
             <h3 className="display-sm text-(--brand-deep)">{caseStudyChanged.businessTitle}</h3>
             <p className="measure text-(--text-muted)">{caseStudyChanged.businessBody}</p>
-            <StatRow metrics={businessMetrics} disclaimer={caseStudyChanged.businessDisclaimer} />
           </div>
         ) : null}
       </Section>
 
-      <Section tone="muted">
+      <Section>
+        <SectionHeading title={caseStudyLimitations.title} lead={caseStudyLimitations.lead} className="max-w-3xl" />
+        <ul className="measure mt-6 flex max-w-3xl list-disc flex-col gap-2 pl-6 text-(--text-muted)">
+          {limitations.map((item) => (
+            <li key={item.text}>{item.text}</li>
+          ))}
+        </ul>
+      </Section>
+
+      {clientQuote ? (
+        <Section tone="muted">
+          <SectionHeading title={caseStudyQuote.title} className="max-w-3xl" />
+          <figure className="mt-6 max-w-3xl">
+            <blockquote className="measure text-(--brand-deep)">{clientQuote.text}</blockquote>
+            <figcaption className="mt-3 font-ui text-sm text-(--text-muted)">
+              {clientQuote.name}, {clientQuote.role}, On-Sight Safety Optics
+            </figcaption>
+          </figure>
+        </Section>
+      ) : showQuotePlaceholder ? (
+        <Section tone="muted">
+          <SectionHeading title={caseStudyQuote.title} className="max-w-3xl" />
+          <p className="measure mt-6 text-(--text-muted)">{caseStudyQuote.placeholder}</p>
+        </Section>
+      ) : null}
+
+      <Section tone={clientQuote || showQuotePlaceholder ? "default" : "muted"}>
         <SectionHeading title={caseStudyBridge.title} className="max-w-3xl" />
         <p className="measure mt-6 text-(--text-muted)">
           {caseStudyBridge.body}{" "}
