@@ -1,4 +1,5 @@
 import { getPublishedInsights } from "@/content/insights";
+import { caseStudyPath, onSightApproved } from "@/content/onsight";
 import { bookingLive } from "@/lib/site";
 
 export type SitemapChangeFrequency =
@@ -32,6 +33,8 @@ export const SITEMAP_ENTRIES: SitemapEntry[] = [
   ...(bookingLive ? [{ path: "/book", priority: 0.9, changeFrequency: "monthly" as const }] : []),
   { path: "/method", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
+  // The case study is a 404 while `onSightApproved` is false, so it only enters the sitemap while the switch is on.
+  ...(onSightApproved ? [{ path: caseStudyPath, priority: 0.7, changeFrequency: "monthly" as const }] : []),
   { path: "/contact", priority: 0.7, changeFrequency: "yearly" },
   // /insights is `noindex` until an article is published, so it only enters the
   // sitemap together with its first article. Drafts never appear here.

@@ -6,15 +6,18 @@ import { principal } from "@/lib/site";
  * parallel ("Big invoice, plenty of talk.") read as machine-written, so they
  * stay out. Warmth comes from what is said, not from padding around it.
  *
- * Facts come from Jonathan's own account of his career and from the credentials
- * in `site.ts`. No statistics, prices or client results appear here.
+ * Facts come from Jonathan's own account of his career (the lab, the sales
+ * floor, store management) and from the credentials in `site.ts`. No
+ * statistics, prices or client results appear here. Store names appear on
+ * /about only. The On-Sight case study has its own file, `onsight.ts`.
  */
 export const hero = {
-  headline: "Marketing For Independent Optical Practices, Explained Plainly",
+  headline: "Marketing For Independent Optical Practices",
+  subhead: "From The Lab To The Sales Floor",
   lead:
-    `I'm ${principal.fullName}, an optical practice marketing consultant who started in manufacturing, moved to ` +
-    "the sales floor and went on to manage stores. You work with me directly, from the first call to the " +
-    "monthly report.",
+    `I'm ${principal.fullName}. I handle the strategy, the website, the search work and the reporting for ` +
+    "independent optical practices, so you can see which marketing brings in appointments. You work with me " +
+    "directly, from the first call to the monthly report.",
   primaryCta: "Book A Free Call",
   secondaryCta: "See How I Work",
 } as const;
@@ -27,7 +30,7 @@ export type Credential = {
 export const credentials: Credential[] = [
   { value: "MBA", label: "in marketing" },
   { value: "UC Riverside", label: "bachelor's degree" },
-  { value: "Optical", label: "from the back room to the sales floor" },
+  { value: "Direct", label: "you work with me, start to finish" },
   { value: "Remote", label: "across the United States" },
 ];
 
@@ -40,12 +43,14 @@ export type MarketingPart = {
  * The corrective at the center of the pitch: owners hear "marketing" and think
  * social media, and nobody explains the rest. The five parts map onto the four
  * services and the SCALE phases, so this section is also the table of contents.
+ * The title is a question on purpose, because it is the question owners type
+ * into a search box and ask an AI assistant.
  */
 export const marketingScope = {
-  title: "Marketing Is More Than Social Media",
+  title: "What Does Optical Marketing Include?",
   lead:
-    "Most owners I meet were told marketing means posting online. Posting is one small part of a list that is " +
-    "longer and more useful.",
+    "Marketing covers more than posting online. Posting is one small part of a list that is longer and more " +
+    "useful.",
 } as const;
 
 export const marketingParts: MarketingPart[] = [
@@ -83,7 +88,7 @@ export type Differentiator = {
 export const differentiators: Differentiator[] = [
   {
     title: "You Work With Me",
-    body: "You call, I answer, and I did the work you are calling about.",
+    body: "You call and I answer, and I do the work myself.",
   },
   {
     title: "You See The Homework First",
@@ -102,20 +107,15 @@ export const differentiators: Differentiator[] = [
 ];
 
 /**
- * The condensed version of the story told in full on /about. Keep the two in
- * step: manufacturing, then the sales floor, then managing, then the ceiling
- * that sent him back to school.
+ * The rhythm of the engagement, with one pointer to the story told in full on
+ * /about. The home page is about what the visitor gets, so the background is a
+ * single sentence that backs the claim and leaves the detail to /about.
  */
 export const aboutStrip = {
-  title: "I Started On The Floor, Not In An Office",
+  title: "What Working With Me Looks Like",
   body: [
-    "My first job was in manufacturing, making the product in the back of an optical company. They moved me out " +
-      "front to sell it, and before long I was managing the store with a number to hit every month.",
-    "I did that in corporate stores, in franchises and in small independents. After enough years of it I could " +
-      "see where that road ended, and I did not want to get stuck on it.",
-    "So I went back to school. I earned a bachelor's at UC Riverside and then an MBA in marketing, because I " +
-      "wanted to know why some businesses grow while others just stay busy. When you talk about payroll or a " +
-      "quarter that went sideways, I know what you mean.",
+    "You get a report from me every month and a review every 90 days. I came up through an optical lab, the " +
+      "sales floor and store management, and the full story is on my About page.",
   ],
   cta: "Read My Story",
 } as const;

@@ -1,4 +1,5 @@
 import { getPublishedInsights } from "@/content/insights";
+import { caseStudyMeta, caseStudyPath, onSightApproved } from "@/content/onsight";
 
 /** Public site hostname (no scheme, no path). Drives `url`, inbox, and noreply defaults. */
 const SITE_PUBLIC_HOSTNAME = "framescalemarketing.com";
@@ -35,7 +36,7 @@ export const practice = {
 
 /**
  * Geography. The practice is remote and national, so there is deliberately no
- * `city` here at all. The previous San Diego framing capped the audience at one
+ * `city` here at all. The earlier single-city framing capped the audience at one
  * metro while naming a city the practice does not operate from, and a service
  * area business cannot rank locally in a metro it has no presence in. The niche
  * travels and the geography does not, so optical is the positioning and the
@@ -62,8 +63,8 @@ export const site = {
    * near 180 characters and front-loaded, because search results truncate.
    */
   description:
-    `I am ${principal.displayName}. I spent years in optical, from the back of the shop to managing stores. ` +
-    "Now I help independent practices and eyewear retailers grow. You work with me directly, never a handoff.",
+    `I am ${principal.displayName}, a marketing consultant for independent optical practices. I came up from ` +
+    "the lab to the sales floor, and you work with me directly.",
   /** Full marketing origin, derived from `SITE_PUBLIC_HOSTNAME`. */
   url: `https://${SITE_PUBLIC_HOSTNAME}`,
   /** Hostname only (no scheme), for `robots.txt` Host and similar. */
@@ -103,6 +104,11 @@ export const site = {
 export const hasPublishedInsights = getPublishedInsights().length > 0;
 const insightsLink = hasPublishedInsights ? ([{ label: "Insights", href: "/insights" }] as const) : [];
 
+/** The On-Sight case study joins the footer only while its switch in `src/content/onsight.ts` is on. */
+const caseStudyLink = onSightApproved
+  ? ([{ label: caseStudyMeta.linkLabel, href: caseStudyPath }] as const)
+  : [];
+
 /**
  * Whether "Book A Free Call" sends people to the booking page or to the
  * message form. The page needs a calendar to read from (the Google service
@@ -132,6 +138,7 @@ export const footerLinks = {
     { label: "Services", href: "/services" },
     { label: "Method", href: "/method" },
     { label: "About", href: "/about" },
+    ...caseStudyLink,
     ...insightsLink,
     ...(bookingLive ? [{ label: ctaLabels.book, href: site.bookingPath }] : []),
     { label: "Contact", href: site.contactPath },

@@ -30,8 +30,8 @@ export const services: Service[] = [
     title: "Strategy Before Spending",
     summary: "I study your customers, your competitors and your numbers before I recommend a single purchase.",
     body:
-      "Half the time the marketing is not the problem. It is who the practice is talking to, or what it says to " +
-      "them. I look at your customers and the practices you compete with before I recommend anything.",
+      "Before I recommend any spending, I look at who buys from your practice, what the practices you compete " +
+      "with offer and charge, and what your numbers show. Then I list the fixes in the order I would make them.",
     included: [
       "Who your customers are today, and who you want more of",
       "What nearby and online competitors offer and charge",
@@ -51,7 +51,7 @@ export const services: Service[] = [
       "A website earns its keep when a visitor turns into an appointment. I build around how you take bookings " +
       "now, and I design for the phone first because that is where most people will see it.",
     included: [
-      "Built for your practice, not pulled off a shelf",
+      "A site designed for your practice from the start",
       "Fast and easy to use on a phone",
       "Contact forms that reach you the way you prefer",
       "Page titles, headings and structure that search engines can read",
@@ -84,13 +84,13 @@ export const services: Service[] = [
     title: "Reports You Can Read",
     summary: "Tracking and a monthly report that shows which marketing brought in appointments.",
     body:
-      "You should not have to take my word for what is working. I set up tracking you can open and read on your " +
-      "own, and I recommend ads only when the numbers say they can pay for themselves.",
+      "I set up tracking you can open and read on your own, so you do not have to take my word for what is " +
+      "working. I recommend ads only when the numbers say they can pay for themselves.",
     included: [
       "A report you can read without me on the phone",
       "Ads, but only where the numbers support them",
       "Follow-up for the people who get in touch and then go quiet",
-      "A monthly look at what is working and what is not",
+      "A monthly report and a review every 90 days of what is working and what is not",
     ],
     bestFor: "Money goes out every month and nobody can tell you what came back.",
     phase: "E",

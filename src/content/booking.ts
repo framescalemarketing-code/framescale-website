@@ -41,7 +41,7 @@ export const booking = {
   },
   securityFallback: "The security check didn't load. Call me on {phone} or email {email} instead.",
   success: {
-    title: "You're booked",
+    title: "You're Booked",
     body:
       "I've sent a calendar invite to {address} with the time and my number. If something comes up, reply to " +
       "that email and we'll move it.",

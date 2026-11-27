@@ -6,7 +6,14 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Photo } from "@/components/ui/Photo";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
-import { opticalDifferences, opticalFaqs, opticalHero } from "@/content/optical";
+import {
+  opticalDifferences,
+  opticalDifferencesIntro,
+  opticalFaqIntro,
+  opticalFaqs,
+  opticalHero,
+} from "@/content/optical";
+import { caseStudyPath, onSightApproved, proofLinks } from "@/content/onsight";
 import { framePhotos } from "@/content/photos";
 import { buildBreadcrumbGraph, buildWebPageGraph, buildFaqGraph, buildOpticalServiceGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -21,7 +28,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Optical Marketing For Independent Practices | Jonathan Mejia",
   absoluteTitle: true,
   description:
-    "A consultant who worked in optical retail first. I help independent practices fix the website, " +
+    "From the lab to the sales floor, I know optical. I help independent practices fix the website, " +
     "show up in search and AI answers, and bring patients back.",
   path: "/optical-marketing",
   keywords: [
@@ -58,7 +65,7 @@ export default function OpticalMarketingPage() {
         )}
       />
 
-      <PageHero headline={opticalHero.headline} lead={opticalHero.lead}>
+      <PageHero headline={opticalHero.headline} subhead={opticalHero.subhead} lead={opticalHero.lead}>
         <p className="measure mt-6 text-(--text-muted)">
           The four things I do are on the{" "}
           <Link href="/services" className="link-quiet font-semibold text-(--brand-primary)">
@@ -83,8 +90,8 @@ export default function OpticalMarketingPage() {
 
       <Section tone="muted">
         <SectionHeading
-          title="Why Optical Is Not Like Other Retail"
-          lead="These are the things you will not have to teach me."
+          title={opticalDifferencesIntro.title}
+          lead={opticalDifferencesIntro.lead}
           className="max-w-3xl"
         />
         <Reveal group className="mt-10 flex flex-col">
@@ -122,13 +129,18 @@ export default function OpticalMarketingPage() {
           </Link>{" "}
           explains how I got from the lab bench to marketing.
         </p>
+        {onSightApproved ? (
+          <p className="measure mt-4 text-(--text-muted)">
+            {proofLinks.optical}{" "}
+            <Link href={caseStudyPath} className="link-quiet font-semibold text-(--brand-primary-hover)">
+              {proofLinks.opticalLink}
+            </Link>
+            .
+          </p>
+        ) : null}
       </Section>
 
-      <FAQ
-        items={opticalFaqs}
-        title="Questions Optical Owners Ask Me"
-        lead="The ones that come up before we ever talk about money."
-      />
+      <FAQ items={opticalFaqs} title={opticalFaqIntro.title} lead={opticalFaqIntro.lead} />
 
       <CtaBand
         title="Tell Me About Your Practice"

@@ -3,6 +3,7 @@ import { HomeHero } from "@/components/sections/Hero";
 import { MarketingScope } from "@/components/sections/MarketingScope";
 import { ServiceOverview } from "@/components/sections/Services";
 import { MethodPreview } from "@/components/sections/MethodPreview";
+import { ProofStrip } from "@/components/sections/ProofStrip";
 import { AboutMe } from "@/components/sections/AboutMe";
 import { FAQ } from "@/components/sections/FAQ";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -16,14 +17,15 @@ export const metadata: Metadata = buildPageMetadata({
   title: `${principal.jobTitle} | ${principal.fullName}`,
   absoluteTitle: true,
   description:
-    `${principal.displayName} is an optical practice marketing consultant. Years in optical retail, a ` +
-    "marketing MBA and one person to work with. Book a free call.",
+    "Marketing for independent optical practices: strategy, website, search and AI visibility, and reporting " +
+    `from ${principal.fullName}. Book a free call.`,
   path: "/",
 });
 
 /**
- * Seven sections, in the order a visitor decides: promise, what marketing
- * really covers, what I do, how I work, who I am, objections, action.
+ * Eight sections, in the order a visitor decides: promise, what marketing
+ * really covers, what I do, how I work, proof (while the case study is on),
+ * who I am, objections, action.
  */
 export default function HomePage() {
   return (
@@ -34,6 +36,7 @@ export default function HomePage() {
       <MarketingScope />
       <ServiceOverview />
       <MethodPreview />
+      <ProofStrip />
       <AboutMe />
       <FAQ items={homeFaqs} tone="muted" />
       <CtaBand title={closingCta.title} lead={closingCta.lead} cta={closingCta.cta} />

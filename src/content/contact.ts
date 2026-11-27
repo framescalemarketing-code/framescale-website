@@ -18,10 +18,10 @@ export const contactSection = {
   lead: "Tell me what's going on. Half an hour is enough to work out where to start.",
   card: {
     title: "Send Me A Note",
-    lead: "Three boxes. It doesn't need to be long.",
+    lead: "The form has three boxes and does not need to be long.",
   },
   hours: "Monday to Friday, 9 to 5 Pacific.",
-  locationLine: `Based in ${location.regionName}. Working remotely across ${location.serviceArea}.`,
+  locationLine: `I am based in ${location.regionName} and work remotely across ${location.serviceArea}.`,
 } as const;
 
 export const contactForm = {
@@ -33,7 +33,7 @@ export const contactForm = {
   placeholder: "A couple of sentences is plenty.",
   submit: "Send Message",
   sending: "Sending",
-  helper: "I reply the next business day.",
+  helper: "I reply within one business day.",
   validation: {
     name: "Please enter your name.",
     messageEmpty: "A sentence or two helps me prepare.",
@@ -45,9 +45,9 @@ export const contactForm = {
   securityFallback: "The security check didn't load. Call me on {phone} or email {email} instead.",
   serverErrorLine: "Or call {phone} or email {email}.",
   success: {
-    title: "Message received",
+    title: "Message Received",
     body: "Thanks. I read every message myself and reply within one business day.",
-    again: "Send another message",
+    again: "Send Another Message",
   },
   /** Only ever read by bots. */
   honeypotLabel: "Leave this empty",

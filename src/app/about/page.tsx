@@ -6,6 +6,7 @@ import { Credentials } from "@/components/sections/Credentials";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Container } from "@/components/ui/Container";
 import { aboutHero } from "@/content/about";
+import { caseStudyPath, onSightApproved, proofLinks } from "@/content/onsight";
 import { buildBreadcrumbGraph, buildWebPageGraph, jsonLdProps } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/metadata";
 import { practice, principal } from "@/lib/site";
@@ -14,8 +15,8 @@ export const metadata: Metadata = buildPageMetadata({
   title: `About ${principal.fullName} | ${practice.name}`,
   absoluteTitle: true,
   description:
-    "I spent years in optical, from the back of the shop to managing stores, then earned an MBA in marketing. " +
-    "Here is how that background shapes the work I do.",
+    "I went from an optical lab to the sales floor to store management, then earned an MBA in marketing. " +
+    "Here is how that shapes my work.",
   path: "/about",
   keywords: [
     `${principal.fullName}`,
@@ -58,12 +59,21 @@ export default function AboutPage() {
               </h1>
               <p className="lead measure">{aboutHero.lead}</p>
               <p className="measure text-(--text-muted)">
-                Most of my work is for independent practices, which is why the{" "}
+                My work is for independent optical practices, and the{" "}
                 <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
                   optical marketing page
                 </Link>{" "}
-                goes into detail about that side of it.
+                covers that side of it in detail.
               </p>
+              {onSightApproved ? (
+                <p className="measure text-(--text-muted)">
+                  {proofLinks.about}{" "}
+                  <Link href={caseStudyPath} className="link-quiet font-semibold text-(--brand-primary)">
+                    {proofLinks.aboutLink}
+                  </Link>
+                  .
+                </p>
+              ) : null}
               <div className="tick-rule mt-4 max-w-xs text-(--brand-primary)" aria-hidden="true" />
             </div>
 
@@ -85,7 +95,7 @@ export default function AboutPage() {
       <Credentials />
       <CtaBand
         title="Tell Me What You Are Working On"
-        lead="Half an hour on the phone. No slides and no pitch."
+        lead="Half an hour on the phone, just the two of us."
       />
     </>
   );

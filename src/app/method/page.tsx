@@ -44,7 +44,7 @@ export default function MethodPage() {
         )}
       />
 
-      <PageHero headline="The SCALE Method: How I Work With Your Practice" lead={scaleIntro.lead}>
+      <PageHero headline="The SCALE Method" lead={scaleIntro.lead}>
         <p className="measure mt-6 text-(--text-muted)">
           SCALE stands for Study, Clarify, Align, Launch and Evaluate. Each of the four{" "}
           <Link href="/services" className="link-quiet font-semibold text-(--brand-primary)">
@@ -58,7 +58,7 @@ export default function MethodPage() {
       <WorkingStandards />
 
       <CtaBand
-        title="Want To See How It Would Work For You?"
+        title="See How It Would Work For You"
         lead="Tell me about the practice on a free call. I will tell you which phase I would start in, and what that would involve."
       />
     </>

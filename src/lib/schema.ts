@@ -1,4 +1,11 @@
 import type { FaqItem } from "@/content/faq";
+import {
+  caseStudyHero,
+  caseStudyMeta,
+  caseStudyPath,
+  onSightName,
+  onSightUrl,
+} from "@/content/onsight";
 import { opticalSchemaDescription } from "@/content/optical";
 import { services } from "@/content/services";
 import { location, practice, principal, site } from "@/lib/site";
@@ -98,6 +105,7 @@ function personNode() {
       "Optical practice marketing",
       "Eyewear retail operations",
       "Optical retail management",
+      "Optical lab operations",
       "Small business consulting",
       "Small business marketing",
       "Business growth strategy",
@@ -274,6 +282,39 @@ export function buildOpticalServiceGraph() {
       "@type": "BusinessAudience",
       name: "Independent optical practices and eyewear retailers",
     },
+  };
+}
+
+/**
+ * The case study page. `about` points at an Organization node for the client,
+ * which carries a name and a URL and nothing else: no address, rating or
+ * review. Only emitted while `onSightApproved` is true, because the route
+ * itself is a 404 otherwise.
+ */
+export function buildCaseStudyGraph() {
+  const url = `${site.url}${caseStudyPath}`;
+  const organizationId = `${url}#organization`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: caseStudyHero.headline,
+        description: caseStudyMeta.description,
+        inLanguage: "en-US",
+        isPartOf: { "@id": SCHEMA_IDS.website },
+        about: { "@id": organizationId },
+        author: { "@id": SCHEMA_IDS.person },
+      },
+      {
+        "@type": "Organization",
+        "@id": organizationId,
+        name: onSightName,
+        url: onSightUrl,
+      },
+    ],
   };
 }
 

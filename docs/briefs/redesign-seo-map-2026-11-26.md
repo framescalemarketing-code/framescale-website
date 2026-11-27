@@ -26,13 +26,14 @@ Status: draft for Unit 1. Feeds every page's copy in Units 4 to 8.
 ## Page map
 | Route | Primary query | Secondary vocabulary | Intent | Title (<= 60) | H1 |
 |---|---|---|---|---|---|
-| `/` | optical practice marketing consultant | optical marketing consultant, independent optical marketing, marketing for opticians | Commercial, branded | Optical Practice Marketing Consultant \| Jonathan Mejia | Marketing For Independent Optical Practices, Explained Plainly |
+| `/` | optical practice marketing consultant | optical marketing consultant, independent optical marketing, marketing for opticians | Commercial, branded | Optical Practice Marketing Consultant \| Jonathan Mejia | Marketing For Independent Optical Practices (subhead: From The Lab To The Sales Floor) |
 | `/optical-marketing` | optical marketing | optician marketing, optical store marketing, eyewear store marketing | Commercial, vertical page | Optical Marketing For Independent Practices \| Jonathan Mejia | Optical Marketing For Independent Practices |
-| `/services` | optical marketing services | optical practice website design, optical practice SEO, marketing reporting | Commercial | Optical Marketing Services: Websites, Search, Reports | Four Ways I Help Optical Practices Grow |
-| `/method` | marketing plan for an optical practice | SCALE method, marketing process, marketing roadmap | Commercial, process | The SCALE Method: A Five-Phase Marketing Process | The SCALE Method: How I Work With Your Practice |
-| `/about` | Jonathan Mejia MBA | optical marketing consultant background, marketing consultant with optical experience | Entity, trust | About Jonathan Mejia, MBA \| FrameScale Inc | Hi, I'm Jonathan |
-| `/contact` | book an optical marketing consultation | contact marketing consultant | Transactional | Book A Free Call With Jonathan Mejia \| FrameScale | Tell Me About Your Practice |
+| `/services` | optical marketing services | optical practice website design, optical practice SEO, marketing reporting | Commercial | Optical Marketing Services: Websites, Search, Reports | Optical Marketing Services |
+| `/method` | marketing plan for an optical practice | SCALE method, marketing process, marketing roadmap | Commercial, process | The SCALE Method: A Five-Phase Marketing Process | The SCALE Method |
+| `/about` | Jonathan Mejia MBA | optical marketing consultant background, marketing consultant with optical experience | Entity, trust | About Jonathan Mejia \| FrameScale Inc | Hi, I'm Jonathan Mejia |
+| `/contact` | book an optical marketing consultation | contact marketing consultant | Transactional | Contact Jonathan Mejia \| FrameScale | Tell Me About Your Practice |
 | `/insights` | optical practice marketing guides | optical marketing blog, optical marketing advice | Informational hub | Optical Marketing Guides \| Jonathan Mejia, MBA | Optical Marketing Guides |
+| `/case-studies/on-sight-safety-optics` | on-sight safety optics case study | prescription safety eyewear marketing, optical business website case study | Proof, entity | On-Sight Safety Optics Case Study \| Jonathan Mejia | On-Sight Safety Optics Case Study (subhead: The Website, The App And The Marketing). Only while `onSightApproved` is true; 404 and absent from the sitemap otherwise. |
 
 Meta descriptions are written with the copy in Units 4 to 8, each leading with the page's primary query and ending on a plain next step.
 

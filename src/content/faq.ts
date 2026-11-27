@@ -1,3 +1,4 @@
+import { onSightApproved, proofLinks } from "@/content/onsight";
 import { site } from "@/lib/site";
 
 export type FaqItem = {
@@ -8,46 +9,49 @@ export type FaqItem = {
 
 /**
  * Short answers, written the way they would be said out loud. This is also the
- * surface AI assistants quote from, so each one has to stand on its own.
+ * surface AI assistants quote from, so each one opens with the direct answer,
+ * stays at 60 words or fewer, and stands on its own.
  */
 export const homeFaqs: FaqItem[] = [
   {
     question: "What does an optical marketing consultant do?",
     answer:
-      "I work out why a practice isn't growing, then I fix the cause. Usually that means a clearer website, " +
-      "better visibility in search and in AI answers, and reports that show which marketing brought in " +
-      "appointments.",
+      "An optical marketing consultant works out what is holding an independent practice back and fixes it. At " +
+      "FrameScale I study the market first, then work on the website, visibility in search and in AI answers, " +
+      "and a report that shows which marketing brought in appointments.",
   },
   {
-    question: "Do you only work with optical practices?",
+    question: "Who do you work with?",
     answer:
-      "Mostly, and that is on purpose. I spent years in optical, so I already know how the schedule, the frame " +
-      "board, and the insurance side actually work. I take other work when it fits, but optical is where I save " +
-      "you the most time.",
+      "Independent optical practices anywhere in the United States. I made glasses in an optical lab and managed " +
+      "stores, so I already know the schedule, the frame board and how insurance limits what you can offer.",
   },
+  // Only while the case study is on, so the answer never points at a page that 404s.
+  ...(onSightApproved ? [{ question: proofLinks.faqQuestion, answer: proofLinks.faqAnswer }] : []),
   {
     question: "How much does optical marketing cost?",
     answer:
-      "It depends on the practice, so there is no price list. Some owners need one thing fixed, others need the " +
-      "whole picture rebuilt. We talk first, then I give you a number and what it covers. The first call is free.",
+      "It depends on the practice, so there is no price list. We talk first, then I give you a number and a " +
+      "list of what it covers. The first call is free.",
   },
   {
     question: "How long until I see results?",
     answer:
-      "Research takes a few weeks. Website work depends on the size of the job. Search takes a few months, " +
-      "because that is how long it takes for search engines to notice a change. Anyone promising faster " +
-      "is guessing.",
+      "Research takes a few weeks, website work depends on the size of the job, and search work takes a few " +
+      "months because search engines are slow to notice a change. You get a report every month, so you see " +
+      "the trend as it forms.",
   },
   {
-    question: "Can you promise I'll be number one on Google?",
+    question: "Can you guarantee a number one ranking on Google?",
     answer:
-      "No, and nobody can. What I will promise is that you always know what I did and what it cost.",
+      "No. Nobody controls Google's rankings, so I do not guarantee one. I do promise that you always know what " +
+      "I did, what it cost and what changed.",
   },
   {
     question: "What happens on the first call?",
     answer:
-      "Half an hour, just the two of us. You tell me what isn't working, I ask a few questions, and you come away " +
-      "knowing what I would tackle first. If I'm not the right person, I'll say so then.",
+      "It is half an hour, just the two of us. You tell me what is not working, I ask a few questions, and you " +
+      "leave knowing what I would tackle first. If I am not the right person, I will say so then.",
   },
 ];
 
@@ -55,37 +59,38 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: "Can I hire you for just one thing?",
     answer:
-      "Sure, though I'll usually push to do the research first. Building a website before we know who we're " +
-      "talking to is how budgets disappear.",
+      "Yes. I usually suggest doing the research first, because building a website before we know who it is for " +
+      "is how budgets disappear.",
   },
   {
     question: "Do I own the website when we're done?",
     answer:
-      "Yes, all of it. The website, the analytics, the reporting, all in your own accounts. You can keep " +
-      "running it without me, and some people do.",
+      "Yes, all of it. The website, the analytics and the reporting sit in your own accounts, so you can keep " +
+      "running them without me.",
   },
   {
     question: "Do I need a new website?",
     answer:
-      "Not always. Plenty of sites just need fixing rather than replacing, and replacing one that works is a " +
-      "waste of your money. I'll tell you honestly which situation you're in.",
+      "Not always. If your site books appointments and loads quickly on a phone, it may only need fixes, and " +
+      "replacing it wastes money. I will tell you honestly which situation you are in.",
   },
   {
     question: "How will I know the marketing is working?",
     answer:
-      "You get a report you can read without me on the phone. It shows what was spent, what changed, and which " +
-      "appointments came from which work. If a number is not in the report, I will tell you why.",
+      "You get a report every month that you can read without me on the phone. It shows what was spent, what " +
+      "changed and which appointments came from which work. Every 90 days we review the results together. If a " +
+      "number is missing, I will tell you why.",
   },
   {
     question: "Am I locked into a contract?",
     answer:
-      "No. Ongoing work is month to month and you can stop when it stops being worth it. We agree the scope and " +
+      "No. Ongoing work is month to month, and you can stop when it stops being worth it. We agree the scope and " +
       "the price before anything starts.",
   },
   {
     question: "How do I reach you?",
     answer:
       `Use the form on the contact page, email ${site.email}, or call ${site.phone}. I read everything myself ` +
-      "and usually come back the next business day.",
+      "and reply within one business day.",
   },
 ];

@@ -1,6 +1,6 @@
 # Jonathan Mejia, MBA: Optical Practice Marketing Consultant
 
-Personal-brand marketing site. Seven marketing routes plus `/book`. Two lead
+Personal-brand marketing site. Eight marketing routes, `/book` and the On-Sight case study. Two lead
 paths: booking a call (`/book`) and sending a message (`/contact`).
 
 > **Before launch:** set `RESEND_API_KEY` and `CONTACT_NOTIFICATION_EMAIL` in
@@ -16,11 +16,12 @@ paths: booking a call (`/book`) and sending a message (`/contact`).
 
 | Route | Purpose |
 |---|---|
-| `/` | Home. Offer, credentials, services, method preview, FAQ, closing call to action. |
+| `/` | Home. Offer, credentials, services, method preview, case study proof band, FAQ, closing call to action. |
 | `/services` | Four service areas, how pricing is scoped, FAQ. |
 | `/optical-marketing` | The vertical hub. Why optical is different, optical FAQ. Owns the head term. |
 | `/method` | The five-phase SCALE Method, with an anchor per phase (`#phase-s` to `#phase-e`). |
 | `/about` | Background, credentials, philosophy. |
+| `/case-studies/on-sight-safety-optics` | The On-Sight Safety Optics case study. Every number is a row in `src/content/onsight.ts` with its source and date. Two switches in that file hide the page (`onSightApproved`) or only the review, pricing and revenue lines (`onSightFiguresApproved`). |
 | `/book` | Pick a time from Jonathan's calendar (`/api/booking`, Turnstile, Google Calendar). Every primary call to action points here while `bookingLive` is `true` in `src/lib/site.ts`. |
 | `/contact` | The message form (Turnstile plus Resend), plus phone and email. |
 | `/insights`, `/insights/[slug]` | Guides. Drafts in `src/content/insights.ts` stay hidden until `published: true`. |

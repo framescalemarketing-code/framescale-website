@@ -21,7 +21,10 @@ export function HomeHero() {
         <div className="flex flex-col lg:min-h-[min(44rem,calc(100svh-4.5rem))]">
           <div className="grid flex-1 items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8">
             <div className="flex flex-col gap-7">
-              <h1 className="display-xl max-w-[16ch] text-[clamp(2.4rem,5.2vw,4.5rem)]">{hero.headline}</h1>
+              <div className="flex flex-col gap-3">
+                <h1 className="display-xl max-w-[16ch] text-[clamp(2.4rem,5.2vw,4.5rem)]">{hero.headline}</h1>
+                <p className="display-sm text-(--brand-secondary)">{hero.subhead}</p>
+              </div>
 
               <p className="lead">{hero.lead}</p>
 
@@ -70,6 +73,8 @@ export function HomeHero() {
 
 type PageHeroProps = {
   headline: string;
+  /** A short line under the headline, in the brand color. */
+  subhead?: string;
   lead: string;
   /** Rendered inside the same section, so a related block does not become another band. */
   children?: ReactNode;
@@ -80,12 +85,15 @@ type PageHeroProps = {
  * short ruler-tick hairline at the foot so the page opens on the same measuring
  * motif as the home hero.
  */
-export function PageHero({ headline, lead, children }: PageHeroProps) {
+export function PageHero({ headline, subhead, lead, children }: PageHeroProps) {
   return (
     <section className="pt-14 pb-12 md:pt-20 md:pb-16">
       <Container>
         <div className="flex max-w-4xl flex-col gap-6">
-          <h1 className="display-xl text-[clamp(2.2rem,4.8vw,4rem)] text-(--brand-deep)">{headline}</h1>
+          <div className="flex flex-col gap-3">
+            <h1 className="display-xl text-[clamp(2.2rem,4.8vw,4rem)] text-(--brand-deep)">{headline}</h1>
+            {subhead ? <p className="display-sm text-(--brand-primary)">{subhead}</p> : null}
+          </div>
           <p className="lead">{lead}</p>
         </div>
         {children}

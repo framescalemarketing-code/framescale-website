@@ -15,9 +15,11 @@ export type ScalePhase = {
 
 export const scaleIntro = {
   name: "The SCALE Method",
+  /** The heading over the five-letter preview on the home page. */
+  previewTitle: "How Working With Me Goes In Five Phases",
   lead:
-    "I work the same way every time, and you see each step before we move on. It runs to five stages, and " +
-    "you'll always know which one we're in.",
+    "I use the same five phases with every practice, and you approve each one before the next begins. You " +
+    "always know which phase we are in.",
 } as const;
 
 /**
@@ -33,18 +35,18 @@ export const scalePhases: ScalePhase[] = [
     number: "01",
     icon: Search,
     title: "Study The Market",
-    summary: "Who is buying, and who else they could buy from.",
+    summary: "I find out who buys from practices like yours and who else they consider.",
     description:
-      "I start wide. Narrow it down too early and you'll fix the wrong thing. Who's buying in your area, what " +
-      "else they could pick instead of you, and what tips them one way or the other.",
+      "I start wide, because narrowing down too early means fixing the wrong thing. I look at who buys from " +
+      "practices like yours, what else they could pick instead of you, and what tips them one way or the other.",
     activities: [
-      "Look at who's buying near you",
+      "Look at who buys from practices like yours",
       "See what the competition charges and how they talk about it",
-      "Work out what makes someone pick one over the other",
+      "Work out what makes someone pick one practice over another",
     ],
     deliverables: [
-      "A clear picture of the market you're in",
-      "Where the gaps are",
+      "A clear picture of the market you are in",
+      "A list of the gaps I found",
       "What I would do first, given your budget",
     ],
   },
@@ -53,18 +55,18 @@ export const scalePhases: ScalePhase[] = [
     number: "02",
     icon: Users,
     title: "Clarify The Client View",
-    summary: "See the business the way a customer sees it.",
+    summary: "I look at your business the way a customer sees it.",
     description:
-      "You know your business from the inside. Customers only ever see the outside, and the two rarely match. " +
-      "That gap is costing you work.",
+      "You know your business from the inside, and customers only see the outside. When the two views differ, " +
+      "customers choose based on the one they can see.",
     activities: [
       "Talk to you, and to whoever deals with customers day to day",
-      "Read your reviews properly, including the bad ones",
+      "Read your reviews closely, including the bad ones",
       "Compare how the competition describes itself",
     ],
     deliverables: [
       "A plain description of your best kind of customer",
-      "What genuinely sets you apart, if anything does",
+      "What sets you apart, if anything does",
       "The first things worth changing",
     ],
   },
@@ -73,12 +75,11 @@ export const scalePhases: ScalePhase[] = [
     number: "03",
     icon: Target,
     title: "Align The Strategy",
-    summary: "Agree what to say and where to say it.",
+    summary: "We agree what to say and where to say it.",
     description:
-      "Now we turn what I found into a plan, and we sit down and decide it together so you know why every piece " +
-      "of it is there.",
+      "Now we turn what I found into a plan. We decide it together, so you know why every piece of it is there.",
     activities: [
-      "Settle on what you're saying and who you're saying it to",
+      "Settle on what you are saying and who you are saying it to",
       "Pick the handful of places worth showing up",
       "Match it to your goals and what you can spend",
     ],
@@ -93,10 +94,10 @@ export const scalePhases: ScalePhase[] = [
     number: "04",
     icon: Rocket,
     title: "Launch The System",
-    summary: "Build the website and the tracking the plan needs.",
+    summary: "I build the website and the tracking the plan needs.",
     description:
-      "Then I build it. If the website or the tracking doesn't exist yet, I build that too, and I stay on it from " +
-      "the start of the job to the end of it.",
+      "Then I build it. If the website or the tracking does not exist yet, I build that too, and I stay on the " +
+      "job from start to finish.",
     activities: [
       "Build or fix the website and the pages that matter",
       "Put tracking in so we can see what happens",
@@ -105,7 +106,7 @@ export const scalePhases: ScalePhase[] = [
     deliverables: [
       "A website built for the plan",
       "Tracking and reporting in one place",
-      "Everything ready to switch on",
+      "A full check of the site and tracking before it goes live",
     ],
   },
   {
@@ -113,18 +114,18 @@ export const scalePhases: ScalePhase[] = [
     number: "05",
     icon: BarChart3,
     title: "Evaluate And Improve",
-    summary: "Watch what people do, then change what isn't working.",
+    summary: "I watch what people do, then we change what is not working.",
     description:
-      "Once it's live I watch how people move through it and how the business responds. Then we change the parts " +
-      "that aren't working.",
+      "Once it is live I watch how people move through it and how the business responds. We review the results " +
+      "every 90 days and change the parts that are not working.",
     activities: [
-      "Track the calls, the forms, and the visits",
+      "Track the calls, the forms and the visits",
       "Find where people give up and leave",
-      "Adjust the message, the pages, and the spend",
+      "Adjust the message, the pages and the spend",
     ],
     deliverables: [
-      "A clear view of what's working",
-      "Updates you can read without a translator",
+      "A monthly report you can read without a translator",
+      "A review every 90 days of what is working",
       "A short list of what to do next",
     ],
   },
@@ -142,7 +143,7 @@ export const workingStandards: WorkingStandard[] = [
   },
   {
     title: "Built Around You",
-    description: "The plan has to fit your team, your budget, and how you already work. Otherwise nobody follows it.",
+    description: "The plan has to fit your team, your budget and how you already work, or nobody follows it.",
   },
   {
     title: "Everything Connected",

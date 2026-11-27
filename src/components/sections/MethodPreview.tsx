@@ -15,7 +15,7 @@ export function MethodPreview() {
   return (
     <Section tone="dark" size="default">
       <div className="flex flex-col gap-4">
-        <h2 className="display-lg max-w-3xl">The SCALE Method: Five Phases, Each One Shown Before The Next</h2>
+        <h2 className="display-lg max-w-3xl">{scaleIntro.previewTitle}</h2>
         <p className="section-lead">{scaleIntro.lead}</p>
       </div>
 

@@ -40,15 +40,15 @@ export default function ServicesPage() {
       />
 
       <PageHero
-        headline="Four Ways I Help Optical Practices Grow"
-        lead="These are the optical marketing services I offer. I always start by working out the real problem, because it usually is not the one you called about."
+        headline="Optical Marketing Services"
+        lead="These are the four services I offer independent optical practices, with what each one includes and who it is for. I work out the real problem before I recommend anything."
       >
         <p className="measure mt-6 text-(--text-muted)">
           Each service follows the same five phases, which I explain on the{" "}
           <Link href="/method" className="link-quiet font-semibold text-(--brand-primary)">
             method page
           </Link>
-          . If you are in optical specifically, the{" "}
+          . The{" "}
           <Link href="/optical-marketing" className="link-quiet font-semibold text-(--brand-primary)">
             optical marketing page
           </Link>{" "}
@@ -60,12 +60,12 @@ export default function ServicesPage() {
       <Pricing />
       <FAQ
         items={servicesFaqs}
-        title="The Practical Questions"
-        lead="The ones that come up once it gets real."
+        title="Practical Questions"
+        lead="How I work, what you own and how I handle price."
       />
       <CtaBand
         title="Not Sure Which One You Need?"
-        lead="Most people are not, and that is what the call is for. Tell me what is going on and I will tell you where I would start."
+        lead="That is what the first call is for. Tell me what is going on and I will tell you where I would start."
       />
     </>
   );

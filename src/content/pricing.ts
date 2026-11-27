@@ -22,7 +22,7 @@ export type PricingPoint = {
 export const pricingPoints: PricingPoint[] = [
   {
     title: "We Talk First",
-    body: "Half an hour on the phone so I understand what I'm looking at. Costs you nothing.",
+    body: "Half an hour on the phone so I understand what I am looking at. The call is free.",
   },
   {
     title: "Then I Quote",
@@ -30,7 +30,7 @@ export const pricingPoints: PricingPoint[] = [
   },
   {
     title: "You Approve It",
-    body: "Nothing starts until you've seen that and said yes to it.",
+    body: "Nothing starts until you have seen the quote and said yes.",
   },
   {
     title: "No Surprise Invoices",
