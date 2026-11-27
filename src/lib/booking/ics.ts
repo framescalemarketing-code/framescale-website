@@ -14,15 +14,15 @@ function escapeText(value: string): string {
     .replace(/\\/g, "\\\\")
     .replace(/;/g, "\\;")
     .replace(/,/g, "\\,")
-    .replace(/\r\n|\r|\n|\u2028|\u2029/g, "\\n")
-    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "");
+    .replace(/\r\n|\r|\n|\u0085|\u2028|\u2029/g, "\\n")
+    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]/g, "");
 }
 
 /** Strip anything that could start a new line in the file, including the Unicode line separators. */
 function oneLine(value: string): string {
   return value
-    .replace(/[\r\n\u2028\u2029]+/g, " ")
-    .replace(/[\x00-\x1f\x7f]/g, "")
+    .replace(/[\r\n\u0085\u2028\u2029]+/g, " ")
+    .replace(/[\x00-\x1f\x7f-\x9f]/g, "")
     .trim();
 }
 

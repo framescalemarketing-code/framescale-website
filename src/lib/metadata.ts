@@ -18,12 +18,16 @@ type BuildPageMetadataOptions = {
 };
 
 /**
- * No `images` here on purpose. Each route segment carries its own
- * `opengraph-image.tsx`, and Next only injects those (with a content hash in
- * the URL, which is what lets a redesigned card reach links already shared)
- * when the page metadata does not set `openGraph.images` itself. Twitter
- * inherits the same image.
+ * Only `src/app/opengraph-image.tsx` exists, and Next attaches it to a page
+ * only when that page sets no `openGraph` of its own. Every page here sets one,
+ * so the shared card is named explicitly, for Open Graph and for Twitter, the
+ * same way the root layout names it. The URL has no content hash, so a redesigned card may take a while to reach links
+ * that were already shared.
  */
+const SHARE_ALT = `${principal.displayName}, ${principal.jobTitle}`;
+const OG_IMAGE = { url: site.ogImage, width: 1200, height: 630, alt: SHARE_ALT } as const;
+const TWITTER_IMAGE = { url: site.twitterImage, alt: SHARE_ALT } as const;
+
 export function buildPageMetadata({
   title,
   description,
@@ -46,11 +50,13 @@ export function buildPageMetadata({
       type: "website",
       siteName: practice.name,
       locale: site.locale,
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
+      images: [TWITTER_IMAGE],
     },
     ...(robots ? { robots } : {}),
   };

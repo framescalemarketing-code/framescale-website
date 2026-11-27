@@ -39,18 +39,24 @@ export async function validateTurnstileToken(input: {
     body.set("remoteip", input.remoteIp);
   }
 
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: body.toString(),
-    cache: "no-store",
-  });
+  // A stalled or broken Cloudflare reply counts as a failed check. It never throws,
+  // and it never lets a visitor through.
+  const failed: TurnstileVerifyResult = { success: false, "error-codes": ["internal-error"] };
+  try {
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: body.toString(),
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
 
-  if (!response.ok) {
-    return { success: false, "error-codes": ["internal-error"] };
+    if (!response.ok) return failed;
+
+    return (await response.json()) as TurnstileVerifyResult;
+  } catch {
+    return failed;
   }
-
-  return (await response.json()) as TurnstileVerifyResult;
 }

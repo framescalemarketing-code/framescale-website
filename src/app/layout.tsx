@@ -49,8 +49,8 @@ export const viewport: Viewport = {
 };
 
 /**
- * No `openGraph.images` or `twitter.images` here: the `opengraph-image.tsx`
- * file in this directory and in each route segment supplies them, hashed.
+ * The share images are named here, and again in `buildPageMetadata`, because a
+ * page that sets its own `openGraph` replaces this one instead of merging with it.
  */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
