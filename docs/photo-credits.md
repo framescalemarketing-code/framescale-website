@@ -1,6 +1,7 @@
 # Photo credits
 
-All photography on this site is Jonathan's own. There is no stock imagery.
+All photography on this site is Jonathan's own, except the three On-Sight
+screenshots listed below. There is no stock imagery.
 
 | File | Subject | Where it is used |
 | --- | --- | --- |
@@ -8,6 +9,14 @@ All photography on this site is Jonathan's own. There is no stock imagery.
 | `public/photos/frames/cartier-panther-detail.webp` | Gold rimless Cartier frame, panther temple detail | Optical page, via `src/content/photos.ts` |
 | `public/photos/frames/rayban-temple-markings.webp` | Black Ray-Ban acetate frame, temple markings | Optical page, via `src/content/photos.ts` |
 | `public/photos/frames/cartier-rimless-symmetry.webp`, `cartier-rimless-angle.webp`, `cartier-rimless-front.webp`, `cartier-rimless-overhead.webp`, `rayban-acetate-shadow.webp` | Further frame photographs | Image files only, not placed on any page and not referenced in code |
+
+The On-Sight files in `public/photos/onsight/` are screenshots of
+onsightoptics.com (home, how it works, corporate programs), taken on 2026-11-26
+at 1440 pixels wide and cropped to the first screen so the cookie widget and the
+third-party logo strip do not show. They appear on the On-Sight case study. The
+pictures inside them belong to On-Sight. Jonathan said in chat on 2026-11-26 that
+On-Sight's owner agreed to being named; the owner's agreement to the screenshots
+specifically is not recorded.
 
 The frame photographs date from the optical years. They were normalized before
 committing: sRGB, EXIF and ICC stripped, longest edge capped at 2400px,

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/sections/Hero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Button } from "@/components/ui/Button";
+import { Photo } from "@/components/ui/Photo";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { StatRow } from "@/components/ui/Stat";
@@ -20,6 +21,7 @@ import {
   caseStudyPath,
   caseStudyQuote,
   caseStudyWho,
+  caseStudyScreens,
   caseStudyWork,
   clientQuote,
   figures,
@@ -165,6 +167,19 @@ export default function OnSightCaseStudyPage() {
             </RevealItem>
           ))}
         </Reveal>
+        <div className="mt-12 flex max-w-4xl flex-col gap-6">
+          <h3 className="display-sm text-(--brand-deep)">{caseStudyScreens.title}</h3>
+          <p className="measure text-(--text-muted)">{caseStudyScreens.lead}</p>
+          {caseStudyScreens.items.map((screen) => (
+            <Photo
+              key={screen.src}
+              src={screen.src}
+              alt={screen.alt}
+              aspect={screen.aspect}
+              sizes="(min-width: 1024px) 896px, 100vw"
+            />
+          ))}
+        </div>
       </Section>
 
       <Section>

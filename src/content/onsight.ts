@@ -230,6 +230,35 @@ export const caseStudyWork = {
   ] satisfies WorkItem[],
 } as const;
 
+export type WorkScreen = { src: string; alt: string; aspect: string };
+
+/**
+ * Screenshots of the live On-Sight website, taken 2026-11-26 at 1440 pixels wide and
+ * cropped to the first screen. The pictures inside them belong to On-Sight. No visible
+ * captions: Jonathan removed photo captions site-wide on 2026-11-26.
+ */
+export const caseStudyScreens = {
+  title: "The Website Today",
+  lead: "These are three pages of the On-Sight website as they appeared on November 26, 2026.",
+  items: [
+    {
+      src: "/photos/onsight/onsight-home.webp",
+      alt: "The On-Sight Safety Optics home page, headed On-Site Safety Eyewear Solutions, with a photo of a person trying on safety glasses",
+      aspect: "aspect-1440/815",
+    },
+    {
+      src: "/photos/onsight/onsight-how-it-works.webp",
+      alt: "The On-Sight how it works page, explaining how an on-site safety eyewear program is rolled out, with an illustrated map of a work site",
+      aspect: "aspect-1440/815",
+    },
+    {
+      src: "/photos/onsight/onsight-corporate-programs.webp",
+      alt: "The On-Sight corporate prescription safety eyewear programs page, with a photo of an optician adjusting a pair of glasses at a workbench",
+      aspect: "aspect-1440/722",
+    },
+  ] satisfies WorkScreen[],
+} as const;
+
 export const caseStudyMethod = {
   title: "Method Of Measurement",
   search:
