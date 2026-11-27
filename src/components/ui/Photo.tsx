@@ -10,12 +10,6 @@ type PhotoProps = {
    * `sizes` ships a desktop-width image to phones.
    */
   sizes: string;
-  /**
-   * Short line under the image. Real detail here reads as expertise and gives
-   * image search actual text to work with, so prefer naming the thing over
-   * describing the photo.
-   */
-  caption?: string;
   /** Only for an above-the-fold image. */
   priority?: boolean;
   className?: string;
@@ -31,22 +25,16 @@ export function Photo({
   alt,
   aspect = "aspect-16/10",
   sizes,
-  caption,
   priority = false,
   className = "",
 }: PhotoProps) {
   return (
-    <figure className={`flex flex-col gap-3 ${className}`}>
+    <figure className={className}>
       <div
         className={`relative ${aspect} w-full overflow-hidden rounded-(--radius-media) border border-(--border)`}
       >
         <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" priority={priority} />
       </div>
-      {caption ? (
-        <figcaption className="font-body text-sm text-(--text-muted)">
-          {caption}
-        </figcaption>
-      ) : null}
     </figure>
   );
 }
