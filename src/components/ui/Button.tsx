@@ -22,7 +22,7 @@ const VARIANTS: Record<Variant, string> = {
   primary:
     "bg-(--brand-primary) text-white hover:bg-(--brand-primary-hover) focus-visible:outline-(--brand-primary)",
   outline:
-    "border border-(--brand-primary) text-(--brand-primary) hover:bg-(--brand-primary) hover:text-white " +
+    "border border-(--brand-primary-hover) text-(--brand-primary-hover) hover:bg-(--brand-primary-hover) hover:text-white " +
     "focus-visible:outline-(--brand-primary)",
   light:
     "bg-(--cta-deep-bg) text-(--cta-deep-fg) hover:bg-white focus-visible:outline-white",

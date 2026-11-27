@@ -4,7 +4,7 @@ import { DateTime } from "luxon";
 export const BOOKING_ZONE = "America/Los_Angeles";
 
 /** Half-hour calls on a half-hour grid. */
-export const CALL_LENGTH_MINUTES = 30;
+const CALL_LENGTH_MINUTES = 30;
 const BOOKABLE_INTERVAL_MINUTES = 30;
 /** First bookable start (Pacific). */
 const OPEN_MINUTES = 9 * 60;
@@ -60,7 +60,7 @@ export function yearMonthStartPacific(ym: string): DateTime {
 }
 
 /** Bookable month picker bounds: the current month through MAX_MONTHS_AHEAD. */
-export function bookingMonthBoundsPacific(): { minYm: string; maxYm: string } {
+function bookingMonthBoundsPacific(): { minYm: string; maxYm: string } {
   const now = nowPacific();
   return {
     minYm: now.startOf("month").toFormat("yyyy-MM"),
@@ -194,9 +194,4 @@ export function isSlotWithinWindow(startsAtIso: string): boolean {
   if (slot < nowZoned.plus({ minutes: MIN_LEAD_MINUTES })) return false;
   if (slot > nowZoned.plus({ weeks: MAX_WEEKS_AHEAD }).endOf("day")) return false;
   return true;
-}
-
-/** Both checks: the slot the builder would produce right now. The busy check against the calendar is separate. */
-export function isValidSlotStart(startsAtIso: string): boolean {
-  return isSlotShape(startsAtIso) && isSlotWithinWindow(startsAtIso);
 }

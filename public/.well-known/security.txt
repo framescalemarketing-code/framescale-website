@@ -1,0 +1,4 @@
+Contact: mailto:framescalemarketing@framescalemarketing.com
+Expires: 2027-10-31T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://framescalemarketing.com/.well-known/security.txt

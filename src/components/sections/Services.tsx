@@ -94,7 +94,7 @@ export function ServiceDetails() {
                 {phase ? (
                   <Link
                     href={`/method#phase-${phase.letter.toLowerCase()}`}
-                    className="link-quiet inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary-hover)"
+                    className="link-quiet inline-flex min-h-11 w-fit items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary-hover)"
                   >
                     Method phase: {phase.title}
                     <ArrowRight className="size-4" aria-hidden="true" />

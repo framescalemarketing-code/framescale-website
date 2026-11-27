@@ -44,10 +44,6 @@ export function getGoogleCalendarConfig(): GoogleCalendarConfig | null {
   return { calendarId, clientEmail, privateKey };
 }
 
-export function isGoogleCalendarConfigured(): boolean {
-  return getGoogleCalendarConfig() !== null;
-}
-
 function base64url(input: string): string {
   return Buffer.from(input).toString("base64url");
 }
@@ -150,7 +146,7 @@ export async function fetchGoogleBusyWindows(
 }
 
 /** Drop the cached windows for a range after a booking lands inside it. */
-export function forgetGoogleBusyCache(): void {
+function forgetGoogleBusyCache(): void {
   busyCache.clear();
 }
 

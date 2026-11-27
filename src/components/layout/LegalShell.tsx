@@ -22,7 +22,7 @@ export function LegalShell({ title, lead, lastUpdated, children }: LegalShellPro
         <Container width="narrow">
           <Link
             href="/"
-            className="link-quiet mb-10 inline-flex items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary)"
+            className="link-quiet mb-6 inline-flex min-h-11 items-center gap-2 font-ui text-sm font-semibold text-(--brand-primary)"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
             Back To Home

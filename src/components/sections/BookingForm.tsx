@@ -334,7 +334,7 @@ export function BookingForm({ turnstileSiteKey }: { turnstileSiteKey: string }) 
             <button
               type="button"
               onClick={retry}
-              className="link-quiet font-ui text-sm font-semibold text-(--brand-primary)"
+              className="link-quiet inline-flex min-h-11 items-center font-ui text-sm font-semibold text-(--brand-primary)"
             >
               {booking.calendar.retry}
             </button>

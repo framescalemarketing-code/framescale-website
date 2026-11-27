@@ -5,10 +5,16 @@ import { fileURLToPath } from "node:url";
 /** Directory that contains this config file (repo root), not `process.cwd()` (which may be `src/app`). */
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
+/**
+ * `'unsafe-eval'` is for the dev server only (React's refresh tooling needs it).
+ * A production build runs without it, so an injected string cannot be turned into code.
+ */
+const isDevServer = process.env.NODE_ENV === "development";
+
 const scriptSrc = [
   "'self'",
   "'unsafe-inline'",
-  "'unsafe-eval'",
+  ...(isDevServer ? ["'unsafe-eval'"] : []),
   "https://embeds.iubenda.com",
   "https://cdn.iubenda.com",
   "https://www.googletagmanager.com",

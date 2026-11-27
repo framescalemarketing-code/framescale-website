@@ -27,7 +27,7 @@ export default function NotFound() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="link-quiet font-ui text-sm font-semibold text-(--brand-primary)"
+                className="link-quiet inline-flex min-h-11 items-center font-ui text-sm font-semibold text-(--brand-primary)"
               >
                 {item.label}
               </Link>

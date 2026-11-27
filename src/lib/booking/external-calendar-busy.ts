@@ -313,7 +313,7 @@ function expandSeries(
   return windows;
 }
 
-export function parseBusyWindowsFromIcs(ics: string): BusyWindow[] {
+function parseBusyWindowsFromIcs(ics: string): BusyWindow[] {
   const records = parseEvents(ics);
   const now = DateTime.now();
   const rangeStart = now.minus({ days: 1 });

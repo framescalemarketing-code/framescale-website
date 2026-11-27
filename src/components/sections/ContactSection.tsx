@@ -46,14 +46,14 @@ export function ContactSection() {
             <h2 className="display-sm text-(--brand-deep)">Or Reach Me Directly</h2>
             <a
               href={`tel:${site.phoneHref}`}
-              className="link-quiet flex w-fit items-center gap-3 text-(--brand-deep) hover:text-(--brand-primary)"
+              className="link-quiet flex min-h-11 w-fit items-center gap-3 text-(--brand-deep) hover:text-(--brand-primary)"
             >
               <Phone className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
               <span className="font-ui text-sm font-semibold">{site.phone}</span>
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="link-quiet flex w-fit items-center gap-3 text-(--brand-deep) hover:text-(--brand-primary)"
+              className="link-quiet flex min-h-11 w-fit items-center gap-3 text-(--brand-deep) hover:text-(--brand-primary)"
             >
               <Mail className="size-4 shrink-0 text-(--brand-primary)" aria-hidden="true" />
               <span className="font-ui text-[13px] font-semibold wrap-anywhere">{site.email}</span>
